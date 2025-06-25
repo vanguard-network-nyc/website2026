@@ -489,14 +489,14 @@ const Footer = () => {
               href="#"
               className="text-white/60 hover:text-blue-400 transition-colors duration-200"
             >
-              <LinkedIn size={20} />
+              <Mail size={20} />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, color: '#3b82f6' }}
               href="#"
               className="text-white/60 hover:text-blue-400 transition-colors duration-200"
             >
-              <Twitter size={20} />
+              <Phone size={20} />
             </motion.a>
           </div>
         </div>
