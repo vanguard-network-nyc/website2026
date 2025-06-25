@@ -704,7 +704,7 @@ const ProgramsPage = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
   >
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
