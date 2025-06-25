@@ -11,8 +11,6 @@ import {
   BookOpen, 
   Award,
   ArrowRight,
-  LinkedIn,
-  Twitter,
   Mail,
   Phone,
   MapPin,
