@@ -890,14 +890,14 @@ const ContactPage = () => (
                 href="#"
                 className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
-                <LinkedIn size={24} />
+                <Mail size={24} />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 href="#"
                 className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
               >
-                <Twitter size={24} />
+                <Phone size={24} />
               </motion.a>
             </div>
           </div>
