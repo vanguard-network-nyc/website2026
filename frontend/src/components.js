@@ -1,0 +1,1019 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { 
+  Menu, 
+  X, 
+  ChevronRight, 
+  Play, 
+  Users, 
+  Target, 
+  BookOpen, 
+  Award,
+  ArrowRight,
+  LinkedIn,
+  Twitter,
+  Mail,
+  Phone,
+  MapPin,
+  Star
+} from 'lucide-react';
+
+// Header Component
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: 'ADVISORY', path: '/advisory' },
+    { name: 'NETWORKING', path: '/networking' },
+    { name: 'PROGRAMS', path: '/programs' },
+    { name: 'CONTACT', path: '/contact' },
+    { name: 'BOOK', path: '/book' }
+  ];
+
+  return (
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-slate-900'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-white font-bold text-xl tracking-wide"
+            >
+              THE<br />
+              <span className="text-blue-400">VANGUARD</span><br />
+              NETWORK
+            </motion.div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link
+                  to={item.path}
+                  className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <Link
+                to="/members"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              >
+                MEMBER SITE
+              </Link>
+            </motion.div>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-slate-700 pt-4 pb-4"
+            >
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link
+                    to={item.path}
+                    className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <Link
+                  to="/members"
+                  className="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 mt-4 text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  MEMBER SITE
+                </Link>
+              </motion.div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.header>
+  );
+};
+
+// Hero Section
+const Hero = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.7)), url('https://images.pexels.com/photos/418285/pexels-photo-418285.jpeg')`
+        }}
+      />
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white/10 backdrop-blur-md rounded-2xl p-12 max-w-4xl mx-auto"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight"
+          >
+            WHAT WE DO
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto"
+          >
+            The Vanguard Network helps current and future senior leaders transform themselves 
+            and their organizations by{' '}
+            <span className="text-blue-300 font-semibold">unlocking high-performance leadership</span>.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.4)' }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              LEARN MORE
+              <ArrowRight size={20} />
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              OUR TEAM
+              <Users size={20} />
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Services Section
+const ServicesSection = () => {
+  const services = [
+    {
+      title: 'ADVISORY',
+      description: 'The Vanguard Network supports senior executives as they build high-performance organizations and take their leadership, and their teams, to higher levels. We also help top leaders develop a meaningful sense of purpose and culture that will deliver results for their organization — and catalyze change when needed.',
+      buttonText: 'More Info',
+      icon: <Target size={48} />,
+      image: 'https://images.unsplash.com/photo-1560250163-17506787d971?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fGJsdWV8MTc1MDc0MzU5OHww&ixlib=rb-4.1.0&q=85'
+    },
+    {
+      title: 'NETWORKING',
+      description: 'The Vanguard community is a by-invitation network for senior leaders. Become a member to fine-tune your leadership, and build new relationships, to keep growing, to keep thriving. Join the community for top leadership discussions, networking, rich content and customized resources.',
+      buttonText: 'Become a Member',
+      icon: <Users size={48} />,
+      image: 'https://images.pexels.com/photos/5475750/pexels-photo-5475750.jpeg'
+    },
+    {
+      title: 'NEW BOOK',
+      description: 'Seeing Around Corners - A comprehensive guide to developing strategic foresight and anticipating change in today\'s rapidly evolving business landscape. Learn the essential skills every leader needs to navigate uncertainty and drive organizational success.',
+      buttonText: 'More Info & Order',
+      icon: <BookOpen size={48} />,
+      image: 'https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg'
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+            >
+              <div 
+                className="h-48 bg-cover bg-center relative"
+                style={{ backgroundImage: `url('${service.image}')` }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 text-white">
+                  {service.icon}
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
+                  {service.title}
+                </h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2"
+                >
+                  {service.buttonText}
+                  <ChevronRight size={16} />
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Testimonial Section
+const TestimonnialSection = () => {
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center gap-12"
+        >
+          <div className="md:w-1/3">
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              src="https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMGV4ZWN1dGl2ZXN8ZW58MHx8fGJsdWV8MTc1MDgzOTA0Nnww&ixlib=rb-4.1.0&q=85"
+              alt="Tom Sabatino"
+              className="w-full max-w-xs rounded-full shadow-lg mx-auto"
+            />
+          </div>
+          
+          <div className="md:w-2/3">
+            <motion.blockquote
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-light text-slate-700 italic mb-6 leading-relaxed"
+            >
+              "One quality sets apart successful companies and successful executives: high-performance leadership. 
+              Developing great leaders, and supporting their work, is where the Vanguard team really excels."
+            </motion.blockquote>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-xl font-bold text-slate-900 mb-1">Tom Sabatino</h4>
+              <p className="text-slate-600">
+                Former Chief Legal Officer, Best Buy<br />
+                and Co., Transact, Aimia, AARP, Brightpoint, United Airlines, Schwing Rough
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Video Testimonial Section
+const VideoTestimonial = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-slate-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center gap-12"
+        >
+          <div className="md:w-1/2">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="relative rounded-xl overflow-hidden shadow-2xl"
+            >
+              <img
+                src="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg"
+                alt="Ken Banfa Video"
+                className="w-full h-80 object-cover"
+              />
+              <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsPlaying(true)}
+                  className="bg-white/90 hover:bg-white text-blue-600 rounded-full p-6 shadow-lg transition-all duration-200"
+                >
+                  <Play size={32} fill="currentColor" />
+                </motion.button>
+              </div>
+            </motion.div>
+          </div>
+          
+          <div className="md:w-1/2">
+            <motion.blockquote
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-2xl md:text-3xl font-light text-slate-700 italic mb-6 leading-relaxed"
+            >
+              "Our sole focus is unlocking high-performance leadership, so that's why we don't take the cookie-cutter approach."
+            </motion.blockquote>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-xl font-bold text-slate-900 mb-1">Ken Banfa</h4>
+              <p className="text-slate-600">Founder & CEO, The Vanguard Network</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Programs Section
+const ProgramsSection = () => {
+  return (
+    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <div className="inline-block bg-white/10 px-4 py-2 rounded-full mb-6">
+            <span className="text-white/80 font-semibold tracking-wider">PROGRAMS</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+            The <span className="text-blue-200">New Leaders Program</span><br />
+            introduces critical leadership<br />
+            challenges to select groups of<br />
+            high-performance aspiring<br />
+            leaders.
+          </h2>
+          
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 mx-auto"
+          >
+            LEARN MORE
+            <ArrowRight size={20} />
+          </motion.button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Footer Component
+const Footer = () => {
+  const footerLinks = [
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Our Team', path: '/team' },
+    { name: 'LinkedIn', path: '#' },
+    { name: 'Privacy Policy', path: '/privacy' },
+    { name: 'Terms of Use', path: '/terms' },
+    { name: 'Become a Member', path: '/networking' }
+  ];
+
+  return (
+    <footer className="bg-slate-900 text-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+          {footerLinks.map((link, index) => (
+            <motion.div
+              key={link.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Link
+                to={link.path}
+                className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
+              >
+                {link.name}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/60 text-sm mb-4 md:mb-0">
+            © 2025 The Vanguard Network
+          </p>
+          
+          <div className="flex items-center space-x-4">
+            <motion.a
+              whileHover={{ scale: 1.1, color: '#3b82f6' }}
+              href="#"
+              className="text-white/60 hover:text-blue-400 transition-colors duration-200"
+            >
+              <LinkedIn size={20} />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1, color: '#3b82f6' }}
+              href="#"
+              className="text-white/60 hover:text-blue-400 transition-colors duration-200"
+            >
+              <Twitter size={20} />
+            </motion.a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Additional Pages
+const AboutPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+  >
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">About The Vanguard Network</h1>
+        <p className="text-xl text-slate-600 leading-relaxed">
+          Transforming leadership through innovation, expertise, and community.
+        </p>
+      </motion.div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1573496130103-a442a3754d0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxsZWFkZXJzaGlwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8fGJsdWV8MTc1MDgzOTA3Nnww&ixlib=rb-4.1.0&q=85"
+            alt="About Us"
+            className="w-full rounded-xl shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Mission</h2>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            At The Vanguard Network, we believe that exceptional leadership is the cornerstone of organizational success. 
+            Our mission is to develop high-performance leaders who can navigate complexity, inspire teams, and drive 
+            meaningful change in their organizations.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            Through our comprehensive advisory services, exclusive networking opportunities, and innovative programs, 
+            we empower current and future executives to reach their full potential and create lasting impact.
+          </p>
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+const AdvisoryPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+  >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">Advisory Services</h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          Personalized guidance for senior executives building high-performance organizations
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          {
+            title: 'Executive Coaching',
+            description: 'One-on-one coaching sessions designed to enhance leadership capabilities and strategic thinking.',
+            icon: <Target size={40} />
+          },
+          {
+            title: 'Organizational Development',
+            description: 'Transform your organization\'s culture and performance through strategic leadership initiatives.',
+            icon: <Users size={40} />
+          },
+          {
+            title: 'Strategic Planning',
+            description: 'Develop comprehensive strategies that align leadership vision with organizational goals.',
+            icon: <Award size={40} />
+          }
+        ].map((service, index) => (
+          <motion.div
+            key={service.title}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: index * 0.2, duration: 0.8 }}
+            className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="text-blue-600 mb-4">{service.icon}</div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
+            <p className="text-slate-600 leading-relaxed">{service.description}</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+);
+
+const NetworkingPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+  >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">Exclusive Network</h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          Join an elite community of senior leaders committed to excellence and continuous growth
+        </p>
+      </motion.div>
+
+      <div className="bg-white rounded-2xl p-12 shadow-lg mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Member Benefits</h2>
+            <ul className="space-y-4">
+              {[
+                'Exclusive access to senior executive events',
+                'Peer-to-peer learning opportunities',
+                'Industry insights and trend analysis',
+                'Customized leadership resources',
+                'One-on-one mentoring sessions',
+                'Strategic networking connections'
+              ].map((benefit, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                  className="flex items-center gap-3 text-slate-600"
+                >
+                  <Star className="text-blue-600 fill-current" size={16} />
+                  {benefit}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+          
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <img
+              src="https://images.pexels.com/photos/5475750/pexels-photo-5475750.jpeg"
+              alt="Networking"
+              className="w-full rounded-xl shadow-lg"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.7, duration: 0.8 }}
+        className="text-center"
+      >
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
+        >
+          Apply for Membership
+          <ArrowRight size={20} />
+        </motion.button>
+      </motion.div>
+    </div>
+  </motion.div>
+);
+
+const ProgramsPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+  >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">Leadership Programs</h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          Comprehensive development programs designed to accelerate leadership growth at every level
+        </p>
+      </motion.div>
+
+      <div className="space-y-12">
+        {[
+          {
+            title: 'New Leaders Program',
+            description: 'An intensive program for high-potential emerging leaders, focusing on critical leadership challenges and real-world application.',
+            features: ['12-week intensive curriculum', 'Peer-to-peer learning', 'Executive mentorship', 'Leadership assessments'],
+            image: 'https://images.unsplash.com/photo-1573496130103-a442a3754d0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxsZWFkZXJzaGlwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8fGJsdWV8MTc1MDgzOTA3Nnww&ixlib=rb-4.1.0&q=85'
+          },
+          {
+            title: 'Next Generation C-Suite',
+            description: 'Preparing future executives for the challenges of C-level leadership through customized modules and strategic planning.',
+            features: ['Executive presence training', 'Strategic decision making', 'Crisis leadership', 'Board interaction skills'],
+            image: 'https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg'
+          }
+        ].map((program, index) => (
+          <motion.div
+            key={program.title}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: index * 0.3, duration: 0.8 }}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="p-8">
+                <h3 className="text-3xl font-bold text-slate-900 mb-4">{program.title}</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{program.description}</p>
+                <ul className="space-y-2 mb-6">
+                  {program.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-3 text-slate-600">
+                      <Star className="text-blue-600 fill-current" size={16} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center gap-2"
+                >
+                  Learn More
+                  <ArrowRight size={16} />
+                </motion.button>
+              </div>
+              <div className="lg:p-8">
+                <img
+                  src={program.image}
+                  alt={program.title}
+                  className="w-full h-64 lg:h-full object-cover rounded-lg"
+                />
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+);
+
+const ContactPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+  >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">Contact Us</h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          Ready to transform your leadership? Get in touch with our team of experts.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 shadow-lg"
+        >
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
+          <form className="space-y-6">
+            <div>
+              <label className="block text-slate-700 font-medium mb-2">Full Name</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-700 font-medium mb-2">Email</label>
+              <input
+                type="email"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-700 font-medium mb-2">Company</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                placeholder="Enter your company"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-700 font-medium mb-2">Message</label>
+              <textarea
+                rows="4"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                placeholder="Tell us about your leadership development needs"
+              ></textarea>
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-200"
+            >
+              Send Message
+            </motion.button>
+          </form>
+        </motion.div>
+
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="space-y-8"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Get in Touch</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <Mail className="text-blue-600" size={24} />
+                <div>
+                  <p className="font-medium text-slate-900">Email</p>
+                  <p className="text-slate-600">info@thevanguardnetwork.com</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <Phone className="text-blue-600" size={24} />
+                <div>
+                  <p className="font-medium text-slate-900">Phone</p>
+                  <p className="text-slate-600">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <MapPin className="text-blue-600" size={24} />
+                <div>
+                  <p className="font-medium text-slate-900">Office</p>
+                  <p className="text-slate-600">New York, NY</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Connect With Us</h3>
+            <div className="flex gap-4">
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="#"
+                className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
+                <LinkedIn size={24} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                href="#"
+                className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
+                <Twitter size={24} />
+              </motion.a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+const BookPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-20 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+  >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-5xl font-bold text-slate-900 mb-6">Seeing Around Corners</h1>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          A comprehensive guide to developing strategic foresight in an uncertain world
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-center lg:text-left"
+        >
+          <img
+            src="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg"
+            alt="Seeing Around Corners Book Cover"
+            className="w-80 h-96 object-cover rounded-xl shadow-lg mx-auto lg:mx-0 mb-8"
+          />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
+          >
+            Order Now
+            <ArrowRight size={20} />
+          </motion.button>
+        </motion.div>
+        
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">About the Book</h2>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            In today's rapidly changing business landscape, the ability to anticipate and prepare for future challenges 
+            is more critical than ever. "Seeing Around Corners" provides leaders with practical frameworks and tools 
+            to develop strategic foresight and navigate uncertainty with confidence.
+          </p>
+          
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">What You'll Learn</h3>
+          <ul className="space-y-3 mb-8">
+            {[
+              'How to identify early warning signals of change',
+              'Frameworks for strategic scenario planning',
+              'Building organizational resilience',
+              'Leading through uncertainty and ambiguity',
+              'Creating adaptive leadership cultures'
+            ].map((item, index) => (
+              <motion.li
+                key={index}
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                className="flex items-center gap-3 text-slate-600"
+              >
+                <Star className="text-blue-600 fill-current" size={16} />
+                {item}
+              </motion.li>
+            ))}
+          </ul>
+          
+          <div className="bg-blue-50 p-6 rounded-lg">
+            <h4 className="font-bold text-slate-900 mb-2">Featured Review</h4>
+            <p className="text-slate-600 italic">
+              "An essential read for any leader navigating today's complex business environment. 
+              The insights are practical, actionable, and immediately applicable."
+            </p>
+            <p className="text-slate-500 text-sm mt-2">- Business Leadership Review</p>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+// Export all components
+const Components = {
+  Header,
+  Hero,
+  ServicesSection,
+  TestimonnialSection,
+  VideoTestimonial,
+  ProgramsSection,
+  Footer,
+  AboutPage,
+  AdvisoryPage,
+  NetworkingPage,
+  ProgramsPage,
+  ContactPage,
+  BookPage
+};
+
+export default Components;

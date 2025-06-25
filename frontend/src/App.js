@@ -1,53 +1,61 @@
-import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import './App.css';
+import Components from './components';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+const {
+  Header,
+  Hero,
+  ServicesSection,
+  TestimonnialSection,
+  VideoTestimonial,
+  ProgramsSection,
+  Footer,
+  AboutPage,
+  AdvisoryPage,
+  NetworkingPage,
+  ProgramsPage,
+  ContactPage,
+  BookPage
+} = Components;
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <AnimatePresence mode="wait">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/advisory" element={<AdvisoryPage />} />
+            <Route path="/networking" element={<NetworkingPage />} />
+            <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/book" element={<BookPage />} />
+          </Routes>
+        </AnimatePresence>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+function HomePage() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Hero />
+      <ServicesSection />
+      <TestimonnialSection />
+      <VideoTestimonial />
+      <ProgramsSection />
+    </motion.div>
   );
 }
 
