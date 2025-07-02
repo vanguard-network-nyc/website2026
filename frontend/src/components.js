@@ -367,7 +367,6 @@ const VideoTestimonial = () => {
                 playsInline
                 controls
                 className="w-full h-80 object-cover"
-                poster="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg"
               >
                 <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/720p/mp4/file.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
