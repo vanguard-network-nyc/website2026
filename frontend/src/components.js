@@ -362,21 +362,16 @@ const VideoTestimonial = () => {
               whileHover={{ scale: 1.02 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
-                src="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg"
-                alt="Ken Banfa Video"
+              <video
+                preload="none"
+                playsInline
+                controls
                 className="w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsPlaying(true)}
-                  className="bg-white/90 hover:bg-white text-blue-600 rounded-full p-6 shadow-lg transition-all duration-200"
-                >
-                  <Play size={32} fill="currentColor" />
-                </motion.button>
-              </div>
+                poster="https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg"
+              >
+                <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/720p/mp4/file.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </motion.div>
           </div>
           
