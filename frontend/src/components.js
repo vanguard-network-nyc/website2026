@@ -306,7 +306,7 @@ const TestimonnialSection = () => {
           <div className="md:w-1/3">
             <motion.img
               whileHover={{ scale: 1.05 }}
-              src="https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMGV4ZWN1dGl2ZXN8ZW58MHx8fGJsdWV8MTc1MDgzOTA0Nnww&ixlib=rb-4.1.0&q=85"
+              src="https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/crop/x_0,y_79,w_642,h_642/fill/w_242,h_242,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tom%20Sabatino.png"
               alt="Tom Sabatino"
               className="w-full max-w-xs rounded-full shadow-lg mx-auto"
             />
