@@ -397,7 +397,7 @@ const VideoTestimonial = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold text-slate-900 mb-1">Ken Banfa</h4>
+              <h4 className="text-xl font-bold text-slate-900 mb-1">Ken Banta</h4>
               <p className="text-slate-600">Founder & CEO, The Vanguard Network</p>
             </motion.div>
           </div>
