@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Change the logo to the attached image from Google Drive URL. The current logo is a text-based 'THE VANGUARD NETWORK' logo in the header component that needs to be replaced with a PNG image named 'rectangle_transparent_for_dark_background.png' (2997×1151 dimensions)."
+user_problem_statement: "1. Change the logo to the attached image from Google Drive URL. 2. Replace the section background image of a building with the video from Google Drive URL. The current logo is a text-based 'THE VANGUARD NETWORK' logo in the header component that needs to be replaced with a PNG image. The hero section has a building background image that needs to be replaced with a 4K video (12421439_3840_2160_30fps.mp4)."
 
 backend:
   - task: "FastAPI backend service health"
