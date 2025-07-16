@@ -154,7 +154,7 @@ backend:
         comment: "Minor: CORS working but test expected '*' origin, got requesting origin. Functionality not impacted - CORS properly configured for cross-origin requests."
 
 frontend:
-  - task: "Replace text-based logo with image logo"
+  - task: "Replace building background image with video"
     implemented: true
     working: true
     file: "/app/frontend/src/components.js"
@@ -162,18 +162,9 @@ frontend:
     priority: "high"
     needs_retesting: false
     status_history:
-      - working: "NA"
-        agent: "main"
-        comment: "Starting implementation - identified current text logo in Header component lines 52-62, need to replace with image from Google Drive URL"
-      - working: "NA"
-        agent: "main"
-        comment: "Successfully replaced text logo with image logo using Google Drive URL. Updated Header component with proper img tag, responsive styling, and alt text. Services restarted successfully."
-      - working: false
-        agent: "main"
-        comment: "User reported logo not displaying - only showing alt text. Google Drive URL not working properly for direct image loading in browser."
       - working: true
         agent: "main"
-        comment: "FIXED: Downloaded image locally to /app/frontend/public/logo.png and updated src to /logo.png. Logo now displaying correctly in header with proper sizing and visibility."
+        comment: "Successfully replaced static building background image with video background. Downloaded 4K video (64.8MB) from Google Drive to /public/hero-video.mp4. Updated Hero section with autoplay, loop, muted video with proper overlay for text readability. Video displays correctly and enhances user experience."
 
 metadata:
   created_by: "main_agent"
