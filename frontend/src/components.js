@@ -744,7 +744,10 @@ const NetworkingPage = () => (
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
+          className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
+          style={{ backgroundColor: '#00A8E1' }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+          onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
         >
           Apply for Membership
           <ArrowRight size={20} />
