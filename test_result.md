@@ -243,9 +243,17 @@ frontend:
       - working: true
         agent: "main"
         comment: "Successfully changed programs section background color from gradient (bg-gradient-to-r from-blue-600 to-blue-800) to solid custom color #045184. Updated ProgramsSection component on home page with inline style backgroundColor. The new color provides a professional, darker blue background that maintains good contrast with white text."
+  - task: "Replace advisory image"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
       - working: true
         agent: "main"
-        comment: "ENHANCED: Updated 'New Leaders Program' text color to custom brand color #00A8E1. Changed from text-blue-200 to inline style color. The highlighted text now matches the overall brand color scheme and creates excellent contrast against the #045184 background."
+        comment: "Successfully replaced advisory image in services section. Downloaded new image (920k) from Google Drive and saved as /advisory-image.jpg. Updated ServicesSection component to use local image path instead of Unsplash URL. New image shows professional business meeting scene that better represents advisory services."
 
 metadata:
   created_by: "main_agent"
