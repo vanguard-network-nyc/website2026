@@ -486,7 +486,10 @@ const ProgramsSection = () => {
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 mx-auto"
+            className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 mx-auto"
+            style={{ backgroundColor: '#00A8E1' }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
           >
             LEARN MORE
             <ArrowRight size={20} />
