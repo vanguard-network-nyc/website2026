@@ -53,11 +53,13 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-white font-bold text-xl tracking-wide"
+              className="flex items-center"
             >
-              THE<br />
-              <span className="text-blue-400">VANGUARD</span><br />
-              NETWORK
+              <img
+                src="https://drive.usercontent.google.com/download?id=1w8HdnJcU3W3DAuFg4eMstZ4zbwY_YQgS"
+                alt="The Vanguard Network Logo"
+                className="h-12 w-auto object-contain"
+              />
             </motion.div>
           </Link>
 
