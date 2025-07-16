@@ -237,7 +237,7 @@ const Hero = () => {
           >
             The Vanguard Network helps current and future senior leaders transform themselves 
             and their organizations by{' '}
-            <span className="text-blue-300 font-semibold">unlocking high-performance leadership</span>.
+            <span className="font-semibold" style={{ color: '#00A8E1' }}>unlocking high-performance leadership</span>.
           </motion.p>
           
           <motion.div
