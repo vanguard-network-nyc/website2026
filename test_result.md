@@ -255,6 +255,10 @@ frontend:
     priority: "high"
     needs_retesting: false
     status_history:
+      - working: true
+        agent: "main"
+        comment: "Successfully replaced advisory image in services section. Downloaded new image (920k) from Google Drive and saved as /advisory-image.jpg. Updated ServicesSection component to use local image path instead of Unsplash URL. New image shows professional business meeting scene that better represents advisory services."
+  
   - task: "Replace networking image"
     implemented: true
     working: true
