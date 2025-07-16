@@ -281,7 +281,7 @@ const ServicesSection = () => {
       description: 'The Vanguard Network supports senior executives as they build high-performance organizations and take their leadership, and their teams, to higher levels. We also help top leaders develop a meaningful sense of purpose and culture that will deliver results for their organization — and catalyze change when needed.',
       buttonText: 'More Info',
       icon: <Target size={48} />,
-      image: 'https://images.unsplash.com/photo-1560250163-17506787d971?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fGJsdWV8MTc1MDc0MzU5OHww&ixlib=rb-4.1.0&q=85'
+      image: '/advisory-image.jpg'
     },
     {
       title: 'NETWORKING',
