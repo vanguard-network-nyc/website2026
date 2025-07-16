@@ -295,7 +295,7 @@ const ServicesSection = () => {
       description: 'Seeing Around Corners - A comprehensive guide to developing strategic foresight and anticipating change in today\'s rapidly evolving business landscape. Learn the essential skills every leader needs to navigate uncertainty and drive organizational success.',
       buttonText: 'More Info & Order',
       icon: <BookOpen size={48} />,
-      image: 'https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg'
+      image: '/newbook-image.jpg'
     }
   ];
 
