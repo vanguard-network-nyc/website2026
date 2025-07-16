@@ -167,7 +167,10 @@ const Hero = () => {
           muted
           playsInline
           poster="/hero-video-fallback.png"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+          style={{
+            filter: 'brightness(0.8) contrast(1.1)',
+          }}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           {/* Fallback image for browsers that don't support video */}
@@ -177,8 +180,12 @@ const Hero = () => {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </video>
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
+        
+        {/* Smooth loop transition overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60 animate-pulse-slow"></div>
+        
+        {/* Additional subtle animation overlay to mask loop transitions */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/10 to-transparent animate-shimmer"></div>
       </div>
       
       {/* Content */}
