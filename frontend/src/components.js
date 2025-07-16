@@ -288,7 +288,7 @@ const ServicesSection = () => {
       description: 'The Vanguard community is a by-invitation network for senior leaders. Become a member to fine-tune your leadership, and build new relationships, to keep growing, to keep thriving. Join the community for top leadership discussions, networking, rich content and customized resources.',
       buttonText: 'Become a Member',
       icon: <Users size={48} />,
-      image: 'https://images.pexels.com/photos/5475750/pexels-photo-5475750.jpeg'
+      image: '/networking-image.jpg'
     },
     {
       title: 'NEW BOOK',
