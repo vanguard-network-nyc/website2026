@@ -56,7 +56,7 @@ const Header = () => {
               className="flex items-center"
             >
               <img
-                src="https://drive.usercontent.google.com/download?id=1w8HdnJcU3W3DAuFg4eMstZ4zbwY_YQgS"
+                src="/logo.png"
                 alt="The Vanguard Network Logo"
                 className="h-16 w-auto object-contain max-w-xs"
                 onError={(e) => {
