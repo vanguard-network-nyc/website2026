@@ -424,6 +424,7 @@ const VideoTestimonial = () => {
                 preload="none"
                 playsInline
                 controls
+                poster="/ken-thumbnail.png"
                 className="w-full h-80 object-cover"
               >
                 <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/720p/mp4/file.mp4" type="video/mp4" />
