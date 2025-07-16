@@ -59,7 +59,11 @@ const Header = () => {
                 src="https://drive.usercontent.google.com/download?id=1w8HdnJcU3W3DAuFg4eMstZ4zbwY_YQgS"
                 alt="The Vanguard Network Logo"
                 className="h-16 w-auto object-contain max-w-xs"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                onError={(e) => {
+                  console.error('Logo failed to load:', e);
+                  e.target.style.display = 'none';
+                }}
+                onLoad={() => console.log('Logo loaded successfully')}
               />
             </motion.div>
           </Link>
