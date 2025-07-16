@@ -477,7 +477,7 @@ const ProgramsSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            The <span className="text-blue-200">New Leaders Program</span><br />
+            The <span style={{ color: '#00A8E1' }}>New Leaders Program</span><br />
             introduces critical leadership<br />
             challenges to select groups of<br />
             high-performance aspiring<br />
