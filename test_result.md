@@ -197,6 +197,7 @@ metadata:
 test_plan:
   current_focus:
     - "Replace text-based logo with image logo"
+    - "Replace building background image with video"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
