@@ -157,35 +157,73 @@ const Header = () => {
 
 // Hero Section
 const Hero = () => {
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const video1Ref = useRef(null);
+  const video2Ref = useRef(null);
+
+  useEffect(() => {
+    const videos = [video1Ref.current, video2Ref.current];
+    
+    const setupVideoLoop = () => {
+      videos.forEach((video, index) => {
+        if (video) {
+          video.addEventListener('timeupdate', () => {
+            // Start crossfade 1 second before video ends
+            if (video.duration - video.currentTime < 1) {
+              setCurrentVideo(index === 0 ? 1 : 0);
+            }
+          });
+        }
+      });
+    };
+
+    const timer = setTimeout(setupVideoLoop, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Fallback */}
+      {/* Background Video with Smooth Crossfade */}
       <div className="absolute inset-0">
+        {/* Video 1 */}
         <video
+          ref={video1Ref}
           autoPlay
           loop
           muted
           playsInline
           poster="/hero-video-fallback.png"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-          style={{
-            filter: 'brightness(0.8) contrast(1.1)',
-          }}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            currentVideo === 0 ? 'opacity-100' : 'opacity-0'
+          }`}
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          {/* Fallback image for browsers that don't support video */}
-          <img
-            src="/hero-video-fallback.png"
-            alt="Hero background fallback"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
         </video>
         
-        {/* Smooth loop transition overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60 animate-pulse-slow"></div>
+        {/* Video 2 - Crossfade backup */}
+        <video
+          ref={video2Ref}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            currentVideo === 1 ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         
-        {/* Additional subtle animation overlay to mask loop transitions */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/10 to-transparent animate-shimmer"></div>
+        {/* Fallback image for browsers that don't support video */}
+        <img
+          src="/hero-video-fallback.png"
+          alt="Hero background fallback"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: -1 }}
+        />
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
       </div>
       
       {/* Content */}
