@@ -144,7 +144,10 @@ const Header = () => {
               >
                 <Link
                   to="/members"
-                  className="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 mt-4 text-center"
+                  className="block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 mt-4 text-center"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   MEMBER SITE
