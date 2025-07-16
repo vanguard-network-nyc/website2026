@@ -952,14 +952,20 @@ const ContactPage = () => (
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 href="#"
-                className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                className="text-white p-3 rounded-lg transition-colors duration-200"
+                style={{ backgroundColor: '#00A8E1' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
               >
                 <Mail size={24} />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 href="#"
-                className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                className="text-white p-3 rounded-lg transition-colors duration-200"
+                style={{ backgroundColor: '#00A8E1' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
               >
                 <Phone size={24} />
               </motion.a>
