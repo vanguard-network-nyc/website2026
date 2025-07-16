@@ -166,14 +166,14 @@ const Hero = () => {
           loop
           muted
           playsInline
-          poster="/hero-video-fallback.jpg"
+          poster="/hero-video-fallback.png"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           {/* Fallback image for browsers that don't support video */}
           <img
-            src="/hero-video-fallback.jpg"
-            alt="Business leadership professional background"
+            src="/hero-video-fallback.png"
+            alt="Hero background fallback"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </video>
