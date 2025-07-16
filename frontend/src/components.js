@@ -903,7 +903,10 @@ const ContactPage = () => (
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-200"
+              className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-200"
+              style={{ backgroundColor: '#00A8E1' }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
             >
               Send Message
             </motion.button>
