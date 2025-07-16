@@ -192,7 +192,7 @@ frontend:
         comment: "FINALIZED: Replaced fallback image with user's custom design. Downloaded new PNG image (Screenshot 2025-07-16 at 4.46.50 PM.png, 20.8MB) from Google Drive. Updated Hero component to use new fallback image - modern abstract blue wave pattern design that matches brand colors and provides professional appearance. Old fallback image removed."
       - working: true
         agent: "main"
-        comment: "FIXED PROPERLY: Implemented true smooth video loop transitions using JavaScript crossfade technique. Created two video instances that crossfade 1 second before video ends using useRef, useState, and timeupdate events. This eliminates the jarring transition by creating a seamless opacity transition between video instances. Added proper React hooks (useRef, useState, useEffect) for video control."
+        comment: "REVERTED TO WORKING STATE: Dual video crossfade broke video playback (showing only still image). Reverted to single video element with JavaScript play control and ended event handling. Video now plays correctly again with basic loop functionality."
   - task: "Smooth video loop transitions"
     implemented: true
     working: true
