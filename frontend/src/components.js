@@ -463,7 +463,7 @@ const VideoTestimonial = () => {
 // Programs Section
 const ProgramsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+    <section className="py-20" style={{ backgroundColor: '#045184' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
