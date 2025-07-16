@@ -814,7 +814,10 @@ const ProgramsPage = () => (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center gap-2"
+                  className="text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center gap-2"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
                 >
                   Learn More
                   <ArrowRight size={16} />
