@@ -1,0 +1,283 @@
+#!/usr/bin/env python3
+"""
+Backend API Testing for The Vanguard Network
+Tests all backend endpoints for production readiness
+"""
+
+import requests
+import json
+import sys
+from datetime import datetime
+import uuid
+
+# Get backend URL from environment
+BACKEND_URL = "https://6cef0e63-2b4f-449e-b781-a9e17e96b4b3.preview.emergentagent.com/api"
+
+class BackendTester:
+    def __init__(self):
+        self.backend_url = BACKEND_URL
+        self.test_results = []
+        self.session = requests.Session()
+        
+    def log_test(self, test_name, success, message, response_data=None):
+        """Log test results"""
+        result = {
+            'test': test_name,
+            'success': success,
+            'message': message,
+            'response_data': response_data,
+            'timestamp': datetime.now().isoformat()
+        }
+        self.test_results.append(result)
+        status = "✅ PASS" if success else "❌ FAIL"
+        print(f"{status} {test_name}: {message}")
+        if response_data and not success:
+            print(f"   Response: {response_data}")
+    
+    def test_root_endpoint(self):
+        """Test GET /api/ endpoint"""
+        try:
+            response = self.session.get(f"{self.backend_url}/")
+            
+            if response.status_code == 200:
+                data = response.json()
+                if data.get("message") == "Hello World":
+                    self.log_test("Root Endpoint", True, "Returns correct Hello World message", data)
+                else:
+                    self.log_test("Root Endpoint", False, f"Unexpected response: {data}", data)
+            else:
+                self.log_test("Root Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("Root Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Root Endpoint", False, f"Invalid JSON response: {str(e)}")
+    
+    def test_post_status_endpoint(self):
+        """Test POST /api/status endpoint"""
+        test_data = {
+            "client_name": "Vanguard Test Client"
+        }
+        
+        try:
+            response = self.session.post(
+                f"{self.backend_url}/status",
+                json=test_data,
+                headers={"Content-Type": "application/json"}
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                # Validate response structure
+                required_fields = ["id", "client_name", "timestamp"]
+                missing_fields = [field for field in required_fields if field not in data]
+                
+                if missing_fields:
+                    self.log_test("POST Status", False, f"Missing fields: {missing_fields}", data)
+                elif data["client_name"] != test_data["client_name"]:
+                    self.log_test("POST Status", False, f"Client name mismatch: expected {test_data['client_name']}, got {data['client_name']}", data)
+                else:
+                    # Validate UUID format
+                    try:
+                        uuid.UUID(data["id"])
+                        # Validate timestamp format
+                        datetime.fromisoformat(data["timestamp"].replace('Z', '+00:00'))
+                        self.log_test("POST Status", True, "Status check created successfully", data)
+                        return data  # Return for use in GET test
+                    except ValueError as e:
+                        self.log_test("POST Status", False, f"Invalid UUID or timestamp format: {str(e)}", data)
+            else:
+                self.log_test("POST Status", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("POST Status", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("POST Status", False, f"Invalid JSON response: {str(e)}")
+        
+        return None
+    
+    def test_get_status_endpoint(self):
+        """Test GET /api/status endpoint"""
+        try:
+            response = self.session.get(f"{self.backend_url}/status")
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("GET Status", True, f"Retrieved {len(data)} status checks", {"count": len(data)})
+                    
+                    # If there are items, validate structure
+                    if data:
+                        first_item = data[0]
+                        required_fields = ["id", "client_name", "timestamp"]
+                        missing_fields = [field for field in required_fields if field not in first_item]
+                        
+                        if missing_fields:
+                            self.log_test("GET Status Structure", False, f"Missing fields in response: {missing_fields}", first_item)
+                        else:
+                            self.log_test("GET Status Structure", True, "Response structure is valid", first_item)
+                    
+                else:
+                    self.log_test("GET Status", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("GET Status", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("GET Status", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("GET Status", False, f"Invalid JSON response: {str(e)}")
+    
+    def test_cors_configuration(self):
+        """Test CORS configuration"""
+        try:
+            # Test preflight request
+            response = self.session.options(
+                f"{self.backend_url}/status",
+                headers={
+                    "Origin": "https://example.com",
+                    "Access-Control-Request-Method": "POST",
+                    "Access-Control-Request-Headers": "Content-Type"
+                }
+            )
+            
+            cors_headers = {
+                "Access-Control-Allow-Origin": response.headers.get("Access-Control-Allow-Origin"),
+                "Access-Control-Allow-Methods": response.headers.get("Access-Control-Allow-Methods"),
+                "Access-Control-Allow-Headers": response.headers.get("Access-Control-Allow-Headers")
+            }
+            
+            if cors_headers["Access-Control-Allow-Origin"] == "*":
+                self.log_test("CORS Configuration", True, "CORS properly configured for all origins", cors_headers)
+            else:
+                self.log_test("CORS Configuration", False, "CORS not properly configured", cors_headers)
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("CORS Configuration", False, f"Connection error: {str(e)}")
+    
+    def test_mongodb_connection(self):
+        """Test MongoDB connection by creating and retrieving data"""
+        # Create a test status check
+        test_client_name = f"MongoDB Test {datetime.now().isoformat()}"
+        created_status = None
+        
+        try:
+            # Create status check
+            response = self.session.post(
+                f"{self.backend_url}/status",
+                json={"client_name": test_client_name},
+                headers={"Content-Type": "application/json"}
+            )
+            
+            if response.status_code == 200:
+                created_status = response.json()
+                
+                # Retrieve all status checks
+                get_response = self.session.get(f"{self.backend_url}/status")
+                
+                if get_response.status_code == 200:
+                    all_statuses = get_response.json()
+                    
+                    # Check if our created status is in the list
+                    found = any(status["id"] == created_status["id"] for status in all_statuses)
+                    
+                    if found:
+                        self.log_test("MongoDB Connection", True, "Data persistence working correctly", {"created_id": created_status["id"]})
+                    else:
+                        self.log_test("MongoDB Connection", False, "Created data not found in retrieval", {"created_id": created_status["id"]})
+                else:
+                    self.log_test("MongoDB Connection", False, f"Failed to retrieve data: HTTP {get_response.status_code}")
+            else:
+                self.log_test("MongoDB Connection", False, f"Failed to create data: HTTP {response.status_code}")
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("MongoDB Connection", False, f"Connection error: {str(e)}")
+    
+    def test_json_responses(self):
+        """Test that all endpoints return proper JSON responses"""
+        endpoints = [
+            ("GET", "/"),
+            ("GET", "/status"),
+        ]
+        
+        for method, endpoint in endpoints:
+            try:
+                if method == "GET":
+                    response = self.session.get(f"{self.backend_url}{endpoint}")
+                
+                content_type = response.headers.get("content-type", "")
+                
+                if "application/json" in content_type:
+                    try:
+                        response.json()  # Try to parse JSON
+                        self.log_test(f"JSON Response {method} {endpoint}", True, "Valid JSON response", {"content_type": content_type})
+                    except json.JSONDecodeError:
+                        self.log_test(f"JSON Response {method} {endpoint}", False, "Invalid JSON in response", {"content_type": content_type})
+                else:
+                    self.log_test(f"JSON Response {method} {endpoint}", False, f"Non-JSON content type: {content_type}", {"content_type": content_type})
+                    
+            except requests.exceptions.RequestException as e:
+                self.log_test(f"JSON Response {method} {endpoint}", False, f"Connection error: {str(e)}")
+    
+    def test_backend_accessibility(self):
+        """Test that backend is accessible via REACT_APP_BACKEND_URL"""
+        try:
+            response = self.session.get(f"{self.backend_url}/", timeout=10)
+            
+            if response.status_code == 200:
+                self.log_test("Backend Accessibility", True, f"Backend accessible at {self.backend_url}", {"status_code": response.status_code})
+            else:
+                self.log_test("Backend Accessibility", False, f"Backend not accessible: HTTP {response.status_code}", {"status_code": response.status_code})
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Backend Accessibility", False, "Backend request timed out")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Backend Accessibility", False, f"Connection error: {str(e)}")
+    
+    def run_all_tests(self):
+        """Run all backend tests"""
+        print(f"🚀 Starting Backend API Tests for The Vanguard Network")
+        print(f"📍 Backend URL: {self.backend_url}")
+        print("=" * 60)
+        
+        # Test backend accessibility first
+        self.test_backend_accessibility()
+        
+        # Test individual endpoints
+        self.test_root_endpoint()
+        self.test_post_status_endpoint()
+        self.test_get_status_endpoint()
+        
+        # Test system features
+        self.test_cors_configuration()
+        self.test_mongodb_connection()
+        self.test_json_responses()
+        
+        # Summary
+        print("\n" + "=" * 60)
+        print("📊 TEST SUMMARY")
+        print("=" * 60)
+        
+        passed = sum(1 for result in self.test_results if result['success'])
+        total = len(self.test_results)
+        
+        print(f"Total Tests: {total}")
+        print(f"Passed: {passed}")
+        print(f"Failed: {total - passed}")
+        print(f"Success Rate: {(passed/total)*100:.1f}%")
+        
+        if passed == total:
+            print("\n🎉 All tests passed! Backend is production-ready.")
+            return True
+        else:
+            print(f"\n⚠️  {total - passed} test(s) failed. Review issues above.")
+            return False
+
+def main():
+    tester = BackendTester()
+    success = tester.run_all_tests()
+    sys.exit(0 if success else 1)
+
+if __name__ == "__main__":
+    main()
