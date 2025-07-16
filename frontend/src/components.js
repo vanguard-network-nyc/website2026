@@ -247,9 +247,12 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(0, 168, 225, 0.4)' }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+              style={{ backgroundColor: '#00A8E1' }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
             >
               LEARN MORE
               <ArrowRight size={20} />
