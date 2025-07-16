@@ -159,17 +159,23 @@ const Header = () => {
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
+      {/* Background Video with Fallback */}
       <div className="absolute inset-0">
         <video
           autoPlay
           loop
           muted
           playsInline
+          poster="/hero-video-fallback.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          {/* Fallback image for browsers that don't support video */}
+          <img
+            src="/hero-video-fallback.jpg"
+            alt="Business leadership professional background"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
         </video>
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
