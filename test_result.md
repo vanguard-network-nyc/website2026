@@ -255,9 +255,17 @@ frontend:
     priority: "high"
     needs_retesting: false
     status_history:
+  - task: "Replace networking image"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
       - working: true
         agent: "main"
-        comment: "Successfully replaced advisory image in services section. Downloaded new image (920k) from Google Drive and saved as /advisory-image.jpg. Updated ServicesSection component to use local image path instead of Unsplash URL. New image shows professional business meeting scene that better represents advisory services."
+        comment: "Successfully replaced networking image in services section. Downloaded new image (15.7MB) from Google Drive and saved as /networking-image.jpg. Updated ServicesSection component to use local image path instead of Pexels URL. New image shows professional networking scene with business people in conversation, which better represents networking services."
 
 metadata:
   created_by: "main_agent"
