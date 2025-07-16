@@ -157,70 +157,50 @@ const Header = () => {
 
 // Hero Section
 const Hero = () => {
-  const [currentVideo, setCurrentVideo] = useState(0);
-  const video1Ref = useRef(null);
-  const video2Ref = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    const videos = [video1Ref.current, video2Ref.current];
-    
-    const setupVideoLoop = () => {
-      videos.forEach((video, index) => {
-        if (video) {
-          video.addEventListener('timeupdate', () => {
-            // Start crossfade 1 second before video ends
-            if (video.duration - video.currentTime < 1) {
-              setCurrentVideo(index === 0 ? 1 : 0);
-            }
-          });
-        }
-      });
-    };
-
-    const timer = setTimeout(setupVideoLoop, 1000);
-    return () => clearTimeout(timer);
+    const video = videoRef.current;
+    if (video) {
+      // Ensure video plays
+      video.play().catch(e => console.log('Video play failed:', e));
+      
+      // Simple approach: restart video smoothly by seeking to beginning
+      const handleVideoEnd = () => {
+        video.currentTime = 0;
+        video.play();
+      };
+      
+      video.addEventListener('ended', handleVideoEnd);
+      
+      return () => {
+        video.removeEventListener('ended', handleVideoEnd);
+      };
+    }
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Smooth Crossfade */}
+      {/* Background Video with Fallback */}
       <div className="absolute inset-0">
-        {/* Video 1 */}
         <video
-          ref={video1Ref}
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           poster="/hero-video-fallback.png"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            currentVideo === 0 ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Video 2 - Crossfade backup */}
-        <video
-          ref={video2Ref}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            currentVideo === 1 ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Fallback image for browsers that don't support video */}
-        <img
-          src="/hero-video-fallback.png"
-          alt="Hero background fallback"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ zIndex: -1 }}
-        />
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+          {/* Fallback image for browsers that don't support video */}
+          <img
+            src="/hero-video-fallback.png"
+            alt="Hero background fallback"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ zIndex: -1 }}
+          />
+        </video>
         
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
