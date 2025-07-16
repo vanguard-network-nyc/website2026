@@ -58,7 +58,8 @@ const Header = () => {
               <img
                 src="https://drive.usercontent.google.com/download?id=1w8HdnJcU3W3DAuFg4eMstZ4zbwY_YQgS"
                 alt="The Vanguard Network Logo"
-                className="h-12 w-auto object-contain"
+                className="h-16 w-auto object-contain max-w-xs"
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </motion.div>
           </Link>
