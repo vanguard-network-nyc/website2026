@@ -623,51 +623,362 @@ const AdvisoryPage = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Hero Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">Advisory Services</h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Personalized guidance for senior executives building high-performance organizations
+        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+          LEADERSHIP ADVISORY & DEVELOPMENT
+        </h1>
+        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          Through its advisory work, The Vanguard Network (TVN) collaborates with senior and up-and-coming executives to effectively unlock their full potential as leaders through a real-world approach of one-to-one coaching and contextual business insights.
         </p>
       </motion.div>
+    </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          {
-            title: 'Executive Coaching',
-            description: 'One-on-one coaching sessions designed to enhance leadership capabilities and strategic thinking.',
-            icon: <Target size={40} />
-          },
-          {
-            title: 'Organizational Development',
-            description: 'Transform your organization\'s culture and performance through strategic leadership initiatives.',
-            icon: <Users size={40} />
-          },
-          {
-            title: 'Strategic Planning',
-            description: 'Develop comprehensive strategies that align leadership vision with organizational goals.',
-            icon: <Award size={40} />
-          }
-        ].map((service, index) => (
-          <motion.div
-            key={service.title}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: index * 0.2, duration: 0.8 }}
-            className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+    {/* Main Content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Overview Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              Real-World Leadership Development
+            </h2>
+            <p className="text-slate-600 leading-relaxed mb-6">
+              This work is based on decades of project experience working with top leadership on advisory and development assignments in large multinationals and global service firms and dozens of individual advisory engagements.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              TVN has a robust network of current and former CEOs and C-suite leaders who interface regularly with TVN CEO Ken Banta and his senior colleagues via face-to-face forums, virtual meetings, and webinars. This group of more than 200 CEOs and C-suite executives participates throughout the year in a robust series of catalyzing conversations.
+            </p>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-slate-100 rounded-xl p-8">
+            <div className="text-center">
+              <div className="text-6xl font-bold mb-4" style={{ color: '#00A8E1' }}>200+</div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">CEOs & C-Suite Executives</h3>
+              <p className="text-slate-600">In our network participating in ongoing catalyzing conversations</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Three Approaches Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="mb-16"
+      >
+        <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">
+          Three Ways We Work With Executives
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'Coaching Relationship',
+              description: 'Direct one-on-one coaching to develop leadership capabilities and effectiveness.',
+              icon: <Target size={48} />
+            },
+            {
+              title: 'Sounding Board',
+              description: 'Strategic guidance and decision-making support for leadership challenges.',
+              icon: <Users size={48} />
+            },
+            {
+              title: 'Next Generation Leader',
+              description: 'Specialized curriculum designed to develop high potentials for C-suite roles.',
+              icon: <Award size={48} />
+            }
+          ].map((approach, index) => (
+            <motion.div
+              key={approach.title}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <div className="mb-6" style={{ color: '#00A8E1' }}>{approach.icon}</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">{approach.title}</h3>
+              <p className="text-slate-600 leading-relaxed">{approach.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Detailed Services */}
+      <div className="space-y-12">
+        
+        {/* Coaching Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">COACHING</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                We work with leaders on specific development goals to help them be more effective decision-makers and developers of their people. This can include exploring additional personal or professional growth areas, creating and implementing organizational strategies for incremental improvement, and contributing to enterprise transformational change.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                We also help leaders similarly with their teams, developing high performance and overcoming barriers. This work can include customized training and development programs, building effective working cultures, and carrying out talent assessments and development plans.
+              </p>
+            </div>
+            <div className="rounded-xl p-8" style={{ backgroundColor: '#045184' }}>
+              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <ul className="space-y-3 text-white">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                  Effective decision-making
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                  People development
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                  Organizational strategy
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                  Transformational change
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                  Team development
+                </li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Sounding Board Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-xl p-8" style={{ backgroundColor: '#00A8E1' }}>
+              <h3 className="text-2xl font-bold text-white mb-4">Perfect For</h3>
+              <ul className="space-y-3 text-white">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
+                  Senior leaders in organizations
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
+                  Team leaders and their direct reports
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
+                  CEOs and C-suite executives
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">SOUNDING BOARD</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                This approach is typically most appropriate for the senior leader in the organization or team and their direct reports.
+              </p>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                TVN's Ken Banta and Richard Hulme have decades of experience supporting CEOs and C-suite executives and their reports as they work through specific challenges and develop strategy and execution plans for themselves and their teams.
+              </p>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">Example Topics:</h3>
+              <ul className="space-y-2 text-slate-600">
+                <li>• Reinventing the leadership team and roles of direct reports</li>
+                <li>• Self-assessment and reflection on leadership strengths</li>
+                <li>• Developing insights around Board relations and stakeholder management</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Next Generation Leader Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="rounded-2xl p-8 md:p-12 shadow-lg"
+          style={{ backgroundColor: '#045184' }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-6">NEXT GENERATION LEADER</h2>
+            <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              "What got you here won't get you there."
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-white/90 leading-relaxed mb-6">
+                Based on our top leadership work, our C-suite members asked us to develop a curriculum geared towards helping high-potentials move from "next level" roles into a C-suite or Partner position.
+              </p>
+              <p className="text-white/90 leading-relaxed mb-6">
+                All the technical and managerial competencies that drive success at other levels are insufficient at the higher organizational levels, which rely on indirect influence and insightful decision-making.
+              </p>
+              <div className="bg-white/10 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-white mb-4">Program Features</h3>
+                <ul className="space-y-3 text-white/90">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    Six-month modular program
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    Face-to-face and virtual elements
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    Runs concurrently with full-time jobs
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    Customized to role or organization
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="bg-white/10 rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6">Module Topics</h3>
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: '#00A8E1' }}>
+                    <span className="text-white font-semibold">1</span>
+                  </div>
+                  <span className="text-white/90">Developing personal EQ</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: '#00A8E1' }}>
+                    <span className="text-white font-semibold">2</span>
+                  </div>
+                  <span className="text-white/90">Leading by influence</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: '#00A8E1' }}>
+                    <span className="text-white font-semibold">3</span>
+                  </div>
+                  <span className="text-white/90">Working with a CEO</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center mr-4" style={{ backgroundColor: '#00A8E1' }}>
+                    <span className="text-white font-semibold">4</span>
+                  </div>
+                  <span className="text-white/90">Interactive conversations with C-suite executives</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Executive Advisory Team Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+        >
+          <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            {/* Ken Banta */}
+            <div className="text-center">
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
+                <div className="text-6xl font-bold" style={{ color: '#045184' }}>KB</div>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">KEN BANTA</h3>
+              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Founder & CEO</p>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
+              </p>
+              <div className="mt-4">
+                <p className="text-xs text-slate-500">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
+              </div>
+            </div>
+
+            {/* Richard Hulme */}
+            <div className="text-center">
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
+                <div className="text-6xl font-bold" style={{ color: '#045184' }}>RH</div>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">RICHARD HULME</h3>
+              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Managing Director</p>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
+              </p>
+              <div className="mt-4">
+                <p className="text-xs text-slate-500">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Garrick Isert */}
+            <div className="text-center">
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
+                <div className="text-6xl font-bold" style={{ color: '#045184' }}>GI</div>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">GARRICK ISERT</h3>
+              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
+              </p>
+              <div className="mt-4">
+                <p className="text-xs text-slate-500">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
+              </div>
+            </div>
+
+            {/* Aileen Gonsalves */}
+            <div className="text-center">
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
+                <div className="text-6xl font-bold" style={{ color: '#045184' }}>AG</div>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">AILEEN GONSALVES</h3>
+              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
+              <p className="text-slate-600 leading-relaxed text-sm">
+                Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
+              </p>
+              <div className="mt-4">
+                <p className="text-xs text-slate-500">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+          className="text-center rounded-2xl p-12"
+          style={{ backgroundColor: '#00A8E1' }}
+        >
+          <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Join the 200+ CEOs and C-suite executives who trust The Vanguard Network for their leadership development and strategic guidance.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
           >
-            <div className="text-blue-600 mb-4">{service.icon}</div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{service.description}</p>
-          </motion.div>
-        ))}
+            Get Started Today
+          </motion.button>
+        </motion.div>
       </div>
     </div>
   </motion.div>
