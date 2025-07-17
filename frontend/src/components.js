@@ -1482,11 +1482,18 @@ const ProgramsPage = () => (
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
               className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+              whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="text-center mb-6">
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                  className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" 
+                  style={{ backgroundColor: '#00A8E1' }}
+                >
                   <div className="text-white">{program.icon}</div>
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{program.name}</h3>
                 <p className="text-sm font-semibold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
                 <p className="text-xs text-slate-500 mb-4">{program.format}</p>
