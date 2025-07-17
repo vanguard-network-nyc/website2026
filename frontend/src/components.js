@@ -326,13 +326,13 @@ const ServicesSection = () => {
                 <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 mb-2 leading-relaxed flex-grow">
+                <p className="text-slate-600 mb-4 leading-relaxed">
                   {service.description}
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 mt-auto"
+                  className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2"
                   style={{ backgroundColor: '#00A8E1' }}
                   onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                   onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
