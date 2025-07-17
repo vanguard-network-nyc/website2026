@@ -1780,7 +1780,7 @@ const BookPage = () => (
           className="text-center lg:text-left"
         >
           <img
-            src="/newbook-image.jpg"
+            src="/book-cover.jpg"
             alt="Seeing Around Corners Book Cover"
             className="w-80 h-96 object-cover rounded-xl shadow-lg mx-auto lg:mx-0 mb-8"
           />
