@@ -313,7 +313,7 @@ const ServicesSection = () => {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
             >
               <div 
-                className="h-64 bg-cover bg-center relative"
+                className="h-80 bg-cover bg-center relative"
                 style={{ backgroundImage: `url('${service.image}')` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
