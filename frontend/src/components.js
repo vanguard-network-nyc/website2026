@@ -1779,11 +1779,13 @@ const BookPage = () => (
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-center lg:text-left"
         >
-          <img
-            src="/book-cover.jpg"
-            alt="Seeing Around Corners Book Cover"
-            className="w-80 h-[500px] object-contain rounded-xl shadow-lg mx-auto lg:mx-0 mb-8"
-          />
+          <div className="w-80 h-[500px] rounded-xl shadow-lg mx-auto lg:mx-0 mb-8 overflow-hidden bg-gray-100">
+            <img
+              src="/book-cover.jpg"
+              alt="Seeing Around Corners Book Cover"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
