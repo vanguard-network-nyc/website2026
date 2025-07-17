@@ -1008,77 +1008,275 @@ const NetworkingPage = () => (
     exit={{ opacity: 0 }}
     className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Hero Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">Exclusive Network</h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Join an elite community of senior leaders committed to excellence and continuous growth
+        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+          NETWORKING & EVENTS
+        </h1>
+        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          Connect with an elite community of senior leaders and access exclusive networking opportunities that drive professional growth and strategic insights.
         </p>
       </motion.div>
+    </div>
 
-      <div className="bg-white rounded-2xl p-12 shadow-lg mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Member Benefits</h2>
-            <ul className="space-y-4">
-              {[
-                'Exclusive access to senior executive events',
-                'Peer-to-peer learning opportunities',
-                'Industry insights and trend analysis',
-                'Customized leadership resources',
-                'One-on-one mentoring sessions',
-                'Strategic networking connections'
-              ].map((benefit, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                  className="flex items-center gap-3 text-slate-600"
-                >
-                  <Star className="text-blue-600 fill-current" size={16} />
-                  {benefit}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-          
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            <img
-              src="https://images.pexels.com/photos/5475750/pexels-photo-5475750.jpeg"
-              alt="Networking"
-              className="w-full rounded-xl shadow-lg"
-            />
-          </motion.div>
-        </div>
-      </div>
-
+    {/* Main Content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Valuable Networking Section */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.8 }}
-        className="text-center"
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
       >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              Valuable Networking Opportunities
+            </h2>
+            <p className="text-slate-600 leading-relaxed mb-6">
+              In addition to our regional Forums and events we can also initiate warm introductions to other Vanguard members and have a pulse on the C-suite marketplace. If you are looking to connect with members, contact Tony Powe, Vanguard COO, for an introduction to another Vanguard member.
+            </p>
+            <div className="flex items-center gap-4 p-4 rounded-lg" style={{ backgroundColor: '#00A8E1' }}>
+              <div className="text-white">
+                <Users size={32} />
+              </div>
+              <div>
+                <p className="text-white font-semibold">Need an Introduction?</p>
+                <p className="text-white/90 text-sm">Contact Tony Powe, Vanguard COO</p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-slate-100 rounded-xl p-8">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#045184' }}>
+                <Network size={32} className="text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Regional Forums & Events</h3>
+              <p className="text-slate-600 text-sm">Connect with peers in your region through exclusive gatherings</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Network Membership Benefits */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="mb-16"
+      >
+        <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">
+          Network Membership Benefits
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {[
+            {
+              title: 'Reach Out to Peers',
+              description: 'Connect with peers on specific topics and challenges',
+              icon: <MessageCircle size={48} />
+            },
+            {
+              title: 'Warm Introductions',
+              description: 'Get warm introductions via the Vanguard team',
+              icon: <UserCheck size={48} />
+            },
+            {
+              title: 'Local Peer Meet-ups',
+              description: 'Organize local peer meet-ups in your area',
+              icon: <MapPin size={48} />
+            }
+          ].map((benefit, index) => (
+            <motion.div
+              key={benefit.title}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <div className="mb-6" style={{ color: '#00A8E1' }}>{benefit.icon}</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">{benefit.title}</h3>
+              <p className="text-slate-600 leading-relaxed">{benefit.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Membership Cost Structure */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+        style={{ backgroundColor: '#045184' }}
+      >
+        <div className="text-center mb-8">
+          <h2 className="text-4xl font-bold text-white mb-6">Flexible Membership Structure</h2>
+          <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+            We understand that commitment levels vary, so we've created a flexible membership model that works for everyone.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-6">How It Works</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
+                  <span className="text-white font-semibold text-sm">1</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Reasonable Basic Membership</p>
+                  <p className="text-white/90 text-sm">Low annual network fee with 3 levels based on company revenue</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
+                  <span className="text-white font-semibold text-sm">2</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Pay Per Event</p>
+                  <p className="text-white/90 text-sm">Additional fee for each event or program you choose to participate in</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
+                  <span className="text-white font-semibold text-sm">3</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold">Credits System</p>
+                  <p className="text-white/90 text-sm">Members receive credits with annual fee for programs or advisory services</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white/10 rounded-xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-6">Membership Levels</h3>
+            <div className="space-y-4">
+              <div className="bg-white/10 rounded-lg p-4">
+                <h4 className="text-white font-semibold">Level 1</h4>
+                <p className="text-white/90 text-sm">For smaller companies</p>
+              </div>
+              <div className="bg-white/10 rounded-lg p-4">
+                <h4 className="text-white font-semibold">Level 2</h4>
+                <p className="text-white/90 text-sm">For mid-size companies</p>
+              </div>
+              <div className="bg-white/10 rounded-lg p-4">
+                <h4 className="text-white font-semibold">Level 3</h4>
+                <p className="text-white/90 text-sm">For large enterprises</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Monthly Leadership Updates */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.8 }}
+        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+      >
+        <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">Monthly Leadership Updates</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="rounded-xl p-8" style={{ backgroundColor: '#00A8E1' }}>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-white/20 flex items-center justify-center">
+                <Newspaper size={32} className="text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Newswire</h3>
+              <p className="text-white/90 leading-relaxed">
+                Stay updated with the latest leadership insights, industry trends, and strategic developments from our network of executives.
+              </p>
+              <button className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Access Newswire
+              </button>
+            </div>
+          </div>
+          
+          <div className="rounded-xl p-8" style={{ backgroundColor: '#045184' }}>
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full mx-auto mb-4 bg-white/20 flex items-center justify-center">
+                <Shield size={32} className="text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">C-suite Confidential Series</h3>
+              <p className="text-white/90 leading-relaxed">
+                Exclusive insights from C-suite executives sharing confidential strategies, challenges, and solutions from the boardroom.
+              </p>
+              <button className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                View Series
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Members Website Features */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+      >
+        <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">Members Website Features</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+              <BookOpen size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-4">Articles/Blogs/Podcasts</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Access premium content that can be re-purposed by you for your teams, including articles, blogs, and podcasts from industry leaders.
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#045184' }}>
+              <Video size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-4">Live Events</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Join live webinars and discussion groups with fellow executives to share insights and discuss current challenges.
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+              <Bot size={32} className="text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-4">AI Chat Bot 'Elsie'</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Search our leadership knowledge database using our AI Bot 'Elsie' to get insights from top leaders on almost any leadership topic.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Call to Action */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="text-center rounded-2xl p-12"
+        style={{ backgroundColor: '#00A8E1' }}
+      >
+        <h2 className="text-4xl font-bold text-white mb-6">Ready to Join Our Network?</h2>
+        <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          Connect with like-minded executives, access exclusive resources, and accelerate your leadership journey with The Vanguard Network.
+        </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
-          style={{ backgroundColor: '#00A8E1' }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+          className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2"
         >
           Apply for Membership
           <ArrowRight size={20} />
