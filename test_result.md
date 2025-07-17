@@ -355,6 +355,9 @@ frontend:
         agent: "main"
         comment: "FINALIZED: Changed the main headline 'LEADERSHIP ADVISORY & DEVELOPMENT' color to brand color #045184 (dark professional blue). The headline now uses consistent brand colors and creates a professional, cohesive appearance that matches the overall brand identity throughout the advisory page."
       - working: true
+        agent: "main"
+        comment: "ENHANCED: Replaced initials placeholders with actual professional photos for all four advisory team members. Downloaded Ken Banta (249k), Richard Hulme (19.5k), Garrick Isert (23.8k), and Aileen Gonsalves (103k) photos from Google Drive. Updated advisory page to display circular profile images with proper shadows and styling. All team member photos now show professional headshots that enhance credibility and personal connection."
+      - working: true
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: New book custom image working perfectly. Image loads correctly from /newbook-image.jpg showing book-related content. Properly integrated in services section with responsive design. Ready for deployment."
 
