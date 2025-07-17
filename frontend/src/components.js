@@ -897,8 +897,12 @@ const AdvisoryPage = () => (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
             {/* Ken Banta */}
             <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
-                <div className="text-6xl font-bold" style={{ color: '#045184' }}>KB</div>
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                <img 
+                  src="/ken-banta.jpg" 
+                  alt="Ken Banta" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">KEN BANTA</h3>
               <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Founder & CEO</p>
@@ -912,8 +916,12 @@ const AdvisoryPage = () => (
 
             {/* Richard Hulme */}
             <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
-                <div className="text-6xl font-bold" style={{ color: '#045184' }}>RH</div>
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                <img 
+                  src="/richard-hulme.jpg" 
+                  alt="Richard Hulme" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">RICHARD HULME</h3>
               <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Managing Director</p>
@@ -929,8 +937,12 @@ const AdvisoryPage = () => (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Garrick Isert */}
             <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
-                <div className="text-6xl font-bold" style={{ color: '#045184' }}>GI</div>
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                <img 
+                  src="/garrick-isert.jpg" 
+                  alt="Garrick Isert" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">GARRICK ISERT</h3>
               <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
@@ -944,8 +956,12 @@ const AdvisoryPage = () => (
 
             {/* Aileen Gonsalves */}
             <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 bg-gradient-to-br from-blue-100 to-slate-200 flex items-center justify-center">
-                <div className="text-6xl font-bold" style={{ color: '#045184' }}>AG</div>
+              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+                <img 
+                  src="/aileen-gonsalves.jpg" 
+                  alt="Aileen Gonsalves" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">AILEEN GONSALVES</h3>
               <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
