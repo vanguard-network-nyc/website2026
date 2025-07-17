@@ -334,7 +334,7 @@ const ServicesSection = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 -mt-2"
+                  className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 -mt-6"
                   style={{ backgroundColor: '#00A8E1' }}
                   onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                   onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
