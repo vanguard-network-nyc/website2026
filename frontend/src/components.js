@@ -276,6 +276,33 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+      >
+        <motion.div
+          animate={{ 
+            y: [0, 10, 0],
+            opacity: [0.7, 1, 0.7]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="flex flex-col items-center text-white/80 cursor-pointer"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <span className="text-sm font-medium mb-2">Scroll to explore</span>
+          <div className="w-12 h-12 rounded-full border-2 border-white/50 flex items-center justify-center hover:border-white transition-all duration-300">
+            <ChevronDown size={24} style={{ color: '#00A8E1' }} />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
