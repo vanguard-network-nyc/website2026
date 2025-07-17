@@ -336,9 +336,17 @@ frontend:
       - working: true
         agent: "main"
         comment: "FINAL LAYOUT OPTIMIZATION: Significantly increased image height to h-80 (320px) for much more prominent visual impact. Drastically reduced white space by changing text margin to mb-2 and padding to p-4. The services section now has optimal visual balance with tall, impactful images and minimal white space between text and buttons."
+  - task: "Replace advisory page content with comprehensive website content"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
       - working: true
         agent: "main"
-        comment: "FINALIZED: Successfully reduced white space between text and buttons by implementing negative margin (-mt-6) on buttons. This pulls the buttons upward closer to the text, eliminating excessive white space while maintaining button alignment. The layout now has optimal spacing with tall images (h-80), proper text positioning, and buttons positioned close to the text as requested."
+        comment: "Successfully replaced advisory page content with comprehensive content from thevanguardnetwork.com/advisory-services. Created engaging layout with brand colors #045184 and #00A8E1. Includes leadership advisory & development overview, three service approaches (coaching, sounding board, next generation leader), detailed service descriptions, executive team profiles, and call-to-action section. Professional, visually appealing design with proper animations and responsive layout."
       - working: true
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: New book custom image working perfectly. Image loads correctly from /newbook-image.jpg showing book-related content. Properly integrated in services section with responsive design. Ready for deployment."
