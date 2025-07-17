@@ -1116,7 +1116,7 @@ const NetworkingPage = () => (
         </div>
       </motion.div>
 
-      {/* Membership Cost Structure */}
+      {/* Membership Plans */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -1125,62 +1125,74 @@ const NetworkingPage = () => (
         style={{ backgroundColor: '#045184' }}
       >
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-white mb-6">Flexible Membership Structure</h2>
+          <h2 className="text-4xl font-bold text-white mb-6">Membership Plans</h2>
           <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-            We understand that commitment levels vary, so we've created a flexible membership model that works for everyone.
+            Choose from our specialized membership networks designed for different leadership roles and industries.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-6">How It Works</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
-                  <span className="text-white font-semibold text-sm">1</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              name: "General Counsel Network",
+              description: "For General Counsel and Chief Legal Officers",
+              target: "GC & CLO",
+              icon: <Shield size={32} />
+            },
+            {
+              name: "Senior In-House Counsel Network",
+              description: "For Deputy GC and Associate GC",
+              target: "Deputy GC & Associate GC",
+              icon: <BookOpen size={32} />
+            },
+            {
+              name: "Life Sciences CEO Network",
+              description: "For CEOs in the life sciences community",
+              target: "Life Sciences CEOs",
+              icon: <Award size={32} />
+            },
+            {
+              name: "Risk Management Network",
+              description: "For senior executives who lead risk-related functions",
+              target: "Risk Management Leaders",
+              icon: <Target size={32} />
+            },
+            {
+              name: "Associate Membership",
+              description: "Join as an associate member",
+              target: "Associate Members",
+              icon: <Users size={32} />
+            }
+          ].map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0 + index * 0.1, duration: 0.8 }}
+              className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer"
+            >
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="text-white">{plan.icon}</div>
                 </div>
-                <div>
-                  <p className="text-white font-semibold">Reasonable Basic Membership</p>
-                  <p className="text-white/90 text-sm">Low annual network fee with 3 levels based on company revenue</p>
-                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
+                <p className="text-sm font-semibold mb-3" style={{ color: '#00A8E1' }}>{plan.target}</p>
+                <p className="text-white/90 text-sm leading-relaxed">{plan.description}</p>
+                <button className="mt-4 bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors">
+                  Learn More
+                </button>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
-                  <span className="text-white font-semibold text-sm">2</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Pay Per Event</p>
-                  <p className="text-white/90 text-sm">Additional fee for each event or program you choose to participate in</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style={{ backgroundColor: '#00A8E1' }}>
-                  <span className="text-white font-semibold text-sm">3</span>
-                </div>
-                <div>
-                  <p className="text-white font-semibold">Credits System</p>
-                  <p className="text-white/90 text-sm">Members receive credits with annual fee for programs or advisory services</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white/10 rounded-xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6">Membership Levels</h3>
-            <div className="space-y-4">
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="text-white font-semibold">Level 1</h4>
-                <p className="text-white/90 text-sm">For smaller companies</p>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="text-white font-semibold">Level 2</h4>
-                <p className="text-white/90 text-sm">For mid-size companies</p>
-              </div>
-              <div className="bg-white/10 rounded-lg p-4">
-                <h4 className="text-white font-semibold">Level 3</h4>
-                <p className="text-white/90 text-sm">For large enterprises</p>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="mt-8 text-center">
+          <p className="text-white/90 mb-4">
+            Each membership network provides specialized content, peer connections, and resources tailored to your specific role and industry.
+          </p>
+          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            View All Membership Options
+          </button>
         </div>
       </motion.div>
 
