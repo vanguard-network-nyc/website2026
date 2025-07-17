@@ -827,7 +827,11 @@ const AdvisoryPage = () => (
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+            >
               <h2 className="text-4xl font-bold text-slate-900 mb-6">COACHING</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 We work with leaders on specific development goals to help them be more effective decision-makers and developers of their people. This can include exploring additional personal or professional growth areas, creating and implementing organizational strategies for incremental improvement, and contributing to enterprise transformational change.
@@ -835,32 +839,36 @@ const AdvisoryPage = () => (
               <p className="text-slate-600 leading-relaxed">
                 We also help leaders similarly with their teams, developing high performance and overcoming barriers. This work can include customized training and development programs, building effective working cultures, and carrying out talent assessments and development plans.
               </p>
-            </div>
-            <div className="rounded-xl p-8" style={{ backgroundColor: '#045184' }}>
+            </motion.div>
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="rounded-xl p-8" 
+              style={{ backgroundColor: '#045184' }}
+            >
               <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
               <ul className="space-y-3 text-white">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                  Effective decision-making
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                  People development
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                  Organizational strategy
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                  Transformational change
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                  Team development
-                </li>
+                {[
+                  "Effective decision-making",
+                  "People development", 
+                  "Organizational strategy",
+                  "Transformational change",
+                  "Team development"
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
+                    className="flex items-center"
+                  >
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    {item}
+                  </motion.li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
