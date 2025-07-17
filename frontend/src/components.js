@@ -1552,9 +1552,9 @@ const ContactPage = () => (
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">Contact Us</h1>
+        <h1 className="text-5xl font-bold mb-6" style={{ color: '#045184' }}>Contact Us</h1>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Ready to transform your leadership? Get in touch with our team of experts.
+          Ready to transform your leadership? Get in touch with our team of experts and discover how The Vanguard Network can accelerate your executive journey.
         </p>
       </motion.div>
 
@@ -1565,38 +1565,96 @@ const ContactPage = () => (
           transition={{ delay: 0.3, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 shadow-lg"
         >
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
           <form className="space-y-6">
             <div>
-              <label className="block text-slate-700 font-medium mb-2">Full Name</label>
+              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Full Name</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                style={{ 
+                  focusRingColor: '#00A8E1',
+                  focusBorderColor: '#00A8E1'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00A8E1';
+                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
                 placeholder="Enter your full name"
               />
             </div>
             <div>
-              <label className="block text-slate-700 font-medium mb-2">Email</label>
+              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00A8E1';
+                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
                 placeholder="Enter your email"
               />
             </div>
             <div>
-              <label className="block text-slate-700 font-medium mb-2">Company</label>
+              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Company</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00A8E1';
+                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
                 placeholder="Enter your company"
               />
             </div>
             <div>
-              <label className="block text-slate-700 font-medium mb-2">Message</label>
+              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Interest Area</label>
+              <select
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00A8E1';
+                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
+              >
+                <option value="">Select your area of interest</option>
+                <option value="advisory">Advisory Services</option>
+                <option value="networking">Networking & Events</option>
+                <option value="programs">Leadership Programs</option>
+                <option value="book">Book & Resources</option>
+                <option value="membership">Membership Information</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Message</label>
               <textarea
                 rows="4"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                placeholder="Tell us about your leadership development needs"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#00A8E1';
+                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.boxShadow = 'none';
+                }}
+                placeholder="Tell us about your leadership development needs and how we can help you achieve your goals"
               ></textarea>
             </div>
             <motion.button
@@ -1620,56 +1678,66 @@ const ContactPage = () => (
           className="space-y-8"
         >
           <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Get in Touch</h3>
+            <h3 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Get in Touch</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <Mail className="text-blue-600" size={24} />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <Mail className="text-white" size={24} />
+                </div>
                 <div>
-                  <p className="font-medium text-slate-900">Email</p>
+                  <p className="font-medium" style={{ color: '#045184' }}>Email</p>
                   <p className="text-slate-600">info@thevanguardnetwork.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <Phone className="text-blue-600" size={24} />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <Phone className="text-white" size={24} />
+                </div>
                 <div>
-                  <p className="font-medium text-slate-900">Phone</p>
+                  <p className="font-medium" style={{ color: '#045184' }}>Phone</p>
                   <p className="text-slate-600">+1 (555) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <MapPin className="text-blue-600" size={24} />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <MapPin className="text-white" size={24} />
+                </div>
                 <div>
-                  <p className="font-medium text-slate-900">Office</p>
+                  <p className="font-medium" style={{ color: '#045184' }}>Office</p>
                   <p className="text-slate-600">New York, NY</p>
                 </div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Connect With Us</h3>
-            <div className="flex gap-4">
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-white p-3 rounded-lg transition-colors duration-200"
-                style={{ backgroundColor: '#00A8E1' }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-              >
-                <Mail size={24} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href="#"
-                className="text-white p-3 rounded-lg transition-colors duration-200"
-                style={{ backgroundColor: '#00A8E1' }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-              >
-                <Phone size={24} />
-              </motion.a>
-            </div>
+          <div className="rounded-2xl p-8 shadow-lg" style={{ backgroundColor: '#045184' }}>
+            <h3 className="text-2xl font-bold mb-4 text-white">Why Choose The Vanguard Network?</h3>
+            <ul className="space-y-3 text-white/90">
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                <span>Proven track record with Fortune 500 executives</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                <span>Personalized leadership development programs</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                <span>Exclusive networking with top-tier professionals</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                <span>Comprehensive advisory services and support</span>
+              </li>
+            </ul>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
+              style={{ color: '#045184' }}
+            >
+              Learn More About Our Services
+            </motion.button>
           </div>
         </motion.div>
       </div>
