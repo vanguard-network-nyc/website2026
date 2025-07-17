@@ -1065,7 +1065,7 @@ const NetworkingPage = () => (
               <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#045184' }}>
                 <Network size={32} className="text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Regional Forums & Events</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">Forums & Events</h3>
               <p className="text-slate-600 text-sm">Connect with peers in your region through exclusive gatherings</p>
             </div>
           </div>
