@@ -14,7 +14,14 @@ import {
   Mail,
   Phone,
   MapPin,
-  Star
+  Star,
+  Network,
+  MessageCircle,
+  UserCheck,
+  Newspaper,
+  Shield,
+  Video,
+  Bot
 } from 'lucide-react';
 
 // Header Component
