@@ -1199,8 +1199,17 @@ const NetworkingPage = () => (
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
               className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -5 }}
             >
-              <div className="mb-6" style={{ color: '#00A8E1' }}>{benefit.icon}</div>
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
+                className="mb-6" 
+                style={{ color: '#00A8E1' }}
+              >
+                {benefit.icon}
+              </motion.div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">{benefit.title}</h3>
               <p className="text-slate-600 leading-relaxed">{benefit.description}</p>
             </motion.div>
