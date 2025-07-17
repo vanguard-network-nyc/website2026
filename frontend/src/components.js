@@ -1853,7 +1853,7 @@ const BookPage = () => (
         <div className="bg-white rounded-2xl p-8 shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <div className="text-center">
-              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
+              <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden">
                 <img 
                   src="/ken-banta-headshot.jpg" 
                   alt="Ken Banta" 
