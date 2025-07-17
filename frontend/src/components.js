@@ -1782,7 +1782,7 @@ const BookPage = () => (
           <img
             src="/book-cover.jpg"
             alt="Seeing Around Corners Book Cover"
-            className="w-80 h-96 object-cover rounded-xl shadow-lg mx-auto lg:mx-0 mb-8"
+            className="w-80 h-[500px] object-contain rounded-xl shadow-lg mx-auto lg:mx-0 mb-8"
           />
           <motion.a
             whileHover={{ scale: 1.05 }}
