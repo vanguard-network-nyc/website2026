@@ -1659,7 +1659,11 @@ const ContactPage = () => (
         >
           <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
           <form className="space-y-6">
-            <div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
               <label className="block font-medium mb-2" style={{ color: '#045184' }}>Full Name</label>
               <input
                 type="text"
@@ -1678,8 +1682,12 @@ const ContactPage = () => (
                 }}
                 placeholder="Enter your full name"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               <label className="block font-medium mb-2" style={{ color: '#045184' }}>Email</label>
               <input
                 type="email"
@@ -1694,8 +1702,12 @@ const ContactPage = () => (
                 }}
                 placeholder="Enter your email"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
               <label className="block font-medium mb-2" style={{ color: '#045184' }}>Company</label>
               <input
                 type="text"
@@ -1710,8 +1722,12 @@ const ContactPage = () => (
                 }}
                 placeholder="Enter your company"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
               <label className="block font-medium mb-2" style={{ color: '#045184' }}>Interest Area</label>
               <select
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
@@ -1732,8 +1748,12 @@ const ContactPage = () => (
                 <option value="membership">Membership Information</option>
                 <option value="other">Other</option>
               </select>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
               <label className="block font-medium mb-2" style={{ color: '#045184' }}>Message</label>
               <textarea
                 rows="4"
@@ -1748,8 +1768,11 @@ const ContactPage = () => (
                 }}
                 placeholder="Tell us about your leadership development needs and how we can help you achieve your goals"
               ></textarea>
-            </div>
+            </motion.div>
             <motion.button
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
