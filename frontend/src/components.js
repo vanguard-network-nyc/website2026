@@ -1048,7 +1048,7 @@ const NetworkingPage = () => (
               Valuable Networking Opportunities
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              In addition to our regional Forums and events we can also initiate warm introductions to other Vanguard members and have a pulse on the C-suite marketplace. If you are looking to connect with members, contact Tony Powe, Vanguard COO, for an introduction to another Vanguard member.
+              In addition to our Forums and events we can also initiate warm introductions to other Vanguard members and have a pulse on the C-suite marketplace. If you are looking to connect with members, contact Tony Powe, Vanguard COO, for an introduction to another Vanguard member.
             </p>
             <div className="flex items-center gap-4 p-4 rounded-lg" style={{ backgroundColor: '#00A8E1' }}>
               <div className="text-white">
