@@ -331,6 +331,9 @@ frontend:
         agent: "main"
         comment: "Successfully aligned the three blue buttons in services section to be on the same level and increased their width to match the text box above. Updated button styling to use w-full class for full width, added flex-col and h-full to cards for equal height alignment, and used justify-center for centered button content. All three buttons (More Info, Become a Member, More Info & Order) now have consistent alignment and width."
       - working: true
+        agent: "main"
+        comment: "ENHANCED LAYOUT: Increased image height in service boxes from h-48 to h-64 (192px to 256px) for more prominent visual impact. Reduced white space between text and buttons by changing margin from mb-6 to mb-4 for tighter, more professional layout. The services section now has better visual balance with taller images and compact spacing."
+      - working: true
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: New book custom image working perfectly. Image loads correctly from /newbook-image.jpg showing book-related content. Properly integrated in services section with responsive design. Ready for deployment."
 
