@@ -1447,6 +1447,13 @@ const ProgramsPage = () => (
               target: "High-Potential New Employees",
               benefits: ["14-Week Curriculum", "Leadership Nuances", "New Employee Focus", "Accelerated Success"],
               color: "#00A8E1"
+            },
+            {
+              name: "BUSINESS DEVELOPMENT",
+              description: "Add value and create even stronger relationships with clients and potential clients. Executives from your company engage with 10-25 clients and/or prospects in customized Vanguard sessions, working on leadership issues that matter most to them.",
+              target: "Business Development Executives",
+              benefits: ["Client Relationship Building", "Customized Sessions", "Leadership Focus", "Value Creation"],
+              color: "#045184"
             }
           ].map((program, index) => (
             <motion.div
