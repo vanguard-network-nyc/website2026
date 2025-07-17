@@ -406,6 +406,9 @@ frontend:
       - working: true
         agent: "main"
         comment: "FINALIZED: Improved book cover presentation by placing it in a rounded container with slightly rounded corners (rounded-xl). Wrapped image in a div container with overflow-hidden to ensure clean rounded edges. Changed from object-contain to object-cover to eliminate white space at bottom. Book cover now fills the container completely while maintaining rounded corners and professional appearance."
+      - working: true
+        agent: "main"
+        comment: "ENHANCED AUTHOR SECTION: Added Ken Banta's professional headshot from Google Drive to the 'Meet the Author' section. Downloaded ken-banta-headshot.jpg and integrated it as a circular profile image. Initially sized at w-32 h-32 (128px) but increased to w-48 h-48 (192px) for better visual impact and prominence. The larger headshot now provides better visual balance and professional appearance in the author section."
 
 metadata:
   created_by: "main_agent"
