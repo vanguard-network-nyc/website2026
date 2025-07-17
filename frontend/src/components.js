@@ -1310,78 +1310,221 @@ const ProgramsPage = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-blue-50 to-slate-100"
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Hero Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">Leadership Programs</h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Comprehensive development programs designed to accelerate leadership growth at every level
+        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+          LEADERSHIP PROGRAMS
+        </h1>
+        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          Comprehensive development programs designed to accelerate leadership growth at every level through specialized exchanges and customized curricula.
         </p>
       </motion.div>
+    </div>
 
-      <div className="space-y-12">
-        {[
-          {
-            title: 'New Leaders Program',
-            description: 'An intensive program for high-potential emerging leaders, focusing on critical leadership challenges and real-world application.',
-            features: ['12-week intensive curriculum', 'Peer-to-peer learning', 'Executive mentorship', 'Leadership assessments'],
-            image: 'https://images.unsplash.com/photo-1573496130103-a442a3754d0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxsZWFkZXJzaGlwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8fGJsdWV8MTc1MDgzOTA3Nnww&ixlib=rb-4.1.0&q=85'
-          },
-          {
-            title: 'Next Generation C-Suite',
-            description: 'Preparing future executives for the challenges of C-level leadership through customized modules and strategic planning.',
-            features: ['Executive presence training', 'Strategic decision making', 'Crisis leadership', 'Board interaction skills'],
-            image: 'https://images.pexels.com/photos/7616608/pexels-photo-7616608.jpeg'
-          }
-        ].map((program, index) => (
-          <motion.div
-            key={program.title}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: index * 0.3, duration: 0.8 }}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden"
+    {/* Main Content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Current Leadership Programs Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="mb-20"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6">Current Leadership Programs</h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Ongoing programs designed for specific leadership roles and industries, featuring regular exchanges and development opportunities.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: "GC EXCHANGE",
+              description: "A highly pragmatic leadership problem-solving group that meets monthly, moderated by Vanguard. Monthly, in virtual format; face-to-face sessions occur at our bi-annual Forums.",
+              format: "Monthly Virtual + Bi-annual In-Person",
+              audience: "General Counsel",
+              icon: <Shield size={32} />
+            },
+            {
+              name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
+              description: "An exchange for GCs' immediate reports to compare notes and solve problems together. Monthly, in virtual format.",
+              format: "Monthly Virtual",
+              audience: "Senior In-House Counsel",
+              icon: <BookOpen size={32} />
+            },
+            {
+              name: "LIFE SCIENCES CEO EXCHANGES",
+              description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
+              format: "Quarterly Virtual + Bi-annual In-Person",
+              audience: "Life Sciences CEOs",
+              icon: <Award size={32} />
+            },
+            {
+              name: "NEXT GENERATION GC",
+              description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
+              format: "6-Month Program",
+              audience: "Future General Counsel",
+              icon: <Target size={32} />
+            },
+            {
+              name: "NEW LEADERS PROGRAM",
+              description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
+              format: "6-12 Month Program",
+              audience: "Graduate Students & New Hires",
+              icon: <Users size={32} />
+            }
+          ].map((program, index) => (
+            <motion.div
+              key={program.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="text-white">{program.icon}</div>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{program.name}</h3>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
+                <p className="text-xs text-slate-500 mb-4">{program.format}</p>
+              </div>
+              <p className="text-slate-600 leading-relaxed text-sm mb-6">{program.description}</p>
+              <button 
+                className="w-full text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90"
+                style={{ backgroundColor: '#045184' }}
+              >
+                Learn More
+              </button>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Customized Leadership Programs Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="mb-16"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6">Customized Leadership Programs</h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+          </p>
+        </div>
+        
+        <div className="space-y-8">
+          {[
+            {
+              name: "CEO & C-SUITE",
+              description: "Customized programs to yield high-performance amongst C-suite leaders across a portfolio of companies or global teams using the Vanguard roundtable model.",
+              target: "C-Suite Executives",
+              benefits: ["High-Performance Leadership", "Roundtable Model", "Portfolio Companies", "Global Teams"],
+              color: "#00A8E1"
+            },
+            {
+              name: "NEXT GENERATION C-SUITE",
+              description: "Generating high-performance and a better understanding of the next Generation C-suite. Customized for enterprises using our tried and tested Next Generation C-suite modules.",
+              target: "Future C-Suite Leaders",
+              benefits: ["High-Performance Development", "Next-Gen Focus", "Proven Modules", "Enterprise Customization"],
+              color: "#045184"
+            },
+            {
+              name: "HIGH-POTENTIAL NEW HIRES",
+              description: "Accelerating the success of high-potential new employees in your enterprise through a 14-week curriculum exploring leadership nuances.",
+              target: "High-Potential New Employees",
+              benefits: ["14-Week Curriculum", "Leadership Nuances", "New Employee Focus", "Accelerated Success"],
+              color: "#00A8E1"
+            }
+          ].map((program, index) => (
+            <motion.div
+              key={program.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8 + index * 0.2, duration: 0.8 }}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2 p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: program.color }}>
+                      <Award size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-slate-900">{program.name}</h3>
+                      <p className="text-sm font-semibold" style={{ color: program.color }}>{program.target}</p>
+                    </div>
+                  </div>
+                  <p className="text-slate-600 leading-relaxed mb-6">{program.description}</p>
+                  <div className="grid grid-cols-2 gap-4">
+                    {program.benefits.map((benefit, benefitIndex) => (
+                      <div key={benefitIndex} className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: program.color }}></div>
+                        <span className="text-sm text-slate-600">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-8 flex items-center justify-center" style={{ backgroundColor: `${program.color}15` }}>
+                  <div className="text-center">
+                    <div className="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: program.color }}>
+                      <BookOpen size={48} className="text-white" />
+                    </div>
+                    <button 
+                      className="text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90"
+                      style={{ backgroundColor: program.color }}
+                    >
+                      Get Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Call to Action */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.8 }}
+        className="text-center rounded-2xl p-12"
+        style={{ backgroundColor: '#045184' }}
+      >
+        <h2 className="text-4xl font-bold text-white mb-6">Ready to Accelerate Your Leadership Journey?</h2>
+        <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          Join our comprehensive leadership programs and connect with like-minded executives committed to excellence and continuous growth.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="p-8">
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">{program.title}</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">{program.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {program.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3 text-slate-600">
-                      <Star className="text-blue-600 fill-current" size={16} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 inline-flex items-center gap-2"
-                  style={{ backgroundColor: '#00A8E1' }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-                >
-                  Learn More
-                  <ArrowRight size={16} />
-                </motion.button>
-              </div>
-              <div className="lg:p-8">
-                <img
-                  src={program.image}
-                  alt={program.title}
-                  className="w-full h-64 lg:h-full object-cover rounded-lg"
-                />
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            Explore Current Programs
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 border-2 border-white hover:bg-white hover:text-blue-600"
+          >
+            Request Custom Program
+          </motion.button>
+        </div>
+      </motion.div>
     </div>
   </motion.div>
 );
