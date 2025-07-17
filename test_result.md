@@ -372,9 +372,17 @@ frontend:
       - working: true
         agent: "main"
         comment: "FIXED: Resolved networking page error by adding missing icon imports (Network, MessageCircle, UserCheck, Newspaper, Shield, Video, Bot). Page now displays correctly with all content sections showing properly. All networking and events content is now working as intended with professional design and brand colors."
+  - task: "Replace programs page content with current and customized leadership programs"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
       - working: true
         agent: "main"
-        comment: "UPDATED: Replaced 'Flexible Membership Structure' section with actual membership plans from members.thevanguardnetwork.com/plans. Created specialized membership network cards for General Counsel Network, Senior In-House Counsel Network, Life Sciences CEO Network, Risk Management Network, and Associate Membership. Each plan has dedicated icons, target audience descriptions, and professional styling using brand colors #045184 and #00A8E1."
+        comment: "Successfully replaced programs page content with comprehensive leadership programs from members.thevanguardnetwork.com/membership-benefits. Created two main sections: Current Leadership Programs (GC Exchange, Senior In-House Counsel Exchange, Life Sciences CEO Exchanges, Next Generation GC, New Leaders Program) and Customized Leadership Programs (CEO & C-Suite, Next Generation C-Suite, High-Potential New Hires). Used engaging layout with brand colors #045184 and #00A8E1, icons, program details, formats, and target audiences. Professional design with animations and responsive layout."
       - working: true
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: New book custom image working perfectly. Image loads correctly from /newbook-image.jpg showing book-related content. Properly integrated in services section with responsive design. Ready for deployment."
