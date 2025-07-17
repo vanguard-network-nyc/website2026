@@ -322,7 +322,7 @@ const ServicesSection = () => {
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col h-full">
+              <div className="p-4 flex flex-col h-full">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
                   {service.title}
                 </h3>
