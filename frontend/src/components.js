@@ -1855,7 +1855,7 @@ const BookPage = () => (
             <div className="text-center">
               <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden">
                 <img 
-                  src="/ken-banta-team.jpg" 
+                  src="/ken-banta-headshot.jpg" 
                   alt="Ken Banta" 
                   className="w-full h-full object-cover"
                 />
