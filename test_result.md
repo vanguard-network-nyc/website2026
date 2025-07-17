@@ -389,7 +389,7 @@ frontend:
       - working: true
         agent: "main"
         comment: "ENHANCED: Added new BUSINESS DEVELOPMENT program to customized leadership programs section. Program focuses on adding value and creating stronger client relationships through customized Vanguard sessions with 10-25 clients/prospects. Includes professional styling with brand colors and comprehensive benefits breakdown. All four customized programs now display correctly with consistent design."
-  - task: "Update contact page with branded colors and consistent styling"
+  - task: "Replace book page content with authentic Vanguard Network content"
     implemented: true
     working: true
     file: "/app/frontend/src/components.js"
@@ -399,7 +399,7 @@ frontend:
     status_history:
       - working: true
         agent: "main"
-        comment: "Successfully updated contact page to match branded colors and styling of other pages. Applied brand colors #045184 and #00A8E1 throughout the page including title, form labels, buttons, and icons. Enhanced form with 'Interest Area' dropdown, improved placeholder text, and brand-colored focus states. Added 'Why Choose The Vanguard Network?' section with professional benefits list. Contact information now uses circular icon backgrounds with brand colors. Page now has consistent professional appearance that matches the rest of the website."
+        comment: "Successfully replaced book page content with authentic information from thevanguardnetwork.com/book. Updated with real book details: 'Seeing Around Corners: C-Suite Wisdom from America's Most Insightful Leaders' by Ken Banta. Included authentic description, key features, author biography, and actual Amazon purchase link. Applied consistent brand colors #045184 and #00A8E1 throughout. Created comprehensive sections including 'About the Book', 'What Makes This Book Unique', 'Meet the Author', and 'What You'll Gain'. Professional design with animations and branded styling matches other pages."
 
 metadata:
   created_by: "main_agent"
