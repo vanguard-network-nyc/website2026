@@ -389,6 +389,17 @@ frontend:
       - working: true
         agent: "main"
         comment: "ENHANCED: Added new BUSINESS DEVELOPMENT program to customized leadership programs section. Program focuses on adding value and creating stronger client relationships through customized Vanguard sessions with 10-25 clients/prospects. Includes professional styling with brand colors and comprehensive benefits breakdown. All four customized programs now display correctly with consistent design."
+  - task: "Align buttons in current leadership programs section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Successfully aligned all 5 'Learn More' buttons in the current leadership programs section. Implemented flexbox layout with 'flex flex-col h-full' on card containers, 'flex-grow' on description wrapper, and 'mt-auto' on buttons. All buttons now appear at the same horizontal level at the bottom of their respective cards, regardless of content length. Professional appearance maintained with consistent button positioning."
 
 metadata:
   created_by: "main_agent"
