@@ -389,7 +389,7 @@ frontend:
       - working: true
         agent: "main"
         comment: "ENHANCED: Added new BUSINESS DEVELOPMENT program to customized leadership programs section. Program focuses on adding value and creating stronger client relationships through customized Vanguard sessions with 10-25 clients/prospects. Includes professional styling with brand colors and comprehensive benefits breakdown. All four customized programs now display correctly with consistent design."
-  - task: "Replace book page content with authentic Vanguard Network content"
+  - task: "Add scroll indicator to hero section"
     implemented: true
     working: true
     file: "/app/frontend/src/components.js"
@@ -399,16 +399,7 @@ frontend:
     status_history:
       - working: true
         agent: "main"
-        comment: "Successfully replaced book page content with authentic information from thevanguardnetwork.com/book. Updated with real book details: 'Seeing Around Corners: C-Suite Wisdom from America's Most Insightful Leaders' by Ken Banta. Included authentic description, key features, author biography, and actual Amazon purchase link. Applied consistent brand colors #045184 and #00A8E1 throughout. Created comprehensive sections including 'About the Book', 'What Makes This Book Unique', 'Meet the Author', and 'What You'll Gain'. Professional design with animations and branded styling matches other pages."
-      - working: true
-        agent: "main"
-        comment: "ENHANCED: Added authentic book cover image from Google Drive. Downloaded and integrated the actual 'Seeing Around Corners' book cover showing the professional red/orange design with title and author name. Initially experienced cropping issues which were resolved by increasing height from h-96 to h-[500px] and changing from object-cover to object-contain. Book cover now displays at full size without cropping, showing the complete authentic design."
-      - working: true
-        agent: "main"
-        comment: "FINALIZED: Improved book cover presentation by placing it in a rounded container with slightly rounded corners (rounded-xl). Wrapped image in a div container with overflow-hidden to ensure clean rounded edges. Changed from object-contain to object-cover to eliminate white space at bottom. Book cover now fills the container completely while maintaining rounded corners and professional appearance."
-      - working: true
-        agent: "main"
-        comment: "ENHANCED AUTHOR SECTION: Added Ken Banta's professional headshot from Google Drive to the 'Meet the Author' section. Downloaded ken-banta-headshot.jpg and integrated it as a circular profile image. Initially sized at w-32 h-32 (128px) but increased to w-48 h-48 (192px) for better visual impact and prominence. The larger headshot now provides better visual balance and professional appearance in the author section."
+        comment: "Successfully added animated scroll indicator to the bottom of the hero section video background. Added ChevronDown icon import and implemented a professional scroll indicator with 'Scroll to explore' text and down arrow icon. Features smooth up-and-down animation with opacity changes, brand color (#00A8E1) styling, circular border design, and click functionality for smooth scrolling. Positioned at bottom-8 with proper z-index above video background. Enhances user experience by indicating more content is available below."
 
 metadata:
   created_by: "main_agent"
