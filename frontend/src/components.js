@@ -1389,7 +1389,7 @@ const ProgramsPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             >
               <div className="text-center mb-6">
                 <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
@@ -1399,9 +1399,11 @@ const ProgramsPage = () => (
                 <p className="text-sm font-semibold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
                 <p className="text-xs text-slate-500 mb-4">{program.format}</p>
               </div>
-              <p className="text-slate-600 leading-relaxed text-sm mb-6">{program.description}</p>
+              <div className="flex-grow">
+                <p className="text-slate-600 leading-relaxed text-sm mb-6">{program.description}</p>
+              </div>
               <button 
-                className="w-full text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90"
+                className="w-full text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 mt-auto"
                 style={{ backgroundColor: '#045184' }}
               >
                 Learn More
