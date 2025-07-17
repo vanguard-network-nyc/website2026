@@ -336,6 +336,10 @@ frontend:
       - working: true
         agent: "main"
         comment: "FINAL LAYOUT OPTIMIZATION: Significantly increased image height to h-80 (320px) for much more prominent visual impact. Drastically reduced white space by changing text margin to mb-2 and padding to p-4. The services section now has optimal visual balance with tall, impactful images and minimal white space between text and buttons."
+      - working: true
+        agent: "main"
+        comment: "FINALIZED: Successfully reduced white space between text and buttons by implementing negative margin (-mt-6) on buttons. This pulls the buttons upward closer to the text, eliminating excessive white space while maintaining button alignment. The layout now has optimal spacing with tall images (h-80), proper text positioning, and buttons positioned close to the text as requested."
+  
   - task: "Replace advisory page content with comprehensive website content"
     implemented: true
     working: true
