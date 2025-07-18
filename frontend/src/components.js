@@ -235,13 +235,33 @@ const Header = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link
-                    to={item.path}
-                    className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
+                  {item.dropdown ? (
+                    // Mobile dropdown
+                    <div className="py-2">
+                      <div className="text-white font-medium mb-2">{item.name}</div>
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-blue-300 hover:text-blue-100 py-1 pl-4 text-sm transition-colors duration-200"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    // Regular mobile link
+                    <Link
+                      to={item.path}
+                      className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div
