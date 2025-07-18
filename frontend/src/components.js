@@ -1393,7 +1393,7 @@ const NetworkingPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.8 }}
-        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+        className="mb-12"
       >
         <div className="text-center">
           <motion.div
@@ -1405,7 +1405,7 @@ const NetworkingPage = () => (
             <img
               src="/networking-section-image.jpg"
               alt="Networking Section"
-              className="max-w-full h-auto rounded-lg"
+              className="max-w-full h-auto rounded-xl"
               style={{ 
                 maxHeight: '600px',
                 border: 'none',
