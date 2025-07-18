@@ -1813,7 +1813,7 @@ const TeamPage = () => (
             {
               name: 'Dick Mosher',
               role: 'Senior Advisor',
-              image: '/ken-banta-team.jpg', // Using placeholder until we have Dick's image
+              image: '/dick-mosher-team.jpg',
               bio: 'Dick leverages five decades of corporate and legal experience to provide valuable insights as an advisor to Vanguard\'s members and clients. He has worked as a Chief Legal Officer (CLO), General Counsel (GC), or Associate General Counsel (AGC) for public and private corporations.',
               focus: 'Strategic Advisory & Corporate Leadership'
             },
