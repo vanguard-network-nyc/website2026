@@ -2397,6 +2397,7 @@ const Components = {
   AdvisoryPage,
   NetworkingPage,
   ProgramsPage,
+  TeamPage,
   ContactPage,
   BookPage
 };
