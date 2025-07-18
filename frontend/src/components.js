@@ -1715,11 +1715,11 @@ const TeamPage = () => (
           OUR TEAM
         </h1>
         <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-          Meet the experienced leadership team behind The Vanguard Network. Our team of seasoned executives and leadership experts brings decades of combined experience in guiding senior leaders and organizations to achieve high-performance results.
+          Meet the experienced leadership team behind The Vanguard Network. Our team brings decades of combined experience in executive leadership, strategic consulting, and organizational development to help senior leaders achieve breakthrough results.
         </p>
       </motion.div>
 
-      {/* Team Members */}
+      {/* Leadership Team */}
       <div className="mb-16">
         <motion.h2
           initial={{ y: 30, opacity: 0 }}
@@ -1731,35 +1731,28 @@ const TeamPage = () => (
           Leadership Team
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
             {
               name: 'Ken Banta',
-              role: 'CEO & Founder',
+              role: 'Founder & CEO',
               image: '/ken-banta-team.jpg',
-              bio: 'Ken Banta is the CEO and Founder of The Vanguard Network, with over 25 years of experience in executive leadership and organizational development. He has worked with Fortune 500 companies and emerging businesses to develop high-performance leadership teams and drive transformational change.',
-              expertise: ['Executive Leadership', 'Strategic Planning', 'Organizational Development', 'Change Management']
+              bio: 'Ken Banta is the Founder and CEO of The Vanguard Network. With over 25 years of experience in executive leadership and organizational development, Ken has dedicated his career to helping senior leaders unlock high-performance leadership and drive transformational change in their organizations.',
+              focus: 'Strategic Leadership & Organizational Transformation'
+            },
+            {
+              name: 'Tony Powe',
+              role: 'Co-Founder & Chief Operating Officer',
+              image: '/ken-banta-team.jpg', // Using placeholder until we have Tony's image
+              bio: 'Tony Powe serves as Co-Founder and Chief Operating Officer, overseeing operations, member services, and partner relations. His expertise in operational excellence and strategic partnerships ensures that The Vanguard Network delivers exceptional value to its members.',
+              focus: 'Operations & Member Services'
             },
             {
               name: 'Richard Hulme',
-              role: 'Senior Partner',
+              role: 'Managing Director',
               image: '/richard-hulme-team.jpg',
-              bio: 'Richard Hulme brings extensive experience in executive coaching and leadership development. With a background in corporate leadership and strategic consulting, he specializes in helping senior executives navigate complex challenges and achieve breakthrough results.',
-              expertise: ['Executive Coaching', 'Leadership Development', 'Strategic Consulting', 'Team Dynamics']
-            },
-            {
-              name: 'Garrick Isert',
-              role: 'Senior Partner',
-              image: '/garrick-isert-team.jpg',
-              bio: 'Garrick Isert is a Senior Partner with deep expertise in organizational transformation and leadership effectiveness. He has guided numerous executives through critical transitions and has a proven track record of delivering sustainable performance improvements.',
-              expertise: ['Organizational Transformation', 'Leadership Effectiveness', 'Executive Transitions', 'Performance Management']
-            },
-            {
-              name: 'Aileen Gonsalves',
-              role: 'Senior Partner',
-              image: '/aileen-gonsalves-team.jpg',
-              bio: 'Aileen Gonsalves is a Senior Partner specializing in executive development and high-performance team building. She brings a unique perspective on leadership challenges and has helped countless organizations build stronger, more effective leadership capabilities.',
-              expertise: ['Executive Development', 'Team Building', 'Leadership Assessment', 'Cultural Transformation']
+              bio: 'Richard Hulme is the Managing Director responsible for strategic direction and client satisfaction. With extensive experience in executive coaching and leadership development, Richard ensures that our programs deliver measurable results for our members.',
+              focus: 'Strategic Direction & Client Success'
             }
           ].map((member, index) => (
             <motion.div
@@ -1781,33 +1774,83 @@ const TeamPage = () => (
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
+                  />
+                </motion.div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                <p className="text-xs text-slate-500 mb-4 font-medium">{member.focus}</p>
+              </div>
+              
+              <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Senior Team */}
+        <motion.h3
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="text-3xl font-bold text-center mb-8"
+          style={{ color: '#045184' }}
+        >
+          Senior Leadership
+        </motion.h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: 'Garrick Isert',
+              role: 'Vice Principal of Executive Leadership Programs',
+              image: '/garrick-isert-team.jpg',
+              bio: 'Garrick Isert leads our Executive Leadership Programs, specifically focusing on programs for General Counsels and their teams. His expertise in legal leadership and organizational development makes him invaluable in guiding senior legal executives.',
+              focus: 'Executive Leadership Programs'
+            },
+            {
+              name: 'Dick Mosher',
+              role: 'Senior Advisor',
+              image: '/ken-banta-team.jpg', // Using placeholder until we have Dick's image
+              bio: 'Dick Mosher provides strategic insights from his extensive corporate and legal experience. As a Senior Advisor, he brings decades of wisdom in executive leadership and organizational strategy to our programs and client engagements.',
+              focus: 'Strategic Advisory & Corporate Leadership'
+            },
+            {
+              name: 'Hope Novak',
+              role: 'Executive Operations & Events Lead',
+              image: '/aileen-gonsalves-team.jpg', // Using placeholder until we have Hope's image
+              bio: 'Hope Novak leads our Executive Operations and Events, providing comprehensive administrative support and expert event planning. Her attention to detail and operational excellence ensures seamless execution of all Vanguard Network programs and events.',
+              focus: 'Operations & Event Management'
+            }
+          ].map((member, index) => (
+            <motion.div
+              key={member.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0 + index * 0.1, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="text-center mb-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
+                  className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
                     style={{
-                      objectPosition: member.name === 'Aileen Gonsalves' ? 'center 30%' : 'center'
+                      objectPosition: member.image.includes('aileen') ? 'center 30%' : 'center'
                     }}
                   />
                 </motion.div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{member.role}</p>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                <p className="text-xs text-slate-500 mb-4 font-medium">{member.focus}</p>
               </div>
               
-              <div className="space-y-4">
-                <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
-                
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-2">Expertise:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {member.expertise.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-2 py-1 text-xs rounded-full text-white"
-                        style={{ backgroundColor: '#045184' }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
             </motion.div>
           ))}
         </div>
@@ -1817,28 +1860,28 @@ const TeamPage = () => (
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.8 }}
+        transition={{ delay: 1.3, duration: 0.8 }}
         className="mb-16"
       >
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
           <h2 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>
-            Our Approach to Leadership Development
+            Our Commitment to Excellence
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Personalized Coaching',
-                description: 'We provide one-on-one coaching tailored to each executive\'s unique challenges and goals.',
-                icon: <Target size={48} />
-              },
-              {
-                title: 'Proven Methodologies',
-                description: 'Our approaches are based on decades of experience and proven results with top-tier organizations.',
+                title: 'Proven Experience',
+                description: 'Our team brings decades of combined experience in executive leadership, strategic consulting, and organizational development.',
                 icon: <Award size={48} />
               },
               {
-                title: 'Ongoing Support',
-                description: 'We maintain long-term relationships to ensure sustained growth and continuous improvement.',
+                title: 'Personalized Approach',
+                description: 'We tailor our programs and coaching to meet the unique needs and challenges of each leader and organization.',
+                icon: <Target size={48} />
+              },
+              {
+                title: 'Lasting Impact',
+                description: 'We focus on creating sustainable change and long-term success for our members and their organizations.',
                 icon: <Users size={48} />
               }
             ].map((approach, index) => (
@@ -1846,7 +1889,7 @@ const TeamPage = () => (
                 key={approach.title}
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.1 + index * 0.1, duration: 0.6 }}
+                transition={{ delay: 1.5 + index * 0.1, duration: 0.6 }}
                 className="text-center"
               >
                 <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
@@ -1864,18 +1907,18 @@ const TeamPage = () => (
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.3, duration: 0.8 }}
+        transition={{ delay: 1.7, duration: 0.8 }}
         className="text-center rounded-2xl p-12"
         style={{ backgroundColor: '#045184' }}
       >
         <h2 className="text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
         <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-          Connect with our experienced leadership team to explore how we can help you achieve your executive development goals and drive organizational transformation.
+          Connect with our experienced leadership team to explore how we can help you unlock high-performance leadership and drive transformational change in your organization.
         </p>
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
+          transition={{ delay: 1.9, duration: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
