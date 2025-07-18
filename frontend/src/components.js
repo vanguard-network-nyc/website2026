@@ -1747,7 +1747,7 @@ const TeamPage = () => (
             {
               name: 'Tony Powe',
               role: 'Co-Founder & COO',
-              image: '/ken-banta-team.jpg', // Using placeholder until we have Tony's image
+              image: '/tony-powe-team.jpg',
               bio: 'Tony leads operations, member services, and partner relations. He has 30+ years of experience heading up operations and customer relations in eleven for- and non-profit organizations on three continents, many of them startups, and 6 of them as owner/founder.',
               focus: 'Operations & Member Services'
             },
