@@ -412,6 +412,9 @@ frontend:
       - working: true
         agent: "main"
         comment: "Successfully replaced video background with image background from Google Drive. Downloaded hero-background.jpg (5.1MB) featuring professional network/connection theme with blue geometric shapes and connecting lines. Updated Hero component to use image instead of video while preserving all existing animations, scroll indicator, overlay, and functionality. Image background perfectly matches The Vanguard Network's branding and provides clean, modern appearance."
+      - working: true
+        agent: "main"
+        comment: "ENHANCED: Darkened the image background by increasing overlay opacity from 60%/40%/60% to 70%/50%/70%. This provides better text contrast and a more sophisticated, professional appearance while maintaining all existing functionality and visual elements."
 
   - task: "Add subtle animations to pages (advisory, networking, programs, contact, book)"
     implemented: true
