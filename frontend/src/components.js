@@ -1741,21 +1741,21 @@ const TeamPage = () => (
               name: 'Ken Banta',
               role: 'Founder & CEO',
               image: '/ken-banta-new.jpg',
-              bio: 'Ken Banta is the Founder and CEO of The Vanguard Network. With over 25 years of experience in executive leadership and organizational development, Ken has dedicated his career to helping senior leaders unlock high-performance leadership and drive transformational change in their organizations.',
-              focus: 'Strategic Leadership & Organizational Transformation'
+              bio: 'Ken sets the overall direction of The Vanguard Network (TVN) and how it operates to benefit members and clients. He launched TVN in 2014, and nurtured its growth from periodic meetings of healthcare leaders to today\'s organization supporting multiple networks of C-suite leaders. Ken graduated from Amherst College and attended Oxford University as a Rhodes Scholar.',
+              focus: 'Strategic Leadership & Organizational Development'
             },
             {
               name: 'Tony Powe',
-              role: 'Co-Founder & Chief Operating Officer',
+              role: 'Co-Founder & COO',
               image: '/ken-banta-team.jpg', // Using placeholder until we have Tony's image
-              bio: 'Tony Powe serves as Co-Founder and Chief Operating Officer, overseeing operations, member services, and partner relations. His expertise in operational excellence and strategic partnerships ensures that The Vanguard Network delivers exceptional value to its members.',
+              bio: 'Tony leads operations, member services, and partner relations. He has 30+ years of experience heading up operations and customer relations in eleven for- and non-profit organizations on three continents, many of them startups, and 6 of them as owner/founder.',
               focus: 'Operations & Member Services'
             },
             {
               name: 'Richard Hulme',
               role: 'Managing Director',
               image: '/richard-hulme-new.jpg',
-              bio: 'Richard Hulme is the Managing Director responsible for strategic direction and client satisfaction. With extensive experience in executive coaching and leadership development, Richard ensures that our programs deliver measurable results for our members.',
+              bio: 'Richard is responsible for providing strategic direction for Vanguard\'s service offerings with a focus on high-quality execution and client satisfaction. During his 25+ years in strategy consulting, practice operations, and organizational effectiveness, he has worked as a chief-of-staff for the PwC Board chair.',
               focus: 'Strategic Direction & Client Success'
             }
           ].map((member, index) => (
@@ -1790,7 +1790,7 @@ const TeamPage = () => (
           ))}
         </div>
 
-        {/* Senior Team */}
+        {/* Senior Leadership */}
         <motion.h3
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -1801,27 +1801,27 @@ const TeamPage = () => (
           Senior Leadership
         </motion.h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
             {
               name: 'Garrick Isert',
-              role: 'Vice Principal of Executive Leadership Programs',
+              role: 'Vice Principal, Executive Leadership Programs',
               image: '/garrick-isert-team.jpg',
-              bio: 'Garrick Isert leads our Executive Leadership Programs, specifically focusing on programs for General Counsels and their teams. His expertise in legal leadership and organizational development makes him invaluable in guiding senior legal executives.',
+              bio: 'Garrick is responsible for leading and facilitating programs for General Counsels and their teams with a focus on lawyers as leaders. He has over 20 years of experience in corporate, management consulting, peer networks, executive coaching and leadership development.',
               focus: 'Executive Leadership Programs'
             },
             {
               name: 'Dick Mosher',
               role: 'Senior Advisor',
               image: '/ken-banta-team.jpg', // Using placeholder until we have Dick's image
-              bio: 'Dick Mosher provides strategic insights from his extensive corporate and legal experience. As a Senior Advisor, he brings decades of wisdom in executive leadership and organizational strategy to our programs and client engagements.',
+              bio: 'Dick leverages five decades of corporate and legal experience to provide valuable insights as an advisor to Vanguard\'s members and clients. He has worked as a Chief Legal Officer (CLO), General Counsel (GC), or Associate General Counsel (AGC) for public and private corporations.',
               focus: 'Strategic Advisory & Corporate Leadership'
             },
             {
               name: 'Hope Novak',
               role: 'Executive Operations & Events Lead',
               image: '/aileen-gonsalves-team.jpg', // Using placeholder until we have Hope's image
-              bio: 'Hope Novak leads our Executive Operations and Events, providing comprehensive administrative support and expert event planning. Her attention to detail and operational excellence ensures seamless execution of all Vanguard Network programs and events.',
+              bio: 'Hope is responsible for providing high-level administrative support to our CEO Ken Banta. She is also responsible for overseeing and planning events, driving new business, and strengthening Vanguard\'s unique culture.',
               focus: 'Operations & Event Management'
             }
           ].map((member, index) => (
@@ -1847,6 +1847,72 @@ const TeamPage = () => (
                     style={{
                       objectPosition: member.image.includes('aileen') ? 'center 30%' : 'center'
                     }}
+                  />
+                </motion.div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                <p className="text-xs text-slate-500 mb-4 font-medium">{member.focus}</p>
+              </div>
+              
+              <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Content & Media Team */}
+        <motion.h3
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
+          className="text-3xl font-bold text-center mb-8"
+          style={{ color: '#045184' }}
+        >
+          Content & Media Team
+        </motion.h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              name: 'James Pallot',
+              role: 'Content Director',
+              image: '/ken-banta-team.jpg', // Using placeholder until we have James's image
+              bio: 'Jamie is responsible for the overall quality and direction of Vanguard content, including blog posts, interviews, and newsletters. He has over 25 years experience in media, having held senior editorial posts at NewsCorp, Time Inc., Microsoft and Condé Nast.',
+              focus: 'Content Strategy & Editorial Direction'
+            },
+            {
+              name: 'Connor Payne',
+              role: 'Manager, Operations',
+              image: '/connor-payne.jpg',
+              bio: 'Connor is responsible for project management for Vanguard\'s wide array of events. He also directly assists the COO, Tony, with various internal initiatives. With 8 years of experience in consulting, sales, and startups, Connor has a proven track record of delivering value.',
+              focus: 'Project Management & Operations'
+            },
+            {
+              name: 'Ken Stone',
+              role: 'Media Director',
+              image: '/ken-banta-team.jpg', // Using placeholder until we have Ken Stone's image
+              bio: 'Ken is responsible for creating videos and podcasts from Vanguard events and also moderates Forums and other meetings. He spent 20 years in radio and television newsrooms, then taught full-time at the University of Minnesota for 7 years.',
+              focus: 'Media Production & Content Creation'
+            }
+          ].map((member, index) => (
+            <motion.div
+              key={member.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.5 + index * 0.1, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="text-center mb-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 1.7 + index * 0.1, duration: 0.5 }}
+                  className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
                   />
                 </motion.div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
