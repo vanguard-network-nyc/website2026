@@ -1421,7 +1421,7 @@ const NetworkingPage = () => (
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.8 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
         className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
       >
         <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">Monthly Leadership Updates</h2>
