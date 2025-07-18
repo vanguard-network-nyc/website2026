@@ -1875,7 +1875,7 @@ const TeamPage = () => (
             {
               name: 'James Pallot',
               role: 'Content Director',
-              image: '/ken-banta-team.jpg', // Using placeholder until we have James's image
+              image: '/james-pallot-team.jpg',
               bio: 'Jamie is responsible for the overall quality and direction of Vanguard content, including blog posts, interviews, and newsletters. He has over 25 years experience in media, having held senior editorial posts at NewsCorp, Time Inc., Microsoft and Condé Nast.',
               focus: 'Content Strategy & Editorial Direction'
             },
