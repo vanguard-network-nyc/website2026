@@ -1388,6 +1388,35 @@ const NetworkingPage = () => (
         </div>
       </motion.div>
 
+      {/* New Image Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
+        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+      >
+        <div className="text-center">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <img
+              src="/networking-section-image.jpg"
+              alt="Networking Section"
+              className="max-w-full h-auto rounded-lg"
+              style={{ 
+                maxHeight: '600px',
+                border: 'none',
+                boxShadow: 'none',
+                background: 'transparent'
+              }}
+            />
+          </motion.div>
+        </div>
+      </motion.div>
+
       {/* Monthly Leadership Updates */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
