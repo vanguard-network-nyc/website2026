@@ -372,14 +372,18 @@ const Hero = () => {
               <ArrowRight size={20} />
             </motion.button>
             
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
             >
-              OUR TEAM
-              <Users size={20} />
-            </motion.button>
+              <Link
+                to="/team"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                OUR TEAM
+                <Users size={20} />
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
