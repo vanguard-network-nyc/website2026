@@ -1740,7 +1740,7 @@ const TeamPage = () => (
             {
               name: 'Ken Banta',
               role: 'Founder & CEO',
-              image: '/ken-banta-team.jpg',
+              image: '/ken-banta-new.jpg',
               bio: 'Ken Banta is the Founder and CEO of The Vanguard Network. With over 25 years of experience in executive leadership and organizational development, Ken has dedicated his career to helping senior leaders unlock high-performance leadership and drive transformational change in their organizations.',
               focus: 'Strategic Leadership & Organizational Transformation'
             },
