@@ -156,14 +156,41 @@ const Header = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                className="relative group"
               >
-                <Link
-                  to={item.path}
-                  className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
-                </Link>
+                {item.dropdown ? (
+                  // Dropdown menu
+                  <div className="relative">
+                    <button className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group flex items-center">
+                      {item.name}
+                      <ChevronDown size={16} className="ml-1" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </button>
+                    {/* Dropdown content */}
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  // Regular link
+                  <Link
+                    to={item.path}
+                    className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                  >
+                    {item.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                  </Link>
+                )}
               </motion.div>
             ))}
             <motion.div
