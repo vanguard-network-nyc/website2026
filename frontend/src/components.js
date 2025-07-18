@@ -262,7 +262,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/new-hero-bg.jpg"
+          src={`/final-hero-bg.png?t=${Date.now()}`}
           alt="Hero background"
           className="absolute inset-0 w-full h-full object-cover"
         />
