@@ -401,6 +401,18 @@ frontend:
         agent: "main"
         comment: "Successfully added animated scroll indicator to the bottom of the hero section video background. Added ChevronDown icon import and implemented a professional scroll indicator with 'Scroll to explore' text and down arrow icon. Features smooth up-and-down animation with opacity changes, brand color (#00A8E1) styling, circular border design, and click functionality for smooth scrolling. Positioned at bottom-8 with proper z-index above video background. Enhances user experience by indicating more content is available below."
 
+  - task: "Replace video background with image background"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Successfully replaced video background with image background from Google Drive. Downloaded hero-background.jpg (5.1MB) featuring professional network/connection theme with blue geometric shapes and connecting lines. Updated Hero component to use image instead of video while preserving all existing animations, scroll indicator, overlay, and functionality. Image background perfectly matches The Vanguard Network's branding and provides clean, modern appearance."
+
   - task: "Add subtle animations to pages (advisory, networking, programs, contact, book)"
     implemented: true
     working: true
