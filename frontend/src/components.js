@@ -954,7 +954,7 @@ const AdvisoryPage = () => (
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
