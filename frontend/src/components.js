@@ -1889,7 +1889,7 @@ const TeamPage = () => (
             {
               name: 'Ken Stone',
               role: 'Media Director',
-              image: '/ken-banta-team.jpg', // Using placeholder until we have Ken Stone's image
+              image: '/ken-stone-team.jpg',
               bio: 'Ken is responsible for creating videos and podcasts from Vanguard events and also moderates Forums and other meetings. He spent 20 years in radio and television newsrooms, then taught full-time at the University of Minnesota for 7 years.',
               focus: 'Media Production & Content Creation'
             }
