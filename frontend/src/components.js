@@ -262,7 +262,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/hero-background-latest.jpg"
+          src="/hero-background.jpg"
           alt="Hero background"
           className="absolute inset-0 w-full h-full object-cover"
         />
