@@ -268,7 +268,7 @@ const Hero = () => {
         />
         
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-blue-900/70"></div>
       </div>
       
       {/* Content */}
