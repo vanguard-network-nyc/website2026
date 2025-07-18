@@ -1806,7 +1806,7 @@ const TeamPage = () => (
             {
               name: 'Garrick Isert',
               role: 'Vice Principal, Executive Leadership Programs',
-              image: '/garrick-isert-team.jpg',
+              image: '/garrick-isert-new.jpg',
               bio: 'Garrick is responsible for leading and facilitating programs for General Counsels and their teams with a focus on lawyers as leaders. He has over 20 years of experience in corporate, management consulting, peer networks, executive coaching and leadership development.',
               focus: 'Executive Leadership Programs'
             },
