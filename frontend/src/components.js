@@ -259,26 +259,13 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Fallback */}
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/hero-video-fallback.png"
+        <img
+          src="/hero-background.jpg"
+          alt="Hero background"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-          {/* Fallback image for browsers that don't support video */}
-          <img
-            src="/hero-video-fallback.png"
-            alt="Hero background fallback"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: -1 }}
-          />
-        </video>
+        />
         
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-blue-900/60"></div>
