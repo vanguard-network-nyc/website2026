@@ -16,6 +16,7 @@ const {
   AdvisoryPage,
   NetworkingPage,
   ProgramsPage,
+  TeamPage,
   ContactPage,
   BookPage
 } = Components;
