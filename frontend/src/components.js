@@ -1402,17 +1402,20 @@ const NetworkingPage = () => (
             transition={{ delay: 1.0, duration: 0.8 }}
             className="flex justify-center"
           >
-            <img
-              src="/networking-section-image.jpg"
-              alt="Networking Section"
-              className="max-w-full h-auto rounded-xl"
-              style={{ 
-                maxHeight: '600px',
-                border: 'none',
-                boxShadow: 'none',
-                background: 'transparent'
-              }}
-            />
+            <div className="rounded-xl overflow-hidden" style={{ maxWidth: '100%' }}>
+              <img
+                src="/networking-section-image.jpg"
+                alt="Networking Section"
+                className="max-w-full h-auto"
+                style={{ 
+                  maxHeight: '600px',
+                  border: 'none',
+                  boxShadow: 'none',
+                  background: 'transparent',
+                  display: 'block'
+                }}
+              />
+            </div>
           </motion.div>
         </div>
       </motion.div>
