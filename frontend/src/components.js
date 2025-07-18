@@ -943,8 +943,13 @@ const AdvisoryPage = () => (
               <img
                 src="/selected-advisory-engagements.jpg"
                 alt="Selected Advisory Engagements"
-                className="max-w-full h-auto rounded-lg shadow-md"
-                style={{ maxHeight: '600px' }}
+                className="max-w-full h-auto rounded-lg"
+                style={{ 
+                  maxHeight: '600px',
+                  border: 'none',
+                  boxShadow: 'none',
+                  background: 'transparent'
+                }}
               />
             </motion.div>
           </div>
