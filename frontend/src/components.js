@@ -1754,7 +1754,7 @@ const TeamPage = () => (
             {
               name: 'Richard Hulme',
               role: 'Managing Director',
-              image: '/richard-hulme-team.jpg',
+              image: '/richard-hulme-new.jpg',
               bio: 'Richard Hulme is the Managing Director responsible for strategic direction and client satisfaction. With extensive experience in executive coaching and leadership development, Richard ensures that our programs deliver measurable results for our members.',
               focus: 'Strategic Direction & Client Success'
             }
