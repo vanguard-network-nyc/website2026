@@ -106,6 +106,14 @@ const Header = () => {
     { name: 'ADVISORY', path: '/advisory' },
     { name: 'NETWORKING', path: '/networking' },
     { name: 'PROGRAMS', path: '/programs' },
+    { 
+      name: 'CONTENT', 
+      dropdown: [
+        { name: 'Articles', path: 'https://members.thevanguardnetwork.com/articles' },
+        { name: 'Podcasts', path: 'https://members.thevanguardnetwork.com/podcasts' },
+        { name: 'Videos', path: 'https://members.thevanguardnetwork.com/videos' }
+      ]
+    },
     { name: 'CONTACT', path: '/contact' },
     { name: 'BOOK', path: '/book' }
   ];
