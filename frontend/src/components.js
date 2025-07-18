@@ -1696,6 +1696,212 @@ const ProgramsPage = () => (
   </motion.div>
 );
 
+const TeamPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+  >
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16"
+      >
+        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+          OUR TEAM
+        </h1>
+        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          Meet the experienced leadership team behind The Vanguard Network. Our team of seasoned executives and leadership experts brings decades of combined experience in guiding senior leaders and organizations to achieve high-performance results.
+        </p>
+      </motion.div>
+
+      {/* Team Members */}
+      <div className="mb-16">
+        <motion.h2
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-4xl font-bold text-center mb-12"
+          style={{ color: '#045184' }}
+        >
+          Leadership Team
+        </motion.h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              name: 'Ken Banta',
+              role: 'CEO & Founder',
+              image: '/ken-banta-team.jpg',
+              bio: 'Ken Banta is the CEO and Founder of The Vanguard Network, with over 25 years of experience in executive leadership and organizational development. He has worked with Fortune 500 companies and emerging businesses to develop high-performance leadership teams and drive transformational change.',
+              expertise: ['Executive Leadership', 'Strategic Planning', 'Organizational Development', 'Change Management']
+            },
+            {
+              name: 'Richard Hulme',
+              role: 'Senior Partner',
+              image: '/richard-hulme-team.jpg',
+              bio: 'Richard Hulme brings extensive experience in executive coaching and leadership development. With a background in corporate leadership and strategic consulting, he specializes in helping senior executives navigate complex challenges and achieve breakthrough results.',
+              expertise: ['Executive Coaching', 'Leadership Development', 'Strategic Consulting', 'Team Dynamics']
+            },
+            {
+              name: 'Garrick Isert',
+              role: 'Senior Partner',
+              image: '/garrick-isert-team.jpg',
+              bio: 'Garrick Isert is a Senior Partner with deep expertise in organizational transformation and leadership effectiveness. He has guided numerous executives through critical transitions and has a proven track record of delivering sustainable performance improvements.',
+              expertise: ['Organizational Transformation', 'Leadership Effectiveness', 'Executive Transitions', 'Performance Management']
+            },
+            {
+              name: 'Aileen Gonsalves',
+              role: 'Senior Partner',
+              image: '/aileen-gonsalves-team.jpg',
+              bio: 'Aileen Gonsalves is a Senior Partner specializing in executive development and high-performance team building. She brings a unique perspective on leadership challenges and has helped countless organizations build stronger, more effective leadership capabilities.',
+              expertise: ['Executive Development', 'Team Building', 'Leadership Assessment', 'Cultural Transformation']
+            }
+          ].map((member, index) => (
+            <motion.div
+              key={member.name}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 + index * 0.1, duration: 0.8 }}
+              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="text-center mb-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                  className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    style={{
+                      objectPosition: member.name === 'Aileen Gonsalves' ? 'center 30%' : 'center'
+                    }}
+                  />
+                </motion.div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{member.role}</p>
+              </div>
+              
+              <div className="space-y-4">
+                <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
+                
+                <div>
+                  <h4 className="font-semibold text-slate-900 mb-2">Expertise:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {member.expertise.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="px-2 py-1 text-xs rounded-full text-white"
+                        style={{ backgroundColor: '#045184' }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Our Approach */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
+        className="mb-16"
+      >
+        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+          <h2 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>
+            Our Approach to Leadership Development
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Personalized Coaching',
+                description: 'We provide one-on-one coaching tailored to each executive\'s unique challenges and goals.',
+                icon: <Target size={48} />
+              },
+              {
+                title: 'Proven Methodologies',
+                description: 'Our approaches are based on decades of experience and proven results with top-tier organizations.',
+                icon: <Award size={48} />
+              },
+              {
+                title: 'Ongoing Support',
+                description: 'We maintain long-term relationships to ensure sustained growth and continuous improvement.',
+                icon: <Users size={48} />
+              }
+            ].map((approach, index) => (
+              <motion.div
+                key={approach.title}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.1 + index * 0.1, duration: 0.6 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="text-white">{approach.icon}</div>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{approach.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{approach.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Call to Action */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 1.3, duration: 0.8 }}
+        className="text-center rounded-2xl p-12"
+        style={{ backgroundColor: '#045184' }}
+      >
+        <h2 className="text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
+        <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          Connect with our experienced leadership team to explore how we can help you achieve your executive development goals and drive organizational transformation.
+        </p>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
+        >
+          <Link
+            to="/contact"
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
+            style={{ color: '#045184' }}
+          >
+            Get Started Today
+            <ArrowRight size={20} />
+          </Link>
+          <Link
+            to="/advisory"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
+            style={{ borderColor: 'white' }}
+            onMouseEnter={(e) => e.target.style.color = '#045184'}
+            onMouseLeave={(e) => e.target.style.color = 'white'}
+          >
+            Learn About Our Services
+            <Target size={20} />
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
+  </motion.div>
+);
+
 const ContactPage = () => (
   <motion.div
     initial={{ opacity: 0 }}
