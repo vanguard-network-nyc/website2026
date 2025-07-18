@@ -1820,7 +1820,7 @@ const TeamPage = () => (
             {
               name: 'Hope Novak',
               role: 'Executive Operations & Events Lead',
-              image: '/aileen-gonsalves-team.jpg', // Using placeholder until we have Hope's image
+              image: '/hope-novak-team.jpg',
               bio: 'Hope is responsible for providing high-level administrative support to our CEO Ken Banta. She is also responsible for overseeing and planning events, driving new business, and strengthening Vanguard\'s unique culture.',
               focus: 'Operations & Event Management'
             }
