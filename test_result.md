@@ -455,6 +455,18 @@ frontend:
         agent: "main"
         comment: "FINALIZED: All 6 remaining team member images successfully downloaded and integrated: Tony Powe (/tony-powe-team.jpg), Dick Mosher (/dick-mosher-team.jpg), Hope Novak (/hope-novak-team.jpg), James Pallot (/james-pallot-team.jpg), Ken Stone (/ken-stone-team.jpg), and Garrick Isert (/garrick-isert-new.jpg). All 9 team members now display with their authentic professional headshots. Team page is now 100% complete with all required images, content, animations, and functionality working perfectly."
 
+  - task: "Add Selected Advisory Engagements section to Advisory page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "COMPLETED: Successfully added new 'Selected Advisory Engagements' section to Advisory page, positioned between Coaching and Sounding Board sections as requested. Downloaded and integrated company logos image (2.9MB PNG) from Google Drive. Section includes professional title, image with rounded corners (rounded-lg), proper animations (delay 0.9s), and maintains design consistency with other sections. Image displays various client company logos including AbbVie, Dassault Systèmes, MSD, GSK, Workiva, MassMutual, Community Health Network, Lighthouse Guild, Silence Therapeutics, Radius, MediData, Community Solutions, Tenneco. Screenshot verification confirms proper placement and functionality."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
