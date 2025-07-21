@@ -375,7 +375,7 @@ const Hero = () => {
             >
               <Link
                 to="/team"
-                className="group bg-transparent border-3 border-white/80 text-white hover:bg-white hover:text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden"
+                className="group bg-transparent border-3 border-white text-white hover:bg-white hover:text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden outline outline-2 outline-[#00A8E1]"
               >
                 <span className="flex items-center gap-3">
                   OUR TEAM
