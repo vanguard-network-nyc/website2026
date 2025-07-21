@@ -1655,7 +1655,7 @@ const ProgramsPage = () => (
               whileHover={{ scale: 1.02, y: -8 }}
             >
               {/* Program Image */}
-              <div className="relative h-48 overflow-hidden rounded-t-2xl">
+              <div className="relative h-64 overflow-hidden rounded-t-2xl">
                 <img
                   src={program.image}
                   alt={program.name}
