@@ -776,39 +776,9 @@ const ProgramsSection = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.button>
-          
-          {/* Program Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-          >
-            {[
-              { label: "Program Duration", value: "6-12 Months", icon: <Users size={28} /> },
-              { label: "Participants", value: "Select Groups", icon: <Target size={28} /> },
-              { label: "Focus Area", value: "Leadership Challenges", icon: <Award size={28} /> }
-            ].map((feature, index) => (
-              <motion.div
-                key={feature.label}
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
-              >
-                <div className="flex items-center justify-center mb-4 text-white">
-                  {feature.icon}
-                </div>
-                <div className="text-2xl font-bold text-white mb-2">{feature.value}</div>
-                <div className="text-white/80 font-medium">{feature.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
-    </section>
+    </section>>
   );
 };
 
