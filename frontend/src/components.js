@@ -1598,7 +1598,8 @@ const ProgramsPage = () => (
               icon: <Shield size={28} />,
               category: "Legal",
               level: "Executive",
-              status: "Active"
+              status: "Active",
+              image: "/gc-exchange-program.jpg"
             },
             {
               name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
@@ -1608,7 +1609,8 @@ const ProgramsPage = () => (
               icon: <BookOpen size={28} />,
               category: "Legal",
               level: "Senior",
-              status: "Active"
+              status: "Active",
+              image: "/senior-counsel-exchange-program.jpg"
             },
             {
               name: "LIFE SCIENCES CEO EXCHANGES",
@@ -1618,7 +1620,8 @@ const ProgramsPage = () => (
               icon: <Award size={28} />,
               category: "Life Sciences",
               level: "Executive",
-              status: "Active"
+              status: "Active",
+              image: "/life-sciences-ceo-program.jpg"
             },
             {
               name: "NEXT GENERATION GC",
@@ -1628,7 +1631,8 @@ const ProgramsPage = () => (
               icon: <Target size={28} />,
               category: "Legal",
               level: "Emerging",
-              status: "Enrollment Open"
+              status: "Enrollment Open",
+              image: "/next-generation-gc-program.jpg"
             },
             {
               name: "NEW LEADERS PROGRAM",
@@ -1638,7 +1642,8 @@ const ProgramsPage = () => (
               icon: <Users size={28} />,
               category: "General",
               level: "Entry",
-              status: "Enrollment Open"
+              status: "Enrollment Open",
+              image: "/new-leaders-program.jpg"
             }
           ].map((program, index) => (
             <motion.div
@@ -1646,69 +1651,83 @@ const ProgramsPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
+              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
               whileHover={{ scale: 1.02, y: -8 }}
-              style={{ 
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%)'
-              }}
             >
-              {/* Status Badge */}
-              <div className="absolute top-4 right-4">
-                <span className={`px-3 py-1 text-xs font-bold rounded-full ${
-                  program.status === 'Active' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-blue-100 text-blue-800'
-                }`}>
-                  {program.status}
-                </span>
+              {/* Program Image */}
+              <div className="relative h-48 overflow-hidden rounded-t-2xl">
+                <img
+                  src={program.image}
+                  alt={program.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Status Badge */}
+                <div className="absolute top-4 right-4">
+                  <span className={`px-3 py-1 text-xs font-bold rounded-full backdrop-blur-sm ${
+                    program.status === 'Active' 
+                      ? 'bg-green-500/90 text-white' 
+                      : 'bg-blue-500/90 text-white'
+                  }`}>
+                    {program.status}
+                  </span>
+                </div>
+
+                {/* Program Icon Overlay */}
+                <div className="absolute bottom-4 left-4">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                    className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:shadow-xl transition-all duration-300" 
+                    style={{ 
+                      background: program.category === 'Legal' 
+                        ? 'rgba(4, 81, 132, 0.9)'
+                        : program.category === 'Life Sciences'
+                        ? 'rgba(0, 168, 225, 0.9)'
+                        : 'rgba(99, 102, 241, 0.9)'
+                    }}
+                  >
+                    <div className="text-white group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
+                  </motion.div>
+                </div>
               </div>
 
-              {/* Program Header */}
-              <div className="text-center mb-8">
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                  className="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300" 
+              {/* Program Content */}
+              <div className="p-8 flex-1 flex flex-col">
+                {/* Program Header */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">{program.name}</h3>
+                  <p className="text-sm font-bold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
+                  <div className="flex items-center justify-start gap-4 text-xs text-slate-500 mb-4">
+                    <span className="bg-slate-100 px-3 py-1 rounded-full">{program.category}</span>
+                    <span className="bg-slate-100 px-3 py-1 rounded-full">{program.level}</span>
+                  </div>
+                  <p className="text-sm text-slate-600 font-medium bg-slate-50 px-4 py-2 rounded-lg">{program.format}</p>
+                </div>
+
+                {/* Program Description */}
+                <div className="flex-grow mb-8">
+                  <p className="text-slate-600 leading-relaxed font-medium">{program.description}</p>
+                </div>
+
+                {/* Action Button */}
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group/btn w-full text-white px-6 py-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden"
                   style={{ 
-                    background: program.category === 'Legal' 
-                      ? 'linear-gradient(135deg, #045184 0%, #0369a1 100%)'
-                      : program.category === 'Life Sciences'
-                      ? 'linear-gradient(135deg, #00A8E1 0%, #0284c7 100%)'
-                      : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)'
+                    background: 'linear-gradient(135deg, #045184 0%, #00A8E1 100%)',
                   }}
                 >
-                  <div className="text-white group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
-                </motion.div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">{program.name}</h3>
-                <p className="text-sm font-bold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
-                <div className="flex items-center justify-center gap-4 text-xs text-slate-500 mb-4">
-                  <span className="bg-slate-100 px-3 py-1 rounded-full">{program.category}</span>
-                  <span className="bg-slate-100 px-3 py-1 rounded-full">{program.level}</span>
-                </div>
-                <p className="text-sm text-slate-600 font-medium bg-slate-50 px-4 py-2 rounded-lg">{program.format}</p>
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Learn More
+                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#00A8E1] to-[#045184] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                </motion.button>
               </div>
-
-              {/* Program Description */}
-              <div className="flex-grow mb-8">
-                <p className="text-slate-600 leading-relaxed font-medium">{program.description}</p>
-              </div>
-
-              {/* Action Button */}
-              <motion.button 
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group/btn w-full text-white px-6 py-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden"
-                style={{ 
-                  background: 'linear-gradient(135deg, #045184 0%, #00A8E1 100%)',
-                }}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Learn More
-                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00A8E1] to-[#045184] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-              </motion.button>
             </motion.div>
           ))}
         </div>
