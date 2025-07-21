@@ -1540,20 +1540,20 @@ const ProgramsPage = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
   >
     {/* Hero Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
           LEADERSHIP PROGRAMS
         </h1>
-        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium">
           Comprehensive development programs designed to accelerate leadership growth at every level through specialized exchanges and customized curricula.
         </p>
       </motion.div>
@@ -1567,51 +1567,78 @@ const ProgramsPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="mb-20"
+        className="mb-24"
       >
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Current Leadership Programs</h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Ongoing programs designed for specific leadership roles and industries, featuring regular exchanges and development opportunities.
-          </p>
+        {/* Section Header with Gradient Background */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
+          <div className="relative py-16 px-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                <Award size={24} className="text-white" />
+              </div>
+              <span className="px-4 py-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white text-sm font-bold rounded-full tracking-wider">
+                ONGOING PROGRAMS
+              </span>
+            </div>
+            <h2 className="text-5xl font-bold text-slate-900 mb-8 leading-tight">Current Leadership Programs</h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
+              Ongoing programs designed for specific leadership roles and industries, featuring regular exchanges and development opportunities.
+            </p>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {[
             {
               name: "GC EXCHANGE",
               description: "A highly pragmatic leadership problem-solving group that meets monthly, moderated by Vanguard. Monthly, in virtual format; face-to-face sessions occur at our bi-annual Forums.",
               format: "Monthly Virtual + Bi-annual In-Person",
               audience: "General Counsel",
-              icon: <Shield size={32} />
+              icon: <Shield size={28} />,
+              category: "Legal",
+              level: "Executive",
+              status: "Active"
             },
             {
               name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
               description: "An exchange for GCs' immediate reports to compare notes and solve problems together. Monthly, in virtual format.",
               format: "Monthly Virtual",
               audience: "Senior In-House Counsel",
-              icon: <BookOpen size={32} />
+              icon: <BookOpen size={28} />,
+              category: "Legal",
+              level: "Senior",
+              status: "Active"
             },
             {
               name: "LIFE SCIENCES CEO EXCHANGES",
               description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
               format: "Quarterly Virtual + Bi-annual In-Person",
               audience: "Life Sciences CEOs",
-              icon: <Award size={32} />
+              icon: <Award size={28} />,
+              category: "Life Sciences",
+              level: "Executive",
+              status: "Active"
             },
             {
               name: "NEXT GENERATION GC",
               description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
               format: "6-Month Program",
               audience: "Future General Counsel",
-              icon: <Target size={32} />
+              icon: <Target size={28} />,
+              category: "Legal",
+              level: "Emerging",
+              status: "Enrollment Open"
             },
             {
               name: "NEW LEADERS PROGRAM",
               description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
               format: "6-12 Month Program",
               audience: "Graduate Students & New Hires",
-              icon: <Users size={32} />
+              icon: <Users size={28} />,
+              category: "General",
+              level: "Entry",
+              status: "Enrollment Open"
             }
           ].map((program, index) => (
             <motion.div
@@ -1619,32 +1646,69 @@ const ProgramsPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
-              whileHover={{ scale: 1.02, y: -5 }}
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
+              whileHover={{ scale: 1.02, y: -8 }}
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.9) 100%)'
+              }}
             >
-              <div className="text-center mb-6">
+              {/* Status Badge */}
+              <div className="absolute top-4 right-4">
+                <span className={`px-3 py-1 text-xs font-bold rounded-full ${
+                  program.status === 'Active' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-blue-100 text-blue-800'
+                }`}>
+                  {program.status}
+                </span>
+              </div>
+
+              {/* Program Header */}
+              <div className="text-center mb-8">
                 <motion.div 
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                  className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" 
-                  style={{ backgroundColor: '#00A8E1' }}
+                  className="w-20 h-20 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300" 
+                  style={{ 
+                    background: program.category === 'Legal' 
+                      ? 'linear-gradient(135deg, #045184 0%, #0369a1 100%)'
+                      : program.category === 'Life Sciences'
+                      ? 'linear-gradient(135deg, #00A8E1 0%, #0284c7 100%)'
+                      : 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)'
+                  }}
                 >
-                  <div className="text-white">{program.icon}</div>
+                  <div className="text-white group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
                 </motion.div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{program.name}</h3>
-                <p className="text-sm font-semibold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
-                <p className="text-xs text-slate-500 mb-4">{program.format}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">{program.name}</h3>
+                <p className="text-sm font-bold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
+                <div className="flex items-center justify-center gap-4 text-xs text-slate-500 mb-4">
+                  <span className="bg-slate-100 px-3 py-1 rounded-full">{program.category}</span>
+                  <span className="bg-slate-100 px-3 py-1 rounded-full">{program.level}</span>
+                </div>
+                <p className="text-sm text-slate-600 font-medium bg-slate-50 px-4 py-2 rounded-lg">{program.format}</p>
               </div>
-              <div className="flex-grow">
-                <p className="text-slate-600 leading-relaxed text-sm mb-6">{program.description}</p>
+
+              {/* Program Description */}
+              <div className="flex-grow mb-8">
+                <p className="text-slate-600 leading-relaxed font-medium">{program.description}</p>
               </div>
-              <button 
-                className="w-full text-white px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 mt-auto"
-                style={{ backgroundColor: '#045184' }}
+
+              {/* Action Button */}
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group/btn w-full text-white px-6 py-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden"
+                style={{ 
+                  background: 'linear-gradient(135deg, #045184 0%, #00A8E1 100%)',
+                }}
               >
-                Learn More
-              </button>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Learn More
+                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#00A8E1] to-[#045184] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+              </motion.button>
             </motion.div>
           ))}
         </div>
@@ -1655,13 +1719,25 @@ const ProgramsPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-        className="mb-16"
+        className="mb-20"
       >
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Customized Leadership Programs</h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Tailored programs designed specifically for your organization's unique needs and leadership challenges.
-          </p>
+        {/* Section Header with Different Gradient */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00A8E1]/5 to-[#045184]/5 rounded-3xl transform skew-y-1"></div>
+          <div className="relative py-16 px-8">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#00A8E1] to-[#045184] flex items-center justify-center">
+                <Target size={24} className="text-white" />
+              </div>
+              <span className="px-4 py-2 bg-gradient-to-r from-[#00A8E1] to-[#045184] text-white text-sm font-bold rounded-full tracking-wider">
+                CUSTOM SOLUTIONS
+              </span>
+            </div>
+            <h2 className="text-5xl font-bold text-slate-900 mb-8 leading-tight">Customized Leadership Programs</h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
+              Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+            </p>
+          </div>
         </div>
         
         <div className="space-y-8">
