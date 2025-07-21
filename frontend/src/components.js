@@ -973,25 +973,47 @@ const AdvisoryPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-12"
+        className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16 relative overflow-hidden"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Background Pattern */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mb-6"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mb-6">
+                <Target size={32} className="text-white" />
+              </div>
+            </motion.div>
+            
+            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
               Real-World Leadership Development
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
               This work is based on decades of project experience working with top leadership on advisory and development assignments in large multinationals and global service firms and dozens of individual advisory engagements.
             </p>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-slate-600 leading-relaxed text-lg font-medium">
               TVN has a robust network of current and former CEOs and C-suite leaders who interface regularly with TVN CEO Ken Banta and his senior colleagues via face-to-face forums, virtual meetings, and webinars. This group of more than 200 CEOs and C-suite executives participates throughout the year in a robust series of catalyzing conversations.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-blue-50 to-slate-100 rounded-xl p-8">
-            <div className="text-center">
-              <div className="text-6xl font-bold mb-4" style={{ color: '#00A8E1' }}>200+</div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">CEOs & C-Suite Executives</h3>
-              <p className="text-slate-600">In our network participating in ongoing catalyzing conversations</p>
+          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
+            <div className="text-center relative z-10">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
+              >
+                200+
+              </motion.div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">CEOs & C-Suite Executives</h3>
+              <p className="text-slate-600 font-medium text-lg">In our network participating in ongoing catalyzing conversations</p>
             </div>
           </div>
         </div>
@@ -1002,22 +1024,87 @@ const AdvisoryPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="mb-16"
+        className="mb-20"
       >
-        <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">
-          Three Ways We Work With Executives
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Section Header */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
+          <div className="relative py-12 px-8">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mx-auto mb-6"
+            >
+              <Users size={32} className="text-white" />
+            </motion.div>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">
+              Three Ways We Work With Executives
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
+              Our comprehensive approach combines coaching, strategic guidance, and peer learning to accelerate leadership development.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               title: 'Coaching Relationship',
               description: 'Direct one-on-one coaching to develop leadership capabilities and effectiveness.',
-              icon: <Target size={48} />
+              icon: <Target size={48} />,
+              gradient: 'from-[#045184] to-[#0369a1]',
+              bgGradient: 'from-[#045184]/5 to-[#0369a1]/5'
             },
             {
               title: 'Sounding Board',
               description: 'Strategic guidance and decision-making support for leadership challenges.',
-              icon: <Users size={48} />
+              icon: <Users size={48} />,
+              gradient: 'from-[#00A8E1] to-[#0284c7]',
+              bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5'
+            },
+            {
+              title: 'Peer Learning',
+              description: 'Collaborative learning experiences with other executives facing similar challenges.',
+              icon: <Network size={48} />,
+              gradient: 'from-[#6366f1] to-[#8b5cf6]',
+              bgGradient: 'from-[#6366f1]/5 to-[#8b5cf6]/5'
+            }
+          ].map((approach, index) => (
+            <motion.div
+              key={approach.title}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
+              className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 relative overflow-hidden"
+              whileHover={{ y: -8 }}
+            >
+              {/* Background Pattern */}
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${approach.bgGradient} rounded-full transform translate-x-16 -translate-y-16`}></div>
+              
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
+                  className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${approach.gradient} flex items-center justify-center mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                >
+                  <div className="text-white group-hover:scale-110 transition-transform duration-300">
+                    {approach.icon}
+                  </div>
+                </motion.div>
+                
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 group-hover:text-[#045184] transition-colors duration-300">
+                  {approach.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed font-medium text-lg">
+                  {approach.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
             },
             {
               title: 'Next Generation Leader',
