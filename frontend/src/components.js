@@ -3002,7 +3002,8 @@ const Components = {
   ProgramsPage,
   TeamPage,
   ContactPage,
-  BookPage
+  BookPage,
+  ContentPage
 };
 
 export default Components;
