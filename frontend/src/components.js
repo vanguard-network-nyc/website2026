@@ -638,7 +638,7 @@ const VideoTestimonial = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="mt-6 text-center"
+                  className="mt-6 text-center mb-8"
                 >
                   <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184]/10 to-[#00A8E1]/10 px-6 py-3 rounded-full">
                     <Video size={20} className="text-[#045184]" />
