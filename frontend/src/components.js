@@ -2731,6 +2731,262 @@ const BookPage = () => (
   </motion.div>
 );
 
+const ContentPage = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
+  >
+    {/* Hero Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+          CONTENT
+        </h1>
+        <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium">
+          Discover our comprehensive collection of leadership insights through articles, podcasts, and videos created by Vanguard faculty, members, and associates.
+        </p>
+      </motion.div>
+    </div>
+
+    {/* Main Content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Content Sections */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20"
+      >
+        {/* Articles Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#045184]/20 relative overflow-hidden"
+          whileHover={{ y: -8 }}
+        >
+          {/* Background Pattern */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-16 -translate-y-16"></div>
+          
+          <div className="relative z-10">
+            {/* Icon */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="w-20 h-20 rounded-2xl bg-gradient-to-r from-[#045184] to-[#0369a1] flex items-center justify-center mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+            >
+              <Newspaper size={40} className="text-white" />
+            </motion.div>
+
+            {/* Content */}
+            <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#045184] transition-colors duration-300">
+              Articles
+            </h2>
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+              Vanguard faculty, members, and associates create outstanding contributions to leadership learning–from how to work with a board, to knowing oneself as a leader.
+            </p>
+
+            {/* Button */}
+            <motion.a
+              href="https://members.thevanguardnetwork.com/articles"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#0369a1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                Read Articles
+                <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0369a1] to-[#045184] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+          </div>
+        </motion.div>
+
+        {/* Podcasts Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
+          whileHover={{ y: -8 }}
+        >
+          {/* Background Pattern */}
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#00A8E1]/5 to-[#0284c7]/5 rounded-full transform -translate-x-12 translate-y-12"></div>
+          
+          <div className="relative z-10">
+            {/* Icon */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="w-20 h-20 rounded-2xl bg-gradient-to-r from-[#00A8E1] to-[#0284c7] flex items-center justify-center mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+            >
+              <MessageCircle size={40} className="text-white" />
+            </motion.div>
+
+            {/* Content */}
+            <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#00A8E1] transition-colors duration-300">
+              Podcasts
+            </h2>
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+              Sometimes, voice is the best way to learn new ideas. Our podcasts bring alive important dialogues around leadership and transformation–all featuring proven leaders and leadership experts, talking about real-world challenges. Jump into one, and up your leadership game!
+            </p>
+
+            {/* Button */}
+            <motion.a
+              href="https://members.thevanguardnetwork.com/podcasts"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#00A8E1] to-[#0284c7] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                Listen Now
+                <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0284c7] to-[#00A8E1] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+          </div>
+        </motion.div>
+
+        {/* Videos Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#6366f1]/20 relative overflow-hidden"
+          whileHover={{ y: -8 }}
+        >
+          {/* Background Pattern */}
+          <div className="absolute top-0 left-1/2 w-28 h-28 bg-gradient-to-bl from-[#6366f1]/5 to-[#8b5cf6]/5 rounded-full transform -translate-x-14 -translate-y-14"></div>
+          
+          <div className="relative z-10">
+            {/* Icon */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              className="w-20 h-20 rounded-2xl bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] flex items-center justify-center mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+            >
+              <Video size={40} className="text-white" />
+            </motion.div>
+
+            {/* Content */}
+            <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#6366f1] transition-colors duration-300">
+              Videos
+            </h2>
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+              At Vanguard, we work with top executives across sectors on building high-performance leadership for themselves, and in their teams. Our approach is real world, pragmatic, and outcome-focused. The following videos tell that story.
+            </p>
+
+            {/* Button */}
+            <motion.a
+              href="https://members.thevanguardnetwork.com/videos"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                Watch Videos
+                <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] to-[#6366f1] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Enhanced Call to Action */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="text-center rounded-3xl p-16 relative overflow-hidden"
+        style={{ 
+          background: 'linear-gradient(135deg, #045184 0%, #00A8E1 50%, #6366f1 100%)'
+        }}
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-8 left-8 w-24 h-24 rounded-full bg-white/20"></div>
+          <div className="absolute top-16 right-16 w-16 h-16 rounded-full bg-white/15"></div>
+          <div className="absolute bottom-8 left-1/3 w-20 h-20 rounded-full bg-white/10"></div>
+          <div className="absolute bottom-16 right-8 w-32 h-32 rounded-full bg-white/20"></div>
+        </div>
+        
+        <div className="relative z-10">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+            className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-8"
+          >
+            <BookOpen size={40} className="text-white" />
+          </motion.div>
+          
+          <h2 className="text-5xl font-bold text-white mb-8 leading-tight">Explore All Our Content</h2>
+          <p className="text-2xl text-white/90 mb-12 max-w-4xl mx-auto font-medium leading-relaxed">
+            Dive deep into our comprehensive library of leadership resources and discover insights that will transform your leadership journey.
+          </p>
+          
+          <div className="flex flex-col lg:flex-row gap-6 justify-center">
+            <motion.a
+              href="https://members.thevanguardnetwork.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-white text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                Visit Members Portal
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { label: "Articles Published", value: "150+", icon: <Newspaper size={24} /> },
+              { label: "Podcast Episodes", value: "75+", icon: <MessageCircle size={24} /> },
+              { label: "Video Resources", value: "50+", icon: <Video size={24} /> }
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.2 + index * 0.1 }}
+                className="text-center"
+              >
+                <div className="flex items-center justify-center mb-3 text-white/80">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-white/80 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </motion.div>
+);
+
 // Export all components
 const Components = {
   Header,
