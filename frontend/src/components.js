@@ -314,10 +314,6 @@ const Hero = () => {
           alt="Hero background"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        
-        {/* Enhanced Overlay with Multi-Layer Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/90 via-slate-900/80 to-[#00A8E1]/70"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
       </div>
       
       {/* Content */}
