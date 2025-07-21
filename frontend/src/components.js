@@ -655,7 +655,7 @@ const VideoTestimonial = () => {
                 viewport={{ once: true }}
                 className="mb-8"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#00A8E1] to-[#0284c7] flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] flex items-center justify-center mb-6">
                   <Target size={32} className="text-white" />
                 </div>
               </motion.div>
