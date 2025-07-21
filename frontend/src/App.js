@@ -18,7 +18,8 @@ const {
   ProgramsPage,
   TeamPage,
   ContactPage,
-  BookPage
+  BookPage,
+  ContentPage
 } = Components;
 
 function App() {
