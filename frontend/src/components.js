@@ -819,7 +819,7 @@ const ProgramsSection = () => {
                 <div className="text-white/80 font-medium">{feature.label}</div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
