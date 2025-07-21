@@ -532,7 +532,7 @@ const TestimonnialSection = () => {
                 <img
                   src="https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/crop/x_0,y_79,w_642,h_642/fill/w_242,h_242,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tom%20Sabatino.png"
                   alt="Tom Sabatino"
-                  className="relative w-full max-w-xs rounded-full shadow-2xl mx-auto border-4 border-white"
+                  className="relative w-full max-w-xs rounded-full shadow-2xl mx-auto border-4 border-[#00A8E1]"
                 />
               </motion.div>
             </div>
