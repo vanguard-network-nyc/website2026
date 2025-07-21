@@ -619,14 +619,12 @@ const VideoTestimonial = () => {
                   <video
                     poster="/ken-thumbnail.png"
                     controls
-                    className="w-full h-auto rounded-2xl cursor-pointer"
                     preload="metadata"
-                    onLoadedMetadata={(e) => {
-                      // Ensure video is ready for playback
-                      e.target.load();
-                    }}
+                    className="w-full h-auto rounded-2xl"
+                    style={{ maxHeight: '400px' }}
                   >
                     <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/720p/mp4/file.mp4" type="video/mp4" />
+                    <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/480p/mp4/file.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
