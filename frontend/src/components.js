@@ -1208,20 +1208,20 @@ const NetworkingPage = () => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
   >
     {/* Hero Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
           NETWORKING & EVENTS
         </h1>
-        <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium">
           Connect with an elite community of senior leaders and access exclusive networking opportunities that drive professional growth and strategic insights.
         </p>
       </motion.div>
