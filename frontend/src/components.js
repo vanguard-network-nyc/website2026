@@ -740,7 +740,6 @@ const ProgramsSection = () => {
               <span className="bg-gradient-to-r from-white to-[#00A8E1] bg-clip-text text-transparent">
                 New Leaders Program
               </span>
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-white to-[#00A8E1] rounded-full"></div>
             </span>
             <br />
             introduces critical leadership<br />
