@@ -2763,13 +2763,13 @@ const ContentPage = () => (
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#045184]/20 relative overflow-hidden"
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#045184]/20 relative overflow-hidden flex flex-col h-full"
           whileHover={{ y: -8 }}
         >
           {/* Background Pattern */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-16 -translate-y-16"></div>
           
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-col h-full">
             {/* Icon */}
             <motion.div
               initial={{ scale: 0 }}
@@ -2784,7 +2784,7 @@ const ContentPage = () => (
             <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#045184] transition-colors duration-300">
               Articles
             </h2>
-            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8 flex-grow">
               Vanguard faculty, members, and associates create outstanding contributions to leadership learning–from how to work with a board, to knowing oneself as a leader.
             </p>
 
@@ -2795,7 +2795,7 @@ const ContentPage = () => (
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#0369a1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#0369a1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden mt-auto"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Read Articles
@@ -2811,13 +2811,13 @@ const ContentPage = () => (
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden flex flex-col h-full"
           whileHover={{ y: -8 }}
         >
           {/* Background Pattern */}
           <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#00A8E1]/5 to-[#0284c7]/5 rounded-full transform -translate-x-12 translate-y-12"></div>
           
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-col h-full">
             {/* Icon */}
             <motion.div
               initial={{ scale: 0 }}
@@ -2832,7 +2832,7 @@ const ContentPage = () => (
             <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#00A8E1] transition-colors duration-300">
               Podcasts
             </h2>
-            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8 flex-grow">
               Sometimes, voice is the best way to learn new ideas. Our podcasts bring alive important dialogues around leadership and transformation–all featuring proven leaders and leadership experts, talking about real-world challenges. Jump into one, and up your leadership game!
             </p>
 
@@ -2843,7 +2843,7 @@ const ContentPage = () => (
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#00A8E1] to-[#0284c7] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#00A8E1] to-[#0284c7] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden mt-auto"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Listen Now
@@ -2859,13 +2859,13 @@ const ContentPage = () => (
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#6366f1]/20 relative overflow-hidden"
+          className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#6366f1]/20 relative overflow-hidden flex flex-col h-full"
           whileHover={{ y: -8 }}
         >
           {/* Background Pattern */}
           <div className="absolute top-0 left-1/2 w-28 h-28 bg-gradient-to-bl from-[#6366f1]/5 to-[#8b5cf6]/5 rounded-full transform -translate-x-14 -translate-y-14"></div>
           
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-col h-full">
             {/* Icon */}
             <motion.div
               initial={{ scale: 0 }}
@@ -2880,7 +2880,7 @@ const ContentPage = () => (
             <h2 className="text-3xl font-bold text-slate-900 mb-6 group-hover:text-[#6366f1] transition-colors duration-300">
               Videos
             </h2>
-            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8 flex-grow">
               At Vanguard, we work with top executives across sectors on building high-performance leadership for themselves, and in their teams. Our approach is real world, pragmatic, and outcome-focused. The following videos tell that story.
             </p>
 
@@ -2891,7 +2891,7 @@ const ContentPage = () => (
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden"
+              className="group/btn inline-flex items-center gap-3 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden mt-auto"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Watch Videos
