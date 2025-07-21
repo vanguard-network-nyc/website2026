@@ -619,26 +619,17 @@ const VideoTestimonial = () => {
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#045184]/20 to-[#00A8E1]/20 rounded-2xl"></div>
                   <video
                     poster="/ken-thumbnail.png"
-                    controls={isPlaying}
-                    onClick={() => setIsPlaying(true)}
+                    controls
                     className="w-full h-auto rounded-2xl cursor-pointer"
+                    preload="metadata"
+                    onLoadedMetadata={(e) => {
+                      // Ensure video is ready for playback
+                      e.target.load();
+                    }}
                   >
                     <source src="https://video.wixstatic.com/video/e6a994_384d4905f2a04605977d992f75273455/720p/mp4/file.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                  
-                  {/* Play Button Overlay */}
-                  {!isPlaying && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="w-20 h-20 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-full flex items-center justify-center shadow-2xl cursor-pointer"
-                      >
-                        <ChevronRight size={32} className="text-white ml-1" />
-                      </motion.div>
-                    </div>
-                  )}
                 </div>
                 
                 {/* Video Title */}
