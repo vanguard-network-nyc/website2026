@@ -511,48 +511,80 @@ const ServicesSection = () => {
 // Testimonial Section
 const TestimonnialSection = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1]"></div>
+        <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-gradient-to-r from-[#00A8E1] to-[#0284c7]"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center gap-12"
+          className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500"
         >
-          <div className="md:w-1/3">
-            <motion.img
-              whileHover={{ scale: 1.05 }}
-              src="https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/crop/x_0,y_79,w_642,h_642/fill/w_242,h_242,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tom%20Sabatino.png"
-              alt="Tom Sabatino"
-              className="w-full max-w-xs rounded-full shadow-lg mx-auto"
-            />
-          </div>
-          
-          <div className="md:w-2/3">
-            <motion.blockquote
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-2xl md:text-3xl font-light text-slate-700 italic mb-6 leading-relaxed"
-            >
-              "One quality sets apart successful companies and successful executives: high-performance leadership. 
-              Developing great leaders, and supporting their work, is where the Vanguard team really excels."
-            </motion.blockquote>
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="md:w-1/3">
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-full opacity-20 blur-xl"></div>
+                <img
+                  src="https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/crop/x_0,y_79,w_642,h_642/fill/w_242,h_242,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Tom%20Sabatino.png"
+                  alt="Tom Sabatino"
+                  className="relative w-full max-w-xs rounded-full shadow-2xl mx-auto border-4 border-white"
+                />
+              </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-xl font-bold text-slate-900 mb-1">Tom Sabatino</h4>
-              <p className="text-slate-600">
-                Former Chief Legal Officer, Best Buy<br />
-                and Co., Transact, Aimia, AARP, Brightpoint, United Airlines, Schwing Rough
-              </p>
-            </motion.div>
+            <div className="md:w-2/3">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                viewport={{ once: true }}
+                className="mb-8"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mb-6">
+                  <MessageCircle size={32} className="text-white" />
+                </div>
+              </motion.div>
+              
+              <motion.blockquote
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-2xl md:text-3xl font-medium text-slate-800 italic mb-8 leading-relaxed"
+              >
+                "One quality sets apart successful companies and successful executives: high-performance leadership. 
+                Developing great leaders, and supporting their work, is where the{' '}
+                <span className="bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent font-bold">
+                  Vanguard team really excels
+                </span>."
+              </motion.blockquote>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-[#045184] to-[#00A8E1] rounded-full"></div>
+                <div className="pl-6">
+                  <h4 className="text-2xl font-bold text-slate-900 mb-2">Tom Sabatino</h4>
+                  <p className="text-lg text-slate-600 font-medium">
+                    Former Chief Legal Officer, Best Buy<br />
+                    and Co., Transact, Aimia, AARP, Brightpoint, United Airlines, Schwing Rough
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
