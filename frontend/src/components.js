@@ -668,7 +668,7 @@ const VideoTestimonial = () => {
                 className="text-2xl md:text-3xl font-medium text-slate-800 italic mb-8 leading-relaxed"
               >
                 "Our sole focus is{' '}
-                <span className="bg-gradient-to-r from-[#00A8E1] to-[#0284c7] bg-clip-text text-transparent font-bold">
+                <span className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] bg-clip-text text-transparent font-bold">
                   unlocking high-performance leadership
                 </span>, so that's why we don't take the cookie-cutter approach."
               </motion.blockquote>
