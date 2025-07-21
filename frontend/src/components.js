@@ -1105,19 +1105,6 @@ const AdvisoryPage = () => (
           ))}
         </div>
       </motion.div>
-            },
-            {
-              title: 'Next Generation Leader',
-              description: 'Specialized curriculum designed to develop high potentials for C-suite roles.',
-              icon: <Award size={48} />
-            }
-          ].map((approach, index) => (
-            <motion.div
-              key={approach.title}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="mb-6" style={{ color: '#00A8E1' }}>{approach.icon}</div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">{approach.title}</h3>
