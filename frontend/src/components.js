@@ -1740,35 +1740,51 @@ const ProgramsPage = () => (
           </div>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-12">
           {[
             {
               name: "CEO & C-SUITE",
               description: "Customized programs to yield high-performance amongst C-suite leaders across a portfolio of companies or global teams using the Vanguard roundtable model.",
               target: "C-Suite Executives",
               benefits: ["High-Performance Leadership", "Roundtable Model", "Portfolio Companies", "Global Teams"],
-              color: "#00A8E1"
+              color: "#00A8E1",
+              gradient: "from-[#00A8E1] to-[#0284c7]",
+              bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+              duration: "Flexible",
+              participants: "8-12 Executives"
             },
             {
               name: "NEXT GENERATION C-SUITE",
               description: "Generating high-performance and a better understanding of the next Generation C-suite. Customized for enterprises using our tried and tested Next Generation C-suite modules.",
               target: "Future C-Suite Leaders",
               benefits: ["High-Performance Development", "Next-Gen Focus", "Proven Modules", "Enterprise Customization"],
-              color: "#045184"
+              color: "#045184",
+              gradient: "from-[#045184] to-[#0369a1]",
+              bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+              duration: "6-9 Months",
+              participants: "10-15 Leaders"
             },
             {
               name: "HIGH-POTENTIAL NEW HIRES",
               description: "Accelerating the success of high-potential new employees in your enterprise through a 14-week curriculum exploring leadership nuances.",
               target: "High-Potential New Employees",
               benefits: ["14-Week Curriculum", "Leadership Nuances", "New Employee Focus", "Accelerated Success"],
-              color: "#00A8E1"
+              color: "#00A8E1",
+              gradient: "from-[#00A8E1] to-[#0284c7]",
+              bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+              duration: "14 Weeks",
+              participants: "15-20 New Hires"
             },
             {
               name: "BUSINESS DEVELOPMENT",
               description: "Add value and create even stronger relationships with clients and potential clients. Executives from your company engage with 10-25 clients and/or prospects in customized Vanguard sessions, working on leadership issues that matter most to them.",
               target: "Business Development Executives",
               benefits: ["Client Relationship Building", "Customized Sessions", "Leadership Focus", "Value Creation"],
-              color: "#045184"
+              color: "#045184",
+              gradient: "from-[#045184] to-[#0369a1]",
+              bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+              duration: "Ongoing",
+              participants: "10-25 Clients"
             }
           ].map((program, index) => (
             <motion.div
@@ -1776,40 +1792,83 @@ const ProgramsPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8 + index * 0.2, duration: 0.8 }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              className="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200"
+              whileHover={{ y: -8 }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: program.color }}>
-                      <Award size={24} className="text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900">{program.name}</h3>
-                      <p className="text-sm font-semibold" style={{ color: program.color }}>{program.target}</p>
+              <div className="grid grid-cols-1 xl:grid-cols-5 gap-0">
+                {/* Content Section */}
+                <div className="xl:col-span-3 p-10">
+                  <div className="flex items-start gap-6 mb-8">
+                    <motion.div 
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-r ${program.gradient} shadow-lg`}
+                    >
+                      <Award size={28} className="text-white" />
+                    </motion.div>
+                    <div className="flex-1">
+                      <h3 className="text-3xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">{program.name}</h3>
+                      <p className="text-lg font-bold mb-2" style={{ color: program.color }}>{program.target}</p>
+                      <div className="flex items-center gap-4 text-sm text-slate-500">
+                        <span className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                          Duration: {program.duration}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                          Participants: {program.participants}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-slate-600 leading-relaxed mb-6">{program.description}</p>
-                  <div className="grid grid-cols-2 gap-4">
+                  
+                  <p className="text-slate-600 leading-relaxed mb-8 text-lg font-medium">{program.description}</p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {program.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: program.color }}></div>
-                        <span className="text-sm text-slate-600">{benefit}</span>
-                      </div>
+                      <motion.div 
+                        key={benefitIndex} 
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 1.0 + index * 0.2 + benefitIndex * 0.1 }}
+                        className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 group-hover:bg-slate-100 transition-colors duration-300"
+                      >
+                        <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${program.gradient}`}></div>
+                        <span className="text-slate-700 font-medium">{benefit}</span>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-                <div className="p-8 flex items-center justify-center" style={{ backgroundColor: `${program.color}15` }}>
-                  <div className="text-center">
-                    <div className="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: program.color }}>
-                      <BookOpen size={48} className="text-white" />
-                    </div>
-                    <button 
-                      className="text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90"
-                      style={{ backgroundColor: program.color }}
+                
+                {/* Action Section */}
+                <div className={`xl:col-span-2 p-10 bg-gradient-to-br ${program.bgColor} flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-white/20"></div>
+                    <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full bg-white/10"></div>
+                  </div>
+                  
+                  <div className="text-center relative z-10">
+                    <motion.div 
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`w-32 h-32 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl bg-gradient-to-r ${program.gradient}`}
                     >
-                      Get Details
-                    </button>
+                      <BookOpen size={56} className="text-white" />
+                    </motion.div>
+                    
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`group/btn text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r ${program.gradient} relative overflow-hidden`}
+                    >
+                      <span className="relative z-10 flex items-center gap-3">
+                        Get Details
+                        <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </span>
+                      <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    </motion.button>
+                    
+                    <p className="text-slate-600 mt-4 text-sm font-medium">
+                      Custom consultation available
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1818,33 +1877,85 @@ const ProgramsPage = () => (
         </div>
       </motion.div>
 
-      {/* Call to Action */}
+      {/* Enhanced Call to Action */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.0, duration: 0.8 }}
-        className="text-center rounded-2xl p-12"
-        style={{ backgroundColor: '#045184' }}
+        className="text-center rounded-3xl p-16 relative overflow-hidden"
+        style={{ 
+          background: 'linear-gradient(135deg, #045184 0%, #00A8E1 50%, #045184 100%)'
+        }}
       >
-        <h2 className="text-4xl font-bold text-white mb-6">Ready to Accelerate Your Leadership Journey?</h2>
-        <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-          Join our comprehensive leadership programs and connect with like-minded executives committed to excellence and continuous growth.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-8 left-8 w-24 h-24 rounded-full bg-white/20"></div>
+          <div className="absolute top-16 right-16 w-16 h-16 rounded-full bg-white/15"></div>
+          <div className="absolute bottom-8 left-1/3 w-20 h-20 rounded-full bg-white/10"></div>
+          <div className="absolute bottom-16 right-8 w-32 h-32 rounded-full bg-white/20"></div>
+        </div>
+        
+        <div className="relative z-10">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+            className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-8"
           >
-            Explore Current Programs
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 border-2 border-white hover:bg-white hover:text-blue-600"
-          >
-            Request Custom Program
-          </motion.button>
+            <Target size={40} className="text-white" />
+          </motion.div>
+          
+          <h2 className="text-5xl font-bold text-white mb-8 leading-tight">Ready to Accelerate Your Leadership Journey?</h2>
+          <p className="text-2xl text-white/90 mb-12 max-w-4xl mx-auto font-medium leading-relaxed">
+            Join our comprehensive leadership programs and connect with like-minded executives committed to excellence and continuous growth.
+          </p>
+          
+          <div className="flex flex-col lg:flex-row gap-6 justify-center">
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="group bg-white text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg hover:shadow-2xl relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                Explore Current Programs
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="group text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 border-3 border-white hover:bg-white hover:text-[#045184] relative overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                Request Custom Program
+                <Mail size={20} className="group-hover:scale-110 transition-transform duration-300" />
+              </span>
+            </motion.button>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { label: "Active Programs", value: "15+", icon: <Award size={24} /> },
+              { label: "Industry Leaders", value: "500+", icon: <Users size={24} /> },
+              { label: "Years Experience", value: "25+", icon: <Target size={24} /> }
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.4 + index * 0.1 }}
+                className="text-center"
+              >
+                <div className="flex items-center justify-center mb-3 text-white/80">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-white/80 font-medium">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
