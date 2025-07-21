@@ -680,7 +680,7 @@ const VideoTestimonial = () => {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-[#00A8E1] to-[#0284c7] rounded-full"></div>
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-[#6366f1] to-[#8b5cf6] rounded-full"></div>
                 <div className="pl-6">
                   <h4 className="text-2xl font-bold text-slate-900 mb-2">Ken Banta</h4>
                   <p className="text-lg text-slate-600 font-medium">Founder & CEO, The Vanguard Network</p>
