@@ -711,8 +711,16 @@ const VideoTestimonial = () => {
 // Programs Section
 const ProgramsSection = () => {
   return (
-    <section className="py-20" style={{ backgroundColor: '#045184' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-br from-[#045184] via-[#0369a1] to-[#00A8E1] relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-white/20"></div>
+        <div className="absolute top-20 right-20 w-24 h-24 rounded-full bg-white/15"></div>
+        <div className="absolute bottom-10 left-1/3 w-20 h-20 rounded-full bg-white/10"></div>
+        <div className="absolute bottom-20 right-10 w-36 h-36 rounded-full bg-white/25"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -720,29 +728,98 @@ const ProgramsSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="inline-block bg-white/10 px-4 py-2 rounded-full mb-6">
-            <span className="text-white/80 font-semibold tracking-wider">PROGRAMS</span>
-          </div>
+          {/* Program Badge */}
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full mb-8"
+          >
+            <Award size={24} className="text-white" />
+            <span className="text-white font-bold tracking-wider text-lg">PROGRAMS</span>
+          </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-            The <span style={{ color: '#00A8E1' }}>New Leaders Program</span><br />
+          {/* Enhanced Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-bold text-white mb-12 leading-tight"
+          >
+            The{' '}
+            <span className="relative">
+              <span className="bg-gradient-to-r from-white to-[#00A8E1] bg-clip-text text-transparent">
+                New Leaders Program
+              </span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-white to-[#00A8E1] rounded-full"></div>
+            </span>
+            <br />
             introduces critical leadership<br />
             challenges to select groups of<br />
             high-performance aspiring<br />
             leaders.
-          </h2>
+          </motion.h2>
           
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
-            whileTap={{ scale: 0.95 }}
-            className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center gap-2 mx-auto"
-            style={{ backgroundColor: '#00A8E1' }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+          {/* Enhanced Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed font-medium"
           >
-            LEARN MORE
-            <ArrowRight size={20} />
+            A comprehensive 6-12 month program designed to accelerate leadership development 
+            through practical challenges, mentorship, and real-world application.
+          </motion.p>
+          
+          {/* Enhanced Button */}
+          <motion.button
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="group bg-white text-[#045184] px-12 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center gap-3 mx-auto shadow-lg hover:shadow-2xl relative overflow-hidden"
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              LEARN MORE
+              <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.button>
+          
+          {/* Program Features */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          >
+            {[
+              { label: "Program Duration", value: "6-12 Months", icon: <Users size={28} /> },
+              { label: "Participants", value: "Select Groups", icon: <Target size={28} /> },
+              { label: "Focus Area", value: "Leadership Challenges", icon: <Award size={28} /> }
+            ].map((feature, index) => (
+              <motion.div
+                key={feature.label}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.2 + index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300"
+              >
+                <div className="flex items-center justify-center mb-4 text-white">
+                  {feature.icon}
+                </div>
+                <div className="text-2xl font-bold text-white mb-2">{feature.value}</div>
+                <div className="text-white/80 font-medium">{feature.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
