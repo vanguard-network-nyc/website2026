@@ -616,7 +616,6 @@ const VideoTestimonial = () => {
               >
                 {/* Video Container with Enhanced Styling */}
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#045184]/20 to-[#00A8E1]/20 rounded-2xl"></div>
                   <video
                     poster="/ken-thumbnail.png"
                     controls
