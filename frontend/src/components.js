@@ -315,8 +315,9 @@ const Hero = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
         
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-blue-900/80"></div>
+        {/* Enhanced Overlay with Multi-Layer Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/90 via-slate-900/80 to-[#00A8E1]/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
       </div>
       
       {/* Content */}
@@ -325,13 +326,13 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white/10 backdrop-blur-md rounded-2xl p-12 max-w-4xl mx-auto"
+          className="bg-white/10 backdrop-blur-md rounded-3xl p-16 max-w-5xl mx-auto border border-white/20 shadow-2xl"
         >
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight"
+            className="text-6xl md:text-7xl font-bold mb-8 tracking-tight bg-gradient-to-r from-white via-[#00A8E1] to-white bg-clip-text text-transparent"
           >
             WHAT WE DO
           </motion.h1>
@@ -340,48 +341,53 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto"
+            className="text-2xl md:text-3xl text-white/95 mb-12 leading-relaxed max-w-4xl mx-auto font-medium"
           >
             The Vanguard Network helps current and future senior leaders transform themselves 
             and their organizations by{' '}
-            <span className="font-semibold" style={{ color: '#00A8E1' }}>unlocking high-performance leadership</span>.
+            <span className="font-bold bg-gradient-to-r from-[#00A8E1] to-[#0284c7] bg-clip-text text-transparent">unlocking high-performance leadership</span>.
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(0, 168, 225, 0.4)' }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
-              style={{ backgroundColor: '#00A8E1' }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+              className="group text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden"
+              style={{ 
+                background: 'linear-gradient(135deg, #00A8E1 0%, #0284c7 100%)'
+              }}
             >
-              LEARN MORE
-              <ArrowRight size={20} />
+              <span className="relative z-10 flex items-center gap-3">
+                LEARN MORE
+                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0284c7] to-[#00A8E1] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.button>
             
             <motion.div
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)' }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
                 to="/team"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2"
+                className="group bg-transparent border-3 border-white/80 text-white hover:bg-white hover:text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden"
               >
-                OUR TEAM
-                <Users size={20} />
+                <span className="flex items-center gap-3">
+                  OUR TEAM
+                  <Users size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                </span>
               </Link>
             </motion.div>
           </motion.div>
         </motion.div>
       </div>
       
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -398,12 +404,12 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="flex flex-col items-center text-white/80 cursor-pointer"
+          className="flex flex-col items-center text-white/90 cursor-pointer group"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
-          <span className="text-sm font-medium mb-2">Scroll to explore</span>
-          <div className="w-12 h-12 rounded-full border-2 border-white/50 flex items-center justify-center hover:border-white transition-all duration-300">
-            <ChevronDown size={24} style={{ color: '#00A8E1' }} />
+          <span className="text-sm font-bold mb-3">Scroll to explore</span>
+          <div className="w-14 h-14 rounded-full border-3 border-white/60 flex items-center justify-center hover:border-[#00A8E1] hover:bg-[#00A8E1]/20 transition-all duration-300">
+            <ChevronDown size={28} className="text-[#00A8E1] group-hover:text-white transition-colors duration-300" />
           </div>
         </motion.div>
       </motion.div>
