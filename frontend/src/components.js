@@ -596,8 +596,8 @@ const VideoTestimonial = () => {
     <section className="py-24 bg-gradient-to-br from-[#6366f1]/10 via-slate-100 to-[#8b5cf6]/10 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-gradient-to-r from-[#00A8E1] to-[#0284c7]"></div>
-        <div className="absolute bottom-20 left-20 w-28 h-28 rounded-full bg-gradient-to-r from-[#045184] to-[#0369a1]"></div>
+        <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6]"></div>
+        <div className="absolute bottom-20 left-20 w-28 h-28 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#6366f1]"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
