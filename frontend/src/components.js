@@ -778,7 +778,7 @@ const ProgramsSection = () => {
           </motion.button>
         </motion.div>
       </div>
-    </section>>
+    </section>
   );
 };
 
