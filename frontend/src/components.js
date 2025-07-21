@@ -593,7 +593,7 @@ const VideoTestimonial = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#045184]/10 via-slate-100 to-[#00A8E1]/10 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-[#6366f1]/10 via-slate-100 to-[#8b5cf6]/10 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-gradient-to-r from-[#00A8E1] to-[#0284c7]"></div>
