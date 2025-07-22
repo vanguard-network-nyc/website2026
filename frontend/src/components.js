@@ -1565,17 +1565,27 @@ const NetworkingPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.0 + index * 0.1, duration: 0.8 }}
-              className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer flex flex-col"
-              style={{ minHeight: '280px' }}
+              className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 cursor-pointer h-80 flex flex-col"
             >
-              <div className="text-center flex flex-col flex-grow">
+              <div className="flex flex-col h-full text-center">
+                {/* Icon */}
                 <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
                   <div className="text-white">{plan.icon}</div>
                 </div>
+                
+                {/* Title */}
                 <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-sm font-semibold mb-3" style={{ color: '#00A8E1' }}>{plan.target}</p>
-                <p className="text-white/90 text-sm leading-relaxed mb-4 flex-grow">{plan.description}</p>
-                <button className="bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors">
+                
+                {/* Target */}
+                <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{plan.target}</p>
+                
+                {/* Description - grows to fill space */}
+                <div className="flex-1 mb-6">
+                  <p className="text-white/90 text-sm leading-relaxed">{plan.description}</p>
+                </div>
+                
+                {/* Button - always at bottom */}
+                <button className="bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors w-full">
                   Learn More
                 </button>
               </div>
