@@ -1533,45 +1533,56 @@ const NetworkingPage = () => (
               name: "General Counsel Network",
               description: "For General Counsel and Chief Legal Officers",
               target: "GC & CLO",
-              icon: <Shield size={32} />
             },
             {
-              name: "Senior In-House Counsel Network",
+              name: "Senior In-House Counsel Network", 
               description: "For Deputy GC and Associate GC",
               target: "Deputy GC & Associate GC",
-              icon: <BookOpen size={32} />
             },
             {
               name: "Life Sciences CEO Network",
               description: "For CEOs in the life sciences community",
               target: "Life Sciences CEOs",
-              icon: <Award size={32} />
             },
             {
               name: "Risk Management Network",
               description: "For senior executives who lead risk-related functions",
               target: "Risk Management Leaders",
-              icon: <Target size={32} />
             },
             {
               name: "Associate Membership",
               description: "Join as an associate member",
               target: "Associate Members",
-              icon: <Users size={32} />
             }
           ].map((plan, index) => (
-            <motion.div
+            <div
               key={plan.name}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.0 + index * 0.1, duration: 0.8 }}
-              className="bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300 cursor-pointer flex flex-col"
-              style={{ height: '300px' }}
+              className="bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              style={{ 
+                display: 'flex',
+                flexDirection: 'column',
+                height: '280px'
+              }}
             >
-              <div className="p-6 flex flex-col h-full text-center">
+              <div style={{ 
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                padding: '1.5rem',
+                textAlign: 'center'
+              }}>
                 {/* Icon */}
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
-                  <div className="text-white">{plan.icon}</div>
+                <div style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  margin: '0 auto 1rem auto',
+                  backgroundColor: '#00A8E1',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <Shield size={24} className="text-white" />
                 </div>
                 
                 {/* Title */}
@@ -1580,19 +1591,24 @@ const NetworkingPage = () => (
                 {/* Target */}
                 <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{plan.target}</p>
                 
-                {/* Description - flexible space */}
-                <div className="flex-1 flex items-center justify-center">
+                {/* Description - takes remaining space */}
+                <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
                   <p className="text-white/90 text-sm leading-relaxed">{plan.description}</p>
                 </div>
                 
-                {/* Button - fixed at bottom */}
-                <div className="mt-4">
-                  <button className="bg-white/20 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors w-full">
-                    Learn More
-                  </button>
-                </div>
+                {/* Button - always at bottom with full width */}
+                <button 
+                  className="bg-white/20 text-white rounded-lg text-sm font-semibold hover:bg-white/30 transition-colors"
+                  style={{
+                    width: '100%',
+                    padding: '12px 24px',
+                    marginTop: 'auto'
+                  }}
+                >
+                  Learn More
+                </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         
