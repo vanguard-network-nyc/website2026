@@ -529,7 +529,7 @@ frontend:
 
   - task: "Create ProgramsPageV2 with modern interactive layout"
     implemented: true
-    working: true
+    working: false
     file: "/app/frontend/src/ProgramsPageV2.js, /app/frontend/src/App.js"
     stuck_count: 0
     priority: "high"
@@ -538,6 +538,9 @@ frontend:
       - working: true
         agent: "main"
         comment: "COMPLETED: Successfully created ProgramsPageV2 component with completely new modern, interactive, and user-friendly design. Fixed critical JSX syntax error in components.js (missing closing brace in ProgramsPage function) that was preventing frontend compilation. Created separate ProgramsPageV2.js file with enhanced features: (1) Modern Header with rotating icon and gradient title 'Leadership Programs V2' (2) Enhanced Search Bar for programs/skills/keywords (3) Interactive Filter System with Category (All/Legal/Life Sciences/General) and Level (All/Senior/Mid-Senior/C-Suite/Emerging) filters (4) View Mode Toggle between Cards and List views (5) Beautiful Program Cards with images, pricing, status badges, category badges, program icons, duration/participant info, key takeaways, format highlights, and CTA buttons (6) List View with compact grid layout showing image thumbnails, details, features, and pricing (7) No Results State with clear message and filter reset (8) Enhanced CTA Section with animated elements and dual action buttons. Features 5 comprehensive programs with realistic data: GC Exchange ($12,500), Senior Counsel Exchange ($8,500), Life Sciences CEO ($25,000), Next Generation GC ($6,500), New Leaders ($4,500). Added route /programs-v2 to App.js. Screenshot verification shows fully functional modern interface with professional design, interactive elements, and consistent brand colors (#045184, #00A8E1). Component compiles successfully and displays beautifully with enhanced UX compared to original programs page."
+      - working: false
+        agent: "main"
+        comment: "REMOVED: User feedback indicated the new layout was not satisfactory ('the new layout is awful'). Completely removed ProgramsPageV2 component: deleted /app/frontend/src/ProgramsPageV2.js file, removed import from App.js, removed route /programs-v2 from App.js routes. Frontend restarted successfully. Original Programs page (/programs) remains intact and fully functional. Task unsuccessful - user did not approve of the new design approach."
 
 metadata:
   created_by: "main_agent"
