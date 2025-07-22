@@ -1732,172 +1732,358 @@ const NetworkingPage = () => (
   </motion.div>
 );
 
-const ProgramsPage = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
-  >
-    {/* Hero Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-          LEADERSHIP PROGRAMS
-        </h1>
-        <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium">
-          Comprehensive development programs designed to accelerate leadership growth at every level through specialized exchanges and customized curricula.
-        </p>
-      </motion.div>
-    </div>
+const ProgramsPage = () => {
+  const [selectedCategory, setSelectedCategory] = React.useState('All');
+  const [selectedLevel, setSelectedLevel] = React.useState('All');
+  
+  const programs = [
+    {
+      name: "GC EXCHANGE",
+      description: "A highly pragmatic leadership problem-solving group that meets monthly, moderated by Vanguard. Monthly, in virtual format; face-to-face sessions occur at our bi-annual Forums.",
+      format: "Monthly Virtual + Bi-annual In-Person",
+      audience: "General Counsel",
+      icon: <Shield size={28} />,
+      category: "Legal",
+      level: "Executive",
+      status: "Active",
+      image: "/gc-exchange-program.jpg",
+      duration: "Ongoing",
+      participants: "12-15"
+    },
+    {
+      name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
+      description: "An exchange for GCs' immediate reports to compare notes and solve problems together. Monthly, in virtual format.",
+      format: "Monthly Virtual",
+      audience: "Senior In-House Counsel",
+      icon: <BookOpen size={28} />,
+      category: "Legal",
+      level: "Senior",
+      status: "Active",
+      image: "/senior-counsel-exchange-program.jpg",
+      duration: "Ongoing",
+      participants: "10-12"
+    },
+    {
+      name: "LIFE SCIENCES CEO EXCHANGES",
+      description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
+      format: "Quarterly Virtual + Bi-annual In-Person",
+      audience: "Life Sciences CEOs",
+      icon: <Award size={28} />,
+      category: "Life Sciences",
+      level: "Executive",
+      status: "Active",
+      image: "/life-sciences-ceo-program.jpg",
+      duration: "Ongoing",
+      participants: "8-10"
+    },
+    {
+      name: "NEXT GENERATION GC",
+      description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
+      format: "6-Month Program",
+      audience: "Future General Counsel",
+      icon: <Target size={28} />,
+      category: "Legal",
+      level: "Emerging",
+      status: "Enrollment Open",
+      image: "/next-generation-gc-program.jpg",
+      duration: "6 Months",
+      participants: "15-20"
+    },
+    {
+      name: "NEW LEADERS PROGRAM",
+      description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
+      format: "6-12 Month Program",
+      audience: "Graduate Students & New Hires",
+      icon: <Users size={28} />,
+      category: "General",
+      level: "Entry",
+      status: "Enrollment Open",
+      image: "/new-leaders-program.jpg",
+      duration: "6-12 Months",
+      participants: "20-25"
+    }
+  ];
 
-    {/* Main Content */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      {/* Current Leadership Programs Section */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="mb-24"
-      >
-        {/* Section Header with Gradient Background */}
-        <div className="text-center mb-16 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
-          <div className="relative py-16 px-8">
-            <div className="inline-flex items-center gap-3 mb-4">
+  const customizedPrograms = [
+    {
+      name: "CEO & C-SUITE",
+      description: "Customized programs to yield high-performance amongst C-suite leaders across a portfolio of companies or global teams using the Vanguard roundtable model.",
+      target: "C-Suite Executives",
+      benefits: ["High-Performance Leadership", "Roundtable Model", "Portfolio Companies", "Global Teams"],
+      color: "#00A8E1",
+      gradient: "from-[#00A8E1] to-[#0284c7]",
+      bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+      duration: "Flexible",
+      participants: "8-12 Executives"
+    },
+    {
+      name: "NEXT GENERATION C-SUITE",
+      description: "Generating high-performance and a better understanding of the next Generation C-suite. Customized for enterprises using our tried and tested Next Generation C-suite modules.",
+      target: "Future C-Suite Leaders",
+      benefits: ["High-Performance Development", "Next-Gen Focus", "Proven Modules", "Enterprise Customization"],
+      color: "#045184",
+      gradient: "from-[#045184] to-[#0369a1]",
+      bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+      duration: "6-9 Months",
+      participants: "10-15 Leaders"
+    },
+    {
+      name: "HIGH-POTENTIAL NEW HIRES",
+      description: "Accelerating the success of high-potential new employees in your enterprise through a 14-week curriculum exploring leadership nuances.",
+      target: "High-Potential New Employees",
+      benefits: ["14-Week Curriculum", "Leadership Nuances", "New Employee Focus", "Accelerated Success"],
+      color: "#00A8E1",
+      gradient: "from-[#00A8E1] to-[#0284c7]",
+      bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+      duration: "14 Weeks",
+      participants: "15-20 New Hires"
+    },
+    {
+      name: "BUSINESS DEVELOPMENT",
+      description: "Add value and create even stronger relationships with clients and potential clients. Executives from your company engage with 10-25 clients and/or prospects in customized Vanguard sessions, working on leadership issues that matter most to them.",
+      target: "Business Development Executives",
+      benefits: ["Client Relationship Building", "Customized Sessions", "Leadership Focus", "Value Creation"],
+      color: "#045184",
+      gradient: "from-[#045184] to-[#0369a1]",
+      bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+      duration: "Ongoing",
+      participants: "10-25 Clients"
+    }
+  ];
+
+  const categories = ['All', 'Legal', 'Life Sciences', 'General'];
+  const levels = ['All', 'Executive', 'Senior', 'Emerging', 'Entry'];
+
+  const filteredPrograms = programs.filter(program => {
+    const categoryMatch = selectedCategory === 'All' || program.category === selectedCategory;
+    const levelMatch = selectedLevel === 'All' || program.level === selectedLevel;
+    return categoryMatch && levelMatch;
+  });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
+    >
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+            LEADERSHIP PROGRAMS
+          </h1>
+          <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium mb-8">
+            Comprehensive development programs designed to accelerate leadership growth at every level through specialized exchanges and customized curricula.
+          </p>
+          
+          {/* Quick Stats */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          >
+            {[
+              { label: "Active Programs", value: "5+", icon: <Award size={24} /> },
+              { label: "Program Participants", value: "200+", icon: <Users size={24} /> },
+              { label: "Success Rate", value: "95%", icon: <Target size={24} /> }
+            ].map((stat, index) => (
+              <div key={stat.label} className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40">
+                <div className="flex items-center justify-center mb-3 text-[#045184]">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-[#045184] mb-2">{stat.value}</div>
+                <div className="text-slate-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Interactive Filters */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mb-12"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Find Your Perfect Program</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Category Filter */}
+              <div>
+                <label className="block text-lg font-bold text-[#045184] mb-4">Filter by Industry</label>
+                <div className="flex flex-wrap gap-3">
+                  {categories.map(category => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                        selectedCategory === category
+                          ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Level Filter */}
+              <div>
+                <label className="block text-lg font-bold text-[#045184] mb-4">Filter by Level</label>
+                <div className="flex flex-wrap gap-3">
+                  {levels.map(level => (
+                    <button
+                      key={level}
+                      onClick={() => setSelectedLevel(level)}
+                      className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
+                        selectedLevel === level
+                          ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {level}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 text-center">
+              <p className="text-slate-600">
+                Showing <span className="font-bold text-[#045184]">{filteredPrograms.length}</span> program{filteredPrograms.length !== 1 ? 's' : ''} 
+                {selectedCategory !== 'All' && <span> in <span className="font-bold">{selectedCategory}</span></span>}
+                {selectedLevel !== 'All' && <span> for <span className="font-bold">{selectedLevel}</span> level</span>}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Current Leadership Programs Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mb-20"
+        >
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
                 <Award size={24} className="text-white" />
               </div>
-              <span className="px-4 py-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white text-sm font-bold rounded-full tracking-wider">
-                ONGOING PROGRAMS
-              </span>
+              <h2 className="text-4xl font-bold text-slate-900">Current Leadership Programs</h2>
             </div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-8 leading-tight">Current Leadership Programs</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium leading-relaxed">
-              Ongoing programs designed for specific leadership roles and industries, featuring regular exchanges and development opportunities.
-            </p>
           </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-          {[
-            {
-              name: "GC EXCHANGE",
-              description: "A highly pragmatic leadership problem-solving group that meets monthly, moderated by Vanguard. Monthly, in virtual format; face-to-face sessions occur at our bi-annual Forums.",
-              format: "Monthly Virtual + Bi-annual In-Person",
-              audience: "General Counsel",
-              icon: <Shield size={28} />,
-              category: "Legal",
-              level: "Executive",
-              status: "Active",
-              image: "/gc-exchange-program.jpg"
-            },
-            {
-              name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
-              description: "An exchange for GCs' immediate reports to compare notes and solve problems together. Monthly, in virtual format.",
-              format: "Monthly Virtual",
-              audience: "Senior In-House Counsel",
-              icon: <BookOpen size={28} />,
-              category: "Legal",
-              level: "Senior",
-              status: "Active",
-              image: "/senior-counsel-exchange-program.jpg"
-            },
-            {
-              name: "LIFE SCIENCES CEO EXCHANGES",
-              description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
-              format: "Quarterly Virtual + Bi-annual In-Person",
-              audience: "Life Sciences CEOs",
-              icon: <Award size={28} />,
-              category: "Life Sciences",
-              level: "Executive",
-              status: "Active",
-              image: "/life-sciences-ceo-program.jpg"
-            },
-            {
-              name: "NEXT GENERATION GC",
-              description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
-              format: "6-Month Program",
-              audience: "Future General Counsel",
-              icon: <Target size={28} />,
-              category: "Legal",
-              level: "Emerging",
-              status: "Enrollment Open",
-              image: "/next-generation-gc-program.jpg"
-            },
-            {
-              name: "NEW LEADERS PROGRAM",
-              description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
-              format: "6-12 Month Program",
-              audience: "Graduate Students & New Hires",
-              icon: <Users size={28} />,
-              category: "General",
-              level: "Entry",
-              status: "Enrollment Open",
-              image: "/new-leaders-program.jpg"
-            }
-          ].map((program, index) => (
-            <motion.div
-              key={program.name}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border-2 border-transparent hover:border-[#00A8E1]/20 relative overflow-hidden"
-              whileHover={{ scale: 1.02, y: -8 }}
-            >
-              {/* Program Image */}
-              <div className="relative h-64 overflow-hidden rounded-t-2xl">
-                <img
-                  src={program.image}
-                  alt={program.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                
-                {/* Status Badge */}
-                <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 text-xs font-bold rounded-full backdrop-blur-sm ${
-                    program.status === 'Active' 
-                      ? 'bg-green-500/90 text-white' 
-                      : 'bg-blue-500/90 text-white'
-                  }`}>
-                    {program.status}
-                  </span>
-                </div>
+          
+          {/* Programs Grid - Enhanced for Skimming */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {filteredPrograms.map((program, index) => (
+              <motion.div
+                key={program.name}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20"
+                whileHover={{ y: -4 }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-0 h-full">
+                  {/* Image Section - Smaller for better content focus */}
+                  <div className="md:col-span-2 relative">
+                    <img
+                      src={program.image}
+                      alt={program.name}
+                      className="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
+                    
+                    {/* Status Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className={`px-3 py-1 text-xs font-bold rounded-full ${
+                        program.status === 'Active' 
+                          ? 'bg-green-500 text-white' 
+                          : 'bg-blue-500 text-white'
+                      }`}>
+                        {program.status}
+                      </span>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="absolute bottom-4 left-4">
+                      <div 
+                        className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg" 
+                        style={{ 
+                          background: program.category === 'Legal' 
+                            ? '#045184'
+                            : program.category === 'Life Sciences'
+                            ? '#00A8E1'
+                            : '#6366f1'
+                        }}
+                      >
+                        <div className="text-white text-sm">{program.icon}</div>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Program Icon Overlay */}
-                <div className="absolute bottom-4 left-4">
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                    className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm group-hover:shadow-xl transition-all duration-300" 
-                    style={{ 
-                      background: program.category === 'Legal' 
-                        ? 'rgba(4, 81, 132, 0.9)'
-                        : program.category === 'Life Sciences'
-                        ? 'rgba(0, 168, 225, 0.9)'
-                        : 'rgba(99, 102, 241, 0.9)'
-                    }}
-                  >
-                    <div className="text-white group-hover:scale-110 transition-transform duration-300">{program.icon}</div>
-                  </motion.div>
-                </div>
-              </div>
+                  {/* Content Section - Optimized for Scanning */}
+                  <div className="md:col-span-3 p-6 flex flex-col">
+                    {/* Quick Info Bar */}
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{program.category}</span>
+                      <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{program.level}</span>
+                      <span className="text-[#045184] text-xs font-bold">•</span>
+                      <span className="text-slate-500 text-xs">{program.duration}</span>
+                      <span className="text-[#045184] text-xs font-bold">•</span>
+                      <span className="text-slate-500 text-xs">{program.participants} participants</span>
+                    </div>
+                    
+                    {/* Program Title & Audience */}
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#045184] transition-colors duration-300">
+                      {program.name}
+                    </h3>
+                    <p className="text-sm font-bold text-[#045184] mb-3">{program.audience}</p>
+                    
+                    {/* Format - Highlighted */}
+                    <div className="bg-gradient-to-r from-[#045184]/10 to-[#00A8E1]/10 rounded-lg p-3 mb-4">
+                      <p className="text-sm font-bold text-[#045184]">{program.format}</p>
+                    </div>
+                    
+                    {/* Description - Truncated for Skimming */}
+                    <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
+                      {program.description}
+                    </p>
 
-              {/* Program Content */}
-              <div className="p-8 flex-1 flex flex-col">
-                {/* Program Header */}
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">{program.name}</h3>
-                  <p className="text-sm font-bold mb-2" style={{ color: '#045184' }}>{program.audience}</p>
-                  <div className="flex items-center justify-start gap-4 text-xs text-slate-500 mb-4">
+                    {/* Action Button */}
+                    <button className="group/btn bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                      <span>Learn More</span>
+                      <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {filteredPrograms.length === 0 && (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">No programs match your filters</h3>
+              <p className="text-slate-600">Try adjusting your filter criteria to see more programs.</p>
+            </div>
+          )}
+        </motion.div>
                     <span className="bg-slate-100 px-3 py-1 rounded-full">{program.category}</span>
                     <span className="bg-slate-100 px-3 py-1 rounded-full">{program.level}</span>
                   </div>
