@@ -22,7 +22,14 @@ import {
   Newspaper,
   Shield,
   Video,
-  Bot
+  Bot,
+  Search,
+  Filter,
+  Grid,
+  List,
+  Clock,
+  TrendingUp,
+  CheckCircle2
 } from 'lucide-react';
 
 // Animation variants for consistent scroll and page load animations
