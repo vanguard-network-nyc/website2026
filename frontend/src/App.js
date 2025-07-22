@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import Components from './components';
+import ProgramsPageV2 from './ProgramsPageV2';
 
 const {
   Header,
