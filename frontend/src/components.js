@@ -1995,7 +1995,7 @@ const ProgramsPage = () => {
             </div>
           </div>
           
-          {/* Programs Grid - Enhanced for Skimming */}
+          {/* Programs Grid - Enhanced Card Design for Better Image Display */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {filteredPrograms.map((program, index) => (
               <motion.div
@@ -2006,46 +2006,54 @@ const ProgramsPage = () => {
                 className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20"
                 whileHover={{ y: -4 }}
               >
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-0 h-full">
-                  {/* Image Section - Smaller for better content focus */}
-                  <div className="md:col-span-2 relative">
+                {/* Vertical Card Layout for Better Image Display */}
+                <div className="flex flex-col h-full">
+                  {/* Image Header Section - Full Width */}
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={program.image}
                       alt={program.name}
-                      className="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-blue-50 group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                     
                     {/* Status Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 text-xs font-bold rounded-full ${
+                    <div className="absolute top-4 right-4">
+                      <span className={`px-3 py-1 text-xs font-bold rounded-full backdrop-blur-sm ${
                         program.status === 'Active' 
-                          ? 'bg-green-500 text-white' 
-                          : 'bg-blue-500 text-white'
+                          ? 'bg-green-500/90 text-white' 
+                          : 'bg-blue-500/90 text-white'
                       }`}>
                         {program.status}
                       </span>
                     </div>
                     
-                    {/* Icon */}
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-white/90 text-slate-700 backdrop-blur-sm">
+                        {program.category}
+                      </span>
+                    </div>
+                    
+                    {/* Program Icon */}
                     <div className="absolute bottom-4 left-4">
                       <div 
-                        className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg" 
+                        className="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm" 
                         style={{ 
                           background: program.category === 'Legal' 
-                            ? '#045184'
+                            ? 'rgba(4, 81, 132, 0.9)'
                             : program.category === 'Life Sciences'
-                            ? '#00A8E1'
-                            : '#6366f1'
+                            ? 'rgba(0, 168, 225, 0.9)'
+                            : 'rgba(99, 102, 241, 0.9)'
                         }}
                       >
-                        <div className="text-white text-sm">{program.icon}</div>
+                        <div className="text-white text-lg">{program.icon}</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Content Section - Optimized for Scanning */}
-                  <div className="md:col-span-3 p-6 flex flex-col">
+                  {/* Content Section - Flex Grow */}
+                  <div className="p-6 flex flex-col flex-grow">
                     {/* Quick Info Bar */}
                     <div className="flex flex-wrap items-center gap-2 mb-4">
                       <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{program.category}</span>
@@ -2072,8 +2080,8 @@ const ProgramsPage = () => {
                       {program.description}
                     </p>
 
-                    {/* Action Button */}
-                    <button className="group/btn bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                    {/* Action Button - Auto positioned at bottom */}
+                    <button className="group/btn bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 justify-center mt-auto">
                       <span>Learn More</span>
                       <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
