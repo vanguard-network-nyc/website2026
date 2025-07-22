@@ -3895,6 +3895,7 @@ const Components = {
   AdvisoryPage,
   NetworkingPage,
   ProgramsPage,
+  ProgramsPageV2,
   TeamPage,
   ContactPage,
   BookPage,
