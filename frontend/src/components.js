@@ -2084,37 +2084,6 @@ const ProgramsPage = () => {
             </div>
           )}
         </motion.div>
-                    <span className="bg-slate-100 px-3 py-1 rounded-full">{program.category}</span>
-                    <span className="bg-slate-100 px-3 py-1 rounded-full">{program.level}</span>
-                  </div>
-                  <p className="text-sm text-slate-600 font-medium bg-slate-50 px-4 py-2 rounded-lg">{program.format}</p>
-                </div>
-
-                {/* Program Description */}
-                <div className="flex-grow mb-8">
-                  <p className="text-slate-600 leading-relaxed font-medium">{program.description}</p>
-                </div>
-
-                {/* Action Button */}
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group/btn w-full text-white px-6 py-4 rounded-xl font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl mt-auto relative overflow-hidden"
-                  style={{ 
-                    background: 'linear-gradient(135deg, #045184 0%, #00A8E1 100%)',
-                  }}
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Learn More
-                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#00A8E1] to-[#045184] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
 
       {/* Customized Leadership Programs Section */}
       <motion.div
