@@ -1557,7 +1557,7 @@ const NetworkingPage = () => (
           ].map((plan, index) => (
             <div
               key={plan.name}
-              className="bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300 cursor-pointer"
+              className="bg-white/15 border border-white/20 rounded-xl hover:bg-white/25 hover:border-white/30 transition-all duration-300 cursor-pointer shadow-lg"
               style={{ 
                 display: 'flex',
                 flexDirection: 'column',
