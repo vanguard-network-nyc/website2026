@@ -1995,31 +1995,31 @@ const ProgramsPage = () => {
             </div>
           </div>
           
-          {/* Programs Grid - Enhanced Card Design for Better Image Display */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Programs Grid - Optimized Card Design */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredPrograms.map((program, index) => (
               <motion.div
                 key={program.name}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20"
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-[#00A8E1]/20 max-w-sm mx-auto"
                 whileHover={{ y: -4 }}
               >
-                {/* Vertical Card Layout for Better Image Display */}
+                {/* Optimized Card Layout */}
                 <div className="flex flex-col h-full">
-                  {/* Image Header Section - Full Width */}
-                  <div className="relative h-64 overflow-hidden">
+                  {/* Image Header Section - Optimized Aspect Ratio */}
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
                     <img
                       src={program.image}
                       alt={program.name}
-                      className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-blue-50 group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
                     
                     {/* Status Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className={`px-3 py-1 text-xs font-bold rounded-full backdrop-blur-sm ${
+                    <div className="absolute top-3 right-3">
+                      <span className={`px-2 py-1 text-xs font-bold rounded-full backdrop-blur-sm ${
                         program.status === 'Active' 
                           ? 'bg-green-500/90 text-white' 
                           : 'bg-blue-500/90 text-white'
@@ -2029,16 +2029,16 @@ const ProgramsPage = () => {
                     </div>
                     
                     {/* Category Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-white/90 text-slate-700 backdrop-blur-sm">
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-1 text-xs font-bold rounded-full bg-white/90 text-slate-700 backdrop-blur-sm">
                         {program.category}
                       </span>
                     </div>
                     
                     {/* Program Icon */}
-                    <div className="absolute bottom-4 left-4">
+                    <div className="absolute bottom-3 left-3">
                       <div 
-                        className="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg backdrop-blur-sm" 
+                        className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg backdrop-blur-sm" 
                         style={{ 
                           background: program.category === 'Legal' 
                             ? 'rgba(4, 81, 132, 0.9)'
@@ -2047,43 +2047,41 @@ const ProgramsPage = () => {
                             : 'rgba(99, 102, 241, 0.9)'
                         }}
                       >
-                        <div className="text-white text-lg">{program.icon}</div>
+                        <div className="text-white text-sm">{program.icon}</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Content Section - Flex Grow */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    {/* Quick Info Bar */}
-                    <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{program.category}</span>
-                      <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{program.level}</span>
-                      <span className="text-[#045184] text-xs font-bold">•</span>
-                      <span className="text-slate-500 text-xs">{program.duration}</span>
-                      <span className="text-[#045184] text-xs font-bold">•</span>
-                      <span className="text-slate-500 text-xs">{program.participants} participants</span>
-                    </div>
-                    
-                    {/* Program Title & Audience */}
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#045184] transition-colors duration-300">
+                  {/* Compact Content Section */}
+                  <div className="p-4 flex flex-col flex-grow">
+                    {/* Program Title */}
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#045184] transition-colors duration-300 line-clamp-2">
                       {program.name}
                     </h3>
-                    <p className="text-sm font-bold text-[#045184] mb-3">{program.audience}</p>
                     
-                    {/* Format - Highlighted */}
-                    <div className="bg-gradient-to-r from-[#045184]/10 to-[#00A8E1]/10 rounded-lg p-3 mb-4">
-                      <p className="text-sm font-bold text-[#045184]">{program.format}</p>
+                    {/* Quick Info */}
+                    <div className="flex flex-wrap items-center gap-1 mb-3 text-xs">
+                      <span className="text-[#045184] font-bold">{program.level}</span>
+                      <span className="text-slate-300">•</span>
+                      <span className="text-slate-500">{program.duration}</span>
+                      <span className="text-slate-300">•</span>
+                      <span className="text-slate-500">{program.participants}</span>
                     </div>
                     
-                    {/* Description - Truncated for Skimming */}
+                    {/* Format - Compact */}
+                    <div className="bg-gradient-to-r from-[#045184]/10 to-[#00A8E1]/10 rounded-lg p-2 mb-3">
+                      <p className="text-xs font-bold text-[#045184]">{program.format}</p>
+                    </div>
+                    
+                    {/* Description - Compact */}
                     <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
                       {program.description}
                     </p>
 
-                    {/* Action Button - Auto positioned at bottom */}
-                    <button className="group/btn bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 justify-center mt-auto">
+                    {/* Action Button - Compact */}
+                    <button className="group/btn bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2 justify-center mt-auto">
                       <span>Learn More</span>
-                      <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
                   </div>
                 </div>
