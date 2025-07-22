@@ -17,7 +17,6 @@ const {
   AdvisoryPage,
   NetworkingPage,
   ProgramsPage,
-  ProgramsPageV2,
   TeamPage,
   ContactPage,
   BookPage,
