@@ -2338,6 +2338,7 @@ const ProgramsPage = () => {
       </motion.div>
     </div>
   </motion.div>
+);
 };
 
 const TeamPage = () => (
