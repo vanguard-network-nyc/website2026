@@ -2008,8 +2008,8 @@ const ProgramsPage = () => {
               >
                 {/* Optimized Card Layout */}
                 <div className="flex flex-col h-full">
-                  {/* Image Header Section - Optimized Aspect Ratio */}
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+                  {/* Image Header Section - Optimized Height */}
+                  <div className="relative h-56 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
                     <img
                       src={program.image}
                       alt={program.name}
