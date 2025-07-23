@@ -175,18 +175,6 @@ const ProgramsV2 = () => {
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="text-center mb-16">
-          <motion.div 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-3 mb-8"
-          >
-            <div className="w-20 h-20 rounded-3xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center shadow-xl">
-              <BookOpen size={40} className="text-white" />
-            </div>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#045184] to-[#00A8E1]"></div>
-          </motion.div>
-          
           <motion.h1 
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
