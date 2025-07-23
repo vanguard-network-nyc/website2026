@@ -539,7 +539,6 @@ const ProgramsV2 = () => {
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/api/placeholder/1200/400')] opacity-10"></div>
           <div className="relative z-10">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Leadership?</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
