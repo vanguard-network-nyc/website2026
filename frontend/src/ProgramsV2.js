@@ -14,9 +14,7 @@ import {
   Clock,
   TrendingUp,
   CheckCircle2,
-  Search,
-  Star,
-  ChevronDown
+  Search
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
