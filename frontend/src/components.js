@@ -113,6 +113,7 @@ const Header = () => {
     { name: 'ADVISORY', path: '/advisory' },
     { name: 'NETWORKING', path: '/networking' },
     { name: 'PROGRAMS', path: '/programs' },
+    { name: 'PROGRAMS V2', path: '/programs-v2' },
     { name: 'CONTENT', path: '/content' },
     { name: 'CONTACT', path: '/contact' },
     { name: 'BOOK', path: '/book' }
