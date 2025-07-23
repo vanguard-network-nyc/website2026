@@ -571,33 +571,6 @@ const ProgramsV2 = () => {
 };
 
 export default ProgramsV2;
-      audience: "Life Sciences CEOs",
-      category: "Life Sciences",
-      level: "Executive",
-      status: "Active",
-      image: "/life-sciences-ceo-program.jpg",
-      duration: "Ongoing",
-      participants: "8-10",
-      features: ["Leadership Focus", "AI Innovation Discussions", "Industry-Specific Content", "Executive Networking"]
-    },
-    {
-      name: "NEXT GENERATION GC",
-      description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
-      format: "6-Month Program",
-      audience: "Future General Counsel",
-      category: "Legal",
-      level: "Emerging",
-      status: "Enrollment Open",
-      image: "/next-generation-gc-program.jpg",
-      duration: "6 Months",
-      participants: "15-20",
-      features: ["Accelerated Development", "GC Member Led", "Career Trajectory Focus", "Future Leader Preparation"]
-    },
-    {
-      name: "NEW LEADERS PROGRAM",
-      description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires.",
-      format: "6-12 Month Program",
-      audience: "Graduate Students & New Hires",
       category: "General",
       level: "Entry",
       status: "Enrollment Open",
