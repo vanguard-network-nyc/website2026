@@ -329,7 +329,7 @@ const ProgramsV2 = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200"
                   >
-                    <div className="relative h-64 overflow-hidden">
+                    <div className="relative h-80 overflow-hidden">
                       <img
                         src={program.image}
                         alt={program.name}
