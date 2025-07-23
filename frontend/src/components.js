@@ -1355,7 +1355,7 @@ const AdvisoryPage = () => (
                   src="/aileen-gonsalves.jpg" 
                   alt="Aileen Gonsalves" 
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: 'center 30%' }}
+                  style={{ objectPosition: 'calc(50% - 20px) 30%' }}
                 />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">AILEEN GONSALVES</h3>
