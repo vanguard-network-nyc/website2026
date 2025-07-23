@@ -14,7 +14,11 @@ import {
   Clock,
   TrendingUp,
   CheckCircle2,
-  Search
+  Search,
+  Star,
+  Zap,
+  Briefcase,
+  Globe
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
@@ -36,7 +40,8 @@ const ProgramsV2 = () => {
       image: "/gc-exchange-program.jpg",
       duration: "Ongoing",
       participants: "12-15",
-      features: ["Monthly Problem-Solving Sessions", "Bi-annual Forums", "Peer Networking", "Vanguard Moderation"]
+      features: ["Monthly Problem-Solving Sessions", "Bi-annual Forums", "Peer Networking", "Vanguard Moderation"],
+      icon: <Shield size={28} />
     },
     {
       name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
