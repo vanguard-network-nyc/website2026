@@ -571,13 +571,6 @@ const ProgramsV2 = () => {
 };
 
 export default ProgramsV2;
-      participants: "10-12",
-      features: ["Monthly Virtual Sessions", "Problem Solving Focus", "Peer Collaboration", "Experience Sharing"]
-    },
-    {
-      name: "LIFE SCIENCES CEO EXCHANGES",
-      description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization.",
-      format: "Quarterly Virtual + Bi-annual In-Person",
       audience: "Life Sciences CEOs",
       category: "Life Sciences",
       level: "Executive",
