@@ -561,7 +561,7 @@ const ProgramsV2 = () => {
               >
                 <BookOpen size={20} />
                 View All Programs
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
