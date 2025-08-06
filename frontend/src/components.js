@@ -267,14 +267,26 @@ const Header = () => {
                       ))}
                     </div>
                   ) : (
-                    // Regular mobile link
-                    <Link
-                      to={item.path}
-                      className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
+                    // Regular mobile link - handle external links
+                    item.external ? (
+                      <a
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )
                   )}
                 </motion.div>
               ))}
