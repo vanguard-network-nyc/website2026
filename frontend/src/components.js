@@ -184,14 +184,26 @@ const Header = () => {
                     </div>
                   </div>
                 ) : (
-                  // Regular link
-                  <Link
-                    to={item.path}
-                    className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
-                  >
-                    {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
-                  </Link>
+                  // Regular link - handle external links
+                  item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </Link>
+                  )
                 )}
               </motion.div>
             ))}
