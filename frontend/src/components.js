@@ -114,6 +114,7 @@ const Header = () => {
     { name: 'NETWORKING', path: '/networking' },
     { name: 'PROGRAMS', path: '/programs' },
     { name: 'PROGRAMS V2', path: '/programs-v2' },
+    { name: 'EVENTS', path: 'https://members.thevanguardnetwork.com/events', external: true },
     { name: 'CONTENT', path: '/content' },
     { name: 'CONTACT', path: '/contact' },
     { name: 'BOOK', path: '/book' }
