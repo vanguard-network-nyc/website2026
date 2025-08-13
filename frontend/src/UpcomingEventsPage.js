@@ -423,6 +423,17 @@ const UpcomingEventsPage = () => {
                           </div>
                         </div>
                       )}
+                      {event.location && (
+                        <div className="absolute bottom-4 right-4">
+                          <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            event.location === 'Virtual' 
+                              ? 'bg-blue-500/90 text-white backdrop-blur-sm' 
+                              : 'bg-green-500/90 text-white backdrop-blur-sm'
+                          }`}>
+                            📍 {event.location}
+                          </div>
+                        </div>
+                      )}
                     </div>
                     
                     {/* Event Content */}
