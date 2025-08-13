@@ -279,68 +279,110 @@ const UpcomingEventsPage = () => {
 
         {/* Search and View Controls */}
         <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
-          <div className="flex flex-col lg:flex-row gap-6 items-center">
-            {/* Search Bar */}
-            <div className="relative flex-1">
+          <div className="flex flex-col gap-6">
+            {/* First Row: Search Bar */}
+            <div className="relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
               <input
                 type="text"
-                placeholder="Search events by title, session leader, location, or date..."
+                placeholder="Search events by title, session leader, or date..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-lg"
               />
             </div>
             
-            {/* View Mode Toggle */}
-            <div className="flex items-center gap-4">
-              <span className="text-slate-600 font-medium">View:</span>
-              <div className="flex bg-slate-100 rounded-lg p-1">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
-                    viewMode === 'grid'
-                      ? 'bg-white text-[#00A8E1] shadow-sm'
-                      : 'text-slate-600 hover:text-slate-800'
-                  }`}
-                >
-                  <Users size={18} />
-                  Grid
-                </button>
-                <button
-                  onClick={() => setViewMode('calendar')}
-                  className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
-                    viewMode === 'calendar'
-                      ? 'bg-white text-[#00A8E1] shadow-sm'
-                      : 'text-slate-600 hover:text-slate-800'
-                  }`}
-                >
-                  <CalendarDays size={18} />
-                  Calendar
-                </button>
+            {/* Second Row: Filters and View Toggle */}
+            <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+              {/* Filter Dropdowns */}
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-slate-600 font-medium">Filters:</span>
+                
+                {/* Audience Filter */}
+                <div className="relative">
+                  <select
+                    value={selectedAudience}
+                    onChange={(e) => setSelectedAudience(e.target.value)}
+                    className="appearance-none bg-white border border-slate-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-sm font-medium cursor-pointer"
+                  >
+                    {getUniqueAudiences().map(audience => (
+                      <option key={audience} value={audience}>
+                        {audience === 'All' ? 'All Audiences' : audience}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+                </div>
+                
+                {/* Location Filter */}
+                <div className="relative">
+                  <select
+                    value={selectedLocation}
+                    onChange={(e) => setSelectedLocation(e.target.value)}
+                    className="appearance-none bg-white border border-slate-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-sm font-medium cursor-pointer"
+                  >
+                    {getUniqueLocations().map(location => (
+                      <option key={location} value={location}>
+                        {location === 'All' ? 'All Locations' : location}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+                </div>
+              </div>
+              
+              {/* View Mode Toggle */}
+              <div className="flex items-center gap-4">
+                <span className="text-slate-600 font-medium">View:</span>
+                <div className="flex bg-slate-100 rounded-lg p-1">
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
+                      viewMode === 'grid'
+                        ? 'bg-white text-[#00A8E1] shadow-sm'
+                        : 'text-slate-600 hover:text-slate-800'
+                    }`}
+                  >
+                    <Users size={18} />
+                    Grid
+                  </button>
+                  <button
+                    onClick={() => setViewMode('calendar')}
+                    className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
+                      viewMode === 'calendar'
+                        ? 'bg-white text-[#00A8E1] shadow-sm'
+                        : 'text-slate-600 hover:text-slate-800'
+                    }`}
+                  >
+                    <CalendarDays size={18} />
+                    Calendar
+                  </button>
+                </div>
               </div>
             </div>
           </div>
           
-          <div className="mt-4 flex justify-between items-center">
+          <div className="mt-6 flex justify-between items-center">
             <span className="text-slate-600 font-medium">
               Showing {filteredEvents.length} of {events.length} events
-              {searchTerm && (
+              {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
                 <span className="ml-2 text-sm text-slate-500">
-                  for "{searchTerm}"
+                  with active filters
                 </span>
               )}
             </span>
             
-            {searchTerm && (
+            {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
               <button
                 onClick={() => {
                   setSearchTerm('');
+                  setSelectedAudience('All');
+                  setSelectedLocation('All');
                   setSelectedDate(null);
                 }}
                 className="text-[#00A8E1] hover:text-[#0096c7] font-medium"
               >
-                Clear filters
+                Clear all filters
               </button>
             )}
           </div>
