@@ -348,10 +348,10 @@ const UpcomingEventsPage = () => {
                               <Clock size={14} />
                               {formatEventTime(event.start_date)}
                             </span>
-                            {event.speaker && (
+                            {event.session_leader_name && (
                               <span className="flex items-center gap-1">
                                 <Users size={14} />
-                                {event.speaker}
+                                {event.session_leader_name}
                               </span>
                             )}
                           </div>
