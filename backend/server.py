@@ -82,6 +82,7 @@ async def fetch_airtable_events():
             start_date = fields.get("Start Date", "")
             listing_picture = fields.get("Listing Picture", [])
             append_to_magic_link = fields.get("Append to magic link", "")
+            default_signup_url = fields.get("Default Sign up URL (for NON-members)", "")
             speaker = fields.get("Speaker", "")
             
             # Handle picture URL
@@ -89,8 +90,11 @@ async def fetch_airtable_events():
             if listing_picture and isinstance(listing_picture, list) and len(listing_picture) > 0:
                 picture_url = listing_picture[0].get("url", "")
             
-            # Create registration URL
+            # Create registration URL (fallback if default signup URL is not available)
             registration_url = f"https://members.thevanguardnetwork.com/events{append_to_magic_link}" if append_to_magic_link else "https://members.thevanguardnetwork.com/events"
+            
+            # Use default signup URL if available, otherwise use the concatenated URL
+            final_registration_url = default_signup_url if default_signup_url else registration_url
             
             event = AirtableEvent(
                 id=record.get("id", ""),
@@ -98,7 +102,8 @@ async def fetch_airtable_events():
                 date_time=date_time,
                 start_date=start_date,
                 listing_picture=picture_url,
-                registration_url=registration_url,
+                registration_url=final_registration_url,
+                default_signup_url=default_signup_url,
                 speaker=speaker
             )
             events.append(event)
