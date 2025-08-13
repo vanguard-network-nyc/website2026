@@ -73,6 +73,22 @@ const UpcomingEventsPage = () => {
       });
     }
 
+    // Filter by audience
+    if (selectedAudience !== 'All') {
+      console.log('Filtering by audience:', selectedAudience); // Debug log
+      filtered = filtered.filter(event => 
+        event.audience_network && event.audience_network.toLowerCase().includes(selectedAudience.toLowerCase())
+      );
+    }
+
+    // Filter by location
+    if (selectedLocation !== 'All') {
+      console.log('Filtering by location:', selectedLocation); // Debug log
+      filtered = filtered.filter(event => 
+        event.location && event.location === selectedLocation
+      );
+    }
+
     // Filter by selected date from calendar
     if (selectedDate) {
       console.log('Filtering by selected date:', selectedDate); // Debug log
@@ -85,6 +101,31 @@ const UpcomingEventsPage = () => {
 
     console.log('Filtered events count:', filtered.length); // Debug log
     setFilteredEvents(filtered);
+  };
+
+  // Get unique audiences for dropdown
+  const getUniqueAudiences = () => {
+    const audiences = new Set();
+    events.forEach(event => {
+      if (event.audience_network) {
+        // Split comma-separated audiences and add each one
+        event.audience_network.split(',').forEach(audience => {
+          audiences.add(audience.trim());
+        });
+      }
+    });
+    return ['All', ...Array.from(audiences).sort()];
+  };
+
+  // Get unique locations for dropdown
+  const getUniqueLocations = () => {
+    const locations = new Set();
+    events.forEach(event => {
+      if (event.location) {
+        locations.add(event.location);
+      }
+    });
+    return ['All', ...Array.from(locations).sort()];
   };
 
   const formatEventTitle = (title) => {
