@@ -89,6 +89,7 @@ async def fetch_airtable_events():
             more_details_url = fields.get("More Details URL", "")
             speaker = fields.get("Speaker", "")  # Keep for backward compatibility
             session_leader_raw = fields.get("Session Leader Name", "")
+            lead_moderator_raw = fields.get("Lead Moderator Name", "")
             
             # Handle Session Leader Name (can be a list or string)
             session_leader_name = ""
@@ -98,6 +99,18 @@ async def fetch_airtable_events():
                     session_leader_name = ", ".join(session_leader_raw)
                 else:
                     session_leader_name = str(session_leader_raw)
+            
+            # Handle Lead Moderator Name (can be a list or string)
+            lead_moderator_name = ""
+            if lead_moderator_raw:
+                if isinstance(lead_moderator_raw, list):
+                    # Join multiple lead moderators with comma and space
+                    lead_moderator_name = ", ".join(lead_moderator_raw)
+                else:
+                    lead_moderator_name = str(lead_moderator_raw)
+            
+            # Final display name priority: Session Leader -> Lead Moderator -> None
+            final_leader_name = session_leader_name or lead_moderator_name
             
             # Handle picture URL
             picture_url = None
