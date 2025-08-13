@@ -91,6 +91,7 @@ async def fetch_airtable_events():
             speaker = fields.get("Speaker", "")  # Keep for backward compatibility
             session_leader_raw = fields.get("Session Leader Name", "")
             lead_moderator_raw = fields.get("Lead Moderator Name", "")
+            location = fields.get("Location", "")
             
             # Handle Session Leader Name (can be a list or string)
             session_leader_name = ""
