@@ -400,7 +400,7 @@ const UpcomingEventsPage = () => {
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
                       <div className="absolute top-4 right-4">
                         <span className="bg-[#00A8E1] text-white px-3 py-1 rounded-full text-sm font-bold">
-                          Register
+                          View Details
                         </span>
                       </div>
                       {event.start_date && (
