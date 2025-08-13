@@ -78,8 +78,10 @@ async def fetch_airtable_events():
             # Extract fields
             event_title = fields.get("Event Title", "")
             date_time = fields.get("Date & Time being/end", "")
+            start_date = fields.get("Start Date", "")
             listing_picture = fields.get("Listing Picture", [])
             append_to_magic_link = fields.get("Append to magic link", "")
+            speaker = fields.get("Speaker", "")
             
             # Handle picture URL
             picture_url = None
@@ -93,8 +95,10 @@ async def fetch_airtable_events():
                 id=record.get("id", ""),
                 event_title=event_title,
                 date_time=date_time,
+                start_date=start_date,
                 listing_picture=picture_url,
-                registration_url=registration_url
+                registration_url=registration_url,
+                speaker=speaker
             )
             events.append(event)
         
