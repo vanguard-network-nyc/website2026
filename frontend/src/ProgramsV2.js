@@ -390,24 +390,13 @@ const ProgramsV2 = () => {
 
             <div className="grid gap-8">
               {customizedPrograms.map((program, index) => (
-            <motion.div
-              key="customized"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-center mb-12">
-                <h2 className="text-5xl font-bold text-slate-900 mb-4">
-                  Customized Leadership Solutions
-                </h2>
-                <p className="text-xl text-slate-600 max-w-4xl mx-auto">
-                  Tailored programs designed specifically for your organization's unique needs and leadership challenges.
-                </p>
-              </div>
-
-              <div className="grid gap-8">
-                {customizedPrograms.map((program, index) => (
+                <motion.div
+                  key={program.name}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 group"
+                >
                   <motion.div
                     key={program.name}
                     initial={{ y: 30, opacity: 0 }}
