@@ -37,6 +37,7 @@ function App() {
             <Route path="/networking" element={<NetworkingPage />} />
             <Route path="/programs" element={<ProgramsPage />} />
             <Route path="/programs-v2" element={<ProgramsV2 />} />
+            <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
             <Route path="/content" element={<ContentPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
