@@ -8,6 +8,8 @@ const UpcomingEventsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedAudience, setSelectedAudience] = useState('All');
+  const [selectedLocation, setSelectedLocation] = useState('All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'calendar'
   const [selectedDate, setSelectedDate] = useState(null);
 
