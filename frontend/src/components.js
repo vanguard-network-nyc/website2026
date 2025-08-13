@@ -110,6 +110,7 @@ const Header = () => {
   }, []);
 
   const navItems = [
+    { name: 'ABOUT', path: '/about' },
     { name: 'ADVISORY', path: '/advisory' },
     { name: 'NETWORKING', path: '/networking' },
     { name: 'PROGRAMS', path: '/programs' },
