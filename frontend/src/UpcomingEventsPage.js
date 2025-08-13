@@ -355,6 +355,15 @@ const UpcomingEventsPage = () => {
                                 {event.session_leader_name}
                               </span>
                             )}
+                            {event.location && (
+                              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                event.location === 'Virtual' 
+                                  ? 'bg-blue-100 text-blue-800' 
+                                  : 'bg-green-100 text-green-800'
+                              }`}>
+                                {event.location}
+                              </span>
+                            )}
                           </div>
                         </div>
                         
