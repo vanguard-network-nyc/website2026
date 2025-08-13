@@ -86,7 +86,8 @@ async def fetch_airtable_events():
             append_to_magic_link = fields.get("Append to magic link", "")
             default_signup_url = fields.get("Default Sign up URL (for NON-members)", "")
             more_details_url = fields.get("More Details URL", "")
-            speaker = fields.get("Speaker", "")
+            speaker = fields.get("Speaker", "")  # Keep for backward compatibility
+            session_leader_name = fields.get("Session Leader Name", "")
             
             # Handle picture URL
             picture_url = None
@@ -108,7 +109,8 @@ async def fetch_airtable_events():
                 registration_url=final_registration_url,
                 default_signup_url=default_signup_url,
                 more_details_url=more_details_url,
-                speaker=speaker
+                speaker=speaker,
+                session_leader_name=session_leader_name
             )
             events.append(event)
         
