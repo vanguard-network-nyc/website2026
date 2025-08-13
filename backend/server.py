@@ -119,6 +119,17 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+@api_router.get("/events", response_model=List[AirtableEvent])
+async def get_upcoming_events():
+    """Get upcoming events from Airtable"""
+    try:
+        events = await fetch_airtable_events()
+        logger.info(f"Successfully fetched {len(events)} events from Airtable")
+        return events
+    except Exception as e:
+        logger.error(f"Error in get_upcoming_events: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch events")
+
 # Include the router in the main app
 app.include_router(api_router)
 
