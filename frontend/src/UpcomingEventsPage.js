@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays } from 'lucide-react';
 
 const UpcomingEventsPage = () => {
   const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'calendar'
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     fetchEvents();
   }, []);
+
+  useEffect(() => {
+    filterEvents();
+  }, [events, searchTerm, selectedDate]);
 
   const fetchEvents = async () => {
     try {
@@ -24,7 +32,16 @@ const UpcomingEventsPage = () => {
       
       const eventData = await response.json();
       console.log('Fetched events:', eventData.length); // Debug log
-      setEvents(eventData);
+      
+      // Sort events by start date
+      const sortedEvents = eventData.sort((a, b) => {
+        if (!a.start_date && !b.start_date) return 0;
+        if (!a.start_date) return 1;
+        if (!b.start_date) return -1;
+        return new Date(a.start_date) - new Date(b.start_date);
+      });
+      
+      setEvents(sortedEvents);
     } catch (err) {
       console.error('Error fetching events:', err);
       setError(err.message);
@@ -33,9 +50,84 @@ const UpcomingEventsPage = () => {
     }
   };
 
+  const filterEvents = () => {
+    let filtered = events;
+
+    // Filter by search term (title, speaker, event date)
+    if (searchTerm) {
+      filtered = filtered.filter(event => {
+        const titleMatch = event.event_title.toLowerCase().includes(searchTerm.toLowerCase());
+        const speakerMatch = event.speaker && event.speaker.toLowerCase().includes(searchTerm.toLowerCase());
+        const dateMatch = event.start_date && formatEventDate(event.start_date).toLowerCase().includes(searchTerm.toLowerCase());
+        return titleMatch || speakerMatch || dateMatch;
+      });
+    }
+
+    // Filter by selected date from calendar
+    if (selectedDate) {
+      filtered = filtered.filter(event => {
+        if (!event.start_date) return false;
+        const eventDate = new Date(event.start_date).toDateString();
+        return eventDate === selectedDate.toDateString();
+      });
+    }
+
+    setFilteredEvents(filtered);
+  };
+
   const formatEventTitle = (title) => {
-    // Clean up title by removing extra whitespace and newlines
     return title.replace(/\n+/g, ' ').trim();
+  };
+
+  const formatEventDate = (dateString) => {
+    if (!dateString) return 'Date TBA';
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch (error) {
+      return 'Date TBA';
+    }
+  };
+
+  const formatEventTime = (dateString) => {
+    if (!dateString) return '';
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch (error) {
+      return '';
+    }
+  };
+
+  // Get unique months for calendar view
+  const getEventsByMonth = () => {
+    const eventsByMonth = {};
+    filteredEvents.forEach(event => {
+      if (event.start_date) {
+        const date = new Date(event.start_date);
+        const monthKey = `${date.getFullYear()}-${date.getMonth()}`;
+        const monthName = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        
+        if (!eventsByMonth[monthKey]) {
+          eventsByMonth[monthKey] = {
+            name: monthName,
+            events: []
+          };
+        }
+        eventsByMonth[monthKey].events.push(event);
+      }
+    });
+    return eventsByMonth;
   };
 
   if (loading) {
