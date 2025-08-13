@@ -93,6 +93,7 @@ async def fetch_airtable_events():
             session_leader_raw = fields.get("Session Leader Name", "")
             lead_moderator_raw = fields.get("Lead Moderator Name", "")
             location = fields.get("Location", "")
+            audience_network_raw = fields.get("Audience (Network)", "")
             
             # Handle Session Leader Name (can be a list or string)
             session_leader_name = ""
