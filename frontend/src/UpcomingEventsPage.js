@@ -428,10 +428,10 @@ const UpcomingEventsPage = () => {
                         </div>
                       )}
                       
-                      {event.speaker ? (
+                      {event.session_leader_name ? (
                         <div className="flex items-center gap-2 text-slate-600 mb-6">
                           <Users size={16} className="text-[#00A8E1]" />
-                          <span className="text-sm">Speaker: {event.speaker}</span>
+                          <span className="text-sm">Session Leader: {event.session_leader_name}</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2 text-slate-600 mb-6">
