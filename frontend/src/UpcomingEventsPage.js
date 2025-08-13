@@ -14,14 +14,16 @@ const UpcomingEventsPage = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL;
+      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      console.log('Backend URL:', backendUrl); // Debug log
       const response = await fetch(`${backendUrl}/api/events`);
       
       if (!response.ok) {
-        throw new Error(`Failed to fetch events: ${response.status}`);
+        throw new Error(`Failed to fetch events: ${response.status} ${response.statusText}`);
       }
       
       const eventData = await response.json();
+      console.log('Fetched events:', eventData.length); // Debug log
       setEvents(eventData);
     } catch (err) {
       console.error('Error fetching events:', err);
