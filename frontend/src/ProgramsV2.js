@@ -375,7 +375,6 @@ const ProgramsV2 = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
           </div>
 
           {/* Customized Programs Section */}
