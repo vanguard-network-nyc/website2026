@@ -21,7 +21,7 @@ const UpcomingEventsPage = () => {
     if (events.length > 0) {
       filterEvents();
     }
-  }, [events, searchTerm, selectedDate]);
+  }, [events, searchTerm, selectedAudience, selectedLocation, selectedDate]);
 
   const fetchEvents = async () => {
     try {
