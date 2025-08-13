@@ -113,6 +113,15 @@ async def fetch_airtable_events():
                 else:
                     lead_moderator_name = str(lead_moderator_raw)
             
+            # Handle Audience (Network) field (can be a list or string)
+            audience_network = ""
+            if audience_network_raw:
+                if isinstance(audience_network_raw, list):
+                    # Join multiple audiences with comma and space
+                    audience_network = ", ".join(audience_network_raw)
+                else:
+                    audience_network = str(audience_network_raw)
+            
             # Final display name priority: Session Leader -> Lead Moderator -> None
             final_leader_name = session_leader_name or lead_moderator_name
             
