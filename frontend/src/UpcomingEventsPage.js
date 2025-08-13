@@ -221,92 +221,269 @@ const UpcomingEventsPage = () => {
           ))}
         </div>
 
-        {/* Events Grid */}
-        {events.length > 0 ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {events.map((event, index) => (
+        {/* Search and View Controls */}
+        <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
+          <div className="flex flex-col lg:flex-row gap-6 items-center">
+            {/* Search Bar */}
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search events by title, speaker, or date..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-lg"
+              />
+            </div>
+            
+            {/* View Mode Toggle */}
+            <div className="flex items-center gap-4">
+              <span className="text-slate-600 font-medium">View:</span>
+              <div className="flex bg-slate-100 rounded-lg p-1">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
+                    viewMode === 'grid'
+                      ? 'bg-white text-[#00A8E1] shadow-sm'
+                      : 'text-slate-600 hover:text-slate-800'
+                  }`}
+                >
+                  <Users size={18} />
+                  Grid
+                </button>
+                <button
+                  onClick={() => setViewMode('calendar')}
+                  className={`px-4 py-2 rounded-md transition-all duration-200 flex items-center gap-2 ${
+                    viewMode === 'calendar'
+                      ? 'bg-white text-[#00A8E1] shadow-sm'
+                      : 'text-slate-600 hover:text-slate-800'
+                  }`}
+                >
+                  <CalendarDays size={18} />
+                  Calendar
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-4 flex justify-between items-center">
+            <span className="text-slate-600 font-medium">
+              Showing {filteredEvents.length} of {events.length} events
+              {searchTerm && (
+                <span className="ml-2 text-sm text-slate-500">
+                  for "{searchTerm}"
+                </span>
+              )}
+            </span>
+            
+            {searchTerm && (
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedDate(null);
+                }}
+                className="text-[#00A8E1] hover:text-[#0096c7] font-medium"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Calendar View */}
+        {viewMode === 'calendar' && (
+          <div className="mb-12">
+            {Object.entries(getEventsByMonth()).map(([monthKey, monthData]) => (
               <motion.div
-                key={event.id}
+                key={monthKey}
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200"
+                className="bg-white rounded-2xl shadow-lg border border-slate-200 mb-6 overflow-hidden"
               >
-                {/* Event Image */}
-                <div className="relative h-64 overflow-hidden">
-                  {event.listing_picture ? (
-                    <img
-                      src={event.listing_picture}
-                      alt={formatEventTitle(event.event_title)}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
-                      <Calendar size={64} className="text-white opacity-50" />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-[#00A8E1] text-white px-3 py-1 rounded-full text-sm font-bold">
-                      Register
+                <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] p-6">
+                  <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <Calendar size={28} />
+                    {monthData.name}
+                    <span className="text-lg font-normal opacity-90">
+                      ({monthData.events.length} events)
                     </span>
-                  </div>
+                  </h3>
                 </div>
                 
-                {/* Event Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors">
-                    {formatEventTitle(event.event_title)}
-                  </h3>
-                  
-                  {event.date_time && (
-                    <div className="flex items-center gap-2 text-slate-600 mb-4">
-                      <Clock size={16} className="text-[#00A8E1]" />
-                      <span className="text-sm">{event.date_time}</span>
-                    </div>
-                  )}
-                  
-                  <div className="flex items-center gap-2 text-slate-600 mb-6">
-                    <Users size={16} className="text-[#00A8E1]" />
-                    <span className="text-sm">Leadership Community Event</span>
+                  <div className="space-y-4">
+                    {monthData.events.map((event, index) => (
+                      <motion.div
+                        key={event.id}
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center gap-6 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors duration-200 cursor-pointer"
+                        onClick={() => window.open(event.registration_url, '_blank')}
+                      >
+                        <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-xl flex items-center justify-center">
+                          <span className="text-white font-bold text-sm">
+                            {event.start_date ? new Date(event.start_date).getDate() : '?'}
+                          </span>
+                        </div>
+                        
+                        <div className="flex-1">
+                          <h4 className="font-bold text-slate-900 mb-1">
+                            {formatEventTitle(event.event_title)}
+                          </h4>
+                          <div className="flex items-center gap-4 text-sm text-slate-600">
+                            <span className="flex items-center gap-1">
+                              <Clock size={14} />
+                              {formatEventTime(event.start_date)}
+                            </span>
+                            {event.speaker && (
+                              <span className="flex items-center gap-1">
+                                <Users size={14} />
+                                {event.speaker}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        
+                        <div className="flex-shrink-0">
+                          <div className="bg-[#00A8E1] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#0096c7] transition-colors">
+                            Register
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                  
-                  <a
-                    href={event.registration_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                  >
-                    Register Interest
-                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
                 </div>
               </motion.div>
             ))}
           </div>
-        ) : (
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="text-center py-16"
-          >
-            <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Calendar size={48} className="text-slate-400" />
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">No Events Available</h3>
-            <p className="text-slate-600 mb-6 max-w-md mx-auto">
-              We're currently planning exciting new events. Check back soon for updates!
-            </p>
-            <a
-              href="https://members.thevanguardnetwork.com/events"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0096c7] transition-colors"
-            >
-              <ExternalLink size={20} />
-              Visit Events Portal
-            </a>
-          </motion.div>
+        )}
+
+        {/* Grid View */}
+        {viewMode === 'grid' && (
+          <>
+            {filteredEvents.length > 0 ? (
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {filteredEvents.map((event, index) => (
+                  <motion.div
+                    key={event.id}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200"
+                  >
+                    {/* Event Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      {event.listing_picture ? (
+                        <img
+                          src={event.listing_picture}
+                          alt={formatEventTitle(event.event_title)}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                          <Calendar size={64} className="text-white opacity-50" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-[#00A8E1] text-white px-3 py-1 rounded-full text-sm font-bold">
+                          Register
+                        </span>
+                      </div>
+                      {event.start_date && (
+                        <div className="absolute bottom-4 left-4">
+                          <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-medium">
+                            {new Date(event.start_date).toLocaleDateString('en-US', { 
+                              month: 'short', 
+                              day: 'numeric' 
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Event Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors">
+                        {formatEventTitle(event.event_title)}
+                      </h3>
+                      
+                      {event.start_date && (
+                        <div className="flex items-center gap-2 text-slate-600 mb-4">
+                          <Clock size={16} className="text-[#00A8E1]" />
+                          <span className="text-sm">{formatEventDate(event.start_date)}</span>
+                        </div>
+                      )}
+                      
+                      {event.speaker ? (
+                        <div className="flex items-center gap-2 text-slate-600 mb-6">
+                          <Users size={16} className="text-[#00A8E1]" />
+                          <span className="text-sm">Speaker: {event.speaker}</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2 text-slate-600 mb-6">
+                          <Users size={16} className="text-[#00A8E1]" />
+                          <span className="text-sm">Leadership Community Event</span>
+                        </div>
+                      )}
+                      
+                      <a
+                        href={event.registration_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                      >
+                        Register Interest
+                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-center py-16"
+              >
+                <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Search size={48} className="text-slate-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                  {searchTerm ? 'No events found' : 'No Events Available'}
+                </h3>
+                <p className="text-slate-600 mb-6 max-w-md mx-auto">
+                  {searchTerm 
+                    ? `No events match your search "${searchTerm}". Try different keywords.`
+                    : 'We\'re currently planning exciting new events. Check back soon for updates!'
+                  }
+                </p>
+                {searchTerm ? (
+                  <button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedDate(null);
+                    }}
+                    className="inline-flex items-center gap-2 bg-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0096c7] transition-colors"
+                  >
+                    <Filter size={20} />
+                    Clear Search
+                  </button>
+                ) : (
+                  <a
+                    href="https://members.thevanguardnetwork.com/events"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0096c7] transition-colors"
+                  >
+                    <ExternalLink size={20} />
+                    Visit Events Portal
+                  </a>
+                )}
+              </motion.div>
+            )}
+          </>
         )}
       </div>
 
