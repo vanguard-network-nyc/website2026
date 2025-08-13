@@ -429,25 +429,32 @@ const UpcomingEventsPage = () => {
                           <h4 className="font-bold text-slate-900 mb-1">
                             {formatEventTitle(event.event_title)}
                           </h4>
-                          <div className="flex items-center gap-4 text-sm text-slate-600">
-                            <span className="flex items-center gap-1">
-                              <Clock size={14} />
-                              {formatEventTime(event.start_date)}
-                            </span>
-                            {event.session_leader_name && (
+                          <div className="flex flex-col gap-1 text-sm text-slate-600">
+                            <div className="flex items-center gap-4">
                               <span className="flex items-center gap-1">
-                                <Users size={14} />
-                                {event.session_leader_name}
+                                <Clock size={14} />
+                                {formatEventTime(event.start_date)}
                               </span>
-                            )}
-                            {event.location && (
-                              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                event.location === 'Virtual' 
-                                  ? 'bg-blue-100 text-blue-800' 
-                                  : 'bg-green-100 text-green-800'
-                              }`}>
-                                {event.location}
-                              </span>
+                              {event.session_leader_name && (
+                                <span className="flex items-center gap-1">
+                                  <Users size={14} />
+                                  {event.session_leader_name}
+                                </span>
+                              )}
+                              {event.location && (
+                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                  event.location === 'Virtual' 
+                                    ? 'bg-blue-100 text-blue-800' 
+                                    : 'bg-green-100 text-green-800'
+                                }`}>
+                                  {event.location}
+                                </span>
+                              )}
+                            </div>
+                            {event.audience_network && (
+                              <div className="text-xs text-slate-500">
+                                <span className="font-medium">Audience:</span> {event.audience_network}
+                              </div>
                             )}
                           </div>
                         </div>
