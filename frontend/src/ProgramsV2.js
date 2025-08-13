@@ -193,8 +193,19 @@ const ProgramsV2 = () => {
           </motion.p>
         </div>
 
-        {/* Search and Filters */}
-        <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
+        {/* Current Programs Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold text-slate-900 mb-4">
+              Current Leadership Programs
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto">
+              Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
+            </p>
+          </div>
+
+          {/* Search and Filters */}
+          <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
                 <div className="flex flex-col lg:flex-row gap-6 items-center">
                   {/* Search */}
                   <div className="relative flex-1">
