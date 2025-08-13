@@ -44,6 +44,7 @@ class AirtableEvent(BaseModel):
     start_date: Optional[str] = None
     listing_picture: Optional[str] = None
     registration_url: Optional[str] = None
+    default_signup_url: Optional[str] = None
     speaker: Optional[str] = None
 
 # Airtable configuration
