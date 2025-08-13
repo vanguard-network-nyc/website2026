@@ -43,8 +43,10 @@ const UpcomingEventsPage = () => {
         return new Date(a.start_date) - new Date(b.start_date);
       });
       
+      console.log('Setting events and filtered events'); // Debug log
       setEvents(sortedEvents);
       setFilteredEvents(sortedEvents); // Initialize filtered events
+      console.log('Events set, turning off loading'); // Debug log
     } catch (err) {
       console.error('Error fetching events:', err);
       setError(err.message);
