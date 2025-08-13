@@ -54,10 +54,12 @@ const UpcomingEventsPage = () => {
   };
 
   const filterEvents = () => {
-    let filtered = events;
+    console.log('Filtering events, total events:', events.length); // Debug log
+    let filtered = [...events]; // Create a copy of the events array
 
     // Filter by search term (title, speaker, event date)
     if (searchTerm) {
+      console.log('Filtering by search term:', searchTerm); // Debug log
       filtered = filtered.filter(event => {
         const titleMatch = event.event_title.toLowerCase().includes(searchTerm.toLowerCase());
         const speakerMatch = event.speaker && event.speaker.toLowerCase().includes(searchTerm.toLowerCase());
@@ -68,6 +70,7 @@ const UpcomingEventsPage = () => {
 
     // Filter by selected date from calendar
     if (selectedDate) {
+      console.log('Filtering by selected date:', selectedDate); // Debug log
       filtered = filtered.filter(event => {
         if (!event.start_date) return false;
         const eventDate = new Date(event.start_date).toDateString();
@@ -75,6 +78,7 @@ const UpcomingEventsPage = () => {
       });
     }
 
+    console.log('Filtered events count:', filtered.length); // Debug log
     setFilteredEvents(filtered);
   };
 
