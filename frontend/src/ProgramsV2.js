@@ -502,9 +502,9 @@ const ProgramsV2 = () => {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Enhanced Call to Action */}
