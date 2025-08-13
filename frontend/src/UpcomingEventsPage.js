@@ -359,7 +359,7 @@ const UpcomingEventsPage = () => {
                         
                         <div className="flex-shrink-0">
                           <div className="bg-[#00A8E1] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#0096c7] transition-colors">
-                            Register
+                            More Details
                           </div>
                         </div>
                       </motion.div>
