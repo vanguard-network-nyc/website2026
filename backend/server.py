@@ -54,7 +54,7 @@ class AirtableEvent(BaseModel):
 AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
 AIRTABLE_BASE_ID = "appm4C4MiNYVWwBaq"
 AIRTABLE_TABLE_ID = "tbljv81RwwFDCb0eU"
-AIRTABLE_VIEW_ID = "viwFw2XGGs3wTZvs6"
+AIRTABLE_VIEW_ID = "viwmMNmGslj40hP3q"
 
 async def fetch_airtable_events():
     """Fetch events from Airtable"""
