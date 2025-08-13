@@ -193,41 +193,8 @@ const ProgramsV2 = () => {
           </motion.p>
         </div>
 
-        {/* Program Type Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="flex bg-white rounded-2xl p-2 shadow-xl border border-slate-200">
-            {[
-              { id: 'current', label: 'Current Programs', icon: <BookOpen size={20} /> },
-              { id: 'customized', label: 'Customized Solutions', icon: <Star size={20} /> }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-3 ${
-                  activeTab === tab.id
-                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
-                    : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
-                }`}
-              >
-                {tab.icon}
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Current Programs Section */}
-        <AnimatePresence mode="wait">
-          {activeTab === 'current' && (
-            <motion.div
-              key="current"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Search and Filters */}
-              <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
+        {/* Search and Filters */}
+        <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
                 <div className="flex flex-col lg:flex-row gap-6 items-center">
                   {/* Search */}
                   <div className="relative flex-1">
