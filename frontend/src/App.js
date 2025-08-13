@@ -5,6 +5,7 @@ import './App.css';
 import Components from './components';
 import ProgramsV2 from './ProgramsV2';
 import UpcomingEventsPage from './UpcomingEventsPage';
+import AboutPage from './AboutPage';
 
 const {
   Header,
