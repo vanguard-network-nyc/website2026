@@ -493,11 +493,6 @@ const UpcomingEventsPage = () => {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                      <div className="absolute top-4 right-4">
-                        <span className="bg-[#00A8E1] text-white px-3 py-1 rounded-full text-sm font-bold">
-                          View Details
-                        </span>
-                      </div>
                       {event.start_date && (
                         <div className="absolute bottom-4 left-4">
                           <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-medium">
@@ -505,17 +500,6 @@ const UpcomingEventsPage = () => {
                               month: 'short', 
                               day: 'numeric' 
                             })}
-                          </div>
-                        </div>
-                      )}
-                      {event.location && (
-                        <div className="absolute bottom-4 right-4">
-                          <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            event.location === 'Virtual' 
-                              ? 'bg-blue-500/90 text-white backdrop-blur-sm' 
-                              : 'bg-green-500/90 text-white backdrop-blur-sm'
-                          }`}>
-                            📍 {event.location}
                           </div>
                         </div>
                       )}
