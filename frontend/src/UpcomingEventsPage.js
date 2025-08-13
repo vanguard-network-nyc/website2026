@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown } from 'lucide-react';
 
 const UpcomingEventsPage = () => {
   const [events, setEvents] = useState([]);
