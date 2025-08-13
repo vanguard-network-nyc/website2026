@@ -50,6 +50,7 @@ class AirtableEvent(BaseModel):
     session_leader_name: Optional[str] = None
     lead_moderator_name: Optional[str] = None
     location: Optional[str] = None
+    audience_network: Optional[str] = None
 
 # Airtable configuration
 AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
