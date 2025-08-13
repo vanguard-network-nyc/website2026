@@ -148,7 +148,8 @@ async def fetch_airtable_events():
                 speaker=speaker,
                 session_leader_name=final_leader_name,  # Use the combined logic
                 lead_moderator_name=lead_moderator_name,
-                location=location
+                location=location,
+                audience_network=audience_network
             )
             events.append(event)
         
