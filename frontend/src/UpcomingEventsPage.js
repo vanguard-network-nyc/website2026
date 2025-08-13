@@ -1,0 +1,261 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin } from 'lucide-react';
+
+const UpcomingEventsPage = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    try {
+      setLoading(true);
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || import.meta.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/events`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch events: ${response.status}`);
+      }
+      
+      const eventData = await response.json();
+      setEvents(eventData);
+    } catch (err) {
+      console.error('Error fetching events:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatEventTitle = (title) => {
+    // Clean up title by removing extra whitespace and newlines
+    return title.replace(/\n+/g, ' ').trim();
+  };
+
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="pt-24 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center"
+      >
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#00A8E1] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-xl text-slate-600">Loading upcoming events...</p>
+        </div>
+      </motion.div>
+    );
+  }
+
+  if (error) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="pt-24 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center"
+      >
+        <div className="text-center max-w-md mx-auto p-8">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ExternalLink className="text-red-600" size={32} />
+          </div>
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">Unable to Load Events</h2>
+          <p className="text-slate-600 mb-4">{error}</p>
+          <button
+            onClick={fetchEvents}
+            className="bg-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0096c7] transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-24 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
+    >
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center mb-16">
+          <motion.h1 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-7xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8"
+          >
+            Upcoming Events
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
+          >
+            Join our leadership community at exclusive events designed to accelerate your growth and expand your network.
+          </motion.p>
+        </div>
+
+        {/* Events Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {[
+            { number: events.length.toString(), label: "Upcoming Events", icon: <Calendar size={32} className="text-[#00A8E1]" /> },
+            { number: "100+", label: "Industry Leaders", icon: <Users size={32} className="text-purple-500" /> },
+            { number: "Virtual & In-Person", label: "Event Formats", icon: <MapPin size={32} className="text-green-500" /> }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
+            >
+              <div className="flex justify-center mb-4">
+                {stat.icon}
+              </div>
+              <div className="text-4xl font-bold text-slate-900 mb-2">{stat.number}</div>
+              <div className="text-slate-600 font-medium">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Events Grid */}
+        {events.length > 0 ? (
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {events.map((event, index) => (
+              <motion.div
+                key={event.id}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200"
+              >
+                {/* Event Image */}
+                <div className="relative h-64 overflow-hidden">
+                  {event.listing_picture ? (
+                    <img
+                      src={event.listing_picture}
+                      alt={formatEventTitle(event.event_title)}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                      <Calendar size={64} className="text-white opacity-50" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-[#00A8E1] text-white px-3 py-1 rounded-full text-sm font-bold">
+                      Register
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Event Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors">
+                    {formatEventTitle(event.event_title)}
+                  </h3>
+                  
+                  {event.date_time && (
+                    <div className="flex items-center gap-2 text-slate-600 mb-4">
+                      <Clock size={16} className="text-[#00A8E1]" />
+                      <span className="text-sm">{event.date_time}</span>
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center gap-2 text-slate-600 mb-6">
+                    <Users size={16} className="text-[#00A8E1]" />
+                    <span className="text-sm">Leadership Community Event</span>
+                  </div>
+                  
+                  <a
+                    href={event.registration_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                  >
+                    Register Interest
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-center py-16"
+          >
+            <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Calendar size={48} className="text-slate-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">No Events Available</h3>
+            <p className="text-slate-600 mb-6 max-w-md mx-auto">
+              We're currently planning exciting new events. Check back soon for updates!
+            </p>
+            <a
+              href="https://members.thevanguardnetwork.com/events"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0096c7] transition-colors"
+            >
+              <ExternalLink size={20} />
+              Visit Events Portal
+            </a>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Call to Action */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
+          <div className="relative z-10">
+            <h2 className="text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
+            <p className="text-xl mb-8 max-w-3xl mx-auto">
+              Connect with industry leaders, gain exclusive insights, and accelerate your leadership journey.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="https://members.thevanguardnetwork.com/events"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+              >
+                <ExternalLink size={20} />
+                View All Events
+              </motion.a>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
+              >
+                <Users size={20} />
+                Contact Us
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default UpcomingEventsPage;
