@@ -41,8 +41,10 @@ class AirtableEvent(BaseModel):
     id: str
     event_title: str
     date_time: Optional[str] = None
+    start_date: Optional[str] = None
     listing_picture: Optional[str] = None
     registration_url: Optional[str] = None
+    speaker: Optional[str] = None
 
 # Airtable configuration
 AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
