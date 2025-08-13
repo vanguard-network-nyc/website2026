@@ -138,6 +138,7 @@ const UpcomingEventsPage = () => {
   };
 
   if (loading) {
+    console.log('Component is in loading state'); // Debug log
     return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -147,6 +148,8 @@ const UpcomingEventsPage = () => {
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#00A8E1] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-xl text-slate-600">Loading upcoming events...</p>
+          <p className="text-sm text-slate-500 mt-2">Events loaded: {events.length}</p>
+          <p className="text-sm text-slate-500">Filtered events: {filteredEvents.length}</p>
         </div>
       </motion.div>
     );
