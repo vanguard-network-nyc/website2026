@@ -379,7 +379,18 @@ const ProgramsV2 = () => {
           )}
 
           {/* Customized Programs Section */}
-          {activeTab === 'customized' && (
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl font-bold text-slate-900 mb-4">
+                Customized Leadership Solutions
+              </h2>
+              <p className="text-xl text-slate-600 max-w-4xl mx-auto">
+                Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+              </p>
+            </div>
+
+            <div className="grid gap-8">
+              {customizedPrograms.map((program, index) => (
             <motion.div
               key="customized"
               initial={{ opacity: 0, x: 20 }}
