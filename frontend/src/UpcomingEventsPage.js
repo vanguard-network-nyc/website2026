@@ -16,7 +16,9 @@ const UpcomingEventsPage = () => {
   }, []);
 
   useEffect(() => {
-    filterEvents();
+    if (events.length > 0) {
+      filterEvents();
+    }
   }, [events, searchTerm, selectedDate]);
 
   const fetchEvents = async () => {
@@ -42,6 +44,7 @@ const UpcomingEventsPage = () => {
       });
       
       setEvents(sortedEvents);
+      setFilteredEvents(sortedEvents); // Initialize filtered events
     } catch (err) {
       console.error('Error fetching events:', err);
       setError(err.message);
