@@ -15,7 +15,6 @@ const {
   VideoTestimonial,
   ProgramsSection,
   Footer,
-  AboutPage,
   AdvisoryPage,
   NetworkingPage,
   ProgramsPage,
