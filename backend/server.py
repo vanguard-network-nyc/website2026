@@ -87,7 +87,16 @@ async def fetch_airtable_events():
             default_signup_url = fields.get("Default Sign up URL (for NON-members)", "")
             more_details_url = fields.get("More Details URL", "")
             speaker = fields.get("Speaker", "")  # Keep for backward compatibility
-            session_leader_name = fields.get("Session Leader Name", "")
+            session_leader_raw = fields.get("Session Leader Name", "")
+            
+            # Handle Session Leader Name (can be a list or string)
+            session_leader_name = ""
+            if session_leader_raw:
+                if isinstance(session_leader_raw, list):
+                    # Join multiple session leaders with comma and space
+                    session_leader_name = ", ".join(session_leader_raw)
+                else:
+                    session_leader_name = str(session_leader_raw)
             
             # Handle picture URL
             picture_url = None
