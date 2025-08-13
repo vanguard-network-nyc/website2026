@@ -37,6 +37,71 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class AirtableEvent(BaseModel):
+    id: str
+    event_title: str
+    date_time: Optional[str] = None
+    listing_picture: Optional[str] = None
+    registration_url: Optional[str] = None
+
+# Airtable configuration
+AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
+AIRTABLE_BASE_ID = "appm4C4MiNYVWwBaq"
+AIRTABLE_TABLE_ID = "tbljv81RwwFDCb0eU"
+AIRTABLE_VIEW_ID = "viwFw2XGGs3wTZvs6"
+
+async def fetch_airtable_events():
+    """Fetch events from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        url = f"https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{AIRTABLE_TABLE_ID}"
+        params = {
+            "view": AIRTABLE_VIEW_ID,
+            "maxRecords": 100
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        events = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields
+            event_title = fields.get("Event Title", "")
+            date_time = fields.get("Date & Time being/end", "")
+            listing_picture = fields.get("Listing Picture", [])
+            append_to_magic_link = fields.get("Append to magic link", "")
+            
+            # Handle picture URL
+            picture_url = None
+            if listing_picture and isinstance(listing_picture, list) and len(listing_picture) > 0:
+                picture_url = listing_picture[0].get("url", "")
+            
+            # Create registration URL
+            registration_url = f"https://members.thevanguardnetwork.com/events{append_to_magic_link}" if append_to_magic_link else "https://members.thevanguardnetwork.com/events"
+            
+            event = AirtableEvent(
+                id=record.get("id", ""),
+                event_title=event_title,
+                date_time=date_time,
+                listing_picture=picture_url,
+                registration_url=registration_url
+            )
+            events.append(event)
+        
+        return events
+        
+    except Exception as e:
+        logger.error(f"Error fetching Airtable events: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch events: {str(e)}")
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
