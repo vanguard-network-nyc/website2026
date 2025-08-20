@@ -641,8 +641,12 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Create ProgramsPageV2 with modern interactive layout"
-  stuck_tasks: []
+    - "New Podcasts API Endpoint"
+    - "Airtable Podcasts Integration"
+    - "Podcasts Data Structure"
+  stuck_tasks:
+    - "New Podcasts API Endpoint"
+    - "Airtable Podcasts Integration"
   test_all: false
   test_priority: "high_first"
 
