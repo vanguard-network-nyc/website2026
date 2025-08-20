@@ -20,6 +20,25 @@ const PodcastDetailPage = () => {
     }
   }, [podcast]);
 
+  const fetchSimilarPodcasts = async () => {
+    try {
+      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/podcasts/similar/${id}`);
+      
+      if (!response.ok) {
+        console.warn('Failed to fetch similar podcasts');
+        setSimilarPodcasts([]);
+        return;
+      }
+      
+      const similarData = await response.json();
+      setSimilarPodcasts(similarData);
+    } catch (err) {
+      console.warn('Error fetching similar podcasts:', err);
+      setSimilarPodcasts([]);
+    }
+  };
+
   const fetchPodcast = async () => {
     try {
       setLoading(true);
