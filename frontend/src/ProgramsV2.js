@@ -397,13 +397,6 @@ const ProgramsV2 = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 group"
                 >
-                  <motion.div
-                    key={program.name}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 group"
-                  >
                     <div className="grid grid-cols-1 xl:grid-cols-5 gap-0">
                       {/* Content Section */}
                       <div className="xl:col-span-3 p-10">
