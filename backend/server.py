@@ -103,6 +103,7 @@ async def fetch_airtable_podcasts():
             featured_speaker_raw = fields.get("Featured Speaker for Linked In", "")
             description = fields.get("Description", "")
             soundcloud_embed = fields.get("Soundcloud Embed code (medium)", "")
+            keywords_raw = fields.get("Keywords", [])
             
             # Handle featured speaker - can be a list or string
             featured_speaker = ""
