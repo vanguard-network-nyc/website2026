@@ -111,7 +111,9 @@ async def fetch_airtable_podcasts():
                 id=record.get("id", ""),
                 title=title,
                 thumbnail=thumbnail_url,
-                featured_speaker=featured_speaker
+                featured_speaker=featured_speaker,
+                description=description,
+                soundcloud_embed=soundcloud_embed
             )
             podcasts.append(podcast)
         
