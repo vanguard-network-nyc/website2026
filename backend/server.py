@@ -99,9 +99,18 @@ async def fetch_airtable_podcasts():
             # Extract fields
             title = fields.get("Title", "")
             thumbnail_raw = fields.get("Thumbnail", [])
-            featured_speaker = fields.get("Featured Speaker for Linked In", "")
+            featured_speaker_raw = fields.get("Featured Speaker for Linked In", "")
             description = fields.get("Description", "")
             soundcloud_embed = fields.get("Soundcloud Embed code (medium)", "")
+            
+            # Handle featured speaker - can be a list or string
+            featured_speaker = ""
+            if featured_speaker_raw:
+                if isinstance(featured_speaker_raw, list):
+                    # Join multiple speakers with comma and space
+                    featured_speaker = ", ".join(featured_speaker_raw)
+                else:
+                    featured_speaker = str(featured_speaker_raw)
             
             # Handle thumbnail - get first one if multiple
             thumbnail_url = None
