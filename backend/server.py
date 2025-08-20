@@ -62,13 +62,14 @@ class AirtableEvent(BaseModel):
 
 # Airtable configuration
 AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
-AIRTABLE_BASE_ID = "appm4C4MiNYVWwBaq"
 
-# Events table configuration
+# Events table configuration (original base)
+EVENTS_BASE_ID = "appm4C4MiNYVWwBaq"
 EVENTS_TABLE_ID = "tbljv81RwwFDCb0eU"
 EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
 
-# Podcasts table configuration  
+# Podcasts table configuration (different base)
+PODCASTS_BASE_ID = "appcKcpx0rQ37ChAo"
 PODCASTS_TABLE_ID = "tblZR8hfgG7ljk2dq"
 PODCASTS_VIEW_ID = "viwWwHG12LkQIHkOw"
 
@@ -80,7 +81,7 @@ async def fetch_airtable_podcasts():
             "Content-Type": "application/json"
         }
         
-        url = f"https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{PODCASTS_TABLE_ID}"
+        url = f"https://api.airtable.com/v0/{PODCASTS_BASE_ID}/{PODCASTS_TABLE_ID}"
         params = {
             "view": PODCASTS_VIEW_ID,
             "maxRecords": 100
@@ -131,7 +132,7 @@ async def fetch_airtable_events():
             "Content-Type": "application/json"
         }
         
-        url = f"https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{EVENTS_TABLE_ID}"
+        url = f"https://api.airtable.com/v0/{EVENTS_BASE_ID}/{EVENTS_TABLE_ID}"
         params = {
             "view": EVENTS_VIEW_ID,
             "maxRecords": 100
