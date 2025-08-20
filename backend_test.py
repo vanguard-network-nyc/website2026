@@ -293,6 +293,7 @@ class BackendTester:
             ("GET", "/"),
             ("GET", "/status"),
             ("GET", "/events"),
+            ("GET", "/podcasts"),
         ]
         
         for method, endpoint in endpoints:
