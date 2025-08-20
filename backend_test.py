@@ -237,6 +237,56 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Airtable Events", False, f"Invalid JSON response: {str(e)}")
 
+    def test_airtable_podcasts_endpoint(self):
+        """Test GET /api/podcasts endpoint (Airtable integration)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/podcasts", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable Podcasts", True, f"Retrieved {len(data)} podcasts from Airtable", {"count": len(data)})
+                    
+                    # If there are podcasts, validate structure
+                    if data:
+                        first_podcast = data[0]
+                        required_fields = ["id", "title"]
+                        optional_fields = ["thumbnail", "featured_speaker"]
+                        
+                        missing_required = [field for field in required_fields if field not in first_podcast]
+                        
+                        if missing_required:
+                            self.log_test("Airtable Podcasts Structure", False, f"Missing required fields in podcast: {missing_required}", first_podcast)
+                        else:
+                            # Check if podcast has proper data
+                            if first_podcast.get("title"):
+                                # Validate optional fields are present (even if None/empty)
+                                has_optional_fields = all(field in first_podcast for field in optional_fields)
+                                
+                                self.log_test("Airtable Podcasts Structure", True, "Podcast structure is valid with proper data", {
+                                    "sample_title": first_podcast.get("title")[:50] + "..." if len(first_podcast.get("title", "")) > 50 else first_podcast.get("title"),
+                                    "has_thumbnail": bool(first_podcast.get("thumbnail")),
+                                    "has_featured_speaker": bool(first_podcast.get("featured_speaker")),
+                                    "all_fields_present": has_optional_fields
+                                })
+                            else:
+                                self.log_test("Airtable Podcasts Structure", False, "Podcast missing title data", first_podcast)
+                    else:
+                        self.log_test("Airtable Podcasts", True, "No podcasts returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable Podcasts", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable Podcasts", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable Podcasts", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable Podcasts", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable Podcasts", False, f"Invalid JSON response: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
