@@ -114,6 +114,14 @@ async def fetch_airtable_podcasts():
                 else:
                     featured_speaker = str(featured_speaker_raw)
             
+            # Handle keywords - can be a list or string
+            keywords = []
+            if keywords_raw:
+                if isinstance(keywords_raw, list):
+                    keywords = keywords_raw
+                elif isinstance(keywords_raw, str):
+                    keywords = [keywords_raw]
+            
             # Handle thumbnail - get first one if multiple
             thumbnail_url = None
             if thumbnail_raw and isinstance(thumbnail_raw, list) and len(thumbnail_raw) > 0:
