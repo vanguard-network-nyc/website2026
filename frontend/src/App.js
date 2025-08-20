@@ -40,6 +40,7 @@ function App() {
             <Route path="/programs-v2" element={<ProgramsV2 />} />
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
             <Route path="/content" element={<ContentPage />} />
+            <Route path="/podcasts" element={<PodcastsPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
