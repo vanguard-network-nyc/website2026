@@ -296,6 +296,7 @@ class BackendTester:
         # Test system features
         self.test_cors_configuration()
         self.test_mongodb_connection()
+        self.test_airtable_events_endpoint()
         self.test_json_responses()
         
         # Summary
