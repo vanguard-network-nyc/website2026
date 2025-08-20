@@ -235,6 +235,17 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+@api_router.get("/podcasts", response_model=List[AirtablePodcast])
+async def get_podcasts():
+    """Get podcasts from Airtable"""
+    try:
+        podcasts = await fetch_airtable_podcasts()
+        logger.info(f"Successfully fetched {len(podcasts)} podcasts from Airtable")
+        return podcasts
+    except Exception as e:
+        logger.error(f"Error in get_podcasts: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch podcasts")
+
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
     """Get upcoming events from Airtable"""
