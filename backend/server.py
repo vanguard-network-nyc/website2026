@@ -99,6 +99,8 @@ async def fetch_airtable_podcasts():
             title = fields.get("Title", "")
             thumbnail_raw = fields.get("Thumbnail", [])
             featured_speaker = fields.get("Featured Speaker for Linked In", "")
+            description = fields.get("Description", "")
+            soundcloud_embed = fields.get("Soundcloud Embed code (medium)", "")
             
             # Handle thumbnail - get first one if multiple
             thumbnail_url = None
