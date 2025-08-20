@@ -143,15 +143,18 @@ backend:
   
   - task: "Airtable Podcasts Integration"
     implemented: true
-    working: false
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "testing"
         comment: "CRITICAL: Airtable integration for podcasts failing with 403 Forbidden error. The fetch_airtable_podcasts() function is implemented correctly with proper error handling, but Airtable API is rejecting requests to table 'tblZR8hfgG7ljk2dq' with view 'viwWwHG12LkQIHkOw'. Same access token works for events table, indicating podcasts table has different permissions or incorrect IDs."
+      - working: true
+        agent: "testing"
+        comment: "RESOLVED: Airtable podcasts integration now working flawlessly! Successfully connecting to podcasts base (appcKcpx0rQ37ChAo) and retrieving complete podcast data. Integration handles all field types correctly: title, thumbnail URLs, featured speakers (including multiple speakers), descriptions, and SoundCloud embed codes. Error handling robust, data parsing accurate. Backend logs show consistent successful API calls to Airtable with no authentication or permission issues."
   
   - task: "Podcasts Data Structure"
     implemented: true
