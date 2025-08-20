@@ -128,15 +128,18 @@ backend:
   
   - task: "New Podcasts API Endpoint"
     implemented: true
-    working: false
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "testing"
         comment: "CRITICAL: GET /api/podcasts endpoint returning 500 error due to Airtable 403 Forbidden. Backend logs show: 'Error fetching Airtable podcasts: 403 Client Error: Forbidden for url: https://api.airtable.com/v0/appm4C4MiNYVWwBaq/tblZR8hfgG7ljk2dq?view=viwWwHG12LkQIHkOw&maxRecords=100'. This indicates either: 1) Access token lacks permissions for podcasts table, 2) Table ID (tblZR8hfgG7ljk2dq) or View ID (viwWwHG12LkQIHkOw) is incorrect, or 3) Table doesn't exist. Events endpoint works fine with same token, suggesting table-specific permission issue."
+      - working: true
+        agent: "testing"
+        comment: "RESOLVED: GET /api/podcasts endpoint now working perfectly! Successfully retrieving 92 podcasts from Airtable with proper data structure. Airtable access issue has been resolved. Backend test results: 14/15 tests passed (93.3% success rate). Response time: 0.59 seconds for 92 records. Backend logs show consistent successful fetches with no errors. Endpoint fully operational and production-ready."
   
   - task: "Airtable Podcasts Integration"
     implemented: true
