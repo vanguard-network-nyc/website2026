@@ -14,6 +14,12 @@ const PodcastDetailPage = () => {
     fetchPodcast();
   }, [id]);
 
+  useEffect(() => {
+    if (podcast) {
+      fetchSimilarPodcasts();
+    }
+  }, [podcast]);
+
   const fetchPodcast = async () => {
     try {
       setLoading(true);
