@@ -6,6 +6,7 @@ import { ArrowLeft, User, Headphones, Clock, Share2, ExternalLink, Play } from '
 const PodcastDetailPage = () => {
   const { id } = useParams();
   const [podcast, setPodcast] = useState(null);
+  const [similarPodcasts, setSimilarPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
