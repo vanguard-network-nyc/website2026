@@ -281,13 +281,14 @@ const PodcastsPage = () => {
                     </div>
                   )}
                   
-                  <button 
+                  <Link
+                    to={`/podcast/${podcast.id}`}
                     className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group mt-auto"
                   >
                     <Play size={20} />
-                    Listen Now
+                    Click to listen
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
