@@ -37,6 +37,12 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class AirtablePodcast(BaseModel):
+    id: str
+    title: str
+    thumbnail: Optional[str] = None
+    featured_speaker: Optional[str] = None
+
 class AirtableEvent(BaseModel):
     id: str
     event_title: str
