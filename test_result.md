@@ -122,6 +122,45 @@ backend:
       - working: true
         agent: "testing"
         comment: "RE-VERIFIED: Backend service running stable on supervisor (pid 906, uptime 0:00:43). All core endpoints accessible via production URL https://network-events.preview.emergentagent.com/api. Service logs show healthy operation with no errors. Backend fully operational."
+      - working: true
+        agent: "testing"
+        comment: "PODCASTS TESTING: Backend service running stable on supervisor (pid 1983, uptime 0:01:29). Core backend functionality confirmed operational. New podcasts endpoint implemented but experiencing Airtable permissions issue (403 Forbidden). All existing endpoints working correctly."
+  
+  - task: "New Podcasts API Endpoint"
+    implemented: true
+    working: false
+    file: "/app/backend/server.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL: GET /api/podcasts endpoint returning 500 error due to Airtable 403 Forbidden. Backend logs show: 'Error fetching Airtable podcasts: 403 Client Error: Forbidden for url: https://api.airtable.com/v0/appm4C4MiNYVWwBaq/tblZR8hfgG7ljk2dq?view=viwWwHG12LkQIHkOw&maxRecords=100'. This indicates either: 1) Access token lacks permissions for podcasts table, 2) Table ID (tblZR8hfgG7ljk2dq) or View ID (viwWwHG12LkQIHkOw) is incorrect, or 3) Table doesn't exist. Events endpoint works fine with same token, suggesting table-specific permission issue."
+  
+  - task: "Airtable Podcasts Integration"
+    implemented: true
+    working: false
+    file: "/app/backend/server.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL: Airtable integration for podcasts failing with 403 Forbidden error. The fetch_airtable_podcasts() function is implemented correctly with proper error handling, but Airtable API is rejecting requests to table 'tblZR8hfgG7ljk2dq' with view 'viwWwHG12LkQIHkOw'. Same access token works for events table, indicating podcasts table has different permissions or incorrect IDs."
+  
+  - task: "Podcasts Data Structure"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Cannot verify data structure due to Airtable 403 error. Code analysis shows proper AirtablePodcast model with required fields: id, title, thumbnail (optional), featured_speaker (optional). Structure appears correct but cannot test until Airtable access is resolved."
   
   - task: "MongoDB database connectivity"
     implemented: true
