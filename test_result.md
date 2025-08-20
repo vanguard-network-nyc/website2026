@@ -674,12 +674,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "New Podcasts API Endpoint"
-    - "Airtable Podcasts Integration"
-    - "Podcasts Data Structure"
+    []
   stuck_tasks:
-    - "New Podcasts API Endpoint"
-    - "Airtable Podcasts Integration"
+    []
   test_all: false
   test_priority: "high_first"
 
