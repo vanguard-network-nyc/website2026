@@ -262,6 +262,49 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+@api_router.get("/podcasts/similar/{podcast_id}")
+async def get_similar_podcasts(podcast_id: str):
+    """Get similar podcasts based on keywords"""
+    try:
+        # Get all podcasts
+        all_podcasts = await fetch_airtable_podcasts()
+        
+        # Find the target podcast
+        target_podcast = None
+        for podcast in all_podcasts:
+            if podcast.id == podcast_id:
+                target_podcast = podcast
+                break
+        
+        if not target_podcast or not target_podcast.keywords:
+            return []
+        
+        # Find similar podcasts based on keyword overlap
+        similar_podcasts = []
+        target_keywords = set(target_podcast.keywords)
+        
+        for podcast in all_podcasts:
+            if podcast.id == podcast_id:  # Skip the same podcast
+                continue
+                
+            if podcast.keywords:
+                podcast_keywords = set(podcast.keywords)
+                overlap = len(target_keywords.intersection(podcast_keywords))
+                
+                if overlap > 0:  # Has at least one keyword in common
+                    similar_podcasts.append({
+                        "podcast": podcast,
+                        "similarity_score": overlap
+                    })
+        
+        # Sort by similarity score and return top 3
+        similar_podcasts.sort(key=lambda x: x["similarity_score"], reverse=True)
+        return [item["podcast"] for item in similar_podcasts[:3]]
+        
+    except Exception as e:
+        logger.error(f"Error in get_similar_podcasts: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch similar podcasts")
+
 @api_router.get("/podcasts", response_model=List[AirtablePodcast])
 async def get_podcasts():
     """Get podcasts from Airtable"""
