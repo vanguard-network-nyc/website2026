@@ -194,11 +194,55 @@ class BackendTester:
         except requests.exceptions.RequestException as e:
             self.log_test("MongoDB Connection", False, f"Connection error: {str(e)}")
     
+    def test_airtable_events_endpoint(self):
+        """Test GET /api/events endpoint (Airtable integration)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/events", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable Events", True, f"Retrieved {len(data)} events from Airtable", {"count": len(data)})
+                    
+                    # If there are events, validate structure
+                    if data:
+                        first_event = data[0]
+                        required_fields = ["id", "event_title", "registration_url"]
+                        missing_fields = [field for field in required_fields if field not in first_event]
+                        
+                        if missing_fields:
+                            self.log_test("Airtable Events Structure", False, f"Missing fields in event: {missing_fields}", first_event)
+                        else:
+                            # Check if event has proper data
+                            if first_event.get("event_title") and first_event.get("registration_url"):
+                                self.log_test("Airtable Events Structure", True, "Event structure is valid with proper data", {
+                                    "sample_title": first_event.get("event_title")[:50] + "..." if len(first_event.get("event_title", "")) > 50 else first_event.get("event_title"),
+                                    "has_registration_url": bool(first_event.get("registration_url"))
+                                })
+                            else:
+                                self.log_test("Airtable Events Structure", False, "Event missing essential data", first_event)
+                    else:
+                        self.log_test("Airtable Events", True, "No events returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable Events", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable Events", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable Events", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable Events", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable Events", False, f"Invalid JSON response: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
             ("GET", "/"),
             ("GET", "/status"),
+            ("GET", "/events"),
         ]
         
         for method, endpoint in endpoints:
