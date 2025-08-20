@@ -42,6 +42,8 @@ class AirtablePodcast(BaseModel):
     title: str
     thumbnail: Optional[str] = None
     featured_speaker: Optional[str] = None
+    description: Optional[str] = None
+    soundcloud_embed: Optional[str] = None
 
 class AirtableEvent(BaseModel):
     id: str
