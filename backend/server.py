@@ -70,6 +70,53 @@ EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
 PODCASTS_TABLE_ID = "tblZR8hfgG7ljk2dq"
 PODCASTS_VIEW_ID = "viwWwHG12LkQIHkOw"
 
+async def fetch_airtable_podcasts():
+    """Fetch podcasts from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        url = f"https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{PODCASTS_TABLE_ID}"
+        params = {
+            "view": PODCASTS_VIEW_ID,
+            "maxRecords": 100
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        podcasts = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields
+            title = fields.get("Title", "")
+            thumbnail_raw = fields.get("Thumbnail", [])
+            featured_speaker = fields.get("Featured Speaker for Linked In", "")
+            
+            # Handle thumbnail - get first one if multiple
+            thumbnail_url = None
+            if thumbnail_raw and isinstance(thumbnail_raw, list) and len(thumbnail_raw) > 0:
+                thumbnail_url = thumbnail_raw[0].get("url", "")
+            
+            podcast = AirtablePodcast(
+                id=record.get("id", ""),
+                title=title,
+                thumbnail=thumbnail_url,
+                featured_speaker=featured_speaker
+            )
+            podcasts.append(podcast)
+        
+        return podcasts
+        
+    except Exception as e:
+        logger.error(f"Error fetching Airtable podcasts: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch podcasts: {str(e)}")
+
 async def fetch_airtable_events():
     """Fetch events from Airtable"""
     try:
