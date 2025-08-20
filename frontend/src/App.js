@@ -7,6 +7,7 @@ import ProgramsV2 from './ProgramsV2';
 import UpcomingEventsPage from './UpcomingEventsPage';
 import AboutPage from './AboutPage';
 import PodcastsPage from './PodcastsPage';
+import PodcastDetailPage from './PodcastDetailPage';
 
 const {
   Header,
