@@ -133,7 +133,8 @@ async def fetch_airtable_podcasts():
                 thumbnail=thumbnail_url,
                 featured_speaker=featured_speaker,
                 description=description,
-                soundcloud_embed=soundcloud_embed
+                soundcloud_embed=soundcloud_embed,
+                keywords=keywords
             )
             podcasts.append(podcast)
         
