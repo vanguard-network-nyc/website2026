@@ -42,6 +42,7 @@ function App() {
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
             <Route path="/content" element={<ContentPage />} />
             <Route path="/podcasts" element={<PodcastsPage />} />
+            <Route path="/podcast/:id" element={<PodcastDetailPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
