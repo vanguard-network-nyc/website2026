@@ -56,6 +56,17 @@ class AirtableVideo(BaseModel):
     keywords: Optional[List[str]] = None
     vimeo_embedder: Optional[str] = None  # HTML div code
 
+class AirtableArticle(BaseModel):
+    id: str
+    blog_title: str  # title
+    description_teaser: Optional[str] = None  # short description
+    photo: Optional[str] = None  # article image
+    featured_speaker_linkedin: Optional[str] = None  # featured speaker
+    body_qa: Optional[str] = None  # article text content
+    tags: Optional[List[str]] = None
+    published_to_web: Optional[str] = None  # date field for sorting
+    type_content: Optional[str] = None  # type of detailed content
+
 class AirtableEvent(BaseModel):
     id: str
     event_title: str
