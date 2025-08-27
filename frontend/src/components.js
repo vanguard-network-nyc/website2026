@@ -3417,15 +3417,14 @@ const ContentPage = () => (
 // New Hero Section
 const NewHero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
           alt="Professional executives"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-slate-900/70"></div>
       </div>
       
       {/* Content */}
@@ -3441,7 +3440,7 @@ const NewHero = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mb-8"
           >
-            <span className="text-lg text-blue-300 font-semibold tracking-wider uppercase">
+            <span className="text-lg text-blue-600 font-semibold tracking-wider uppercase">
               The Human Factor
             </span>
           </motion.div>
@@ -3450,7 +3449,7 @@ const NewHero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white"
+            className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900"
           >
             We champion the extraordinary in leadership.
           </motion.h1>
@@ -3459,7 +3458,7 @@ const NewHero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-4xl mx-auto font-light"
+            className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed max-w-4xl mx-auto"
           >
             The Vanguard Network is a by-invitation professional community designed for senior and C-suite leaders aiming to elevate their leadership impact through transformation, advisory, and peer networks.
           </motion.p>
@@ -3472,14 +3471,14 @@ const NewHero = () => {
           >
             <Link
               to="/networking"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
               Explore Our Network
               <ArrowRight size={20} />
             </Link>
             <Link
               to="/about"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
             >
               Learn More
             </Link>
