@@ -23,7 +23,14 @@ const {
   TeamPage,
   ContactPage,
   BookPage,
-  ContentPage
+  ContentPage,
+  NewHero,
+  NewStatsSection,
+  NewWhatWeDoSection,
+  NewAboutSection,
+  NewSpecializedGroupsSection,
+  NewIntegrationSection,
+  NewContentLibrarySection
 } = Components;
 
 function App() {
