@@ -84,6 +84,90 @@ PODCASTS_BASE_ID = "appcKcpx0rQ37ChAo"
 PODCASTS_TABLE_ID = "tblZR8hfgG7ljk2dq"
 PODCASTS_VIEW_ID = "viwWwHG12LkQIHkOw"
 
+# Videos table configuration
+VIDEOS_BASE_ID = "appqyKMZnFfgSuJKt"
+VIDEOS_TABLE_ID = "tblkW6xwXkVpwPxwY"
+VIDEOS_VIEW_ID = "viwqbhdTc6AmMM80u"
+
+async def fetch_airtable_videos():
+    """Fetch videos from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        url = f"https://api.airtable.com/v0/{VIDEOS_BASE_ID}/{VIDEOS_TABLE_ID}"
+        params = {
+            "view": VIDEOS_VIEW_ID,
+            "maxRecords": 100
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        videos = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields
+            video_description = fields.get("Video Description", "")
+            featured_speakers_raw = fields.get("Featured Speakers", "")
+            headshot_raw = fields.get("Headshot (from Featured Speakers)", [])
+            category = fields.get("Category", "")
+            tags_raw = fields.get("Tags", [])
+            keywords_raw = fields.get("Keywords", [])
+            vimeo_embedder = fields.get("Vimeo Embedder", "")
+            
+            # Handle featured speakers - can be a list or string
+            featured_speakers = ""
+            if featured_speakers_raw:
+                if isinstance(featured_speakers_raw, list):
+                    featured_speakers = ", ".join(featured_speakers_raw)
+                else:
+                    featured_speakers = str(featured_speakers_raw)
+            
+            # Handle tags - can be a list or string
+            tags = []
+            if tags_raw:
+                if isinstance(tags_raw, list):
+                    tags = tags_raw
+                elif isinstance(tags_raw, str):
+                    tags = [tags_raw]
+            
+            # Handle keywords - can be a list or string
+            keywords = []
+            if keywords_raw:
+                if isinstance(keywords_raw, list):
+                    keywords = keywords_raw
+                elif isinstance(keywords_raw, str):
+                    keywords = [keywords_raw]
+            
+            # Handle headshot - get first one if multiple
+            headshot_url = None
+            if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
+                headshot_url = headshot_raw[0].get("url", "")
+            
+            video = AirtableVideo(
+                id=record.get("id", ""),
+                video_description=video_description,
+                featured_speakers=featured_speakers,
+                headshot=headshot_url,
+                category=category,
+                tags=tags,
+                keywords=keywords,
+                vimeo_embedder=vimeo_embedder
+            )
+            videos.append(video)
+        
+        return videos
+        
+    except Exception as e:
+        logging.error(f"Error fetching Airtable videos: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching videos: {str(e)}")
+
 async def fetch_airtable_podcasts():
     """Fetch podcasts from Airtable"""
     try:
