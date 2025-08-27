@@ -100,6 +100,86 @@ VIDEOS_BASE_ID = "appqyKMZnFfgSuJKt"
 VIDEOS_TABLE_ID = "tblkW6xwXkVpwPxwY"
 VIDEOS_VIEW_ID = "viwqbhdTc6AmMM80u"
 
+# Articles table configuration (same base as podcasts)
+ARTICLES_BASE_ID = "appcKcpx0rQ37ChAo"
+ARTICLES_TABLE_ID = "tblEKvdS9fXJn7cvc"
+ARTICLES_VIEW_ID = "viwbNHk3p0ffFgcHm"
+
+async def fetch_airtable_articles():
+    """Fetch articles from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        url = f"https://api.airtable.com/v0/{ARTICLES_BASE_ID}/{ARTICLES_TABLE_ID}"
+        params = {
+            "view": ARTICLES_VIEW_ID,
+            "maxRecords": 100,
+            "sort[0][field]": "Published to Web",
+            "sort[0][direction]": "desc"  # Descending order by date
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        articles = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields
+            blog_title = fields.get("Blog Title", "")
+            description_teaser = fields.get("Description (teaser)", "")
+            photo_raw = fields.get("Photo", [])
+            featured_speaker_linkedin_raw = fields.get("Featured Speaker for Linked In", "")
+            body_qa = fields.get("Body of Q&A", "")
+            tags_raw = fields.get("tags", [])
+            published_to_web = fields.get("Published to Web", "")
+            type_content = fields.get("Type of detailed content", "")
+            
+            # Handle featured speaker - can be a list or string
+            featured_speaker_linkedin = ""
+            if featured_speaker_linkedin_raw:
+                if isinstance(featured_speaker_linkedin_raw, list):
+                    featured_speaker_linkedin = ", ".join(featured_speaker_linkedin_raw)
+                else:
+                    featured_speaker_linkedin = str(featured_speaker_linkedin_raw)
+            
+            # Handle tags - can be a list or string
+            tags = []
+            if tags_raw:
+                if isinstance(tags_raw, list):
+                    tags = tags_raw
+                elif isinstance(tags_raw, str):
+                    tags = [tags_raw]
+            
+            # Handle photo - get first one if multiple
+            photo_url = None
+            if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                photo_url = photo_raw[0].get("url", "")
+            
+            article = AirtableArticle(
+                id=record.get("id", ""),
+                blog_title=blog_title,
+                description_teaser=description_teaser,
+                photo=photo_url,
+                featured_speaker_linkedin=featured_speaker_linkedin,
+                body_qa=body_qa,
+                tags=tags,
+                published_to_web=published_to_web,
+                type_content=type_content
+            )
+            articles.append(article)
+        
+        return articles
+        
+    except Exception as e:
+        logging.error(f"Error fetching Airtable articles: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching articles: {str(e)}")
+
 async def fetch_airtable_videos():
     """Fetch videos from Airtable"""
     try:
