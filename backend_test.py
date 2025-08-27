@@ -649,7 +649,7 @@ class BackendTester:
         # Test backend accessibility first
         self.test_backend_accessibility()
         
-        # Test individual endpoints
+        # Test core endpoints
         self.test_root_endpoint()
         self.test_post_status_endpoint()
         self.test_get_status_endpoint()
@@ -657,8 +657,22 @@ class BackendTester:
         # Test system features
         self.test_cors_configuration()
         self.test_mongodb_connection()
+        
+        # Test existing Airtable integrations
         self.test_airtable_events_endpoint()
         self.test_airtable_podcasts_endpoint()
+        self.test_single_podcast_endpoint()
+        
+        # Test NEW video endpoints
+        self.test_airtable_videos_endpoint()
+        self.test_single_video_endpoint()
+        self.test_similar_videos_endpoint()
+        
+        # Test NEW articles endpoints
+        self.test_airtable_articles_endpoint()
+        self.test_single_article_endpoint()
+        
+        # Test JSON responses
         self.test_json_responses()
         
         # Summary
