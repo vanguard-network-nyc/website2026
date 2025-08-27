@@ -287,6 +287,215 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Airtable Podcasts", False, f"Invalid JSON response: {str(e)}")
 
+    def test_airtable_videos_endpoint(self):
+        """Test GET /api/videos endpoint (NEW - Airtable integration)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/videos", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable Videos", True, f"Retrieved {len(data)} videos from Airtable", {"count": len(data)})
+                    
+                    # If there are videos, validate structure
+                    if data:
+                        first_video = data[0]
+                        required_fields = ["id", "video_description"]
+                        expected_fields = ["featured_speakers", "headshot", "category", "tags", "keywords", "vimeo_embedder"]
+                        
+                        missing_required = [field for field in required_fields if field not in first_video]
+                        
+                        if missing_required:
+                            self.log_test("Airtable Videos Structure", False, f"Missing required fields in video: {missing_required}", first_video)
+                        else:
+                            # Check if video has proper data structure
+                            if first_video.get("video_description"):
+                                # Validate expected fields are present (even if None/empty)
+                                has_expected_fields = all(field in first_video for field in expected_fields)
+                                
+                                self.log_test("Airtable Videos Structure", True, "Video structure is valid with proper data", {
+                                    "sample_description": first_video.get("video_description")[:50] + "..." if len(first_video.get("video_description", "")) > 50 else first_video.get("video_description"),
+                                    "has_featured_speakers": bool(first_video.get("featured_speakers")),
+                                    "has_headshot": bool(first_video.get("headshot")),
+                                    "has_category": bool(first_video.get("category")),
+                                    "has_vimeo_embedder": bool(first_video.get("vimeo_embedder")),
+                                    "all_fields_present": has_expected_fields
+                                })
+                            else:
+                                self.log_test("Airtable Videos Structure", False, "Video missing description data", first_video)
+                    else:
+                        self.log_test("Airtable Videos", True, "No videos returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable Videos", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable Videos", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable Videos", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable Videos", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable Videos", False, f"Invalid JSON response: {str(e)}")
+
+    def test_single_video_endpoint(self):
+        """Test GET /api/video/{video_id} endpoint (NEW)"""
+        try:
+            # First get all videos to get a valid video ID
+            videos_response = self.session.get(f"{self.backend_url}/videos", timeout=15)
+            
+            if videos_response.status_code == 200:
+                videos_data = videos_response.json()
+                
+                if isinstance(videos_data, list) and len(videos_data) > 0:
+                    # Use the first video's ID
+                    test_video_id = videos_data[0]["id"]
+                    
+                    # Test single video endpoint
+                    response = self.session.get(f"{self.backend_url}/video/{test_video_id}", timeout=15)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        # Validate it's a single video object
+                        if isinstance(data, dict) and data.get("id") == test_video_id:
+                            required_fields = ["id", "video_description"]
+                            missing_fields = [field for field in required_fields if field not in data]
+                            
+                            if missing_fields:
+                                self.log_test("Single Video Endpoint", False, f"Missing fields: {missing_fields}", data)
+                            else:
+                                self.log_test("Single Video Endpoint", True, f"Successfully retrieved video: {data.get('video_description', '')[:50]}...", {
+                                    "video_id": test_video_id,
+                                    "has_description": bool(data.get("video_description"))
+                                })
+                        else:
+                            self.log_test("Single Video Endpoint", False, f"Invalid response structure or ID mismatch", data)
+                    elif response.status_code == 404:
+                        self.log_test("Single Video Endpoint", False, f"Video not found (404) for ID: {test_video_id}", response.text)
+                    else:
+                        self.log_test("Single Video Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                else:
+                    self.log_test("Single Video Endpoint", False, "No videos available to test single video endpoint", {"videos_count": len(videos_data) if isinstance(videos_data, list) else 0})
+            else:
+                self.log_test("Single Video Endpoint", False, f"Cannot test single video - videos list failed: HTTP {videos_response.status_code}", videos_response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Single Video Endpoint", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Single Video Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Single Video Endpoint", False, f"Invalid JSON response: {str(e)}")
+
+    def test_similar_videos_endpoint(self):
+        """Test GET /api/videos/similar/{video_id} endpoint (NEW)"""
+        try:
+            # First get all videos to get a valid video ID
+            videos_response = self.session.get(f"{self.backend_url}/videos", timeout=15)
+            
+            if videos_response.status_code == 200:
+                videos_data = videos_response.json()
+                
+                if isinstance(videos_data, list) and len(videos_data) > 0:
+                    # Use the first video's ID
+                    test_video_id = videos_data[0]["id"]
+                    
+                    # Test similar videos endpoint
+                    response = self.session.get(f"{self.backend_url}/videos/similar/{test_video_id}", timeout=15)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        # Validate it's a list of videos
+                        if isinstance(data, list):
+                            self.log_test("Similar Videos Endpoint", True, f"Retrieved {len(data)} similar videos", {
+                                "similar_count": len(data),
+                                "test_video_id": test_video_id
+                            })
+                            
+                            # If there are similar videos, validate structure
+                            if data:
+                                first_similar = data[0]
+                                required_fields = ["id", "video_description"]
+                                missing_fields = [field for field in required_fields if field not in first_similar]
+                                
+                                if missing_fields:
+                                    self.log_test("Similar Videos Structure", False, f"Missing fields in similar video: {missing_fields}", first_similar)
+                                else:
+                                    # Ensure it's not the same video
+                                    if first_similar.get("id") != test_video_id:
+                                        self.log_test("Similar Videos Structure", True, "Similar videos structure is valid", {
+                                            "sample_description": first_similar.get("video_description", "")[:50] + "..." if len(first_similar.get("video_description", "")) > 50 else first_similar.get("video_description"),
+                                            "different_from_original": True
+                                        })
+                                    else:
+                                        self.log_test("Similar Videos Structure", False, "Similar video includes the original video", first_similar)
+                        else:
+                            self.log_test("Similar Videos Endpoint", False, f"Expected list, got {type(data)}", data)
+                    else:
+                        self.log_test("Similar Videos Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                else:
+                    self.log_test("Similar Videos Endpoint", False, "No videos available to test similar videos endpoint", {"videos_count": len(videos_data) if isinstance(videos_data, list) else 0})
+            else:
+                self.log_test("Similar Videos Endpoint", False, f"Cannot test similar videos - videos list failed: HTTP {videos_response.status_code}", videos_response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Similar Videos Endpoint", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Similar Videos Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Similar Videos Endpoint", False, f"Invalid JSON response: {str(e)}")
+
+    def test_single_podcast_endpoint(self):
+        """Test GET /api/podcast/{podcast_id} endpoint (EXISTING - verify still works)"""
+        try:
+            # First get all podcasts to get a valid podcast ID
+            podcasts_response = self.session.get(f"{self.backend_url}/podcasts", timeout=15)
+            
+            if podcasts_response.status_code == 200:
+                podcasts_data = podcasts_response.json()
+                
+                if isinstance(podcasts_data, list) and len(podcasts_data) > 0:
+                    # Use the first podcast's ID
+                    test_podcast_id = podcasts_data[0]["id"]
+                    
+                    # Test single podcast endpoint
+                    response = self.session.get(f"{self.backend_url}/podcast/{test_podcast_id}", timeout=15)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        # Validate it's a single podcast object
+                        if isinstance(data, dict) and data.get("id") == test_podcast_id:
+                            required_fields = ["id", "title"]
+                            missing_fields = [field for field in required_fields if field not in data]
+                            
+                            if missing_fields:
+                                self.log_test("Single Podcast Endpoint", False, f"Missing fields: {missing_fields}", data)
+                            else:
+                                self.log_test("Single Podcast Endpoint", True, f"Successfully retrieved podcast: {data.get('title', '')[:50]}...", {
+                                    "podcast_id": test_podcast_id,
+                                    "has_title": bool(data.get("title"))
+                                })
+                        else:
+                            self.log_test("Single Podcast Endpoint", False, f"Invalid response structure or ID mismatch", data)
+                    elif response.status_code == 404:
+                        self.log_test("Single Podcast Endpoint", False, f"Podcast not found (404) for ID: {test_podcast_id}", response.text)
+                    else:
+                        self.log_test("Single Podcast Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                else:
+                    self.log_test("Single Podcast Endpoint", False, "No podcasts available to test single podcast endpoint", {"podcasts_count": len(podcasts_data) if isinstance(podcasts_data, list) else 0})
+            else:
+                self.log_test("Single Podcast Endpoint", False, f"Cannot test single podcast - podcasts list failed: HTTP {podcasts_response.status_code}", podcasts_response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Single Podcast Endpoint", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Single Podcast Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Single Podcast Endpoint", False, f"Invalid JSON response: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
