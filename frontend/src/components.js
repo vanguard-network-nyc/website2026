@@ -110,15 +110,18 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'ABOUT', path: '/about' },
     { name: 'ADVISORY', path: '/advisory' },
     { name: 'NETWORKING', path: '/networking' },
-    { name: 'PROGRAMS', path: '/programs' },
-    { name: 'PROGRAMS V2', path: '/programs-v2' },
-    { name: 'EVENTS', path: 'https://members.thevanguardnetwork.com/events', external: true },
-    { name: 'UPCOMING EVENTS', path: '/upcoming-events' },
-    { name: 'CONTENT', path: '/content' },
-    { name: 'PODCASTS', path: '/podcasts' },
+    { name: 'PROGRAMS', path: '/programs-v2' },
+    { name: 'EVENTS', path: '/upcoming-events' },
+    { 
+      name: 'CONTENT', 
+      dropdown: [
+        { name: 'Articles', path: '/articles' },
+        { name: 'Podcasts', path: '/podcasts' },
+        { name: 'Videos', path: '/videos' }
+      ]
+    },
     { name: 'CONTACT', path: '/contact' },
     { name: 'BOOK', path: '/book' }
   ];
