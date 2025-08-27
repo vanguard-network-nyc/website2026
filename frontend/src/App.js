@@ -8,6 +8,10 @@ import UpcomingEventsPage from './UpcomingEventsPage';
 import AboutPage from './AboutPage';
 import PodcastsPage from './PodcastsPage';
 import PodcastDetailPage from './PodcastDetailPage';
+import VideosPage from './VideosPage';
+import VideoDetailPage from './VideoDetailPage';
+import ArticlesPage from './ArticlesPage';
+import ArticleDetailPage from './ArticleDetailPage';
 
 const {
   Header,
