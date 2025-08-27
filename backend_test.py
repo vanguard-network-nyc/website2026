@@ -604,6 +604,8 @@ class BackendTester:
             ("GET", "/status"),
             ("GET", "/events"),
             ("GET", "/podcasts"),
+            ("GET", "/videos"),
+            ("GET", "/articles"),
         ]
         
         for method, endpoint in endpoints:
