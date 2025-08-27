@@ -447,6 +447,107 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Similar Videos Endpoint", False, f"Invalid JSON response: {str(e)}")
 
+    def test_airtable_articles_endpoint(self):
+        """Test GET /api/articles endpoint (NEW - Airtable integration)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/articles", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable Articles", True, f"Retrieved {len(data)} articles from Airtable", {"count": len(data)})
+                    
+                    # If there are articles, validate structure
+                    if data:
+                        first_article = data[0]
+                        required_fields = ["id", "blog_title"]
+                        expected_fields = ["description_teaser", "photo", "featured_speaker_linkedin", "body_qa", "tags", "published_to_web", "type_content"]
+                        
+                        missing_required = [field for field in required_fields if field not in first_article]
+                        
+                        if missing_required:
+                            self.log_test("Airtable Articles Structure", False, f"Missing required fields in article: {missing_required}", first_article)
+                        else:
+                            # Check if article has proper data structure
+                            if first_article.get("blog_title"):
+                                # Validate expected fields are present (even if None/empty)
+                                has_expected_fields = all(field in first_article for field in expected_fields)
+                                
+                                self.log_test("Airtable Articles Structure", True, "Article structure is valid with proper data", {
+                                    "sample_title": first_article.get("blog_title")[:50] + "..." if len(first_article.get("blog_title", "")) > 50 else first_article.get("blog_title"),
+                                    "has_description": bool(first_article.get("description_teaser")),
+                                    "has_photo": bool(first_article.get("photo")),
+                                    "has_featured_speaker": bool(first_article.get("featured_speaker_linkedin")),
+                                    "has_published_date": bool(first_article.get("published_to_web")),
+                                    "all_fields_present": has_expected_fields
+                                })
+                            else:
+                                self.log_test("Airtable Articles Structure", False, "Article missing title data", first_article)
+                    else:
+                        self.log_test("Airtable Articles", True, "No articles returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable Articles", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable Articles", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable Articles", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable Articles", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable Articles", False, f"Invalid JSON response: {str(e)}")
+
+    def test_single_article_endpoint(self):
+        """Test GET /api/article/{article_id} endpoint (NEW)"""
+        try:
+            # First get all articles to get a valid article ID
+            articles_response = self.session.get(f"{self.backend_url}/articles", timeout=15)
+            
+            if articles_response.status_code == 200:
+                articles_data = articles_response.json()
+                
+                if isinstance(articles_data, list) and len(articles_data) > 0:
+                    # Use the first article's ID
+                    test_article_id = articles_data[0]["id"]
+                    
+                    # Test single article endpoint
+                    response = self.session.get(f"{self.backend_url}/article/{test_article_id}", timeout=15)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        # Validate it's a single article object
+                        if isinstance(data, dict) and data.get("id") == test_article_id:
+                            required_fields = ["id", "blog_title"]
+                            missing_fields = [field for field in required_fields if field not in data]
+                            
+                            if missing_fields:
+                                self.log_test("Single Article Endpoint", False, f"Missing fields: {missing_fields}", data)
+                            else:
+                                self.log_test("Single Article Endpoint", True, f"Successfully retrieved article: {data.get('blog_title', '')[:50]}...", {
+                                    "article_id": test_article_id,
+                                    "has_title": bool(data.get("blog_title"))
+                                })
+                        else:
+                            self.log_test("Single Article Endpoint", False, f"Invalid response structure or ID mismatch", data)
+                    elif response.status_code == 404:
+                        self.log_test("Single Article Endpoint", False, f"Article not found (404) for ID: {test_article_id}", response.text)
+                    else:
+                        self.log_test("Single Article Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                else:
+                    self.log_test("Single Article Endpoint", False, "No articles available to test single article endpoint", {"articles_count": len(articles_data) if isinstance(articles_data, list) else 0})
+            else:
+                self.log_test("Single Article Endpoint", False, f"Cannot test single article - articles list failed: HTTP {articles_response.status_code}", articles_response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Single Article Endpoint", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Single Article Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Single Article Endpoint", False, f"Invalid JSON response: {str(e)}")
+
     def test_single_podcast_endpoint(self):
         """Test GET /api/podcast/{podcast_id} endpoint (EXISTING - verify still works)"""
         try:
