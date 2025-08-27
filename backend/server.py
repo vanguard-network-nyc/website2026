@@ -585,6 +585,32 @@ async def get_similar_videos(video_id: str):
         logger.error(f"Error in get_similar_videos: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch similar videos")
 
+@api_router.get("/articles", response_model=List[AirtableArticle])
+async def get_articles():
+    """Get articles from Airtable (sorted by Published to Web date descending)"""
+    try:
+        articles = await fetch_airtable_articles()
+        logger.info(f"Successfully fetched {len(articles)} articles from Airtable")
+        return articles
+    except Exception as e:
+        logger.error(f"Error in get_articles: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch articles")
+
+@api_router.get("/article/{article_id}")
+async def get_article(article_id: str):
+    """Get a single article by ID from Airtable"""
+    try:
+        articles = await fetch_airtable_articles()
+        for article in articles:
+            if article.id == article_id:
+                return article
+        raise HTTPException(status_code=404, detail="Article not found")
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error in get_article: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch article")
+
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
     """Get upcoming events from Airtable"""
