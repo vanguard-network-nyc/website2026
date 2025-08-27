@@ -45,15 +45,18 @@ function App() {
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/advisory" element={<AdvisoryPage />} />
             <Route path="/networking" element={<NetworkingPage />} />
             <Route path="/programs" element={<ProgramsPage />} />
             <Route path="/programs-v2" element={<ProgramsV2 />} />
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
             <Route path="/content" element={<ContentPage />} />
+            <Route path="/articles" element={<ArticlesPage />} />
+            <Route path="/article/:id" element={<ArticleDetailPage />} />
             <Route path="/podcasts" element={<PodcastsPage />} />
             <Route path="/podcast/:id" element={<PodcastDetailPage />} />
+            <Route path="/videos" element={<VideosPage />} />
+            <Route path="/video/:id" element={<VideoDetailPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
