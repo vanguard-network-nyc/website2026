@@ -3412,7 +3412,7 @@ const ContentPage = () => (
   </motion.div>
 );
 
-// NEW HOMEPAGE COMPONENTS BASED ON REFERENCE DESIGN
+// NEW HOMEPAGE COMPONENTS BASED ON REFERENCE DESIGN - LIGHT THEME
 
 // New Hero Section
 const NewHero = () => {
@@ -3498,7 +3498,7 @@ const NewStatsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {stats.map((stat, index) => (
@@ -3558,7 +3558,7 @@ const NewWhatWeDoSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -3583,10 +3583,10 @@ const NewWhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
             >
               <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
-                <div className="h-full bg-slate-900/20 flex items-end p-6">
+                <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
                   <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                 </div>
               </div>
@@ -3634,7 +3634,7 @@ const NewAboutSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -3683,26 +3683,26 @@ const NewAboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-slate-50 rounded-xl p-8 text-center"
+          className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200"
         >
-          <blockquote className="text-2xl text-slate-700 italic mb-6 leading-relaxed">
+          <blockquote className="text-2xl text-slate-700 italic mb-6 leading-relaxed border-l-4 border-blue-600 pl-6">
             "The Vanguard Network empowers its members to thrive in complex leadership environments through personalized services and a global community committed to excellence."
           </blockquote>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div>
+            <div className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-bold text-slate-900 mb-2">By Invitation Only</h4>
               <p className="text-slate-600">
                 An exclusive community designed specifically for senior and C-suite leaders who are committed to elevating their leadership impact and driving organizational success.
               </p>
             </div>
-            <div>
+            <div className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-bold text-slate-900 mb-2">Global Reach</h4>
               <p className="text-slate-600">
                 Our integrated platform welcomes experienced leaders from top-tier organizations across more than 26 countries, fostering diverse perspectives and global insights.
               </p>
             </div>
-            <div>
+            <div className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-bold text-slate-900 mb-2">Proven Excellence</h4>
               <p className="text-slate-600">
                 Through candid conversation, peer insight, and actionable plans, we turn strategic vision into measurable impact that sustains long-term organizational success.
@@ -3720,9 +3720,9 @@ const NewAboutSection = () => {
             <img
               src="https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
               alt="Professional business executive"
-              className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+              className="w-full max-w-md mx-auto rounded-lg shadow-lg mb-8"
             />
-            <div className="mt-8">
+            <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 Unlock Your Leadership Potential
               </h3>
@@ -3732,7 +3732,7 @@ const NewAboutSection = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Request Invitation
                 </Link>
@@ -3781,7 +3781,7 @@ const NewSpecializedGroupsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -3806,13 +3806,13 @@ const NewSpecializedGroupsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg p-8"
+              className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 hover:shadow-xl transition-all duration-300"
             >
               <div className="mb-6">
-                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
                   {group.type}
                 </span>
-                <h3 className="text-2xl font-bold text-slate-900 mt-2 mb-4">
+                <h3 className="text-2xl font-bold text-slate-900 mt-4 mb-4">
                   {group.title}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
@@ -3832,7 +3832,7 @@ const NewSpecializedGroupsSection = () => {
                 </ul>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-6 bg-gray-50 p-4 rounded-lg">
                 <h4 className="text-lg font-bold text-slate-900 mb-2">Target Audience:</h4>
                 <p className="text-slate-600 font-medium">{group.audience}</p>
               </div>
@@ -3845,7 +3845,7 @@ const NewSpecializedGroupsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-16 bg-gray-50 rounded-xl p-8"
         >
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
             Join Your Specialized Community
@@ -3856,7 +3856,7 @@ const NewSpecializedGroupsSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/programs"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Explore Groups
             </Link>
@@ -3876,7 +3876,7 @@ const NewSpecializedGroupsSection = () => {
 // Integration Announcement Section
 const NewIntegrationSection = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -3885,7 +3885,7 @@ const NewIntegrationSection = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+          <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
             Integration Announcement
           </span>
         </motion.div>
@@ -3932,11 +3932,11 @@ const NewIntegrationSection = () => {
               Expanding our reach across 26+ countries to serve the world's most distinguished legal and business leaders.
             </p>
             
-            <div className="mb-6">
+            <div className="mb-6 bg-white rounded-lg p-4 border border-gray-200">
               <div className="flex items-center gap-4 text-sm text-slate-500 mb-2">
-                <span>July 1, 2025</span>
+                <span className="font-medium">July 1, 2025</span>
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>Completed</span>
+                <span className="font-medium text-green-600">Completed</span>
               </div>
               <h4 className="text-lg font-bold text-slate-900">Global Counsel Leaders Integration</h4>
             </div>
@@ -3948,15 +3948,15 @@ const NewIntegrationSection = () => {
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-200">
                   <h5 className="font-bold text-slate-900 mb-1">Global Reach</h5>
                   <p className="text-sm text-slate-600">Expanded presence across 26+ countries</p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-200">
                   <h5 className="font-bold text-slate-900 mb-1">Expert Leadership</h5>
                   <p className="text-sm text-slate-600">Top-tier legal and compliance professionals</p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-200">
                   <h5 className="font-bold text-slate-900 mb-1">Enhanced Capability</h5>
                   <p className="text-sm text-slate-600">Strengthened peer-driven development programs</p>
                 </div>
@@ -3970,14 +3970,14 @@ const NewIntegrationSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-slate-50 rounded-xl p-8"
+          className="bg-white rounded-xl shadow-lg p-8 border border-gray-200"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 Meet Our Senior Global Advisor
               </h3>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 mb-4">
                 <img
                   src="https://images.unsplash.com/photo-1562935345-5080389daccd"
                   alt="E. Leigh Dance - Senior Global Advisor"
@@ -3988,11 +3988,11 @@ const NewIntegrationSection = () => {
                   <p className="text-slate-600 font-medium">Senior Global Advisor</p>
                 </div>
               </div>
-              <p className="text-slate-600 mt-4 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed mb-6">
                 A recognized thought leader with 25 years of experience advising general counsel. Leigh's work has been featured in The Wall Street Journal, Financial Times, American Lawyer, and Legal Week.
               </p>
               
-              <div className="mt-6">
+              <div className="bg-gray-50 p-4 rounded-lg">
                 <h5 className="font-bold text-slate-900 mb-2">Featured Publications</h5>
                 <ul className="space-y-1">
                   {["The Wall Street Journal", "Financial Times", "American Lawyer", "Legal Week"].map((publication) => (
@@ -4020,7 +4020,7 @@ const NewIntegrationSection = () => {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   to="/about"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Learn About GCL
                 </Link>
@@ -4093,7 +4093,7 @@ const NewContentLibrarySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -4119,10 +4119,10 @@ const NewContentLibrarySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
             >
               <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${type.image}')` }}>
-                <div className="h-full bg-slate-900/40 flex items-center justify-center">
+                <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-center justify-center">
                   <div className="text-white">{type.icon}</div>
                 </div>
               </div>
@@ -4158,7 +4158,7 @@ const NewContentLibrarySection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
               >
                 <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
                   <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
@@ -4180,11 +4180,11 @@ const NewContentLibrarySection = () => {
                   <p className="text-slate-600 text-sm mb-4 leading-relaxed">
                     {insight.description}
                   </p>
-                  <div className="flex justify-between items-center text-xs text-slate-500">
+                  <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
                     <span>{insight.author}</span>
                     <span>{insight.duration}</span>
                   </div>
-                  <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300">
+                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                     Read More
                   </button>
                 </div>
@@ -4199,7 +4199,7 @@ const NewContentLibrarySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-12 text-center"
+          className="bg-gray-50 rounded-xl shadow-lg p-12 text-center border border-gray-200"
         >
           <img
             src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
@@ -4217,7 +4217,7 @@ const NewContentLibrarySection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/content"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Explore Library
             </Link>
