@@ -257,7 +257,7 @@ const UpcomingEventsPage = () => {
         {/* Events Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
-            { number: events.length.toString(), label: "Upcoming Events", icon: <Calendar size={32} className="text-[#00A8E1]" /> },
+            { number: events.length.toString(), label: "Events", icon: <Calendar size={32} className="text-[#00A8E1]" /> },
             { number: "100+", label: "Industry Leaders", icon: <Users size={32} className="text-purple-500" /> },
             { number: "Virtual & In-Person", label: "Event Formats", icon: <MapPin size={32} className="text-green-500" /> }
           ].map((stat, index) => (
