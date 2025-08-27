@@ -180,7 +180,7 @@ const ProgramsV2 = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-7xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8"
           >
-            Leadership Programs V2
+            Leadership Programs
           </motion.h1>
           
           <motion.p 
