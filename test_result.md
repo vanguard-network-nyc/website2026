@@ -125,6 +125,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "PODCASTS TESTING: Backend service running stable on supervisor (pid 1983, uptime 0:01:29). Core backend functionality confirmed operational. New podcasts endpoint implemented but experiencing Airtable permissions issue (403 Forbidden). All existing endpoints working correctly."
+      - working: true
+        agent: "testing"
+        comment: "POST-HOMEPAGE REDESIGN VERIFICATION: Backend service running stable on supervisor (pid 909, uptime 0:02:08). Comprehensive testing after homepage redesign confirms all existing functionality preserved. All core endpoints accessible via production URL, service logs show healthy operation with no errors. Backend remains fully operational and production-ready after frontend changes."
   
   - task: "New Podcasts API Endpoint"
     implemented: true
