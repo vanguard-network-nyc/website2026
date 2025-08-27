@@ -410,6 +410,90 @@ async def get_podcasts():
         logger.error(f"Error in get_podcasts: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch podcasts")
 
+@api_router.get("/podcast/{podcast_id}")
+async def get_podcast(podcast_id: str):
+    """Get a single podcast by ID from Airtable"""
+    try:
+        podcasts = await fetch_airtable_podcasts()
+        for podcast in podcasts:
+            if podcast.id == podcast_id:
+                return podcast
+        raise HTTPException(status_code=404, detail="Podcast not found")
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error in get_podcast: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch podcast")
+
+@api_router.get("/videos", response_model=List[AirtableVideo])
+async def get_videos():
+    """Get videos from Airtable"""
+    try:
+        videos = await fetch_airtable_videos()
+        logger.info(f"Successfully fetched {len(videos)} videos from Airtable")
+        return videos
+    except Exception as e:
+        logger.error(f"Error in get_videos: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch videos")
+
+@api_router.get("/video/{video_id}")
+async def get_video(video_id: str):
+    """Get a single video by ID from Airtable"""
+    try:
+        videos = await fetch_airtable_videos()
+        for video in videos:
+            if video.id == video_id:
+                return video
+        raise HTTPException(status_code=404, detail="Video not found")
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error in get_video: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch video")
+
+@api_router.get("/videos/similar/{video_id}")
+async def get_similar_videos(video_id: str):
+    """Get similar videos based on keywords"""
+    try:
+        # Get all videos
+        all_videos = await fetch_airtable_videos()
+        
+        # Find the target video
+        target_video = None
+        for video in all_videos:
+            if video.id == video_id:
+                target_video = video
+                break
+        
+        if not target_video or not target_video.keywords:
+            return []
+        
+        # Find similar videos based on keyword overlap
+        similar_videos = []
+        target_keywords = set(target_video.keywords)
+        
+        for video in all_videos:
+            if video.id == video_id:  # Skip the same video
+                continue
+                
+            if video.keywords:
+                video_keywords = set(video.keywords)
+                overlap = len(target_keywords.intersection(video_keywords))
+                
+                if overlap > 0:  # Has at least one keyword in common
+                    similar_videos.append({
+                        "video": video,
+                        "similarity_score": overlap
+                    })
+        
+        # Sort by similarity score and return top 3
+        similar_videos.sort(key=lambda x: x["similarity_score"], reverse=True)
+        return [item["video"] for item in similar_videos[:3]]
+        
+    except Exception as e:
+        logger.error(f"Error in get_similar_videos: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch similar videos")
+
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
     """Get upcoming events from Airtable"""
