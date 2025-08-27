@@ -62,11 +62,13 @@ function HomePage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Hero />
-      <ServicesSection />
-      <TestimonnialSection />
-      <VideoTestimonial />
-      <ProgramsSection />
+      <NewHero />
+      <NewStatsSection />
+      <NewWhatWeDoSection />
+      <NewAboutSection />
+      <NewSpecializedGroupsSection />
+      <NewIntegrationSection />
+      <NewContentLibrarySection />
     </motion.div>
   );
 }
