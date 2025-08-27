@@ -3412,6 +3412,829 @@ const ContentPage = () => (
   </motion.div>
 );
 
+// NEW HOMEPAGE COMPONENTS BASED ON REFERENCE DESIGN
+
+// New Hero Section
+const NewHero = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
+          alt="Professional executives"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/70"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mb-8"
+          >
+            <span className="text-lg text-blue-300 font-semibold tracking-wider uppercase">
+              The Human Factor
+            </span>
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white"
+          >
+            We champion the extraordinary in leadership.
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-4xl mx-auto font-light"
+          >
+            The Vanguard Network is a by-invitation professional community designed for senior and C-suite leaders aiming to elevate their leadership impact through transformation, advisory, and peer networks.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+          >
+            <Link
+              to="/networking"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              Explore Our Network
+              <ArrowRight size={20} />
+            </Link>
+            <Link
+              to="/about"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+            >
+              Learn More
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Statistics Section
+const NewStatsSection = () => {
+  const stats = [
+    { number: "26+", label: "Countries Represented" },
+    { number: "C-Suite", label: "Executive Focus" },
+    { number: "25 Years", label: "Leadership Expertise" }
+  ];
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="p-6"
+            >
+              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-lg text-slate-600 font-medium">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// What We Do Section
+const NewWhatWeDoSection = () => {
+  const services = [
+    {
+      title: "Organizational Transformation",
+      description: "We work with leaders to align strategy, culture, and execution so that organizations can adapt and thrive in fast-changing environments.",
+      details: "Through facilitated leadership dialogues, cross-functional workshops, and targeted advisory support, we help senior teams identify critical opportunities, remove barriers to performance, and embed practices that sustain long-term success.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      link: "/advisory"
+    },
+    {
+      title: "Leadership Advisory",
+      description: "We collaborate closely with executives through one-on-one coaching relationships, candid feedback sessions, and our Next Generation Leader curriculum.",
+      details: "Our approach unlocks leadership potential and drives strategic change through personalized coaching and development programs tailored for senior executives.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      link: "/advisory"
+    },
+    {
+      title: "Peer Networks & Forums",
+      description: "Participation in Forums, Leadership Dialogues, and Connect, our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
+      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      link: "/networking"
+    },
+    {
+      title: "Custom Member Services",
+      description: "Beyond membership, we offer tailored services, from warm introductions and curated content libraries to bespoke roundtables and retreats.",
+      details: "Personalized services designed to help members maximize the value of the Network through customized experiences and connections.",
+      image: "https://images.pexels.com/photos/33406411/pexels-photo-33406411.jpeg",
+      link: "/programs"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            What We Do
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            We unlock high-performance leadership through advisory services, networking opportunities, custom programs, and curated content that fosters organizational transformation.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            >
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
+                <div className="h-full bg-slate-900/20 flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-700 mb-4 leading-relaxed">
+                  {service.description}
+                </p>
+                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                  {service.details}
+                </p>
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                >
+                  Learn more
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// About Section
+const NewAboutSection = () => {
+  const features = [
+    {
+      title: "Leadership Excellence",
+      subtitle: "Empowering C-Suite Leaders",
+      image: "https://images.unsplash.com/photo-1562935345-5080389daccd"
+    },
+    {
+      title: "Global Network",
+      subtitle: "26+ Countries Connected",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+    },
+    {
+      title: "Proven Expertise",
+      subtitle: "25 Years of Excellence",
+      image: "https://images.unsplash.com/photo-1579525109384-ddf54825044f"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            About The Vanguard Network
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            More than a professional association, we are a high-impact platform where senior leaders connect, grow, and lead with purpose through tailored advisory programs and exclusive peer forums.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="mb-6">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-20 h-20 rounded-full mx-auto object-cover shadow-lg"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-slate-600">
+                {feature.subtitle}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-slate-50 rounded-xl p-8 text-center"
+        >
+          <blockquote className="text-2xl text-slate-700 italic mb-6 leading-relaxed">
+            "The Vanguard Network empowers its members to thrive in complex leadership environments through personalized services and a global community committed to excellence."
+          </blockquote>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">By Invitation Only</h4>
+              <p className="text-slate-600">
+                An exclusive community designed specifically for senior and C-suite leaders who are committed to elevating their leadership impact and driving organizational success.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Global Reach</h4>
+              <p className="text-slate-600">
+                Our integrated platform welcomes experienced leaders from top-tier organizations across more than 26 countries, fostering diverse perspectives and global insights.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-bold text-slate-900 mb-2">Proven Excellence</h4>
+              <p className="text-slate-600">
+                Through candid conversation, peer insight, and actionable plans, we turn strategic vision into measurable impact that sustains long-term organizational success.
+              </p>
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-12"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
+              alt="Professional business executive"
+              className="w-full max-w-md mx-auto rounded-lg shadow-lg"
+            />
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                Unlock Your Leadership Potential
+              </h3>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                Join a community of senior executives who are transforming their organizations and driving extraordinary outcomes through collaborative leadership development.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/contact"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Request Invitation
+                </Link>
+                <Link
+                  to="/about"
+                  className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Specialized Executive Groups Section
+const NewSpecializedGroupsSection = () => {
+  const groups = [
+    {
+      type: "Virtual Exchange",
+      title: "Risk Management Network",
+      description: "A specialized peer exchange for senior managers overseeing enterprise risk functions.",
+      features: [
+        "Expert-led sessions with industry thought leaders",
+        "Practical 'playbook' summaries for immediate implementation",
+        "Cross-industry risk management best practices",
+        "Confidential peer discussions on emerging threats"
+      ],
+      audience: "Senior Risk Managers & Chief Risk Officers"
+    },
+    {
+      type: "Exclusive Network",
+      title: "GC Exchange",
+      description: "An exclusive peer network for General Counsels and senior legal leaders across global organizations.",
+      features: [
+        "Confidential, expert-facilitated sessions",
+        "Strategic guidance on governance and compliance",
+        "Risk mitigation strategies and frameworks",
+        "Leadership development for legal functions"
+      ],
+      audience: "General Counsels & Senior Legal Leaders"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Specialized Executive Groups
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            The Network hosts targeted communities designed for specific leadership functions, providing focused expertise and peer connections in critical business areas.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {groups.map((group, index) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg p-8"
+            >
+              <div className="mb-6">
+                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+                  {group.type}
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 mt-2 mb-4">
+                  {group.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {group.description}
+                </p>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="text-lg font-bold text-slate-900 mb-3">Key Features:</h4>
+                <ul className="space-y-2">
+                  {group.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-2">
+                      <CheckCircle2 size={16} className="text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-slate-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="text-lg font-bold text-slate-900 mb-2">Target Audience:</h4>
+                <p className="text-slate-600 font-medium">{group.audience}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            Join Your Specialized Community
+          </h3>
+          <p className="text-slate-600 mb-8 leading-relaxed">
+            Each specialized group fosters trust, candid conversation, and actionable insights tailored to the evolving challenges of modern leadership functions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/programs"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Explore Groups
+            </Link>
+            <Link
+              to="/contact"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Integration Announcement Section
+const NewIntegrationSection = () => {
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
+        >
+          <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+            Integration Announcement
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Integration with Global Counsel Leaders
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            On July 1, 2025, The Vanguard Network formally incorporated Global Counsel Leaders (GCL), bringing a global dimension to our leadership community.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+              alt="Global business leaders collaboration"
+              className="w-full rounded-xl shadow-lg"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              Global Leadership Excellence
+            </h3>
+            <p className="text-slate-600 mb-6 leading-relaxed">
+              Expanding our reach across 26+ countries to serve the world's most distinguished legal and business leaders.
+            </p>
+            
+            <div className="mb-6">
+              <div className="flex items-center gap-4 text-sm text-slate-500 mb-2">
+                <span>July 1, 2025</span>
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span>Completed</span>
+              </div>
+              <h4 className="text-lg font-bold text-slate-900">Global Counsel Leaders Integration</h4>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-bold text-slate-900 mb-3">What This Means</h4>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                This integration welcomes experienced leaders from top-tier in-house legal and compliance functions across more than 26 countries, enriching our capability to deliver peer-driven leadership development at the highest level.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                  <h5 className="font-bold text-slate-900 mb-1">Global Reach</h5>
+                  <p className="text-sm text-slate-600">Expanded presence across 26+ countries</p>
+                </div>
+                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                  <h5 className="font-bold text-slate-900 mb-1">Expert Leadership</h5>
+                  <p className="text-sm text-slate-600">Top-tier legal and compliance professionals</p>
+                </div>
+                <div className="text-center p-4 bg-slate-50 rounded-lg">
+                  <h5 className="font-bold text-slate-900 mb-1">Enhanced Capability</h5>
+                  <p className="text-sm text-slate-600">Strengthened peer-driven development programs</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-slate-50 rounded-xl p-8"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                Meet Our Senior Global Advisor
+              </h3>
+              <div className="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1562935345-5080389daccd"
+                  alt="E. Leigh Dance - Senior Global Advisor"
+                  className="w-20 h-20 rounded-full object-cover shadow-lg"
+                />
+                <div>
+                  <h4 className="text-xl font-bold text-slate-900">E. Leigh Dance</h4>
+                  <p className="text-slate-600 font-medium">Senior Global Advisor</p>
+                </div>
+              </div>
+              <p className="text-slate-600 mt-4 leading-relaxed">
+                A recognized thought leader with 25 years of experience advising general counsel. Leigh's work has been featured in The Wall Street Journal, Financial Times, American Lawyer, and Legal Week.
+              </p>
+              
+              <div className="mt-6">
+                <h5 className="font-bold text-slate-900 mb-2">Featured Publications</h5>
+                <ul className="space-y-1">
+                  {["The Wall Street Journal", "Financial Times", "American Lawyer", "Legal Week"].map((publication) => (
+                    <li key={publication} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <span className="text-slate-600">{publication}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <img
+                src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
+                alt="Corporate network"
+                className="w-full rounded-lg shadow-lg mb-6"
+              />
+              <h4 className="text-xl font-bold text-slate-900 mb-4">
+                Experience Our Expanded Global Network
+              </h4>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                Discover how our integration with Global Counsel Leaders enhances leadership development opportunities for our global community.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/about"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Learn About GCL
+                </Link>
+                <Link
+                  to="/contact"
+                  className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Contact Leigh Dance
+                </Link>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Content & Thought Leadership Section
+const NewContentLibrarySection = () => {
+  const contentTypes = [
+    {
+      title: "Articles",
+      description: "In-depth analysis and thought leadership on organizational transformation and leadership excellence.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      icon: <Newspaper size={32} />
+    },
+    {
+      title: "Podcasts",
+      description: "Conversations with industry leaders sharing real-world insights and strategic perspectives.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      icon: <MessageCircle size={32} />
+    },
+    {
+      title: "Video Content",
+      description: "Visual learning experiences featuring expert interviews and case study presentations.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      icon: <Video size={32} />
+    }
+  ];
+
+  const featuredInsights = [
+    {
+      type: "Article",
+      category: "Leadership Development",
+      title: "The Future of C-Suite Leadership in Uncertain Times",
+      description: "Exploring how today's senior executives can navigate complexity while driving organizational transformation and maintaining stakeholder trust.",
+      author: "Vanguard Faculty",
+      duration: "8 min read",
+      image: "https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
+    },
+    {
+      type: "Podcast",
+      category: "Board Dynamics",
+      title: "Board Dynamics: Building Effective Governance",
+      description: "A candid discussion with three experienced board chairs about creating high-performing governance structures.",
+      author: "Member Contributor",
+      duration: "45 min listen",
+      image: "https://images.unsplash.com/photo-1579525109384-ddf54825044f"
+    },
+    {
+      type: "Video",
+      category: "Personal Awareness",
+      title: "Personal Awareness in Executive Decision Making",
+      description: "Understanding how self-awareness drives better strategic decisions and enhances leadership effectiveness.",
+      author: "Affiliate Contributor",
+      duration: "12 min watch",
+      image: "https://images.unsplash.com/photo-1562935345-5080389daccd"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Our Content & Thought Leadership
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            Members gain access to a rich library featuring leadership insights from Vanguard faculty, members, and affiliate contributors spanning leadership development, board dynamics, and organizational transformation.
+          </p>
+        </motion.div>
+
+        {/* Content Types Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {contentTypes.map((type, index) => (
+            <motion.div
+              key={type.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            >
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${type.image}')` }}>
+                <div className="h-full bg-slate-900/40 flex items-center justify-center">
+                  <div className="text-white">{type.icon}</div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  {type.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Featured Insights */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+            Featured Insights
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredInsights.map((insight, index) => (
+              <motion.div
+                key={insight.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
+                  <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                    <div className="text-white">
+                      <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
+                        {insight.type}
+                      </span>
+                      <div className="mt-2 text-xs text-blue-200">
+                        {insight.category}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
+                    {insight.title}
+                  </h4>
+                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                    {insight.description}
+                  </p>
+                  <div className="flex justify-between items-center text-xs text-slate-500">
+                    <span>{insight.author}</span>
+                    <span>{insight.duration}</span>
+                  </div>
+                  <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300">
+                    Read More
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl shadow-lg p-12 text-center"
+        >
+          <img
+            src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
+            alt="Professional library"
+            className="w-full max-w-md mx-auto rounded-lg shadow-lg mb-8"
+          />
+          
+          <h3 className="text-3xl font-bold text-slate-900 mb-4">
+            Access Our Complete Library
+          </h3>
+          <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Unlock exclusive access to our comprehensive content library featuring the latest insights on leadership development, organizational transformation, and strategic excellence.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/content"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Explore Library
+            </Link>
+            <Link
+              to="/networking"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Member Login
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Export all components
 const Components = {
   Header,
@@ -3428,7 +4251,14 @@ const Components = {
   TeamPage,
   ContactPage,
   BookPage,
-  ContentPage
+  ContentPage,
+  NewHero,
+  NewStatsSection,
+  NewWhatWeDoSection,
+  NewAboutSection,
+  NewSpecializedGroupsSection,
+  NewIntegrationSection,
+  NewContentLibrarySection
 };
 
 export default Components;
