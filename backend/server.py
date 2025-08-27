@@ -46,6 +46,16 @@ class AirtablePodcast(BaseModel):
     soundcloud_embed: Optional[str] = None
     keywords: Optional[List[str]] = None
 
+class AirtableVideo(BaseModel):
+    id: str
+    video_description: str  # title
+    featured_speakers: Optional[str] = None
+    headshot: Optional[str] = None  # image from Featured Speakers
+    category: Optional[str] = None
+    tags: Optional[List[str]] = None
+    keywords: Optional[List[str]] = None
+    vimeo_embedder: Optional[str] = None  # HTML div code
+
 class AirtableEvent(BaseModel):
     id: str
     event_title: str
