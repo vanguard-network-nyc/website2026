@@ -121,7 +121,7 @@ backend:
         comment: "DEPLOYMENT READINESS VERIFIED: FastAPI service running stable on supervisor (pid 3445, uptime 0:02:58). Backend accessible via production URL, all endpoints responding correctly. Service logs show healthy operation with no errors. Ready for deployment."
       - working: true
         agent: "testing"
-        comment: "RE-VERIFIED: Backend service running stable on supervisor (pid 906, uptime 0:00:43). All core endpoints accessible via production URL https://network-events.preview.emergentagent.com/api. Service logs show healthy operation with no errors. Backend fully operational."
+        comment: "RE-VERIFIED: Backend service running stable on supervisor (pid 906, uptime 0:00:43). All core endpoints accessible via production URL https://vanguard-podcasts.preview.emergentagent.com/api. Service logs show healthy operation with no errors. Backend fully operational."
       - working: true
         agent: "testing"
         comment: "PODCASTS TESTING: Backend service running stable on supervisor (pid 1983, uptime 0:01:29). Core backend functionality confirmed operational. New podcasts endpoint implemented but experiencing Airtable permissions issue (403 Forbidden). All existing endpoints working correctly."
