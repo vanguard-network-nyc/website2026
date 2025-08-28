@@ -258,16 +258,14 @@ const Header = () => {
                     <div className="py-2">
                       <div className="text-white font-medium mb-2">{item.name}</div>
                       {item.dropdown.map((subItem, subIndex) => (
-                        <a
+                        <Link
                           key={subItem.name}
-                          href={subItem.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          to={subItem.path}
                           className="block text-blue-300 hover:text-blue-100 py-1 pl-4 text-sm transition-colors duration-200"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {subItem.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   ) : (
