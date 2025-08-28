@@ -177,15 +177,13 @@ const Header = () => {
                     {/* Dropdown content */}
                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       {item.dropdown.map((subItem, subIndex) => (
-                        <a
+                        <Link
                           key={subItem.name}
-                          href={subItem.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          to={subItem.path}
                           className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
                         >
                           {subItem.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
