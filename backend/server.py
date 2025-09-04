@@ -204,11 +204,27 @@ async def fetch_airtable_in_the_press():
                         fields = record.get("fields", {})
                         
                         article_title = fields.get("Blog Title", "")
-                        author_names = fields.get("Featured Speaker for Linked In", "")
+                        author_names_raw = fields.get("Featured Speaker for Linked In", "")
                         short_description = fields.get("Description (teaser)", "")
                         photo_raw = fields.get("Photo", [])
                         body_of_article = fields.get("Body of Q&A", "")
-                        authors_intro = fields.get("Featured Speaker for Linked In", "")
+                        authors_intro_raw = fields.get("Featured Speaker for Linked In", "")
+                        
+                        # Handle author names - can be a list or string
+                        author_names = ""
+                        if author_names_raw:
+                            if isinstance(author_names_raw, list):
+                                author_names = ", ".join(author_names_raw)
+                            else:
+                                author_names = str(author_names_raw)
+                        
+                        # Handle authors intro - can be a list or string
+                        authors_intro = ""
+                        if authors_intro_raw:
+                            if isinstance(authors_intro_raw, list):
+                                authors_intro = ", ".join(authors_intro_raw)
+                            else:
+                                authors_intro = str(authors_intro_raw)
                         
                         photo_url = None
                         if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
