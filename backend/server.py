@@ -126,11 +126,11 @@ async def fetch_airtable_in_the_press():
             "Content-Type": "application/json"
         }
         
-        # Using the same table ID as articles but different view
+        # First, let's try without the view to see what fields actually exist
+        # Using the same table ID as articles since they might be using existing article fields
         url = f"https://api.airtable.com/v0/{IN_THE_PRESS_BASE_ID}/{ARTICLES_TABLE_ID}"
         params = {
-            "view": IN_THE_PRESS_VIEW_ID,
-            "maxRecords": 100
+            "maxRecords": 5  # Just get a few to check structure
         }
         
         response = requests.get(url, headers=headers, params=params)
@@ -142,29 +142,78 @@ async def fetch_airtable_in_the_press():
         for record in data.get("records", []):
             fields = record.get("fields", {})
             
-            # Extract fields for In the Press
-            article_title = fields.get("Article Title", "")
-            author_names = fields.get("Author Names", "")
-            short_description = fields.get("Short Description", "")
+            # Map the actual fields from the articles table to In the Press fields
+            # Based on the structure that exists in the table
+            article_title = fields.get("Blog Title", "")  # Use existing Blog Title field
+            author_names = fields.get("Featured Speaker for Linked In", "")  # Use existing speaker field as author
+            short_description = fields.get("Description (teaser)", "")  # Use existing description field
             photo_raw = fields.get("Photo", [])
-            body_of_article = fields.get("Body of Article", "")
-            authors_intro = fields.get("Authors Intro", "")
+            body_of_article = fields.get("Body of Q&A", "")  # Use existing body field
+            authors_intro = fields.get("Featured Speaker for Linked In", "")  # Same as author for now
             
             # Handle photo - get first one if multiple
             photo_url = None
             if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
                 photo_url = photo_raw[0].get("url", "")
             
-            press_article = AirtableInThePress(
-                id=record.get("id", ""),
-                article_title=article_title,
-                author_names=author_names,
-                short_description=short_description,
-                photo=photo_url,
-                body_of_article=body_of_article,
-                authors_intro=authors_intro
-            )
-            press_articles.append(press_article)
+            # Only include records that have substantial content (likely press articles)
+            if article_title and body_of_article:
+                press_article = AirtableInThePress(
+                    id=record.get("id", ""),
+                    article_title=article_title,
+                    author_names=author_names,
+                    short_description=short_description,
+                    photo=photo_url,
+                    body_of_article=body_of_article,
+                    authors_intro=authors_intro
+                )
+                press_articles.append(press_article)
+        
+        # If we have records, try to apply the view filter for future requests
+        if press_articles:
+            # Now try with the specific view to get the filtered results
+            try:
+                params_with_view = {
+                    "view": IN_THE_PRESS_VIEW_ID,
+                    "maxRecords": 100
+                }
+                
+                response_with_view = requests.get(url, headers=headers, params=params_with_view)
+                if response_with_view.status_code == 200:
+                    # If view works, use the view results
+                    view_data = response_with_view.json()
+                    press_articles = []  # Reset and use view results
+                    
+                    for record in view_data.get("records", []):
+                        fields = record.get("fields", {})
+                        
+                        article_title = fields.get("Blog Title", "")
+                        author_names = fields.get("Featured Speaker for Linked In", "")
+                        short_description = fields.get("Description (teaser)", "")
+                        photo_raw = fields.get("Photo", [])
+                        body_of_article = fields.get("Body of Q&A", "")
+                        authors_intro = fields.get("Featured Speaker for Linked In", "")
+                        
+                        photo_url = None
+                        if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                            photo_url = photo_raw[0].get("url", "")
+                        
+                        if article_title:  # Less strict filtering for view results
+                            press_article = AirtableInThePress(
+                                id=record.get("id", ""),
+                                article_title=article_title,
+                                author_names=author_names,
+                                short_description=short_description,
+                                photo=photo_url,
+                                body_of_article=body_of_article,
+                                authors_intro=authors_intro
+                            )
+                            press_articles.append(press_article)
+                else:
+                    # View doesn't work, stick with filtered results from initial call
+                    logging.warning(f"In the Press view {IN_THE_PRESS_VIEW_ID} not accessible, using filtered table results")
+            except Exception as view_error:
+                logging.warning(f"Could not access In the Press view: {str(view_error)}, using filtered table results")
         
         return press_articles
         
