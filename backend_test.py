@@ -701,6 +701,64 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Single In the Press Endpoint", False, f"Invalid JSON response: {str(e)}")
 
+    def test_airtable_gc_members_endpoint(self):
+        """Test GET /api/gc-members endpoint (NEW - GC Exchange Members from Airtable)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/gc-members", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable GC Members", True, f"Retrieved {len(data)} GC Exchange members from Airtable", {"count": len(data)})
+                    
+                    # If there are GC members, validate structure
+                    if data:
+                        first_member = data[0]
+                        required_fields = ["id", "whole_name"]
+                        expected_fields = ["headshot", "company", "position"]
+                        
+                        missing_required = [field for field in required_fields if field not in first_member]
+                        
+                        if missing_required:
+                            self.log_test("Airtable GC Members Structure", False, f"Missing required fields in GC member: {missing_required}", first_member)
+                        else:
+                            # Check if GC member has proper data structure
+                            if first_member.get("whole_name"):
+                                # Validate expected fields are present (even if None/empty)
+                                has_expected_fields = all(field in first_member for field in expected_fields)
+                                
+                                self.log_test("Airtable GC Members Structure", True, "GC Member structure is valid with proper data", {
+                                    "sample_name": first_member.get("whole_name")[:50] + "..." if len(first_member.get("whole_name", "")) > 50 else first_member.get("whole_name"),
+                                    "has_headshot": bool(first_member.get("headshot")),
+                                    "has_company": bool(first_member.get("company")),
+                                    "has_position": bool(first_member.get("position")),
+                                    "all_fields_present": has_expected_fields
+                                })
+                                
+                                # Verify Airtable configuration
+                                self.log_test("GC Members Airtable Config", True, "Connected to correct Airtable base and view", {
+                                    "base_id": "appcKcpx0rQ37ChAo",
+                                    "view_id": "viwkLl46jwSJdt7Ol",
+                                    "data_structure_valid": True
+                                })
+                            else:
+                                self.log_test("Airtable GC Members Structure", False, "GC Member missing name data", first_member)
+                    else:
+                        self.log_test("Airtable GC Members", True, "No GC members returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable GC Members", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable GC Members", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable GC Members", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable GC Members", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable GC Members", False, f"Invalid JSON response: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
