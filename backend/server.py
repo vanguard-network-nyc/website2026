@@ -145,11 +145,27 @@ async def fetch_airtable_in_the_press():
             # Map the actual fields from the articles table to In the Press fields
             # Based on the structure that exists in the table
             article_title = fields.get("Blog Title", "")  # Use existing Blog Title field
-            author_names = fields.get("Featured Speaker for Linked In", "")  # Use existing speaker field as author
+            author_names_raw = fields.get("Featured Speaker for Linked In", "")  # Use existing speaker field as author
             short_description = fields.get("Description (teaser)", "")  # Use existing description field
             photo_raw = fields.get("Photo", [])
             body_of_article = fields.get("Body of Q&A", "")  # Use existing body field
-            authors_intro = fields.get("Featured Speaker for Linked In", "")  # Same as author for now
+            authors_intro_raw = fields.get("Featured Speaker for Linked In", "")  # Same as author for now
+            
+            # Handle author names - can be a list or string
+            author_names = ""
+            if author_names_raw:
+                if isinstance(author_names_raw, list):
+                    author_names = ", ".join(author_names_raw)
+                else:
+                    author_names = str(author_names_raw)
+            
+            # Handle authors intro - can be a list or string
+            authors_intro = ""
+            if authors_intro_raw:
+                if isinstance(authors_intro_raw, list):
+                    authors_intro = ", ".join(authors_intro_raw)
+                else:
+                    authors_intro = str(authors_intro_raw)
             
             # Handle photo - get first one if multiple
             photo_url = None
