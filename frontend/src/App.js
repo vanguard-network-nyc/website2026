@@ -14,6 +14,7 @@ import ArticlesPage from './ArticlesPage';
 import ArticleDetailPage from './ArticleDetailPage';
 import InThePressPage from './InThePressPage';
 import InThePressDetailPage from './InThePressDetailPage';
+import GCExchangePage from './GCExchangePage';
 
 const {
   Header,
