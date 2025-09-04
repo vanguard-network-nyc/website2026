@@ -817,14 +817,8 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "New In the Press API Endpoints"
-    - "Airtable In the Press Integration"
-    - "In the Press Data Structure"
-  stuck_tasks:
-    - "New In the Press API Endpoints"
-    - "Airtable In the Press Integration"
-    - "In the Press Data Structure"
+  current_focus: []
+  stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
