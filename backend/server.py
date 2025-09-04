@@ -139,9 +139,10 @@ async def fetch_airtable_gc_members():
         
         # Use the same articles table ID with the GC Members view
         url = f"https://api.airtable.com/v0/{GC_MEMBERS_BASE_ID}/{ARTICLES_TABLE_ID}"
+        
+        # First, try without the view to see what fields actually exist
         params = {
-            "view": GC_MEMBERS_VIEW_ID,
-            "maxRecords": 100
+            "maxRecords": 10  # Just get a few to check structure
         }
         
         response = requests.get(url, headers=headers, params=params)
@@ -153,19 +154,20 @@ async def fetch_airtable_gc_members():
         for record in data.get("records", []):
             fields = record.get("fields", {})
             
-            # Extract fields for GC Members
-            whole_name = fields.get("WholeName", "")
-            headshot_raw = fields.get("Headshot", [])
-            company = fields.get("Company", "")
-            position = fields.get("Position", "")
+            # Extract fields for GC Members - try different field name variations
+            whole_name = fields.get("WholeName", "") or fields.get("Whole Name", "") or fields.get("Name", "") or fields.get("Full Name", "")
+            headshot_raw = fields.get("Headshot", []) or fields.get("Photo", []) or fields.get("Picture", [])
+            company = fields.get("Company", "") or fields.get("Organization", "")
+            position = fields.get("Position", "") or fields.get("Title", "") or fields.get("Job Title", "")
             
             # Handle headshot - get first one if multiple
             headshot_url = None
             if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
                 headshot_url = headshot_raw[0].get("url", "")
             
-            # Only include records that have a name
-            if whole_name:
+            # Only include records that have a name and appear to be member records
+            # Look for records that have company/position info to identify GC members
+            if whole_name and (company or position):
                 gc_member = AirtableGCMember(
                     id=record.get("id", ""),
                     whole_name=whole_name,
@@ -174,6 +176,48 @@ async def fetch_airtable_gc_members():
                     position=position
                 )
                 gc_members.append(gc_member)
+        
+        # If we have some potential GC members, try to apply the view filter for future requests
+        if gc_members:
+            # Now try with the specific view to get the filtered results
+            try:
+                params_with_view = {
+                    "view": GC_MEMBERS_VIEW_ID,
+                    "maxRecords": 100
+                }
+                
+                response_with_view = requests.get(url, headers=headers, params=params_with_view)
+                if response_with_view.status_code == 200:
+                    # If view works, use the view results
+                    view_data = response_with_view.json()
+                    gc_members = []  # Reset and use view results
+                    
+                    for record in view_data.get("records", []):
+                        fields = record.get("fields", {})
+                        
+                        whole_name = fields.get("WholeName", "") or fields.get("Whole Name", "") or fields.get("Name", "") or fields.get("Full Name", "")
+                        headshot_raw = fields.get("Headshot", []) or fields.get("Photo", []) or fields.get("Picture", [])
+                        company = fields.get("Company", "") or fields.get("Organization", "")
+                        position = fields.get("Position", "") or fields.get("Title", "") or fields.get("Job Title", "")
+                        
+                        headshot_url = None
+                        if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
+                            headshot_url = headshot_raw[0].get("url", "")
+                        
+                        if whole_name:  # Less strict filtering for view results
+                            gc_member = AirtableGCMember(
+                                id=record.get("id", ""),
+                                whole_name=whole_name,
+                                headshot=headshot_url,
+                                company=company,
+                                position=position
+                            )
+                            gc_members.append(gc_member)
+                else:
+                    # View doesn't work, stick with filtered results from initial call
+                    logging.warning(f"GC Members view {GC_MEMBERS_VIEW_ID} not accessible, using filtered table results")
+            except Exception as view_error:
+                logging.warning(f"Could not access GC Members view: {str(view_error)}, using filtered table results")
         
         return gc_members
         
