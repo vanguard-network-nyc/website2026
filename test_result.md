@@ -334,13 +334,16 @@ backend:
     implemented: true
     working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "testing"
         comment: "CRITICAL: Airtable integration for In the Press failing with view configuration issue. The fetch_airtable_in_the_press() function is implemented correctly with proper error handling and data structure (AirtableInThePress model with article_title, author_names, short_description, photo, body_of_article, authors_intro fields), but Airtable API is rejecting requests due to invalid view ID 'viwsgPr3j6hbU2g6Z'. Same base/table works for articles endpoint, indicating view-specific issue. Backend code expects In the Press articles to be in same table as regular articles but filtered by different view."
+      - working: false
+        agent: "testing"
+        comment: "RE-TESTED INTEGRATION AFTER CLAIMED FIX: Airtable integration still failing with same 422 errors. DETAILED ANALYSIS: 1) Base appcKcpx0rQ37ChAo and table tblEKvdS9fXJn7cvc are accessible, 2) Table contains 77+ records with fields like 'Blog Title', 'Description (teaser)', 'Featured Speakers', etc., 3) Backend expects In the Press specific fields ('Article Title', 'Author Names', 'Short Description', 'Body of Article', 'Authors Intro') which DO NOT EXIST in this table, 4) View 'viwsgPr3j6hbU2g6Z' returns FAILED_STATE_CHECK error. CONCLUSION: Either In the Press articles are in completely different table/base, or field names in backend code are incorrect. Integration code is sound but configuration is wrong. REQUIRES WEBSEARCH to identify correct Airtable structure for In the Press content."
 
   - task: "In the Press Data Structure"
     implemented: true
