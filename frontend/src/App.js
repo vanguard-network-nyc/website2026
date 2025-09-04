@@ -12,6 +12,8 @@ import VideosPage from './VideosPage';
 import VideoDetailPage from './VideoDetailPage';
 import ArticlesPage from './ArticlesPage';
 import ArticleDetailPage from './ArticleDetailPage';
+import InThePressPage from './InThePressPage';
+import InThePressDetailPage from './InThePressDetailPage';
 
 const {
   Header,
