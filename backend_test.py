@@ -606,6 +606,7 @@ class BackendTester:
             ("GET", "/podcasts"),
             ("GET", "/videos"),
             ("GET", "/articles"),
+            ("GET", "/in-the-press"),
         ]
         
         for method, endpoint in endpoints:
