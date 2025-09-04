@@ -368,10 +368,20 @@ const ProgramsV2 = () => {
                         </div>
                       </div>
                       
-                      <button className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
-                        Learn More
-                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      {program.name === "GC EXCHANGE" ? (
+                        <Link 
+                          to="/gc-exchange"
+                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                        >
+                          Learn More
+                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      ) : (
+                        <button className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
+                          Learn More
+                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      )}
                     </div>
                   </motion.div>
                 ))}
