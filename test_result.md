@@ -347,15 +347,18 @@ backend:
 
   - task: "In the Press Data Structure"
     implemented: true
-    working: "NA"
+    working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "testing"
         comment: "Cannot verify In the Press data structure due to Airtable view configuration error. Code analysis shows proper AirtableInThePress model with required fields: id, article_title, author_names, short_description, photo, body_of_article, authors_intro. Field mapping in fetch_airtable_in_the_press() function looks correct: 'Article Title', 'Author Names', 'Short Description', 'Photo', 'Body of Article', 'Authors Intro'. Structure appears correct but cannot test until Airtable view access is resolved."
+      - working: false
+        agent: "testing"
+        comment: "DATA STRUCTURE MISMATCH CONFIRMED: After comprehensive testing, the In the Press data structure has fundamental issues. Backend AirtableInThePress model expects fields ('Article Title', 'Author Names', 'Short Description', 'Body of Article', 'Authors Intro') that DO NOT EXIST in target table tblEKvdS9fXJn7cvc. Actual table contains different fields: 'Blog Title', 'Description (teaser)', 'Featured Speakers', 'Photo', 'Body of Q&A', etc. CRITICAL ISSUE: Backend field mapping is incorrect for the target table structure. Either: 1) Wrong table being accessed, 2) Field names need to be updated to match actual Airtable schema, or 3) In the Press content is in different base/table entirely. REQUIRES WEBSEARCH to identify correct Airtable structure and field names for In the Press articles."
 
 frontend:
 frontend:
