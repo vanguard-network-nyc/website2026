@@ -59,6 +59,8 @@ function App() {
             <Route path="/podcast/:id" element={<PodcastDetailPage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/video/:id" element={<VideoDetailPage />} />
+            <Route path="/in-the-press" element={<InThePressPage />} />
+            <Route path="/in-the-press/:id" element={<InThePressDetailPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
