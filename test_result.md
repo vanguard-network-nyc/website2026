@@ -128,6 +128,9 @@ backend:
       - working: true
         agent: "testing"
         comment: "POST-HOMEPAGE REDESIGN VERIFICATION: Backend service running stable on supervisor (pid 909, uptime 0:02:08). Comprehensive testing after homepage redesign confirms all existing functionality preserved. All core endpoints accessible via production URL, service logs show healthy operation with no errors. Backend remains fully operational and production-ready after frontend changes."
+      - working: true
+        agent: "testing"
+        comment: "IN THE PRESS API TESTING: Backend service running stable on supervisor (pid 652, uptime stable). Comprehensive testing of new In the Press endpoints reveals critical Airtable configuration issue. All existing endpoints working perfectly (events: 22, podcasts: 95, videos: 100, articles: 77). NEW ISSUE: In the Press endpoints failing with 422 Unprocessable Entity - Airtable view ID 'viwsgPr3j6hbU2g6Z' does not exist for articles table. Backend test results: 25/28 tests passed (89.3% success rate). All existing functionality preserved and operational."
   
   - task: "New Podcasts API Endpoint"
     implemented: true
