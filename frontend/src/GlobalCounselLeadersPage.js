@@ -12,22 +12,6 @@ const GlobalCounselLeadersPage = () => {
       className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </Link>
-        </motion.div>
-
         {/* Hero Section */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -36,11 +20,13 @@ const GlobalCounselLeadersPage = () => {
           className="text-center mb-16"
         >
           <div className="mb-8">
-            <img
-              src="https://static.wixstatic.com/media/e6a994_bd455b954f66416bbe659fd0d75d691a~mv2.png/v1/fill/w_598,h_58,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL%2BPowered%2BBy%2BLogo%2BHorizontal%2BKO-1000_edited.png"
-              alt="Global Counsel Leaders powered by The Vanguard Network"
-              className="mx-auto h-16 mb-6"
-            />
+            <div className="bg-slate-800 rounded-lg p-6 inline-block mb-6">
+              <img
+                src="https://static.wixstatic.com/media/e6a994_bd455b954f66416bbe659fd0d75d691a~mv2.png/v1/fill/w_598,h_58,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL%2BPowered%2BBy%2BLogo%2BHorizontal%2BKO-1000_edited.png"
+                alt="Global Counsel Leaders powered by The Vanguard Network"
+                className="h-16"
+              />
+            </div>
             <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
               About Global Counsel Leaders (GCL)
             </span>
