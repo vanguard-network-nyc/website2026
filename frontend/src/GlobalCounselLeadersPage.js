@@ -27,12 +27,8 @@ const GlobalCounselLeadersPage = () => {
                 className="h-16"
               />
             </div>
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
-              About Global Counsel Leaders (GCL)
-            </span>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+            
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
             Bringing New Leaders Of The World's<br />
             Best-In-Class Legal & Compliance Functions Into TVN
           </h1>
