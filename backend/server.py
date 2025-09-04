@@ -125,6 +125,62 @@ ARTICLES_VIEW_ID = "viwbNHk3p0ffFgcHm"
 IN_THE_PRESS_BASE_ID = "appcKcpx0rQ37ChAo"
 IN_THE_PRESS_VIEW_ID = "viwsgPr3j6hbU2g6Z"
 
+# GC Exchange Members table configuration (same base, different view)
+GC_MEMBERS_BASE_ID = "appcKcpx0rQ37ChAo"
+GC_MEMBERS_VIEW_ID = "viwkLl46jwSJdt7Ol"
+
+async def fetch_airtable_gc_members():
+    """Fetch GC Exchange members from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        # Use the same articles table ID with the GC Members view
+        url = f"https://api.airtable.com/v0/{GC_MEMBERS_BASE_ID}/{ARTICLES_TABLE_ID}"
+        params = {
+            "view": GC_MEMBERS_VIEW_ID,
+            "maxRecords": 100
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        gc_members = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields for GC Members
+            whole_name = fields.get("WholeName", "")
+            headshot_raw = fields.get("Headshot", [])
+            company = fields.get("Company", "")
+            position = fields.get("Position", "")
+            
+            # Handle headshot - get first one if multiple
+            headshot_url = None
+            if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
+                headshot_url = headshot_raw[0].get("url", "")
+            
+            # Only include records that have a name
+            if whole_name:
+                gc_member = AirtableGCMember(
+                    id=record.get("id", ""),
+                    whole_name=whole_name,
+                    headshot=headshot_url,
+                    company=company,
+                    position=position
+                )
+                gc_members.append(gc_member)
+        
+        return gc_members
+        
+    except Exception as e:
+        logging.error(f"Error fetching Airtable GC members: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching GC members: {str(e)}")
+
 async def fetch_airtable_in_the_press():
     """Fetch In the Press articles from Airtable"""
     try:
