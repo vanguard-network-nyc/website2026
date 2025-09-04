@@ -114,6 +114,64 @@ ARTICLES_BASE_ID = "appcKcpx0rQ37ChAo"
 ARTICLES_TABLE_ID = "tblEKvdS9fXJn7cvc"
 ARTICLES_VIEW_ID = "viwbNHk3p0ffFgcHm"
 
+# In the Press table configuration (same base, different view)
+IN_THE_PRESS_BASE_ID = "appcKcpx0rQ37ChAo"
+IN_THE_PRESS_VIEW_ID = "viwsgPr3j6hbU2g6Z"
+
+async def fetch_airtable_in_the_press():
+    """Fetch In the Press articles from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        # Using the same table ID as articles but different view
+        url = f"https://api.airtable.com/v0/{IN_THE_PRESS_BASE_ID}/{ARTICLES_TABLE_ID}"
+        params = {
+            "view": IN_THE_PRESS_VIEW_ID,
+            "maxRecords": 100
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        
+        data = response.json()
+        press_articles = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields for In the Press
+            article_title = fields.get("Article Title", "")
+            author_names = fields.get("Author Names", "")
+            short_description = fields.get("Short Description", "")
+            photo_raw = fields.get("Photo", [])
+            body_of_article = fields.get("Body of Article", "")
+            authors_intro = fields.get("Authors Intro", "")
+            
+            # Handle photo - get first one if multiple
+            photo_url = None
+            if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                photo_url = photo_raw[0].get("url", "")
+            
+            press_article = AirtableInThePress(
+                id=record.get("id", ""),
+                article_title=article_title,
+                author_names=author_names,
+                short_description=short_description,
+                photo=photo_url,
+                body_of_article=body_of_article,
+                authors_intro=authors_intro
+            )
+            press_articles.append(press_article)
+        
+        return press_articles
+        
+    except Exception as e:
+        logging.error(f"Error fetching Airtable In the Press articles: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching In the Press articles: {str(e)}")
+
 async def fetch_airtable_articles():
     """Fetch articles from Airtable"""
     try:
