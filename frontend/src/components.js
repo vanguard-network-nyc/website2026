@@ -349,6 +349,7 @@ const Header = () => {
         </AnimatePresence>
       </div>
     </motion.header>
+    </>
   );
 };
 
