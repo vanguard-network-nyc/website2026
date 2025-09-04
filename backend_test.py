@@ -597,6 +597,110 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Single Podcast Endpoint", False, f"Invalid JSON response: {str(e)}")
 
+    def test_airtable_in_the_press_endpoint(self):
+        """Test GET /api/in-the-press endpoint (NEW - Airtable integration)"""
+        try:
+            response = self.session.get(f"{self.backend_url}/in-the-press", timeout=15)
+            
+            if response.status_code == 200:
+                data = response.json()
+                
+                if isinstance(data, list):
+                    self.log_test("Airtable In the Press", True, f"Retrieved {len(data)} In the Press articles from Airtable", {"count": len(data)})
+                    
+                    # If there are articles, validate structure
+                    if data:
+                        first_press = data[0]
+                        required_fields = ["id", "article_title"]
+                        expected_fields = ["author_names", "short_description", "photo", "body_of_article", "authors_intro"]
+                        
+                        missing_required = [field for field in required_fields if field not in first_press]
+                        
+                        if missing_required:
+                            self.log_test("Airtable In the Press Structure", False, f"Missing required fields in press article: {missing_required}", first_press)
+                        else:
+                            # Check if press article has proper data structure
+                            if first_press.get("article_title"):
+                                # Validate expected fields are present (even if None/empty)
+                                has_expected_fields = all(field in first_press for field in expected_fields)
+                                
+                                self.log_test("Airtable In the Press Structure", True, "In the Press article structure is valid with proper data", {
+                                    "sample_title": first_press.get("article_title")[:50] + "..." if len(first_press.get("article_title", "")) > 50 else first_press.get("article_title"),
+                                    "has_author_names": bool(first_press.get("author_names")),
+                                    "has_short_description": bool(first_press.get("short_description")),
+                                    "has_photo": bool(first_press.get("photo")),
+                                    "has_body_of_article": bool(first_press.get("body_of_article")),
+                                    "has_authors_intro": bool(first_press.get("authors_intro")),
+                                    "all_fields_present": has_expected_fields
+                                })
+                            else:
+                                self.log_test("Airtable In the Press Structure", False, "In the Press article missing title data", first_press)
+                    else:
+                        self.log_test("Airtable In the Press", True, "No In the Press articles returned (empty list is valid)", {"count": 0})
+                        
+                else:
+                    self.log_test("Airtable In the Press", False, f"Expected list, got {type(data)}", data)
+            else:
+                self.log_test("Airtable In the Press", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Airtable In the Press", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Airtable In the Press", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Airtable In the Press", False, f"Invalid JSON response: {str(e)}")
+
+    def test_single_in_the_press_endpoint(self):
+        """Test GET /api/in-the-press/{press_id} endpoint (NEW)"""
+        try:
+            # First get all In the Press articles to get a valid press ID
+            press_response = self.session.get(f"{self.backend_url}/in-the-press", timeout=15)
+            
+            if press_response.status_code == 200:
+                press_data = press_response.json()
+                
+                if isinstance(press_data, list) and len(press_data) > 0:
+                    # Use the first press article's ID
+                    test_press_id = press_data[0]["id"]
+                    
+                    # Test single In the Press endpoint
+                    response = self.session.get(f"{self.backend_url}/in-the-press/{test_press_id}", timeout=15)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        
+                        # Validate it's a single press article object
+                        if isinstance(data, dict) and data.get("id") == test_press_id:
+                            required_fields = ["id", "article_title"]
+                            missing_fields = [field for field in required_fields if field not in data]
+                            
+                            if missing_fields:
+                                self.log_test("Single In the Press Endpoint", False, f"Missing fields: {missing_fields}", data)
+                            else:
+                                self.log_test("Single In the Press Endpoint", True, f"Successfully retrieved In the Press article: {data.get('article_title', '')[:50]}...", {
+                                    "press_id": test_press_id,
+                                    "has_title": bool(data.get("article_title")),
+                                    "has_author_names": bool(data.get("author_names")),
+                                    "has_short_description": bool(data.get("short_description"))
+                                })
+                        else:
+                            self.log_test("Single In the Press Endpoint", False, f"Invalid response structure or ID mismatch", data)
+                    elif response.status_code == 404:
+                        self.log_test("Single In the Press Endpoint", False, f"In the Press article not found (404) for ID: {test_press_id}", response.text)
+                    else:
+                        self.log_test("Single In the Press Endpoint", False, f"HTTP {response.status_code}: {response.text}", response.text)
+                else:
+                    self.log_test("Single In the Press Endpoint", False, "No In the Press articles available to test single press endpoint", {"press_count": len(press_data) if isinstance(press_data, list) else 0})
+            else:
+                self.log_test("Single In the Press Endpoint", False, f"Cannot test single In the Press - press list failed: HTTP {press_response.status_code}", press_response.text)
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Single In the Press Endpoint", False, "Request timed out (Airtable may be slow)")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Single In the Press Endpoint", False, f"Connection error: {str(e)}")
+        except json.JSONDecodeError as e:
+            self.log_test("Single In the Press Endpoint", False, f"Invalid JSON response: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
