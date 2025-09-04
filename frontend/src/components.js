@@ -39,22 +39,25 @@ const GCLBanner = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-3 px-4"
+      className="bg-gray-200 text-slate-800 py-3 px-4 border-b border-gray-300"
     >
       <div className="max-w-7xl mx-auto">
         <Link 
           to="/global-counsel-leaders"
-          className="flex items-center justify-center gap-3 hover:opacity-90 transition-opacity duration-200"
+          className="flex items-center justify-center gap-2 hover:opacity-80 transition-opacity duration-200"
         >
+          <span className="text-sm font-bold">
+            Now incorporating the
+          </span>
           <img
             src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
             alt="Global Counsel Leaders"
             className="h-6"
           />
-          <span className="text-sm font-medium">
-            Now incorporating "Global Counsel Leaders Community" 
+          <span className="text-sm font-bold">
+            Community.
           </span>
-          <span className="text-blue-300 font-semibold text-sm flex items-center gap-1">
+          <span className="text-blue-700 font-bold text-sm flex items-center gap-1 ml-2">
             Read more
             <ArrowRight size={14} />
           </span>
