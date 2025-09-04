@@ -4293,7 +4293,8 @@ const Components = {
   NewAboutSection,
   NewSpecializedGroupsSection,
   NewIntegrationSection,
-  NewContentLibrarySection
+  NewContentLibrarySection,
+  GCLBanner
 };
 
 export default Components;
