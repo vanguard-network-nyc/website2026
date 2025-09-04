@@ -32,6 +32,38 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
+// GCL Banner Component
+const GCLBanner = () => {
+  return (
+    <motion.div
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-3 px-4"
+    >
+      <div className="max-w-7xl mx-auto">
+        <Link 
+          to="/global-counsel-leaders"
+          className="flex items-center justify-center gap-3 hover:opacity-90 transition-opacity duration-200"
+        >
+          <img
+            src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
+            alt="Global Counsel Leaders"
+            className="h-6"
+          />
+          <span className="text-sm font-medium">
+            Now incorporating "Global Counsel Leaders Community" 
+          </span>
+          <span className="text-blue-300 font-semibold text-sm flex items-center gap-1">
+            Read more
+            <ArrowRight size={14} />
+          </span>
+        </Link>
+      </div>
+    </motion.div>
+  );
+};
+
 // Animation variants for consistent scroll and page load animations
 const fadeInUpVariants = {
   hidden: { opacity: 0, y: 50 },
