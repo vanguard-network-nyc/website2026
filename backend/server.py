@@ -138,8 +138,8 @@ async def fetch_airtable_gc_members():
             "Content-Type": "application/json"
         }
         
-        # Use the same articles table ID with the GC Members view
-        url = f"https://api.airtable.com/v0/{GC_MEMBERS_BASE_ID}/{ARTICLES_TABLE_ID}"
+        # Use the specific GC Members table ID with the GC Members view
+        url = f"https://api.airtable.com/v0/{GC_MEMBERS_BASE_ID}/{GC_MEMBERS_TABLE_ID}"
         
         # First, try without the view to see what fields actually exist
         params = {
