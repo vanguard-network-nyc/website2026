@@ -842,6 +842,9 @@ class BackendTester:
         self.test_airtable_in_the_press_endpoint()
         self.test_single_in_the_press_endpoint()
         
+        # Test NEW GC Members endpoint
+        self.test_airtable_gc_members_endpoint()
+        
         # Test JSON responses
         self.test_json_responses()
         
