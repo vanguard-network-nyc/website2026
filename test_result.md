@@ -303,17 +303,41 @@ backend:
         agent: "testing"
         comment: "VERIFIED: Videos data structure is complete and properly formatted. All required fields present: id (unique Airtable record ID), video_description (descriptive video titles), featured_speakers (properly formatted speaker names), headshot (high-quality image URLs), category (video categorization), tags (array format), keywords (array format for similarity matching), vimeo_embedder (complete HTML div embed codes). Data quality excellent - 100 videos with rich, complete metadata. JSON responses valid and properly structured for frontend consumption."
   
-  - task: "Articles Data Structure"
+  - task: "New In the Press API Endpoints"
     implemented: true
-    working: true
+    working: false
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
-      - working: true
+      - working: false
         agent: "testing"
-        comment: "VERIFIED: Articles data structure is complete and properly formatted. All required fields present: id (unique Airtable record ID), blog_title (descriptive article titles), description_teaser (article summaries), photo (high-quality image URLs), featured_speaker_linkedin (speaker information), body_qa (full article content), tags (array format), published_to_web (date fields for proper sorting), type_content (content type classification). Data quality excellent - 77 articles with rich, complete metadata sorted by publication date descending. JSON responses valid and properly structured for frontend consumption."
+        comment: "CRITICAL: New In the Press API endpoints failing with 422 Unprocessable Entity error. GET /api/in-the-press and GET /api/in-the-press/{press_id} both return 500 errors due to Airtable rejecting view ID 'viwsgPr3j6hbU2g6Z'. Backend logs show: 'Error fetching Airtable In the Press articles: 422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appcKcpx0rQ37ChAo/tblEKvdS9fXJn7cvc?view=viwsgPr3j6hbU2g6Z&maxRecords=100'. Direct testing confirms base ID (appcKcpx0rQ37ChAo) and table ID (tblEKvdS9fXJn7cvc) are correct, but view ID does not exist. This indicates either: 1) View ID is incorrect, 2) View doesn't exist in Airtable, or 3) View has different permissions. All other endpoints working perfectly."
+
+  - task: "Airtable In the Press Integration"
+    implemented: true
+    working: false
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL: Airtable integration for In the Press failing with view configuration issue. The fetch_airtable_in_the_press() function is implemented correctly with proper error handling and data structure (AirtableInThePress model with article_title, author_names, short_description, photo, body_of_article, authors_intro fields), but Airtable API is rejecting requests due to invalid view ID 'viwsgPr3j6hbU2g6Z'. Same base/table works for articles endpoint, indicating view-specific issue. Backend code expects In the Press articles to be in same table as regular articles but filtered by different view."
+
+  - task: "In the Press Data Structure"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "Cannot verify In the Press data structure due to Airtable view configuration error. Code analysis shows proper AirtableInThePress model with required fields: id, article_title, author_names, short_description, photo, body_of_article, authors_intro. Field mapping in fetch_airtable_in_the_press() function looks correct: 'Article Title', 'Author Names', 'Short Description', 'Photo', 'Body of Article', 'Authors Intro'. Structure appears correct but cannot test until Airtable view access is resolved."
 
 frontend:
 frontend:
