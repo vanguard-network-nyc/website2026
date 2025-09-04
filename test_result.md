@@ -814,6 +814,8 @@ test_plan:
     - "In the Press Data Structure"
   stuck_tasks:
     - "New In the Press API Endpoints"
+    - "Airtable In the Press Integration"
+    - "In the Press Data Structure"
   test_all: false
   test_priority: "high_first"
 
