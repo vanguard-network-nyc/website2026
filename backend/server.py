@@ -678,6 +678,32 @@ async def get_article(article_id: str):
         logger.error(f"Error in get_article: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch article")
 
+@api_router.get("/in-the-press", response_model=List[AirtableInThePress])
+async def get_in_the_press():
+    """Get In the Press articles from Airtable"""
+    try:
+        press_articles = await fetch_airtable_in_the_press()
+        logger.info(f"Successfully fetched {len(press_articles)} In the Press articles from Airtable")
+        return press_articles
+    except Exception as e:
+        logger.error(f"Error in get_in_the_press: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch In the Press articles")
+
+@api_router.get("/in-the-press/{press_id}")
+async def get_in_the_press_article(press_id: str):
+    """Get a single In the Press article by ID from Airtable"""
+    try:
+        press_articles = await fetch_airtable_in_the_press()
+        for press_article in press_articles:
+            if press_article.id == press_id:
+                return press_article
+        raise HTTPException(status_code=404, detail="In the Press article not found")
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error in get_in_the_press_article: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch In the Press article")
+
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
     """Get upcoming events from Airtable"""
