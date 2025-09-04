@@ -319,13 +319,16 @@ backend:
     implemented: true
     working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: false
         agent: "testing"
         comment: "CRITICAL: New In the Press API endpoints failing with 422 Unprocessable Entity error. GET /api/in-the-press and GET /api/in-the-press/{press_id} both return 500 errors due to Airtable rejecting view ID 'viwsgPr3j6hbU2g6Z'. Backend logs show: 'Error fetching Airtable In the Press articles: 422 Client Error: Unprocessable Entity for url: https://api.airtable.com/v0/appcKcpx0rQ37ChAo/tblEKvdS9fXJn7cvc?view=viwsgPr3j6hbU2g6Z&maxRecords=100'. Direct testing confirms base ID (appcKcpx0rQ37ChAo) and table ID (tblEKvdS9fXJn7cvc) are correct, but view ID does not exist. This indicates either: 1) View ID is incorrect, 2) View doesn't exist in Airtable, or 3) View has different permissions. All other endpoints working perfectly."
+      - working: false
+        agent: "testing"
+        comment: "RE-TESTED AFTER CLAIMED PERMISSIONS FIX: In the Press endpoints still failing with identical 422 Unprocessable Entity errors. Direct Airtable API testing confirms view ID 'viwsgPr3j6hbU2g6Z' remains inaccessible despite user's claim of changing permissions from private to collaborative. CRITICAL FINDINGS: 1) Table tblEKvdS9fXJn7cvc is accessible and contains data, 2) Table has regular blog fields (Blog Title, Description (teaser), etc.) but LACKS expected In the Press fields (Article Title, Author Names, Short Description, Body of Article, Authors Intro), 3) Backend field mapping expects fields that don't exist in this table. CONCLUSION: Either view permissions were not actually changed, In the Press articles are in different table, or field names are incorrect. Backend test results: 25/28 tests passed (89.3% success rate). All other endpoints working perfectly (events: 22, podcasts: 95, videos: 100, articles: 77). REQUIRES WEBSEARCH to resolve Airtable configuration issue."
 
   - task: "Airtable In the Press Integration"
     implemented: true
