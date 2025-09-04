@@ -848,6 +848,17 @@ async def get_in_the_press_article(press_id: str):
         logger.error(f"Error in get_in_the_press_article: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch In the Press article")
 
+@api_router.get("/gc-members", response_model=List[AirtableGCMember])
+async def get_gc_members():
+    """Get GC Exchange members from Airtable"""
+    try:
+        gc_members = await fetch_airtable_gc_members()
+        logger.info(f"Successfully fetched {len(gc_members)} GC members from Airtable")
+        return gc_members
+    except Exception as e:
+        logger.error(f"Error in get_gc_members: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch GC members")
+
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
     """Get upcoming events from Airtable"""
