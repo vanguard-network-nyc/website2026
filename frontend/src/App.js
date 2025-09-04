@@ -64,6 +64,7 @@ function App() {
             <Route path="/in-the-press" element={<InThePressPage />} />
             <Route path="/in-the-press/:id" element={<InThePressDetailPage />} />
             <Route path="/gc-exchange" element={<GCExchangePage />} />
+            <Route path="/global-counsel-leaders" element={<GlobalCounselLeadersPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
