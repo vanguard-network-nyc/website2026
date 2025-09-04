@@ -125,8 +125,9 @@ ARTICLES_VIEW_ID = "viwbNHk3p0ffFgcHm"
 IN_THE_PRESS_BASE_ID = "appcKcpx0rQ37ChAo"
 IN_THE_PRESS_VIEW_ID = "viwsgPr3j6hbU2g6Z"
 
-# GC Exchange Members table configuration (same base, different view)
+# GC Exchange Members table configuration (same base, specific table and view)
 GC_MEMBERS_BASE_ID = "appcKcpx0rQ37ChAo"
+GC_MEMBERS_TABLE_ID = "tbliGbJTIk94Fpzhf"
 GC_MEMBERS_VIEW_ID = "viwkLl46jwSJdt7Ol"
 
 async def fetch_airtable_gc_members():
