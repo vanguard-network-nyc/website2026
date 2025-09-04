@@ -67,6 +67,15 @@ class AirtableArticle(BaseModel):
     published_to_web: Optional[str] = None  # date field for sorting
     type_content: Optional[str] = None  # type of detailed content
 
+class AirtableInThePress(BaseModel):
+    id: str
+    article_title: str  # title
+    author_names: Optional[str] = None  # author names
+    short_description: Optional[str] = None  # short description
+    photo: Optional[str] = None  # article preview image
+    body_of_article: Optional[str] = None  # article text content
+    authors_intro: Optional[str] = None  # description of authors
+
 class AirtableEvent(BaseModel):
     id: str
     event_title: str
