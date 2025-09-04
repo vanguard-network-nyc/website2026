@@ -674,6 +674,10 @@ class BackendTester:
         self.test_airtable_articles_endpoint()
         self.test_single_article_endpoint()
         
+        # Test NEW In the Press endpoints
+        self.test_airtable_in_the_press_endpoint()
+        self.test_single_in_the_press_endpoint()
+        
         # Test JSON responses
         self.test_json_responses()
         
