@@ -62,6 +62,7 @@ function App() {
             <Route path="/video/:id" element={<VideoDetailPage />} />
             <Route path="/in-the-press" element={<InThePressPage />} />
             <Route path="/in-the-press/:id" element={<InThePressDetailPage />} />
+            <Route path="/gc-exchange" element={<GCExchangePage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
