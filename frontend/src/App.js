@@ -17,6 +17,7 @@ import InThePressDetailPage from './InThePressDetailPage';
 import GCExchangePage from './GCExchangePage';
 import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
+import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 
 const {
   Header,
