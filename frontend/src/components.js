@@ -3577,11 +3577,18 @@ const NewWhatWeDoSection = () => {
       link: "/advisory"
     },
     {
-      title: "Leadership Advisory and Programs",
+      title: "Leadership Advisory",
       description: "Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.",
       details: "In addition to leadership coaching on specific skills, we often act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
+    },
+    {
+      title: "Leadership Programs",
+      description: "We also offer special leadership and career development programs. \"Next Generation GC\" is seen as the gold standard program developing high-potential legal talent into General Counsel readiness.",
+      details: "The \"New Leaders Program\" applies the same intimate, peer-to-peer formats of our senior executive networks to accelerate the capabilities of early career leaders.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      link: "/programs-v2"
     },
     {
       title: "Peer Networks & Forums",
