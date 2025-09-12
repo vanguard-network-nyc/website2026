@@ -315,18 +315,29 @@ const NewLeadersPage = () => {
             <h2 className="text-3xl font-bold text-slate-900 mb-8">Key Program Advisors*</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {advisors.map((advisor, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.8 + index * 0.05, duration: 0.5 }}
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-                >
-                  <CheckCircle size={16} className="text-green-500 flex-shrink-0" />
-                  <span className="text-slate-700 text-sm">{advisor}</span>
-                </motion.div>
-              ))}
+              {advisors.map((advisor, index) => {
+                // Split advisor string to separate name from company/title
+                const [name, ...rest] = advisor.split(', ');
+                const companyAndTitle = rest.join(', ');
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.8 + index * 0.05, duration: 0.5 }}
+                    className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <CheckCircle size={16} className="text-green-500 flex-shrink-0 mt-1" />
+                    <div>
+                      <div className="font-bold text-slate-900 text-base mb-1">{name}</div>
+                      {companyAndTitle && (
+                        <div className="text-slate-600 text-sm">{companyAndTitle}</div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
             
             <p className="text-sm text-slate-500 mt-8 italic">
