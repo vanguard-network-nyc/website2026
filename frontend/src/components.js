@@ -2542,24 +2542,45 @@ const TeamPage = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {[
             {
+              name: 'Andres Feng',
+              role: 'Executive Director, Programming',
+              image: '/andres-feng.jpg',
+              bio: 'Andres oversees key Vanguard programs including New Leaders, Next Gen GC, and the Risk Management Network, ensuring they align with Vanguard\'s mission to elevate C-suite leaders. He brings over five years of experience in innovation consulting, strategy, and stakeholder engagement, having led global initiatives for several Fortune 100 companies. Andres holds a BA in International Business from UC San Diego and dual MSc degrees in International Business and Marketing from Hult International Business School.',
+              focus: 'Executive Programming & Strategy'
+            },
+            {
               name: 'Garrick Isert',
               role: 'Vice Principal, Executive Leadership Programs',
               image: '/garrick-isert-new.jpg',
-              bio: 'Garrick is responsible for leading and facilitating programs for General Counsels and their teams with a focus on lawyers as leaders. He has over 20 years of experience in corporate, management consulting, peer networks, executive coaching and leadership development.',
+              bio: 'Garrick is responsible for leading and facilitating programs for General Counsels and their teams with a focus on lawyers as leaders. He has over 20 years of experience in corporate, management consulting, peer networks, executive coaching and leadership development. A graduate of Wake Forest University with a BS in Business, he also earned a JD/MBA from Northwestern University. Garrick lives in Atlanta, GA with his family and is always searching for the best slice of pizza.',
               focus: 'Executive Leadership Programs'
+            },
+            {
+              name: 'Richard Hulme',
+              role: 'Senior Advisor',
+              image: '/richard-hulme-new.jpg',
+              bio: 'Richard is a Senior Advisor to The Vanguard Network, where he provides executive coaching for clients and consults with senior leaders on how to create a high-performance organization. He brings more than 25 years of experience in strategy, global operations, and organizational excellence, with particular expertise in leadership development. A graduate of William & Mary with a BS in biology, he also earned his MBA from Carnegie Mellon University.',
+              focus: 'Executive Coaching & Organizational Excellence'
+            },
+            {
+              name: 'Aileen Gonsalves',
+              role: 'Senior Leadership Communication Coach',
+              image: '/aileen-gonsalves.jpg',
+              bio: 'Aileen is senior leadership communication coach to The Vanguard Network and creator of the Gonsalves Method, developed from her career as an actor and director with the Royal Shakespeare Company. She helps leaders connect authentically, read the room, and hold any audience with impact—in person or virtually. She is one of the principal coaches for The Vanguard Network\'s Pitching to Win program.',
+              focus: 'Leadership Communication & Executive Presence'
             },
             {
               name: 'Dick Mosher',
               role: 'Senior Advisor',
               image: '/dick-mosher-team.jpg',
-              bio: 'Dick leverages five decades of corporate and legal experience to provide valuable insights as an advisor to Vanguard\'s members and clients. He has worked as a Chief Legal Officer (CLO), General Counsel (GC), or Associate General Counsel (AGC) for public and private corporations.',
+              bio: 'Dick leverages five decades of corporate and legal experience to provide valuable insights as an advisor to Vanguard\'s members and clients. He has worked as a Chief Legal Officer (CLO), General Counsel (GC), or Associate General Counsel (AGC) for public and private corporations; as a senior counsel for prominent US law firms; and led business teams at Ball, Maytag, and Hoover. Dick has a JD degree from Northwestern and is past president of the Conflict Resolution Alliance in Hawaii.',
               focus: 'Strategic Advisory & Corporate Leadership'
             },
             {
               name: 'Hope Novak',
               role: 'Executive Operations & Events Lead',
               image: '/hope-novak-team.jpg',
-              bio: 'Hope is responsible for providing high-level administrative support to our CEO Ken Banta. She is also responsible for overseeing and planning events, driving new business, and strengthening Vanguard\'s unique culture.',
+              bio: 'Hope is responsible for providing high-level administrative support to our CEO Ken Banta. She is also responsible for overseeing and planning events, driving new business, and strengthening Vanguard\'s unique culture. She has 10 years of experience supporting C-suite executives and 6 years managing corporate events. She graduated from Fairleigh Dickinson University with a BS in Political Science.',
               focus: 'Operations & Event Management'
             }
           ].map((member, index) => (
