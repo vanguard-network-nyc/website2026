@@ -18,6 +18,7 @@ import GCExchangePage from './GCExchangePage';
 import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
 import SeniorCounselExchangePage from './SeniorCounselExchangePage';
+import NextGenGCPage from './NextGenGCPage';
 
 const {
   Header,
