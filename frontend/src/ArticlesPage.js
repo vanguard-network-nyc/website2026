@@ -187,7 +187,7 @@ const ArticlesPage = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
               >
                 {/* Article Image */}
                 <div className="relative h-48 bg-gray-200 overflow-hidden">
@@ -195,7 +195,12 @@ const ArticlesPage = () => {
                     <img 
                       src={article.photo} 
                       alt={article.blog_title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                      style={{ 
+                        objectPosition: 'center top',
+                        paddingBottom: '20px',
+                        marginBottom: '-20px'
+                      }}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
@@ -212,7 +217,7 @@ const ArticlesPage = () => {
                 </div>
 
                 {/* Article Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
                     {article.blog_title}
                   </h3>
