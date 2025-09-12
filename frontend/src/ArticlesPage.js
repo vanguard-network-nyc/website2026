@@ -218,56 +218,62 @@ const ArticlesPage = () => {
 
                 {/* Article Content */}
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
-                    {article.blog_title}
-                  </h3>
-                  
-                  {article.description_teaser && (
-                    <p className="text-sm text-slate-600 mb-4 line-clamp-3">
-                      {article.description_teaser}
-                    </p>
-                  )}
+                  {/* Content Area - grows to fill available space */}
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
+                      {article.blog_title}
+                    </h3>
+                    
+                    {article.description_teaser && (
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-3">
+                        {article.description_teaser}
+                      </p>
+                    )}
 
-                  {article.featured_speaker_linkedin && (
-                    <div className="flex items-center gap-2 text-sm text-slate-600 mb-2">
-                      <User size={16} />
-                      <span className="font-medium">Featured Speaker</span>
-                    </div>
-                  )}
+                    {article.featured_speaker_linkedin && (
+                      <div className="flex items-center gap-2 text-sm text-slate-600 mb-2">
+                        <User size={16} />
+                        <span className="font-medium">Featured Speaker</span>
+                      </div>
+                    )}
 
-                  {article.featured_speaker_linkedin && (
-                    <p className="text-sm text-slate-700 mb-4 font-medium">
-                      {article.featured_speaker_linkedin}
-                    </p>
-                  )}
+                    {article.featured_speaker_linkedin && (
+                      <p className="text-sm text-slate-700 mb-4 font-medium">
+                        {article.featured_speaker_linkedin}
+                      </p>
+                    )}
 
-                  {article.published_to_web && (
-                    <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
-                      <Calendar size={14} />
-                      <span>{formatDate(article.published_to_web)}</span>
-                    </div>
-                  )}
+                    {article.published_to_web && (
+                      <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
+                        <Calendar size={14} />
+                        <span>{formatDate(article.published_to_web)}</span>
+                      </div>
+                    )}
 
-                  {article.tags && article.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {article.tags.slice(0, 3).map((tag, index) => (
-                        <span key={index} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                      {article.tags.length > 3 && (
-                        <span className="text-xs text-slate-500">+{article.tags.length - 3} more</span>
-                      )}
-                    </div>
-                  )}
+                    {article.tags && article.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-4">
+                        {article.tags.slice(0, 3).map((tag, index) => (
+                          <span key={index} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                        {article.tags.length > 3 && (
+                          <span className="text-xs text-slate-500">+{article.tags.length - 3} more</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
 
-                  <Link
-                    to={`/article/${article.id}`}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                  >
-                    <FileText size={16} />
-                    Read Article
-                  </Link>
+                  {/* Button Area - always at bottom */}
+                  <div className="mt-auto pt-4">
+                    <Link
+                      to={`/article/${article.id}`}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    >
+                      <FileText size={16} />
+                      Read Article
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))
