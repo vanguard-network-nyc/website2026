@@ -2635,21 +2635,28 @@ const TeamPage = () => (
               name: 'James Pallot',
               role: 'Content Director',
               image: '/james-pallot-team.jpg',
-              bio: 'Jamie is responsible for the overall quality and direction of Vanguard content, including blog posts, interviews, and newsletters. He has over 25 years experience in media, having held senior editorial posts at NewsCorp, Time Inc., Microsoft and Condé Nast.',
+              bio: 'Jamie is responsible for the overall quality and direction of Vanguard content, including blog posts, interviews, and newsletters. He has over 25 years experience in media, having held senior editorial posts at NewsCorp, Time Inc., Microsoft and Condé Nast, where he won a National Magazine Award for General Excellence as the editor of Style.com. Jamie has a BA in English with French from the University of Sussex and an MA in Comp Lit from the University of Southampton.',
               focus: 'Content Strategy & Editorial Direction'
             },
             {
               name: 'Connor Payne',
               role: 'Manager, Operations',
               image: '/connor-payne.jpg',
-              bio: 'Connor is responsible for project management for Vanguard\'s wide array of events. He also directly assists the COO, Tony, with various internal initiatives. With 8 years of experience in consulting, sales, and startups, Connor has a proven track record of delivering value.',
+              bio: 'Connor is responsible for project management for Vanguard\'s wide array of events. He also directly assists the COO, Tony, with various internal initiatives. With 8 years of experience in consulting, sales, and startups, Connor has a proven track record of delivering value to his customers, clients, and projects. Connor holds dual degrees in Business Management and Management Information Systems from Grand Valley State University.',
               focus: 'Project Management & Operations'
+            },
+            {
+              name: 'Zarah Bautista',
+              role: 'Marketing Coordinator',
+              image: '/zarah-bautista.jpg',
+              bio: 'Zarah leads the company\'s marketing, overseeing social media and content strategy to ensure consistent brand messaging, community engagement, and digital growth through targeted campaigns. With 10+ years in digital marketing as both a professional and freelancer, she brings expertise in advertising, content creation, and graphic design. She holds a BS in Information Technology from Laguna State Polytechnic University in the Philippines.',
+              focus: 'Digital Marketing & Brand Strategy'
             },
             {
               name: 'Ken Stone',
               role: 'Media Director',
               image: '/ken-stone-team.jpg',
-              bio: 'Ken is responsible for creating videos and podcasts from Vanguard events and also moderates Forums and other meetings. He spent 20 years in radio and television newsrooms, then taught full-time at the University of Minnesota for 7 years.',
+              bio: 'Ken is responsible for creating videos and podcasts from Vanguard events and also moderates Forums and other meetings. He spent 20 years in radio and television newsrooms. He then went on to teach full-time at the University of Minnesota for 7 years and currently runs his own media production company. After two years at Marquette University\'s School of Journalism, he transferred to the University of Maryland and earned a BA in Radio/TV/Film.',
               focus: 'Media Production & Content Creation'
             }
           ].map((member, index) => (
