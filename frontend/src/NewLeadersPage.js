@@ -100,6 +100,34 @@ const NewLeadersPage = () => {
           </p>
         </motion.div>
 
+        {/* Video Section */}
+        <motion.section
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
+          className="mb-16"
+        >
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+              See New Leaders in Action
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <div className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
+                <iframe
+                  src="https://player.vimeo.com/video/834411667"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                  title="New Leaders Program Video"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.section>
+
         {/* Program Description */}
         <motion.section
           initial={{ y: 30, opacity: 0 }}
