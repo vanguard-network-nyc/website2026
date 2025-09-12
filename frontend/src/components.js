@@ -3577,9 +3577,9 @@ const NewWhatWeDoSection = () => {
       link: "/advisory"
     },
     {
-      title: "Leadership Advisory",
-      description: "We collaborate closely with executives through one-on-one coaching relationships, candid feedback sessions, and our Next Generation Leader curriculum.",
-      details: "Our approach unlocks leadership potential and drives strategic change through personalized coaching and development programs tailored for senior executives.",
+      title: "Leadership Advisory and Programs",
+      description: "Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.",
+      details: "In addition to leadership coaching on specific skills, we often act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
     },
