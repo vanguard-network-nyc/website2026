@@ -3570,6 +3570,13 @@ const NewStatsSection = () => {
 const NewWhatWeDoSection = () => {
   const services = [
     {
+      title: "Peer-to-Peer Networks",
+      description: "Participation in Forums, Leadership Dialogues, and our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
+      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72",
+      link: "/networking"
+    },
+    {
       title: "Organizational Transformation",
       description: "We're not a conventional large strategic consultancy. Instead, we're a lean and focused team with deep, real-world experience in catalyzing organizational change.",
       details: "We have been leaders of teams that delivered more than $83 billion in accretive value, and advised hundreds of clients on delivering success. We know that it all starts with the people, not PowerPoint. While strategy is challenging, execution is the key to high performance -- and we can help you achieve it.",
@@ -3589,13 +3596,6 @@ const NewWhatWeDoSection = () => {
       details: "The \"New Leaders Program\" applies the same intimate, peer-to-peer formats of our senior executive networks to accelerate the capabilities of early career leaders.",
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs-v2"
-    },
-    {
-      title: "Peer Networks & Forums",
-      description: "Participation in Forums, Leadership Dialogues, and Connect, our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
-      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-      link: "/networking"
     },
     {
       title: "Custom Member Services",
