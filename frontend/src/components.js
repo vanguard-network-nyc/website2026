@@ -3598,9 +3598,9 @@ const NewWhatWeDoSection = () => {
       link: "/programs-v2"
     },
     {
-      title: "Custom Member Services",
-      description: "Beyond membership, we offer tailored services, from warm introductions and curated content libraries to bespoke roundtables and retreats.",
-      details: "Personalized services designed to help members maximize the value of the Network through customized experiences and connections.",
+      title: "Customized Leadership Exchanges",
+      description: "We apply our signature approaches to leadership interactions to build and deepen external relationships.",
+      details: "Leadership Exchanges curated by Vanguard bring you together clients and stakeholders in highly relevant conversations on topics ranging from developing high potential employees to policy challenges. These conversations, small-group interactions and dinner discussions transform conventional 'supplier' or 'vendor' relationships into a role as peer and trusted advisor.",
       image: "https://images.pexels.com/photos/33406411/pexels-photo-33406411.jpeg",
       link: "/programs"
     }
