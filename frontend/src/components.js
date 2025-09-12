@@ -3571,8 +3571,8 @@ const NewWhatWeDoSection = () => {
   const services = [
     {
       title: "Organizational Transformation",
-      description: "We work with leaders to align strategy, culture, and execution so that organizations can adapt and thrive in fast-changing environments.",
-      details: "Through facilitated leadership dialogues, cross-functional workshops, and targeted advisory support, we help senior teams identify critical opportunities, remove barriers to performance, and embed practices that sustain long-term success.",
+      description: "We're not a conventional large strategic consultancy. Instead, we're a lean and focused team with deep, real-world experience in catalyzing organizational change.",
+      details: "We have been leaders of teams that delivered more than $83 billion in accretive value, and advised hundreds of clients on delivering success. We know that it all starts with the people, not PowerPoint. While strategy is challenging, execution is the key to high performance -- and we can help you achieve it.",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
       link: "/advisory"
     },
