@@ -3587,7 +3587,7 @@ const NewWhatWeDoSection = () => {
       title: "Leadership Programs",
       description: "We also offer special leadership and career development programs. \"Next Generation GC\" is seen as the gold standard program developing high-potential legal talent into General Counsel readiness.",
       details: "The \"New Leaders Program\" applies the same intimate, peer-to-peer formats of our senior executive networks to accelerate the capabilities of early career leaders.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs-v2"
     },
     {
