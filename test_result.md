@@ -894,7 +894,8 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus: []
+  current_focus:
+    - "Update homepage service blocks - Custom Member Services to Customized Leadership Exchanges"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
