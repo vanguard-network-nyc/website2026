@@ -3624,13 +3624,48 @@ const NewWhatWeDoSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.slice(0, 3).map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
+            >
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
+                <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-700 mb-4 leading-relaxed">
+                  {service.description}
+                </p>
+                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                  {service.details}
+                </p>
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                >
+                  Learn more
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Second row for remaining services */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          {services.slice(3).map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: (index + 3) * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
             >
