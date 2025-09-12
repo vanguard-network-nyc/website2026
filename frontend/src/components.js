@@ -3479,9 +3479,11 @@ const NewHero = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mb-8"
           >
-            <span className="text-lg text-blue-600 font-semibold tracking-wider uppercase">
-              The Human Factor
-            </span>
+            <div className="bg-blue-600 text-white px-6 py-3 rounded-full inline-block shadow-lg">
+              <span className="text-xl font-bold tracking-wider uppercase">
+                The Human Factor
+              </span>
+            </div>
           </motion.div>
           
           <motion.h1
@@ -3490,7 +3492,7 @@ const NewHero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900"
           >
-            We champion the extraordinary in leadership.
+            Unlocking the Power of Leadership
           </motion.h1>
           
           <motion.p
