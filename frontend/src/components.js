@@ -3610,10 +3610,10 @@ const NewWhatWeDoSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            What We Do
+            What Makes Us Different
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            We unlock high-performance leadership through advisory services, networking opportunities, custom programs, and curated content that fosters organizational transformation.
+            Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our networks or your business.
           </p>
         </motion.div>
 
