@@ -916,7 +916,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Update homepage service blocks - Custom Member Services to Customized Leadership Exchanges"
+    - "Senior In-House Counsel Exchange Detail Page and Programs Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
@@ -928,6 +928,8 @@ agent_communication:
     message: "COMPREHENSIVE BACKEND TESTING COMPLETED: Performed thorough backend testing for production deployment readiness. All critical backend systems are operational and production-ready. FastAPI service running stable on supervisor (pid 962, uptime 0:00:45), MongoDB connectivity confirmed with full CRUD operations, all API endpoints functional with proper validation and error handling. Backend test results: 8/9 tests passed (88.9% success rate) - only minor CORS test expectation issue which doesn't affect functionality. Additional edge case testing confirms robust error handling (404 for invalid endpoints, 422 for validation errors). Backend logs show healthy operation with no errors. Backend is fully ready for production deployment."
   - agent: "testing"
     message: "HOMEPAGE SERVICE BLOCKS UPDATE TESTING COMPLETED: Successfully verified the update from 'Custom Member Services' to 'Customized Leadership Exchanges' on the live website. All requirements from the review request have been met: ✅ 'What Makes Us Different' section accessible, ✅ 'Customized Leadership Exchanges' service block present with correct title, ✅ Description starts with 'We apply our signature approaches to leadership interactions to build and deepen external relationships', ✅ Detailed text includes 'Leadership Exchanges curated by Vanguard' and 'supplier or vendor relationships into a role as peer and trusted advisor', ✅ All other service blocks (Peer-to-Peer Networks, Organizational Transformation, Leadership Advisory, Leadership Programs) working correctly, ✅ Mobile responsiveness confirmed, ✅ Screenshots captured showing updated content. The homepage service blocks section is fully functional and matches the requested changes perfectly."
+  - agent: "testing"
+    message: "SENIOR IN-HOUSE COUNSEL EXCHANGE TESTING COMPLETED: Comprehensive testing of the newly created Senior In-House Counsel Exchange detail page and its integration with the Programs page has been successfully completed. All 10 specific testing requirements from the review request have been verified and are working perfectly: ✅ Programs page (/programs-v2) navigation, ✅ Senior In-House Counsel Exchange program card display with all details, ✅ Learn More button functionality, ✅ Detail page navigation (/senior-counsel-exchange), ✅ All page sections (Hero, Context, The Program, Heather French testimonial, How It Works with feature cards, Investment & Benefits with $10,000 pricing, Membership Criteria, Registration CTAs, Contact information), ✅ Back to Programs link functionality, ✅ External links with target='_blank' attributes, ✅ Responsive design on mobile/tablet/desktop, ✅ Comprehensive screenshots captured. No issues found - implementation is complete and ready for deployment."
   - agent: "main"
     message: "TASK COMPLETED: ProgramsPageV2 implementation successfully completed. Page is working correctly with modern interactive design, all features functional, and backend testing shows 88.9% success rate. User confirmed they will test frontend manually. Application is ready for use with /programs-v2 route fully functional."
   - agent: "testing"
