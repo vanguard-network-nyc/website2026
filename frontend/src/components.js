@@ -3501,7 +3501,7 @@ const NewHero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed max-w-4xl mx-auto"
           >
-            The Vanguard Network is a by-invitation professional community designed for senior and C-suite leaders aiming to elevate their leadership impact through transformation, advisory, and peer networks.
+            We unlock high-performance leadership through advisory services, membership networks, custom programs, and curated content.
           </motion.p>
           
           <motion.div
