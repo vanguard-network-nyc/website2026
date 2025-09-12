@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Complete the finalization of ProgramsPageV2.js by removing the tabbed layout and ensuring Customized Solutions content is positioned directly below Current Programs section without any tab system."
+user_problem_statement: "Test the homepage service blocks section to verify that the 'Custom Member Services' has been updated to 'Customized Leadership Exchanges' with the new description text."
 
 backend:
   - task: "FastAPI backend service health"
