@@ -3534,14 +3534,15 @@ const NewHero = () => {
 const NewStatsSection = () => {
   const stats = [
     { number: "26+", label: "Countries Represented" },
-    { number: "C-Suite", label: "Executive Focus" },
+    { number: "268", label: "Participating Companies" },
+    { number: "374", label: "Top Leaders Engaged" },
     { number: "25 Years", label: "Leadership Expertise" }
   ];
 
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
