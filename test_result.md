@@ -940,7 +940,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Senior In-House Counsel Exchange Detail Page and Programs Integration"
+    - "Next Generation GC Detail Page and Programs Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
