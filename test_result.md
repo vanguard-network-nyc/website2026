@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the homepage service blocks section to verify that the 'Custom Member Services' has been updated to 'Customized Leadership Exchanges' with the new description text."
+user_problem_statement: "Test the updated image for the 'Peer-to-Peer Networks' service card to verify the new diverse image is displaying correctly."
 
 backend:
   - task: "FastAPI backend service health"
