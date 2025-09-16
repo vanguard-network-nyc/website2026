@@ -1041,10 +1041,10 @@ const AdvisoryPage = () => (
               Real-World Leadership Development
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              From our close work with Vanguard's C-suite and Board members, we bring deep, real-world insights to support individual leaders and executive teams through multiple models:
+              Through our close collaboration with Vanguard's C-suite and Board members, we bring deep, practical insights that help individual leaders and executive teams succeed across a range of models.
             </p>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              This work is based on decades of project experience working with top leadership on advisory and development assignments in large multinationals and global service firms and dozens of individual advisory engagements.
+              Our approach is grounded in decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
             </p>
             <p className="text-slate-600 leading-relaxed text-lg font-medium">
               TVN has a robust network of current and former CEOs and C-suite leaders who interface regularly with TVN CEO Ken Banta and his senior colleagues via face-to-face forums, virtual meetings, and webinars. This group of more than 200 CEOs and C-suite executives participates throughout the year in a robust series of catalyzing conversations.
