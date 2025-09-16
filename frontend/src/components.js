@@ -3494,19 +3494,6 @@ const NewHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-8"
-          >
-            <div className="bg-blue-600 text-white px-6 py-3 rounded-full inline-block shadow-lg">
-              <span className="text-xl font-bold tracking-wider uppercase">
-                The Human Factor
-              </span>
-            </div>
-          </motion.div>
-          
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
