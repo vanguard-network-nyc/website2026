@@ -3642,12 +3642,7 @@ const NewWhatWeDoSection = () => {
               viewport={{ once: true }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
             >
-              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${service.image}')` }}>
-                {service.title === "Peer-to-Peer Networks" && (
-                  <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 text-sm font-bold uppercase tracking-wider transform rotate-12 origin-top-right shadow-lg">
-                    Networking
-                  </div>
-                )}
+              <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
                 <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
                   <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                 </div>
