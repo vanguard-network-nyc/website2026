@@ -1041,6 +1041,9 @@ const AdvisoryPage = () => (
               Real-World Leadership Development
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
+              From our close work with Vanguard's C-suite and Board members, we bring deep, real-world insights to support individual leaders and executive teams through multiple models:
+            </p>
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
               This work is based on decades of project experience working with top leadership on advisory and development assignments in large multinationals and global service firms and dozens of individual advisory engagements.
             </p>
             <p className="text-slate-600 leading-relaxed text-lg font-medium">
