@@ -4,12 +4,25 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Search, Filter, FileText, User, Tag, Calendar, ChevronDown } from 'lucide-react';
 
 const ArticlesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('All');
+
+  // Initialize filter from URL parameters
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      if (categoryParam === 'organizational-transformation') {
+        setSelectedType('Organizational Transformation');
+      } else {
+        setSelectedType(categoryParam);
+      }
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     fetchArticles();
