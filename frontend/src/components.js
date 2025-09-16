@@ -987,24 +987,21 @@ const AdvisoryPage = () => (
         <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
           LEADERSHIP ADVISORY & DEVELOPMENT
         </h1>
-        <div className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium space-y-6">
-          <p>
-            <span className="font-bold text-blue-600">We know that leadership is the catalyst for change and transformation.</span>
+        <div className="max-w-5xl mx-auto">
+          <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-8">
+            <span className="font-bold text-blue-600">We know that leadership is the catalyst for change and transformation.</span> We help senior executives build high-performance organizations.
           </p>
           
-          <p>
-            We help senior executives build high-performance organizations.
-          </p>
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-8">
+            <p className="text-xl text-slate-700 leading-relaxed mb-4">
+              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders—shared through powerful peer-to-peer exchanges.
+            </p>
+            <p className="text-xl text-slate-700 leading-relaxed">
+              These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
+            </p>
+          </div>
           
-          <p>
-            Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders—shared through powerful peer-to-peer exchanges.
-          </p>
-          
-          <p>
-            These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
-          </p>
-          
-          <p>
+          <p className="text-xl text-slate-600 leading-relaxed font-medium text-center italic">
             We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
           </p>
         </div>
