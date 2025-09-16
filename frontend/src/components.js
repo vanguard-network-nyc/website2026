@@ -1119,7 +1119,7 @@ const AdvisoryPage = () => (
             {
               title: 'Targeted Engagements',
               description: 'To build new capabilities, close skills gaps, bring about organizational transformation or resolve crisis situations.',
-              icon: <Network size={48} />,
+              icon: <TrendingUp size={48} />,
               gradient: 'from-[#10b981] to-[#059669]',
               bgGradient: 'from-[#10b981]/5 to-[#059669]/5'
             }
