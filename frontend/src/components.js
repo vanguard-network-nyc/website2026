@@ -1041,7 +1041,6 @@ const AdvisoryPage = () => (
               gradient: 'from-[#10b981] to-[#059669]',
               bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
               backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
-              landingPageLink: true,
               details: 'We\'re not a conventional large strategic consultancy. Instead, we\'re a lean and focused team with deep, real-world experience in catalyzing organizational change.'
             },
             {
