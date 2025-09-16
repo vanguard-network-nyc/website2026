@@ -145,7 +145,14 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'ADVISORY', path: '/advisory' },
+    { 
+      name: 'ADVISORY', 
+      path: '/advisory',
+      dropdown: [
+        { name: 'Advisory Services', path: '/advisory' },
+        { name: 'Case Studies', path: '/case-studies' }
+      ]
+    },
     { name: 'NETWORKING', path: '/networking' },
     { name: 'PROGRAMS', path: '/programs-v2' },
     { name: 'EVENTS', path: '/upcoming-events' },
