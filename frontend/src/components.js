@@ -1169,11 +1169,13 @@ const AdvisoryPage = () => (
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
-                  className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${approach.gradient} flex items-center justify-center mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                  className="w-20 h-20 rounded-2xl mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
-                  <div className="text-white group-hover:scale-110 transition-transform duration-300">
-                    {approach.icon}
-                  </div>
+                  <img 
+                    src={approach.image} 
+                    alt={approach.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
                 </motion.div>
                 
                 <h3 className="text-2xl font-bold text-slate-900 mb-6 group-hover:text-[#045184] transition-colors duration-300">
