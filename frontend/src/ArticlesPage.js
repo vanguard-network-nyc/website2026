@@ -66,9 +66,21 @@ const ArticlesPage = () => {
     }
 
     if (selectedType !== 'All') {
-      filtered = filtered.filter(article => 
-        article.type_content === selectedType
-      );
+      if (selectedType === 'Organizational Transformation') {
+        // Filter for organizational transformation related articles
+        filtered = filtered.filter(article => 
+          article.type_content?.toLowerCase().includes('transformation') ||
+          article.type_content?.toLowerCase().includes('organizational') ||
+          article.blog_title?.toLowerCase().includes('transformation') ||
+          article.blog_title?.toLowerCase().includes('organizational') ||
+          article.description_teaser?.toLowerCase().includes('transformation') ||
+          article.description_teaser?.toLowerCase().includes('organizational')
+        );
+      } else {
+        filtered = filtered.filter(article => 
+          article.type_content === selectedType
+        );
+      }
     }
 
     setFilteredArticles(filtered);
