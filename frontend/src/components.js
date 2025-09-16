@@ -994,7 +994,10 @@ const AdvisoryPage = () => (
           
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-8">
             <p className="text-xl text-slate-700 leading-relaxed mb-4">
-              We help senior executives build high-performance organizations. Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders—shared through powerful peer-to-peer exchanges.
+              We help senior executives build high-performance organizations.
+            </p>
+            <p className="text-xl text-slate-700 leading-relaxed mb-4">
+              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders—shared through powerful peer-to-peer exchanges.
             </p>
             <p className="text-xl text-slate-700 leading-relaxed">
               These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
