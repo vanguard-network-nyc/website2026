@@ -1145,12 +1145,22 @@ const AdvisoryPage = () => (
               <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${approach.bgGradient} rounded-full transform translate-x-16 -translate-y-16`}></div>
               
               <div className="relative z-10">
-                {/* Banner for Organizational Transformation connection */}
+                {/* Banner for Landing Page connection */}
                 {approach.showBanner && (
                   <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg mb-6 text-sm font-semibold shadow-md">
                     <span className="flex items-center gap-2">
                       <Target size={16} />
-                      Related to Organizational Transformation
+                      Featured on Landing Page
+                    </span>
+                  </div>
+                )}
+                
+                {/* Landing Page Link indicator */}
+                {approach.landingPageLink && !approach.showBanner && (
+                  <div className="bg-gradient-to-r from-slate-100 to-gray-100 text-slate-700 px-4 py-2 rounded-lg mb-6 text-sm font-medium border border-slate-200">
+                    <span className="flex items-center gap-2">
+                      <ArrowRight size={16} />
+                      See details on Landing Page
                     </span>
                   </div>
                 )}
