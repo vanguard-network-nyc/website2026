@@ -1204,6 +1204,7 @@ const AdvisoryPage = () => (
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          style={{ scrollMarginTop: '120px' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
