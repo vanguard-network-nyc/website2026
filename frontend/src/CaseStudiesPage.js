@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, TrendingUp, Target, Users, CheckCircle, Building2, Globe, Award } from 'lucide-react';
 
 const CaseStudiesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Initialize category from URL parameters
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam && ['all', 'leadership-advisory', 'organizational-transformation', 'client-stakeholder-engagement'].includes(categoryParam)) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
+
+  // Update URL when category changes
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    if (category === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category });
+    }
+  };
 
   const caseStudies = [
     {
