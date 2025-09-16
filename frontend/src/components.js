@@ -1491,7 +1491,7 @@ const AdvisoryPage = () => (
               to="/case-studies?category=organizational-transformation"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
-              View Organizational Transformation Case Studies
+              View Organizational Transformation Client Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
