@@ -1163,10 +1163,13 @@ const AdvisoryPage = () => (
               Real-World Leadership Development
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              Through our close collaboration with Vanguard's C-suite and Board members, we bring deep, real-world insights that help individual leaders and executive teams succeed across a range of models.
+              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders - shared through powerful peer-to-peer exchanges.
+            </p>
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
+              These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
             </p>
             <p className="text-slate-600 leading-relaxed text-lg font-medium">
-              Our approach is grounded in decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
+              We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
             </p>
           </div>
           <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-10 relative overflow-hidden">
