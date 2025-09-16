@@ -1250,6 +1250,31 @@ const AdvisoryPage = () => (
               </ul>
             </motion.div>
           </div>
+          
+          {/* Coaching Testimonial */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                  alt="Client testimonial"
+                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                  "The coaching approach helped me develop more effective decision-making skills and significantly improved how I develop my team. The insights were practical and immediately applicable."
+                </blockquote>
+                <div className="text-slate-900 font-bold">Michael Chen</div>
+                <div className="text-slate-600 text-sm">Chief Operating Officer, Global Manufacturing Corp</div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Selected Advisory Engagements Section */}
