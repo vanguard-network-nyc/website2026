@@ -1593,6 +1593,43 @@ const AdvisoryPage = () => (
           </motion.div>
         </motion.div>
 
+        {/* Selected Advisory Engagements Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+        >
+          <div className="text-center">
+            <motion.h2
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+              className="text-4xl font-bold text-slate-900 mb-8"
+            >
+              SELECTED ADVISORY ENGAGEMENTS
+            </motion.h2>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <img
+                src="/selected-advisory-engagements.jpg"
+                alt="Selected Advisory Engagements"
+                className="max-w-full h-auto rounded-lg"
+                style={{ 
+                  maxHeight: '600px',
+                  border: 'none',
+                  boxShadow: 'none',
+                  background: 'transparent'
+                }}
+              />
+            </motion.div>
+          </div>
+        </motion.div>
+
         {/* Next Generation Leader Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
