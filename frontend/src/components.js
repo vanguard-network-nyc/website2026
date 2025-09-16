@@ -4014,13 +4014,31 @@ const NewWhatWeDoSection = () => {
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
                   {service.details}
                 </p>
-                <Link
-                  to={service.link}
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
-                >
-                  Learn more
-                  <ArrowRight size={16} />
-                </Link>
+                {service.title === "Organizational Transformation" ? (
+                  <Link
+                    to="/advisory"
+                    onClick={() => {
+                      setTimeout(() => {
+                        const element = document.getElementById('organizational-transformation');
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 100);
+                    }}
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                  >
+                    Learn more
+                    <ArrowRight size={16} />
+                  </Link>
+                ) : (
+                  <Link
+                    to={service.link}
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                  >
+                    Learn more
+                    <ArrowRight size={16} />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
