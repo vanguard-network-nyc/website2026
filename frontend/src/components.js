@@ -150,7 +150,7 @@ const Header = () => {
       path: '/advisory',
       dropdown: [
         { name: 'Advisory Services', path: '/advisory' },
-        { name: 'Case Studies', path: '/case-studies' }
+        { name: 'Client Success Stories', path: '/case-studies' }
       ]
     },
     { name: 'NETWORKING', path: '/networking' },
