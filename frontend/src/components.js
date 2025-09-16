@@ -1420,6 +1420,22 @@ const AdvisoryPage = () => (
               </div>
             </div>
           </motion.div>
+          
+          {/* Sounding Board Case Study Link */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2.0, duration: 0.8 }}
+            className="mt-8 text-center"
+          >
+            <Link
+              to="/case-studies?category=leadership-advisory"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+            >
+              View Leadership Advisory Case Studies
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Organizational Transformation Section */}
