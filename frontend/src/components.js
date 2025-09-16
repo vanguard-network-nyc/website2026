@@ -1394,6 +1394,166 @@ const AdvisoryPage = () => (
           </motion.div>
         </motion.div>
 
+        {/* Organizational Transformation Section */}
+        <motion.div
+          id="organizational-transformation"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          style={{ scrollMarginTop: '120px' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">ORGANIZATIONAL TRANSFORMATION</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                We help transform what your people believe, the way they work, and how they behave. Our approach is grounded in decades of experience with major multinationals and global service firms.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                We're not a conventional large strategic consultancy. Instead, we're a lean and focused team with deep, real-world experience in catalyzing organizational change that sticks and delivers measurable results.
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="rounded-xl p-8" 
+              style={{ backgroundColor: '#045184' }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <ul className="space-y-3 text-white">
+                {[
+                  "Cultural transformation",
+                  "Change management", 
+                  "Process optimization",
+                  "Leadership alignment",
+                  "Performance enhancement"
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1.6 + index * 0.1, duration: 0.5 }}
+                    className="flex items-center"
+                  >
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          
+          {/* Organizational Transformation Testimonial */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHw0fHxjb3Jwb3JhdGUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTgwNTIzOTh8MA&ixlib=rb-4.1.0&q=85"
+                  alt="Client testimonial"
+                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                  "The Vanguard Network's transformation approach helped us shift our entire organizational culture. Their practical methodology and hands-on guidance enabled sustainable change that our employees embraced rather than resisted."
+                </blockquote>
+                <div className="text-slate-900 font-bold">Jennifer Thompson</div>
+                <div className="text-slate-600 text-sm">Chief Transformation Officer, GlobalTech Innovations</div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Client and Stakeholder Engagement Section */}
+        <motion.div
+          id="client-and-stakeholder-engagement"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          style={{ scrollMarginTop: '120px' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">CLIENT AND STAKEHOLDER ENGAGEMENT</h2>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and strategic dinner discussions that deliver measurable business impact.
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="rounded-xl p-8" 
+              style={{ backgroundColor: '#045184' }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <ul className="space-y-3 text-white">
+                {[
+                  "Strategic relationship building",
+                  "Stakeholder alignment", 
+                  "Client partnership development",
+                  "Executive engagement programs",
+                  "Trusted advisor positioning"
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1.6 + index * 0.1, duration: 0.5 }}
+                    className="flex items-center"
+                  >
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          
+          {/* Client and Stakeholder Engagement Testimonial */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1642257859842-c95f9fa8121d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwzfHxjb3Jwb3JhdGUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTgwNTIzOTh8MA&ixlib=rb-4.1.0&q=85"
+                  alt="Client testimonial"
+                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                  "The client engagement programs transformed how we interact with our key stakeholders. We moved from being seen as vendors to becoming trusted strategic partners. The ROI has been exceptional and lasting."
+                </blockquote>
+                <div className="text-slate-900 font-bold">Marcus Williams</div>
+                <div className="text-slate-600 text-sm">Chief Client Officer, Pinnacle Advisory Group</div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
         {/* Next Generation Leader Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
