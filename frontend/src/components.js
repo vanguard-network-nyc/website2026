@@ -4022,6 +4022,10 @@ const NewWhatWeDoSection = () => {
                         const element = document.getElementById('organizational-transformation');
                         if (element) {
                           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          // Add additional offset to account for fixed header and banner
+                          setTimeout(() => {
+                            window.scrollBy(0, -40);
+                          }, 500);
                         }
                       }, 100);
                     }}
