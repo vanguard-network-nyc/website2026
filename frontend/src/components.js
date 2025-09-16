@@ -1395,7 +1395,7 @@ const AdvisoryPage = () => (
               to="/case-studies?category=leadership-advisory"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
-              View Leadership Advisory Case Studies
+              View Leadership Advisory Client Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
