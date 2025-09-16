@@ -4021,11 +4021,12 @@ const NewWhatWeDoSection = () => {
                       setTimeout(() => {
                         const element = document.getElementById('organizational-transformation');
                         if (element) {
-                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          // Add additional offset to account for fixed header and banner
-                          setTimeout(() => {
-                            window.scrollBy(0, -40);
-                          }, 500);
+                          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                          const offsetPosition = elementPosition - 140; // Account for fixed header + banner + extra space
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                          });
                         }
                       }, 100);
                     }}
