@@ -1041,7 +1041,7 @@ const AdvisoryPage = () => (
               Real-World Leadership Development
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              Through our close collaboration with Vanguard's C-suite and Board members, we bring deep, practical insights that help individual leaders and executive teams succeed across a range of models.
+              Through our close collaboration with Vanguard's C-suite and Board members, we bring deep, real-world insights that help individual leaders and executive teams succeed across a range of models.
             </p>
             <p className="text-slate-600 leading-relaxed text-lg font-medium">
               Our approach is grounded in decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
