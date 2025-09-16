@@ -80,7 +80,7 @@ const ArticlesPage = () => {
   };
 
   if (loading) return (
-    <div className="pt-32 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+    <div className="pt-40 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
       <div className="text-center">
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
         <p className="text-xl text-slate-600">Loading articles...</p>
@@ -89,7 +89,7 @@ const ArticlesPage = () => {
   );
 
   if (error) return (
-    <div className="pt-32 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+    <div className="pt-40 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
       <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-900 mb-4">Unable to Load Articles</h2>
         <p className="text-slate-600 mb-6">{error}</p>
@@ -108,7 +108,7 @@ const ArticlesPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-32 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+      className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
