@@ -1098,7 +1098,7 @@ const AdvisoryPage = () => (
             {
               title: 'Leadership Advisory',
               description: 'Direct one-on-one coaching and strategic sounding board support for senior executives. Includes both coaching relationships and confidential strategic guidance.',
-              icon: <Target size={48} />,
+              image: 'https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg',
               gradient: 'from-[#045184] to-[#0369a1]',
               bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
               landingPageLink: true,
@@ -1107,7 +1107,7 @@ const AdvisoryPage = () => (
             {
               title: 'Organizational Transformation',
               description: 'We help transform what your people believe, the way they work, and how they behave. Grounded in decades of experience with major multinationals and global service firms.',
-              icon: <TrendingUp size={48} />,
+              image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
               gradient: 'from-[#10b981] to-[#059669]',
               bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
               backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
@@ -1118,7 +1118,7 @@ const AdvisoryPage = () => (
             {
               title: 'Client and Stakeholder Engagement',
               description: 'Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.',
-              icon: <Users size={48} />,
+              image: 'https://images.unsplash.com/photo-1564368587612-f303d38c9063',
               gradient: 'from-[#00A8E1] to-[#0284c7]',
               bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
               landingPageLink: true,
