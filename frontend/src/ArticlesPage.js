@@ -181,7 +181,18 @@ const ArticlesPage = () => {
           <div className="relative">
             <select
               value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
+              onChange={(e) => {
+                const newType = e.target.value;
+                setSelectedType(newType);
+                // Update URL parameters
+                if (newType === 'All') {
+                  setSearchParams({});
+                } else if (newType === 'Organizational Transformation') {
+                  setSearchParams({ category: 'organizational-transformation' });
+                } else {
+                  setSearchParams({ category: newType });
+                }
+              }}
               className="appearance-none bg-white border border-slate-200 rounded-lg px-4 py-3 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               {getUniqueTypes().map((type) => (
