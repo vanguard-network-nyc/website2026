@@ -39,7 +39,7 @@ const GCLBanner = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="bg-gray-200 text-slate-800 py-3 px-4 border-b border-gray-300"
+      className="fixed top-0 left-0 w-full bg-gray-200 text-slate-800 py-3 px-4 border-b border-gray-300 z-50"
     >
       <div className="max-w-7xl mx-auto">
         <Link 
