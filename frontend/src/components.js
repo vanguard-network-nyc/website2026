@@ -885,12 +885,23 @@ const Footer = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Link
-                to={link.path}
-                className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
-              >
-                {link.name}
-              </Link>
+              {link.path.startsWith('http') ? (
+                <a
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={link.path}
+                  className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
+                >
+                  {link.name}
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
