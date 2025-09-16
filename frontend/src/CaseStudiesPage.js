@@ -19,7 +19,7 @@ const CaseStudiesPage = () => {
         "High-performance behaviors from CEO to frontline"
       ],
       outcome: "In three years, the company rose from worst to best performer in its peer group.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12",
       icon: <TrendingUp size={24} />,
       color: "from-green-500 to-emerald-600"
     },
@@ -36,7 +36,7 @@ const CaseStudiesPage = () => {
         "Clarifying priorities and aligning the right team members to execute"
       ],
       outcome: "After several years, success far exceeded expectations.",
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      image: "https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg",
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     },
@@ -54,7 +54,7 @@ const CaseStudiesPage = () => {
         "Internal and external leadership communications to drive engagement"
       ],
       outcome: "The company shifted from a downward spiral to sustained growth, ultimately being acquired at a significant premium.",
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg", 
+      image: "https://images.pexels.com/photos/4342498/pexels-photo-4342498.jpeg", 
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     },
@@ -71,7 +71,7 @@ const CaseStudiesPage = () => {
         "Recommended a change in the Board chair to support the growth of the organization, with experience to manage a challenging board"
       ],
       outcome: "With our counsel a new Board Chair was recruited with the requisite capabilities. This drove significant board alignment. The new Chair also played a valuable internal and external role with the company assisting in strategic priority setting and business development.",
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      image: "https://images.unsplash.com/photo-1589639293663-f9399bb41721",
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     }
