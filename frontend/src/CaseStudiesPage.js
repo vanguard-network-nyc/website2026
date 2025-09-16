@@ -93,6 +93,42 @@ const CaseStudiesPage = () => {
       image: "https://images.unsplash.com/photo-1589639293663-f9399bb41721",
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
+    },
+    {
+      id: 5,
+      title: "Strategic Client Partnership Program",
+      category: "Client and Stakeholder Engagement",
+      categorySlug: "client-stakeholder-engagement",
+      summary: "Designed and implemented a comprehensive client engagement program that transformed vendor relationships into strategic partnerships.",
+      challenge: "A professional services firm was struggling to move beyond transactional relationships with key clients, limiting growth opportunities and competitive differentiation.",
+      approach: [
+        "Executive Leadership Exchanges bringing together C-suite leaders from both organizations",
+        "Curated dinner discussions focusing on industry challenges and strategic opportunities",
+        "Joint strategic planning sessions to align long-term objectives",
+        "Structured stakeholder mapping and engagement protocols"
+      ],
+      outcome: "Client retention increased by 85%, average engagement value grew by 120%, and the firm successfully positioned itself as a trusted strategic advisor rather than a service provider.",
+      image: "https://images.unsplash.com/photo-1521737711867-e3b94467d2eb",
+      icon: <Users size={24} />,
+      color: "from-cyan-500 to-blue-600"
+    },
+    {
+      id: 6,
+      title: "Stakeholder Alignment Initiative",
+      category: "Client and Stakeholder Engagement",
+      categorySlug: "client-stakeholder-engagement",
+      summary: "Led a comprehensive stakeholder engagement strategy for a global technology company during a major organizational transformation.",
+      challenge: "Multiple stakeholder groups (investors, customers, partners, employees) had conflicting expectations during a major strategic pivot, creating communication challenges and resistance to change.",
+      approach: [
+        "Stakeholder mapping and influence analysis",
+        "Tailored communication strategies for each stakeholder group",
+        "Regular Leadership Exchanges to maintain transparency and gather feedback",
+        "Cross-functional alignment workshops with key stakeholders"
+      ],
+      outcome: "Successfully aligned all major stakeholder groups around the new strategic direction, resulting in smooth transformation execution and maintained stakeholder confidence throughout the change process.",
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+      icon: <Users size={24} />,
+      color: "from-cyan-500 to-blue-600"
     }
   ];
 
