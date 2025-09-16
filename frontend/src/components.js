@@ -4035,6 +4035,48 @@ const NewWhatWeDoSection = () => {
                     Learn more
                     <ArrowRight size={16} />
                   </Link>
+                ) : service.title === "Leadership Advisory" ? (
+                  <Link
+                    to="/advisory"
+                    onClick={() => {
+                      setTimeout(() => {
+                        const element = document.getElementById('coaching');
+                        if (element) {
+                          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                          const offsetPosition = elementPosition - 165; // Account for fixed header + banner + optimal spacing
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }, 100);
+                    }}
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                  >
+                    Learn more
+                    <ArrowRight size={16} />
+                  </Link>
+                ) : service.title === "Client and Stakeholder Engagement" ? (
+                  <Link
+                    to="/advisory"
+                    onClick={() => {
+                      setTimeout(() => {
+                        const element = document.getElementById('client-and-stakeholder-engagement');
+                        if (element) {
+                          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                          const offsetPosition = elementPosition - 165; // Account for fixed header + banner + optimal spacing
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }, 100);
+                    }}
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                  >
+                    Learn more
+                    <ArrowRight size={16} />
+                  </Link>
                 ) : (
                   <Link
                     to={service.link}
