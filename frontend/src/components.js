@@ -1071,7 +1071,13 @@ const AdvisoryPage = () => (
               image: 'https://images.unsplash.com/photo-1564368587612-f303d38c9063',
               gradient: 'from-[#00A8E1] to-[#0284c7]',
               bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-              details: 'We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and dinner discussions.'
+              details: (
+                <div className="flex gap-6">
+                  <a href="#client-and-stakeholder-engagement" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
+                    Learn More
+                  </a>
+                </div>
+              )
             }
           ].map((approach, index) => (
             <motion.div
