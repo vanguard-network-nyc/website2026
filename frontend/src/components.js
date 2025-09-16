@@ -1115,6 +1115,13 @@ const AdvisoryPage = () => (
               icon: <Network size={48} />,
               gradient: 'from-[#6366f1] to-[#8b5cf6]',
               bgGradient: 'from-[#6366f1]/5 to-[#8b5cf6]/5'
+            },
+            {
+              title: 'Peer Learning',
+              description: 'Collaborative learning experiences with other executives facing similar challenges.',
+              icon: <Network size={48} />,
+              gradient: 'from-[#10b981] to-[#059669]',
+              bgGradient: 'from-[#10b981]/5 to-[#059669]/5'
             }
           ].map((approach, index) => (
             <motion.div
