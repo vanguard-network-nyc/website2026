@@ -1146,6 +1146,16 @@ const AdvisoryPage = () => (
               <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${approach.bgGradient} rounded-full transform translate-x-16 -translate-y-16`}></div>
               
               <div className="relative z-10">
+                {/* Banner for Organizational Transformation connection */}
+                {approach.showBanner && (
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg mb-6 text-sm font-semibold shadow-md">
+                    <span className="flex items-center gap-2">
+                      <Target size={16} />
+                      Related to Organizational Transformation
+                    </span>
+                  </div>
+                )}
+                
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
