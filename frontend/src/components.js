@@ -1032,7 +1032,6 @@ const AdvisoryPage = () => (
               image: 'https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg',
               gradient: 'from-[#045184] to-[#0369a1]',
               bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
-              landingPageLink: true,
               details: 'Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.'
             },
             {
