@@ -955,7 +955,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Next Generation GC Detail Page and Programs Integration"
+    - "Peer-to-Peer Networks Service Card Image Update"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
