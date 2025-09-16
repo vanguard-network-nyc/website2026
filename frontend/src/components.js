@@ -3513,7 +3513,7 @@ const NewHero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900"
           >
-            Unlocking the Power of Leadership
+            The Human Factor: Unlocking the Power of Leadership
           </motion.h1>
           
           <motion.p
