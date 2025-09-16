@@ -164,7 +164,7 @@ const CaseStudiesPage = () => {
             {categories.map((category) => (
               <button
                 key={category.slug}
-                onClick={() => setSelectedCategory(category.slug)}
+                onClick={() => handleCategoryChange(category.slug)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                   selectedCategory === category.slug
                     ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
