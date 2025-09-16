@@ -1134,6 +1134,14 @@ const AdvisoryPage = () => (
               className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 relative overflow-hidden"
               whileHover={{ y: -8 }}
             >
+              {/* Background Image for Organizational Transformation connection */}
+              {approach.showBanner && (
+                <div 
+                  className="absolute inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url('${approach.backgroundImage}')` }}
+                ></div>
+              )}
+              
               {/* Background Pattern */}
               <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${approach.bgGradient} rounded-full transform translate-x-16 -translate-y-16`}></div>
               
