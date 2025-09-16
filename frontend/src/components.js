@@ -1299,38 +1299,48 @@ const AdvisoryPage = () => (
           style={{ scrollMarginTop: '120px' }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-xl p-8" style={{ backgroundColor: '#00A8E1' }}>
-              <h3 className="text-2xl font-bold text-white mb-4">Perfect For</h3>
-              <ul className="space-y-3 text-white">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
-                  Senior leaders in organizations
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
-                  Team leaders and their direct reports
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 rounded-full bg-white mr-3"></div>
-                  CEOs and C-suite executives
-                </li>
-              </ul>
-            </div>
-            <div>
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+            >
               <h2 className="text-4xl font-bold text-slate-900 mb-6">SOUNDING BOARD</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 This approach is typically most appropriate for the senior leader in the organization or team and their direct reports.
               </p>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <p className="text-slate-600 leading-relaxed">
                 TVN's Ken Banta and Richard Hulme have decades of experience supporting CEOs and C-suite executives and their reports as they work through specific challenges and develop strategy and execution plans for themselves and their teams.
               </p>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Example Topics:</h3>
-              <ul className="space-y-2 text-slate-600">
-                <li>• Reinventing the leadership team and roles of direct reports</li>
-                <li>• Self-assessment and reflection on leadership strengths</li>
-                <li>• Developing insights around Board relations and stakeholder management</li>
+            </motion.div>
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.6, duration: 0.8 }}
+              className="rounded-xl p-8" 
+              style={{ backgroundColor: '#045184' }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <ul className="space-y-3 text-white">
+                {[
+                  "CEO and C-suite support",
+                  "Leadership team dynamics",
+                  "Strategic decision-making",
+                  "Board relations",
+                  "Stakeholder management"
+                ].map((item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1.8 + index * 0.1, duration: 0.5 }}
+                    className="flex items-center"
+                  >
+                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                    {item}
+                  </motion.li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
