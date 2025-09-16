@@ -1016,7 +1016,7 @@ const AdvisoryPage = () => (
               <Users size={32} className="text-white" />
             </motion.div>
             <h2 className="text-5xl font-bold text-slate-900 mb-6">
-              Three Ways We Work With Executives To Build High-Performance Organizations
+              Three Ways We Work With Executives<br />To Build High-Performance Organizations
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
               Our comprehensive approach delivers three distinct types of advisory services to accelerate your leadership impact and organizational success.
