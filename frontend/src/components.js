@@ -1088,42 +1088,41 @@ const AdvisoryPage = () => (
               Three Ways We Work With Executives
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-              Our comprehensive approach combines coaching, strategic guidance, and peer learning to accelerate leadership development.
+              Our comprehensive approach delivers three distinct types of advisory services to accelerate your leadership impact and organizational success.
             </p>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
-              title: 'Coaching Relationship',
-              description: 'Direct one-on-one coaching to develop leadership capabilities and effectiveness.',
+              title: 'Leadership Advisory',
+              description: 'Direct one-on-one coaching and strategic sounding board support for senior executives. Includes both coaching relationships and confidential strategic guidance.',
               icon: <Target size={48} />,
               gradient: 'from-[#045184] to-[#0369a1]',
-              bgGradient: 'from-[#045184]/5 to-[#0369a1]/5'
+              bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
+              landingPageLink: true,
+              details: 'Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.'
             },
             {
-              title: 'Sounding Board',
-              description: 'Strategic guidance and decision-making support for leadership challenges.',
-              icon: <Users size={48} />,
-              gradient: 'from-[#00A8E1] to-[#0284c7]',
-              bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5'
-            },
-            {
-              title: 'Peer Learning',
-              description: 'Collaborative learning experiences with other executives facing similar challenges.',
-              icon: <Network size={48} />,
-              gradient: 'from-[#6366f1] to-[#8b5cf6]',
-              bgGradient: 'from-[#6366f1]/5 to-[#8b5cf6]/5'
-            },
-            {
-              title: 'Targeted Engagements',
-              description: 'To build new capabilities, close skills gaps, bring about organizational transformation or resolve crisis situations.',
+              title: 'Organizational Transformation',
+              description: 'We help transform what your people believe, the way they work, and how they behave. Grounded in decades of experience with major multinationals and global service firms.',
               icon: <TrendingUp size={48} />,
               gradient: 'from-[#10b981] to-[#059669]',
               bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
               backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
-              showBanner: true
+              showBanner: true,
+              landingPageLink: true,
+              details: 'We\'re not a conventional large strategic consultancy. Instead, we\'re a lean and focused team with deep, real-world experience in catalyzing organizational change.'
+            },
+            {
+              title: 'Client and Stakeholder Engagement',
+              description: 'Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.',
+              icon: <Users size={48} />,
+              gradient: 'from-[#00A8E1] to-[#0284c7]',
+              bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
+              landingPageLink: true,
+              details: 'We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and dinner discussions.'
             }
           ].map((approach, index) => (
             <motion.div
