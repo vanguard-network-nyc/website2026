@@ -88,7 +88,8 @@ const ArticlesPage = () => {
 
   const getUniqueTypes = () => {
     const types = articles.map(article => article.type_content).filter(Boolean);
-    return ['All', ...new Set(types)];
+    const uniqueTypes = ['All', 'Organizational Transformation', ...new Set(types)];
+    return uniqueTypes;
   };
 
   const formatDate = (dateString) => {
