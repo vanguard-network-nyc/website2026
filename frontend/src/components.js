@@ -988,10 +988,136 @@ const AdvisoryPage = () => (
           LEADERSHIP ADVISORY & DEVELOPMENT
         </h1>
         <div className="max-w-5xl mx-auto">
-          <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-8">
+          <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-16">
             <span className="font-bold text-blue-600">We know that leadership is the catalyst for change and transformation.</span>
           </p>
-          
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Three Approaches Section - Moved to top */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="mb-20"
+      >
+        {/* Section Header */}
+        <div className="text-center mb-16 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
+          <div className="relative py-12 px-8">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mx-auto mb-6"
+            >
+              <Users size={32} className="text-white" />
+            </motion.div>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">
+              Three Ways We Work With Executives
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
+              Our comprehensive approach delivers three distinct types of advisory services to accelerate your leadership impact and organizational success.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[
+            {
+              title: 'Leadership Advisory',
+              description: 'Direct one-on-one coaching and strategic sounding board support for senior executives. Includes both coaching relationships and confidential strategic guidance.',
+              image: 'https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg',
+              gradient: 'from-[#045184] to-[#0369a1]',
+              bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
+              landingPageLink: true,
+              details: 'Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.'
+            },
+            {
+              title: 'Organizational Transformation',
+              description: 'We help transform what your people believe, the way they work, and how they behave. Grounded in decades of experience with major multinationals and global service firms.',
+              image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
+              gradient: 'from-[#10b981] to-[#059669]',
+              bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
+              backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
+              showBanner: true,
+              landingPageLink: true,
+              details: 'We\'re not a conventional large strategic consultancy. Instead, we\'re a lean and focused team with deep, real-world experience in catalyzing organizational change.'
+            },
+            {
+              title: 'Client and Stakeholder Engagement',
+              description: 'Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.',
+              image: 'https://images.unsplash.com/photo-1564368587612-f303d38c9063',
+              gradient: 'from-[#00A8E1] to-[#0284c7]',
+              bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
+              landingPageLink: true,
+              details: 'We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and dinner discussions.'
+            }
+          ].map((approach, index) => (
+            <motion.div
+              key={approach.title}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
+              className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden"
+              whileHover={{ y: -8 }}
+            >
+              {/* Image with overlaid title - matching landing page style */}
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${approach.image}')` }}>
+                {/* Banner for Landing Page connection */}
+                {approach.showBanner && (
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1 rounded-lg text-xs font-semibold shadow-md">
+                    <span className="flex items-center gap-1">
+                      <Target size={12} />
+                      Featured on Landing Page
+                    </span>
+                  </div>
+                )}
+                
+                {/* Landing Page Link indicator */}
+                {approach.landingPageLink && !approach.showBanner && (
+                  <div className="absolute top-4 left-4 bg-white/90 text-slate-700 px-3 py-1 rounded-lg text-xs font-medium border border-slate-200">
+                    <span className="flex items-center gap-1">
+                      <ArrowRight size={12} />
+                      See details on Landing Page
+                    </span>
+                  </div>
+                )}
+                
+                {/* Title overlay with gradient - matching landing page */}
+                <div className="h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
+                    {approach.title}
+                  </h3>
+                </div>
+              </div>
+              
+              {/* Content section */}
+              <div className="p-6">
+                <p className="text-slate-600 leading-relaxed font-medium text-lg mb-4">
+                  {approach.description}
+                </p>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  {approach.details}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Continuation Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <div className="max-w-5xl mx-auto">
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8 mb-8">
             <p className="text-xl text-slate-700 leading-relaxed mb-4">
               We help senior executives build high-performance organizations.
