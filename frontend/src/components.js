@@ -1130,26 +1130,16 @@ const AdvisoryPage = () => (
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
-              className="group bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 relative overflow-hidden"
+              className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden"
               whileHover={{ y: -8 }}
             >
-              {/* Background Image for Organizational Transformation connection */}
-              {approach.showBanner && (
-                <div 
-                  className="absolute inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${approach.backgroundImage}')` }}
-                ></div>
-              )}
-              
-              {/* Background Pattern */}
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${approach.bgGradient} rounded-full transform translate-x-16 -translate-y-16`}></div>
-              
-              <div className="relative z-10">
+              {/* Image with overlaid title - matching landing page style */}
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${approach.image}')` }}>
                 {/* Banner for Landing Page connection */}
                 {approach.showBanner && (
-                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg mb-6 text-sm font-semibold shadow-md">
-                    <span className="flex items-center gap-2">
-                      <Target size={16} />
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1 rounded-lg text-xs font-semibold shadow-md">
+                    <span className="flex items-center gap-1">
+                      <Target size={12} />
                       Featured on Landing Page
                     </span>
                   </div>
@@ -1157,32 +1147,29 @@ const AdvisoryPage = () => (
                 
                 {/* Landing Page Link indicator */}
                 {approach.landingPageLink && !approach.showBanner && (
-                  <div className="bg-gradient-to-r from-slate-100 to-gray-100 text-slate-700 px-4 py-2 rounded-lg mb-6 text-sm font-medium border border-slate-200">
-                    <span className="flex items-center gap-2">
-                      <ArrowRight size={16} />
+                  <div className="absolute top-4 left-4 bg-white/90 text-slate-700 px-3 py-1 rounded-lg text-xs font-medium border border-slate-200">
+                    <span className="flex items-center gap-1">
+                      <ArrowRight size={12} />
                       See details on Landing Page
                     </span>
                   </div>
                 )}
                 
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
-                  className="w-20 h-20 rounded-2xl mb-8 shadow-lg group-hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-                >
-                  <img 
-                    src={approach.image} 
-                    alt={approach.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                </motion.div>
-                
-                <h3 className="text-2xl font-bold text-slate-900 mb-6 group-hover:text-[#045184] transition-colors duration-300">
-                  {approach.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed font-medium text-lg">
+                {/* Title overlay with gradient - matching landing page */}
+                <div className="h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
+                    {approach.title}
+                  </h3>
+                </div>
+              </div>
+              
+              {/* Content section */}
+              <div className="p-6">
+                <p className="text-slate-600 leading-relaxed font-medium text-lg mb-4">
                   {approach.description}
+                </p>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  {approach.details}
                 </p>
               </div>
             </motion.div>
