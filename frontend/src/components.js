@@ -4022,7 +4022,7 @@ const NewWhatWeDoSection = () => {
                         const element = document.getElementById('organizational-transformation');
                         if (element) {
                           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-                          const offsetPosition = elementPosition - 115; // Account for fixed header + banner + optimal spacing
+                          const offsetPosition = elementPosition - 165; // Account for fixed header + banner + optimal spacing
                           window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
