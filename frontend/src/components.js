@@ -988,7 +988,11 @@ const AdvisoryPage = () => (
           LEADERSHIP ADVISORY & DEVELOPMENT
         </h1>
         <p className="text-2xl text-slate-700 max-w-5xl mx-auto leading-relaxed font-medium">
-          Through its advisory work, The Vanguard Network (TVN) collaborates with senior and up-and-coming executives to effectively unlock their full potential as leaders through a real-world approach of one-to-one coaching and contextual business insights.
+          We know that leadership is the catalyst for change and transformation.
+          We help senior executives build high-performance organizations.
+          Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders—shared through powerful peer-to-peer exchanges.
+          These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
+          We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
         </p>
       </motion.div>
     </div>
