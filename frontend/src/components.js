@@ -3594,7 +3594,7 @@ const NewWhatWeDoSection = () => {
     {
       title: "Leadership Advisory",
       description: "Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.",
-      details: "In addition to leadership coaching on specific skills, we often act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
+      details: "This includes leadership coaching on specific skills. Also, we act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
     },
