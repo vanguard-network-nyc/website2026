@@ -72,6 +72,7 @@ function App() {
             <Route path="/next-gen-gc" element={<NextGenGCPage />} />
             <Route path="/global-counsel-leaders" element={<GlobalCounselLeadersPage />} />
             <Route path="/new-leaders" element={<NewLeadersPage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
