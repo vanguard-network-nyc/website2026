@@ -1,0 +1,268 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, TrendingUp, Target, Users, CheckCircle, Building2, Globe, Award } from 'lucide-react';
+
+const CaseStudiesPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const caseStudies = [
+    {
+      id: 1,
+      title: "Executing a Global Turnaround",
+      category: "Organizational Transformation",
+      categorySlug: "organizational-transformation",
+      summary: "As advisors to the CEO and top team, we led the leadership and culture reset for a global company in crisis.",
+      challenge: "Organization charts were not the answer. We diagnosed the cultural conflicts and built a unifying Sense of Purpose.",
+      approach: [
+        "A bold action agenda for change",
+        "High-performance behaviors from CEO to frontline"
+      ],
+      outcome: "In three years, the company rose from worst to best performer in its peer group.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      icon: <TrendingUp size={24} />,
+      color: "from-green-500 to-emerald-600"
+    },
+    {
+      id: 2,
+      title: "Sounding Board Role with CEO",
+      category: "Leadership Advisory",
+      categorySlug: "leadership-advisory",
+      summary: "We served as a sounding board and strategic advisor to a C-suite leader driving major change in a global corporation.",
+      challenge: "Together, we defined what success would look like at one and three years, then built a flexible agenda to get there.",
+      approach: [
+        "Removing cultural and process barriers to high performance",
+        "Turning bold ideas into action",
+        "Clarifying priorities and aligning the right team members to execute"
+      ],
+      outcome: "After several years, success far exceeded expectations.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      icon: <Target size={24} />,
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      id: 3,
+      title: "Advising an Incoming Global CEO",
+      category: "Leadership Advisory",
+      categorySlug: "leadership-advisory",
+      summary: "With the arrival of a first-time CEO at a troubled global company, we served as advisor and sounding board.",
+      challenge: "Guiding a first-time CEO through critical early decisions and transformation strategy.",
+      approach: [
+        "Executive Team dynamics and alignment",
+        "A bold first 300 days action plan",
+        "Transformation strategy for the Board",
+        "Internal and external leadership communications to drive engagement"
+      ],
+      outcome: "The company shifted from a downward spiral to sustained growth, ultimately being acquired at a significant premium.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg", 
+      icon: <Target size={24} />,
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      id: 4,
+      title: "Aligning the Board",
+      category: "Leadership Advisory",
+      categorySlug: "leadership-advisory",
+      summary: "The experienced CEO of a growing biotech company outside Boston enlisted our assistance in assessing the causes and solutions for the fragmented and sometimes dysfunctional board.",
+      challenge: "We executed extensive interviews and research to identify strategic differences and personal conflicts.",
+      approach: [
+        "Identified significant strategic differences as well as personal conflicts",
+        "Determined that an underlying issue was a respected but somewhat disengaged board chair who was not a fit for the rapidly growing company and fractious board",
+        "Recommended a change in the Board chair to support the growth of the organization, with experience to manage a challenging board"
+      ],
+      outcome: "With our counsel a new Board Chair was recruited with the requisite capabilities. This drove significant board alignment. The new Chair also played a valuable internal and external role with the company assisting in strategic priority setting and business development.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      icon: <Target size={24} />,
+      color: "from-blue-500 to-indigo-600"
+    }
+  ];
+
+  const categories = [
+    { name: 'All Case Studies', slug: 'all', icon: <Award size={20} />, color: 'from-slate-500 to-gray-600' },
+    { name: 'Leadership Advisory', slug: 'leadership-advisory', icon: <Target size={20} />, color: 'from-blue-500 to-indigo-600' },
+    { name: 'Organizational Transformation', slug: 'organizational-transformation', icon: <TrendingUp size={20} />, color: 'from-green-500 to-emerald-600' },
+    { name: 'Client and Stakeholder Engagement', slug: 'client-stakeholder-engagement', icon: <Users size={20} />, color: 'from-cyan-500 to-blue-600' }
+  ];
+
+  const filteredCaseStudies = selectedCategory === 'all' 
+    ? caseStudies 
+    : caseStudies.filter(study => study.categorySlug === selectedCategory);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-32 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back Button */}
+        <motion.div
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+          >
+            <ArrowLeft size={20} />
+            Back to Home
+          </Link>
+        </motion.div>
+
+        {/* Page Header */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <div className="mb-8">
+            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
+              Client Success Stories
+            </span>
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+            Case Studies
+          </h1>
+          
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            Real-world examples of how we help executives and organizations achieve transformational results through our advisory services.
+          </p>
+        </motion.div>
+
+        {/* Category Filter */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-12"
+        >
+          <div className="flex flex-wrap justify-center gap-4">
+            {categories.map((category) => (
+              <button
+                key={category.slug}
+                onClick={() => setSelectedCategory(category.slug)}
+                className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  selectedCategory === category.slug
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+                }`}
+              >
+                {category.icon}
+                {category.name}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Case Studies Grid */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+        >
+          {filteredCaseStudies.map((study, index) => (
+            <motion.div
+              key={study.id}
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 * index, duration: 0.8 }}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+            >
+              {/* Image Header */}
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${study.image}')` }}>
+                <div className="absolute top-4 left-4">
+                  <span className={`bg-gradient-to-r ${study.color} text-white px-3 py-1 rounded-lg text-sm font-semibold shadow-md flex items-center gap-2`}>
+                    {study.icon}
+                    {study.category}
+                  </span>
+                </div>
+                <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
+                    {study.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <p className="text-slate-600 leading-relaxed mb-6 text-lg">
+                  {study.summary}
+                </p>
+
+                <div className="mb-6">
+                  <h4 className="text-lg font-bold text-slate-900 mb-3">Challenge</h4>
+                  <p className="text-slate-600 leading-relaxed">
+                    {study.challenge}
+                  </p>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="text-lg font-bold text-slate-900 mb-3">Our Approach</h4>
+                  <ul className="space-y-2">
+                    {study.approach.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-slate-600">
+                        <CheckCircle size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-slate-200 pt-6">
+                  <h4 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <Award size={20} className="text-yellow-500" />
+                    Result
+                  </h4>
+                  <p className="text-slate-700 leading-relaxed font-medium bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    {study.outcome}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <div className="bg-white rounded-2xl shadow-xl p-12">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              Ready to Transform Your Organization?
+            </h2>
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+              These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/advisory"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg"
+              >
+                <Target size={20} />
+                Explore Our Advisory Services
+              </Link>
+              <a
+                href="mailto:info@thevanguardnetwork.com"
+                className="inline-flex items-center gap-2 bg-slate-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-slate-700 transition-colors duration-200 shadow-lg"
+              >
+                <Building2 size={20} />
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default CaseStudiesPage;
