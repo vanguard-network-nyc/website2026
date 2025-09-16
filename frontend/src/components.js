@@ -1049,7 +1049,6 @@ const AdvisoryPage = () => (
               image: 'https://images.unsplash.com/photo-1564368587612-f303d38c9063',
               gradient: 'from-[#00A8E1] to-[#0284c7]',
               bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-              landingPageLink: true,
               details: 'We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and dinner discussions.'
             }
           ].map((approach, index) => (
