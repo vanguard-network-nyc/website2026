@@ -1040,17 +1040,14 @@ const AdvisoryPage = () => (
               gradient: 'from-[#045184] to-[#0369a1]',
               bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
               details: (
-                <span>
-                  Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges through{' '}
+                <div className="flex gap-6">
                   <a href="#coaching" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
                     Coaching
                   </a>
-                  {' '}and{' '}
                   <a href="#sounding-board" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
                     Sounding Board
                   </a>
-                  {' '}services.
-                </span>
+                </div>
               )
             },
             {
