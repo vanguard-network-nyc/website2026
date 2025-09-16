@@ -1293,6 +1293,7 @@ const AdvisoryPage = () => (
 
         {/* Sounding Board Section */}
         <motion.div
+          id="sounding-board"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
