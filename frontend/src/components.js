@@ -3125,17 +3125,18 @@ const ContactPage = () => {
 
       console.log('Submitting form data:', payload);
 
+      // Convert to form data for better Zapier compatibility
+      const formDataToSend = new FormData();
+      Object.keys(payload).forEach(key => {
+        formDataToSend.append(key, payload[key]);
+      });
+
       const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload)
+        body: formDataToSend
       });
 
       console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
 
       // Check if the response is ok (status 200-299)
       if (response.ok) {
