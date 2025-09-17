@@ -138,6 +138,45 @@ const RiskManagementPage = () => {
           </motion.div>
         </div>
 
+        {/* Program Overview PDF */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-2xl p-8 md:p-12 text-white mb-16"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold mb-4">Program Overview</h2>
+            <p className="text-xl text-white/90 mb-6 max-w-3xl mx-auto">
+              Download our comprehensive one-page summary of the Risk Management Network program, including key benefits, membership details, and how to join.
+            </p>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://customer-assets.emergentagent.com/job_67390483-fba1-42f2-92d7-d334222fbadd/artifacts/4wooz3yr_Risk%20Management%20one-pager.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              Download Program Overview (PDF)
+            </motion.a>
+          </div>
+        </motion.div>
+
         {/* Context Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
