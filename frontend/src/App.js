@@ -20,6 +20,7 @@ import NewLeadersPage from './NewLeadersPage';
 import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 import NextGenGCPage from './NextGenGCPage';
 import LawAssociatesPage from './LawAssociatesPage';
+import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
 
 const {
