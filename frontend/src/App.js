@@ -73,6 +73,7 @@ function App() {
             <Route path="/senior-counsel-exchange" element={<SeniorCounselExchangePage />} />
             <Route path="/next-gen-gc" element={<NextGenGCPage />} />
             <Route path="/law-associates" element={<LawAssociatesPage />} />
+            <Route path="/risk-management" element={<RiskManagementPage />} />
             <Route path="/global-counsel-leaders" element={<GlobalCounselLeadersPage />} />
             <Route path="/new-leaders" element={<NewLeadersPage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
