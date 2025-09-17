@@ -3112,23 +3112,36 @@ const ContactPage = () => {
     setSubmitStatus(null);
 
     try {
+      // Prepare the data payload
+      const payload = {
+        fullName: formData.fullName,
+        email: formData.email,
+        company: formData.company,
+        interestArea: formData.interestArea,
+        message: formData.message,
+        timestamp: new Date().toISOString(),
+        source: 'The Vanguard Network Contact Form'
+      };
+
+      console.log('Submitting form data:', payload);
+
       const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          company: formData.company,
-          interestArea: formData.interestArea,
-          message: formData.message,
-          timestamp: new Date().toISOString(),
-          source: 'The Vanguard Network Contact Form'
-        })
+        body: JSON.stringify(payload)
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
+      // Check if the response is ok (status 200-299)
       if (response.ok) {
+        const responseData = await response.text();
+        console.log('Success response:', responseData);
+        
         setSubmitStatus('success');
         setFormData({
           fullName: '',
@@ -3138,10 +3151,17 @@ const ContactPage = () => {
           message: ''
         });
       } else {
+        const errorText = await response.text();
+        console.error('Error response:', response.status, errorText);
         setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      console.error('Error details:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      });
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
