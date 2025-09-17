@@ -539,6 +539,18 @@ const ProgramsV2 = () => {
                     
                     {/* Action Section */}
                     <div className={`xl:col-span-2 p-10 bg-gradient-to-br ${program.bgColor} flex items-center justify-center relative overflow-hidden`}>
+                      {/* Background Image */}
+                      {program.backgroundImage && (
+                        <div className="absolute inset-0">
+                          <img
+                            src={program.backgroundImage}
+                            alt={`${program.name} background`}
+                            className="w-full h-full object-cover opacity-20"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
+                        </div>
+                      )}
+                      
                       <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-white/20"></div>
                         <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full bg-white/10"></div>
