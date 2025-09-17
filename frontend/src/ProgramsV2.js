@@ -348,7 +348,7 @@ const ProgramsV2 = () => {
                   >
                     <div className="relative h-80 overflow-hidden">
                       <img
-                        src={program.image}
+                        src={program.backgroundImage || program.image}
                         alt={program.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
