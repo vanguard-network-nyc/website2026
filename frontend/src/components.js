@@ -30,7 +30,8 @@ import {
   Clock,
   TrendingUp,
   CheckCircle2,
-  Linkedin
+  Linkedin,
+  Globe
 } from 'lucide-react';
 
 // GCL Banner Component
