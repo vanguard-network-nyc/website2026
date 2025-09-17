@@ -312,7 +312,7 @@ const LawAssociatesPage = () => {
           <p className="text-slate-600 text-center mb-8 max-w-4xl mx-auto leading-relaxed">
             Faculty drawn from alumni in-house counsel, GCs, CEOs, C-Suite executives, search experts, in-house coaches, and career development professionals from our network of over 300+ top executives.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {faculty.map((member, index) => (
               <motion.div
                 key={index}
@@ -321,19 +321,18 @@ const LawAssociatesPage = () => {
                 transition={{ delay: 0.1 * index, duration: 0.6 }}
                 className="text-center"
               >
-                <div className="w-32 h-32 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
+                <div className="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-3 overflow-hidden">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.src = `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face`;
-                    }}
                   />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{member.name}</h3>
-                <p className="text-sm text-slate-600 mb-1">{member.title}</p>
-                <p className="text-sm text-[#00A8E1] font-medium">{member.company}</p>
+                <h3 className="font-bold text-slate-900 mb-1 text-sm">{member.name}</h3>
+                <p className="text-xs text-slate-600 mb-1">{member.title}</p>
+                {member.company && (
+                  <p className="text-xs text-[#00A8E1] font-medium">{member.company}</p>
+                )}
               </motion.div>
             ))}
           </div>
