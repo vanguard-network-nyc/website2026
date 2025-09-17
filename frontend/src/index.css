@@ -27,6 +27,11 @@ code {
     100% { transform: translateX(100%); }
 }
 
+@keyframes shimmer-bg {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
 .animate-pulse-slow {
     animation: pulse-slow 8s ease-in-out infinite;
 }
