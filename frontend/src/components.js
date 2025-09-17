@@ -265,21 +265,10 @@ const Header = () => {
             >
               <Link
                 to="/members"
-                className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 relative overflow-hidden"
-                style={{ 
-                  backgroundColor: '#00A8E1',
-                  background: 'linear-gradient(45deg, #00A8E1 30%, rgba(255,255,255,0.8) 50%, #00A8E1 70%)',
-                  backgroundSize: '200% 100%',
-                  animation: 'shimmer-bg 4s linear infinite'
-                }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = 'linear-gradient(45deg, #0096C7 30%, rgba(255,255,255,0.9) 50%, #0096C7 70%)';
-                    e.target.style.backgroundSize = '200% 100%';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = 'linear-gradient(45deg, #00A8E1 30%, rgba(255,255,255,0.8) 50%, #00A8E1 70%)';
-                    e.target.style.backgroundSize = '200% 100%';
-                  }}
+                className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                style={{ backgroundColor: '#00A8E1' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
               >
                 MEMBER SITE
               </Link>
