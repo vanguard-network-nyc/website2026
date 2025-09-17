@@ -47,25 +47,91 @@ const LawAssociatesPage = () => {
       name: "Ann Kappler",
       title: "Executive VP & General Counsel",
       company: "Prudential",
-      image: "/faculty-ann-kappler.jpg"
+      image: "https://static.wixstatic.com/media/e6a994_530d06a6898142d885db122b8337fabd~mv2.jpg/v1/fill/w_192,h_192,fp_0.56_0.25,q_75,enc_avif,quality_auto/e6a994_530d06a6898142d885db122b8337fabd~mv2.jpg"
     },
     {
       name: "Tom Sabatino",
       title: "Former Chief Legal Officer",
       company: "Rite Aid; Chair of The Vanguard GC Network",
-      image: "/faculty-tom-sabatino.jpg"
+      image: "https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png"
     },
     {
       name: "Alfreda Bradley-Coar",
       title: "General Counsel",
       company: "Obama Foundation",
-      image: "/faculty-alfreda-bradley.jpg"
+      image: "https://static.wixstatic.com/media/e6a994_725cc2f6a7aa4f98bdeb404dbe189c0d~mv2.png/v1/fill/w_192,h_192,fp_0.48_0.4,q_75,enc_avif,quality_auto/e6a994_725cc2f6a7aa4f98bdeb404dbe189c0d~mv2.png"
     },
     {
       name: "Brandon Smith",
       title: "General Counsel",
       company: "CHS Inc.",
-      image: "/faculty-brandon-smith.jpg"
+      image: "https://static.wixstatic.com/media/e6a994_7041fe6b96584dea937ffcbb578a436b~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_7041fe6b96584dea937ffcbb578a436b~mv2.jpeg"
+    },
+    {
+      name: "Christian Desrosiers",
+      title: "CEO",
+      company: "Visceral AI",
+      image: "https://static.wixstatic.com/media/e6a994_379d9cdc262c47518dabd8f8144a8ed1~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_379d9cdc262c47518dabd8f8144a8ed1~mv2.jpeg"
+    },
+    {
+      name: "Craig Tooman",
+      title: "CEO",
+      company: "Silence Therapeutics",
+      image: "https://static.wixstatic.com/media/e6a994_08d6d421426c462b9efc7537b56fd2da~mv2.jpg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_08d6d421426c462b9efc7537b56fd2da~mv2.jpg"
+    },
+    {
+      name: "Gina Beredo",
+      title: "EVP, General Counsel & Secretary",
+      company: "Owens Corning",
+      image: "https://static.wixstatic.com/media/e6a994_b8bb7b651425424294faf693545b5b15~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_b8bb7b651425424294faf693545b5b15~mv2.jpeg"
+    },
+    {
+      name: "Don Hunt",
+      title: "General Counsel",
+      company: "The Hartford",
+      image: "https://static.wixstatic.com/media/e6a994_56484c66a5574b209459ef88a3d1df70~mv2.jpg/v1/fill/w_192,h_192,fp_0.5_0.31,q_75,enc_avif,quality_auto/e6a994_56484c66a5574b209459ef88a3d1df70~mv2.jpg"
+    },
+    {
+      name: "Heather French",
+      title: "General Counsel",
+      company: "Global Healthcare Exchange",
+      image: "https://static.wixstatic.com/media/e6a994_b2f60f541d8749f2b78d4ba40078745a~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_b2f60f541d8749f2b78d4ba40078745a~mv2.jpeg"
+    },
+    {
+      name: "Ram Charan",
+      title: "Strategy Advisor",
+      company: "",
+      image: "https://static.wixstatic.com/media/e6a994_474ca3c2fe0343bdafda67dc2ed47523~mv2.png/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_474ca3c2fe0343bdafda67dc2ed47523~mv2.png"
+    },
+    {
+      name: "Heather White",
+      title: "General Counsel",
+      company: "Genpact",
+      image: "https://static.wixstatic.com/media/e6a994_724f926b2e084788b1a425128cfba816~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_724f926b2e084788b1a425128cfba816~mv2.jpeg"
+    },
+    {
+      name: "Ali Behbahani",
+      title: "Partner",
+      company: "New Enterprise Associates",
+      image: "https://static.wixstatic.com/media/e6a994_894fc3e627d34aee999b41580d5e4add~mv2.jpg/v1/fill/w_192,h_192,fp_0.55_0.44,q_75,enc_avif,quality_auto/e6a994_894fc3e627d34aee999b41580d5e4add~mv2.jpg"
+    },
+    {
+      name: "Patricia Astorga",
+      title: "Chief Legal Officer",
+      company: "Mintz Group",
+      image: "https://static.wixstatic.com/media/e6a994_9aa0437d065d441ab7eaba6097c45e9a~mv2.jpg/v1/fill/w_192,h_192,fp_0.55_0.27,q_75,enc_avif,quality_auto/e6a994_9aa0437d065d441ab7eaba6097c45e9a~mv2.jpg"
+    },
+    {
+      name: "Andrew Hall",
+      title: "CEO",
+      company: "Consano",
+      image: "https://static.wixstatic.com/media/e6a994_86e8c174dcea431abfc8aeeb5bfa6bbf~mv2.jpeg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_86e8c174dcea431abfc8aeeb5bfa6bbf~mv2.jpeg"
+    },
+    {
+      name: "David Rock",
+      title: "CEO",
+      company: "Neuroleadership Institute",
+      image: "https://static.wixstatic.com/media/e6a994_dca1ec51388a46389188de032667b693~mv2.webp/v1/fill/w_192,h_192,fp_0.47_0.5,q_75,enc_avif,quality_auto/e6a994_dca1ec51388a46389188de032667b693~mv2.webp"
     }
   ];
 
