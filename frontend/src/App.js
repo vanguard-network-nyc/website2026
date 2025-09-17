@@ -19,6 +19,7 @@ import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
 import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 import NextGenGCPage from './NextGenGCPage';
+import LawAssociatesPage from './LawAssociatesPage';
 import CaseStudiesPage from './CaseStudiesPage';
 
 const {
