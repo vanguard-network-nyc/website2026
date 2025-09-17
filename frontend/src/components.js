@@ -3371,6 +3371,22 @@ const ContactPage = () => {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                    <Globe className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#045184' }}>Website</p>
+                    <a 
+                      href="https://www.thevanguardnetwork.com/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    >
+                      www.thevanguardnetwork.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
                     <Linkedin className="text-white" size={24} />
                   </div>
                   <div>
