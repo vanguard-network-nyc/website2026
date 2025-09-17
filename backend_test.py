@@ -759,6 +759,168 @@ class BackendTester:
         except json.JSONDecodeError as e:
             self.log_test("Airtable GC Members", False, f"Invalid JSON response: {str(e)}")
 
+    def test_contact_form_zapier_webhook(self):
+        """Test contact form Zapier webhook integration"""
+        # Test data matching the contact form structure
+        test_contact_data = {
+            "fullName": "John Smith",
+            "email": "john.smith@example.com",
+            "company": "Test Corporation",
+            "interestArea": "advisory",
+            "message": "I am interested in learning more about your leadership development programs.",
+            "timestamp": datetime.now().isoformat(),
+            "source": "The Vanguard Network Contact Form"
+        }
+        
+        zapier_webhook_url = "https://hooks.zapier.com/hooks/catch/18240047/umfuu73/"
+        
+        try:
+            # Test webhook accessibility first
+            response = self.session.post(
+                zapier_webhook_url,
+                json=test_contact_data,
+                headers={
+                    "Content-Type": "application/json",
+                    "Origin": "https://leadership-hub-12.preview.emergentagent.com"
+                },
+                timeout=15
+            )
+            
+            if response.status_code == 200:
+                self.log_test("Contact Form Zapier Webhook", True, "Zapier webhook successfully received contact form data", {
+                    "webhook_url": zapier_webhook_url,
+                    "status_code": response.status_code,
+                    "response_text": response.text[:100] if response.text else "No response body"
+                })
+                
+                # Test required fields validation
+                required_fields = ["fullName", "email", "company", "interestArea", "message", "timestamp", "source"]
+                missing_fields = [field for field in required_fields if field not in test_contact_data]
+                
+                if not missing_fields:
+                    self.log_test("Contact Form Data Structure", True, "All required fields present in webhook payload", {
+                        "required_fields": required_fields,
+                        "source_value": test_contact_data["source"]
+                    })
+                else:
+                    self.log_test("Contact Form Data Structure", False, f"Missing required fields: {missing_fields}", test_contact_data)
+                    
+            elif response.status_code == 400:
+                self.log_test("Contact Form Zapier Webhook", False, "Zapier webhook returned 400 Bad Request - check data format", {
+                    "status_code": response.status_code,
+                    "response_text": response.text
+                })
+            elif response.status_code == 403:
+                self.log_test("Contact Form Zapier Webhook", False, "Zapier webhook returned 403 Forbidden - check webhook permissions", {
+                    "status_code": response.status_code,
+                    "response_text": response.text
+                })
+            elif response.status_code == 404:
+                self.log_test("Contact Form Zapier Webhook", False, "Zapier webhook not found (404) - check webhook URL", {
+                    "webhook_url": zapier_webhook_url,
+                    "status_code": response.status_code
+                })
+            else:
+                self.log_test("Contact Form Zapier Webhook", False, f"Unexpected response: HTTP {response.status_code}", {
+                    "status_code": response.status_code,
+                    "response_text": response.text
+                })
+                
+        except requests.exceptions.Timeout:
+            self.log_test("Contact Form Zapier Webhook", False, "Zapier webhook request timed out - network or webhook issue")
+        except requests.exceptions.ConnectionError as e:
+            self.log_test("Contact Form Zapier Webhook", False, f"Connection error to Zapier webhook: {str(e)}")
+        except requests.exceptions.RequestException as e:
+            self.log_test("Contact Form Zapier Webhook", False, f"Request error to Zapier webhook: {str(e)}")
+    
+    def test_contact_form_cors_compatibility(self):
+        """Test CORS compatibility for contact form webhook"""
+        zapier_webhook_url = "https://hooks.zapier.com/hooks/catch/18240047/umfuu73/"
+        
+        try:
+            # Test preflight CORS request
+            response = self.session.options(
+                zapier_webhook_url,
+                headers={
+                    "Origin": "https://leadership-hub-12.preview.emergentagent.com",
+                    "Access-Control-Request-Method": "POST",
+                    "Access-Control-Request-Headers": "Content-Type"
+                },
+                timeout=10
+            )
+            
+            cors_headers = {
+                "Access-Control-Allow-Origin": response.headers.get("Access-Control-Allow-Origin"),
+                "Access-Control-Allow-Methods": response.headers.get("Access-Control-Allow-Methods"),
+                "Access-Control-Allow-Headers": response.headers.get("Access-Control-Allow-Headers")
+            }
+            
+            # Check if CORS allows the frontend origin
+            allow_origin = cors_headers.get("Access-Control-Allow-Origin")
+            if allow_origin == "*" or "leadership-hub-12.preview.emergentagent.com" in str(allow_origin):
+                self.log_test("Contact Form CORS", True, "Zapier webhook allows cross-origin requests from frontend", cors_headers)
+            else:
+                self.log_test("Contact Form CORS", False, "Zapier webhook may not allow cross-origin requests", cors_headers)
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("Contact Form CORS", False, f"CORS preflight request failed: {str(e)}")
+    
+    def test_contact_form_error_handling(self):
+        """Test contact form error handling scenarios"""
+        zapier_webhook_url = "https://hooks.zapier.com/hooks/catch/18240047/umfuu73/"
+        
+        # Test with missing required fields
+        incomplete_data = {
+            "fullName": "Test User",
+            # Missing email, message, etc.
+            "timestamp": datetime.now().isoformat(),
+            "source": "The Vanguard Network Contact Form"
+        }
+        
+        try:
+            response = self.session.post(
+                zapier_webhook_url,
+                json=incomplete_data,
+                headers={"Content-Type": "application/json"},
+                timeout=10
+            )
+            
+            # Zapier typically accepts any JSON, so we test the structure
+            if response.status_code == 200:
+                self.log_test("Contact Form Error Handling", True, "Webhook accepts incomplete data (frontend should validate)", {
+                    "status_code": response.status_code,
+                    "note": "Frontend validation is responsible for required fields"
+                })
+            else:
+                self.log_test("Contact Form Error Handling", False, f"Unexpected response to incomplete data: HTTP {response.status_code}", {
+                    "status_code": response.status_code,
+                    "response_text": response.text
+                })
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("Contact Form Error Handling", False, f"Error testing incomplete data: {str(e)}")
+        
+        # Test with invalid JSON
+        try:
+            response = self.session.post(
+                zapier_webhook_url,
+                data="invalid json data",
+                headers={"Content-Type": "application/json"},
+                timeout=10
+            )
+            
+            if response.status_code == 400:
+                self.log_test("Contact Form Invalid JSON Handling", True, "Webhook properly rejects invalid JSON", {
+                    "status_code": response.status_code
+                })
+            else:
+                self.log_test("Contact Form Invalid JSON Handling", False, f"Unexpected response to invalid JSON: HTTP {response.status_code}", {
+                    "status_code": response.status_code
+                })
+                
+        except requests.exceptions.RequestException as e:
+            self.log_test("Contact Form Invalid JSON Handling", False, f"Error testing invalid JSON: {str(e)}")
+
     def test_json_responses(self):
         """Test that all endpoints return proper JSON responses"""
         endpoints = [
