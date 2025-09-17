@@ -158,6 +158,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+      backgroundImage: "https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
       duration: "6-9 Months",
       participants: "10-15 Leaders",
       icon: <Zap size={28} />
@@ -170,6 +171,7 @@ const ProgramsV2 = () => {
       color: "#00A8E1",
       gradient: "from-[#00A8E1] to-[#0284c7]",
       bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+      backgroundImage: "https://images.unsplash.com/photo-1546572797-e8c933a75a1f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
       duration: "14 Weeks",
       participants: "15-20 New Hires",
       icon: <Briefcase size={28} />
@@ -182,6 +184,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
+      backgroundImage: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxib2FyZHJvb20lMjBtZWV0aW5nfGVufDB8fHx8MTc1ODExNzY1NHww&ixlib=rb-4.1.0&q=85",
       duration: "Ongoing",
       participants: "10-25 Clients",
       icon: <Globe size={28} />
