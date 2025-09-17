@@ -272,14 +272,14 @@ const Header = () => {
                   backgroundSize: '200% 100%',
                   animation: 'shimmer-bg 4s ease-in-out infinite'
                 }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(45deg, #0096C7 30%, rgba(255,255,255,0.4) 50%, #0096C7 70%)';
-                  e.target.style.backgroundSize = '200% 100%';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(45deg, #00A8E1 30%, rgba(255,255,255,0.3) 50%, #00A8E1 70%)';
-                  e.target.style.backgroundSize = '200% 100%';
-                }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = 'linear-gradient(45deg, #0096C7 30%, rgba(255,255,255,0.9) 50%, #0096C7 70%)';
+                    e.target.style.backgroundSize = '200% 100%';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = 'linear-gradient(45deg, #00A8E1 30%, rgba(255,255,255,0.8) 50%, #00A8E1 70%)';
+                    e.target.style.backgroundSize = '200% 100%';
+                  }}
               >
                 MEMBER SITE
               </Link>
