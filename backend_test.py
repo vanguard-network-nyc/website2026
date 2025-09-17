@@ -1007,6 +1007,11 @@ class BackendTester:
         # Test NEW GC Members endpoint
         self.test_airtable_gc_members_endpoint()
         
+        # Test Contact Form Zapier Webhook Integration
+        self.test_contact_form_zapier_webhook()
+        self.test_contact_form_cors_compatibility()
+        self.test_contact_form_error_handling()
+        
         # Test JSON responses
         self.test_json_responses()
         
