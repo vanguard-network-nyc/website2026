@@ -3086,235 +3086,390 @@ const TeamPage = () => (
   </motion.div>
 );
 
-const ContactPage = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
-  >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-5xl font-bold mb-6" style={{ color: '#045184' }}>Contact Us</h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Ready to transform your leadership? Get in touch with our team of experts and discover how The Vanguard Network can accelerate your executive journey.
-        </p>
-      </motion.div>
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    company: '',
+    interestArea: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          company: formData.company,
+          interestArea: formData.interestArea,
+          message: formData.message,
+          timestamp: new Date().toISOString(),
+          source: 'The Vanguard Network Contact Form'
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          fullName: '',
+          email: '',
+          company: '',
+          interestArea: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 shadow-lg"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
-          <form className="space-y-6">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Full Name</label>
-              <input
-                type="text"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
-                style={{ 
-                  focusRingColor: '#00A8E1',
-                  focusBorderColor: '#00A8E1'
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#00A8E1';
-                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
-                placeholder="Enter your full name"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Email</label>
-              <input
-                type="email"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#00A8E1';
-                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
-                placeholder="Enter your email"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Company</label>
-              <input
-                type="text"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#00A8E1';
-                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
-                placeholder="Enter your company"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Interest Area</label>
-              <select
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#00A8E1';
-                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
-              >
-                <option value="">Select your area of interest</option>
-                <option value="advisory">Advisory Services</option>
-                <option value="networking">Networking & Events</option>
-                <option value="programs">Leadership Programs</option>
-                <option value="book">Book & Resources</option>
-                <option value="membership">Membership Information</option>
-                <option value="other">Other</option>
-              </select>
-            </motion.div>
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.9, duration: 0.6 }}
-            >
-              <label className="block font-medium mb-2" style={{ color: '#045184' }}>Message</label>
-              <textarea
-                rows="4"
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#00A8E1';
-                  e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
-                placeholder="Tell us about your leadership development needs and how we can help you achieve your goals"
-              ></textarea>
-            </motion.div>
-            <motion.button
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="submit"
-              className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-200"
-              style={{ backgroundColor: '#00A8E1' }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-            >
-              Send Message
-            </motion.button>
-          </form>
+          <h1 className="text-5xl font-bold mb-6" style={{ color: '#045184' }}>Contact Us</h1>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Ready to transform your leadership? Get in touch with our team of experts and discover how The Vanguard Network can accelerate your executive journey.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="space-y-8"
-        >
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Get in Touch</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
-                  <Mail className="text-white" size={24} />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="bg-white rounded-2xl p-8 shadow-lg"
+          >
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
+            
+            {submitStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+              >
+                <p className="font-medium">Message sent successfully!</p>
+                <p className="text-sm">We'll get back to you within 24 hours.</p>
+              </motion.div>
+            )}
+
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
+              >
+                <p className="font-medium">Error sending message.</p>
+                <p className="text-sm">Please try again or contact us directly.</p>
+              </motion.div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                <label className="block font-medium mb-2" style={{ color: '#045184' }}>Full Name *</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00A8E1';
+                    e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                  placeholder="Enter your full name"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
+                <label className="block font-medium mb-2" style={{ color: '#045184' }}>Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00A8E1';
+                    e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                  placeholder="Enter your email"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+              >
+                <label className="block font-medium mb-2" style={{ color: '#045184' }}>Company</label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00A8E1';
+                    e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                  placeholder="Enter your company"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                <label className="block font-medium mb-2" style={{ color: '#045184' }}>Interest Area</label>
+                <select
+                  name="interestArea"
+                  value={formData.interestArea}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00A8E1';
+                    e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  <option value="">Select your area of interest</option>
+                  <option value="advisory">Advisory Services</option>
+                  <option value="networking">Networking & Events</option>
+                  <option value="programs">Leadership Programs</option>
+                  <option value="book">Book & Resources</option>
+                  <option value="membership">Membership Information</option>
+                  <option value="other">Other</option>
+                </select>
+              </motion.div>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
+                <label className="block font-medium mb-2" style={{ color: '#045184' }}>Message *</label>
+                <textarea
+                  rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg transition-colors duration-200"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = '#00A8E1';
+                    e.target.style.boxShadow = `0 0 0 2px rgba(0, 168, 225, 0.2)`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = '#d1d5db';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                  placeholder="Tell us about your leadership development needs and how we can help you achieve your goals"
+                ></textarea>
+              </motion.div>
+              <motion.button
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ backgroundColor: isSubmitting ? '#6b7280' : '#00A8E1' }}
+                onMouseEnter={(e) => !isSubmitting && (e.target.style.backgroundColor = '#0096C7')}
+                onMouseLeave={(e) => !isSubmitting && (e.target.style.backgroundColor = '#00A8E1')}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </motion.button>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Get in Touch</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                    <Mail className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#045184' }}>Email</p>
+                    <p className="text-slate-600">info@thevanguardnetwork.com</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-medium" style={{ color: '#045184' }}>Email</p>
-                  <p className="text-slate-600">info@thevanguardnetwork.com</p>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                    <MapPin className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#045184' }}>Office</p>
+                    <p className="text-slate-600">216 E 7th Street, #8<br />New York, NY 10009</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
-                  <Phone className="text-white" size={24} />
-                </div>
-                <div>
-                  <p className="font-medium" style={{ color: '#045184' }}>Phone</p>
-                  <p className="text-slate-600">+1 (555) 123-4567</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
-                  <MapPin className="text-white" size={24} />
-                </div>
-                <div>
-                  <p className="font-medium" style={{ color: '#045184' }}>Office</p>
-                  <p className="text-slate-600">New York, NY</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                    <Linkedin className="text-white" size={24} />
+                  </div>
+                  <div>
+                    <p className="font-medium" style={{ color: '#045184' }}>LinkedIn</p>
+                    <a 
+                      href="https://www.linkedin.com/company/40948215" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    >
+                      Follow us on LinkedIn
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="rounded-2xl p-8 shadow-lg" style={{ backgroundColor: '#045184' }}>
-            <h3 className="text-2xl font-bold mb-4 text-white">Why Choose The Vanguard Network?</h3>
-            <ul className="space-y-3 text-white/90">
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
-                <span>Proven track record with Fortune 500 executives</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
-                <span>Personalized leadership development programs</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
-                <span>Exclusive networking with top-tier professionals</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
-                <span>Comprehensive advisory services and support</span>
-              </li>
-            </ul>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
-              style={{ color: '#045184' }}
+            
+            <div className="rounded-2xl p-8 shadow-lg" style={{ backgroundColor: '#045184' }}>
+              <h3 className="text-2xl font-bold mb-4 text-white">Why Choose The Vanguard Network?</h3>
+              <ul className="space-y-3 text-white/90">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                  <span>Proven track record with Fortune 500 executives</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                  <span>Personalized leadership development programs</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                  <span>Exclusive networking with top-tier professionals</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#00A8E1' }}></div>
+                  <span>Comprehensive advisory services and support</span>
+                </li>
+              </ul>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
+                style={{ color: '#045184' }}
+              >
+                Learn More About Our Services
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Leadership Team Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 shadow-lg"
+        >
+          <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>Leadership Team</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+              className="text-center"
             >
-              Learn More About Our Services
-            </motion.button>
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: '#045184' }}>
+                KB
+              </div>
+              <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Ken Banta</h4>
+              <p className="text-slate-600 font-medium">Founder and CEO</p>
+            </motion.div>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: '#00A8E1' }}>
+                TP
+              </div>
+              <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Tony Powe</h4>
+              <p className="text-slate-600 font-medium">Co-Founder and Chief Operating Officer</p>
+            </motion.div>
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: '#6b7280' }}>
+                RH
+              </div>
+              <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Richard Hulme</h4>
+              <p className="text-slate-600 font-medium">Senior Advisor</p>
+            </motion.div>
           </div>
         </motion.div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const BookPage = () => (
   <motion.div
