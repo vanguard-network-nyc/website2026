@@ -382,6 +382,53 @@ const LawAssociatesPage = () => {
           </div>
         </motion.div>
 
+        {/* Vanguard & Gravitas Team */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+        >
+          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Vanguard & Gravitas Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="w-48 h-48 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
+                <img
+                  src="https://static.wixstatic.com/media/e6a994_4d1d40c3300746a297c915ad5d294f7a~mv2.jpeg/v1/fill/w_225,h_225,al_c,lg_1,q_80,enc_avif,quality_auto/Helene%20Ashenberg.jpeg"
+                  alt="Helene Ashenberg"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2 text-lg">Helene Ashenberg</h3>
+              <p className="text-slate-600">Founder and President</p>
+              <p className="text-[#00A8E1] font-medium">Gravitas Search Partners</p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="w-48 h-48 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
+                <img
+                  src="https://static.wixstatic.com/media/e6a994_976059df6973424ba1feb8159a60fc31~mv2.jpg/v1/crop/x_0,y_0,w_2400,h_2396/fill/w_225,h_225,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ken%20Banta.jpg"
+                  alt="Ken Banta"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="font-bold text-slate-900 mb-2 text-lg">Ken Banta</h3>
+              <p className="text-slate-600">Founder and CEO</p>
+              <p className="text-[#00A8E1] font-medium">The Vanguard Network</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
         {/* Investment & Contact */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
