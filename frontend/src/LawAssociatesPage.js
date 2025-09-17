@@ -363,9 +363,18 @@ const LawAssociatesPage = () => {
 
           <div className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">Testimonial</h2>
-            <blockquote className="text-lg leading-relaxed mb-6 italic">
-              "Over my 35 years as a partner at a top law firm and then a general counsel at three large companies, I was struck by how unprepared many law firm associates are to function as leaders and business partners—whether they were on a partner track at their law firm or moving in-house."
-            </blockquote>
+            <div className="flex items-start gap-6 mb-6">
+              <div className="flex-shrink-0">
+                <img
+                  src="https://static.wixstatic.com/media/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg/v1/fill/w_101,h_101,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg"
+                  alt="Doug Barnard"
+                  className="w-24 h-24 rounded-full object-cover border-4 border-white/30"
+                />
+              </div>
+              <blockquote className="text-lg leading-relaxed italic">
+                "Over my 35 years as a partner at a top law firm and then a general counsel at three large companies, I was struck by how unprepared many law firm associates are to function as leaders and business partners—whether they were on a partner track at their law firm or moving in-house.<br/><br/>The Accelerator program responds to this challenge. Designed and led by GCs, senior counsel, corporate executives, and law firm senior partners, it focuses on critical EQ factors and business insights, from self-awareness to becoming a trusted advisor.<br/><br/>Whatever a law firm's size and focus, this program can significantly enhance the performance of its associates by focusing on what companies, their executives, their GCs, and their senior counsel value most in the attorney-client relationship."
+              </blockquote>
+            </div>
             <div className="border-t border-white/20 pt-4">
               <div className="font-bold text-lg">Doug Barnard</div>
               <div className="text-white/80">Former Senior Vice President, General Counsel, and Secretary</div>
