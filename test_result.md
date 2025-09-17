@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the updated image for the 'Peer-to-Peer Networks' service card to verify the new diverse image is displaying correctly."
+user_problem_statement: "Test the contact form functionality with the Zapier webhook integration. The contact form should send a POST request to https://hooks.zapier.com/hooks/catch/18240047/umfuu73/ with the following data: fullName, email, company, interestArea, message, timestamp, source. Test if the webhook integration is working properly and check for any CORS issues or network problems. The form is located at /contact route."
 
 backend:
   - task: "FastAPI backend service health"
