@@ -112,6 +112,20 @@ const ProgramsV2 = () => {
       participants: "Up to 20 per cohort",
       features: ["Interactive Faculty Sessions", "Peer Development", "Business Partnership Focus", "EQ & Leadership Skills"],
       icon: <Shield size={28} />
+    },
+    {
+      name: "RISK MANAGEMENT NETWORK",
+      description: "A peer network for senior executives with strategic accountability for risk across law, compliance, finance, cybersecurity, and operations.",
+      format: "Monthly Virtual Exchanges",
+      audience: "Risk Management Leaders",
+      category: "Risk Management",
+      level: "Executive",
+      status: "Enrollment Open",
+      image: "/risk-management-program.jpg",
+      duration: "Annual Membership",
+      participants: "Senior Risk Leaders",
+      features: ["Monthly Virtual Exchanges", "Guest Expert Insights", "Confidential Peer Discussions", "Actionable Playbooks"],
+      icon: <Shield size={28} />
     }
   ];
 
