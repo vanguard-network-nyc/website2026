@@ -260,6 +260,86 @@ const RiskManagementPage = () => {
           </div>
         </motion.div>
 
+        {/* Network Advisors */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+        >
+          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Network Advisors</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              {
+                name: "Jay Cohen",
+                title: "Chief Compliance Officer",
+                company: "QBE",
+                image: "https://static.wixstatic.com/media/e6a994_5147cca1a60e481ab3b2fd7d0e91ff2f~mv2.png/v1/fill/w_155,h_183,fp_1.95_1.62,q_75,enc_avif,quality_auto/e6a994_5147cca1a60e481ab3b2fd7d0e91ff2f~mv2.png"
+              },
+              {
+                name: "Brenda Fischer",
+                title: "Associate GC, Data Strategy & Security",
+                company: "Guardian Life",
+                image: "https://static.wixstatic.com/media/e6a994_dbd23deba47a4ee19d938f0f7db74414~mv2.jpeg/v1/fill/w_184,h_184,fp_0.82_0.6,q_75,enc_avif,quality_auto/e6a994_dbd23deba47a4ee19d938f0f7db74414~mv2.jpeg"
+              },
+              {
+                name: "Stephen Gauster",
+                title: "President & CEO",
+                company: "The Beekman Estate",
+                image: "https://static.wixstatic.com/media/e6a994_bbfcfda6af1c4c359a2e0d6ed7f2b655~mv2.jpg/v1/fill/w_184,h_184,fp_0.9_0.52,q_75,enc_avif,quality_auto/e6a994_bbfcfda6af1c4c359a2e0d6ed7f2b655~mv2.jpg"
+              },
+              {
+                name: "Avi Gesser",
+                title: "Partner",
+                company: "Debevoise & Plimpton",
+                image: "https://static.wixstatic.com/media/e6a994_20a674c273e745269716b017875152bc~mv2.jpg/v1/fill/w_184,h_184,q_75,enc_avif,quality_auto/e6a994_20a674c273e745269716b017875152bc~mv2.jpg"
+              },
+              {
+                name: "David Robinson",
+                title: "Past General Counsel",
+                company: "The Hartford",
+                image: "https://static.wixstatic.com/media/e6a994_9ea8a2d45ba4471bbdd025770e8cdf4c~mv2.jpeg/v1/fill/w_184,h_184,fp_0.31_0.28,q_75,enc_avif,quality_auto/e6a994_9ea8a2d45ba4471bbdd025770e8cdf4c~mv2.jpeg"
+              }
+            ].map((advisor, index) => (
+              <motion.div
+                key={index}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.1 * index, duration: 0.6 }}
+                className="text-center"
+              >
+                <div className="w-24 h-24 rounded-full bg-slate-200 mx-auto mb-3 overflow-hidden">
+                  <img
+                    src={advisor.image}
+                    alt={advisor.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="font-bold text-slate-900 mb-1 text-sm">{advisor.name}</h3>
+                <p className="text-xs text-slate-600 mb-1">{advisor.title}</p>
+                <p className="text-xs text-[#00A8E1] font-medium">{advisor.company}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Member Organizations */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+        >
+          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Our Members Are Leaders From These And Other Organizations</h2>
+          <div className="flex justify-center">
+            <img
+              src="https://static.wixstatic.com/media/e6a994_d968320bc0c846969ab5219d3ca40c0f~mv2.png/v1/fill/w_980,h_556,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/members.png"
+              alt="Member Organizations Logos"
+              className="max-w-full h-auto rounded-lg"
+            />
+          </div>
+        </motion.div>
+
         {/* Target Audience */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
