@@ -98,6 +98,20 @@ const ProgramsV2 = () => {
       participants: "20-25",
       features: ["Leadership Jump-Start", "Senior Executive Led", "Pragmatic Focus", "Graduate & New Hire"],
       icon: <Users size={28} />
+    },
+    {
+      name: "LAW ASSOCIATES ACCELERATOR",
+      description: "A comprehensive program designed to accelerate the success of law firm associates through EQ development and business understanding, led by GCs and business leaders.",
+      format: "Modular Program",
+      audience: "Law Firm Associates",
+      category: "Legal",
+      level: "Professional Development",
+      status: "Enrollment Open",
+      image: "/law-associates-program.jpg",
+      duration: "Flexible",
+      participants: "Up to 20 per cohort",
+      features: ["Interactive Faculty Sessions", "Peer Development", "Business Partnership Focus", "EQ & Leadership Skills"],
+      icon: <Shield size={28} />
     }
   ];
 
