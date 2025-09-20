@@ -1223,7 +1223,10 @@ const AdvisoryPage = () => (
                 200+
               </motion.div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">CEOs & C-Suite Executives</h3>
-              <p className="text-slate-600 font-medium text-lg">In our network participating in ongoing catalyzing conversations</p>
+              <p className="text-slate-600 font-medium text-lg mb-6">In our network participating in ongoing catalyzing conversations</p>
+              <p className="text-slate-600 leading-relaxed text-base italic">
+                Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
+              </p>
             </div>
           </div>
         </div>
