@@ -19,6 +19,7 @@ import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
 import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 import NextGenGCPage from './NextGenGCPage';
+import LifeSciencesCEOPage from './LifeSciencesCEOPage';
 import LawAssociatesPage from './LawAssociatesPage';
 import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
