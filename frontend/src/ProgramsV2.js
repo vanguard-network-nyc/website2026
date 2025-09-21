@@ -438,6 +438,7 @@ const ProgramsV2 = () => {
                         <Link 
                           to="/next-gen-gc"
                           className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                          onClick={() => window.scrollTo(0, 0)}
                         >
                           Learn More
                           <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
