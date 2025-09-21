@@ -973,6 +973,18 @@ frontend:
         agent: "main"
         comment: "Successfully implemented comprehensive homepage redesign based on reference webpage. Created 7 new components (NewHero, NewStatsSection, NewWhatWeDoSection, NewAboutSection, NewSpecializedGroupsSection, NewIntegrationSection, NewContentLibrarySection) matching professional corporate design. Features hero section with 'We champion the extraordinary in leadership', statistics section, service cards, about section with testimonials, specialized groups, integration announcements, and content library. All sections use professional imagery, animations, and consistent branding. Screenshot verification shows beautiful implementation with proper styling and layout matching reference design."
 
+  - task: "Programs Page Learn More Buttons Navigation and Scroll-to-Top"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/ProgramsV2.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "COMPREHENSIVE TESTING COMPLETED: All 7 program 'Learn More' buttons tested as requested. NAVIGATION: ✅ 100% SUCCESS - All buttons navigate to correct URLs (GC EXCHANGE→/gc-exchange, SENIOR IN-HOUSE COUNSEL EXCHANGE→/senior-counsel-exchange, LIFE SCIENCES CEO EXCHANGES→/life-sciences-ceo, NEXT GENERATION GC→/next-gen-gc, NEW LEADERS PROGRAM→/new-leaders, LAW ASSOCIATES ACCELERATOR→/law-associates, RISK MANAGEMENT NETWORK→/risk-management). SCROLL-TO-TOP: ❌ 43% SUCCESS - Only 3/7 buttons work correctly (GC EXCHANGE: 0px, SENIOR IN-HOUSE COUNSEL EXCHANGE: 0px, RISK MANAGEMENT NETWORK: 0px), while 4/7 fail (LIFE SCIENCES CEO EXCHANGES: 636px, NEXT GENERATION GC: 2px, NEW LEADERS PROGRAM: 2705px, LAW ASSOCIATES ACCELERATOR: 2737px). ISSUE: Inconsistent onClick={() => window.scrollTo(0, 0)} implementation. Some destination pages load at top while others retain previous scroll position. REQUIRES FIX: Standardize scroll-to-top behavior for all 7 program buttons."
+
 metadata:
   created_by: "main_agent"
   version: "1.0"
