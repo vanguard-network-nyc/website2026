@@ -3381,7 +3381,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium" style={{ color: '#045184' }}>Email</p>
-                    <p className="text-slate-600">info@thevanguardnetwork.com</p>
+                    <p className="text-slate-600">contact@vanguardgroup.nyc</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
