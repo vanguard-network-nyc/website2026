@@ -4797,11 +4797,11 @@ const NewContentLibrarySection = () => {
         insights.push({
           type: "Podcast",
           category: latestPodcast.category || "Board Dynamics",
-          title: latestPodcast.title,
+          title: latestPodcast.title || "Leadership Insights Podcast",
           description: latestPodcast.description || "A candid discussion with experienced leaders about governance and strategy.",
-          author: latestPodcast.author || "Member Contributor",
+          author: latestPodcast.featured_speaker || "Member Contributor",
           duration: latestPodcast.duration || "45 min listen",
-          image: latestPodcast.photo || "https://images.unsplash.com/photo-1579525109384-ddf54825044f",
+          image: latestPodcast.thumbnail || "https://images.unsplash.com/photo-1579525109384-ddf54825044f",
           link: `/podcast/${latestPodcast.id}`
         });
       }
@@ -4811,11 +4811,11 @@ const NewContentLibrarySection = () => {
         insights.push({
           type: "Video",
           category: latestVideo.category || "Personal Awareness",
-          title: latestVideo.title,
+          title: latestVideo.video_description || "Leadership Development Video",
           description: latestVideo.description || "Understanding how leadership principles drive better strategic decisions.",
-          author: latestVideo.author || "Affiliate Contributor",
+          author: latestVideo.featured_speakers || "Affiliate Contributor",
           duration: latestVideo.duration || "12 min watch",
-          image: latestVideo.photo || "https://images.unsplash.com/photo-1562935345-5080389daccd",
+          image: latestVideo.headshot || "https://images.unsplash.com/photo-1562935345-5080389daccd",
           link: `/video/${latestVideo.id}`
         });
       }
