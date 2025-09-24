@@ -4926,47 +4926,63 @@ const NewContentLibrarySection = () => {
             Featured Insights
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredInsights.map((insight, index) => (
-              <motion.div
-                key={insight.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
-              >
-                <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
-                  <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                    <div className="text-white">
-                      <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
-                        {insight.type}
-                      </span>
-                      <div className="mt-2 text-xs text-blue-200">
-                        {insight.category}
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-slate-600">Loading latest insights...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {featuredInsights.map((insight, index) => (
+                <motion.div
+                  key={insight.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
+                >
+                  <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
+                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                      <div className="text-white">
+                        <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
+                          {insight.type}
+                        </span>
+                        <div className="mt-2 text-xs text-blue-200">
+                          {insight.category}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="p-6">
-                  <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
-                    {insight.title}
-                  </h4>
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                    {insight.description}
-                  </p>
-                  <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
-                    <span>{insight.author}</span>
-                    <span>{insight.duration}</span>
+                  
+                  <div className="p-6">
+                    <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
+                      {insight.title}
+                    </h4>
+                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                      {insight.description}
+                    </p>
+                    <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
+                      <span>{insight.author}</span>
+                      <span>{insight.duration}</span>
+                    </div>
+                    {insight.link ? (
+                      <Link 
+                        to={insight.link}
+                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                      >
+                        Read More
+                      </Link>
+                    ) : (
+                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Read More
+                      </button>
+                    )}
                   </div>
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Read More
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* CTA Section */}
