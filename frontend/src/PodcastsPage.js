@@ -275,7 +275,7 @@ const PodcastsPage = () => {
                 
                 {/* Podcast Content */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors flex-1 line-clamp-3">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors flex-1 line-clamp-2">
                     {podcast.title}
                   </h3>
                   
