@@ -227,7 +227,7 @@ const ArticlesPage = () => {
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
               >
                 {/* Article Image */}
-                <div className="relative h-48 bg-gray-200 overflow-hidden">
+                <div className="relative h-72 bg-gray-200 overflow-hidden">
                   {article.photo ? (
                     <img 
                       src={article.photo} 
