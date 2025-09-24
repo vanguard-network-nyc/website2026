@@ -481,6 +481,7 @@ const ProgramsV2 = () => {
                           <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                       )}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
