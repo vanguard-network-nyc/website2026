@@ -167,7 +167,14 @@ const Header = () => {
         { name: 'In the Press', path: '/in-the-press' }
       ]
     },
-    { name: 'CONTACT', path: '/contact' },
+    { 
+      name: 'CONTACT', 
+      path: '/contact',
+      dropdown: [
+        { name: 'Contact Us', path: '/contact' },
+        { name: 'Our Team', path: '/team' }
+      ]
+    },
     { name: 'BOOK', path: '/book' }
   ];
 
