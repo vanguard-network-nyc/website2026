@@ -2920,7 +2920,8 @@ const TeamPage = () => (
                     alt={member.name}
                     className="w-full h-full object-cover"
                     style={{
-                      objectPosition: member.image.includes('aileen') ? 'calc(center - 20px) 30%' : 'center'
+                      objectPosition: member.image.includes('aileen') ? 'calc(center - 40px) 30%' : 
+                                    member.image.includes('andres') ? 'center calc(50% + 20px)' : 'center'
                     }}
                   />
                 </motion.div>
