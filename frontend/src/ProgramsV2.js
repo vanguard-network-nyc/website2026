@@ -370,43 +370,48 @@ const ProgramsV2 = () => {
                       </div>
                     </div>
                     
-                    <div className="p-8">
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#045184] transition-colors">
-                          {program.name}
-                        </h3>
-                        <span className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                          {program.level}
-                        </span>
+                    <div className="p-8 flex flex-col flex-grow">
+                      {/* Content Area - grows to fill available space */}
+                      <div className="flex-grow">
+                        <div className="flex justify-between items-start mb-4">
+                          <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#045184] transition-colors">
+                            {program.name}
+                          </h3>
+                          <span className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                            {program.level}
+                          </span>
+                        </div>
+                        
+                        <p className="text-slate-600 mb-6 leading-relaxed">
+                          {program.description}
+                        </p>
+                        
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                          <div className="flex items-center gap-2">
+                            <Clock size={16} className="text-[#00A8E1]" />
+                            <span className="text-sm text-slate-600">{program.duration}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Users size={16} className="text-[#00A8E1]" />
+                            <span className="text-sm text-slate-600">{program.participants}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-slate-800 mb-3">Key Features:</h4>
+                          <div className="grid grid-cols-1 gap-2">
+                            {program.features.map((feature, featureIndex) => (
+                              <div key={featureIndex} className="flex items-center gap-2">
+                                <CheckCircle2 size={16} className="text-green-500" />
+                                <span className="text-sm text-slate-600">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                       
-                      <p className="text-slate-600 mb-6 leading-relaxed">
-                        {program.description}
-                      </p>
-                      
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="flex items-center gap-2">
-                          <Clock size={16} className="text-[#00A8E1]" />
-                          <span className="text-sm text-slate-600">{program.duration}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Users size={16} className="text-[#00A8E1]" />
-                          <span className="text-sm text-slate-600">{program.participants}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-slate-800 mb-3">Key Features:</h4>
-                        <div className="grid grid-cols-1 gap-2">
-                          {program.features.map((feature, featureIndex) => (
-                            <div key={featureIndex} className="flex items-center gap-2">
-                              <CheckCircle2 size={16} className="text-green-500" />
-                              <span className="text-sm text-slate-600">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      
+                      {/* Button Area - always at bottom */}
+                      <div className="mt-auto pt-4">
                       {program.name === "GC EXCHANGE" ? (
                         <Link 
                           to="/gc-exchange"
