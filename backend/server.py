@@ -99,7 +99,7 @@ class AirtableEvent(BaseModel):
     audience_network: Optional[str] = None
 
 # Airtable configuration
-AIRTABLE_ACCESS_TOKEN = "patPmtrDlbr8OniTX.5a982a008e29d678bc0868d1139856f24f01f927004faedcfd6b756ca9bf62e1"
+AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN')
 
 # Events table configuration (original base)
 EVENTS_BASE_ID = "appm4C4MiNYVWwBaq"
