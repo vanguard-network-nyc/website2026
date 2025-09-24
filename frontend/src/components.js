@@ -3499,6 +3499,29 @@ const ContactPage = () => {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Our Team Link Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="text-center bg-white rounded-3xl p-8 shadow-xl border border-slate-200"
+        >
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">Want to Learn More About Our Team?</h3>
+          <p className="text-slate-600 mb-6 leading-relaxed max-w-2xl mx-auto">
+            Meet our complete leadership team, advisory board, and the experienced professionals who make The Vanguard Network possible.
+          </p>
+          
+          <motion.a
+            href="/team"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2"
+          >
+            <Users size={20} />
+            Meet Our Team
+          </motion.a>
+        </motion.div>
       </div>
     </motion.div>
   );
