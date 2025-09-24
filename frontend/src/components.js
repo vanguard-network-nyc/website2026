@@ -4952,7 +4952,7 @@ const NewContentLibrarySection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
                 >
                   <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
                     <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
