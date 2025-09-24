@@ -181,7 +181,7 @@ const VideosPage = () => {
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
               >
                 {/* Video Thumbnail */}
-                <div className="relative h-48 bg-gray-200 overflow-hidden">
+                <div className="relative h-72 bg-gray-200 overflow-hidden">
                   {video.headshot ? (
                     <img 
                       src={video.headshot} 
