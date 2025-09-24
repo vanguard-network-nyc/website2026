@@ -4737,6 +4737,116 @@ const NewIntegrationSection = () => {
 
 // Content & Thought Leadership Section
 const NewContentLibrarySection = () => {
+  const [featuredInsights, setFeaturedInsights] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchFeaturedInsights();
+  }, []);
+
+  const fetchFeaturedInsights = async () => {
+    try {
+      setLoading(true);
+      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      
+      // Fetch latest from each content type
+      const [articlesResponse, podcastsResponse, videosResponse] = await Promise.all([
+        fetch(`${backendUrl}/api/articles`),
+        fetch(`${backendUrl}/api/podcasts`),
+        fetch(`${backendUrl}/api/videos`)
+      ]);
+
+      const articles = await articlesResponse.json();
+      const podcasts = await podcastsResponse.json();
+      const videos = await videosResponse.json();
+
+      // Get the latest entry from each type
+      const latestArticle = articles && articles.length > 0 ? articles[0] : null;
+      const latestPodcast = podcasts && podcasts.length > 0 ? podcasts[0] : null;
+      const latestVideo = videos && videos.length > 0 ? videos[0] : null;
+
+      const insights = [];
+
+      // Add latest article
+      if (latestArticle) {
+        insights.push({
+          type: "Article",
+          category: latestArticle.category || "Leadership Development",
+          title: latestArticle.blog_title || latestArticle.title,
+          description: latestArticle.description || latestArticle.summary || "Exploring leadership insights and organizational transformation.",
+          author: latestArticle.author || "Vanguard Faculty",
+          duration: `${Math.ceil((latestArticle.blog_title?.length || 100) / 10)} min read`,
+          image: latestArticle.photo || "https://images.unsplash.com/photo-1543132220-7bc04a0e790a",
+          link: `/article/${latestArticle.id}`
+        });
+      }
+
+      // Add latest podcast
+      if (latestPodcast) {
+        insights.push({
+          type: "Podcast",
+          category: latestPodcast.category || "Board Dynamics",
+          title: latestPodcast.title,
+          description: latestPodcast.description || "A candid discussion with experienced leaders about governance and strategy.",
+          author: latestPodcast.author || "Member Contributor",
+          duration: latestPodcast.duration || "45 min listen",
+          image: latestPodcast.photo || "https://images.unsplash.com/photo-1579525109384-ddf54825044f",
+          link: `/podcast/${latestPodcast.id}`
+        });
+      }
+
+      // Add latest video
+      if (latestVideo) {
+        insights.push({
+          type: "Video",
+          category: latestVideo.category || "Personal Awareness",
+          title: latestVideo.title,
+          description: latestVideo.description || "Understanding how leadership principles drive better strategic decisions.",
+          author: latestVideo.author || "Affiliate Contributor",
+          duration: latestVideo.duration || "12 min watch",
+          image: latestVideo.photo || "https://images.unsplash.com/photo-1562935345-5080389daccd",
+          link: `/video/${latestVideo.id}`
+        });
+      }
+
+      setFeaturedInsights(insights);
+    } catch (error) {
+      console.error('Error fetching featured insights:', error);
+      // Fallback to hardcoded data if API fails
+      setFeaturedInsights([
+        {
+          type: "Article",
+          category: "Leadership Development",
+          title: "The Future of C-Suite Leadership in Uncertain Times",
+          description: "Exploring how today's senior executives can navigate complexity while driving organizational transformation and maintaining stakeholder trust.",
+          author: "Vanguard Faculty",
+          duration: "8 min read",
+          image: "https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
+        },
+        {
+          type: "Podcast",
+          category: "Board Dynamics",
+          title: "Board Dynamics: Building Effective Governance",
+          description: "A candid discussion with three experienced board chairs about creating high-performing governance structures.",
+          author: "Member Contributor",
+          duration: "45 min listen",
+          image: "https://images.unsplash.com/photo-1579525109384-ddf54825044f"
+        },
+        {
+          type: "Video",
+          category: "Personal Awareness",
+          title: "Personal Awareness in Executive Decision Making",
+          description: "Understanding how self-awareness drives better strategic decisions and enhances leadership effectiveness.",
+          author: "Affiliate Contributor",
+          duration: "12 min watch",
+          image: "https://images.unsplash.com/photo-1562935345-5080389daccd"
+        }
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const contentTypes = [
     {
       title: "Articles",
@@ -4746,45 +4856,15 @@ const NewContentLibrarySection = () => {
     },
     {
       title: "Podcasts",
-      description: "Conversations with industry leaders sharing real-world insights and strategic perspectives.",
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      description: "Conversations with industry leaders sharing insights on governance, strategy, and leadership development.",
+      image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618",
       icon: <MessageCircle size={32} />
     },
     {
-      title: "Video Content",
-      description: "Visual learning experiences featuring expert interviews and case study presentations.",
+      title: "Videos",
+      description: "Visual content featuring expert discussions and leadership development sessions from our community.",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
       icon: <Video size={32} />
-    }
-  ];
-
-  const featuredInsights = [
-    {
-      type: "Article",
-      category: "Leadership Development",
-      title: "The Future of C-Suite Leadership in Uncertain Times",
-      description: "Exploring how today's senior executives can navigate complexity while driving organizational transformation and maintaining stakeholder trust.",
-      author: "Vanguard Faculty",
-      duration: "8 min read",
-      image: "https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
-    },
-    {
-      type: "Podcast",
-      category: "Board Dynamics",
-      title: "Board Dynamics: Building Effective Governance",
-      description: "A candid discussion with three experienced board chairs about creating high-performing governance structures.",
-      author: "Member Contributor",
-      duration: "45 min listen",
-      image: "https://images.unsplash.com/photo-1579525109384-ddf54825044f"
-    },
-    {
-      type: "Video",
-      category: "Personal Awareness",
-      title: "Personal Awareness in Executive Decision Making",
-      description: "Understanding how self-awareness drives better strategic decisions and enhances leadership effectiveness.",
-      author: "Affiliate Contributor",
-      duration: "12 min watch",
-      image: "https://images.unsplash.com/photo-1562935345-5080389daccd"
     }
   ];
 
