@@ -513,60 +513,66 @@ const UpcomingEventsPage = () => {
                     </div>
                     
                     {/* Event Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors">
-                        {formatEventTitle(event.event_title)}
-                      </h3>
-                      
-                      {event.start_date && (
-                        <div className="flex items-center gap-2 text-slate-600 mb-4">
-                          <Clock size={16} className="text-[#00A8E1]" />
-                          <span className="text-sm">{formatEventDate(event.start_date)}</span>
-                        </div>
-                      )}
-                      
-                      {/* Session Leader, Audience, and Location Row */}
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
-                        <div className="flex flex-col gap-2">
-                          {event.session_leader_name ? (
-                            <div className="flex items-center gap-2 text-slate-600">
-                              <Users size={16} className="text-[#00A8E1]" />
-                              <span className="text-sm">Session Leader: {event.session_leader_name}</span>
-                            </div>
-                          ) : (
-                            <div className="flex items-center gap-2 text-slate-600">
-                              <Users size={16} className="text-[#00A8E1]" />
-                              <span className="text-sm">Leadership Community Event</span>
-                            </div>
-                          )}
-                          
-                          {event.audience_network && (
-                            <div className="text-sm text-slate-500 ml-6">
-                              <span className="font-medium">Audience:</span> {event.audience_network}
-                            </div>
-                          )}
-                        </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      {/* Content Area - grows to fill available space */}
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors">
+                          {formatEventTitle(event.event_title)}
+                        </h3>
                         
-                        {event.location && (
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                            event.location === 'Virtual' 
-                              ? 'bg-blue-100 text-blue-800 border border-blue-200' 
-                              : 'bg-green-100 text-green-800 border border-green-200'
-                          }`}>
-                            📍 {event.location}
-                          </span>
+                        {event.start_date && (
+                          <div className="flex items-center gap-2 text-slate-600 mb-4">
+                            <Clock size={16} className="text-[#00A8E1]" />
+                            <span className="text-sm">{formatEventDate(event.start_date)}</span>
+                          </div>
                         )}
+                        
+                        {/* Session Leader, Audience, and Location Row */}
+                        <div className="flex flex-wrap items-center gap-3 mb-6">
+                          <div className="flex flex-col gap-2">
+                            {event.session_leader_name ? (
+                              <div className="flex items-center gap-2 text-slate-600">
+                                <Users size={16} className="text-[#00A8E1]" />
+                                <span className="text-sm">Session Leader: {event.session_leader_name}</span>
+                              </div>
+                            ) : (
+                              <div className="flex items-center gap-2 text-slate-600">
+                                <Users size={16} className="text-[#00A8E1]" />
+                                <span className="text-sm">Leadership Community Event</span>
+                              </div>
+                            )}
+                            
+                            {event.audience_network && (
+                              <div className="text-sm text-slate-500 ml-6">
+                                <span className="font-medium">Audience:</span> {event.audience_network}
+                              </div>
+                            )}
+                          </div>
+                          
+                          {event.location && (
+                            <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                              event.location === 'Virtual' 
+                                ? 'bg-blue-100 text-blue-800 border border-blue-200' 
+                                : 'bg-green-100 text-green-800 border border-green-200'
+                            }`}>
+                              📍 {event.location}
+                            </span>
+                          )}
+                        </div>
                       </div>
                       
-                      <a
-                        href={event.registration_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                      >
-                        More Details
-                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                      </a>
+                      {/* Button Area - always at bottom */}
+                      <div className="mt-auto pt-4">
+                        <a
+                          href={event.registration_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
+                        >
+                          More Details
+                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
