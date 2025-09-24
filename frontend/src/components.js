@@ -2957,7 +2957,7 @@ const TeamPage = () => (
             {
               name: 'Zarah Bautista',
               role: 'Marketing Coordinator',
-              image: '/zarah-bautista.jpg',
+              image: 'https://static.wixstatic.com/media/e6a994_59d5f5f4faa648b9a522081663fa8f77~mv2.png/v1/crop/x_70,y_0,w_940,h_940/fill/w_322,h_322,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Zarah%20Bautista.png',
               bio: 'Zarah leads the company\'s marketing, overseeing social media and content strategy to ensure consistent brand messaging, community engagement, and digital growth through targeted campaigns. With 10+ years in digital marketing as both a professional and freelancer, she brings expertise in advertising, content creation, and graphic design. She holds a BS in Information Technology from Laguna State Polytechnic University in the Philippines.',
               focus: 'Digital Marketing & Brand Strategy'
             },
