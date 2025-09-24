@@ -232,12 +232,14 @@ const VideosPage = () => {
 
                   {/* Button Area - always at bottom */}
                   <div className="mt-auto pt-4">
-                    to={`/video/${video.id}`}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                  >
-                    <Play size={16} />
-                    Click to watch
-                  </Link>
+                    <Link
+                      to={`/video/${video.id}`}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    >
+                      <Play size={16} />
+                      Click to watch
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))
