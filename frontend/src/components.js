@@ -3498,8 +3498,12 @@ const ContactPage = () => {
               transition={{ delay: 1.1, duration: 0.6 }}
               className="text-center"
             >
-              <div className="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold" style={{ backgroundColor: '#00A8E1' }}>
-                TP
+              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
+                <img 
+                  src="/tony-powe-team.jpg" 
+                  alt="Tony Powe" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Tony Powe</h4>
               <p className="text-slate-600 font-medium">Co-Founder and Chief Operating Officer</p>
