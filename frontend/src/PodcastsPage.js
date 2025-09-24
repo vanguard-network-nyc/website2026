@@ -251,7 +251,7 @@ const PodcastsPage = () => {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200 h-[500px] flex flex-col"
               >
                 {/* Podcast Thumbnail */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-72 overflow-hidden">
                   {podcast.thumbnail ? (
                     <img
                       src={podcast.thumbnail}
