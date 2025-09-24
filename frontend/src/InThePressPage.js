@@ -169,31 +169,37 @@ const InThePressPage = () => {
                 </div>
 
                 {/* Article Content */}
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 leading-tight">
-                    {article.article_title}
-                  </h3>
-                  
-                  {article.author_names && (
-                    <div className="flex items-center gap-2 text-sm text-slate-600 mb-3">
-                      <User size={16} />
-                      <span className="font-medium">By {article.author_names}</span>
-                    </div>
-                  )}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Content Area - grows to fill available space */}
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 leading-tight">
+                      {article.article_title}
+                    </h3>
+                    
+                    {article.author_names && (
+                      <div className="flex items-center gap-2 text-sm text-slate-600 mb-3">
+                        <User size={16} />
+                        <span className="font-medium">By {article.author_names}</span>
+                      </div>
+                    )}
 
-                  {article.short_description && (
-                    <p className="text-sm text-slate-600 mb-4 line-clamp-3 leading-relaxed">
-                      {article.short_description}
-                    </p>
-                  )}
+                    {article.short_description && (
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-3 leading-relaxed">
+                        {article.short_description}
+                      </p>
+                    )}
+                  </div>
 
-                  <Link
-                    to={`/in-the-press/${article.id}`}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                  >
-                    <FileText size={16} />
-                    Read More
-                  </Link>
+                  {/* Button Area - always at bottom */}
+                  <div className="mt-auto pt-4">
+                    <Link
+                      to={`/in-the-press/${article.id}`}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    >
+                      <FileText size={16} />
+                      Read More
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))
