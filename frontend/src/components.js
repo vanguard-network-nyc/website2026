@@ -4967,29 +4967,40 @@ const NewContentLibrarySection = () => {
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
-                      {insight.title}
-                    </h4>
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">
-                      {insight.description}
-                    </p>
-                    <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
-                      <span>{insight.author}</span>
-                      <span>{insight.duration}</span>
+                  <div className="p-6 flex flex-col flex-grow">
+                    {/* Content Area - grows to fill available space */}
+                    <div className="flex-grow">
+                      <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
+                        {insight.title}
+                      </h4>
+                      <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                        {insight.description}
+                      </p>
+                      <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
+                        <span>{insight.author}</span>
+                        <span>{insight.duration}</span>
+                      </div>
                     </div>
-                    {insight.link ? (
-                      <Link 
-                        to={insight.link}
-                        className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
-                      >
-                        Read More
-                      </Link>
-                    ) : (
-                      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Read More
-                      </button>
-                    )}
+                    
+                    {/* Button Area - always at bottom */}
+                    <div className="mt-auto pt-4">
+                      {insight.link ? (
+                        <Link 
+                          to={insight.link}
+                          className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                        >
+                          {insight.type === 'Article' ? 'Read more' : 
+                           insight.type === 'Podcast' ? 'Listen podcast' : 
+                           insight.type === 'Video' ? 'Watch video' : 'Read More'}
+                        </Link>
+                      ) : (
+                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                          {insight.type === 'Article' ? 'Read more' : 
+                           insight.type === 'Podcast' ? 'Listen podcast' : 
+                           insight.type === 'Video' ? 'Watch video' : 'Read More'}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
