@@ -49,8 +49,8 @@
 ##
 test_plan:
   current_focus:
-    - "Reverse video display order in videos section"
-    - "Remove play button overlay from podcast detail page cover"
+    - "Podcast Page Background Match with Articles Page"
+    - "Mobile Banner Responsive Fix"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
