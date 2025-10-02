@@ -841,7 +841,7 @@ async def get_similar_videos(video_id: str):
 
 @api_router.get("/articles", response_model=List[AirtableArticle])
 async def get_articles():
-    """Get articles from Airtable (sorted by Published to Web date descending)"""
+    """Get articles from Airtable (sorted according to AirTable view configuration)"""
     try:
         articles = await fetch_airtable_articles()
         logger.info(f"Successfully fetched {len(articles)} articles from Airtable")
