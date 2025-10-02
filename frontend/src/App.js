@@ -84,6 +84,8 @@ function App() {
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
+            <Route path="/newsroom" element={<NewsroomPage />} />
+            <Route path="/newsroom/:slug" element={<NewsroomArticlePage />} />
           </Routes>
         </AnimatePresence>
         <Footer />
