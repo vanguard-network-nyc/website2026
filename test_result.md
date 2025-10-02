@@ -132,15 +132,15 @@ frontend:
 
   - task: "Remove play button overlay from podcast detail page cover"
     implemented: true
-    working: true
-    file: "/app/frontend/src/components.js"
+    working: "NA"
+    file: "/app/frontend/src/PodcastDetailPage.js"
     stuck_count: 0
     priority: "high"
-    needs_retesting: false
+    needs_retesting: true
     status_history:
-      - working: true
-        agent: "testing"
-        comment: "COMPREHENSIVE CONTACT FORM TESTING COMPLETED: ✅ Zapier webhook integration working perfectly! Successfully tested POST request to https://hooks.zapier.com/hooks/catch/18240047/umfuu73/ with all required data fields (fullName, email, company, interestArea, message, timestamp, source). ✅ Webhook responds with HTTP 200 and proper JSON response including hook ID and success status. ✅ CORS configuration verified - webhook allows cross-origin requests with 'access-control-allow-origin: *' header. ✅ All required data fields properly structured and sent to webhook. ✅ Error handling tested - webhook accepts various data formats gracefully. ✅ Network connectivity confirmed - no connection issues or timeouts. ✅ Contact form accessible at /contact route (HTTP 200). ✅ Frontend form implementation verified in components.js with proper form submission logic, success/error message display, and form reset functionality after successful submission. Backend test results: 36/38 tests passed (94.7% success rate). Contact form webhook integration is production-ready and fully functional."
+      - working: "NA"
+        agent: "main"
+        comment: "Removed play button overlay from podcast detail page cover image. Deleted lines 169-178 containing the play button overlay div. Cover image now displays clean without overlay button."
 
   - task: "FastAPI backend service health"
     implemented: true
