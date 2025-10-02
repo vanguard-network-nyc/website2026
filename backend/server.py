@@ -62,7 +62,8 @@ class AirtableArticle(BaseModel):
     description_teaser: Optional[str] = None  # short description
     photo: Optional[str] = None  # article image
     featured_speaker_linkedin: Optional[str] = None  # featured speaker
-    body_qa: Optional[str] = None  # article text content
+    body_qa: Optional[str] = None  # legacy Q&A content
+    body_of_blog: Optional[str] = None  # main blog article content
     tags: Optional[List[str]] = None
     published_to_web: Optional[str] = None  # date field for sorting
     type_content: Optional[str] = None  # type of detailed content
