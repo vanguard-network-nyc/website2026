@@ -45,6 +45,7 @@ const {
   NewStatsSection,
   NewWhatWeDoSection,
   NewAboutSection,
+  SubstackPostsSection,
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection
