@@ -165,17 +165,6 @@ const PodcastDetailPage = () => {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div 
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center cursor-pointer shadow-2xl"
-                  >
-                    <Play size={32} className="text-[#045184] ml-1" />
-                  </motion.div>
-                </div>
               </div>
               
               {/* Info Section */}
