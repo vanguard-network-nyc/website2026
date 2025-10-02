@@ -372,9 +372,7 @@ async def fetch_airtable_articles():
         url = f"https://api.airtable.com/v0/{ARTICLES_BASE_ID}/{ARTICLES_TABLE_ID}"
         params = {
             "view": ARTICLES_VIEW_ID,
-            "maxRecords": 100,
-            "sort[0][field]": "Published to Web",
-            "sort[0][direction]": "desc"  # Descending order by date
+            "maxRecords": 100
         }
         
         response = requests.get(url, headers=headers, params=params)
