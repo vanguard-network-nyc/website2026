@@ -678,6 +678,21 @@ frontend:
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: Programs section custom colors working perfectly. Background color #045184 (rgb(4, 81, 132)) displays correctly. 'New Leaders Program' text shows in brand color #00A8E1 with excellent contrast. Professional appearance maintained with good text readability. Ready for deployment."
   
+  - task: "Article Content Field Change from Body of Q&A to Body of Blog"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py, /app/frontend/src/ArticleDetailPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented article content field change: 1) Added body_of_blog field to AirtableArticle model in backend server.py, 2) Updated fetch_airtable_articles() to retrieve both body_qa and body_of_blog fields from Airtable, 3) Modified ArticleDetailPage.js to display body_of_blog content instead of body_qa content. Changes are in /app/backend/server.py (lines 66, 394, 427) and /app/frontend/src/ArticleDetailPage.js (line 164, 167)."
+      - working: true
+        agent: "testing"
+        comment: "COMPREHENSIVE TESTING COMPLETED: ✅ BACKEND API VERIFIED: Successfully confirmed that API returns both body_qa and body_of_blog fields for all articles (tested 5 articles, all have both fields populated). ✅ FRONTEND IMPLEMENTATION WORKING: Article detail pages now correctly display body_of_blog content instead of body_qa content (verified on 3 articles: rec8hGBDE0HV63ILY, recsBPlsNLNqgWp5k, recoDFHOTrkfDaktX). ✅ CONTENT STYLE CONFIRMED: body_of_blog content appears in blog article format rather than Q&A interview format - content flows as narrative articles without Q&A patterns. ✅ PROPER FORMATTING: Content displays with correct whitespace-pre-wrap formatting and appropriate prose styling. ✅ CONTENT LENGTH: Articles show complete content without truncation (tested articles ranged from 3,200-4,400 characters). ✅ FIELD MAPPING VERIFIED: Direct comparison confirmed page content matches body_of_blog field from API, not body_qa field. All requirements from review request successfully implemented and verified."
+
   - task: "Replace advisory image"
     implemented: true
     working: true
