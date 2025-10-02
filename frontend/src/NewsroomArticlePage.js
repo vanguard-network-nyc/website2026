@@ -18,6 +18,35 @@ const NewsroomArticlePage = () => {
   }, []);
 
   const articles = {
+    "ken-banta-moderates-nantucket-project-discussion-on-ai-and-healthcare": {
+      title: "Ken Banta, CEO and Founder of The Vanguard Network, Moderates Nantucket Project Discussion on AI and Healthcare",
+      date: "September 28, 2024",
+      readTime: "3 min read",
+      heroImage: "https://static.wixstatic.com/media/e6a994_4ce4b28ac00d4f5e9fd72e1a5f727d4a~mv2.png/v1/fill/w_740,h_442,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e6a994_4ce4b28ac00d4f5e9fd72e1a5f727d4a~mv2.png",
+      content: [
+        "The Vanguard Network announced today that its CEO and founder, Ken Banta, facilitated a dynamic discussion at The Nantucket Project event in New York City. The evening brought together healthcare innovators, executives, and thought leaders to explore the benefits and potential risks of artificial intelligence and new technologies in driving better access to healthcare.",
+        "Held at Soho House in Manhattan, the program featured a distinguished panel including Chris Coburn (Chief Innovation Officer, Mass General Brigham), Dr. Jay Parkinson (physician, entrepreneur, and \"Doctor of the Future\" according to Fast Company), Dr. Bon Ku (Program Manager for the ARPA-HA PARADIGM initiative to reinvent healthcare delivery for rural America), Alex Gasner (Executive Vice President, Roivant for Health and health technologies), and Tim Lawless (Health Lead & SVP, Publicis Sapient).",
+        "The discussion was preceded by an exclusive screening of Academy Award-winning director Ben Proudfoot's short film 'Doc Albany'. The evening concluded with cocktails and hors d'oeuvres, offering participants the opportunity to continue the conversation in a collaborative setting.",
+        "\"The intersection of AI and healthcare represents one of the most important frontiers for leadership today,\" said Banta. \"This gathering was about bringing diverse perspectives together to understand not just the promise, but also the responsibility of these technologies.\"",
+        "The New York City event was part of The Nantucket Project's ongoing series of conversations designed to spark dialogue on issues that matter most to society, culture, and business."
+      ],
+      images: [
+        {
+          src: "https://static.wixstatic.com/media/e6a994_b33b414425f3453684365c283a661d22~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_b33b414425f3453684365c283a661d22~mv2.png",
+          caption: "Ken Banta moderating the AI and Healthcare discussion at The Nantucket Project"
+        }
+      ],
+      links: [
+        {
+          text: "Learn More About The Nantucket Project",
+          url: "https://nantucketproject.com/"
+        },
+        {
+          text: "About The Vanguard Network",
+          url: "/about"
+        }
+      ]
+    },
     "vanguard-network-launches-next-gen-gc-program-in-washington-dc": {
       title: "Vanguard Network Launches Next Gen GC Program in Washington, DC",
       date: "September 30, 2024",
