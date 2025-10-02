@@ -48,8 +48,7 @@
 ##   run_ui: false
 ##
 test_plan:
-  current_focus:
-    - "Substack RSS Feed Integration"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
