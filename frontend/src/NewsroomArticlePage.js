@@ -71,7 +71,7 @@ const NewsroomArticlePage = () => {
       title: "The Vanguard Network Featured on Pharm Exec Podcast",
       date: "September 20, 2024",
       readTime: "2 min read",
-      heroImage: "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxwaGFybWFjZXV0aWNhbCUyMGluZHVzdHJ5fGVufDB8fHx8MTc1ODExNzgzMXww&ixlib=rb-4.1.0&q=85",
+      heroImage: "https://static.wixstatic.com/media/e6a994_29bbd547e1624bd8b746c48306d3c96e~mv2.webp/v1/fill/w_271,h_271,al_c,q_90,enc_avif,quality_auto/e6a994_29bbd547e1624bd8b746c48306d3c96e~mv2.webp",
       content: [
         "Ken Banta, founder and CEO of The Vanguard Network, was featured on the Pharm Exec podcast to discuss leadership development and organizational transformation specifically within the pharmaceutical industry.",
         "The conversation explored how pharmaceutical leaders can navigate the unique challenges of their industry, including regulatory complexity, scientific innovation pressures, and the evolving healthcare landscape.",
@@ -82,7 +82,7 @@ const NewsroomArticlePage = () => {
       title: "The Vanguard Network Featured on Skot Waldron Podcast",
       date: "September 15, 2024",
       readTime: "2 min read",
-      heroImage: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxwb2RjYXN0fGVufDB8fHx8MTc1ODExNzgzMXww&ixlib=rb-4.1.0&q=85",
+      heroImage: "https://static.wixstatic.com/media/e6a994_26e53e3a3fbe48b79aa9d011c1e3be03~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_26e53e3a3fbe48b79aa9d011c1e3be03~mv2.png",
       content: [
         "Executive leadership insights were shared by The Vanguard Network on Skot Waldron's leadership development podcast series, focusing on the critical elements of effective C-suite leadership.",
         "The discussion highlighted how traditional leadership development approaches often fall short for senior executives, and why peer-to-peer learning in confidential settings provides more meaningful and actionable insights.",
@@ -93,7 +93,7 @@ const NewsroomArticlePage = () => {
       title: "The Vanguard Network Featured on The Daily Helping Podcast",
       date: "September 10, 2024",
       readTime: "2 min read",
-      heroImage: "https://images.unsplash.com/photo-1590845947691-53ce5ad659b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxwb2RjYXN0fGVufDB8fHx8MTc1ODExNzgzMXww&ixlib=rb-4.1.0&q=85",
+      heroImage: "https://static.wixstatic.com/media/e6a994_1e187b6933204c23a867e0968a191f36~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_1e187b6933204c23a867e0968a191f36~mv2.png",
       content: [
         "Ken Banta shared insights on leadership excellence and organizational transformation on The Daily Helping podcast with host Dr. Sherry Walling, focusing on how leaders can create meaningful impact in their organizations.",
         "The conversation explored the psychological and practical aspects of leadership transformation, discussing how executives can develop the self-awareness and strategic thinking necessary for effective leadership.",
