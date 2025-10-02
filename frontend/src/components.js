@@ -5240,6 +5240,7 @@ const Components = {
   NewStatsSection,
   NewWhatWeDoSection,
   NewAboutSection,
+  SubstackPostsSection,
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection,
