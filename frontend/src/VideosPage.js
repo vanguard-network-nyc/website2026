@@ -35,8 +35,10 @@ const VideosPage = () => {
       }
       
       const videoData = await response.json();
-      setVideos(videoData);
-      setFilteredVideos(videoData);
+      // Reverse the order to show newest videos first
+      const reversedVideos = [...videoData].reverse();
+      setVideos(reversedVideos);
+      setFilteredVideos(reversedVideos);
     } catch (err) {
       console.error('Error fetching videos:', err);
       setError(err.message);
