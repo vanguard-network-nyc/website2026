@@ -424,6 +424,7 @@ async def fetch_airtable_articles():
                 photo=photo_url,
                 featured_speaker_linkedin=featured_speaker_linkedin,
                 body_qa=body_qa,
+                body_of_blog=body_of_blog,
                 tags=tags,
                 published_to_web=published_to_web,
                 type_content=type_content
