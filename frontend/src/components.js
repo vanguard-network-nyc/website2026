@@ -164,9 +164,11 @@ const Header = () => {
         { name: 'Articles', path: '/articles' },
         { name: 'Podcasts', path: '/podcasts' },
         { name: 'Videos', path: '/videos' },
-        { name: 'In the Press', path: '/in-the-press' }
+        { name: 'In the Press', path: '/in-the-press' },
+        { name: 'Book', path: '/book' }
       ]
     },
+    { name: 'NEWSROOM', path: '/newsroom' },
     { 
       name: 'CONTACT', 
       path: '/contact',
@@ -174,8 +176,7 @@ const Header = () => {
         { name: 'Contact Us', path: '/contact' },
         { name: 'Our Team', path: '/team' }
       ]
-    },
-    { name: 'BOOK', path: '/book' }
+    }
   ];
 
   return (
