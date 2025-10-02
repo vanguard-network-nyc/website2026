@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Test the contact form functionality with the Zapier webhook integration. The contact form should send a POST request to https://hooks.zapier.com/hooks/catch/18240047/umfuu73/ with the following data: fullName, email, company, interestArea, message, timestamp, source. Test if the webhook integration is working properly and check for any CORS issues or network problems. The form is located at /contact route."
+user_problem_statement: "1. In the videos section - reverse the item order display to show newest videos first. 2. In the podcasts section - in the podcast details view - remove the play button overlay from the cover picture."
 
 backend:
   - task: "Contact Form Zapier Webhook Integration"
