@@ -55,9 +55,9 @@ test_plan:
   test_all: false
   test_priority: "high_first"
 ##
-## agent_communication:
-##     -agent: "main"  # or "testing" or "user"
-##     -message: "Communication message between agents"
+agent_communication:
+  - agent: "main"
+    message: "Implemented both UI modifications as requested: 1) Reversed video display order in VideosPage.js to show newest first, 2) Removed play button overlay from podcast detail page cover image in PodcastDetailPage.js. Both changes are frontend-only and ready for testing."
 
 # Protocol Guidelines for Main agent
 #
