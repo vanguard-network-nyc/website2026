@@ -23,6 +23,8 @@ import LifeSciencesCEOPage from './LifeSciencesCEOPage';
 import LawAssociatesPage from './LawAssociatesPage';
 import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
+import NewsroomPage from './NewsroomPage';
+import NewsroomArticlePage from './NewsroomArticlePage';
 
 const {
   Header,
