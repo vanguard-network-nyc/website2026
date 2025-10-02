@@ -31,7 +31,9 @@ import {
   TrendingUp,
   CheckCircle2,
   Linkedin,
-  Globe
+  Globe,
+  Calendar,
+  ExternalLink
 } from 'lucide-react';
 
 // GCL Banner Component
