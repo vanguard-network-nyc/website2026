@@ -391,6 +391,7 @@ async def fetch_airtable_articles():
             photo_raw = fields.get("Photo", [])
             featured_speaker_linkedin_raw = fields.get("Featured Speaker for Linked In", "")
             body_qa = fields.get("Body of Q&A", "")
+            body_of_blog = fields.get("Body of Blog", "")
             tags_raw = fields.get("tags", [])
             published_to_web = fields.get("Published to Web", "")
             type_content = fields.get("Type of detailed content", "")
