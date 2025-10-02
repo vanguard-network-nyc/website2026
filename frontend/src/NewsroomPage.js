@@ -17,6 +17,15 @@ const NewsroomPage = () => {
 
   const newsArticles = [
     {
+      id: 7,
+      title: "Ken Banta, CEO and Founder of The Vanguard Network, Moderates Nantucket Project Discussion on AI and Healthcare",
+      description: "The Vanguard Network announced today that its CEO and founder, Ken Banta, facilitated a dynamic discussion at The Nantucket Project event in New York City.",
+      image: "https://static.wixstatic.com/media/e6a994_b33b414425f3453684365c283a661d22~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_b33b414425f3453684365c283a661d22~mv2.png",
+      date: "September 28, 2024",
+      readTime: "2 min read",
+      link: "/newsroom/ken-banta-moderates-nantucket-project-discussion-on-ai-and-healthcare"
+    },
+    {
       id: 1,
       title: "Vanguard Network Launches Next Gen GC Program in Washington, DC",
       description: "On September 30, 2025, The Vanguard Network launched the inaugural module of its Next Gen GC Program in Washington, DC.",
