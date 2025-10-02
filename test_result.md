@@ -596,6 +596,18 @@ frontend:
       - working: true
         agent: "testing"
         comment: "DEPLOYMENT VERIFIED: Custom logo implementation working perfectly. Logo displays correctly across all pages (166x64px), responsive design confirmed, hover animations functional. Logo loads successfully from /logo.png with proper error handling. Ready for deployment."
+
+  - task: "Substack RSS Feed Integration"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented new Substack RSS feed integration: 1) Created SubstackPostsSection component that fetches latest 2 posts from Ken Banta's Substack using rss2json.com API, 2) Added to homepage above NewSpecializedGroupsSection, 3) Includes proper error handling, loading states, HTML tag stripping for excerpts, 4) Each post shows title, date, excerpt, 'Read Full Article' link (opens in new tab), 5) Added 'Visit Ken's Substack' button. Component uses consistent styling with website theme and responsive design. Ready for comprehensive testing."
   
   - task: "Replace building background image with video"
     implemented: true
