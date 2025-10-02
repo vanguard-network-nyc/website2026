@@ -107,6 +107,7 @@ function HomePage() {
       <NewStatsSection />
       <NewWhatWeDoSection />
       <NewAboutSection />
+      <SubstackPostsSection />
       <NewSpecializedGroupsSection />
       <NewIntegrationSection />
       <NewContentLibrarySection />
