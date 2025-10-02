@@ -105,7 +105,32 @@
 user_problem_statement: "1. In the videos section - reverse the item order display to show newest videos first. 2. In the podcasts section - in the podcast details view - remove the play button overlay from the cover picture."
 
 backend:
-  - task: "Contact Form Zapier Webhook Integration"
+  - task: "No backend changes required for these UI modifications"
+    implemented: false
+    working: "NA"
+    file: "N/A"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "These are frontend-only changes, no backend modifications needed"
+
+frontend:
+  - task: "Reverse video display order in videos section"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/VideosPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Modified fetchVideos function to reverse array order - newest videos will now display first. Added .reverse() to videoData before setting state."
+
+  - task: "Remove play button overlay from podcast detail page cover"
     implemented: true
     working: true
     file: "/app/frontend/src/components.js"
