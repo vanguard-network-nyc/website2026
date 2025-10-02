@@ -161,10 +161,10 @@ const ArticleDetailPage = () => {
             )}
 
             {/* Article Body */}
-            {article.body_qa && (
+            {article.body_of_blog && (
               <div className="prose prose-lg max-w-none mb-8">
                 <div className="text-slate-700 leading-relaxed whitespace-pre-wrap">
-                  {article.body_qa}
+                  {article.body_of_blog}
                 </div>
               </div>
             )}
