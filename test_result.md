@@ -49,8 +49,7 @@
 ##
 test_plan:
   current_focus:
-    - "Podcast Page Background Match with Articles Page"
-    - "Mobile Banner Responsive Fix"
+    - "Substack RSS Feed Integration"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
