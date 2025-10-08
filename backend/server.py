@@ -376,6 +376,88 @@ async def fetch_airtable_in_the_press():
         logging.error(f"Error fetching Airtable In the Press articles: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error fetching In the Press articles: {str(e)}")
 
+async def fetch_airtable_newsroom():
+    """Fetch newsroom articles from Airtable"""
+    try:
+        airtable_token = os.environ.get('AIRTABLE_ACCESS_TOKEN')
+        if not airtable_token:
+            raise ValueError("AIRTABLE_ACCESS_TOKEN environment variable not set")
+        
+        headers = {
+            'Authorization': f'Bearer {airtable_token}',
+            'Content-Type': 'application/json'
+        }
+        
+        # First try to fetch from the specific newsroom view
+        url = f"https://api.airtable.com/v0/{NEWSROOM_BASE_ID}/{NEWSROOM_TABLE_ID}"
+        params = {
+            'view': NEWSROOM_VIEW_ID,
+            'maxRecords': 100,
+            'sort[0][field]': 'Published to Web',
+            'sort[0][direction]': 'desc'
+        }
+        
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url, headers=headers, params=params)
+        
+        if response.status_code != 200:
+            logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
+            # Fall back to fetching all records and filtering
+            params = {
+                'maxRecords': 100,
+                'sort[0][field]': 'Published to Web', 
+                'sort[0][direction]': 'desc'
+            }
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url, headers=headers, params=params)
+        
+        response.raise_for_status()
+        data = response.json()
+        newsroom_articles = []
+        
+        for record in data.get("records", []):
+            fields = record.get("fields", {})
+            
+            # Extract fields
+            blog_title = fields.get("Blog Title", "")
+            description_teaser = fields.get("Description (teaser)", "")
+            photo_raw = fields.get("Photo", [])
+            body_of_blog = fields.get("Body of Blog", "")
+            published_to_web = fields.get("Published to Web", "")
+            featured_speakers_raw = fields.get("Featured Speakers", [])
+            
+            # Handle featured speakers - can be a list or string
+            featured_speakers = ""
+            if featured_speakers_raw:
+                if isinstance(featured_speakers_raw, list):
+                    featured_speakers = ", ".join(featured_speakers_raw)
+                else:
+                    featured_speakers = str(featured_speakers_raw)
+            
+            # Handle photo - get first one if multiple
+            photo_url = None
+            if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                photo_url = photo_raw[0].get("url", "")
+            
+            # Only include articles that have substantial content
+            if blog_title and description_teaser:
+                article = AirtableNewsroom(
+                    id=record.get("id", ""),
+                    blog_title=blog_title,
+                    description_teaser=description_teaser,
+                    photo=photo_url,
+                    body_of_blog=body_of_blog,
+                    published_to_web=published_to_web,
+                    featured_speakers=featured_speakers
+                )
+                newsroom_articles.append(article)
+        
+        return newsroom_articles
+        
+    except Exception as e:
+        logging.error(f"Error fetching Airtable newsroom articles: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error fetching newsroom articles: {str(e)}")
+
 async def fetch_airtable_articles():
     """Fetch articles from Airtable"""
     try:
