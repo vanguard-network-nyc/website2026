@@ -240,6 +240,72 @@ const NewsroomPage = () => {
           </p>
         </motion.div>
 
+        {/* Search and Filters */}
+        {newsArticles.length > 0 && (
+          <motion.div 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-12 max-w-6xl mx-auto"
+          >
+            <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
+              {/* Search Bar */}
+              <div className="flex-1 max-w-md relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search newsroom..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+
+              {/* Type Filter */}
+              <div className="relative">
+                <select
+                  value={selectedType}
+                  onChange={(e) => setSelectedType(e.target.value)}
+                  className="appearance-none bg-white border border-slate-200 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-[140px]"
+                >
+                  {getUniqueTypes().map(type => (
+                    <option key={type} value={type}>
+                      {type === 'All' ? 'All Types' : type}
+                    </option>
+                  ))}
+                </select>
+                <Filter className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+              </div>
+
+              {/* Speaker Filter */}
+              <div className="relative">
+                <select
+                  value={selectedSpeaker}
+                  onChange={(e) => setSelectedSpeaker(e.target.value)}
+                  className="appearance-none bg-white border border-slate-200 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-[140px]"
+                >
+                  {getUniqueSpeakers().map(speaker => (
+                    <option key={speaker} value={speaker}>
+                      {speaker === 'All' ? 'All Speakers' : speaker}
+                    </option>
+                  ))}
+                </select>
+                <Filter className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
+              </div>
+            </div>
+
+            {/* Results Count */}
+            <div className="text-center mt-4">
+              <p className="text-slate-600">
+                Showing {filteredArticles.length} of {newsArticles.length} article{newsArticles.length !== 1 ? 's' : ''}
+                {searchTerm && ` for "${searchTerm}"`}
+                {selectedType !== 'All' && ` in ${selectedType}`}
+                {selectedSpeaker !== 'All' && ` by ${selectedSpeaker}`}
+              </p>
+            </div>
+          </motion.div>
+        )}
+
         {/* News Articles Grid */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
