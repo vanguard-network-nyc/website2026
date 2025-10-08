@@ -264,7 +264,7 @@ const NewsroomPage = () => {
                 />
                 <div className="absolute top-4 left-4">
                   <div className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    NEWS
+                    {article.type_of_news || "NEWS"}
                   </div>
                 </div>
               </div>
