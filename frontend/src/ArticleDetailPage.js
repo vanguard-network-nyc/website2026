@@ -19,13 +19,26 @@ const ArticleDetailPage = () => {
     try {
       setLoading(true);
       const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${backendUrl}/api/article/${id}`);
+      
+      // First try to fetch from regular articles API
+      let response = await fetch(`${backendUrl}/api/article/${id}`);
       
       if (!response.ok) {
-        throw new Error(`Failed to fetch article: ${response.status} ${response.statusText}`);
+        // If not found in articles, try newsroom API
+        response = await fetch(`${backendUrl}/api/newsroom/${id}`);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch article: ${response.status} ${response.statusText}`);
+        }
       }
       
       const articleData = await response.json();
+      
+      // If the article came from newsroom, we need to transform the field names to match what ArticleDetailPage expects
+      if (articleData.featured_speakers && !articleData.featured_speaker_linkedin) {
+        articleData.featured_speaker_linkedin = articleData.featured_speakers;
+      }
+      
       setArticle(articleData);
     } catch (err) {
       console.error('Error fetching article:', err);
