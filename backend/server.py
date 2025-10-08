@@ -491,7 +491,15 @@ async def fetch_airtable_articles():
             body_of_blog = fields.get("Body of Blog", "")
             tags_raw = fields.get("tags", [])
             published_to_web = fields.get("Published to Web", "")
-            type_content = fields.get("Type of detailed content", "")
+            type_content_raw = fields.get("Type of detailed content", "")
+            
+            # Handle type_content - can be a list or string
+            type_content = ""
+            if type_content_raw:
+                if isinstance(type_content_raw, list):
+                    type_content = ", ".join(type_content_raw)
+                else:
+                    type_content = str(type_content_raw)
             
             # Handle featured speaker - can be a list or string
             featured_speaker_linkedin = ""
