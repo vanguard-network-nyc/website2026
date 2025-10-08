@@ -11,6 +11,7 @@ import uuid
 from datetime import datetime
 import requests
 import json
+import httpx
 
 
 ROOT_DIR = Path(__file__).parent
