@@ -134,6 +134,20 @@ const NewsroomPage = () => {
     }
   ];
 
+  // Use fetched articles if available, otherwise fall back to hardcoded articles
+  const displayArticles = newsArticles.length > 0 ? newsArticles : hardcodedArticles;
+
+  if (loading) {
+    return (
+      <div className="pt-40 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-xl text-slate-600">Loading newsroom...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
