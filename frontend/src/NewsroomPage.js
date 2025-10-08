@@ -193,7 +193,7 @@ const NewsroomPage = () => {
   ];
 
   // Use fetched articles if available, otherwise fall back to hardcoded articles
-  const displayArticles = newsArticles.length > 0 ? newsArticles : hardcodedArticles;
+  const displayArticles = newsArticles.length > 0 ? filteredArticles : hardcodedArticles;
 
   if (loading) {
     return (
