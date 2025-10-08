@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
@@ -10,12 +10,65 @@ import {
 } from 'lucide-react';
 
 const NewsroomPage = () => {
+  const [newsArticles, setNewsArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const newsArticles = [
+  useEffect(() => {
+    fetchNewsroomArticles();
+  }, []);
+
+  const fetchNewsroomArticles = async () => {
+    try {
+      setLoading(true);
+      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/newsroom`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch newsroom articles: ${response.status} ${response.statusText}`);
+      }
+      
+      const articleData = await response.json();
+      
+      // Transform the data to match the current card structure
+      const transformedArticles = articleData.map((article, index) => ({
+        id: article.id,
+        title: article.blog_title,
+        description: article.description_teaser || "Read more about this newsroom update...",
+        image: article.photo || `https://via.placeholder.com/271x271/3B82F6/FFFFFF?text=News+${index + 1}`,
+        date: formatDate(article.published_to_web),
+        readTime: "2 min read", // Default read time since it's not in API
+        link: `/newsroom/${article.id}` // Use dynamic ID instead of slug
+      }));
+      
+      setNewsArticles(transformedArticles);
+    } catch (err) {
+      console.error('Error fetching newsroom articles:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Recent';
+    try {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (error) {
+      return 'Recent';
+    }
+  };
+
+  const hardcodedArticles = [
     {
       id: 7,
       title: "Ken Banta, CEO and Founder of The Vanguard Network, Moderates Nantucket Project Discussion on AI and Healthcare",
