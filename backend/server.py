@@ -428,6 +428,7 @@ async def fetch_airtable_newsroom():
             body_of_blog = fields.get("Body of Blog", "")
             published_to_web = fields.get("Published to Web", "")
             featured_speakers_raw = fields.get("Featured Speakers", [])
+            type_of_news_raw = fields.get("Type of News", [])
             
             # Handle featured speakers - can be a list or string
             featured_speakers = ""
@@ -436,6 +437,14 @@ async def fetch_airtable_newsroom():
                     featured_speakers = ", ".join(featured_speakers_raw)
                 else:
                     featured_speakers = str(featured_speakers_raw)
+            
+            # Handle type of news - can be a list or string
+            type_of_news = ""
+            if type_of_news_raw:
+                if isinstance(type_of_news_raw, list):
+                    type_of_news = ", ".join(type_of_news_raw)
+                else:
+                    type_of_news = str(type_of_news_raw)
             
             # Handle image - prioritize Social::image, fallback to Photo
             photo_url = None
