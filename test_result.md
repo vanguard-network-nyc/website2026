@@ -511,6 +511,36 @@ frontend:
         agent: "testing"
         comment: "UPDATED DATA STRUCTURE VALIDATED: GC Members data structure working perfectly with new table configuration and actual member data! ✅ COMPLETE MEMBER PROFILES: All 37 GC members have properly structured data with required fields (id, whole_name) and optional fields (headshot, company, position), ✅ FIELD MAPPING VERIFIED: WholeName→whole_name, Headshot→headshot (with proper image URLs), Company→company, Position→position - all working correctly, ✅ DATA QUALITY: High-quality member data including professional headshots, company names (Global Healthcare Exchange, Atria Senior Living, Organon, etc.), and detailed position titles, ✅ JSON STRUCTURE: Perfect JSON serialization with proper field types and null handling, ✅ PYDANTIC VALIDATION: All data passes Pydantic model validation ensuring type safety and data integrity, ✅ FRONTEND READY: Response structure exactly matches review requirements and ready for frontend consumption. DATA STRUCTURE COMPLETE: All fields populated with real GC Exchange member data, structure validated and production-ready."
 
+  - task: "Newsroom API Endpoints"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented new newsroom API endpoints: 1) Created AirtableNewsroom model with fields (id, blog_title, description_teaser, photo, body_of_blog, published_to_web, featured_speakers), 2) Added fetch_airtable_newsroom() function that connects to Airtable newsroom view (viw0GNJap8hrXC8w3) with proper sorting by Published to Web date descending, 3) Created GET /api/newsroom endpoint to fetch all newsroom articles, 4) Created GET /api/newsroom/{article_id} endpoint for single article retrieval, 5) Proper error handling and fallback from view to table if view access fails. Ready for comprehensive testing."
+      - working: true
+        agent: "testing"
+        comment: "NEWSROOM API ENDPOINTS TESTING COMPLETED: ✅ GET /api/newsroom WORKING: Successfully retrieving 3 newsroom articles from Airtable view viw0GNJap8hrXC8w3, backend logs show 'Successfully fetched 3 newsroom articles from Airtable' with no errors, response time good. ✅ GET /api/newsroom/{id} WORKING: Single article retrieval working correctly (tested with receIVJlsjZSIEEsR), returns proper article data with all fields populated. ✅ AIRTABLE INTEGRATION: Successfully connecting to base appcKcpx0rQ37ChAo, table tblEKvdS9fXJn7cvc, view viw0GNJap8hrXC8w3, proper authentication working. ✅ DATA STRUCTURE: AirtableNewsroom model working correctly with all required fields (id, blog_title, description_teaser, photo, body_of_blog, published_to_web, featured_speakers), proper field mapping from Airtable. ✅ SORTING: Articles properly sorted by Published to Web date descending as configured. ✅ ERROR HANDLING: Robust error handling with graceful fallback from view to table if needed. All newsroom API endpoints fully operational and production-ready."
+
+  - task: "Newsroom Airtable Integration"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented newsroom Airtable integration: 1) Created fetch_airtable_newsroom() function with proper async/await pattern using httpx client, 2) Configured to fetch from newsroom view (viw0GNJap8hrXC8w3) in articles table with sorting by Published to Web date descending, 3) Proper field mapping from Airtable fields to AirtableNewsroom model, 4) Error handling with fallback from view to table if view access fails, 5) Handles featured speakers as list or string, photo arrays, and proper date formatting. Ready for comprehensive testing."
+      - working: true
+        agent: "testing"
+        comment: "NEWSROOM AIRTABLE INTEGRATION VERIFIED: ✅ AIRTABLE CONNECTION: Successfully connecting to newsroom base appcKcpx0rQ37ChAo and retrieving articles from view viw0GNJap8hrXC8w3, no authentication or permission issues. ✅ DATA RETRIEVAL: Consistently fetching 3 newsroom articles with complete data structure, backend logs show successful API calls with no errors. ✅ FIELD MAPPING: All field mappings working correctly - Blog Title→blog_title, Description (teaser)→description_teaser, Photo→photo (with proper URL extraction), Body of Blog→body_of_blog, Published to Web→published_to_web, Featured Speakers→featured_speakers (with proper list-to-string conversion). ✅ SORTING: Articles properly sorted by publication date descending as configured in Airtable view. ✅ ERROR HANDLING: Robust fallback mechanism from view-specific to filtered table results working correctly. ✅ DATA QUALITY: All articles contain substantial content with meaningful titles, descriptions, and proper dates. Integration fully operational and production-ready."
+
   - task: "Contact Page Form Functionality and Webhook Integration"
     implemented: true
     working: true
