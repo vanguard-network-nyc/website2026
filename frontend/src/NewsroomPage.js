@@ -313,7 +313,31 @@ const NewsroomPage = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {displayArticles.map((article, index) => (
+          {displayArticles.length === 0 ? (
+            <div className="col-span-full text-center py-16">
+              <Newspaper className="mx-auto h-16 w-16 text-slate-300 mb-4" />
+              <h3 className="text-xl font-semibold text-slate-600 mb-2">No articles found</h3>
+              <p className="text-slate-500 mb-6">
+                {newsArticles.length === 0 
+                  ? "No newsroom articles available at the moment." 
+                  : "Try adjusting your search or filter criteria."
+                }
+              </p>
+              {(searchTerm || selectedType !== 'All' || selectedSpeaker !== 'All') && (
+                <button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedType('All');
+                    setSelectedSpeaker('All');
+                  }}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Clear Filters
+                </button>
+              )}
+            </div>
+          ) : (
+            displayArticles.map((article, index) => (
             <motion.div
               key={article.id}
               initial={{ y: 50, opacity: 0 }}
