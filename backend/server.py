@@ -422,6 +422,7 @@ async def fetch_airtable_newsroom():
             # Extract fields
             blog_title = fields.get("Blog Title", "")
             description_teaser = fields.get("Description (teaser)", "")
+            social_image_raw = fields.get("Social::image", [])
             photo_raw = fields.get("Photo", [])
             body_of_blog = fields.get("Body of Blog", "")
             published_to_web = fields.get("Published to Web", "")
@@ -435,9 +436,15 @@ async def fetch_airtable_newsroom():
                 else:
                     featured_speakers = str(featured_speakers_raw)
             
-            # Handle photo - get first one if multiple
+            # Handle image - prioritize Social::image, fallback to Photo
             photo_url = None
-            if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+            
+            # Try Social::image first
+            if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
+                photo_url = social_image_raw[0].get("url", "")
+            
+            # Fallback to Photo field if Social::image is not available
+            elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
                 photo_url = photo_raw[0].get("url", "")
             
             # Only include articles that have substantial content
