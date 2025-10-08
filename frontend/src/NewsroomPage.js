@@ -395,7 +395,8 @@ const NewsroomPage = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            ))
+          )}
         </motion.div>
 
         {/* Call to Action */}
