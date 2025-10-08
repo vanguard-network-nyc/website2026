@@ -964,6 +964,35 @@ async def get_article(article_id: str):
         logger.error(f"Error in get_article: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch article")
 
+@api_router.get("/newsroom", response_model=List[AirtableNewsroom])
+async def get_newsroom():
+    """Get newsroom articles from Airtable"""
+    try:
+        newsroom_articles = await fetch_airtable_newsroom()
+        logger.info(f"Successfully fetched {len(newsroom_articles)} newsroom articles from Airtable")
+        return newsroom_articles
+    except Exception as e:
+        logger.error(f"Error in get_newsroom: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch newsroom articles")
+
+@api_router.get("/newsroom/{article_id}")
+async def get_newsroom_article(article_id: str):
+    """Get a single newsroom article by ID from Airtable"""
+    try:
+        newsroom_articles = await fetch_airtable_newsroom()
+        
+        # Find the specific article
+        article = next((art for art in newsroom_articles if art.id == article_id), None)
+        if not article:
+            raise HTTPException(status_code=404, detail="Newsroom article not found")
+        
+        return article
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error in get_newsroom_article: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch newsroom article")
+
 @api_router.get("/in-the-press", response_model=List[AirtableInThePress])
 async def get_in_the_press():
     """Get In the Press articles from Airtable"""
