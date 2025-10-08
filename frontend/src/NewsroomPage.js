@@ -72,6 +72,47 @@ const NewsroomPage = () => {
     }
   };
 
+  const filterArticles = () => {
+    let filtered = newsArticles;
+
+    if (searchTerm) {
+      filtered = filtered.filter(article => 
+        article.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.featured_speakers?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.type_of_news?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedType !== 'All') {
+      filtered = filtered.filter(article => 
+        article.type_of_news === selectedType
+      );
+    }
+
+    if (selectedSpeaker !== 'All') {
+      filtered = filtered.filter(article => 
+        article.featured_speakers?.includes(selectedSpeaker)
+      );
+    }
+
+    setFilteredArticles(filtered);
+  };
+
+  const getUniqueTypes = () => {
+    const types = newsArticles.map(article => article.type_of_news).filter(Boolean);
+    return ['All', ...new Set(types)];
+  };
+
+  const getUniqueSpeakers = () => {
+    const speakers = newsArticles
+      .map(article => article.featured_speakers)
+      .filter(Boolean)
+      .flatMap(speakers => speakers.split(', '))
+      .filter(Boolean);
+    return ['All', ...new Set(speakers)];
+  };
+
   const formatDate = (dateString) => {
     if (!dateString) return 'Recent';
     try {
