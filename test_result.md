@@ -48,7 +48,8 @@
 ##   run_ui: false
 ##
 test_plan:
-  current_focus: []
+  current_focus: 
+    - "Enhanced Newsroom Search and Filter Functionality"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
