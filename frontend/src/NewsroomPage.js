@@ -13,8 +13,13 @@ import {
 
 const NewsroomPage = () => {
   const [newsArticles, setNewsArticles] = useState([]);
+  const [filteredArticles, setFilteredArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('All');
+  const [selectedSpeaker, setSelectedSpeaker] = useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // Scroll to top when component mounts
   useEffect(() => {
