@@ -86,6 +86,7 @@ class AirtableNewsroom(BaseModel):
     body_of_blog: Optional[str] = None  # main blog content
     published_to_web: Optional[str] = None  # publication date
     featured_speakers: Optional[str] = None  # speakers for the article
+    type_of_news: Optional[str] = None  # type of news content
 
 class AirtableGCMember(BaseModel):
     id: str
