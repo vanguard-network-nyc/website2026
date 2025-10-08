@@ -135,6 +135,11 @@ ARTICLES_VIEW_ID = "viwbNHk3p0ffFgcHm"
 IN_THE_PRESS_BASE_ID = "appcKcpx0rQ37ChAo"
 IN_THE_PRESS_VIEW_ID = "viwsgPr3j6hbU2g6Z"
 
+# Newsroom table configuration (same base as articles, different view)
+NEWSROOM_BASE_ID = "appcKcpx0rQ37ChAo"
+NEWSROOM_TABLE_ID = "tblEKvdS9fXJn7cvc"
+NEWSROOM_VIEW_ID = "viw0GNJap8hrXC8w3"
+
 # GC Exchange Members table configuration (same base, specific table and view)
 GC_MEMBERS_BASE_ID = "appcKcpx0rQ37ChAo"
 GC_MEMBERS_TABLE_ID = "tbliGbJTIk94Fpzhf"
