@@ -30,6 +30,10 @@ const NewsroomPage = () => {
     fetchNewsroomArticles();
   }, []);
 
+  useEffect(() => {
+    filterArticles();
+  }, [newsArticles, searchTerm, selectedType, selectedSpeaker]);
+
   const fetchNewsroomArticles = async () => {
     try {
       setLoading(true);
