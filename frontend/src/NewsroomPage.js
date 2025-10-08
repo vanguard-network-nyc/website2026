@@ -43,7 +43,7 @@ const NewsroomPage = () => {
         image: article.photo || `https://via.placeholder.com/271x271/3B82F6/FFFFFF?text=News+${index + 1}`,
         date: formatDate(article.published_to_web),
         readTime: "2 min read", // Default read time since it's not in API
-        link: `/newsroom/${article.id}` // Use dynamic ID instead of slug
+        link: `/article/${article.id}` // Use article detail page with dynamic ID
       }));
       
       setNewsArticles(transformedArticles);
