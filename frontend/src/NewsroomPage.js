@@ -46,7 +46,7 @@ const NewsroomPage = () => {
       
       const articleData = await response.json();
       
-      // Transform the data to match the current card structure
+      // Transform the data to match the current card structure, keeping all Airtable fields
       const transformedArticles = articleData.map((article, index) => ({
         id: article.id,
         title: article.blog_title,
@@ -54,10 +54,16 @@ const NewsroomPage = () => {
         image: article.photo || `https://via.placeholder.com/271x271/3B82F6/FFFFFF?text=News+${index + 1}`,
         date: formatDate(article.published_to_web),
         readTime: "2 min read", // Default read time since it's not in API
-        link: `/article/${article.id}` // Use article detail page with dynamic ID
+        link: `/article/${article.id}`, // Use article detail page with dynamic ID
+        // Keep original fields for filtering
+        type_of_news: article.type_of_news || "NEWS",
+        featured_speakers: article.featured_speakers,
+        blog_title: article.blog_title,
+        description_teaser: article.description_teaser
       }));
       
       setNewsArticles(transformedArticles);
+      setFilteredArticles(transformedArticles);
     } catch (err) {
       console.error('Error fetching newsroom articles:', err);
       setError(err.message);
