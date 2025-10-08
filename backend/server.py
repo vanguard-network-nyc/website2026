@@ -77,6 +77,15 @@ class AirtableInThePress(BaseModel):
     body_of_article: Optional[str] = None  # article text content
     authors_intro: Optional[str] = None  # description of authors
 
+class AirtableNewsroom(BaseModel):
+    id: str
+    blog_title: str  # title
+    description_teaser: Optional[str] = None  # short description
+    photo: Optional[str] = None  # article image
+    body_of_blog: Optional[str] = None  # main blog content
+    published_to_web: Optional[str] = None  # publication date
+    featured_speakers: Optional[str] = None  # speakers for the article
+
 class AirtableGCMember(BaseModel):
     id: str
     whole_name: str  # full name
