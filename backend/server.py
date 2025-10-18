@@ -446,14 +446,14 @@ async def fetch_airtable_newsroom():
                 else:
                     type_of_news = str(type_of_news_raw)
             
-            # Handle image - prioritize Social::image, fallback to Photo
+            # Handle image - prioritize Social:Image, fallback to Photo
             photo_url = None
             
-            # Try Social::image first
+            # Try Social:Image first (note: single colon, not double)
             if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
                 photo_url = social_image_raw[0].get("url", "")
             
-            # Fallback to Photo field if Social::image is not available
+            # Fallback to Photo field if Social:Image is not available
             elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
                 photo_url = photo_raw[0].get("url", "")
             
