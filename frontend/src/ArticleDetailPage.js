@@ -8,6 +8,7 @@ const ArticleDetailPage = () => {
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isFromNewsroom, setIsFromNewsroom] = useState(false);
 
   useEffect(() => {
     if (id) {
