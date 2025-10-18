@@ -313,15 +313,24 @@ const NetworkingV2Page = () => {
                 className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group"
                 whileHover={{ y: -5 }}
               >
-                {/* Header with Icon and Title */}
-                <div className={`p-8 bg-gradient-to-br ${network.gradient} text-white`}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center">
-                      {network.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold">{network.name}</h3>
-                      <p className="text-sm font-semibold text-white/80">{network.target}</p>
+                {/* Image Header */}
+                <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${network.image}')` }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-60`}></div>
+                  
+                  {/* Icon and Title Overlay */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="flex items-center gap-4">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
+                      >
+                        {network.icon}
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">{network.name}</h3>
+                        <p className="text-sm font-semibold text-white/80">{network.target}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
