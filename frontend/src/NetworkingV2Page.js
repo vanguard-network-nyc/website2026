@@ -394,8 +394,8 @@ const NetworkingV2Page = () => {
                 style={{ maxWidth: '100%' }}
               >
                 <img
-                  src="/networking-section-image.jpg"
-                  alt="Networking Section"
+                  src="/vanguard-boston-8.jpg"
+                  alt="Vanguard Boston Networking Event June 2025"
                   className="max-w-full h-auto"
                   style={{ 
                     maxHeight: '600px',
