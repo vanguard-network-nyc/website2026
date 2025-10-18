@@ -107,11 +107,11 @@ const ArticleDetailPage = () => {
           className="mb-8"
         >
           <Link
-            to="/articles"
+            to={isFromNewsroom ? "/newsroom" : "/articles"}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
           >
             <ArrowLeft size={20} />
-            Back to Articles
+            {isFromNewsroom ? "Back to Newsroom" : "Back to Articles"}
           </Link>
         </motion.div>
 
