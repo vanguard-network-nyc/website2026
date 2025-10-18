@@ -51,7 +51,7 @@ const NetworkingV2Page = () => {
       icon: <MapPin size={48} />,
       gradient: 'from-[#10b981] to-[#059669]',
       bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
-      image: "/vanguard-boston-8.jpg"
+      image: "/vanguard-boston-11.jpg"
     }
   ];
 
