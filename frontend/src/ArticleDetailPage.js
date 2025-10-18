@@ -23,10 +23,12 @@ const ArticleDetailPage = () => {
       
       // First try to fetch from regular articles API
       let response = await fetch(`${backendUrl}/api/article/${id}`);
+      let fromNewsroom = false;
       
       if (!response.ok) {
         // If not found in articles, try newsroom API
         response = await fetch(`${backendUrl}/api/newsroom/${id}`);
+        fromNewsroom = true;
         
         if (!response.ok) {
           throw new Error(`Failed to fetch article: ${response.status} ${response.statusText}`);
@@ -34,6 +36,9 @@ const ArticleDetailPage = () => {
       }
       
       const articleData = await response.json();
+      
+      // Track the source for back button navigation
+      setIsFromNewsroom(fromNewsroom);
       
       // If the article came from newsroom, we need to transform the field names to match what ArticleDetailPage expects
       if (articleData.featured_speakers && !articleData.featured_speaker_linkedin) {
