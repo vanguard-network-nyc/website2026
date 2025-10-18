@@ -423,7 +423,7 @@ async def fetch_airtable_newsroom():
             # Extract fields
             blog_title = fields.get("Blog Title", "")
             description_teaser = fields.get("Description (teaser)", "")
-            social_image_raw = fields.get("Social::image", [])
+            social_image_raw = fields.get("Social:Image", [])
             photo_raw = fields.get("Photo", [])
             body_of_blog = fields.get("Body of Blog", "")
             published_to_web = fields.get("Published to Web", "")
