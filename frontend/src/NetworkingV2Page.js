@@ -197,14 +197,18 @@ const NetworkingV2Page = () => {
                 className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden"
                 whileHover={{ y: -8 }}
               >
-                {/* Icon and Title Header */}
-                <div className={`h-48 bg-gradient-to-br ${benefit.bgGradient} flex items-center justify-center relative`}>
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${benefit.gradient} flex items-center justify-center shadow-lg text-white`}
-                  >
-                    {benefit.icon}
-                  </motion.div>
+                {/* Image Header with Icon Overlay */}
+                <div className="h-48 bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: `url('${benefit.image}')` }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgGradient} opacity-40`}></div>
+                  <div className="absolute bottom-6 left-6">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${benefit.gradient} flex items-center justify-center shadow-lg text-white backdrop-blur-sm`}
+                    >
+                      {benefit.icon}
+                    </motion.div>
+                  </div>
                 </div>
                 
                 {/* Content section */}
