@@ -63,7 +63,7 @@ const NetworkingV2Page = () => {
       icon: <Shield size={32} />,
       gradient: 'from-[#045184] to-[#0369a1]',
       features: ["Monthly Virtual Exchanges", "Bi-annual Forums", "Strategic Sounding Board", "Leadership Advisory"],
-      image: "/gc-exchange-program.jpg"
+      image: "/vanguard-boston-1.jpg"
     },
     {
       name: "Senior In-House Counsel Network", 
@@ -72,7 +72,7 @@ const NetworkingV2Page = () => {
       icon: <Users size={32} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
       features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
-      image: "/senior-counsel-exchange-program.jpg"
+      image: "/vanguard-boston-4.jpg"
     },
     {
       name: "Life Sciences CEO Network",
@@ -81,7 +81,7 @@ const NetworkingV2Page = () => {
       icon: <Target size={32} />,
       gradient: 'from-[#10b981] to-[#059669]',
       features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
-      image: "/life-sciences-ceo-program.jpg"
+      image: "/vanguard-boston-3.jpg"
     },
     {
       name: "Risk Management Network",
@@ -90,7 +90,7 @@ const NetworkingV2Page = () => {
       icon: <Shield size={32} />,
       gradient: 'from-[#f59e0b] to-[#d97706]',
       features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
-      image: "/advisory-image.jpg"
+      image: "/vanguard-boston-5.jpg"
     }
   ];
 
