@@ -82,10 +82,10 @@ const ArticleDetailPage = () => {
         <h2 className="text-2xl font-bold text-slate-900 mb-4">Article Not Found</h2>
         <p className="text-slate-600 mb-6">{error || 'This article could not be found.'}</p>
         <Link 
-          to="/articles"
+          to={isFromNewsroom ? "/newsroom" : "/articles"}
           className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
         >
-          Back to Articles
+          {isFromNewsroom ? "Back to Newsroom" : "Back to Articles"}
         </Link>
       </div>
     </div>
