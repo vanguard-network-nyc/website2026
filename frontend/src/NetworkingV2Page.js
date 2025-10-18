@@ -35,7 +35,7 @@ const NetworkingV2Page = () => {
       icon: <MessageCircle size={48} />,
       gradient: 'from-[#045184] to-[#0369a1]',
       bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
-      image: "/networking-image.jpg"
+      image: "/vanguard-boston-3.jpg"
     },
     {
       title: 'Warm Introductions',
@@ -43,7 +43,7 @@ const NetworkingV2Page = () => {
       icon: <UserCheck size={48} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
       bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-      image: "/selected-advisory-engagements.jpg"
+      image: "/vanguard-boston-5.jpg"
     },
     {
       title: 'Local Peer Meet-ups',
@@ -51,7 +51,7 @@ const NetworkingV2Page = () => {
       icon: <MapPin size={48} />,
       gradient: 'from-[#10b981] to-[#059669]',
       bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
-      image: "/networking-section-image.jpg"
+      image: "/vanguard-boston-8.jpg"
     }
   ];
 
