@@ -35,7 +35,7 @@ const NetworkingV2Page = () => {
       icon: <MessageCircle size={48} />,
       gradient: 'from-[#045184] to-[#0369a1]',
       bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
-      image: "/vanguard-boston-3.jpg"
+      image: "https://customer-assets.emergentagent.com/job_vanguard-network-1/artifacts/n1m7q7ws_vanguard%20april%2028-15.jpg"
     },
     {
       title: 'Warm Introductions',
