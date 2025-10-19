@@ -96,18 +96,18 @@ const CaseStudiesPage = () => {
     },
     {
       id: 5,
-      title: "[PLACEHOLDER] Strategic Client Partnership Program",
+      title: "Engaging Thought Leaders on the Rural Health Crisis",
       category: "Client and Stakeholder Engagement",
       categorySlug: "client-stakeholder-engagement",
-      summary: "[PLACEHOLDER CONTENT] Designed and implemented a comprehensive client engagement program that transformed vendor relationships into strategic partnerships.",
-      challenge: "[PLACEHOLDER] A professional services firm was struggling to move beyond transactional relationships with key clients, limiting growth opportunities and competitive differentiation.",
+      summary: "We worked with The Nantucket Project to create a high-impact gathering in New York City around the health crisis affecting 20% of Americans who live in healthcare-deprived rural areas, and potential solutions offered by new technologies.",
+      challenge: "The rural health crisis affects 20% of Americans living in healthcare-deprived areas, requiring innovative solutions and expert collaboration to address complex systemic challenges.",
       approach: [
-        "[PLACEHOLDER] Executive Leadership Exchanges bringing together C-suite leaders from both organizations",
-        "[PLACEHOLDER] Curated dinner discussions focusing on industry challenges and strategic opportunities",
-        "[PLACEHOLDER] Joint strategic planning sessions to align long-term objectives",
-        "[PLACEHOLDER] Structured stakeholder mapping and engagement protocols"
+        "Transformed a conventional panel presentation into an interactive leadership discussion",
+        "Assembled fifty carefully selected attendees including healthcare systems leaders",
+        "Featured five top healthcare systems and technology experts as key participants",
+        "Facilitated focused dialogue on pragmatic, real-world solutions"
       ],
-      outcome: "[PLACEHOLDER] Client retention increased by 85%, average engagement value grew by 120%, and the firm successfully positioned itself as a trusted strategic advisor rather than a service provider.",
+      outcome: "The session generated pragmatic, real-world insights and action steps, creating meaningful collaboration between thought leaders and establishing a foundation for addressing rural healthcare challenges through technology innovation.",
       image: "https://images.unsplash.com/photo-1521737711867-e3b94467d2eb",
       icon: <Users size={24} />,
       color: "from-cyan-500 to-blue-600"
