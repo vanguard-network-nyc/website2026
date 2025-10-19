@@ -4125,7 +4125,7 @@ const NewWhatWeDoSection = () => {
       link: "/advisory"
     },
     {
-      title: "Leadership Advisory",
+      title: "Strategic Counsel",
       description: "Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.",
       details: "This includes leadership coaching on specific skills. Also, we act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
