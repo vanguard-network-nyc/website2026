@@ -138,7 +138,7 @@ const CaseStudiesPage = () => {
       category: "Client and Stakeholder Engagement",
       categorySlug: "client-stakeholder-engagement",
       summary: "We executed an assignment with a leading law firm to bring them together with current and potential senior clients, in a format that conveyed the strengths of the firm's partners as business advisors, not just a legal resource.",
-      challenge: "A leading law firm needed to differentiate itself by positioning partners as strategic business advisors rather than transactional legal service providers, requiring a transformation in client relationship dynamics.",
+      challenge: "The firm needed to differentiate itself by positioning partners as strategic business advisors rather than transactional legal service providers, requiring a transformation in client relationship dynamics.",
       approach: [
         "Brought invited executives together with senior partners of the firm",
         "Created intimate conversation formats focused on leadership challenges",
