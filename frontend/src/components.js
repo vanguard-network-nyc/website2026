@@ -1069,7 +1069,7 @@ const AdvisoryPage = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
-              title: 'Leadership Advisory',
+              title: 'Strategic Counsel',
               description: 'Direct one-on-one coaching and strategic sounding board support for senior executives. Includes both coaching relationships and confidential strategic guidance.',
               image: 'https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg',
               gradient: 'from-[#045184] to-[#0369a1]',
