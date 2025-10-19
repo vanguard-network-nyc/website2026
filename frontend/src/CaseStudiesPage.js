@@ -31,13 +31,15 @@ const CaseStudiesPage = () => {
       title: "Executing a Global Turnaround",
       category: "Organizational Transformation",
       categorySlug: "organizational-transformation",
-      summary: "As advisors to the CEO and top team, we led the leadership and culture reset for a global company in crisis.",
-      challenge: "Organization charts were not the answer. We diagnosed the cultural conflicts and built a unifying Sense of Purpose.",
+      summary: "As advisors to the CEO and top team, we led the leadership and culture reset for a global company in crisis, transforming organizational dynamics and performance across all business units.",
+      challenge: "A global company faced a critical performance crisis with deep-seated cultural conflicts and fragmented leadership. Organization charts were not the answer - we needed to diagnose the cultural conflicts and build a unifying Sense of Purpose that could drive sustainable transformation.",
       approach: [
-        "A bold action agenda for change",
-        "High-performance behaviors from CEO to frontline"
+        "Developed and implemented a bold action agenda for comprehensive organizational change",
+        "Established high-performance behaviors and standards from CEO to frontline employees",
+        "Created leadership alignment processes to ensure consistent execution across global operations",
+        "Built cultural transformation initiatives that addressed core conflict areas and reinforced new behaviors"
       ],
-      outcome: "In three years, the company rose from worst to best performer in its peer group.",
+      outcome: "In three years, the company achieved a dramatic transformation, rising from worst to best performer in its peer group. The cultural reset created sustained competitive advantage and established a foundation for continued growth and market leadership.",
       image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12",
       icon: <TrendingUp size={24} />,
       color: "from-green-500 to-emerald-600"
