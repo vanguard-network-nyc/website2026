@@ -1030,8 +1030,8 @@ const AdvisoryPage = () => (
           LEADERSHIP ADVISORY & DEVELOPMENT
         </h1>
         <div className="max-w-5xl mx-auto">
-          <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-16">
-            <span className="font-bold text-blue-600">We know that leadership is the catalyst for change and transformation.</span>
+          <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-16">
+            We know that leadership is the catalyst for change and transformation, powered by the human factor that drives authentic connections between leaders and their teams.
           </p>
         </div>
       </motion.div>
