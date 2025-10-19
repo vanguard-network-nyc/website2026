@@ -4430,11 +4430,6 @@ const NewAboutSection = () => {
             viewport={{ once: true }}
             className="mt-12"
           >
-            <img
-              src="https://images.unsplash.com/photo-1543132220-7bc04a0e790a"
-              alt="Professional business executive"
-              className="w-full max-w-md mx-auto rounded-lg shadow-lg mb-8"
-            />
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 Unlock Your Leadership Potential
