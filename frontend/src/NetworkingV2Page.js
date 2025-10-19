@@ -565,9 +565,9 @@ const NetworkingV2Page = () => {
           >
             <Star size={32} className="text-white" />
           </motion.div>
-          <h2 className="text-4xl font-bold text-white mb-6">Ready to Join Our Network?</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Connect with like-minded executives, access exclusive resources, and accelerate your leadership journey with The Vanguard Network.
+          <h2 className="text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
+          <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
