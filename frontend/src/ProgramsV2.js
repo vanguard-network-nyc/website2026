@@ -229,7 +229,7 @@ const ProgramsV2 = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium"
           >
-            Discover our comprehensive leadership development ecosystem - from specialized exchanges to fully customized enterprise solutions.
+            Discover our comprehensive leadership development ecosystem built on the human factor - from specialized exchanges to fully customized enterprise solutions that prioritize authentic peer connections.
           </motion.p>
         </div>
 
