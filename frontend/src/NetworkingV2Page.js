@@ -43,7 +43,7 @@ const NetworkingV2Page = () => {
       icon: <UserCheck size={48} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
       bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-      image: "/vanguard-boston-5.jpg"
+      image: "https://customer-assets.emergentagent.com/job_vanguard-network-1/artifacts/jhap0mmp_Reception_Richard%20Alleyne%2C%20Heather%20White_vanguard%20may11th-GC%20forum-97%20%281%29.jpeg"
     },
     {
       title: 'Local Peer Meet-ups',
