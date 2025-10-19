@@ -159,7 +159,7 @@ const ArticlesPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover thought-provoking articles and insights from leadership experts, covering organizational transformation, governance, and strategic leadership.
+            Discover thought-provoking articles and insights from leadership experts that recognize the human factor in organizational transformation, governance, and strategic leadership.
           </motion.p>
         </div>
 
