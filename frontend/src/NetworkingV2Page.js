@@ -229,6 +229,44 @@ const NetworkingV2Page = () => {
           </div>
         </motion.div>
 
+        {/* The Human Factor Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+        >
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mx-auto mb-6"
+            >
+              <MessageCircle size={32} className="text-white" />
+            </motion.div>
+            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+              Beyond Traditional Networking
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-slate-700 leading-relaxed mb-8 font-medium">
+              Each exchange — whether in a Forum, roundtable, or off-the-record session — brings leaders face to face with the challenges and opportunities they won't find in the headlines. The result: <span className="font-bold text-blue-600">authentic connection, sharper foresight, and the kind of practical wisdom that only comes from shared experience.</span>
+            </p>
+            
+            <div className="bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-2xl p-8 mb-8">
+              <p className="text-lg text-slate-600 leading-relaxed italic">
+                "Vanguard members say that what sets our network apart is its intimacy and honesty. Here, you don't have to prove you belong — you already do. You're among people who've been where you are, who know the pressure of leading at the top, and who are ready to help you see around corners."
+              </p>
+            </div>
+            
+            <p className="text-lg text-slate-600 leading-relaxed text-center">
+              <span className="font-semibold text-slate-900">If you believe that leadership starts with listening, empathy, and courage, you'll find your peers here.</span>
+            </p>
+          </div>
+        </motion.div>
+
         {/* Valuable Networking Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
