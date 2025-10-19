@@ -61,8 +61,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/advisory" element={<AdvisoryPage />} />
-            <Route path="/networking" element={<NetworkingPage />} />
-            <Route path="/networking-2" element={<NetworkingV2Page />} />
+            <Route path="/networking" element={<NetworkingV2Page />} />
+            <Route path="/networking-old" element={<NetworkingPage />} />
             <Route path="/programs" element={<ProgramsPage />} />
             <Route path="/programs-v2" element={<ProgramsV2 />} />
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
