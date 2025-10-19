@@ -359,9 +359,90 @@ const NetworkingV2Page = () => {
             >
               <Award size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Specialized Membership Networks</h2>
+            <h2 className="text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Choose from our specialized membership networks designed for different leadership roles and industries, each providing tailored content, peer connections, and resources.
+              Join our foundational leadership network, then choose from specialized networks designed for specific roles and industries.
+            </p>
+          </div>
+
+          {/* Core Vanguard Leadership Network - Featured */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 1.4, duration: 0.8 }}
+            className="mb-12"
+          >
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                className="bg-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-500 border-2 border-blue-200 overflow-hidden group relative"
+                whileHover={{ y: -8 }}
+              >
+                {/* Core Network Badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    CORE NETWORK
+                  </div>
+                </div>
+
+                {/* Image Header */}
+                <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url('${coreNetwork.image}')` }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${coreNetwork.gradient} opacity-60`}></div>
+                  
+                  {/* Icon and Title Overlay */}
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <div className="flex items-center gap-6">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
+                      >
+                        {coreNetwork.icon}
+                      </motion.div>
+                      <div>
+                        <h3 className="text-3xl font-bold text-white group-hover:text-purple-200 transition-colors duration-300">{coreNetwork.name}</h3>
+                        <p className="text-lg font-semibold text-white/90">{coreNetwork.target}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="p-8">
+                  <p className="text-slate-600 leading-relaxed mb-6 font-medium text-lg">
+                    {coreNetwork.description}
+                  </p>
+                  
+                  {/* Features */}
+                  <div className="mb-8">
+                    <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">Core Network Benefits</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {coreNetwork.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-sm text-slate-600">
+                          <CheckCircle2 size={14} className="text-purple-500 mr-2 flex-shrink-0" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`w-full text-white px-6 py-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${coreNetwork.gradient} hover:shadow-lg text-lg`}
+                  >
+                    Join Core Network
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Specialized Networks */}
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold text-slate-900 mb-4">Specialized Networks</h3>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
+              All core network members can also join specialized networks tailored to specific leadership roles and industries.
             </p>
           </div>
           
