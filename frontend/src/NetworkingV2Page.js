@@ -141,25 +141,31 @@ const NetworkingV2Page = () => {
     >
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-            NETWORKING & COMMUNITY
-          </h1>
-          <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <motion.h1 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-7xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8"
+          >
+            Networking & Community
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-5xl mx-auto"
+          >
             <h2 className="text-3xl font-bold text-slate-900 mb-6">The Power of Real Connection</h2>
-            <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-8">
+            <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium mb-8">
               <span className="font-bold text-blue-600">At The Vanguard Network, networking isn't about name tags or panels. It's about people — leaders who come together to think honestly, share candidly, and help one another navigate what leadership really demands.</span>
             </p>
             <p className="text-xl text-slate-600 leading-relaxed font-medium">
               We call it the human factor — the ability to connect beyond roles and titles, to exchange real experiences, not talking points. Our conversations are small, confidential, and peer-to-peer, built on trust and insight rather than performance.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Network Membership Benefits Section */}
