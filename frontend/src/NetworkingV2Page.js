@@ -157,9 +157,8 @@ const NetworkingV2Page = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="max-w-5xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">The Power of Real Connection</h2>
             <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium mb-8">
-              <span className="font-bold text-blue-600">At The Vanguard Network, networking isn't about name tags or panels. It's about people — leaders who come together to think honestly, share candidly, and help one another navigate what leadership really demands.</span>
+              <span className="font-bold text-blue-600">Networking isn't about name tags or panels. It's about people — leaders who come together to think honestly, share candidly, and help one another navigate what leadership really demands.</span>
             </p>
             <p className="text-xl text-slate-600 leading-relaxed font-medium">
               We call it the human factor — the ability to connect beyond roles and titles, to exchange real experiences, not talking points. Our conversations are small, confidential, and peer-to-peer, built on trust and insight rather than performance.
