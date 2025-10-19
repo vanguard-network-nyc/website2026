@@ -205,7 +205,7 @@ const CaseStudiesPage = () => {
           </h1>
           
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Real-world examples of how we help executives and organizations achieve transformational results through our advisory services.
+            Real-world examples of how the human factor drives transformational results for executives and organizations through our advisory services.
           </p>
         </motion.div>
 
