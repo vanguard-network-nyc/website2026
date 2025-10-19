@@ -114,18 +114,18 @@ const CaseStudiesPage = () => {
     },
     {
       id: 6,
-      title: "[PLACEHOLDER] Stakeholder Alignment Initiative",
+      title: "Building Long-Term Client Relationships",
       category: "Client and Stakeholder Engagement",
       categorySlug: "client-stakeholder-engagement",
-      summary: "[PLACEHOLDER CONTENT] Led a comprehensive stakeholder engagement strategy for a global technology company during a major organizational transformation.",
-      challenge: "[PLACEHOLDER] Multiple stakeholder groups (investors, customers, partners, employees) had conflicting expectations during a major strategic pivot, creating communication challenges and resistance to change.",
+      summary: "We executed an assignment with a leading law firm to bring them together with current and potential senior clients, in a format that conveyed the strengths of the firm's partners as business advisors, not just a legal resource.",
+      challenge: "A leading law firm needed to differentiate itself by positioning partners as strategic business advisors rather than transactional legal service providers, requiring a transformation in client relationship dynamics.",
       approach: [
-        "[PLACEHOLDER] Stakeholder mapping and influence analysis",
-        "[PLACEHOLDER] Tailored communication strategies for each stakeholder group",
-        "[PLACEHOLDER] Regular Leadership Exchanges to maintain transparency and gather feedback",
-        "[PLACEHOLDER] Cross-functional alignment workshops with key stakeholders"
+        "Brought invited executives together with senior partners of the firm",
+        "Created intimate conversation formats focused on leadership challenges",
+        "Curated discussion topics relevant to executive-level strategic concerns",
+        "Led facilitated dialogues to showcase partner expertise as business advisors"
       ],
-      outcome: "[PLACEHOLDER] Successfully aligned all major stakeholder groups around the new strategic direction, resulting in smooth transformation execution and maintained stakeholder confidence throughout the change process.",
+      outcome: "The program effectively repositioned the firm's partners as advisors and peers, versus legal vendors, leading to strengthened relationships and new engagements with both existing and prospective clients.",
       image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
       icon: <Users size={24} />,
       color: "from-cyan-500 to-blue-600"
