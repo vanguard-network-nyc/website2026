@@ -158,10 +158,7 @@ const NetworkingV2Page = () => {
             className="max-w-5xl mx-auto"
           >
             <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium mb-8">
-              Networking isn't about name tags or panels. It's about people — leaders who come together to think honestly, share candidly, and help one another navigate what leadership really demands.
-            </p>
-            <p className="text-xl text-slate-600 leading-relaxed font-medium">
-              We call it the human factor — the ability to connect beyond roles and titles, to exchange real experiences, not talking points. Our conversations are small, confidential, and peer-to-peer, built on trust and insight rather than performance.
+              Networking built on the human factor — where leaders connect beyond roles and titles to exchange real experiences through confidential, peer-to-peer conversations based on trust rather than performance.
             </p>
           </motion.div>
         </div>
