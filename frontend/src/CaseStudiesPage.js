@@ -43,6 +43,24 @@ const CaseStudiesPage = () => {
       color: "from-green-500 to-emerald-600"
     },
     {
+      id: 7,
+      title: "Transforming Siloed Country Leaders into a High Performance Network",
+      category: "Organizational Transformation",
+      categorySlug: "organizational-transformation",
+      summary: "We were asked by the head of a global biopharma company to help launch an initiative to transform approximately 100 stand-alone country operations into a more integrated network where capabilities, best practices, and other assets would be shared to strengthen the organization's competitive edge.",
+      challenge: "A global biopharma company needed to transform approximately 100 siloed country operations into an integrated network capable of sharing capabilities, best practices, and assets to enhance competitive advantage.",
+      approach: [
+        "Worked with the executive team to devise interactive sessions among country operation leaders",
+        "Facilitated sharing of transferable success stories and practices between country operations",
+        "Generated practical, operational insights and improvements across the network",
+        "Established foundation for peer networks among leaders to encourage ongoing collaboration"
+      ],
+      outcome: "For the first time, country leaders began reaching out to peers in other countries to share ideas and seek support. This leadership behavior change takes up to three years to operationalize, but once embedded, the new way of working can be sustained and expanded through internal champions without external consultants.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      icon: <TrendingUp size={24} />,
+      color: "from-green-500 to-emerald-600"
+    },
+    {
       id: 2,
       title: "Sounding Board Role with CEO",
       category: "Leadership Advisory",
