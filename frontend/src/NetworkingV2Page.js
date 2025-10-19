@@ -151,8 +151,12 @@ const NetworkingV2Page = () => {
             NETWORKING & COMMUNITY
           </h1>
           <div className="max-w-5xl mx-auto">
-            <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-16">
-              <span className="font-bold text-blue-600">Connect with an elite community of senior leaders and access exclusive networking opportunities that drive professional growth and strategic insights.</span>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">The Power of Real Connection</h2>
+            <p className="text-2xl text-slate-700 leading-relaxed font-medium mb-8">
+              <span className="font-bold text-blue-600">At The Vanguard Network, networking isn't about name tags or panels. It's about people — leaders who come together to think honestly, share candidly, and help one another navigate what leadership really demands.</span>
+            </p>
+            <p className="text-xl text-slate-600 leading-relaxed font-medium">
+              We call it the human factor — the ability to connect beyond roles and titles, to exchange real experiences, not talking points. Our conversations are small, confidential, and peer-to-peer, built on trust and insight rather than performance.
             </p>
           </div>
         </motion.div>
