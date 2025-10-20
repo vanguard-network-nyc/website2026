@@ -446,32 +446,36 @@ const Hero = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden"
-              style={{ 
-                background: 'linear-gradient(135deg, #00A8E1 0%, #0284c7 100%)'
-              }}
             >
-              <span className="relative z-10 flex items-center gap-3">
-                LEARN MORE
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0284c7] to-[#00A8E1] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </motion.button>
+              <Link
+                to="/networking"
+                className="group text-white px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden"
+                style={{ 
+                  background: 'linear-gradient(135deg, #00A8E1 0%, #0284c7 100%)'
+                }}
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  NETWORKS
+                  <Network size={24} className="group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0284c7] to-[#00A8E1] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </Link>
+            </motion.div>
             
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                to="/team"
+                to="/advisory"
                 className="group bg-transparent border-3 border-white text-white hover:bg-white hover:text-[#045184] px-10 py-5 rounded-xl font-bold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-2xl relative overflow-hidden outline outline-2 outline-[#00A8E1]"
               >
                 <span className="flex items-center gap-3">
-                  OUR TEAM
-                  <Users size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                  ADVISORY
+                  <Target size={24} className="group-hover:scale-110 transition-transform duration-300" />
                 </span>
               </Link>
             </motion.div>
