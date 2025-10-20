@@ -4491,7 +4491,8 @@ const SubstackPostsSection = () => {
           link: item.link,
           pubDate: item.pubDate,
           description: item.description,
-          content: item.content
+          content: item.content,
+          thumbnail: item.thumbnail || item.enclosure?.link || null
         }));
         setPosts(latestPosts);
       } else {
