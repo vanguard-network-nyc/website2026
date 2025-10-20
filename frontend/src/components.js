@@ -4059,14 +4059,14 @@ const NewHero = () => {
               to="/networking"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
-              Networks
+              Executive Networks
               <ArrowRight size={20} />
             </Link>
             <Link
               to="/advisory"
               className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
             >
-              Advisory
+              Leadership Advisory
             </Link>
           </motion.div>
         </motion.div>
