@@ -49,7 +49,8 @@ const {
   SubstackPostsSection,
   NewSpecializedGroupsSection,
   NewIntegrationSection,
-  NewContentLibrarySection
+  NewContentLibrarySection,
+  ExecutiveNetworksSection
 } = Components;
 
 function App() {
