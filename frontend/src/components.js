@@ -5387,6 +5387,7 @@ const Components = {
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection,
+  ExecutiveNetworksSection,
   GCLBanner
 };
 
