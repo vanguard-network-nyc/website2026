@@ -4572,6 +4572,15 @@ const SubstackPostsSection = () => {
               viewport={{ once: true }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
+              {post.thumbnail && (
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={post.thumbnail} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
               <div className="p-8">
                 <div className="flex items-center gap-2 text-sm text-slate-500 mb-4">
                   <Calendar size={16} />
