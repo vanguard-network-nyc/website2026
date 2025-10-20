@@ -5228,6 +5228,140 @@ const NewContentLibrarySection = () => {
   );
 };
 
+// Executive Networks Section
+const ExecutiveNetworksSection = () => {
+  const networks = [
+    {
+      name: "Vanguard Leadership Network",
+      description: "Our foundational network for all senior executives and board members seeking authentic peer connections and strategic insights.",
+      target: "All Senior Executives & Board Members",
+      icon: <Users size={32} />,
+      gradient: 'from-[#6366f1] to-[#8b5cf6]',
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18"
+    },
+    {
+      name: "General Counsel Network",
+      description: "For General Counsel and Chief Legal Officers seeking strategic leadership development and peer connections.",
+      target: "GC & CLO",
+      icon: <Shield size={32} />,
+      gradient: 'from-[#045184] to-[#0369a1]',
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f"
+    },
+    {
+      name: "Senior In-House Counsel Network",
+      description: "For Deputy General Counsel and Associate General Counsel looking to advance their leadership skills.",
+      target: "Deputy GC & Associate GC",
+      icon: <Users size={32} />,
+      gradient: 'from-[#00A8E1] to-[#0284c7]',
+      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf"
+    },
+    {
+      name: "Life Sciences CEO Network",
+      description: "For CEOs in the life sciences community addressing industry-specific leadership challenges.",
+      target: "Life Sciences CEOs",
+      icon: <Target size={32} />,
+      gradient: 'from-[#10b981] to-[#059669]',
+      image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69"
+    },
+    {
+      name: "Risk Management Network",
+      description: "For senior executives who lead risk-related functions across various industries.",
+      target: "Risk Management Leaders",
+      icon: <Shield size={32} />,
+      gradient: 'from-[#f59e0b] to-[#d97706]',
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Our Executive Networks
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            Join specialized peer networks designed for senior executives across industries. Connect with leaders who understand your challenges and share proven strategies for success.
+          </p>
+        </motion.div>
+
+        {/* Networks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {networks.map((network, index) => (
+            <motion.div
+              key={network.name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group"
+            >
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${network.image}')` }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-60`}></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className={`w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white`}>
+                    {network.icon}
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  {network.name}
+                </h3>
+                <p className="text-sm font-semibold text-blue-600 mb-3">
+                  {network.target}
+                </p>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  {network.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl shadow-lg p-12 text-center border border-gray-200"
+        >
+          <h3 className="text-3xl font-bold text-slate-900 mb-4">
+            Explore All Our Networks
+          </h3>
+          <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Discover how our executive networks can help you connect with peers, share insights, and accelerate your leadership journey through authentic peer-to-peer exchanges.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/networking"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
+            >
+              View All Networks
+              <ArrowRight size={20} />
+            </Link>
+            <Link
+              to="/contact"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Request Information
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Export all components
 const Components = {
   Header,
