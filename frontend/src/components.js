@@ -5281,39 +5281,34 @@ const ExecutiveNetworksSection = () => {
             >
               <Link
                 to={network.link}
-                className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-blue-400 group h-full"
+                className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-blue-400 group h-full"
               >
-                <div className="h-64 relative overflow-hidden">
+                {/* Clean image without overlays */}
+                <div className="h-64 overflow-hidden relative">
                   <img 
                     src={network.image} 
                     alt={network.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-70 group-hover:opacity-80 transition-opacity duration-300`}></div>
-                  
                   {/* Badge */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <div className="absolute top-4 right-4">
+                    <div className={`bg-gradient-to-r ${network.gradient} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg`}>
                       {network.badge}
                     </div>
-                  </div>
-                  
-                  {/* Icon and Title Overlay */}
-                  <div className="absolute bottom-6 left-6 right-6 z-10">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-                        {network.icon}
-                      </div>
-                    </div>
-                    <h3 className="text-3xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
-                      {network.name}
-                    </h3>
                   </div>
                 </div>
                 
                 <div className="p-8">
-                  <p className="text-slate-600 leading-relaxed text-lg mb-4">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${network.gradient} flex items-center justify-center text-white shadow-md`}>
+                      {network.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                      {network.name}
+                    </h3>
+                  </div>
+                  
+                  <p className="text-slate-600 leading-relaxed text-lg mb-6">
                     {network.description}
                   </p>
                   
