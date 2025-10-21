@@ -50,7 +50,8 @@ const {
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection,
-  ExecutiveNetworksSection
+  ExecutiveNetworksSection,
+  LeadershipAdvisorySection
 } = Components;
 
 function App() {
