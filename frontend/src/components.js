@@ -5358,6 +5358,118 @@ const ExecutiveNetworksSection = () => {
   );
 };
 
+// Leadership Advisory Section
+const LeadershipAdvisorySection = () => {
+  const advisoryServices = [
+    {
+      title: "Strategic Counsel",
+      description: "One-on-one coaching and confidential strategic sounding board support for senior executives navigating complex decisions and leadership challenges.",
+      icon: <Users size={32} />,
+      gradient: 'from-[#045184] to-[#0369a1]',
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg"
+    },
+    {
+      title: "Organizational Transformation",
+      description: "Transform what your people believe, the way they work, and how they behave. Grounded in decades of real-world experience with major organizations.",
+      icon: <Target size={32} />,
+      gradient: 'from-[#10b981] to-[#059669]',
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+    },
+    {
+      title: "Client and Stakeholder Engagement",
+      description: "Leadership Exchanges that transform supplier relationships into trusted advisor roles through highly relevant conversations with clients and stakeholders.",
+      icon: <Network size={32} />,
+      gradient: 'from-[#00A8E1] to-[#0284c7]',
+      image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Leadership Advisory Services
+          </h2>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            We deliver three distinct types of advisory services designed to accelerate your leadership impact and drive organizational transformation through the human factor.
+          </p>
+        </motion.div>
+
+        {/* Advisory Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {advisoryServices.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group"
+            >
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${service.image}')` }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
+                <div className="absolute bottom-4 left-4">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    {service.icon}
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-gray-50 rounded-xl shadow-lg p-12 text-center border border-gray-200"
+        >
+          <h3 className="text-3xl font-bold text-slate-900 mb-4">
+            Transform Your Leadership Impact
+          </h3>
+          <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Discover how our leadership advisory services can help you navigate complex challenges, drive organizational change, and achieve sustainable high-performance results.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/advisory"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
+            >
+              Explore Advisory Services
+              <ArrowRight size={20} />
+            </Link>
+            <Link
+              to="/contact"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Schedule Consultation
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Export all components
 const Components = {
   Header,
