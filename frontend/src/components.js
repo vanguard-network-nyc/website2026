@@ -4559,7 +4559,7 @@ const SubstackPostsSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Latest Insights from The Vanguard Network
+            Latest Insights
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Stay updated with the latest leadership insights and strategic thinking from our Founder & CEO in their column Ken Banta on Leadership.
