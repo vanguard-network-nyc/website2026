@@ -113,6 +113,7 @@ function HomePage() {
       <NewAboutSection />
       <SubstackPostsSection />
       <ExecutiveNetworksSection />
+      <LeadershipAdvisorySection />
       <NewSpecializedGroupsSection />
       <NewIntegrationSection />
       <NewContentLibrarySection />
