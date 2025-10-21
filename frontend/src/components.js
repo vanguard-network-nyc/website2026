@@ -5262,7 +5262,7 @@ const ExecutiveNetworksSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Our Executive Networks
+            Executive Networks
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Join our foundational leadership network, then choose from specialized networks designed for your specific role and industry.
