@@ -5237,7 +5237,7 @@ const ExecutiveNetworksSection = () => {
       badge: "CORE NETWORK",
       icon: <Users size={40} />,
       gradient: 'from-[#6366f1] to-[#8b5cf6]',
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18",
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&q=90&auto=format&fit=crop",
       link: "/networking#core-network"
     },
     {
@@ -5246,7 +5246,7 @@ const ExecutiveNetworksSection = () => {
       badge: "4 NETWORKS",
       icon: <Network size={40} />,
       gradient: 'from-[#045184] to-[#00A8E1]',
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=90&auto=format&fit=crop",
       link: "/networking#specialized-networks"
     }
   ];
