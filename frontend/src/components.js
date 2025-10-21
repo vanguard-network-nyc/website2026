@@ -5418,10 +5418,15 @@ const LeadershipAdvisorySection = () => {
               viewport={{ once: true }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group"
             >
-              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${service.image}')` }}>
+              <div className="h-48 relative overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
-                <div className="absolute bottom-4 left-4">
+                <div className="absolute bottom-4 left-4 z-10">
                   <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                     {service.icon}
                   </div>
