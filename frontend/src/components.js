@@ -5366,21 +5366,21 @@ const LeadershipAdvisorySection = () => {
       description: "One-on-one coaching and confidential strategic sounding board support for senior executives navigating complex decisions and leadership challenges.",
       icon: <Users size={32} />,
       gradient: 'from-[#045184] to-[#0369a1]',
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg"
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg?auto=compress&cs=tinysrgb&w=1200&h=750&dpr=2"
     },
     {
       title: "Organizational Transformation",
       description: "Transform what your people believe, the way they work, and how they behave. Grounded in decades of real-world experience with major organizations.",
       icon: <Target size={32} />,
       gradient: 'from-[#10b981] to-[#059669]',
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=90&auto=format&fit=crop"
     },
     {
       title: "Client and Stakeholder Engagement",
       description: "Leadership Exchanges that transform supplier relationships into trusted advisor roles through highly relevant conversations with clients and stakeholders.",
       icon: <Network size={32} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
-      image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063"
+      image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063?w=1200&q=90&auto=format&fit=crop"
     }
   ];
 
