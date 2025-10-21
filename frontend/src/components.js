@@ -5230,46 +5230,24 @@ const NewContentLibrarySection = () => {
 
 // Executive Networks Section
 const ExecutiveNetworksSection = () => {
-  const networks = [
+  const networkBlocks = [
     {
       name: "Vanguard Leadership Network",
-      description: "Our foundational network for all senior executives and board members seeking authentic peer connections and strategic insights.",
-      target: "All Senior Executives & Board Members",
-      icon: <Users size={32} />,
+      description: "Our foundational network for all senior executives and board members. This inclusive network welcomes any senior leader seeking authentic peer connections and strategic insights across industries.",
+      badge: "CORE NETWORK",
+      icon: <Users size={40} />,
       gradient: 'from-[#6366f1] to-[#8b5cf6]',
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18"
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18",
+      link: "/networking#core-network"
     },
     {
-      name: "General Counsel Network",
-      description: "For General Counsel and Chief Legal Officers seeking strategic leadership development and peer connections.",
-      target: "GC & CLO",
-      icon: <Shield size={32} />,
-      gradient: 'from-[#045184] to-[#0369a1]',
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f"
-    },
-    {
-      name: "Senior In-House Counsel Network",
-      description: "For Deputy General Counsel and Associate General Counsel looking to advance their leadership skills.",
-      target: "Deputy GC & Associate GC",
-      icon: <Users size={32} />,
-      gradient: 'from-[#00A8E1] to-[#0284c7]',
-      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf"
-    },
-    {
-      name: "Life Sciences CEO Network",
-      description: "For CEOs in the life sciences community addressing industry-specific leadership challenges.",
-      target: "Life Sciences CEOs",
-      icon: <Target size={32} />,
-      gradient: 'from-[#10b981] to-[#059669]',
-      image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69"
-    },
-    {
-      name: "Risk Management Network",
-      description: "For senior executives who lead risk-related functions across various industries.",
-      target: "Risk Management Leaders",
-      icon: <Shield size={32} />,
-      gradient: 'from-[#f59e0b] to-[#d97706]',
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85"
+      name: "Specialized Networks",
+      description: "Join role-specific networks designed for your leadership position: General Counsel Network, Senior In-House Counsel Network, Life Sciences CEO Network, and Risk Management Network.",
+      badge: "4 NETWORKS",
+      icon: <Network size={40} />,
+      gradient: 'from-[#045184] to-[#00A8E1]',
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978",
+      link: "/networking#specialized-networks"
     }
   ];
 
@@ -5287,41 +5265,59 @@ const ExecutiveNetworksSection = () => {
             Our Executive Networks
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Join specialized peer networks designed for senior executives across industries. Connect with leaders who understand your challenges and share proven strategies for success.
+            Join our foundational leadership network, then choose from specialized networks designed for your specific role and industry.
           </p>
         </motion.div>
 
-        {/* Networks Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {networks.map((network, index) => (
+        {/* Networks Grid - 2 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
+          {networkBlocks.map((network, index) => (
             <motion.div
               key={network.name}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group"
             >
-              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${network.image}')` }}>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-60`}></div>
-                <div className="absolute bottom-4 left-4">
-                  <div className={`w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white`}>
-                    {network.icon}
+              <Link
+                to={network.link}
+                className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-blue-400 group h-full"
+              >
+                <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url('${network.image}')` }}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-70 group-hover:opacity-80 transition-opacity duration-300`}></div>
+                  
+                  {/* Badge */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {network.badge}
+                    </div>
+                  </div>
+                  
+                  {/* Icon and Title Overlay */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                        {network.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-3xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
+                      {network.name}
+                    </h3>
                   </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
-                  {network.name}
-                </h3>
-                <p className="text-sm font-semibold text-blue-600 mb-3">
-                  {network.target}
-                </p>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  {network.description}
-                </p>
-              </div>
+                
+                <div className="p-8">
+                  <p className="text-slate-600 leading-relaxed text-lg mb-4">
+                    {network.description}
+                  </p>
+                  
+                  <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors duration-300">
+                    <span>Learn More</span>
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -5335,7 +5331,7 @@ const ExecutiveNetworksSection = () => {
           className="bg-white rounded-xl shadow-lg p-12 text-center border border-gray-200"
         >
           <h3 className="text-3xl font-bold text-slate-900 mb-4">
-            Explore All Our Networks
+            Ready to Connect?
           </h3>
           <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
             Discover how our executive networks can help you connect with peers, share insights, and accelerate your leadership journey through authentic peer-to-peer exchanges.
