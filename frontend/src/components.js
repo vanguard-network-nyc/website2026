@@ -5283,19 +5283,24 @@ const ExecutiveNetworksSection = () => {
                 to={network.link}
                 className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-blue-400 group h-full"
               >
-                <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url('${network.image}')` }}>
+                <div className="h-64 relative overflow-hidden">
+                  <img 
+                    src={network.image} 
+                    alt={network.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   <div className={`absolute inset-0 bg-gradient-to-br ${network.gradient} opacity-70 group-hover:opacity-80 transition-opacity duration-300`}></div>
                   
                   {/* Badge */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 z-10">
                     <div className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
                       {network.badge}
                     </div>
                   </div>
                   
                   {/* Icon and Title Overlay */}
-                  <div className="absolute bottom-6 left-6 right-6">
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
                     <div className="flex items-center gap-4 mb-3">
                       <div className="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                         {network.icon}
