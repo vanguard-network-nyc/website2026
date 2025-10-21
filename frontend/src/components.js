@@ -5413,24 +5413,23 @@ const LeadershipAdvisorySection = () => {
               viewport={{ once: true }}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 group"
             >
-              <div className="h-48 relative overflow-hidden">
+              {/* Clean image without overlays */}
+              <div className="h-48 overflow-hidden">
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-60 group-hover:opacity-70 transition-opacity duration-300`}></div>
-                <div className="absolute bottom-4 left-4 z-10">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
-                    {service.icon}
-                  </div>
-                </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-                  {service.title}
-                </h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${service.gradient} flex items-center justify-center text-white shadow-md`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                </div>
                 <p className="text-slate-600 leading-relaxed">
                   {service.description}
                 </p>
