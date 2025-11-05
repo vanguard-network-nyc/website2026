@@ -4350,18 +4350,28 @@ const NewAboutSection = () => {
           </p>
         </motion.div>
 
+        {/* Quote Container */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200"
+          className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200 mb-8"
         >
-          <blockquote className="text-2xl text-slate-700 italic mb-6 leading-relaxed border-l-4 border-blue-600 pl-6">
+          <blockquote className="text-2xl text-slate-700 italic leading-relaxed border-l-4 border-blue-600 pl-6">
             "The Vanguard Network empowers its members to thrive in complex leadership environments through personalized services and a global community committed to excellence."
           </blockquote>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        </motion.div>
+
+        {/* Three Boxes Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 mb-8"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-bold text-slate-900 mb-2">By Invitation Only</h4>
               <p className="text-slate-600">
@@ -4381,37 +4391,36 @@ const NewAboutSection = () => {
               </p>
             </div>
           </div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                Unlock Your Leadership Potential
-              </h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
-                Join a community of senior executives who are transforming their organizations and driving extraordinary outcomes through collaborative leadership development.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  to="/contact"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Request Invitation
-                </Link>
-                <Link
-                  to="/about"
-                  className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
-          </motion.div>
+        {/* CTA Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200"
+        >
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            Unlock Your Leadership Potential
+          </h3>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            Join a community of senior executives who are transforming their organizations and driving extraordinary outcomes through collaborative leadership development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/contact"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Request Invitation
+            </Link>
+            <Link
+              to="/about"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              Learn More
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
