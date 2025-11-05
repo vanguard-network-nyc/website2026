@@ -4080,7 +4080,7 @@ const NewStatsSection = () => {
   const stats = [
     { number: "26+", label: "Countries Represented" },
     { number: "268", label: "Participating Companies" },
-    { number: "374", label: "Top Leaders Engaged" },
+    { number: "1,995", label: "Top Leaders Engaged" },
     { number: "25 Years", label: "Leadership Expertise" }
   ];
 
