@@ -4332,24 +4332,6 @@ const NewWhatWeDoSection = () => {
 
 // About Section
 const NewAboutSection = () => {
-  const features = [
-    {
-      title: "Leadership Excellence",
-      subtitle: "Empowering C-Suite Leaders",
-      image: "https://images.unsplash.com/photo-1562935345-5080389daccd"
-    },
-    {
-      title: "Global Network",
-      subtitle: "26+ Countries Connected",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
-    },
-    {
-      title: "Proven Expertise",
-      subtitle: "25 Years of Excellence",
-      image: "https://images.unsplash.com/photo-1579525109384-ddf54825044f"
-    }
-  ];
-
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
