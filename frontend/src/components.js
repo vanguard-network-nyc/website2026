@@ -4359,7 +4359,7 @@ const NewAboutSection = () => {
           className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200 mb-8"
         >
           <blockquote className="text-2xl text-slate-700 italic leading-relaxed border-l-4 border-blue-600 pl-6">
-            "The Vanguard Network empowers its members to thrive in complex leadership environments through personalized services and a global community committed to excellence."
+            "One quality sets apart successful companies and successful executives: high-performance leadership. Developing great leaders, and supporting their work, is where the Vanguard team really excels."
           </blockquote>
         </motion.div>
 
