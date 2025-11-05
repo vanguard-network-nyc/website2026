@@ -4145,7 +4145,7 @@ const NewWhatWeDoSection = () => {
     {
       title: "Client and Stakeholder Engagement",
       description: "We apply our signature approaches to leadership interactions to build and deepen external relationships.",
-      details: "Leadership Exchanges curated by Vanguard bring you together clients and stakeholders in highly relevant conversations on topics ranging from developing high potential employees to policy challenges. These conversations, small-group interactions and dinner discussions transform conventional 'supplier' or 'vendor' relationships into a role as peer and trusted advisor.",
+      details: "Leadership Dialogues curated by Vanguard bring you together clients and stakeholders in highly relevant conversations on topics ranging from developing high potential employees to policy challenges. These conversations, small-group interactions and dinner discussions transform conventional 'supplier' or 'vendor' relationships into a role as peer and trusted advisor.",
       image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063",
       link: "/programs"
     }
