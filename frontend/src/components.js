@@ -4356,25 +4356,25 @@ const NewAboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 mb-8"
+          className="bg-white rounded-xl shadow-lg p-12 border border-gray-200 mb-8"
         >
-          <div className="flex items-start gap-6">
-            {/* Round Image Frame */}
+          <div className="flex flex-col items-center text-center">
+            {/* Round Image Frame - Larger and Centered */}
             <img 
               src="https://lh3.googleusercontent.com/d/1cTYAE87qaYRSVj76h66H0zLDHbancsSf"
               alt="Tom Sabatino"
-              className="w-24 h-24 rounded-full object-cover flex-shrink-0 shadow-md"
+              className="w-40 h-40 rounded-full object-cover shadow-lg mb-6"
               crossOrigin="anonymous"
             />
             
             {/* Quote and Attribution */}
-            <div className="flex-1 text-left">
-              <blockquote className="text-2xl text-slate-700 italic leading-relaxed mb-4">
+            <div className="max-w-4xl">
+              <blockquote className="text-2xl text-slate-700 italic leading-relaxed mb-6">
                 "One quality sets apart successful companies and successful executives: high-performance leadership. Developing great leaders, and supporting their work, is where the Vanguard team really excels."
               </blockquote>
               
               {/* Attribution */}
-              <div className="text-left">
+              <div className="text-center">
                 <p className="text-xl font-bold text-slate-900 mb-1">Tom Sabatino</p>
                 <p className="text-sm text-slate-600 leading-relaxed">
                   Past Chief Legal Officer, Rite Aid<br />
