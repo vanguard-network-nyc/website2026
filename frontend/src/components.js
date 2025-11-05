@@ -4368,33 +4368,6 @@ const NewAboutSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="mb-6">
-                <img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="w-20 h-20 rounded-full mx-auto object-cover shadow-lg"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-slate-600">
-                {feature.subtitle}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
