@@ -5377,7 +5377,7 @@ const LeadershipAdvisorySection = () => {
     },
     {
       title: "Client and Stakeholder Engagement",
-      description: "Leadership Exchanges that transform supplier relationships into trusted advisor roles through highly relevant conversations with clients and stakeholders.",
+      description: "Leadership Dialogues that transform supplier relationships into trusted advisor roles through highly relevant conversations with clients and stakeholders.",
       icon: <Network size={32} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
       image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063?w=1200&q=90&auto=format&fit=crop"
