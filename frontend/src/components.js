@@ -4361,9 +4361,10 @@ const NewAboutSection = () => {
           <div className="flex items-start gap-6">
             {/* Round Image Frame */}
             <img 
-              src="https://drive.google.com/uc?export=view&id=1cTYAE87qaYRSVj76h66H0zLDHbancsSf"
+              src="https://lh3.googleusercontent.com/d/1cTYAE87qaYRSVj76h66H0zLDHbancsSf"
               alt="Tom Sabatino"
               className="w-24 h-24 rounded-full object-cover flex-shrink-0 shadow-md"
+              crossOrigin="anonymous"
             />
             
             {/* Quote and Attribution */}
