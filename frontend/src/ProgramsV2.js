@@ -28,6 +28,14 @@ const ProgramsV2 = () => {
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Scroll to top when component mounts
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   const currentPrograms = [
     {
       name: "GC EXCHANGE",
