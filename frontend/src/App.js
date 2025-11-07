@@ -45,14 +45,13 @@ const {
   NewHero,
   NewStatsSection,
   NewWhatWeDoSection,
+  OriginalWhatWeDoSection,
   NewAboutSection,
   SubstackPostsSection,
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection,
   OriginalContentLibrarySection,
-  NewWhatWeDoSection,
-  OriginalWhatWeDoSection,
   ExecutiveNetworksSection,
   LeadershipAdvisorySection
 } = Components;
