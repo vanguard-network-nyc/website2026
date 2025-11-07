@@ -113,7 +113,6 @@ function HomePage() {
       <NewWhatWeDoSection />
       <NewAboutSection />
       <SubstackPostsSection />
-      <ExecutiveNetworksSection />
     </motion.div>
   );
 }
