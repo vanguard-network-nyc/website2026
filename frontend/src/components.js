@@ -4504,7 +4504,7 @@ const NewAboutSection = () => {
               Apply to Join
             </Link>
             <Link
-              to="/about"
+              to="/networking"
               className="bg-transparent px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               style={{ 
                 color: '#045184',
