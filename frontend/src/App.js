@@ -57,30 +57,25 @@ const {
 // Component to handle scroll restoration with transition overlay
 function ScrollHandler({ setIsTransitioning }) {
   const location = useLocation();
-  const prevPathname = React.useRef(location.pathname);
   
   useLayoutEffect(() => {
-    // Check if navigation happened
-    if (prevPathname.current !== location.pathname) {
-      // Show overlay
-      setIsTransitioning(true);
-      
-      // Scroll to top if no hash
-      if (!location.hash) {
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        window.scrollTo(0, 0);
-      }
-      
-      // Hide overlay after a brief moment
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-      }, 50);
-      
-      prevPathname.current = location.pathname;
-      
-      return () => clearTimeout(timer);
+    // Always show overlay during transition
+    setIsTransitioning(true);
+    
+    // Scroll to top if no hash
+    if (!location.hash) {
+      // Force scroll using multiple methods
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
     }
+    
+    // Hide overlay after ensuring scroll is complete
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, [location.pathname, location.hash, setIsTransitioning]);
   
   return null;
