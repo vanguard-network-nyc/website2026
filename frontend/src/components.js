@@ -1268,182 +1268,165 @@ const AdvisoryPage = () => (
       {/* Detailed Services */}
       <div className="space-y-12">
         
-        {/* Coaching Section */}
+        {/* Strategic Counsel Section */}
         <motion.div
-          id="coaching"
+          id="strategic-counsel"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
           style={{ scrollMarginTop: '120px' }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Strategic Counsel Title */}
+          <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">STRATEGIC COUNSEL</h2>
+          
+          {/* Coaching Subsection */}
+          <div className="mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.0, duration: 0.8 }}
+              >
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">Coaching</h3>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  We work with leaders on specific development goals to help them be more effective decision-makers and developers of their people. This can include exploring additional personal or professional growth areas, creating and implementing organizational strategies for incremental improvement, and contributing to enterprise transformational change.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  We also help leaders similarly with their teams, developing high performance and overcoming barriers. This work can include customized training and development programs, building effective working cultures, and carrying out talent assessments and development plans.
+                </p>
+              </motion.div>
+              <motion.div 
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="rounded-xl p-8" 
+                style={{ backgroundColor: '#045184' }}
+              >
+                <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
+                <ul className="space-y-3 text-white">
+                  {[
+                    "Effective decision-making",
+                    "People development", 
+                    "Organizational strategy",
+                    "Transformational change",
+                    "Team development"
+                  ].map((item, index) => (
+                    <motion.li
+                      key={item}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
+                      className="flex items-center"
+                    >
+                      <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+            
+            {/* Coaching Testimonial */}
             <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.0, duration: 0.8 }}
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.8, duration: 0.8 }}
+              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
             >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">COACHING</h2>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                We work with leaders on specific development goals to help them be more effective decision-makers and developers of their people. This can include exploring additional personal or professional growth areas, creating and implementing organizational strategies for incremental improvement, and contributing to enterprise transformational change.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                We also help leaders similarly with their teams, developing high performance and overcoming barriers. This work can include customized training and development programs, building effective working cultures, and carrying out talent assessments and development plans.
-              </p>
-            </motion.div>
-            <motion.div 
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="rounded-xl p-8" 
-              style={{ backgroundColor: '#045184' }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
-              <ul className="space-y-3 text-white">
-                {[
-                  "Effective decision-making",
-                  "People development", 
-                  "Organizational strategy",
-                  "Transformational change",
-                  "Team development"
-                ].map((item, index) => (
-                  <motion.li
-                    key={item}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
-                    className="flex items-center"
-                  >
-                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                    alt="Client testimonial"
+                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "The coaching approach helped me develop more effective decision-making skills and significantly improved how I develop my team. The insights were practical and immediately applicable."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Michael Chen</div>
+                  <div className="text-slate-600 text-sm">Chief Operating Officer, Global Manufacturing Corp</div>
+                </div>
+              </div>
             </motion.div>
           </div>
-          
-          {/* Coaching Testimonial */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-shrink-0">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                  alt="Client testimonial"
-                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
-                />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                  "The coaching approach helped me develop more effective decision-making skills and significantly improved how I develop my team. The insights were practical and immediately applicable."
-                </blockquote>
-                <div className="text-slate-900 font-bold">Michael Chen</div>
-                <div className="text-slate-600 text-sm">Chief Operating Officer, Global Manufacturing Corp</div>
-              </div>
-            </div>
-          </motion.div>
-          
-          {/* Coaching Case Study Link */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 2.0, duration: 0.8 }}
-            className="mt-8 text-center"
-          >
-            <Link
-              to="/case-studies?category=leadership-advisory"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
-            >
-              View Leadership Advisory Client Success Stories
-              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </motion.div>
-        </motion.div>
 
-        {/* Sounding Board Section */}
-        <motion.div
-          id="sounding-board"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
-          style={{ scrollMarginTop: '120px' }}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
+          {/* Sounding Board Subsection */}
+          <div className="mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.4, duration: 0.8 }}
+              >
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">Sounding Board</h3>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  This approach is typically most appropriate for the senior leader in the organization or team and their direct reports.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  TVN's Ken Banta and Richard Hulme have decades of experience supporting CEOs and C-suite executives and their reports as they work through specific challenges and develop strategy and execution plans for themselves and their teams.
+                </p>
+              </motion.div>
+              <motion.div 
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.6, duration: 0.8 }}
+                className="rounded-xl p-8" 
+                style={{ backgroundColor: '#045184' }}
+              >
+                <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
+                <ul className="space-y-3 text-white">
+                  {[
+                    "CEO and C-suite support",
+                    "Leadership team dynamics",
+                    "Strategic decision-making",
+                    "Board relations",
+                    "Stakeholder management"
+                  ].map((item, index) => (
+                    <motion.li
+                      key={item}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 1.8 + index * 0.1, duration: 0.5 }}
+                      className="flex items-center"
+                    >
+                      <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+            
+            {/* Sounding Board Testimonial */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.8, duration: 0.8 }}
+              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
             >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">SOUNDING BOARD</h2>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                This approach is typically most appropriate for the senior leader in the organization or team and their direct reports.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                TVN's Ken Banta and Richard Hulme have decades of experience supporting CEOs and C-suite executives and their reports as they work through specific challenges and develop strategy and execution plans for themselves and their teams.
-              </p>
-            </motion.div>
-            <motion.div 
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.6, duration: 0.8 }}
-              className="rounded-xl p-8" 
-              style={{ backgroundColor: '#045184' }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
-              <ul className="space-y-3 text-white">
-                {[
-                  "CEO and C-suite support",
-                  "Leadership team dynamics",
-                  "Strategic decision-making",
-                  "Board relations",
-                  "Stakeholder management"
-                ].map((item, index) => (
-                  <motion.li
-                    key={item}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 1.8 + index * 0.1, duration: 0.5 }}
-                    className="flex items-center"
-                  >
-                    <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+                    alt="Client testimonial"
+                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "Having Ken and Richard as strategic sounding boards has been invaluable during critical decision-making moments. Their experience and perspective helped me navigate complex stakeholder challenges with confidence."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Sarah Rodriguez</div>
+                  <div className="text-slate-600 text-sm">Chief Executive Officer, TechForward Solutions</div>
+                </div>
+              </div>
             </motion.div>
           </div>
           
-          {/* Sounding Board Testimonial */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-shrink-0">
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
-                  alt="Client testimonial"
-                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
-                />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                  "Having Ken and Richard as strategic sounding boards has been invaluable during critical decision-making moments. Their experience and perspective helped me navigate complex stakeholder challenges with confidence."
-                </blockquote>
-                <div className="text-slate-900 font-bold">Sarah Rodriguez</div>
-                <div className="text-slate-600 text-sm">Chief Executive Officer, TechForward Solutions</div>
-              </div>
-            </div>
-          </motion.div>
-          
-          {/* Sounding Board Case Study Link */}
+          {/* Case Study Link */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
