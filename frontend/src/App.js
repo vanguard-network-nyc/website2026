@@ -51,6 +51,8 @@ const {
   NewIntegrationSection,
   NewContentLibrarySection,
   OriginalContentLibrarySection,
+  NewWhatWeDoSection,
+  OriginalWhatWeDoSection,
   ExecutiveNetworksSection,
   LeadershipAdvisorySection
 } = Components;
