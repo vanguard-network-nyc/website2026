@@ -54,9 +54,29 @@ const {
   LeadershipAdvisorySection
 } = Components;
 
+// Component to handle scroll restoration
+function ScrollHandler() {
+  const location = useLocation();
+  
+  useLayoutEffect(() => {
+    // Only scroll to top if there's no hash
+    if (!location.hash) {
+      // Use requestAnimationFrame to ensure it runs before render
+      const frame = requestAnimationFrame(() => {
+        window.history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+      });
+      return () => cancelAnimationFrame(frame);
+    }
+  }, [location.pathname, location.hash]);
+  
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollHandler />
       <div className="App">
         <Header />
         <AnimatePresence mode="wait">
