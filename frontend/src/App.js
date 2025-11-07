@@ -54,14 +54,18 @@ const {
   LeadershipAdvisorySection
 } = Components;
 
-// Component to handle scroll restoration
+// Component to handle scroll restoration - must run before render
 function ScrollHandler() {
   const location = useLocation();
   
-  // Synchronously scroll before any rendering
-  if (!location.hash && window.pageYOffset !== 0) {
-    window.scrollTo(0, 0);
-  }
+  // Force scroll to top IMMEDIATELY for any route without hash
+  React.useMemo(() => {
+    if (!location.hash) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
   
   return null;
 }
