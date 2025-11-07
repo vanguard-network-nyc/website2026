@@ -71,7 +71,6 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <div className="App">
         <Header />
         <AnimatePresence mode="wait">
