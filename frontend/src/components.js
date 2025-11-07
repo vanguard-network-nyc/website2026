@@ -5200,19 +5200,19 @@ const NewContentLibrarySection = () => {
                 >
                   {/* Intro Header Section */}
                   <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
-                    <div className="flex items-center justify-center text-blue-600 h-8 mb-2">
+                    <div className="flex items-center justify-center text-blue-600 mb-2" style={{ height: '32px' }}>
                       {insight.type === 'Article' ? <Newspaper size={24} /> : 
                        insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
                        insight.type === 'Video' ? <Video size={24} /> : 
                        <Newspaper size={24} />}
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 h-6 mb-2 text-center flex items-center justify-center">
+                    <h3 className="text-base font-bold text-slate-900 mb-2 text-center whitespace-nowrap overflow-hidden" style={{ height: '24px', lineHeight: '24px' }}>
                       {insight.type === 'Article' ? 'Articles' : 
                        insight.type === 'Podcast' ? 'Podcasts' : 
                        insight.type === 'Video' ? 'Videos' : 
                        "Ken Banta's Substack"}
                     </h3>
-                    <div className="h-20 flex items-center justify-center">
+                    <div className="flex items-start justify-center" style={{ height: '80px' }}>
                       <p className="text-xs text-slate-600 leading-relaxed text-center" dangerouslySetInnerHTML={{ 
                         __html: insight.type === 'Article' ? 'In-depth analysis and thought leadership on organizational transformation and leadership excellence.' : 
                                 insight.type === 'Podcast' ? 'Conversations with industry leaders sharing insights on governance, strategy, and leadership development.' : 
