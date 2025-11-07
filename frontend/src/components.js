@@ -5199,30 +5199,32 @@ const NewContentLibrarySection = () => {
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
                 >
                   {/* Intro Header Section */}
-                  <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4 h-44 flex flex-col justify-center">
-                    <div className="flex items-center justify-center text-blue-600 mb-2">
+                  <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
+                    <div className="flex items-center justify-center text-blue-600 h-8 mb-2">
                       {insight.type === 'Article' ? <Newspaper size={24} /> : 
                        insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
                        insight.type === 'Video' ? <Video size={24} /> : 
                        <Newspaper size={24} />}
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 mb-2 text-center">
+                    <h3 className="text-base font-bold text-slate-900 h-6 mb-2 text-center flex items-center justify-center">
                       {insight.type === 'Article' ? 'Articles' : 
                        insight.type === 'Podcast' ? 'Podcasts' : 
                        insight.type === 'Video' ? 'Videos' : 
                        "Ken Banta's Substack"}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed text-center" dangerouslySetInnerHTML={{ 
-                      __html: insight.type === 'Article' ? 'In-depth analysis and thought leadership on organizational transformation and leadership excellence.' : 
-                              insight.type === 'Podcast' ? 'Conversations with industry leaders sharing insights on governance, strategy, and leadership development.' : 
-                              insight.type === 'Video' ? 'Visual content featuring expert discussions and leadership development sessions from our community.' : 
-                              'Stay updated with the latest leadership insights and strategic thinking from our Founder & CEO column, <strong>Ken Banta on Leadership</strong>.'
-                    }}>
-                    </p>
+                    <div className="h-20 flex items-center justify-center">
+                      <p className="text-xs text-slate-600 leading-relaxed text-center" dangerouslySetInnerHTML={{ 
+                        __html: insight.type === 'Article' ? 'In-depth analysis and thought leadership on organizational transformation and leadership excellence.' : 
+                                insight.type === 'Podcast' ? 'Conversations with industry leaders sharing insights on governance, strategy, and leadership development.' : 
+                                insight.type === 'Video' ? 'Visual content featuring expert discussions and leadership development sessions from our community.' : 
+                                'Stay updated with the latest leadership insights and strategic thinking from our Founder & CEO column, <strong>Ken Banta on Leadership</strong>.'
+                      }}>
+                      </p>
+                    </div>
                   </div>
 
                   {/* Image Section */}
-                  <div className="h-56 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
+                  <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
                     <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
                       <div className="text-white">
                         <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
