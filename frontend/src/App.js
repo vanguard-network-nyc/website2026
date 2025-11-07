@@ -99,8 +99,9 @@ function App() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'white',
-          zIndex: 9999
+          backgroundColor: '#f8fafc',
+          zIndex: 99999,
+          pointerEvents: 'none'
         }} />
       )}
       <div className="App">
