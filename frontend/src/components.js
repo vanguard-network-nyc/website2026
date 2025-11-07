@@ -4322,12 +4322,15 @@ const NewWhatWeDoSection = () => {
                 ) : (
                   <Link
                     to={service.link}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
                   >
                     Learn more
                     <ArrowRight size={16} />
                   </Link>
-                )}
+                )}}
               </div>
             </motion.div>
           ))}
@@ -4381,12 +4384,15 @@ const NewWhatWeDoSection = () => {
                 ) : (
                   <Link
                     to={service.link}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
                   >
                     Learn more
                     <ArrowRight size={16} />
                   </Link>
-                )}
+                )}}
               </div>
             </motion.div>
           ))}
