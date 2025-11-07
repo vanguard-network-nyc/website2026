@@ -58,17 +58,10 @@ const {
 function ScrollHandler() {
   const location = useLocation();
   
-  useLayoutEffect(() => {
-    // Only scroll to top if there's no hash
-    if (!location.hash) {
-      // Use requestAnimationFrame to ensure it runs before render
-      const frame = requestAnimationFrame(() => {
-        window.history.scrollRestoration = 'manual';
-        window.scrollTo(0, 0);
-      });
-      return () => cancelAnimationFrame(frame);
-    }
-  }, [location.pathname, location.hash]);
+  // Synchronously scroll before any rendering
+  if (!location.hash && window.pageYOffset !== 0) {
+    window.scrollTo(0, 0);
+  }
   
   return null;
 }
