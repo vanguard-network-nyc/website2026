@@ -4501,7 +4501,7 @@ const NewAboutSection = () => {
                 background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
               }}
             >
-              Request Invitation
+              Apply to Join
             </Link>
             <Link
               to="/about"
