@@ -5205,10 +5205,6 @@ const NewContentLibrarySection = () => {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-            Featured Insights
-          </h3>
-          
           {loading ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
