@@ -5260,7 +5260,8 @@ const NewContentLibrarySection = () => {
                             href={insight.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                            className="block w-full text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                            style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
                           >
                             {insight.type === 'Article' ? 'Read more' : 
                              insight.type === 'Podcast' ? 'Listen podcast' : 
@@ -5270,7 +5271,8 @@ const NewContentLibrarySection = () => {
                         ) : (
                           <Link 
                             to={insight.link}
-                            className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                            className="block w-full text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                            style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
                           >
                             {insight.type === 'Article' ? 'Read more' : 
                              insight.type === 'Podcast' ? 'Listen podcast' : 
@@ -5278,7 +5280,10 @@ const NewContentLibrarySection = () => {
                           </Link>
                         )
                       ) : (
-                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <button 
+                          className="w-full text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                          style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
+                        >
                           {insight.type === 'Article' ? 'Read more' : 
                            insight.type === 'Podcast' ? 'Listen podcast' : 
                            insight.type === 'Video' ? 'Watch video' : 'Read More'}
