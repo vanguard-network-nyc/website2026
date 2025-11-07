@@ -5071,6 +5071,30 @@ const NewContentLibrarySection = () => {
         });
       }
 
+      // Add Substack post from November 6
+      if (substackPost) {
+        // Extract description from content
+        const stripHtmlTags = (html) => {
+          const div = document.createElement('div');
+          div.innerHTML = html;
+          return div.textContent || div.innerText || '';
+        };
+        const description = stripHtmlTags(substackPost.description || substackPost.content);
+        const excerpt = description.length > 150 ? description.substring(0, 150) + '...' : description;
+        
+        insights.push({
+          type: "Substack",
+          category: "Ken Banta on Leadership",
+          title: substackPost.title || "Leadership Insights",
+          description: excerpt,
+          author: "Ken Banta",
+          duration: new Date(substackPost.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+          image: substackPost.thumbnail || substackPost.enclosure?.link || "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+          link: substackPost.link,
+          external: true
+        });
+      }
+
       setFeaturedInsights(insights);
     } catch (error) {
       console.error('Error fetching featured insights:', error);
