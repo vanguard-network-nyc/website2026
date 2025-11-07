@@ -1032,13 +1032,33 @@ const AboutPage = () => (
   </motion.div>
 );
 
-const AdvisoryPage = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
-  >
+const AdvisoryPage = () => {
+  useEffect(() => {
+    // Handle hash navigation on page load
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 165; // Account for fixed header + banner
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Give more time for page to render
+    }
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
+    >
     {/* Hero Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
       <motion.div
