@@ -74,6 +74,11 @@ function ScrollHandler() {
 }
 
 function App() {
+  // Disable automatic scroll restoration
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+  }, []);
+  
   return (
     <Router>
       <ScrollHandler />
