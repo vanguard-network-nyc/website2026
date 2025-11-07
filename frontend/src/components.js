@@ -4496,13 +4496,23 @@ const NewAboutSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              style={{ 
+                background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
+              }}
             >
               Request Invitation
             </Link>
             <Link
               to="/about"
-              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="bg-transparent px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              style={{ 
+                color: '#045184',
+                border: '3px solid transparent',
+                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #7f30cb, #01dcba)',
+                backgroundOrigin: 'border-box',
+                backgroundClip: 'padding-box, border-box'
+              }}
             >
               Learn More
             </Link>
