@@ -1097,11 +1097,8 @@ const AdvisoryPage = () => (
               bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
               details: (
                 <div className="flex gap-6">
-                  <a href="#coaching" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
-                    Coaching
-                  </a>
-                  <a href="#sounding-board" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
-                    Sounding Board
+                  <a href="#strategic-counsel" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
+                    Strategic Counsel
                   </a>
                 </div>
               )
