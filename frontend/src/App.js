@@ -73,7 +73,7 @@ function ScrollHandler({ setIsTransitioning }) {
     // Hide overlay after ensuring scroll is complete
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 100);
+    }, 200);
     
     return () => clearTimeout(timer);
   }, [location.pathname, location.hash, setIsTransitioning]);
