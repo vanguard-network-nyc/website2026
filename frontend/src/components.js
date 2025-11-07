@@ -4151,7 +4151,7 @@ const NewWhatWeDoSection = () => {
     {
       title: "Leadership Advisory",
       description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
-      details: "Organizational Transformation: Catalyzing change by transforming what your people believe, the way they work, and how they behave. Strategic Counsel: One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions. Client & Stakeholder Engagement: Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
+      details: "<span class='font-semibold'>Organizational Transformation:</span> Catalyzing change by transforming what your people believe, the way they work, and how they behave.<br><br><span class='font-semibold'>Strategic Counsel:</span> One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions.<br><br><span class='font-semibold'>Client & Stakeholder Engagement:</span> Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
     },
