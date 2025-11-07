@@ -5102,20 +5102,22 @@ const NewContentLibrarySection = () => {
     {
       title: "Articles",
       description: "In-depth analysis and thought leadership on organizational transformation and leadership excellence.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
       icon: <Newspaper size={32} />
     },
     {
       title: "Podcasts",
       description: "Conversations with industry leaders sharing insights on governance, strategy, and leadership development.",
-      image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618",
       icon: <MessageCircle size={32} />
     },
     {
       title: "Videos",
       description: "Visual content featuring expert discussions and leadership development sessions from our community.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
       icon: <Video size={32} />
+    },
+    {
+      title: "Ken Banta's Substack",
+      description: "Stay updated with the latest leadership insights and strategic thinking from our Founder & CEO column, <strong>Ken Banta on Leadership</strong>.",
+      icon: <Newspaper size={32} />
     }
   ];
 
