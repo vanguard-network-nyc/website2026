@@ -28,12 +28,9 @@ const ProgramsV2 = () => {
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts - instant to prevent flash
   React.useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo(0, 0);
   }, []);
 
   const currentPrograms = [
