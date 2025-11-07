@@ -117,7 +117,6 @@ function HomePage() {
       <LeadershipAdvisorySection />
       <NewSpecializedGroupsSection />
       <NewIntegrationSection />
-      <NewContentLibrarySection />
     </motion.div>
   );
 }
