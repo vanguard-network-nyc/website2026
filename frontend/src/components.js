@@ -5264,7 +5264,7 @@ const NewContentLibrarySection = () => {
                             style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
                           >
                             {insight.type === 'Article' ? 'Read more' : 
-                             insight.type === 'Podcast' ? 'Listen podcast' : 
+                             insight.type === 'Podcast' ? 'Listen to podcast' : 
                              insight.type === 'Video' ? 'Watch video' : 
                              insight.type === 'Substack' ? 'Read on Substack' : 'Read More'}
                           </a>
@@ -5275,7 +5275,7 @@ const NewContentLibrarySection = () => {
                             style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
                           >
                             {insight.type === 'Article' ? 'Read more' : 
-                             insight.type === 'Podcast' ? 'Listen podcast' : 
+                             insight.type === 'Podcast' ? 'Listen to podcast' : 
                              insight.type === 'Video' ? 'Watch video' : 'Read More'}
                           </Link>
                         )
@@ -5285,7 +5285,7 @@ const NewContentLibrarySection = () => {
                           style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
                         >
                           {insight.type === 'Article' ? 'Read more' : 
-                           insight.type === 'Podcast' ? 'Listen podcast' : 
+                           insight.type === 'Podcast' ? 'Listen to podcast' : 
                            insight.type === 'Video' ? 'Watch video' : 'Read More'}
                         </button>
                       )}
