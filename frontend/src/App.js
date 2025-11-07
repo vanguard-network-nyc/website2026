@@ -160,6 +160,7 @@ function HomePage() {
       <NewWhatWeDoSection />
       <NewAboutSection />
       <SubstackPostsSection />
+      <NewContentLibrarySection />
     </motion.div>
   );
 }
