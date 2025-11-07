@@ -23,6 +23,9 @@ import {
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
+  // Scroll to top immediately
+  window.scrollTo(0, 0);
+  
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [viewMode, setViewMode] = useState('cards');
