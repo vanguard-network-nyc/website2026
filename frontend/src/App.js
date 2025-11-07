@@ -115,7 +115,6 @@ function HomePage() {
       <SubstackPostsSection />
       <ExecutiveNetworksSection />
       <LeadershipAdvisorySection />
-      <NewSpecializedGroupsSection />
     </motion.div>
   );
 }
