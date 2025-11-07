@@ -4074,9 +4074,12 @@ const NewHero = () => {
           >
             <Link
               to="/networking"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              style={{ 
+                background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
+              }}
             >
-              Executive Networks
+              Peer-to-Peer Networks
               <ArrowRight size={20} />
             </Link>
             <Link
