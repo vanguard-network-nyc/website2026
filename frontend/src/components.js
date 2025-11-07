@@ -4165,7 +4165,7 @@ const NewWhatWeDoSection = () => {
     {
       title: "Custom Programs",
       description: "We offer special leadership and career development programs tailored to your organization's unique needs and challenges.",
-      details: "\"Next Generation GC\" is the gold standard program developing high-potential legal talent into General Counsel readiness. The \"New Leaders Program\" applies intimate, peer-to-peer formats to accelerate the capabilities of early career leaders.",
+      details: "<span class='font-semibold'>Next Generation GC</span> is the gold standard program developing high-potential legal talent into General Counsel readiness. The <span class='font-semibold'>New Leaders Program</span> applies intimate, peer-to-peer formats to accelerate the capabilities of early career leaders.",
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs-v2"
     }
