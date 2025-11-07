@@ -159,7 +159,6 @@ function HomePage() {
       <NewStatsSection />
       <NewWhatWeDoSection />
       <NewAboutSection />
-      <SubstackPostsSection />
       <NewContentLibrarySection />
     </motion.div>
   );
