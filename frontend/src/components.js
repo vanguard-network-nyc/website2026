@@ -4153,6 +4153,108 @@ const NewStatsSection = () => {
 };
 
 // What We Do Section
+// Original What Makes Us Different Section (5 boxes - for HomePage2)
+const OriginalWhatWeDoSection = () => {
+  const services = [
+    {
+      title: "Leadership Advisory",
+      description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
+      details: "<span class='font-semibold'>Organizational Transformation:</span> Catalyzing change by transforming what your people believe, the way they work, and how they behave.<br><br><span class='font-semibold'>Coaching:</span> One-on-one coaching for senior executives.<br><br><span class='font-semibold'>Client & Stakeholder Engagement:</span> Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
+      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      link: "/advisory"
+    },
+    {
+      title: "Peer-to-Peer Networks",
+      description: "Participation in Forums, Leadership Dialogues, and our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
+      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
+      image: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
+      link: "/networking"
+    },
+    {
+      title: "Custom Programs",
+      description: "We offer special leadership and career development programs tailored to your organization's unique needs and challenges.",
+      details: "We also offer specialized leadership and career-development programs–including the flagship <span class='font-semibold'>Next Generation GC</span> program, widely recognized as the gold standard for developing high-potential legal leaders.",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+      link: "/programs-v2"
+    },
+    {
+      title: "Executive Networks",
+      description: "Join exclusive peer networks of C-suite executives and senior leaders.",
+      details: "Connect with fellow executives in confidential settings designed for authentic dialogue and mutual support.",
+      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+      link: "/networking"
+    },
+    {
+      title: "Specialized Groups",
+      description: "Access tailored communities focused on specific leadership domains and challenges.",
+      details: "Participate in specialized forums addressing unique aspects of executive leadership and governance.",
+      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+      link: "/networking"
+    }
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            What Makes Us Different
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            We combine practical leadership development with authentic peer connections to drive real transformation.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
+            >
+              <div className="h-56 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
+                <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
+                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
+                </div>
+              </div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                <p className="text-slate-700 mb-4 leading-relaxed font-bold">
+                  {service.description}
+                </p>
+                <p 
+                  className="text-slate-600 text-sm mb-6 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: service.details }}
+                ></p>
+                
+                <div className="mt-auto">
+                  <Link
+                    to={service.link}
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                  >
+                    Learn more
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Modified What Makes Us Different Section (3 boxes - for HomePage)
 const NewWhatWeDoSection = () => {
   const services = [
     {
