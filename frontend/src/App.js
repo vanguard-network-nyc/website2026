@@ -71,6 +71,8 @@ function ScrollHandler() {
 }
 
 function App() {
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
   // Disable automatic scroll restoration
   useEffect(() => {
     window.history.scrollRestoration = 'manual';
@@ -78,7 +80,18 @@ function App() {
   
   return (
     <Router>
-      <ScrollHandler />
+      <ScrollHandler setIsTransitioning={setIsTransitioning} />
+      {isTransitioning && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'white',
+          zIndex: 9999
+        }} />
+      )}
       <div className="App">
         <Header />
         <AnimatePresence mode="wait">
