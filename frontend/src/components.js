@@ -4039,6 +4039,11 @@ const NewHero = () => {
           alt="Professional executives"
           className="w-full h-full object-cover opacity-20"
         />
+        {/* Color overlay */}
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundColor: '#00A8E1', opacity: 0.15 }}
+        ></div>
       </div>
       
       {/* Content */}
