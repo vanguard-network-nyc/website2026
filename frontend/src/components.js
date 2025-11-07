@@ -5174,30 +5174,7 @@ const NewContentLibrarySection = () => {
           </p>
         </motion.div>
 
-        {/* Content Types Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {contentTypes.map((type, index) => (
-            <motion.div
-              key={type.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 p-4"
-            >
-              <div className="flex items-center justify-center text-blue-600 mb-3">
-                {type.icon}
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 text-center">
-                {type.title}
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: type.description }}>
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Featured Insights */}
+        {/* Integrated Content Cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
