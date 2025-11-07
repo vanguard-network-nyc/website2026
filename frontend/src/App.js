@@ -50,6 +50,7 @@ const {
   NewSpecializedGroupsSection,
   NewIntegrationSection,
   NewContentLibrarySection,
+  OriginalContentLibrarySection,
   ExecutiveNetworksSection,
   LeadershipAdvisorySection
 } = Components;
