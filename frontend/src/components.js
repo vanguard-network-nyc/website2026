@@ -5000,21 +5000,32 @@ const NewContentLibrarySection = () => {
       setLoading(true);
       const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
       
-      // Fetch latest from each content type
-      const [articlesResponse, podcastsResponse, videosResponse] = await Promise.all([
+      // Fetch latest from each content type and Substack
+      const [articlesResponse, podcastsResponse, videosResponse, substackResponse] = await Promise.all([
         fetch(`${backendUrl}/api/articles`),
         fetch(`${backendUrl}/api/podcasts`),
-        fetch(`${backendUrl}/api/videos`)
+        fetch(`${backendUrl}/api/videos`),
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://kenbanta.substack.com/feed'))
       ]);
 
       const articles = await articlesResponse.json();
       const podcasts = await podcastsResponse.json();
       const videos = await videosResponse.json();
+      const substackData = await substackResponse.json();
 
       // Get the latest entry from each type
       const latestArticle = articles && articles.length > 0 ? articles[0] : null;
       const latestPodcast = podcasts && podcasts.length > 0 ? podcasts[0] : null;
       const latestVideo = videos && videos.length > 0 ? videos[0] : null;
+      
+      // Find the November 6 Substack post
+      let substackPost = null;
+      if (substackData.status === 'ok' && substackData.items) {
+        substackPost = substackData.items.find(item => {
+          const pubDate = new Date(item.pubDate);
+          return pubDate.getMonth() === 10 && pubDate.getDate() === 6; // November is month 10
+        }) || substackData.items[0]; // Fallback to latest if November 6 not found
+      }
 
       const insights = [];
 
