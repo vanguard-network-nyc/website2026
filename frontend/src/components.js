@@ -5256,14 +5256,28 @@ const NewContentLibrarySection = () => {
                     {/* Button Area - always at bottom */}
                     <div className="mt-auto pt-4">
                       {insight.link ? (
-                        <Link 
-                          to={insight.link}
-                          className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
-                        >
-                          {insight.type === 'Article' ? 'Read more' : 
-                           insight.type === 'Podcast' ? 'Listen podcast' : 
-                           insight.type === 'Video' ? 'Watch video' : 'Read More'}
-                        </Link>
+                        insight.external ? (
+                          <a 
+                            href={insight.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                          >
+                            {insight.type === 'Article' ? 'Read more' : 
+                             insight.type === 'Podcast' ? 'Listen podcast' : 
+                             insight.type === 'Video' ? 'Watch video' : 
+                             insight.type === 'Substack' ? 'Read on Substack' : 'Read More'}
+                          </a>
+                        ) : (
+                          <Link 
+                            to={insight.link}
+                            className="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
+                          >
+                            {insight.type === 'Article' ? 'Read more' : 
+                             insight.type === 'Podcast' ? 'Listen podcast' : 
+                             insight.type === 'Video' ? 'Watch video' : 'Read More'}
+                          </Link>
+                        )
                       ) : (
                         <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                           {insight.type === 'Article' ? 'Read more' : 
