@@ -5164,12 +5164,12 @@ const NewContentLibrarySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Our Content & Thought Leadership
           </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Members gain access to a rich library featuring leadership insights from Vanguard faculty, members, and affiliate contributors spanning leadership development, board dynamics, and organizational transformation.
           </p>
         </motion.div>
