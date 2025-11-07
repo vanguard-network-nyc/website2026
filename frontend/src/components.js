@@ -4157,11 +4157,25 @@ const NewStatsSection = () => {
 const OriginalWhatWeDoSection = () => {
   const services = [
     {
-      title: "Leadership Advisory",
-      description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
-      details: "<span class='font-semibold'>Organizational Transformation:</span> Catalyzing change by transforming what your people believe, the way they work, and how they behave.<br><br><span class='font-semibold'>Coaching:</span> One-on-one coaching for senior executives.<br><br><span class='font-semibold'>Client & Stakeholder Engagement:</span> Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
+      title: "Organizational Transformation",
+      description: "Catalyzing change by transforming what your people believe, the way they work, and how they behave.",
+      details: "We partner with senior executives to drive meaningful organizational change through leadership alignment, cultural transformation, and strategic execution.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
-      link: "/advisory"
+      link: "/advisory#organizational-transformation"
+    },
+    {
+      title: "Coaching",
+      description: "One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions.",
+      details: "Our executive coaching provides personalized guidance to help leaders enhance their effectiveness, navigate challenges, and achieve their professional goals.",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
+      link: "/advisory#strategic-counsel"
+    },
+    {
+      title: "Client & Stakeholder Engagement",
+      description: "Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations.",
+      details: "We help you engage meaningfully with your key stakeholders, building deeper relationships and positioning you as a strategic partner.",
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf",
+      link: "/advisory#client-and-stakeholder-engagement"
     },
     {
       title: "Peer-to-Peer Networks",
@@ -4176,20 +4190,6 @@ const OriginalWhatWeDoSection = () => {
       details: "We also offer specialized leadership and career-development programs–including the flagship <span class='font-semibold'>Next Generation GC</span> program, widely recognized as the gold standard for developing high-potential legal leaders.",
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs-v2"
-    },
-    {
-      title: "Executive Networks",
-      description: "Join exclusive peer networks of C-suite executives and senior leaders.",
-      details: "Connect with fellow executives in confidential settings designed for authentic dialogue and mutual support.",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
-      link: "/networking"
-    },
-    {
-      title: "Specialized Groups",
-      description: "Access tailored communities focused on specific leadership domains and challenges.",
-      details: "Participate in specialized forums addressing unique aspects of executive leadership and governance.",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
-      link: "/networking"
     }
   ];
 
