@@ -4205,7 +4205,7 @@ const NewWhatWeDoSection = () => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-700 mb-4 leading-relaxed">
+                <p className="text-slate-700 mb-4 leading-relaxed font-semibold">
                   {service.description}
                 </p>
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
@@ -4305,7 +4305,7 @@ const NewWhatWeDoSection = () => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-700 mb-4 leading-relaxed">
+                <p className="text-slate-700 mb-4 leading-relaxed font-semibold">
                   {service.description}
                 </p>
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">
