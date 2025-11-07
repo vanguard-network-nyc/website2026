@@ -4214,9 +4214,7 @@ const NewWhatWeDoSection = () => {
                         {' '}
                         <Link
                           to="/advisory"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            window.history.pushState({}, '', '/advisory');
+                          onClick={() => {
                             setTimeout(() => {
                               const element = document.getElementById(item.anchor);
                               if (element) {
