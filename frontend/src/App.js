@@ -54,18 +54,34 @@ const {
   LeadershipAdvisorySection
 } = Components;
 
-// Component to handle scroll restoration - must run before render
-function ScrollHandler() {
+// Component to handle scroll restoration with transition overlay
+function ScrollHandler({ setIsTransitioning }) {
   const location = useLocation();
+  const prevPathname = React.useRef(location.pathname);
   
-  // Force scroll to top IMMEDIATELY for any route without hash
-  React.useMemo(() => {
-    if (!location.hash) {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    // Check if navigation happened
+    if (prevPathname.current !== location.pathname) {
+      // Show overlay
+      setIsTransitioning(true);
+      
+      // Scroll to top if no hash
+      if (!location.hash) {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+      }
+      
+      // Hide overlay after a brief moment
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+      
+      prevPathname.current = location.pathname;
+      
+      return () => clearTimeout(timer);
     }
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.hash, setIsTransitioning]);
   
   return null;
 }
