@@ -178,11 +178,7 @@ function HomePage2() {
       <NewWhatWeDoSection />
       <NewAboutSection />
       <SubstackPostsSection />
-      <ExecutiveNetworksSection />
-      <LeadershipAdvisorySection />
-      <NewSpecializedGroupsSection />
-      <NewIntegrationSection />
-      <NewContentLibrarySection />
+      <OriginalContentLibrarySection />
     </motion.div>
   );
 }
