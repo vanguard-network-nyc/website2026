@@ -1803,7 +1803,8 @@ const AdvisoryPage = () => {
       </div>
     </div>
   </motion.div>
-);
+  );
+};
 
 const NetworkingPage = () => (
   <motion.div
