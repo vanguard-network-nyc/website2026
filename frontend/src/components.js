@@ -159,7 +159,17 @@ const Header = () => {
         { name: 'Client Success Stories', path: '/case-studies' }
       ]
     },
-    { name: 'NETWORKING', path: '/networking' },
+    { 
+      name: 'NETWORKS', 
+      path: '/networking',
+      dropdown: [
+        { name: 'General Counsel Network', path: '#' },
+        { name: 'Senior In-House Counsel Network', path: '#' },
+        { name: 'Life Sciences CEO Network', path: '#' },
+        { name: 'Risk Management Network', path: '#' },
+        { name: 'Associate (TBD) Network', path: '#' }
+      ]
+    },
     { name: 'PROGRAMS', path: '/programs-v2' },
     { name: 'EVENTS', path: '/upcoming-events' },
     { 
