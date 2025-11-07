@@ -116,7 +116,6 @@ function HomePage() {
       <ExecutiveNetworksSection />
       <LeadershipAdvisorySection />
       <NewSpecializedGroupsSection />
-      <NewIntegrationSection />
     </motion.div>
   );
 }
