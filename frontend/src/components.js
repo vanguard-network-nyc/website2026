@@ -1033,8 +1033,6 @@ const AboutPage = () => (
 );
 
 const AdvisoryPage = () => {
-  const [isReady, setIsReady] = useState(false);
-  
   useEffect(() => {
     // Handle hash navigation on page load
     const hash = window.location.hash;
@@ -1052,12 +1050,7 @@ const AdvisoryPage = () => {
         }
       }, 300); // Give more time for page to render
     }
-    setIsReady(true);
   }, []);
-  
-  if (!isReady) {
-    return null; // Don't render anything until ready
-  }
 
   return (
     <motion.div
@@ -1065,6 +1058,7 @@ const AdvisoryPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
+      style={{ visibility: 'visible' }}
     >
     {/* Hero Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
