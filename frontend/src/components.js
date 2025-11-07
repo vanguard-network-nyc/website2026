@@ -5198,20 +5198,44 @@ const NewContentLibrarySection = () => {
                   viewport={{ once: true }}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
                 >
-                  <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
-                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                  {/* Intro Header Section */}
+                  <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
+                    <div className="flex items-center justify-center text-blue-600 mb-2">
+                      {insight.type === 'Article' ? <Newspaper size={24} /> : 
+                       insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
+                       insight.type === 'Video' ? <Video size={24} /> : 
+                       <Newspaper size={24} />}
+                    </div>
+                    <h3 className="text-base font-bold text-slate-900 mb-2 text-center">
+                      {insight.type === 'Article' ? 'Articles' : 
+                       insight.type === 'Podcast' ? 'Podcasts' : 
+                       insight.type === 'Video' ? 'Videos' : 
+                       "Ken Banta's Substack"}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed text-center" dangerouslySetInnerHTML={{ 
+                      __html: insight.type === 'Article' ? 'In-depth analysis and thought leadership on organizational transformation and leadership excellence.' : 
+                              insight.type === 'Podcast' ? 'Conversations with industry leaders sharing insights on governance, strategy, and leadership development.' : 
+                              insight.type === 'Video' ? 'Visual content featuring expert discussions and leadership development sessions from our community.' : 
+                              'Stay updated with the latest leadership insights and strategic thinking from our Founder & CEO column, <strong>Ken Banta on Leadership</strong>.'
+                    }}>
+                    </p>
+                  </div>
+
+                  {/* Image Section */}
+                  <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
+                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
                       <div className="text-white">
                         <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
                           {insight.type}
                         </span>
-                        <div className="mt-2 text-xs text-blue-200">
+                        <div className="mt-1 text-xs text-blue-200">
                           {insight.category}
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-4 flex flex-col flex-grow">
                     {/* Content Area - grows to fill available space */}
                     <div className="flex-grow">
                       <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
