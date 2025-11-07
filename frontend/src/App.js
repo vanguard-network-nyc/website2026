@@ -178,7 +178,7 @@ function HomePage2() {
     >
       <NewHero />
       <NewStatsSection />
-      <NewWhatWeDoSection />
+      <OriginalWhatWeDoSection />
       <NewAboutSection />
       <SubstackPostsSection />
       <OriginalContentLibrarySection />
