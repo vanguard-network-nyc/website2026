@@ -4208,9 +4208,10 @@ const NewWhatWeDoSection = () => {
                 <p className="text-slate-700 mb-4 leading-relaxed font-semibold">
                   {service.description}
                 </p>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  {service.details}
-                </p>
+                <p 
+                  className="text-slate-600 text-sm mb-6 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: service.details }}
+                ></p>
                 {service.title === "Organizational Transformation" ? (
                   <Link
                     to="/advisory"
@@ -4308,9 +4309,10 @@ const NewWhatWeDoSection = () => {
                 <p className="text-slate-700 mb-4 leading-relaxed font-semibold">
                   {service.description}
                 </p>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  {service.details}
-                </p>
+                <p 
+                  className="text-slate-600 text-sm mb-6 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: service.details }}
+                ></p>
                 {service.title === "Client and Stakeholder Engagement" ? (
                   <Link
                     to="/advisory"
