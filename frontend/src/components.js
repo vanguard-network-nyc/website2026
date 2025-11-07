@@ -4112,7 +4112,7 @@ const NewHero = () => {
 // Statistics Section
 const NewStatsSection = () => {
   const stats = [
-    { number: "26+", label: "Countries Represented" },
+    { number: "37+", label: "Countries Represented" },
     { number: "268", label: "Participating Companies" },
     { number: "1,995", label: "Top Leaders Engaged" },
     { number: "25 Years", label: "Leadership Expertise" }
