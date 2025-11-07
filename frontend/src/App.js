@@ -55,8 +55,18 @@ const {
 } = Components;
 
 function App() {
+  // Scroll to top on route change
+  const ScrollToTop = () => {
+    const { pathname } = window.location;
+    React.useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+  };
+
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header />
         <AnimatePresence mode="wait">
