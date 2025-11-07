@@ -5199,7 +5199,7 @@ const NewContentLibrarySection = () => {
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
                 >
                   {/* Intro Header Section */}
-                  <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
+                  <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4 h-44 flex flex-col justify-center">
                     <div className="flex items-center justify-center text-blue-600 mb-2">
                       {insight.type === 'Article' ? <Newspaper size={24} /> : 
                        insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
@@ -5222,7 +5222,7 @@ const NewContentLibrarySection = () => {
                   </div>
 
                   {/* Image Section */}
-                  <div className="h-40 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
+                  <div className="h-56 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
                     <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
                       <div className="text-white">
                         <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
