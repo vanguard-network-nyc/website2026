@@ -23,13 +23,19 @@ import {
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
-  // Scroll to top immediately
-  window.scrollTo(0, 0);
-  
+  const [isReady, setIsReady] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
+  
+  React.useEffect(() => {
+    setIsReady(true);
+  }, []);
+  
+  if (!isReady) {
+    return null; // Don't render until ready
+  }
 
   const currentPrograms = [
     {
