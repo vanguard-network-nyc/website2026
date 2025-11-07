@@ -1033,10 +1033,7 @@ const AboutPage = () => (
 );
 
 const AdvisoryPage = () => {
-  // Scroll to top immediately if no hash
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
-  }
+  const [isReady, setIsReady] = useState(false);
   
   useEffect(() => {
     // Handle hash navigation on page load
@@ -1055,7 +1052,12 @@ const AdvisoryPage = () => {
         }
       }, 300); // Give more time for page to render
     }
+    setIsReady(true);
   }, []);
+  
+  if (!isReady) {
+    return null; // Don't render anything until ready
+  }
 
   return (
     <motion.div
