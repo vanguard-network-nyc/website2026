@@ -239,13 +239,16 @@ const Header = () => {
                 {item.dropdown ? (
                   // Dropdown menu
                   <div className="relative">
-                    <button className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group flex items-center">
+                    <Link 
+                      to={item.path || '#'}
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group flex items-center"
+                    >
                       {item.name}
                       <ChevronDown size={16} className="ml-1" />
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
-                    </button>
+                    </Link>
                     {/* Dropdown content */}
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       {item.dropdown.map((subItem, subIndex) => (
                         <Link
                           key={subItem.name}
