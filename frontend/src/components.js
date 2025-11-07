@@ -1034,11 +1034,6 @@ const AboutPage = () => (
 
 const AdvisoryPage = () => {
   useEffect(() => {
-    // Scroll to top immediately to prevent flash of wrong scroll position
-    if (!window.location.hash) {
-      window.scrollTo(0, 0);
-    }
-    
     // Handle hash navigation on page load
     const hash = window.location.hash;
     if (hash) {
