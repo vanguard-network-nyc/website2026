@@ -54,16 +54,18 @@ const {
   LeadershipAdvisorySection
 } = Components;
 
-function App() {
-  // Scroll to top on route change
-  const ScrollToTop = () => {
-    const { pathname } = window.location;
-    React.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-    return null;
-  };
+// ScrollToTop component must be inside Router
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
+function App() {
   return (
     <Router>
       <ScrollToTop />
