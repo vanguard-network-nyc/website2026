@@ -5292,43 +5292,6 @@ const NewContentLibrarySection = () => {
             </div>
           )}
         </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="bg-gray-50 rounded-xl shadow-lg p-12 text-center border border-gray-200"
-        >
-          <img
-            src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
-            alt="Professional library"
-            className="w-full max-w-md mx-auto rounded-lg shadow-lg mb-8"
-          />
-          
-          <h3 className="text-3xl font-bold text-slate-900 mb-4">
-            Access Our Complete Library
-          </h3>
-          <p className="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-            Unlock exclusive access to our comprehensive content library featuring the latest insights on leadership development, organizational transformation, and strategic excellence.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/content"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Explore Library
-            </Link>
-            <Link
-              to="/networking"
-              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-3 rounded-lg font-semibold transition-all duration-300"
-            >
-              Member Login
-            </Link>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
