@@ -1049,6 +1049,12 @@ const AdvisoryPage = () => {
           });
         }
       }, 300); // Give more time for page to render
+    } else {
+      // If no hash, scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   }, []);
 
