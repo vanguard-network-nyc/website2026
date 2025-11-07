@@ -4156,32 +4156,18 @@ const NewWhatWeDoSection = () => {
       link: "/networking"
     },
     {
-      title: "Organizational Transformation",
-      description: "We're not a conventional large strategic consultancy. Instead, we're a lean and focused team with deep, real-world experience in catalyzing organizational change.",
-      details: "We know from doing it that this comes about by transforming what your people believe, the way they work, and how they behave. We have been leaders of teams that delivered more than $83 billion in accretive value and advised hundreds of clients on delivering success. We know that it all starts with the people, not PowerPoint. While strategy is challenging, execution is the key to high performance -- and we can help you achieve it.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-      link: "/advisory"
-    },
-    {
-      title: "Strategic Counsel",
-      description: "Complementing our organizational transformation capabilities, we also support executives with customized support as they fine-tune their leadership and prepare for new challenges.",
-      details: "This includes leadership coaching on specific skills. Also, we act as top-level, confidential sounding boards for senior executives as they evaluate complex situations, manage people challenges, and take important decisions.",
+      title: "Leadership Advisory",
+      description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
+      details: "Organizational Transformation: Catalyzing change by transforming what your people believe, the way they work, and how they behave. Strategic Counsel: One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions. Client & Stakeholder Engagement: Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
     },
     {
-      title: "Leadership Programs",
-      description: "We also offer special leadership and career development programs. \"Next Generation GC\" is seen as the gold standard program developing high-potential legal talent into General Counsel readiness.",
-      details: "The \"New Leaders Program\" applies the same intimate, peer-to-peer formats of our senior executive networks to accelerate the capabilities of early career leaders.",
+      title: "Custom Programs",
+      description: "We offer special leadership and career development programs tailored to your organization's unique needs and challenges.",
+      details: "\"Next Generation GC\" is the gold standard program developing high-potential legal talent into General Counsel readiness. The \"New Leaders Program\" applies intimate, peer-to-peer formats to accelerate the capabilities of early career leaders.",
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs-v2"
-    },
-    {
-      title: "Client and Stakeholder Engagement",
-      description: "We apply our signature approaches to leadership interactions to build and deepen external relationships.",
-      details: "Leadership Dialogues curated by Vanguard bring you together clients and stakeholders in highly relevant conversations on topics ranging from developing high potential employees to policy challenges. These conversations, small-group interactions and dinner discussions transform conventional 'supplier' or 'vendor' relationships into a role as peer and trusted advisor.",
-      image: "https://images.unsplash.com/photo-1564368587612-f303d38c9063",
-      link: "/programs"
     }
   ];
 
