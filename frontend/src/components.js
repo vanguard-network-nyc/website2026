@@ -4039,11 +4039,11 @@ const NewHero = () => {
           alt="Professional executives"
           className="w-full h-full object-cover opacity-25"
         />
-        {/* Gradient overlay - subtle dark gradient for depth and readability */}
+        {/* Radial gradient overlay - darker at edges, lighter in center */}
         <div 
           className="absolute inset-0" 
           style={{ 
-            background: 'linear-gradient(to bottom, rgba(4, 81, 132, 0.15) 0%, rgba(4, 81, 132, 0.05) 50%, rgba(4, 81, 132, 0.15) 100%)'
+            background: 'radial-gradient(ellipse at center, rgba(4, 81, 132, 0.03) 0%, rgba(4, 81, 132, 0.12) 50%, rgba(4, 81, 132, 0.20) 100%)'
           }}
         ></div>
       </div>
