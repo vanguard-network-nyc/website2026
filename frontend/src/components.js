@@ -4037,12 +4037,14 @@ const NewHero = () => {
         <img
           src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
           alt="Professional executives"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-25"
         />
-        {/* Color overlay */}
+        {/* Gradient overlay - subtle dark gradient for depth and readability */}
         <div 
           className="absolute inset-0" 
-          style={{ backgroundColor: '#00A8E1', opacity: 0.15 }}
+          style={{ 
+            background: 'linear-gradient(to bottom, rgba(4, 81, 132, 0.15) 0%, rgba(4, 81, 132, 0.05) 50%, rgba(4, 81, 132, 0.15) 100%)'
+          }}
         ></div>
       </div>
       
