@@ -4149,18 +4149,18 @@ const NewStatsSection = () => {
 const NewWhatWeDoSection = () => {
   const services = [
     {
-      title: "Peer-to-Peer Networks",
-      description: "Participation in Forums, Leadership Dialogues, and our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
-      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
-      image: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
-      link: "/networking"
-    },
-    {
       title: "Leadership Advisory",
       description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
       details: "Organizational Transformation: Catalyzing change by transforming what your people believe, the way they work, and how they behave. Strategic Counsel: One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions. Client & Stakeholder Engagement: Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
       image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
       link: "/advisory"
+    },
+    {
+      title: "Peer-to-Peer Networks",
+      description: "Participation in Forums, Leadership Dialogues, and our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
+      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
+      image: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
+      link: "/networking"
     },
     {
       title: "Custom Programs",
