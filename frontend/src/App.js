@@ -54,20 +54,6 @@ const {
   LeadershipAdvisorySection
 } = Components;
 
-// ScrollToTop component must be inside Router
-function ScrollToTop() {
-  const { pathname, hash } = useLocation();
-  
-  useLayoutEffect(() => {
-    // Don't scroll if there's a hash (anchor link)
-    if (!hash) {
-      window.scrollTo(0, 0);
-    }
-  }, [pathname, hash]);
-  
-  return null;
-}
-
 function App() {
   return (
     <Router>
