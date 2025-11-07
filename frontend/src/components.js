@@ -4330,7 +4330,7 @@ const NewWhatWeDoSection = () => {
                     Learn more
                     <ArrowRight size={16} />
                   </Link>
-                )}}
+                )}
               </div>
             </motion.div>
           ))}
@@ -4392,7 +4392,7 @@ const NewWhatWeDoSection = () => {
                     Learn more
                     <ArrowRight size={16} />
                   </Link>
-                )}}
+                )}
               </div>
             </motion.div>
           ))}
