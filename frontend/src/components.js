@@ -198,9 +198,12 @@ const Header = () => {
       <GCLBanner />
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-slate-900'
+          isScrolled ? 'backdrop-blur-md shadow-lg' : ''
         }`}
-        style={{ top: '48px' }}
+        style={{ 
+          top: '48px',
+          backgroundColor: isScrolled ? 'rgba(4, 81, 132, 0.95)' : '#045184'
+        }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
