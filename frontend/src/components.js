@@ -5969,6 +5969,8 @@ const Components = {
   NewIntegrationSection,
   NewContentLibrarySection,
   OriginalContentLibrarySection,
+  NewWhatWeDoSection,
+  OriginalWhatWeDoSection,
   ExecutiveNetworksSection,
   LeadershipAdvisorySection,
   GCLBanner
