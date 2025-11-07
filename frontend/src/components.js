@@ -4206,10 +4206,42 @@ const NewWhatWeDoSection = () => {
                 <p className="text-slate-700 mb-4 leading-relaxed font-bold">
                   {service.description}
                 </p>
-                <p 
-                  className="text-slate-600 text-sm mb-6 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: service.details }}
-                ></p>
+                {service.title === "Leadership Advisory" && Array.isArray(service.details) ? (
+                  <div className="text-slate-600 text-sm mb-6 leading-relaxed space-y-4">
+                    {service.details.map((item, idx) => (
+                      <p key={idx}>
+                        <span dangerouslySetInnerHTML={{ __html: item.text }}></span>
+                        {' '}
+                        <Link
+                          to="/advisory"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.history.pushState({}, '', '/advisory');
+                            setTimeout(() => {
+                              const element = document.getElementById(item.anchor);
+                              if (element) {
+                                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                                const offsetPosition = elementPosition - 165;
+                                window.scrollTo({
+                                  top: offsetPosition,
+                                  behavior: 'smooth'
+                                });
+                              }
+                            }, 100);
+                          }}
+                          className="text-blue-600 hover:text-blue-700 font-semibold"
+                        >
+                          Learn more
+                        </Link>
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p 
+                    className="text-slate-600 text-sm mb-6 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: service.details }}
+                  ></p>
+                )}
                 {service.title === "Organizational Transformation" ? (
                   <Link
                     to="/advisory"
