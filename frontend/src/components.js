@@ -5238,20 +5238,20 @@ const NewContentLibrarySection = () => {
                   <div className="p-4 flex flex-col flex-grow">
                     {/* Content Area - grows to fill available space */}
                     <div className="flex-grow">
-                      <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight">
+                      <h4 className="text-base font-bold text-slate-900 mb-2 leading-tight">
                         {insight.title}
                       </h4>
-                      <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                      <p className="text-slate-600 text-xs mb-3 leading-relaxed">
                         {insight.description}
                       </p>
-                      <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
+                      <div className="flex justify-between items-center text-xs text-slate-500 mb-3">
                         <span>{insight.author}</span>
                         <span>{insight.duration}</span>
                       </div>
                     </div>
                     
                     {/* Button Area - always at bottom */}
-                    <div className="mt-auto pt-4">
+                    <div className="mt-auto pt-3">
                       {insight.link ? (
                         insight.external ? (
                           <a 
