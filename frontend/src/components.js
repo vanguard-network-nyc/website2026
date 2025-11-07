@@ -1033,6 +1033,11 @@ const AboutPage = () => (
 );
 
 const AdvisoryPage = () => {
+  // Scroll to top immediately if no hash
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+  
   useEffect(() => {
     // Handle hash navigation on page load
     const hash = window.location.hash;
