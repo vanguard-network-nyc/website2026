@@ -218,20 +218,38 @@ const MembershipApplicationPage = () => {
           </p>
         </motion.div>
 
-        {/* Success Message */}
+        {/* Success Modal Popup */}
         {submitStatus === 'success' && (
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="mb-8 bg-green-50 border-2 border-green-500 rounded-xl p-6 flex items-start gap-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4"
+            onClick={() => setSubmitStatus(null)}
           >
-            <CheckCircle2 size={24} className="text-green-500 flex-shrink-0 mt-1" />
-            <div>
-              <h3 className="text-lg font-bold text-green-900 mb-2">Application Submitted Successfully!</h3>
-              <p className="text-green-800">
-                Thank you for your interest in joining The Vanguard Network. We have received your application and will be in touch soon.
-              </p>
-            </div>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
+              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center">
+                <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <CheckCircle2 size={32} className="text-green-500" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Application Submitted Successfully!</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  Thank you for your interest in joining The Vanguard Network. We have received your application and will be in touch soon.
+                </p>
+                <button
+                  onClick={() => setSubmitStatus(null)}
+                  className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
 
