@@ -177,7 +177,11 @@ const MembershipApplicationPage = () => {
       }
 
       setSubmitStatus('success');
-      // Reset form
+      
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Reset form completely
       setFormData({
         full_name: '',
         work_email: '',
@@ -187,12 +191,16 @@ const MembershipApplicationPage = () => {
         job_title: '',
         country: '',
         network_interest: '',
-        recommended_by: ''
+        recommended_by: '',
+        source_of_inquiry: 'Website sign up'
       });
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmitStatus('error');
       setErrorMessage(error.message || 'An error occurred while submitting your application. Please try again.');
+      
+      // Scroll to top to show error modal
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }
