@@ -168,7 +168,7 @@ const MembershipApplicationPage = () => {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
-                placeholder="[email protected]"
+                placeholder="your.name@company.com"
               />
             </div>
 
@@ -184,7 +184,7 @@ const MembershipApplicationPage = () => {
                 value={formData.personal_email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
-                placeholder="[email protected]"
+                placeholder="your.name@email.com"
               />
             </div>
 
