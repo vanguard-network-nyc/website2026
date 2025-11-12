@@ -1087,16 +1087,15 @@ async def submit_membership_application(application: MembershipApplicationSubmit
     try:
         membership_base_id = os.environ.get('MEMBERSHIP_BASE_ID')
         membership_table_name = os.environ.get('MEMBERSHIP_TABLE_NAME')
-        membership_token = os.environ.get('AIRTABLE_MEMBERSHIP_TOKEN')
         
-        if not membership_base_id or not membership_table_name or not membership_token:
+        if not membership_base_id or not membership_table_name:
             raise HTTPException(
                 status_code=500,
                 detail="Membership Airtable configuration is missing"
             )
         
         headers = {
-            "Authorization": f"Bearer {membership_token}",
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
             "Content-Type": "application/json"
         }
         
