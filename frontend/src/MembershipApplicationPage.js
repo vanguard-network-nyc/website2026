@@ -195,6 +195,9 @@ const MembershipApplicationPage = () => {
         recommended_by: '',
         source_of_inquiry: 'Website sign up'
       });
+      
+      // Increment reset key to force re-render of phone and country components
+      setResetKey(prev => prev + 1);
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmitStatus('error');
