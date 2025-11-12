@@ -274,15 +274,41 @@ const MembershipApplicationPage = () => {
               <label htmlFor="phone_number" className="block text-sm font-bold text-slate-900 mb-2">
                 Phone Number <span className="text-red-500">*</span>
               </label>
-              <input
-                type="tel"
-                id="phone_number"
-                name="phone_number"
+              <PhoneInput
+                country={'us'}
                 value={formData.phone_number}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
-                placeholder="+1 (555) 123-4567"
+                onChange={handlePhoneChange}
+                inputProps={{
+                  name: 'phone_number',
+                  required: true,
+                }}
+                containerClass="phone-input-container"
+                inputClass="phone-input-field"
+                buttonClass="phone-input-button"
+                dropdownClass="phone-input-dropdown"
+                searchClass="phone-input-search"
+                enableSearch={true}
+                searchPlaceholder="Search country"
+                containerStyle={{
+                  width: '100%',
+                }}
+                inputStyle={{
+                  width: '100%',
+                  height: '48px',
+                  fontSize: '16px',
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '8px',
+                  paddingLeft: '48px',
+                }}
+                buttonStyle={{
+                  border: '2px solid #e2e8f0',
+                  borderRadius: '8px 0 0 8px',
+                  backgroundColor: 'white',
+                }}
+                dropdownStyle={{
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                }}
               />
             </div>
 
