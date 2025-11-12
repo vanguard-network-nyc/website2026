@@ -2811,8 +2811,15 @@ const TeamPage = () => (
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
-          OUR TEAM
+        <h1 
+          className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent"
+          style={{
+            backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}
+        >
+          Our Team
         </h1>
         <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
           Meet the experienced leadership team behind The Vanguard Network. Our team brings decades of combined experience in executive leadership, strategic consulting, and organizational development to help senior leaders achieve breakthrough results.
