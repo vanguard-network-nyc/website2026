@@ -3605,7 +3605,14 @@ const BookPage = () => (
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#045184' }}>
+        <h1 
+          className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent"
+          style={{
+            backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}
+        >
           Seeing Around Corners
         </h1>
         <p className="text-2xl font-semibold mb-4" style={{ color: '#00A8E1' }}>
