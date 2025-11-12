@@ -5,6 +5,42 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import Select from 'react-select';
 
+// Add custom styles for phone input
+const phoneInputStyles = `
+  .phone-input-container .react-tel-input .form-control:focus {
+    border-color: #00A8E1 !important;
+    box-shadow: 0 0 0 3px rgba(0, 168, 225, 0.1) !important;
+    outline: none !important;
+  }
+  
+  .phone-input-container .react-tel-input .flag-dropdown:hover {
+    background-color: #f8fafc !important;
+  }
+  
+  .phone-input-container .react-tel-input .flag-dropdown.open {
+    background-color: #f8fafc !important;
+  }
+  
+  .phone-input-container .react-tel-input .selected-flag:hover,
+  .phone-input-container .react-tel-input .selected-flag:focus {
+    background-color: #f8fafc !important;
+  }
+  
+  .phone-input-container .react-tel-input .country-list {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .phone-input-container .react-tel-input .country-list .country:hover {
+    background-color: #e0f2f7 !important;
+  }
+  
+  .phone-input-container .react-tel-input .country-list .country.highlight {
+    background-color: #00A8E1 !important;
+    color: white !important;
+  }
+`;
+
 const MembershipApplicationPage = () => {
   const [formData, setFormData] = useState({
     full_name: '',
