@@ -485,21 +485,36 @@ const MembershipApplicationPage = () => {
               <label htmlFor="network_interest" className="block text-sm font-bold text-slate-900 mb-2">
                 Which network are you interested in? <span className="text-red-500">*</span>
               </label>
-              <select
-                id="network_interest"
-                name="network_interest"
-                value={formData.network_interest}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none bg-white"
-              >
-                <option value="">Select a network...</option>
-                {networkOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  id="network_interest"
+                  name="network_interest"
+                  value={formData.network_interest}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none bg-white appearance-none pr-10"
+                  style={{
+                    backgroundImage: 'none',
+                  }}
+                >
+                  <option value="">Select a network...</option>
+                  {networkOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <svg 
+                    className="w-5 h-5 text-slate-400" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             {/* Recommended By - Optional */}
