@@ -58,6 +58,7 @@ const MembershipApplicationPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
   const [errorMessage, setErrorMessage] = useState('');
+  const [resetKey, setResetKey] = useState(0); // Counter to force reset of complex components
 
   const networkOptions = [
     'General Counsel Network',
