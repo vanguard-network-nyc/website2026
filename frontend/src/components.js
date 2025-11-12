@@ -2812,7 +2812,7 @@ const TeamPage = () => (
         className="text-center mb-16"
       >
         <h1 
-          className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent py-2 leading-tight"
           style={{
             backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
             WebkitBackgroundClip: 'text',
