@@ -437,8 +437,9 @@ const MembershipApplicationPage = () => {
                 Country <span className="text-red-500">*</span>
               </label>
               <Select
+                key={formData.country || 'empty'} // Force re-render when country is cleared
                 options={countryOptions}
-                value={countryOptions.find(option => option.value === formData.country)}
+                value={countryOptions.find(option => option.value === formData.country) || null}
                 onChange={handleCountryChange}
                 placeholder="Select or search for your country..."
                 isClearable
