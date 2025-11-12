@@ -200,7 +200,14 @@ const CaseStudiesPage = () => {
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+          <h1 
+            className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent mb-8 leading-tight"
+            style={{
+              backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
             Case Studies
           </h1>
           
