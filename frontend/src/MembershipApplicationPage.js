@@ -364,7 +364,7 @@ const MembershipApplicationPage = () => {
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <PhoneInput
-                key={formData.phone_number || 'empty'} // Force re-render when phone is cleared
+                key={`phone-${resetKey}`} // Force re-render only when form is reset
                 country={'us'}
                 value={formData.phone_number}
                 onChange={handlePhoneChange}
