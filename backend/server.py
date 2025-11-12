@@ -1108,7 +1108,8 @@ async def submit_membership_application(application: MembershipApplicationSubmit
             "Phone Number": application.phone_number,
             "Company": application.company_name,
             "Position": application.job_title,
-            "Country": application.country
+            "Country": application.country,
+            "Source of Inquiry": application.source_of_inquiry  # Hidden field from form
         }
         
         # Add optional fields only if they have values
