@@ -142,6 +142,7 @@ function App() {
             <Route path="/book" element={<BookPage />} />
             <Route path="/newsroom" element={<NewsroomPage />} />
             <Route path="/newsroom/:slug" element={<NewsroomArticlePage />} />
+            <Route path="/application" element={<MembershipApplicationPage />} />
           </Routes>
         </AnimatePresence>
         <Footer />
