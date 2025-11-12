@@ -486,6 +486,7 @@ const MembershipApplicationPage = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 
