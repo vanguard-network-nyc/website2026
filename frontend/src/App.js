@@ -26,6 +26,7 @@ import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
 import NewsroomArticlePage from './NewsroomArticlePage';
+import MembershipApplicationPage from './MembershipApplicationPage';
 
 const {
   Header,
