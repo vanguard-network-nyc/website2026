@@ -231,7 +231,7 @@ const NewsroomPage = () => {
               <Newspaper size={40} className="text-white" />
             </motion.div>
             <h1 
-              className="text-6xl font-bold bg-clip-text text-transparent"
+              className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent"
               style={{
                 backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
                 WebkitBackgroundClip: 'text',
