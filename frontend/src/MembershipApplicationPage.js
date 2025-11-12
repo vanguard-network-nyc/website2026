@@ -222,7 +222,14 @@ const MembershipApplicationPage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+          <h1 
+            className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
             Vanguard Membership Application
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed">
