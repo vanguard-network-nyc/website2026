@@ -3236,7 +3236,16 @@ const ContactPage = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold mb-6" style={{ color: '#045184' }}>Contact Us</h1>
+          <h1 
+            className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
+            Contact Us
+          </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your leadership? Get in touch with our team of experts and discover how The Vanguard Network can accelerate your executive journey.
           </p>
