@@ -351,15 +351,41 @@ const MembershipApplicationPage = () => {
               <label htmlFor="country" className="block text-sm font-bold text-slate-900 mb-2">
                 Country <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                id="country"
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
+              <Select
+                options={countryOptions}
+                value={countryOptions.find(option => option.value === formData.country)}
+                onChange={handleCountryChange}
+                placeholder="Select or search for your country..."
+                isClearable
+                isSearchable
                 required
-                className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
-                placeholder="Your country"
+                styles={{
+                  control: (base, state) => ({
+                    ...base,
+                    minHeight: '48px',
+                    border: state.isFocused ? '2px solid #00A8E1' : '2px solid #e2e8f0',
+                    borderRadius: '8px',
+                    boxShadow: state.isFocused ? '0 0 0 3px rgba(0, 168, 225, 0.1)' : 'none',
+                    '&:hover': {
+                      border: '2px solid #00A8E1',
+                    },
+                  }),
+                  option: (base, state) => ({
+                    ...base,
+                    backgroundColor: state.isSelected 
+                      ? '#00A8E1' 
+                      : state.isFocused 
+                      ? '#e0f2f7' 
+                      : 'white',
+                    color: state.isSelected ? 'white' : '#1e293b',
+                    cursor: 'pointer',
+                  }),
+                  menu: (base) => ({
+                    ...base,
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  }),
+                }}
               />
             </div>
 
