@@ -51,7 +51,8 @@ const MembershipApplicationPage = () => {
     job_title: '',
     country: '',
     network_interest: '',
-    recommended_by: ''
+    recommended_by: '',
+    source_of_inquiry: 'Website sign up' // Hidden field, pre-filled
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
