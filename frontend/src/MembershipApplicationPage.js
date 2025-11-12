@@ -442,7 +442,7 @@ const MembershipApplicationPage = () => {
                 Country <span className="text-red-500">*</span>
               </label>
               <Select
-                key={formData.country || 'empty'} // Force re-render when country is cleared
+                key={`country-${resetKey}`} // Force re-render only when form is reset
                 options={countryOptions}
                 value={countryOptions.find(option => option.value === formData.country) || null}
                 onChange={handleCountryChange}
