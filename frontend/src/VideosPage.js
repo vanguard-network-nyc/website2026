@@ -110,7 +110,7 @@ const VideosPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent mb-6"
+            className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent mb-6 py-2 leading-tight"
             style={{
               backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
               WebkitBackgroundClip: 'text',
