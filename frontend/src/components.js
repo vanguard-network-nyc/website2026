@@ -4597,7 +4597,7 @@ const NewAboutSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/contact"
+              to="/application"
               className="text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               style={{ 
                 background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
