@@ -1068,8 +1068,15 @@ const AdvisoryPage = () => {
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-          LEADERSHIP ADVISORY & DEVELOPMENT
+        <h1 
+          className="text-5xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent"
+          style={{
+            backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}
+        >
+          Leadership Advisory & Development
         </h1>
         <div className="max-w-5xl mx-auto">
           <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-16">
