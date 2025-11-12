@@ -167,7 +167,7 @@ const Header = () => {
         { name: 'Senior In-House Counsel Network', path: '#' },
         { name: 'Life Sciences CEO Network', path: '#' },
         { name: 'Risk Management Network', path: '#' },
-        { name: 'Associate (TBD) Network', path: '#' }
+        { name: 'Senior Executive Network', path: '#' }
       ]
     },
     { name: 'PROGRAMS', path: '/programs-v2' },
