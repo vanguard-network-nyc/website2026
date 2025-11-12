@@ -218,7 +218,7 @@ const ProgramsV2 = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-7xl font-bold bg-clip-text text-transparent mb-8"
+            className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent mb-8"
             style={{
               backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
               WebkitBackgroundClip: 'text',
