@@ -1079,6 +1079,7 @@ class MembershipApplicationSubmit(BaseModel):
     country: str
     network_interest: str
     recommended_by: Optional[str] = None
+    source_of_inquiry: Optional[str] = "Website sign up"
 
 @api_router.post("/membership/application")
 async def submit_membership_application(application: MembershipApplicationSubmit):
