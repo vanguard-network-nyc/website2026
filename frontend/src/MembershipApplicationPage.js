@@ -103,6 +103,20 @@ const MembershipApplicationPage = () => {
     }));
   };
 
+  const handlePhoneChange = (value) => {
+    setFormData(prev => ({
+      ...prev,
+      phone_number: '+' + value
+    }));
+  };
+
+  const handleCountryChange = (selectedOption) => {
+    setFormData(prev => ({
+      ...prev,
+      country: selectedOption ? selectedOption.value : ''
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
