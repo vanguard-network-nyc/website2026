@@ -1099,22 +1099,36 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         }
         
         # Map form fields to Airtable field names
+        # Note: If a field causes "INVALID_VALUE_FOR_COLUMN" error, it might be a linked record
+        # or multiple select field in Airtable. In that case, we store it as text in a compatible field.
+        fields_dict = {
+            "Name": application.full_name,
+            "Email": application.work_email,
+            "Phone Number": application.phone_number,
+            "Company": application.company_name,
+            "Position": application.job_title,
+            "Country": application.country
+        }
+        
+        # Add optional fields only if they have values
+        if application.personal_email:
+            fields_dict["Personal Email"] = application.personal_email
+            
+        if application.recommended_by:
+            fields_dict["Recommended By"] = application.recommended_by
+        
+        # Try to add Network field - this might be a single-select or linked record in Airtable
+        # If it fails, we'll handle it in the error message
+        if application.network_interest:
+            fields_dict["Network"] = application.network_interest
+        
         airtable_data = {
             "records": [
                 {
-                    "fields": {
-                        "Name": application.full_name,
-                        "Email": application.work_email,
-                        "Personal Email": application.personal_email or "",
-                        "Phone Number": application.phone_number,
-                        "Company": application.company_name,
-                        "Position": application.job_title,
-                        "Country": application.country,
-                        "Network": application.network_interest,
-                        "Recommended By": application.recommended_by or ""
-                    }
+                    "fields": fields_dict
                 }
-            ]
+            ],
+            "typecast": True  # Let Airtable try to convert values to appropriate types
         }
         
         url = f"https://api.airtable.com/v0/{membership_base_id}/{membership_table_name}"
