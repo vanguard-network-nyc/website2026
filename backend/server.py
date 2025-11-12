@@ -1068,6 +1068,84 @@ async def get_upcoming_events():
         logger.error(f"Error in get_upcoming_events: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch events")
 
+# Membership Application Models
+class MembershipApplicationSubmit(BaseModel):
+    full_name: str
+    work_email: str
+    personal_email: Optional[str] = None
+    phone_number: str
+    company_name: str
+    job_title: str
+    country: str
+    network_interest: str
+    recommended_by: Optional[str] = None
+
+@api_router.post("/membership/application")
+async def submit_membership_application(application: MembershipApplicationSubmit):
+    """Submit a new membership application to Airtable"""
+    try:
+        membership_base_id = os.environ.get('MEMBERSHIP_BASE_ID')
+        membership_table_name = os.environ.get('MEMBERSHIP_TABLE_NAME')
+        
+        if not membership_base_id or not membership_table_name:
+            raise HTTPException(
+                status_code=500,
+                detail="Membership Airtable configuration is missing"
+            )
+        
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        # Map form fields to Airtable field names
+        airtable_data = {
+            "records": [
+                {
+                    "fields": {
+                        "Name": application.full_name,
+                        "Email": application.work_email,
+                        "Personal Email": application.personal_email or "",
+                        "Phone Number": application.phone_number,
+                        "Company": application.company_name,
+                        "Position": application.job_title,
+                        "Country": application.country,
+                        "Network": application.network_interest,
+                        "Recommended By": application.recommended_by or ""
+                    }
+                }
+            ]
+        }
+        
+        url = f"https://api.airtable.com/v0/{membership_base_id}/{membership_table_name}"
+        
+        response = requests.post(url, json=airtable_data, headers=headers, timeout=10)
+        response.raise_for_status()
+        
+        result = response.json()
+        record_id = result["records"][0]["id"]
+        
+        logger.info(f"Successfully created membership application record: {record_id}")
+        
+        return {
+            "status": "success",
+            "message": "Membership application submitted successfully",
+            "record_id": record_id
+        }
+        
+    except requests.exceptions.HTTPError as e:
+        logger.error(f"Airtable API error: {e.response.text}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to submit application: {e.response.text}"
+        )
+    except Exception as e:
+        logger.error(f"Error submitting membership application: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to submit application: {str(e)}"
+        )
+
 # Include the router in the main app
 app.include_router(api_router)
 
