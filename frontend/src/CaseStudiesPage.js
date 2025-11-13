@@ -201,12 +201,7 @@ const CaseStudiesPage = () => {
           </div>
           
           <h1 
-            className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent mb-8 py-2 leading-tight"
-            style={{
-              backgroundImage: 'linear-gradient(45deg, #7f30cb, #01dcba)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
+            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
             Case Studies
           </h1>
