@@ -4590,6 +4590,7 @@ const VideoQuoteSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
