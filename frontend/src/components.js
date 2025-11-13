@@ -4113,10 +4113,7 @@ const NewHero = () => {
           >
             <Link
               to="/networking"
-              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-              style={{ 
-                background: '#045184'
-              }}
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
               Peer-to-Peer Networks
               <ArrowRight size={20} />
