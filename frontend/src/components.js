@@ -4124,7 +4124,7 @@ const NewHero = () => {
               style={{ 
                 color: '#045184',
                 border: '3px solid #045184',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)'
+                backgroundColor: 'rgba(255, 255, 255, 0.15)'
               }}
             >
               Leadership Advisory
