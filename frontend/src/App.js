@@ -174,22 +174,4 @@ function HomePage() {
 }
 
 // Home 2 Page - Full version with all sections
-function HomePage2() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <NewHero />
-      <NewStatsSection />
-      <OriginalWhatWeDoSection />
-      <NewAboutSection />
-      <SubstackPostsSection />
-      <OriginalContentLibrarySection />
-    </motion.div>
-  );
-}
-
 export default App;
