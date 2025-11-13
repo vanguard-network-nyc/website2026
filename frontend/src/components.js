@@ -4497,6 +4497,8 @@ const NewWhatWeDoSection = () => {
 
 // Video Quote Section
 const VideoQuoteSection = () => {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
   return (
     <section 
       className="py-24"
@@ -4514,13 +4516,34 @@ const VideoQuoteSection = () => {
             viewport={{ once: true }}
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
-              <iframe 
-                src="https://drive.google.com/file/d/1iRjItJO2Pw2DTcTg8d_RMgwu4A5Witfr/preview"
-                className="w-full h-full"
-                allow="autoplay"
-                allowFullScreen
-                title="Ken Banta - Leadership Video"
-              ></iframe>
+              {!isPlaying && (
+                <div 
+                  className="absolute inset-0 cursor-pointer group"
+                  onClick={() => setIsPlaying(true)}
+                >
+                  <img 
+                    src="https://drive.google.com/uc?export=view&id=1lHREtXdL24B6ZkGEFC08a6lNl1JwXeYx"
+                    alt="Video thumbnail"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-[#045184] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {isPlaying && (
+                <iframe 
+                  src="https://drive.google.com/file/d/1iRjItJO2Pw2DTcTg8d_RMgwu4A5Witfr/preview?autoplay=1"
+                  className="w-full h-full"
+                  allow="autoplay"
+                  allowFullScreen
+                  title="Ken Banta - Leadership Video"
+                ></iframe>
+              )}
             </div>
           </motion.div>
 
