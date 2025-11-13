@@ -74,21 +74,18 @@ function ScrollHandler({ setIsTransitioning }) {
   const location = useLocation();
   
   useLayoutEffect(() => {
-    // Always show overlay during transition
-    setIsTransitioning(true);
-    
-    // Scroll to top if no hash
+    // Scroll to top IMMEDIATELY if no hash - this runs BEFORE paint
     if (!location.hash) {
-      // Force scroll using multiple methods
+      window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-      window.scrollTo(0, 0);
     }
     
-    // Hide overlay after ensuring scroll is complete
+    // Show overlay briefly for smooth transition
+    setIsTransitioning(true);
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 200);
+    }, 100);
     
     return () => clearTimeout(timer);
   }, [location.pathname, location.hash, setIsTransitioning]);
