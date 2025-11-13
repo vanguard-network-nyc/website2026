@@ -578,9 +578,11 @@ const MembershipApplicationPage = () => {
               disabled={isSubmitting}
               whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-              className="w-full text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`w-full text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed ${
+                isSubmitting ? '' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1]'
+              }`}
               style={{ 
-                background: isSubmitting ? '#9ca3af' : '#045184'
+                background: isSubmitting ? '#9ca3af' : undefined
               }}
             >
               {isSubmitting ? (
