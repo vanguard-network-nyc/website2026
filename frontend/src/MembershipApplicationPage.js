@@ -155,6 +155,13 @@ const MembershipApplicationPage = () => {
     }));
   };
 
+  const handleNetworkChange = (selectedOptions) => {
+    setFormData(prev => ({
+      ...prev,
+      network_interest: selectedOptions ? selectedOptions.map(option => option.value) : []
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
