@@ -65,7 +65,8 @@ const {
   OriginalContentLibrarySection,
   ExecutiveNetworksSection,
   LeadershipAdvisorySection,
-  VideoQuoteSection
+  VideoQuoteSection,
+  NewsroomSliderSection
 } = Components;
 
 // Component to handle scroll restoration with transition overlay
