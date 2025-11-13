@@ -4513,16 +4513,14 @@ const VideoQuoteSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <video 
-                controls 
-                poster="https://drive.google.com/uc?export=view&id=1lHREtXdL24B6ZkGEFC08a6lNl1JwXeYx"
-                className="w-full h-auto"
-                preload="metadata"
-              >
-                <source src="https://drive.google.com/uc?export=download&id=1iRjItJO2Pw2DTcTg8d_RMgwu4A5Witfr" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
+              <iframe 
+                src="https://drive.google.com/file/d/1iRjItJO2Pw2DTcTg8d_RMgwu4A5Witfr/preview"
+                className="w-full h-full"
+                allow="autoplay"
+                allowFullScreen
+                title="Ken Banta - Leadership Video"
+              ></iframe>
             </div>
           </motion.div>
 
