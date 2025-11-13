@@ -172,6 +172,7 @@ function HomePage() {
       <NewAboutSection />
       <NewContentLibrarySection />
       <VideoQuoteSection />
+      <NewsroomSliderSection />
     </motion.div>
   );
 }
