@@ -4545,6 +4545,7 @@ const VideoQuoteSection = () => {
                   className="w-full h-full"
                   allow="autoplay"
                   allowFullScreen
+                  sandbox="allow-scripts allow-same-origin allow-presentation"
                   title="Ken Banta - Leadership Video"
                 ></iframe>
               )}
