@@ -1077,7 +1077,7 @@ class MembershipApplicationSubmit(BaseModel):
     company_name: str
     job_title: str
     country: str
-    network_interest: str
+    network_interest: list  # Changed to list for multiple selections
     recommended_by: Optional[str] = None
     source_of_inquiry: Optional[str] = "Website sign up"
 
