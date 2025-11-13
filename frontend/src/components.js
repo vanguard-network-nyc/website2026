@@ -6238,7 +6238,7 @@ const NewsroomSliderSection = () => {
         .newsroom-slider .slick-prev:before,
         .newsroom-slider .slick-next:before {
           font-size: 48px;
-          color: #2563eb;
+          color: #045184;
           opacity: 0.7;
         }
         .newsroom-slider .slick-prev:hover:before,
