@@ -4120,10 +4120,11 @@ const NewHero = () => {
             </Link>
             <Link
               to="/advisory"
-              className="bg-transparent px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
+              className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
               style={{ 
                 color: '#045184',
-                border: '3px solid #045184'
+                border: '3px solid #045184',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)'
               }}
             >
               Leadership Advisory
