@@ -50,7 +50,7 @@ const MembershipApplicationPage = () => {
     company_name: '',
     job_title: '',
     country: '',
-    network_interest: '',
+    network_interest: [], // Changed to array for multiple selections
     recommended_by: '',
     source_of_inquiry: 'Website sign up' // Hidden field, pre-filled
   });
@@ -61,12 +61,12 @@ const MembershipApplicationPage = () => {
   const [resetKey, setResetKey] = useState(0); // Counter to force reset of complex components
 
   const networkOptions = [
-    'General Counsel Network',
-    'Senior In-House Counsel Network',
-    'Life Sciences CEO Network',
-    'Risk Management Network',
-    'Senior Executive Network',
-    'Not sure'
+    { value: 'General Counsel Network', label: 'General Counsel Network' },
+    { value: 'Senior In-House Counsel Network', label: 'Senior In-House Counsel Network' },
+    { value: 'Life Sciences CEO Network', label: 'Life Sciences CEO Network' },
+    { value: 'Risk Management Network', label: 'Risk Management Network' },
+    { value: 'Senior Executive Network', label: 'Senior Executive Network' },
+    { value: 'Not sure', label: 'Not sure' }
   ];
 
   // Comprehensive list of countries
