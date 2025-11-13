@@ -263,7 +263,7 @@ const MembershipApplicationPage = () => {
                 <button
                   onClick={() => setSubmitStatus(null)}
                   className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                  style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
+                  style={{ background: '#045184' }}
                 >
                   Close
                 </button>
@@ -298,7 +298,7 @@ const MembershipApplicationPage = () => {
                 <button
                   onClick={() => setSubmitStatus(null)}
                   className="w-full text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                  style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
+                  style={{ background: '#045184' }}
                 >
                   Close
                 </button>
