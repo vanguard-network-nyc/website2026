@@ -4524,7 +4524,7 @@ const VideoQuoteSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900 video-container">
               {!isPlaying && (
                 <div 
                   className="absolute inset-0 cursor-pointer group"
