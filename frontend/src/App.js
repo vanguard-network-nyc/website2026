@@ -28,6 +28,18 @@ import NewsroomPage from './NewsroomPage';
 import NewsroomArticlePage from './NewsroomArticlePage';
 import MembershipApplicationPage from './MembershipApplicationPage';
 
+// ScrollToTop component to handle scroll restoration on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Immediately scroll to top without animation when route changes
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 const {
   Header,
   Hero,
