@@ -4623,10 +4623,7 @@ const NewAboutSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/application"
-              className="text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              style={{ 
-                background: '#045184'
-              }}
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Apply to Join
             </Link>
