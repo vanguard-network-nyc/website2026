@@ -6046,7 +6046,8 @@ const Components = {
   ExecutiveNetworksSection,
   LeadershipAdvisorySection,
   GCLBanner,
-  VideoQuoteSection
+  VideoQuoteSection,
+  NewsroomSliderSection
 };
 
 export default Components;
