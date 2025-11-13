@@ -494,41 +494,66 @@ const MembershipApplicationPage = () => {
               />
             </div>
 
-            {/* Network Interest - Required */}
+            {/* Network Interest - Required (Multiple Select) */}
             <div>
               <label htmlFor="network_interest" className="block text-sm font-bold text-slate-900 mb-2">
-                Which network are you interested in? <span className="text-red-500">*</span>
+                Which network are you interested in? <span className="text-red-500">*</span> <span className="text-slate-400 font-normal text-sm">(Select one or more)</span>
               </label>
-              <div className="relative">
-                <select
-                  id="network_interest"
-                  name="network_interest"
-                  value={formData.network_interest}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none bg-white appearance-none pr-10"
-                  style={{
-                    backgroundImage: 'none',
-                  }}
-                >
-                  <option value="">Select a network...</option>
-                  {networkOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <svg 
-                    className="w-5 h-5 text-slate-400" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
+              <Select
+                key={`network-${resetKey}`}
+                isMulti
+                options={networkOptions}
+                value={networkOptions.filter(option => formData.network_interest.includes(option.value))}
+                onChange={handleNetworkChange}
+                placeholder="Select one or more networks..."
+                isClearable
+                isSearchable
+                required
+                styles={{
+                  control: (base, state) => ({
+                    ...base,
+                    minHeight: '48px',
+                    border: state.isFocused ? '2px solid #00A8E1' : '2px solid #e2e8f0',
+                    borderRadius: '8px',
+                    boxShadow: state.isFocused ? '0 0 0 3px rgba(0, 168, 225, 0.1)' : 'none',
+                    '&:hover': {
+                      border: '2px solid #00A8E1',
+                    },
+                  }),
+                  option: (base, state) => ({
+                    ...base,
+                    backgroundColor: state.isSelected 
+                      ? '#00A8E1' 
+                      : state.isFocused 
+                      ? '#e0f2f7' 
+                      : 'white',
+                    color: state.isSelected ? 'white' : '#1e293b',
+                    cursor: 'pointer',
+                  }),
+                  menu: (base) => ({
+                    ...base,
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  }),
+                  multiValue: (base) => ({
+                    ...base,
+                    backgroundColor: '#e0f2f7',
+                  }),
+                  multiValueLabel: (base) => ({
+                    ...base,
+                    color: '#045184',
+                    fontWeight: '600',
+                  }),
+                  multiValueRemove: (base) => ({
+                    ...base,
+                    color: '#045184',
+                    ':hover': {
+                      backgroundColor: '#00A8E1',
+                      color: 'white',
+                    },
+                  }),
+                }}
+              />
             </div>
 
             {/* Recommended By - Optional */}
