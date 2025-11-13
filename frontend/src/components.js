@@ -4346,9 +4346,7 @@ const NewWhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className={`rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 ${
-                service.title === "Peer-to-Peer Networks" ? "bg-gradient-to-r from-[#045184] to-[#00A8E1]" : "bg-white"
-              }`}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200"
             >
               <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${service.image}')` }}>
                 <div className="h-full bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
