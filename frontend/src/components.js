@@ -4500,12 +4500,21 @@ const VideoQuoteSection = () => {
   const [isPlaying, setIsPlaying] = React.useState(false);
 
   return (
-    <section 
-      className="py-24"
-      style={{
-        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
-      }}
-    >
+    <>
+      <style>{`
+        .video-container iframe::-webkit-media-controls-picture-in-picture-button {
+          display: none !important;
+        }
+        .video-container iframe::cue {
+          display: none;
+        }
+      `}</style>
+      <section 
+        className="py-24"
+        style={{
+          background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+        }}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Video Side */}
