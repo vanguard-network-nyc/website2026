@@ -49,8 +49,6 @@ const {
   ProgramsSection,
   Footer,
   AdvisoryPage,
-  NetworkingPage,
-  ProgramsPage,
   TeamPage,
   ContactPage,
   BookPage,
