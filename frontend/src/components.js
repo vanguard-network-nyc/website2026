@@ -4115,7 +4115,7 @@ const NewHero = () => {
               to="/networking"
               className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
               style={{ 
-                background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
+                background: '#045184'
               }}
             >
               Peer-to-Peer Networks
@@ -4630,7 +4630,7 @@ const NewAboutSection = () => {
               to="/application"
               className="text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               style={{ 
-                background: 'linear-gradient(45deg, #7f30cb, #01dcba)'
+                background: '#045184'
               }}
             >
               Apply to Join
