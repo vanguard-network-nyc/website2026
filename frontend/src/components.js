@@ -4126,10 +4126,7 @@ const NewHero = () => {
               className="bg-transparent px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
               style={{ 
                 color: '#045184',
-                border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #7f30cb, #01dcba)',
-                backgroundOrigin: 'border-box',
-                backgroundClip: 'padding-box, border-box'
+                border: '3px solid #045184'
               }}
             >
               Leadership Advisory
@@ -4640,10 +4637,7 @@ const NewAboutSection = () => {
               className="bg-transparent px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               style={{ 
                 color: '#045184',
-                border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(white, white), linear-gradient(45deg, #7f30cb, #01dcba)',
-                backgroundOrigin: 'border-box',
-                backgroundClip: 'padding-box, border-box'
+                border: '3px solid #045184'
               }}
             >
               Learn More
