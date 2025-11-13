@@ -198,7 +198,7 @@ const MembershipApplicationPage = () => {
         company_name: '',
         job_title: '',
         country: '',
-        network_interest: '',
+        network_interest: [],
         recommended_by: '',
         source_of_inquiry: 'Website sign up'
       });
