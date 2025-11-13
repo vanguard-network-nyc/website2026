@@ -6234,11 +6234,11 @@ const NewsroomSliderSection = () => {
         .newsroom-slider .slick-next:before {
           font-size: 48px;
           color: #045184;
-          opacity: 0.7;
+          opacity: 1;
         }
         .newsroom-slider .slick-prev:hover:before,
         .newsroom-slider .slick-next:hover:before {
-          opacity: 1;
+          opacity: 0.8;
         }
         @media (max-width: 1280px) {
           .newsroom-slider .slick-prev {
