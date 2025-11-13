@@ -4497,24 +4497,21 @@ const NewWhatWeDoSection = () => {
 
 // Video Quote Section
 const VideoQuoteSection = () => {
-  const [isPlaying, setIsPlaying] = React.useState(false);
+  const videoRef = React.useRef(null);
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
 
   return (
-    <>
-      <style>{`
-        .video-container iframe::-webkit-media-controls-picture-in-picture-button {
-          display: none !important;
-        }
-        .video-container iframe::cue {
-          display: none;
-        }
-      `}</style>
-      <section 
-        className="py-24"
-        style={{
-          background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
-        }}
-      >
+    <section 
+      className="py-24"
+      style={{
+        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Video Side */}
@@ -4524,40 +4521,19 @@ const VideoQuoteSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900 video-container">
-              {!isPlaying && (
-                <div 
-                  className="absolute inset-0 cursor-pointer group"
-                  onClick={() => setIsPlaying(true)}
-                >
-                  <img 
-                    src="https://lh3.googleusercontent.com/d/1lHREtXdL24B6ZkGEFC08a6lNl1JwXeYx"
-                    alt="Video thumbnail"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = 'https://via.placeholder.com/1920x1080/1e293b/ffffff?text=Click+to+Play+Video';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                      <svg className="w-10 h-10 text-[#045184] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {isPlaying && (
-                <iframe 
-                  src="https://drive.google.com/file/d/1iRjItJO2Pw2DTcTg8d_RMgwu4A5Witfr/preview?autoplay=1"
-                  className="w-full h-full"
-                  allow="autoplay"
-                  allowFullScreen
-                  title="Ken Banta - Leadership Video"
-                  style={{ pointerEvents: 'auto' }}
-                ></iframe>
-              )}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
+              <video 
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                controls
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+                playsInline
+                poster="/ken-banta-thumbnail.jpg"
+              >
+                <source src="/ken-banta-welcome.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </motion.div>
 
