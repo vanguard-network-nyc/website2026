@@ -6134,7 +6134,7 @@ const NewsroomSliderSection = () => {
             </h2>
           </div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Stay updated with the latest news, announcements, and media features
+            Stay updated with the latest news, announcements, and exclusive content
           </p>
         </motion.div>
 
