@@ -548,7 +548,7 @@ const MembershipApplicationPage = () => {
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               className="w-full text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ 
-                background: isSubmitting ? '#9ca3af' : 'linear-gradient(45deg, #7f30cb, #01dcba)'
+                background: isSubmitting ? '#9ca3af' : '#045184'
               }}
             >
               {isSubmitting ? (
