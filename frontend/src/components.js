@@ -6171,11 +6171,11 @@ const NewsroomSliderSection = () => {
                       <span>{article.date}</span>
                     </div>
                     
-                    <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight min-h-[3.5rem]">
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-4 group-hover:text-blue-600 transition-colors leading-tight min-h-[5.5rem]">
                       {article.title}
                     </h3>
                     
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3 min-h-[4rem]">
+                    <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-5 min-h-[6rem]">
                       {article.description}
                     </p>
                     
