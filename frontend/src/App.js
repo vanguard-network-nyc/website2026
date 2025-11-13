@@ -170,6 +170,7 @@ function HomePage() {
       <NewWhatWeDoSection />
       <NewAboutSection />
       <NewContentLibrarySection />
+      <VideoQuoteSection />
     </motion.div>
   );
 }
