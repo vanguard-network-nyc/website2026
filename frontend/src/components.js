@@ -4522,12 +4522,16 @@ const VideoQuoteSection = () => {
                   onClick={() => setIsPlaying(true)}
                 >
                   <img 
-                    src="https://drive.google.com/uc?export=view&id=1lHREtXdL24B6ZkGEFC08a6lNl1JwXeYx"
+                    src="https://lh3.googleusercontent.com/d/1lHREtXdL24B6ZkGEFC08a6lNl1JwXeYx"
                     alt="Video thumbnail"
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://via.placeholder.com/1920x1080/1e293b/ffffff?text=Click+to+Play+Video';
+                    }}
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
                       <svg className="w-10 h-10 text-[#045184] ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
                       </svg>
