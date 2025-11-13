@@ -6199,13 +6199,13 @@ const NewsroomSliderSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-20"
         >
           <Link
             to="/newsroom"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300"
           >
-            <span>View All News</span>
+            <span>View All Updates</span>
             <ArrowRight size={20} />
           </Link>
         </motion.div>
