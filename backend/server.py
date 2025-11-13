@@ -1104,7 +1104,7 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         # or multiple select field in Airtable. In that case, we store it as text in a compatible field.
         fields_dict = {
             "Name": application.full_name,
-            "Email": application.work_email,
+            "Work Email": application.work_email,
             "Phone Number": application.phone_number,
             "Company": application.company_name,
             "Position": application.job_title,
