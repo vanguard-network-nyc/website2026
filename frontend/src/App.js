@@ -122,7 +122,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/advisory" element={<AdvisoryPage />} />
             <Route path="/networking" element={<NetworkingV2Page />} />
-            <Route path="/programs" element={<ProgramsV2 />} />
+            <Route path="/programs-v2" element={<ProgramsV2 />} />
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
             <Route path="/content" element={<ContentPage />} />
             <Route path="/articles" element={<ArticlesPage />} />
