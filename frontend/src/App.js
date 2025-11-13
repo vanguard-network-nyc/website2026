@@ -103,6 +103,7 @@ function App() {
   
   return (
     <Router>
+      <ScrollToTop />
       <ScrollHandler setIsTransitioning={setIsTransitioning} />
       {isTransitioning && (
         <div style={{
