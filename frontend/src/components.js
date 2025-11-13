@@ -6166,11 +6166,6 @@ const NewsroomSliderSection = () => {
                   
                   {/* Article Content */}
                   <div className="p-6">
-                    <div className="flex items-center gap-2 text-sm text-slate-500 mb-3">
-                      <Clock size={14} />
-                      <span>{article.date}</span>
-                    </div>
-                    
                     <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-4 group-hover:text-blue-600 transition-colors leading-tight min-h-[5.5rem]">
                       {article.title}
                     </h3>
