@@ -1119,10 +1119,10 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         if application.recommended_by:
             fields_dict["Recommended By"] = application.recommended_by
         
-        # Try to add Network field - this might be a single-select or linked record in Airtable
-        # If it fails, we'll handle it in the error message
+        # Try to add Network field - convert array to comma-separated string
+        # Multiple selections are joined together
         if application.network_interest:
-            fields_dict["Network"] = application.network_interest
+            fields_dict["Network"] = ", ".join(application.network_interest)
         
         airtable_data = {
             "records": [
