@@ -5685,8 +5685,7 @@ const NewContentLibrarySection = () => {
                         ) : (
                           <Link 
                             to={insight.link}
-                            className="block w-full text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
-                            style={{ background: 'linear-gradient(45deg, #7f30cb, #01dcba)' }}
+                            className="block w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl text-center"
                           >
                             {insight.type === 'Article' ? 'Read more' : 
                              insight.type === 'Podcast' ? 'Listen to podcast' : 
