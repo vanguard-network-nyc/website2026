@@ -4,51 +4,40 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { ArrowLeft, User, Tag, Calendar, FileText } from 'lucide-react';
 
-const ArticleDetailPage = () => {
+const NewsroomDetailPage = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isFromNewsroom, setIsFromNewsroom] = useState(false);
 
   useEffect(() => {
     if (id) {
-      fetchArticle();
+      fetchNewsroomItem();
     }
   }, [id]);
 
-  const fetchArticle = async () => {
+  const fetchNewsroomItem = async () => {
     try {
       setLoading(true);
       const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
       
-      // First try to fetch from regular articles API
-      let response = await fetch(`${backendUrl}/api/article/${id}`);
-      let fromNewsroom = false;
-      
-      if (!response.ok) {
-        // If not found in articles, try newsroom API
-        response = await fetch(`${backendUrl}/api/newsroom/${id}`);
-        fromNewsroom = true;
+      // Fetch from newsroom API only
+      const response = await fetch(`${backendUrl}/api/newsroom/${id}`);
         
-        if (!response.ok) {
-          throw new Error(`Failed to fetch article: ${response.status} ${response.statusText}`);
-        }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch newsroom item: ${response.status} ${response.statusText}`);
       }
       
       const articleData = await response.json();
       
-      // Track the source for back button navigation
-      setIsFromNewsroom(fromNewsroom);
-      
-      // If the article came from newsroom, we need to transform the field names to match what ArticleDetailPage expects
+      // Transform field names for compatibility
       if (articleData.featured_speakers && !articleData.featured_speaker_linkedin) {
         articleData.featured_speaker_linkedin = articleData.featured_speakers;
       }
       
       setArticle(articleData);
     } catch (err) {
-      console.error('Error fetching article:', err);
+      console.error('Error fetching newsroom item:', err);
       setError(err.message);
     } finally {
       setLoading(false);
