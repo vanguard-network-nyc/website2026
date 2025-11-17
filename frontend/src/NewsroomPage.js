@@ -55,7 +55,7 @@ const NewsroomPage = () => {
         image: article.photo || `https://via.placeholder.com/271x271/3B82F6/FFFFFF?text=News+${index + 1}`,
         date: formatDate(article.publish_by),
         readTime: "2 min read", // Default read time since it's not in API
-        link: `/article/${article.id}`, // Use article detail page with dynamic ID
+        link: `/newsroom-item/${article.id}`, // Use newsroom detail page with dynamic ID
         // Keep original fields for filtering
         type_of_news: article.type_of_news || "NEWS",
         featured_speakers: article.featured_speakers,
