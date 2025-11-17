@@ -147,10 +147,10 @@ const ArticleDetailPage = () => {
                   {article.type_content}
                 </span>
               )}
-              {article.published_to_web && (
+              {(article.publish_by || article.published_to_web) && (
                 <div className="flex items-center gap-2 text-sm text-slate-600">
                   <Calendar size={16} />
-                  <span>{formatDate(article.published_to_web)}</span>
+                  <span>{formatDate(article.publish_by || article.published_to_web)}</span>
                 </div>
               )}
             </div>
