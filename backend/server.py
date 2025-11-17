@@ -467,6 +467,7 @@ async def fetch_airtable_newsroom():
                     blog_title=blog_title,
                     description_teaser=description_teaser,
                     photo=photo_url,
+                    newsroom_detail_image=newsroom_detail_image,
                     body_of_blog=body_of_blog,
                     publish_by=publish_by,
                     featured_speakers=featured_speakers,
