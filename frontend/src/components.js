@@ -6153,7 +6153,7 @@ const NewsroomSliderSection = () => {
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
               <div key={article.id} className="px-4 py-8 h-full">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col h-full min-h-[580px]">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col h-full min-h-[630px]">
                   {/* Article Image */}
                   <div className="relative h-[324px] overflow-hidden bg-slate-100 flex-shrink-0">
                     <img
