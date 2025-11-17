@@ -256,4 +256,4 @@ const NewsroomDetailPage = () => {
   );
 };
 
-export default ArticleDetailPage;
+export default NewsroomDetailPage;
