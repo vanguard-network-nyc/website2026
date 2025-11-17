@@ -394,9 +394,7 @@ async def fetch_airtable_newsroom():
         url = f"https://api.airtable.com/v0/{NEWSROOM_BASE_ID}/{NEWSROOM_TABLE_ID}"
         params = {
             'view': NEWSROOM_VIEW_ID,
-            'maxRecords': 100,
-            'sort[0][field]': 'Publish by',
-            'sort[0][direction]': 'desc'
+            'maxRecords': 100
         }
         
         async with httpx.AsyncClient() as client:
@@ -404,11 +402,9 @@ async def fetch_airtable_newsroom():
         
         if response.status_code != 200:
             logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
-            # Fall back to fetching all records and filtering
+            # Fall back to fetching all records without sorting
             params = {
-                'maxRecords': 100,
-                'sort[0][field]': 'Publish by', 
-                'sort[0][direction]': 'desc'
+                'maxRecords': 100
             }
             async with httpx.AsyncClient() as client:
                 response = await client.get(url, headers=headers, params=params)
