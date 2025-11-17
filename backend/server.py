@@ -395,7 +395,7 @@ async def fetch_airtable_newsroom():
         params = {
             'view': NEWSROOM_VIEW_ID,
             'maxRecords': 100,
-            'sort[0][field]': 'Published to Web',
+            'sort[0][field]': 'Publish by',
             'sort[0][direction]': 'desc'
         }
         
@@ -407,7 +407,7 @@ async def fetch_airtable_newsroom():
             # Fall back to fetching all records and filtering
             params = {
                 'maxRecords': 100,
-                'sort[0][field]': 'Published to Web', 
+                'sort[0][field]': 'Publish by', 
                 'sort[0][direction]': 'desc'
             }
             async with httpx.AsyncClient() as client:
@@ -426,7 +426,7 @@ async def fetch_airtable_newsroom():
             social_image_raw = fields.get("Social:Image", [])
             photo_raw = fields.get("Photo", [])
             body_of_blog = fields.get("Body of Blog", "")
-            published_to_web = fields.get("Published to Web", "")
+            publish_by = fields.get("Publish by", "")
             featured_speakers_raw = fields.get("Featured Speakers", [])
             type_of_news_raw = fields.get("Type of News", [])
             
