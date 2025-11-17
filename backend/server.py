@@ -426,7 +426,7 @@ async def fetch_airtable_newsroom():
             social_image_raw = fields.get("Social:Image", [])
             photo_raw = fields.get("Photo", [])
             body_of_blog = fields.get("Body of Blog", "")
-            publish_by = fields.get("Publish by", "")
+            publish_by = fields.get("Publish By", "")  # Capital B
             featured_speakers_raw = fields.get("Featured Speakers", [])
             type_of_news_raw = fields.get("Type of News", [])
             
