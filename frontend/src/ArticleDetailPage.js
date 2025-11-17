@@ -206,7 +206,13 @@ const ArticleDetailPage = () => {
                     blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                   }}
                 >
-                  {article.body_of_blog.replace(/_, \[/g, ' [').replace(/\]_\./g, '].').replace(/\]_\*/g, ']*')}
+                  {article.body_of_blog
+                    .replace(/_, \[/g, ' [')
+                    .replace(/\)_\./g, ').')
+                    .replace(/\)_\*/g, ')*')
+                    .replace(/\]_\./g, '].')
+                    .replace(/\]_\*/g, ']*')
+                  }
                 </ReactMarkdown>
               </div>
             )}
