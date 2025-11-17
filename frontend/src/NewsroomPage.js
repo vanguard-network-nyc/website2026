@@ -352,7 +352,7 @@ const NewsroomPage = () => {
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
                   <div className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
