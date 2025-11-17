@@ -361,11 +361,11 @@ const NewsroomPage = () => {
               <div className="p-6 flex flex-col flex-grow">
                 {/* Content Area - grows to fill available space */}
                 <div className="flex-grow">
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors leading-tight">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-3 group-hover:text-[#045184] transition-colors leading-tight">
                     {article.title}
                   </h3>
                   
-                  <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3 prose prose-sm max-w-none">
+                  <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-4 prose prose-sm max-w-none">
                     <ReactMarkdown
                       components={{
                         p: ({node, ...props}) => <span {...props} />,
