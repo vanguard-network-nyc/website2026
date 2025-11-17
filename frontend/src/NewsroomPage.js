@@ -100,8 +100,23 @@ const NewsroomPage = () => {
   };
 
   const getUniqueTypes = () => {
-    const types = newsArticles.map(article => article.type_of_news).filter(Boolean);
-    return ['All', ...new Set(types)];
+    // Split combined categories (e.g., "News, Events" -> ["News", "Events"])
+    const allTypes = newsArticles
+      .map(article => article.type_of_news)
+      .filter(Boolean)
+      .flatMap(type => type.split(',').map(t => t.trim()))
+      .filter(Boolean);
+    
+    // Define the exact order for categories
+    const orderedCategories = ['Content', 'Events', 'In The Media', 'News', 'Programs'];
+    
+    // Get unique types that exist in the data
+    const uniqueTypes = [...new Set(allTypes)];
+    
+    // Sort according to the defined order
+    const sortedTypes = orderedCategories.filter(cat => uniqueTypes.includes(cat));
+    
+    return ['All', ...sortedTypes];
   };
 
   const getUniqueSpeakers = () => {
