@@ -365,9 +365,17 @@ const NewsroomPage = () => {
                     {article.title}
                   </h3>
                   
-                  <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3">
-                    {article.description}
-                  </p>
+                  <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3 prose prose-sm max-w-none">
+                    <ReactMarkdown
+                      components={{
+                        p: ({node, ...props}) => <span {...props} />,
+                        strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                        em: ({node, ...props}) => <em className="italic" {...props} />,
+                      }}
+                    >
+                      {article.description}
+                    </ReactMarkdown>
+                  </div>
                   
                   <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
                     <div className="flex items-center gap-1">
