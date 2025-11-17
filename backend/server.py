@@ -82,7 +82,8 @@ class AirtableNewsroom(BaseModel):
     id: str
     blog_title: str  # title
     description_teaser: Optional[str] = None  # short description
-    photo: Optional[str] = None  # article image
+    photo: Optional[str] = None  # article image (for listing)
+    newsroom_detail_image: Optional[str] = None  # rectangular image for detail page
     body_of_blog: Optional[str] = None  # main blog content
     publish_by: Optional[str] = None  # publish by date
     featured_speakers: Optional[str] = None  # speakers for the article
