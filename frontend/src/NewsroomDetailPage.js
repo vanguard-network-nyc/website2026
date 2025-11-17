@@ -97,17 +97,17 @@ const NewsroomDetailPage = () => {
           className="mb-8"
         >
           <Link
-            to={isFromNewsroom ? "/newsroom" : "/articles"}
+            to="/newsroom"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
           >
             <ArrowLeft size={20} />
-            {isFromNewsroom ? "Back to Newsroom" : "Back to Articles"}
+            Back to Newsroom
           </Link>
         </motion.div>
 
         <article className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Article Header Image */}
-          {article.photo && (
+          {/* Newsroom Header Image - Use rectangular detail image */}
+          {(article.newsroom_detail_image || article.photo) && (
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -115,7 +115,7 @@ const NewsroomDetailPage = () => {
               className="h-64 md:h-96 overflow-hidden"
             >
               <img
-                src={article.photo}
+                src={article.newsroom_detail_image || article.photo}
                 alt={article.blog_title}
                 className="w-full h-full object-cover"
               />
