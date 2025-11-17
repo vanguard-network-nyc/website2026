@@ -422,6 +422,7 @@ async def fetch_airtable_newsroom():
             description_teaser = fields.get("Description (teaser)", "")
             social_image_raw = fields.get("Social:Image", [])
             photo_raw = fields.get("Photo", [])
+            newsroom_detail_image_raw = fields.get("Newsroom (Rectangular Image for details page)", [])
             body_of_blog = fields.get("Body of Blog", "")
             publish_by = fields.get("Publish By", "")  # Capital B
             featured_speakers_raw = fields.get("Featured Speakers", [])
@@ -443,7 +444,7 @@ async def fetch_airtable_newsroom():
                 else:
                     type_of_news = str(type_of_news_raw)
             
-            # Handle image - prioritize Social:Image, fallback to Photo
+            # Handle listing image - prioritize Social:Image, fallback to Photo
             photo_url = None
             
             # Try Social:Image first (note: single colon, not double)
@@ -453,6 +454,11 @@ async def fetch_airtable_newsroom():
             # Fallback to Photo field if Social:Image is not available
             elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
                 photo_url = photo_raw[0].get("url", "")
+            
+            # Handle detail page rectangular image
+            newsroom_detail_image = None
+            if newsroom_detail_image_raw and isinstance(newsroom_detail_image_raw, list) and len(newsroom_detail_image_raw) > 0:
+                newsroom_detail_image = newsroom_detail_image_raw[0].get("url", "")
             
             # Only include articles that have substantial content
             if blog_title and description_teaser:
