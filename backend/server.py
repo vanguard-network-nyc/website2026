@@ -84,7 +84,7 @@ class AirtableNewsroom(BaseModel):
     description_teaser: Optional[str] = None  # short description
     photo: Optional[str] = None  # article image
     body_of_blog: Optional[str] = None  # main blog content
-    published_to_web: Optional[str] = None  # publication date
+    publish_by: Optional[str] = None  # publish by date
     featured_speakers: Optional[str] = None  # speakers for the article
     type_of_news: Optional[str] = None  # type of news content
 
