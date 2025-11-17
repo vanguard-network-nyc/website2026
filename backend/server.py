@@ -416,6 +416,10 @@ async def fetch_airtable_newsroom():
         for record in data.get("records", []):
             fields = record.get("fields", {})
             
+            # Log available fields for debugging (only first record)
+            if len(newsroom_articles) == 0:
+                logging.info(f"Available Airtable fields: {list(fields.keys())}")
+            
             # Extract fields
             blog_title = fields.get("Blog Title", "")
             description_teaser = fields.get("Description (teaser)", "")
