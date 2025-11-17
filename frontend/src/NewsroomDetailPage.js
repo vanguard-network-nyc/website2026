@@ -112,7 +112,7 @@ const NewsroomDetailPage = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="h-[336px] md:h-[464px] overflow-hidden"
+              className="h-[436px] md:h-[564px] overflow-hidden"
             >
               <img
                 src={article.newsroom_detail_image || article.photo}
