@@ -85,9 +85,11 @@ const NewsroomPage = () => {
     }
 
     if (selectedType !== 'All') {
-      filtered = filtered.filter(article => 
-        article.type_of_news === selectedType
-      );
+      filtered = filtered.filter(article => {
+        // Split the article's types and check if selected type is included
+        const articleTypes = article.type_of_news?.split(',').map(t => t.trim()) || [];
+        return articleTypes.includes(selectedType);
+      });
     }
 
     if (selectedSpeaker !== 'All') {
