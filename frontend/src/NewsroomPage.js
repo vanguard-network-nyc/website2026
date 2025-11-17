@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { 
   Calendar, 
   Clock, 
