@@ -240,14 +240,14 @@ const NewsroomDetailPage = () => {
               Explore More Insights
             </h3>
             <p className="text-slate-600 mb-6">
-              Discover more thought-provoking articles and leadership insights from our expert contributors.
+              Discover more news, announcements, and media features from The Vanguard Network.
             </p>
             <Link
-              to="/articles"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              to="/newsroom"
+              className="inline-flex items-center gap-2 bg-[#045184] hover:bg-[#033d6b] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
             >
               <FileText size={20} />
-              View All Articles
+              Return to Newsroom
             </Link>
           </div>
         </motion.div>
