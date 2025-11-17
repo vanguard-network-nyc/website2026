@@ -278,22 +278,6 @@ const NewsroomPage = () => {
                 </select>
                 <Filter className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
               </div>
-
-              {/* Speaker Filter */}
-              <div className="relative">
-                <select
-                  value={selectedSpeaker}
-                  onChange={(e) => setSelectedSpeaker(e.target.value)}
-                  className="appearance-none bg-white border border-slate-200 rounded-lg px-4 py-3 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-[140px]"
-                >
-                  {getUniqueSpeakers().map(speaker => (
-                    <option key={speaker} value={speaker}>
-                      {speaker === 'All' ? 'All Speakers' : speaker}
-                    </option>
-                  ))}
-                </select>
-                <Filter className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
-              </div>
             </div>
 
             {/* Results Count */}
@@ -302,7 +286,6 @@ const NewsroomPage = () => {
                 Showing {filteredArticles.length} of {newsArticles.length} article{newsArticles.length !== 1 ? 's' : ''}
                 {searchTerm && ` for "${searchTerm}"`}
                 {selectedType !== 'All' && ` in ${selectedType}`}
-                {selectedSpeaker !== 'All' && ` by ${selectedSpeaker}`}
               </p>
             </div>
           </motion.div>
