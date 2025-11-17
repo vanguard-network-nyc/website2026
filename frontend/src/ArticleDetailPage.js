@@ -191,9 +191,23 @@ const ArticleDetailPage = () => {
             {/* Article Body */}
             {article.body_of_blog && (
               <div className="prose prose-lg max-w-none mb-8">
-                <div className="text-slate-700 leading-relaxed whitespace-pre-wrap">
+                <ReactMarkdown
+                  components={{
+                    p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed" {...props} />,
+                    strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                    em: ({node, ...props}) => <em className="italic" {...props} />,
+                    ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal ml-6 mb-4" {...props} />,
+                    li: ({node, ...props}) => <li className="mb-2" {...props} />,
+                    h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
+                    a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" {...props} />,
+                    blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
+                  }}
+                >
                   {article.body_of_blog}
-                </div>
+                </ReactMarkdown>
               </div>
             )}
 
