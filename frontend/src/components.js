@@ -6081,6 +6081,7 @@ const NewsroomSliderSection = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: true,
+    adaptiveHeight: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -6088,6 +6089,7 @@ const NewsroomSliderSection = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: newsArticles.length > 2,
+          adaptiveHeight: false,
         }
       },
       {
@@ -6096,6 +6098,7 @@ const NewsroomSliderSection = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: newsArticles.length > 1,
+          adaptiveHeight: false,
         }
       }
     ]
