@@ -384,7 +384,7 @@ const NewsroomPage = () => {
                 <div className="mt-auto pt-4">
                   <Link
                     to={article.link}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    className="w-full bg-[#045184] hover:bg-[#033d6b] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   >
                     <span>Read More</span>
                     <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
