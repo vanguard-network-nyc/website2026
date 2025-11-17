@@ -6149,34 +6149,37 @@ const NewsroomSliderSection = () => {
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
               <div key={article.id} className="px-4">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group h-full border border-slate-100">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col" style={{height: '100%'}}>
                   {/* Article Image */}
-                  <div className="relative h-56 overflow-hidden bg-slate-100">
+                  <div className="relative h-[274px] overflow-hidden bg-slate-100">
                     <img
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 left-4">
-                      <div className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        {article.type}
-                      </div>
-                    </div>
                   </div>
                   
                   {/* Article Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-4 group-hover:text-blue-600 transition-colors leading-tight min-h-[5.5rem]">
                       {article.title}
                     </h3>
                     
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-5 min-h-[6rem]">
-                      {article.description}
-                    </p>
+                    <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-5 min-h-[6rem] prose prose-sm max-w-none">
+                      <ReactMarkdown
+                        components={{
+                          p: ({node, ...props}) => <span {...props} />,
+                          strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                          em: ({node, ...props}) => <em className="italic" {...props} />,
+                        }}
+                      >
+                        {article.description}
+                      </ReactMarkdown>
+                    </div>
                     
                     <Link
                       to={article.link}
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group-hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group-hover:gap-3 transition-all mt-auto"
                     >
                       <span>Read More</span>
                       <ArrowRight size={16} />
