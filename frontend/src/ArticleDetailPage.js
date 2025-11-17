@@ -195,15 +195,7 @@ const ArticleDetailPage = () => {
                   components={{
                     p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed" {...props} />,
                     strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
-                    em: ({node, children, ...props}) => {
-                      // If the em contains only a link, just return the link without the em wrapper
-                      const hasOnlyLink = children && Array.isArray(children) && children.length === 1 && 
-                                         children[0]?.type?.name === 'a';
-                      if (hasOnlyLink) {
-                        return <>{children}</>;
-                      }
-                      return <em className="italic" {...props}>{children}</em>;
-                    },
+                    em: ({node, ...props}) => <em className="italic" {...props} />,
                     ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
                     ol: ({node, ...props}) => <ol className="list-decimal ml-6 mb-4" {...props} />,
                     li: ({node, ...props}) => <li className="mb-2" {...props} />,
@@ -214,7 +206,7 @@ const ArticleDetailPage = () => {
                     blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                   }}
                 >
-                  {article.body_of_blog}
+                  {article.body_of_blog.replace(/_, \[/g, ' [').replace(/\]_\./g, '].').replace(/\]_\*/g, ']*')}
                 </ReactMarkdown>
               </div>
             )}
