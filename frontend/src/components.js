@@ -6042,7 +6042,7 @@ const NewsroomSliderSection = () => {
         title: article.blog_title,
         description: article.description_teaser || "Read more about this newsroom update...",
         image: article.photo || "https://via.placeholder.com/400x300/3B82F6/FFFFFF?text=News",
-        date: formatDate(article.published_to_web),
+        date: formatDate(article.publish_by),
         link: `/article/${article.id}`,
         type: article.type_of_news || "NEWS"
       }));
