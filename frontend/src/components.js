@@ -6152,10 +6152,10 @@ const NewsroomSliderSection = () => {
         >
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
-              <div key={article.id} className="px-4">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col" style={{height: '100%'}}>
+              <div key={article.id} className="px-4 h-full">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col h-full min-h-[580px]">
                   {/* Article Image */}
-                  <div className="relative h-[274px] overflow-hidden bg-slate-100">
+                  <div className="relative h-[274px] overflow-hidden bg-slate-100 flex-shrink-0">
                     <img
                       src={article.image}
                       alt={article.title}
@@ -6165,11 +6165,11 @@ const NewsroomSliderSection = () => {
                   
                   {/* Article Content */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-4 group-hover:text-blue-600 transition-colors leading-tight min-h-[5.5rem]">
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-4 group-hover:text-blue-600 transition-colors leading-tight" style={{minHeight: '5.5rem'}}>
                       {article.title}
                     </h3>
                     
-                    <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-5 min-h-[6rem] prose prose-sm max-w-none">
+                    <div className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-5 prose prose-sm max-w-none flex-grow">
                       <ReactMarkdown
                         components={{
                           p: ({node, ...props}) => <span {...props} />,
@@ -6183,7 +6183,7 @@ const NewsroomSliderSection = () => {
                     
                     <Link
                       to={article.link}
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group-hover:gap-3 transition-all mt-auto"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group-hover:gap-3 transition-all"
                     >
                       <span>Read More</span>
                       <ArrowRight size={16} />
