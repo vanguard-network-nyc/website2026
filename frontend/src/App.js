@@ -26,6 +26,7 @@ import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
 import NewsroomArticlePage from './NewsroomArticlePage';
+import NewsroomDetailPage from './NewsroomDetailPage';
 import MembershipApplicationPage from './MembershipApplicationPage';
 
 // ScrollToTop component to handle scroll restoration on route change
