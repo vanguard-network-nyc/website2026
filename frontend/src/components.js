@@ -6148,7 +6148,7 @@ const NewsroomSliderSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="newsroom-slider"
+          className="newsroom-slider py-8"
         >
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
