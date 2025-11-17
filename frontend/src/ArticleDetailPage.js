@@ -162,8 +162,16 @@ const ArticleDetailPage = () => {
 
             {/* Description */}
             {article.description_teaser && (
-              <div className="text-xl text-slate-600 mb-8 leading-relaxed font-light">
-                {article.description_teaser}
+              <div className="text-xl text-slate-600 mb-8 leading-relaxed font-light prose prose-xl max-w-none">
+                <ReactMarkdown
+                  components={{
+                    p: ({node, ...props}) => <p className="mb-4" {...props} />,
+                    strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                    em: ({node, ...props}) => <em className="italic" {...props} />,
+                  }}
+                >
+                  {article.description_teaser}
+                </ReactMarkdown>
               </div>
             )}
 
