@@ -5683,16 +5683,7 @@ const NewContentLibrarySection = () => {
 
                   {/* Image Section */}
                   <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
-                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
-                      <div className="text-white">
-                        <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
-                          {insight.type}
-                        </span>
-                        <div className="mt-1 text-xs text-blue-200">
-                          {insight.category}
-                        </div>
-                      </div>
-                    </div>
+                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent"></div>
                   </div>
                   
                   <div className="p-4 flex flex-col flex-grow">
@@ -5704,10 +5695,6 @@ const NewContentLibrarySection = () => {
                       <p className="text-slate-600 text-xs mb-3 leading-relaxed">
                         {insight.description}
                       </p>
-                      <div className="flex justify-between items-center text-xs text-slate-500 mb-3">
-                        <span>{insight.author}</span>
-                        <span>{insight.duration}</span>
-                      </div>
                     </div>
                     
                     {/* Button Area - always at bottom */}
