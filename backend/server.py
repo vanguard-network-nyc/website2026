@@ -593,63 +593,68 @@ async def fetch_airtable_videos():
             
             data = response.json()
             records = data.get("records", [])
-        
+            
             for record in records:
                 fields = record.get("fields", {})
+                
+                # Extract fields
+                video_description = fields.get("Video Description", "")
+                vimeo_name = fields.get("Vimeo Name", "")
+                featured_speakers_raw = fields.get("Featured Speakers", "")
+                headshot_raw = fields.get("Headshot (from Featured Speakers)", [])
+                category = fields.get("Category", "")
+                tags_raw = fields.get("Tags", [])
+                keywords_raw = fields.get("Keywords", [])
+                vimeo_embedder = fields.get("Vimeo Embedder", "")
+                softr_order = fields.get("Softr Order (Videos Members Page)", 0)
+                
+                # Handle featured speakers - can be a list or string
+                featured_speakers = ""
+                if featured_speakers_raw:
+                    if isinstance(featured_speakers_raw, list):
+                        featured_speakers = ", ".join(featured_speakers_raw)
+                    else:
+                        featured_speakers = str(featured_speakers_raw)
+                
+                # Handle tags - can be a list or string
+                tags = []
+                if tags_raw:
+                    if isinstance(tags_raw, list):
+                        tags = tags_raw
+                    elif isinstance(tags_raw, str):
+                        tags = [tags_raw]
+                
+                # Handle keywords - can be a list or string
+                keywords = []
+                if keywords_raw:
+                    if isinstance(keywords_raw, list):
+                        keywords = keywords_raw
+                    elif isinstance(keywords_raw, str):
+                        keywords = [keywords_raw]
+                
+                # Handle headshot - get first one if multiple
+                headshot_url = None
+                if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
+                    headshot_url = headshot_raw[0].get("url", "")
+                
+                video = AirtableVideo(
+                    id=record.get("id", ""),
+                    video_description=video_description,
+                    vimeo_name=vimeo_name,
+                    featured_speakers=featured_speakers,
+                    headshot=headshot_url,
+                    category=category,
+                    tags=tags,
+                    keywords=keywords,
+                    vimeo_embedder=vimeo_embedder,
+                    softr_order=softr_order
+                )
+                videos.append(video)
             
-            # Extract fields
-            video_description = fields.get("Video Description", "")
-            vimeo_name = fields.get("Vimeo Name", "")
-            featured_speakers_raw = fields.get("Featured Speakers", "")
-            headshot_raw = fields.get("Headshot (from Featured Speakers)", [])
-            category = fields.get("Category", "")
-            tags_raw = fields.get("Tags", [])
-            keywords_raw = fields.get("Keywords", [])
-            vimeo_embedder = fields.get("Vimeo Embedder", "")
-            softr_order = fields.get("Softr Order (Videos Members Page)", 0)
-            
-            # Handle featured speakers - can be a list or string
-            featured_speakers = ""
-            if featured_speakers_raw:
-                if isinstance(featured_speakers_raw, list):
-                    featured_speakers = ", ".join(featured_speakers_raw)
-                else:
-                    featured_speakers = str(featured_speakers_raw)
-            
-            # Handle tags - can be a list or string
-            tags = []
-            if tags_raw:
-                if isinstance(tags_raw, list):
-                    tags = tags_raw
-                elif isinstance(tags_raw, str):
-                    tags = [tags_raw]
-            
-            # Handle keywords - can be a list or string
-            keywords = []
-            if keywords_raw:
-                if isinstance(keywords_raw, list):
-                    keywords = keywords_raw
-                elif isinstance(keywords_raw, str):
-                    keywords = [keywords_raw]
-            
-            # Handle headshot - get first one if multiple
-            headshot_url = None
-            if headshot_raw and isinstance(headshot_raw, list) and len(headshot_raw) > 0:
-                headshot_url = headshot_raw[0].get("url", "")
-            
-            video = AirtableVideo(
-                id=record.get("id", ""),
-                video_description=video_description,
-                vimeo_name=vimeo_name,
-                featured_speakers=featured_speakers,
-                headshot=headshot_url,
-                category=category,
-                tags=tags,
-                keywords=keywords,
-                vimeo_embedder=vimeo_embedder,
-                softr_order=softr_order
-            )
-            videos.append(video)
+            # Check if there are more records to fetch
+            offset = data.get("offset")
+            if not offset:
+                break
         
         # Sort by softr_order in descending order (highest number first)
         videos.sort(key=lambda x: x.softr_order or 0, reverse=True)
