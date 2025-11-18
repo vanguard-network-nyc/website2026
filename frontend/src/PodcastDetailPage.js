@@ -20,53 +20,6 @@ const PodcastDetailPage = () => {
     }
   }, [podcast]);
 
-  useEffect(() => {
-    // Close share menu when clicking outside
-    const handleClickOutside = (event) => {
-      if (showShareMenu && !event.target.closest('.share-menu-container')) {
-        setShowShareMenu(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showShareMenu]);
-
-  const handleShare = (platform) => {
-    const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent(podcast.title);
-    const text = encodeURIComponent(`Check out this podcast: ${podcast.title}`);
-    
-    let shareUrl = '';
-    
-    switch(platform) {
-      case 'facebook':
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-        break;
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-        break;
-      case 'linkedin':
-        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-        break;
-      case 'email':
-        shareUrl = `mailto:?subject=${title}&body=${text}%20${url}`;
-        break;
-      case 'copy':
-        navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
-        setShowShareMenu(false);
-        return;
-      default:
-        return;
-    }
-    
-    window.open(shareUrl, '_blank', 'width=600,height=400');
-    setShowShareMenu(false);
-  };
-
   const fetchSimilarPodcasts = async () => {
     try {
       const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
