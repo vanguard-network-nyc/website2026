@@ -175,67 +175,150 @@ const PodcastsPage = () => {
 
         {/* Podcasts Grid */}
         {filteredPodcasts.length > 0 ? (
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredPodcasts.map((podcast, index) => (
-              <motion.div
-                key={podcast.id}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200 h-[500px] flex flex-col"
-              >
-                {/* Podcast Thumbnail */}
-                <div className="relative h-72 overflow-hidden bg-gray-100">
-                  {podcast.thumbnail ? (
-                    <img
-                      src={podcast.thumbnail}
-                      alt={podcast.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      style={{ objectPosition: 'center top' }}
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
-                      <Headphones size={64} className="text-white opacity-50" />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
-                      <Play size={24} className="text-[#045184] ml-1" />
-                    </div>
-                  </div>
-                </div>
+          <>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {(() => {
+                // Calculate pagination
+                const indexOfLastItem = currentPage * itemsPerPage;
+                const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+                const currentItems = filteredPodcasts.slice(indexOfFirstItem, indexOfLastItem);
                 
-                {/* Podcast Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors flex-1 line-clamp-2">
-                    {podcast.title}
-                  </h3>
-                  
-                  {podcast.featured_speaker && (
-                    <div className="mb-6">
-                      <p className="text-sm font-semibold text-slate-700 mb-1">Featured Speaker</p>
-                      <div className="flex items-center gap-2 text-slate-600">
-                        <User size={16} className="text-[#00A8E1]" />
-                        <span className="text-sm font-medium">{podcast.featured_speaker}</span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <Link
-                    to={`/podcast/${podcast.id}`}
-                    className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group mt-auto"
+                return currentItems.map((podcast, index) => (
+                  <motion.div
+                    key={podcast.id}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200 flex flex-col"
                   >
-                    <Play size={20} />
-                    Click to listen
-                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
+                    {/* Podcast Thumbnail */}
+                    <div className="relative h-[338px] overflow-hidden bg-gray-100">
+                      {podcast.thumbnail ? (
+                        <img
+                          src={podcast.thumbnail}
+                          alt={podcast.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                          <Headphones size={64} className="text-white opacity-50" />
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Podcast Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-[17px] font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors line-clamp-4">
+                        {podcast.title}
+                      </h3>
+                      
+                      {podcast.featured_speaker && (
+                        <div className="mb-4">
+                          <p className="text-sm font-medium text-slate-600 mb-1">
+                            <User size={14} className="inline mr-1" />
+                            Featured Speaker(s)
+                          </p>
+                          <p className="text-sm font-extrabold text-black">
+                            {podcast.featured_speaker}
+                          </p>
+                        </div>
+                      )}
+                      
+                      <Link
+                        to={`/podcast/${podcast.id}`}
+                        className="w-full bg-[#045184] hover:bg-[#033d6b] text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
+                      >
+                        <Headphones size={16} />
+                        Click to Listen
+                      </Link>
+                    </div>
+                  </motion.div>
+                ));
+              })()}
+            </div>
+
+            {/* Pagination */}
+            {filteredPodcasts.length > itemsPerPage && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="mt-12 flex justify-center items-center gap-2"
+              >
+                <button
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  Previous
+                </button>
+                
+                {(() => {
+                  const totalPages = Math.ceil(filteredPodcasts.length / itemsPerPage);
+                  const pages = [];
+                  
+                  // Show first page
+                  if (currentPage > 3) {
+                    pages.push(
+                      <button
+                        key={1}
+                        onClick={() => setCurrentPage(1)}
+                        className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                      >
+                        1
+                      </button>
+                    );
+                    if (currentPage > 4) {
+                      pages.push(<span key="ellipsis1" className="px-2 text-slate-400">...</span>);
+                    }
+                  }
+                  
+                  // Show pages around current
+                  for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+                    pages.push(
+                      <button
+                        key={i}
+                        onClick={() => setCurrentPage(i)}
+                        className={`px-4 py-2 rounded-lg transition-all ${
+                          currentPage === i
+                            ? 'bg-[#045184] text-white'
+                            : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                        }`}
+                      >
+                        {i}
+                      </button>
+                    );
+                  }
+                  
+                  // Show last page
+                  if (currentPage < totalPages - 2) {
+                    if (currentPage < totalPages - 3) {
+                      pages.push(<span key="ellipsis2" className="px-2 text-slate-400">...</span>);
+                    }
+                    pages.push(
+                      <button
+                        key={totalPages}
+                        onClick={() => setCurrentPage(totalPages)}
+                        className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                      >
+                        {totalPages}
+                      </button>
+                    );
+                  }
+                  
+                  return pages;
+                })()}
+                
+                <button
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredPodcasts.length / itemsPerPage)))}
+                  disabled={currentPage === Math.ceil(filteredPodcasts.length / itemsPerPage)}
+                  className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  Next
+                </button>
               </motion.div>
-            ))}
-          </div>
+            )}
+          </>
         ) : (
           <motion.div
             initial={{ y: 30, opacity: 0 }}
