@@ -56,7 +56,7 @@ const VideosPage = () => {
 
     if (searchTerm) {
       filtered = filtered.filter(video => 
-        video.vimeo_title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        video.vimeo_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         video.video_description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         video.featured_speakers?.toLowerCase().includes(searchTerm.toLowerCase())
       );
