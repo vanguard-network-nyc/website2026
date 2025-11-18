@@ -20,6 +20,36 @@ const PodcastDetailPage = () => {
     }
   }, [podcast]);
 
+  const handleShare = async () => {
+    const shareData = {
+      title: podcast.title,
+      text: `Check out this podcast: ${podcast.title}`,
+      url: window.location.href
+    };
+
+    try {
+      // Check if Web Share API is supported
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    } catch (err) {
+      // If sharing is cancelled or fails, copy to clipboard as fallback
+      if (err.name !== 'AbortError') {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Link copied to clipboard!');
+        } catch (clipboardErr) {
+          console.error('Failed to copy:', clipboardErr);
+          alert('Failed to share. Please copy the URL from your browser.');
+        }
+      }
+    }
+  };
+
   const fetchSimilarPodcasts = async () => {
     try {
       const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
