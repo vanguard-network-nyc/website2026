@@ -674,6 +674,7 @@ async def fetch_airtable_podcasts():
             description = fields.get("Description", "")
             soundcloud_embed = fields.get("Soundcloud Embed code (medium)", "")
             keywords_raw = fields.get("Keywords", [])
+            release_date = fields.get("Release date", "")
             
             # Handle featured speaker - can be a list or string
             featured_speaker = ""
@@ -704,7 +705,8 @@ async def fetch_airtable_podcasts():
                 featured_speaker=featured_speaker,
                 description=description,
                 soundcloud_embed=soundcloud_embed,
-                keywords=keywords
+                keywords=keywords,
+                release_date=release_date
             )
             podcasts.append(podcast)
         
