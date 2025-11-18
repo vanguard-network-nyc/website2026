@@ -270,9 +270,9 @@ const PodcastDetailPage = () => {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.9 + index * 0.1 }}
-                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200"
+                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col"
                     >
-                      <div className="relative h-40 overflow-hidden">
+                      <div className="relative h-[190px] overflow-hidden">
                         {similarPodcast.thumbnail ? (
                           <img
                             src={similarPodcast.thumbnail}
@@ -285,18 +285,18 @@ const PodcastDetailPage = () => {
                           </div>
                         )}
                       </div>
-                      <div className="p-4">
+                      <div className="p-4 flex flex-col flex-grow">
                         <h3 className="font-bold text-slate-900 mb-2 line-clamp-2 text-sm">
                           {similarPodcast.title}
                         </h3>
                         {similarPodcast.featured_speaker && (
-                          <p className="text-xs text-slate-600 mb-3">
-                            <span className="font-medium">Featured Speaker:</span> {similarPodcast.featured_speaker}
+                          <p className="text-xs mb-3">
+                            <span className="font-medium text-slate-600">Featured Speaker:</span> <span className="font-bold text-slate-900">{similarPodcast.featured_speaker}</span>
                           </p>
                         )}
                         <Link
                           to={`/podcast/${similarPodcast.id}`}
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 px-4 rounded-lg font-medium text-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2"
+                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 px-4 rounded-lg font-medium text-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
                         >
                           <Play size={16} />
                           Listen
