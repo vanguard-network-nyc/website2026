@@ -132,8 +132,6 @@ function App() {
             <Route path="/podcast/:id" element={<PodcastDetailPage />} />
             <Route path="/videos" element={<VideosPage />} />
             <Route path="/video/:id" element={<VideoDetailPage />} />
-            <Route path="/in-the-press" element={<InThePressPage />} />
-            <Route path="/in-the-press/:id" element={<InThePressDetailPage />} />
             <Route path="/gc-exchange" element={<GCExchangePage />} />
             <Route path="/senior-counsel-exchange" element={<SeniorCounselExchangePage />} />
             <Route path="/next-gen-gc" element={<NextGenGCPage />} />
