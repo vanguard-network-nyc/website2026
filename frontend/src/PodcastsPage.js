@@ -221,20 +221,12 @@ const PodcastsPage = () => {
                     
                     {/* Podcast Content */}
                     <div className="p-6 flex-1 flex flex-col">
-                      {/* Date */}
-                      {podcast.release_date && (
-                        <div className="flex items-center gap-2 text-sm text-slate-600 mb-3">
-                          <Calendar size={16} />
-                          <span>{formatDate(podcast.release_date)}</span>
-                        </div>
-                      )}
-                      
                       <h3 className="text-[17px] font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors line-clamp-4">
                         {podcast.title}
                       </h3>
                       
                       {podcast.featured_speaker && (
-                        <div className="mb-4">
+                        <div className="mb-2">
                           <p className="text-sm font-medium text-slate-600 mb-1">
                             <User size={14} className="inline mr-1" />
                             Featured Speaker(s)
@@ -242,6 +234,14 @@ const PodcastsPage = () => {
                           <p className="text-sm font-extrabold text-black">
                             {podcast.featured_speaker}
                           </p>
+                        </div>
+                      )}
+                      
+                      {/* Date */}
+                      {podcast.release_date && (
+                        <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
+                          <Calendar size={16} />
+                          <span>{formatDate(podcast.release_date)}</span>
                         </div>
                       )}
                       
