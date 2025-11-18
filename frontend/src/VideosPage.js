@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, Filter, Play, User, Tag, Calendar, ChevronDown } from 'lucide-react';
+import { Search, Play, User } from 'lucide-react';
 
 const VideosPage = () => {
   const [videos, setVideos] = useState([]);
@@ -9,12 +9,13 @@ const VideosPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 30;
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     fetchVideos();
