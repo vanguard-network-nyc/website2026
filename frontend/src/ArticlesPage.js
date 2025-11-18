@@ -232,28 +232,16 @@ const ArticlesPage = () => {
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
               >
                 {/* Article Image */}
-                <div className="relative h-72 bg-gray-200 overflow-hidden">
+                <div className="relative h-[388px] bg-gray-200 overflow-hidden">
                   {article.photo ? (
                     <img 
                       src={article.photo} 
                       alt={article.blog_title}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                      style={{ 
-                        objectPosition: 'center top',
-                        paddingBottom: '20px',
-                        marginBottom: '-20px'
-                      }}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
                       <FileText size={48} className="text-blue-600" />
-                    </div>
-                  )}
-                  {article.type_content && (
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-white bg-opacity-90 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
-                        {article.type_content}
-                      </span>
                     </div>
                   )}
                 </div>
@@ -262,12 +250,12 @@ const ArticlesPage = () => {
                 <div className="p-6 flex flex-col flex-grow">
                   {/* Content Area - grows to fill available space */}
                   <div className="flex-grow">
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
+                    <h3 className="text-[17px] font-bold text-slate-900 mb-2 line-clamp-4">
                       {article.blog_title}
                     </h3>
                     
                     {article.description_teaser && (
-                      <p className="text-sm text-slate-600 mb-4 line-clamp-3">
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-5">
                         {article.description_teaser}
                       </p>
                     )}
@@ -275,12 +263,12 @@ const ArticlesPage = () => {
                     {article.featured_speaker_linkedin && (
                       <div className="flex items-center gap-2 text-sm text-slate-600 mb-2">
                         <User size={16} />
-                        <span className="font-medium">Featured Speaker</span>
+                        <span className="font-medium">Featured Speaker(s)</span>
                       </div>
                     )}
 
                     {article.featured_speaker_linkedin && (
-                      <p className="text-sm text-slate-700 mb-4 font-medium">
+                      <p className="text-sm text-black mb-4 font-extrabold">
                         {article.featured_speaker_linkedin}
                       </p>
                     )}
