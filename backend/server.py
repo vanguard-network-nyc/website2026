@@ -58,6 +58,7 @@ class AirtableVideo(BaseModel):
     tags: Optional[List[str]] = None
     keywords: Optional[List[str]] = None
     vimeo_embedder: Optional[str] = None  # HTML div code
+    softr_order: Optional[int] = None  # sort order
 
 class AirtableArticle(BaseModel):
     id: str
