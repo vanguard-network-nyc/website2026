@@ -66,27 +66,8 @@ const PodcastsPage = () => {
       });
     }
 
-    // Filter by featured speaker
-    if (selectedSpeaker !== 'All') {
-      console.log('Filtering by speaker:', selectedSpeaker); // Debug log
-      filtered = filtered.filter(podcast => 
-        podcast.featured_speaker && podcast.featured_speaker.toLowerCase().includes(selectedSpeaker.toLowerCase())
-      );
-    }
-
     console.log('Filtered podcasts count:', filtered.length); // Debug log
     setFilteredPodcasts(filtered);
-  };
-
-  // Get unique speakers for dropdown
-  const getUniqueSpeakers = () => {
-    const speakers = new Set();
-    podcasts.forEach(podcast => {
-      if (podcast.featured_speaker) {
-        speakers.add(podcast.featured_speaker);
-      }
-    });
-    return ['All', ...Array.from(speakers).sort()];
   };
 
   if (loading) {
