@@ -9,6 +9,7 @@ const PodcastsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpeaker, setSelectedSpeaker] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 30;
 
