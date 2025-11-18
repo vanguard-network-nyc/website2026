@@ -160,7 +160,7 @@ const VideosPage = () => {
                       {video.headshot ? (
                         <img
                           src={video.headshot}
-                          alt={video.vimeo_title || video.video_description}
+                          alt={video.vimeo_name || video.video_description}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
@@ -173,7 +173,7 @@ const VideosPage = () => {
                     {/* Video Content */}
                     <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-[17px] font-bold text-slate-900 mb-4 group-hover:text-[#045184] transition-colors line-clamp-4">
-                        {video.vimeo_title || video.video_description}
+                        {video.vimeo_name || video.video_description}
                       </h3>
                       
                       {video.featured_speakers && (
