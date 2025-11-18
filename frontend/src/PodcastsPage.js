@@ -154,89 +154,24 @@ const PodcastsPage = () => {
           </motion.p>
         </div>
 
-        {/* Podcast Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {[
-            { number: podcasts.length.toString(), label: "Episodes Available", icon: <Headphones size={32} className="text-[#00A8E1]" /> },
-            { number: getUniqueSpeakers().length - 1, label: "Featured Speakers", icon: <Mic size={32} className="text-purple-500" /> },
-            { number: "Leadership", label: "Focus Area", icon: <Users size={32} className="text-green-500" /> }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
-            >
-              <div className="flex justify-center mb-4">
-                {stat.icon}
-              </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">{stat.number}</div>
-              <div className="text-slate-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Search and Filter Controls */}
-        <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
-          <div className="flex flex-col gap-6">
-            {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search podcasts by title or speaker..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-lg"
-              />
-            </div>
-            
-            {/* Filter Dropdown */}
-            <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-slate-600 font-medium">Filter by Speaker:</span>
-                
-                <div className="relative">
-                  <select
-                    value={selectedSpeaker}
-                    onChange={(e) => setSelectedSpeaker(e.target.value)}
-                    className="appearance-none bg-white border border-slate-300 rounded-lg px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-sm font-medium cursor-pointer"
-                  >
-                    {getUniqueSpeakers().map(speaker => (
-                      <option key={speaker} value={speaker}>
-                        {speaker === 'All' ? 'All Speakers' : speaker}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              
-              <div className="text-slate-600 font-medium">
-                Showing {filteredPodcasts.length} of {podcasts.length} podcasts
-                {(searchTerm || selectedSpeaker !== 'All') && (
-                  <span className="ml-2 text-sm text-slate-500">
-                    with active filters
-                  </span>
-                )}
-              </div>
-            </div>
-            
-            {(searchTerm || selectedSpeaker !== 'All') && (
-              <div className="flex justify-end">
-                <button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setSelectedSpeaker('All');
-                  }}
-                  className="text-[#00A8E1] hover:text-[#0096c7] font-medium"
-                >
-                  Clear all filters
-                </button>
-              </div>
-            )}
+        {/* Search Bar */}
+        <motion.div 
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-12 max-w-2xl mx-auto"
+        >
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+            <input
+              type="text"
+              placeholder="Search podcasts..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
           </div>
-        </div>
+        </motion.div>
 
         {/* Podcasts Grid */}
         {filteredPodcasts.length > 0 ? (
