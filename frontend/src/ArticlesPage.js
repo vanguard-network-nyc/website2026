@@ -198,7 +198,13 @@ const ArticlesPage = () => {
               <p className="text-slate-500">Try adjusting your search or filter criteria.</p>
             </div>
           ) : (
-            filteredArticles.map((article, index) => (
+            (() => {
+              // Calculate pagination
+              const indexOfLastItem = currentPage * itemsPerPage;
+              const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+              const currentItems = filteredArticles.slice(indexOfFirstItem, indexOfLastItem);
+              
+              return currentItems.map((article, index) => (
               <motion.div
                 key={article.id}
                 initial={{ y: 50, opacity: 0 }}
