@@ -71,6 +71,16 @@ const PodcastsPage = () => {
     setFilteredPodcasts(filtered);
   };
 
+  const getUniqueSpeakers = () => {
+    const speakers = ['All'];
+    podcasts.forEach(podcast => {
+      if (podcast.featured_speaker && !speakers.includes(podcast.featured_speaker)) {
+        speakers.push(podcast.featured_speaker);
+      }
+    });
+    return speakers;
+  };
+
   if (loading) {
     return (
       <motion.div
