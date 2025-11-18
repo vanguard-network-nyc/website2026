@@ -22,8 +22,11 @@ const VideosPage = () => {
   }, []);
 
   useEffect(() => {
-    filterVideos();
-  }, [videos, searchTerm, selectedCategory]);
+    if (videos.length > 0) {
+      filterVideos();
+      setCurrentPage(1); // Reset to first page when filtering
+    }
+  }, [videos, searchTerm]);
 
   const fetchVideos = async () => {
     try {
@@ -49,28 +52,16 @@ const VideosPage = () => {
   };
 
   const filterVideos = () => {
-    let filtered = videos;
+    let filtered = [...videos];
 
     if (searchTerm) {
       filtered = filtered.filter(video => 
         video.video_description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        video.featured_speakers?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        video.category?.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter(video => 
-        video.category === selectedCategory
+        video.featured_speakers?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
     setFilteredVideos(filtered);
-  };
-
-  const getUniqueCategories = () => {
-    const categories = videos.map(video => video.category).filter(Boolean);
-    return ['All', ...new Set(categories)];
   };
 
   if (loading) return (
