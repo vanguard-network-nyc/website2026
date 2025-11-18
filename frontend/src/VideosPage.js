@@ -39,10 +39,9 @@ const VideosPage = () => {
       }
       
       const videoData = await response.json();
-      // Reverse the order to show newest videos first
-      const reversedVideos = [...videoData].reverse();
-      setVideos(reversedVideos);
-      setFilteredVideos(reversedVideos);
+      // Videos are already sorted by backend (softr_order descending)
+      setVideos(videoData);
+      setFilteredVideos(videoData);
     } catch (err) {
       console.error('Error fetching videos:', err);
       setError(err.message);
