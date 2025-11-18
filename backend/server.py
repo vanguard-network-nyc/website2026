@@ -594,8 +594,8 @@ async def fetch_airtable_videos():
             data = response.json()
             records = data.get("records", [])
         
-        for record in data.get("records", []):
-            fields = record.get("fields", {})
+            for record in records:
+                fields = record.get("fields", {})
             
             # Extract fields
             video_description = fields.get("Video Description", "")
