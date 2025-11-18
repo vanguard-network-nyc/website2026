@@ -182,7 +182,6 @@ const Header = () => {
         { name: 'Articles', path: '/articles' },
         { name: 'Podcasts', path: '/podcasts' },
         { name: 'Videos', path: '/videos' },
-        { name: 'In the Press', path: '/in-the-press' },
         { name: 'Book', path: '/book' }
       ]
     },
