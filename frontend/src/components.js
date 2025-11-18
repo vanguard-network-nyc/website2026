@@ -5240,7 +5240,7 @@ const OriginalContentLibrarySection = () => {
         insights.push({
           type: "Video",
           category: latestVideo.category || "Personal Awareness",
-          title: latestVideo.video_description || "Leadership Development Video",
+          title: latestVideo.vimeo_name || latestVideo.video_description || "Leadership Development Video",
           description: latestVideo.description || "Understanding how leadership principles drive better strategic decisions.",
           author: latestVideo.featured_speakers || "Affiliate Contributor",
           duration: latestVideo.duration || "12 min watch",
@@ -5520,7 +5520,7 @@ const NewContentLibrarySection = () => {
         insights.push({
           type: "Video",
           category: latestVideo.category || "Personal Awareness",
-          title: latestVideo.video_description || "Leadership Development Video",
+          title: latestVideo.vimeo_name || latestVideo.video_description || "Leadership Development Video",
           description: latestVideo.description || "Understanding how leadership principles drive better strategic decisions.",
           author: latestVideo.featured_speakers || "Affiliate Contributor",
           duration: latestVideo.duration || "12 min watch",
