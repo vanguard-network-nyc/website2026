@@ -51,7 +51,7 @@ class AirtablePodcast(BaseModel):
 class AirtableVideo(BaseModel):
     id: str
     video_description: str  # description
-    vimeo_title: Optional[str] = None  # title for display
+    vimeo_name: Optional[str] = None  # title for display
     featured_speakers: Optional[str] = None
     headshot: Optional[str] = None  # image from Featured Speakers
     category: Optional[str] = None
