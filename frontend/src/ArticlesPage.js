@@ -287,9 +287,92 @@ const ArticlesPage = () => {
                   </div>
                 </div>
               </motion.div>
-            ))
+              ));
+            })()
           )}
         </motion.div>
+
+        {/* Pagination */}
+        {filteredArticles.length > itemsPerPage && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-12 flex justify-center items-center gap-2"
+          >
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Previous
+            </button>
+            
+            {(() => {
+              const totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
+              const pages = [];
+              
+              // Show first page
+              if (currentPage > 3) {
+                pages.push(
+                  <button
+                    key={1}
+                    onClick={() => setCurrentPage(1)}
+                    className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                  >
+                    1
+                  </button>
+                );
+                if (currentPage > 4) {
+                  pages.push(<span key="ellipsis1" className="px-2 text-slate-400">...</span>);
+                }
+              }
+              
+              // Show pages around current
+              for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+                pages.push(
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i)}
+                    className={`px-4 py-2 rounded-lg transition-all ${
+                      currentPage === i
+                        ? 'bg-[#045184] text-white'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    {i}
+                  </button>
+                );
+              }
+              
+              // Show last page
+              if (currentPage < totalPages - 2) {
+                if (currentPage < totalPages - 3) {
+                  pages.push(<span key="ellipsis2" className="px-2 text-slate-400">...</span>);
+                }
+                pages.push(
+                  <button
+                    key={totalPages}
+                    onClick={() => setCurrentPage(totalPages)}
+                    className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                  >
+                    {totalPages}
+                  </button>
+                );
+              }
+              
+              return pages;
+            })()}
+            
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredArticles.length / itemsPerPage)))}
+              disabled={currentPage === Math.ceil(filteredArticles.length / itemsPerPage)}
+              className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            >
+              Next
+            </button>
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );
