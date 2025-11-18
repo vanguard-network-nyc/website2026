@@ -11,6 +11,8 @@ const ArticlesPage = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 30;
 
   // Initialize filter from URL parameters
   useEffect(() => {
@@ -24,10 +26,10 @@ const ArticlesPage = () => {
     }
   }, [searchParams]);
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     fetchArticles();
@@ -35,6 +37,7 @@ const ArticlesPage = () => {
 
   useEffect(() => {
     filterArticles();
+    setCurrentPage(1); // Reset to first page when filtering changes
   }, [articles, searchTerm, selectedType]);
 
   const fetchArticles = async () => {
