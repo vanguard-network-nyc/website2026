@@ -67,6 +67,11 @@ const PodcastsPage = () => {
       });
     }
 
+    // Filter by selected speaker
+    if (selectedSpeaker && selectedSpeaker !== 'All') {
+      filtered = filtered.filter(podcast => podcast.featured_speaker === selectedSpeaker);
+    }
+
     console.log('Filtered podcasts count:', filtered.length); // Debug log
     setFilteredPodcasts(filtered);
   };
