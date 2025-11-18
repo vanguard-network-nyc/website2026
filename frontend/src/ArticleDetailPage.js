@@ -126,11 +126,6 @@ const ArticleDetailPage = () => {
           >
             {/* Article Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              {article.type_content && (
-                <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-                  {article.type_content}
-                </span>
-              )}
               {(article.publish_by || article.published_to_web) && (
                 <div className="flex items-center gap-2 text-sm text-slate-600">
                   <Calendar size={16} />
