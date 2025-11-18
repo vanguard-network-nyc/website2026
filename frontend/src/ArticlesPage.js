@@ -163,53 +163,6 @@ const ArticlesPage = () => {
           </motion.p>
         </div>
 
-        {/* Search and Filters */}
-        <motion.div 
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-12 flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
-        >
-          {/* Search Bar */}
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-
-          {/* Type Filter */}
-          <div className="relative">
-            <select
-              value={selectedType}
-              onChange={(e) => {
-                const newType = e.target.value;
-                setSelectedType(newType);
-                // Update URL parameters
-                if (newType === 'All') {
-                  setSearchParams({});
-                } else if (newType === 'Organizational Transformation') {
-                  setSearchParams({ category: 'organizational-transformation' });
-                } else {
-                  setSearchParams({ category: newType });
-                }
-              }}
-              className="appearance-none bg-white border border-slate-200 rounded-lg px-4 py-3 pr-10 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              {getUniqueTypes().map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
-          </div>
-        </motion.div>
-
         {/* Articles Grid */}
         <motion.div 
           initial={{ y: 30, opacity: 0 }}
