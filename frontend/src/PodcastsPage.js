@@ -9,12 +9,13 @@ const PodcastsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSpeaker, setSelectedSpeaker] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 30;
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     fetchPodcasts();
@@ -23,8 +24,9 @@ const PodcastsPage = () => {
   useEffect(() => {
     if (podcasts.length > 0) {
       filterPodcasts();
+      setCurrentPage(1); // Reset to first page when filtering
     }
-  }, [podcasts, searchTerm, selectedSpeaker]);
+  }, [podcasts, searchTerm]);
 
   const fetchPodcasts = async () => {
     try {
