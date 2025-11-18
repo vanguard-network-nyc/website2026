@@ -577,15 +577,22 @@ async def fetch_airtable_videos():
         
         url = f"https://api.airtable.com/v0/{VIDEOS_BASE_ID}/{VIDEOS_TABLE_ID}"
         params = {
-            "view": VIDEOS_VIEW_ID,
-            "maxRecords": 100
+            "view": VIDEOS_VIEW_ID
         }
         
-        response = requests.get(url, headers=headers, params=params)
-        response.raise_for_status()
-        
-        data = response.json()
         videos = []
+        offset = None
+        
+        # Fetch all records with pagination
+        while True:
+            if offset:
+                params["offset"] = offset
+            
+            response = requests.get(url, headers=headers, params=params)
+            response.raise_for_status()
+            
+            data = response.json()
+            records = data.get("records", [])
         
         for record in data.get("records", []):
             fields = record.get("fields", {})
