@@ -183,7 +183,7 @@ const PodcastDetailPage = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="flex items-center gap-3 mb-6"
+                    className="flex items-center gap-3"
                   >
                     <div className="w-12 h-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-full flex items-center justify-center">
                       <User size={24} className="text-white" />
@@ -194,63 +194,6 @@ const PodcastDetailPage = () => {
                     </div>
                   </motion.div>
                 )}
-                
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="relative share-menu-container"
-                >
-                  <button 
-                    onClick={() => setShowShareMenu(!showShareMenu)}
-                    className="flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300"
-                  >
-                    <Share2 size={20} />
-                    Share
-                  </button>
-                  
-                  {/* Share Menu Dropdown */}
-                  {showShareMenu && (
-                    <div className="absolute top-full mt-2 left-0 bg-white rounded-xl shadow-2xl border border-slate-200 py-2 min-w-[200px] z-50">
-                      <button
-                        onClick={() => handleShare('facebook')}
-                        className="w-full px-4 py-3 hover:bg-slate-50 flex items-center gap-3 text-slate-700 transition-colors"
-                      >
-                        <Facebook size={18} className="text-blue-600" />
-                        <span className="font-medium">Facebook</span>
-                      </button>
-                      <button
-                        onClick={() => handleShare('twitter')}
-                        className="w-full px-4 py-3 hover:bg-slate-50 flex items-center gap-3 text-slate-700 transition-colors"
-                      >
-                        <Twitter size={18} className="text-sky-500" />
-                        <span className="font-medium">Twitter</span>
-                      </button>
-                      <button
-                        onClick={() => handleShare('linkedin')}
-                        className="w-full px-4 py-3 hover:bg-slate-50 flex items-center gap-3 text-slate-700 transition-colors"
-                      >
-                        <Linkedin size={18} className="text-blue-700" />
-                        <span className="font-medium">LinkedIn</span>
-                      </button>
-                      <button
-                        onClick={() => handleShare('email')}
-                        className="w-full px-4 py-3 hover:bg-slate-50 flex items-center gap-3 text-slate-700 transition-colors"
-                      >
-                        <Mail size={18} className="text-slate-600" />
-                        <span className="font-medium">Email</span>
-                      </button>
-                      <div className="border-t border-slate-200 my-1"></div>
-                      <button
-                        onClick={() => handleShare('copy')}
-                        className="w-full px-4 py-3 hover:bg-slate-50 flex items-center gap-3 text-slate-700 transition-colors"
-                      >
-                        <Copy size={18} className="text-slate-600" />
-                        <span className="font-medium">Copy Link</span>
-                      </button>
-                    </div>
-                  )}
-                </motion.div>
               </div>
             </div>
           </div>
