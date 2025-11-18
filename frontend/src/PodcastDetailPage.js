@@ -21,6 +21,20 @@ const PodcastDetailPage = () => {
     }
   }, [podcast]);
 
+  useEffect(() => {
+    // Close share menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (showShareMenu && !event.target.closest('.share-menu-container')) {
+        setShowShareMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showShareMenu]);
+
   const handleShare = (platform) => {
     const url = encodeURIComponent(window.location.href);
     const title = encodeURIComponent(podcast.title);
