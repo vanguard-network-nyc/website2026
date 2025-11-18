@@ -231,7 +231,10 @@ const PodcastDetailPage = () => {
                   transition={{ delay: 0.4 }}
                   className="flex gap-4"
                 >
-                  <button className="flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300">
+                  <button 
+                    onClick={handleShare}
+                    className="flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300"
+                  >
                     <Share2 size={20} />
                     Share
                   </button>
