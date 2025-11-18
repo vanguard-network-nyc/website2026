@@ -9,6 +9,7 @@ const PodcastDetailPage = () => {
   const [similarPodcasts, setSimilarPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showShareMenu, setShowShareMenu] = useState(false);
 
   useEffect(() => {
     fetchPodcast();
@@ -20,34 +21,37 @@ const PodcastDetailPage = () => {
     }
   }, [podcast]);
 
-  const handleShare = async () => {
-    const shareData = {
-      title: podcast.title,
-      text: `Check out this podcast: ${podcast.title}`,
-      url: window.location.href
-    };
-
-    try {
-      // Check if Web Share API is supported
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        // Fallback: Copy to clipboard
-        await navigator.clipboard.writeText(window.location.href);
+  const handleShare = (platform) => {
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(podcast.title);
+    const text = encodeURIComponent(`Check out this podcast: ${podcast.title}`);
+    
+    let shareUrl = '';
+    
+    switch(platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        break;
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+        break;
+      case 'email':
+        shareUrl = `mailto:?subject=${title}&body=${text}%20${url}`;
+        break;
+      case 'copy':
+        navigator.clipboard.writeText(window.location.href);
         alert('Link copied to clipboard!');
-      }
-    } catch (err) {
-      // If sharing is cancelled or fails, copy to clipboard as fallback
-      if (err.name !== 'AbortError') {
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          alert('Link copied to clipboard!');
-        } catch (clipboardErr) {
-          console.error('Failed to copy:', clipboardErr);
-          alert('Failed to share. Please copy the URL from your browser.');
-        }
-      }
+        setShowShareMenu(false);
+        return;
+      default:
+        return;
     }
+    
+    window.open(shareUrl, '_blank', 'width=600,height=400');
+    setShowShareMenu(false);
   };
 
   const fetchSimilarPodcasts = async () => {
