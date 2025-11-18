@@ -5366,16 +5366,7 @@ const OriginalContentLibrarySection = () => {
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 flex flex-col h-full"
                 >
                   <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url('${insight.image}')` }}>
-                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                      <div className="text-white">
-                        <span className="text-xs font-semibold uppercase tracking-wider bg-blue-600 px-2 py-1 rounded">
-                          {insight.type}
-                        </span>
-                        <div className="mt-2 text-xs text-blue-200">
-                          {insight.category}
-                        </div>
-                      </div>
-                    </div>
+                    <div className="h-full bg-gradient-to-t from-black/60 to-transparent"></div>
                   </div>
                   
                   <div className="p-6 flex flex-col flex-grow">
@@ -5386,10 +5377,6 @@ const OriginalContentLibrarySection = () => {
                       <p className="text-slate-600 text-sm mb-4 leading-relaxed">
                         {insight.description}
                       </p>
-                      <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
-                        <span>{insight.author}</span>
-                        <span>{insight.duration}</span>
-                      </div>
                     </div>
                     
                     <div className="mt-auto pt-4">
