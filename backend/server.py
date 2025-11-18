@@ -591,7 +591,7 @@ async def fetch_airtable_videos():
             
             # Extract fields
             video_description = fields.get("Video Description", "")
-            vimeo_title = fields.get("Vimeo Title", "")
+            vimeo_name = fields.get("Vimeo Name", "")
             featured_speakers_raw = fields.get("Featured Speakers", "")
             headshot_raw = fields.get("Headshot (from Featured Speakers)", [])
             category = fields.get("Category", "")
