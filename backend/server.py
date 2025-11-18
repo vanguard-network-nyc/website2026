@@ -631,7 +631,7 @@ async def fetch_airtable_videos():
             video = AirtableVideo(
                 id=record.get("id", ""),
                 video_description=video_description,
-                vimeo_title=vimeo_title,
+                vimeo_name=vimeo_name,
                 featured_speakers=featured_speakers,
                 headshot=headshot_url,
                 category=category,
