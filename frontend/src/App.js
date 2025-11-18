@@ -13,8 +13,6 @@ import VideosPage from './VideosPage';
 import VideoDetailPage from './VideoDetailPage';
 import ArticlesPage from './ArticlesPage';
 import ArticleDetailPage from './ArticleDetailPage';
-import InThePressPage from './InThePressPage';
-import InThePressDetailPage from './InThePressDetailPage';
 import GCExchangePage from './GCExchangePage';
 import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
