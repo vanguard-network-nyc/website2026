@@ -46,6 +46,7 @@ class AirtablePodcast(BaseModel):
     description: Optional[str] = None
     soundcloud_embed: Optional[str] = None
     keywords: Optional[List[str]] = None
+    release_date: Optional[str] = None
 
 class AirtableVideo(BaseModel):
     id: str
