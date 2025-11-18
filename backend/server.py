@@ -639,9 +639,13 @@ async def fetch_airtable_videos():
                 category=category,
                 tags=tags,
                 keywords=keywords,
-                vimeo_embedder=vimeo_embedder
+                vimeo_embedder=vimeo_embedder,
+                softr_order=softr_order
             )
             videos.append(video)
+        
+        # Sort by softr_order in descending order (highest number first)
+        videos.sort(key=lambda x: x.softr_order or 0, reverse=True)
         
         return videos
         
