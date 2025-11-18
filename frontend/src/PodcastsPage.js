@@ -27,7 +27,7 @@ const PodcastsPage = () => {
       filterPodcasts();
       setCurrentPage(1); // Reset to first page when filtering
     }
-  }, [podcasts, searchTerm]);
+  }, [podcasts, searchTerm, selectedSpeaker]);
 
   const fetchPodcasts = async () => {
     try {
