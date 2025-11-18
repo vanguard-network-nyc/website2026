@@ -234,7 +234,7 @@ const ArticleDetailPage = () => {
             </p>
             <Link
               to="/articles"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-[#045184] hover:bg-[#033d6b] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
             >
               <FileText size={20} />
               View All Articles
