@@ -342,17 +342,8 @@ const UpcomingEventsPage = () => {
             </div>
           </div>
           
-          <div className="mt-6 flex justify-between items-center">
-            <span className="text-slate-600 font-medium">
-              Showing {filteredEvents.length} of {events.length} events
-              {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
-                <span className="ml-2 text-sm text-slate-500">
-                  with active filters
-                </span>
-              )}
-            </span>
-            
-            {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
+          {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
+            <div className="mt-6 flex justify-end items-center">
               <button
                 onClick={() => {
                   setSearchTerm('');
@@ -364,8 +355,8 @@ const UpcomingEventsPage = () => {
               >
                 Clear all filters
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Calendar View */}
