@@ -228,7 +228,7 @@ const VideoDetailPage = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="text-sm font-medium text-slate-900 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
-                            {similarVideo.video_description}
+                            {similarVideo.vimeo_name || similarVideo.video_description}
                           </h4>
                           {similarVideo.featured_speakers && (
                             <p className="text-xs text-slate-600 mt-1 line-clamp-1">
