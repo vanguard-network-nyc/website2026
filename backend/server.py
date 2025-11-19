@@ -544,6 +544,14 @@ async def fetch_airtable_articles():
                 elif isinstance(tags_raw, str):
                     tags = [tags_raw]
             
+            # Handle keywords - can be a list or string
+            keywords = []
+            if keywords_raw:
+                if isinstance(keywords_raw, list):
+                    keywords = keywords_raw
+                elif isinstance(keywords_raw, str):
+                    keywords = [keywords_raw]
+            
             # Handle photo - get first one if multiple
             photo_url = None
             if photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
@@ -559,7 +567,8 @@ async def fetch_airtable_articles():
                 body_of_blog=body_of_blog,
                 tags=tags,
                 published_to_web=published_to_web,
-                type_content=type_content
+                type_content=type_content,
+                keywords=keywords
             )
             articles.append(article)
         
