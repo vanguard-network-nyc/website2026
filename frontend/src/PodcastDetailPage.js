@@ -277,7 +277,7 @@ const PodcastDetailPage = () => {
                           <img
                             src={similarPodcast.thumbnail}
                             alt={similarPodcast.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
