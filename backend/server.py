@@ -637,13 +637,22 @@ async def fetch_airtable_videos():
                     elif isinstance(tags_raw, str):
                         tags = [tags_raw]
                 
-                # Handle keywords - can be a list or string
+                # Handle keywords - can be a list or string, split by commas
                 keywords = []
                 if keywords_raw:
                     if isinstance(keywords_raw, list):
-                        keywords = keywords_raw
+                        # If list, each item might be comma-separated
+                        for item in keywords_raw:
+                            if isinstance(item, str) and ',' in item:
+                                # Split comma-separated values and strip whitespace
+                                keywords.extend([k.strip() for k in item.split(',') if k.strip()])
+                            else:
+                                keywords.append(item)
                     elif isinstance(keywords_raw, str):
-                        keywords = [keywords_raw]
+                        if ',' in keywords_raw:
+                            keywords = [k.strip() for k in keywords_raw.split(',') if k.strip()]
+                        else:
+                            keywords = [keywords_raw]
                 
                 # Handle headshot - get first one if multiple
                 headshot_url = None
