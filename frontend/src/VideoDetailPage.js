@@ -218,7 +218,7 @@ const VideoDetailPage = () => {
                           <img
                             src={similarVideo.headshot}
                             alt={similarVideo.vimeo_name || similarVideo.video_description}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-top"
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
