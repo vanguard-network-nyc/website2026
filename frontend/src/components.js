@@ -165,14 +165,7 @@ const Header = () => {
     },
     { 
       name: 'NETWORKS', 
-      path: '/networking',
-      dropdown: [
-        { name: 'General Counsel Network', path: '#' },
-        { name: 'Senior In-House Counsel Network', path: '#' },
-        { name: 'Life Sciences CEO Network', path: '#' },
-        { name: 'Risk Management Network', path: '#' },
-        { name: 'Senior Executive Network', path: '#' }
-      ]
+      path: '/networking'
     },
     { name: 'PROGRAMS', path: '/programs-v2' },
     { name: 'EVENTS', path: '/upcoming-events' },
