@@ -223,6 +223,51 @@ const ArticleDetailPage = () => {
               </div>
             )}
 
+            {/* Q&A Collapsible Section */}
+            {article.body_of_qa && (
+              <div className="mb-8 border border-slate-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => setIsQAOpen(!isQAOpen)}
+                  className="w-full flex items-center justify-between p-6 bg-gradient-to-r from-slate-50 to-blue-50 hover:from-slate-100 hover:to-blue-100 transition-all duration-300"
+                >
+                  <h3 className="text-xl font-bold text-slate-900">Read the Q&A</h3>
+                  <ChevronDown 
+                    size={24} 
+                    className={`text-slate-600 transition-transform duration-300 ${isQAOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                {isQAOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="p-6 bg-white border-t border-slate-200"
+                  >
+                    <div className="prose prose-lg max-w-none">
+                      <ReactMarkdown
+                        components={{
+                          p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed" {...props} />,
+                          strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                          em: ({node, ...props}) => <em className="italic" {...props} />,
+                          ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
+                          ol: ({node, ...props}) => <ol className="list-decimal ml-6 mb-4" {...props} />,
+                          li: ({node, ...props}) => <li className="mb-2" {...props} />,
+                          h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+                          h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
+                          h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
+                          a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                          blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
+                        }}
+                      >
+                        {article.body_of_qa}
+                      </ReactMarkdown>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            )}
+
             {/* Tags */}
             {article.tags && article.tags.length > 0 && (
               <div className="border-t pt-8">
