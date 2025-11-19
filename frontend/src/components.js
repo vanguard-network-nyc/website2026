@@ -3611,29 +3611,31 @@ const BookPage = () => (
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-center lg:text-left"
+          className="text-center"
         >
-          <div className="w-80 h-[500px] rounded-xl shadow-lg mx-auto lg:mx-0 mb-8 overflow-hidden bg-gray-100">
+          <div className="w-80 h-[500px] rounded-xl shadow-lg mx-auto mb-8 overflow-hidden bg-gray-100">
             <img
               src="/book-cover.jpg"
               alt="Seeing Around Corners Book Cover"
               className="w-full h-full object-cover"
             />
           </div>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
-            style={{ backgroundColor: '#00A8E1' }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-          >
-            Order on Amazon
-            <ArrowRight size={20} />
-          </motion.a>
+          <div className="flex justify-center">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
+              style={{ backgroundColor: '#045184' }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#033d6b'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#045184'}
+            >
+              Order on Amazon
+              <ArrowRight size={20} />
+            </motion.a>
+          </div>
         </motion.div>
         
         <motion.div
