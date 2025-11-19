@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft, User, Tag, Calendar, FileText } from 'lucide-react';
+import { ArrowLeft, User, Tag, Calendar, FileText, ChevronDown } from 'lucide-react';
 
 const ArticleDetailPage = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
   const [similarArticles, setSimilarArticles] = useState([]);
+  const [isQAOpen, setIsQAOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFromNewsroom, setIsFromNewsroom] = useState(false);
