@@ -470,7 +470,6 @@ const UpcomingEventsPage = () => {
                           <Calendar size={64} className="text-white opacity-50" />
                         </div>
                       )}
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
                       {event.start_date && (
                         <div className="absolute bottom-4 left-4">
                           <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-medium">
