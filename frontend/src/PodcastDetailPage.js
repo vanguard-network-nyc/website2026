@@ -152,7 +152,7 @@ const PodcastDetailPage = () => {
           <div className="relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               {/* Thumbnail Section */}
-              <div className="relative h-80 lg:h-96 overflow-hidden">
+              <div className="relative h-[370px] lg:h-[434px] overflow-hidden">
                 {podcast.thumbnail ? (
                   <img
                     src={podcast.thumbnail}
