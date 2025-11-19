@@ -309,6 +309,21 @@ const UpcomingEventsPage = () => {
                   </select>
                   <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none" size={16} />
                 </div>
+                
+                {/* Clear Filters Button */}
+                {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
+                  <button
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedAudience('All');
+                      setSelectedLocation('All');
+                      setSelectedDate(null);
+                    }}
+                    className="text-[#00A8E1] hover:text-[#0096c7] font-medium text-sm"
+                  >
+                    Clear all filters
+                  </button>
+                )}
               </div>
               
               {/* View Mode Toggle */}
