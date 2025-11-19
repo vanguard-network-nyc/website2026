@@ -304,6 +304,30 @@ const VideoDetailPage = () => {
             )}
           </div>
         </div>
+
+        {/* Explore More Videos CTA */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              Explore More Videos
+            </h3>
+            <p className="text-slate-600 mb-6">
+              Discover more thought-provoking videos and leadership insights from our expert contributors.
+            </p>
+            <Link
+              to="/videos"
+              className="inline-flex items-center gap-2 bg-[#045184] hover:bg-[#033d6b] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+            >
+              <Play size={20} />
+              View All Videos
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );
