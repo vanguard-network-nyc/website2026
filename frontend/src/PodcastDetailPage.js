@@ -291,7 +291,7 @@ const PodcastDetailPage = () => {
                         </h3>
                         {similarPodcast.featured_speaker && (
                           <p className="text-xs mb-3">
-                            <span className="font-medium text-slate-600">Featured Speaker:</span> <span className="font-bold text-slate-900">{similarPodcast.featured_speaker}</span>
+                            <span className="font-medium text-slate-600">Featured Speaker(s):</span> <span className="font-bold text-slate-900">{similarPodcast.featured_speaker}</span>
                           </p>
                         )}
                         <Link
