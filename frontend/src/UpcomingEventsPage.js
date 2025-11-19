@@ -259,29 +259,6 @@ const UpcomingEventsPage = () => {
           </motion.p>
         </div>
 
-        {/* Events Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {[
-            { number: events.length.toString(), label: "Events", icon: <Calendar size={32} className="text-[#00A8E1]" /> },
-            { number: "100+", label: "Industry Leaders", icon: <Users size={32} className="text-purple-500" /> },
-            { number: "Virtual & In-Person", label: "Event Formats", icon: <MapPin size={32} className="text-green-500" /> }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
-            >
-              <div className="flex justify-center mb-4">
-                {stat.icon}
-              </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">{stat.number}</div>
-              <div className="text-slate-600 font-medium">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
         {/* Search and View Controls */}
         <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
           <div className="flex flex-col gap-6">
