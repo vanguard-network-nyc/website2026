@@ -3598,7 +3598,7 @@ const BookPage = () => (
           Seeing Around Corners
         </h1>
         <p className="text-2xl font-semibold mb-4" style={{ color: '#00A8E1' }}>
-          C-Suite Wisdom from America's Most Insightful Leaders
+          C-suite Wisdom from America's Most Insightful Leaders
         </p>
         <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
           Exclusive, frank, and unfettered advice from legendary CEOs, innovative founders, and industry-shaping experts to help you navigate the most important management and leadership challenges of today.
