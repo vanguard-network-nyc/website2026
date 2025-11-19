@@ -324,13 +324,22 @@ const PodcastDetailPage = () => {
             <p className="text-slate-600 mb-6">
               Explore our other podcasts, upcoming events, and leadership programs designed to accelerate your growth.
             </p>
-            <Link
-              to="/podcasts"
-              className="inline-flex items-center gap-2 bg-[#045184] hover:bg-[#033d6b] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-            >
-              <Headphones size={20} />
-              More Podcasts
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/podcasts"
+                className="inline-flex items-center gap-2 bg-[#045184] hover:bg-[#033d6b] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              >
+                <Headphones size={20} />
+                More Podcasts
+              </Link>
+              <Link
+                to="/upcoming-events"
+                className="inline-flex items-center gap-2 border-2 border-[#045184] text-[#045184] px-6 py-3 rounded-lg font-semibold hover:bg-[#045184] hover:text-white transition-all duration-300"
+              >
+                <Clock size={20} />
+                Upcoming Events
+              </Link>
+            </div>
           </div>
         </motion.div>
       </div>
