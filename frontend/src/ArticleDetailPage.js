@@ -224,7 +224,7 @@ const ArticleDetailPage = () => {
             )}
 
             {/* Q&A Collapsible Section */}
-            {article.body_of_qa && (
+            {article.body_qa && (
               <div className="mb-8 border border-slate-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setIsQAOpen(!isQAOpen)}
