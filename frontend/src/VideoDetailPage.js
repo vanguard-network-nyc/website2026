@@ -124,7 +124,7 @@ const VideoDetailPage = () => {
               <div className="aspect-video bg-black">
                 {video.vanguard_vimeo_link ? (
                   <iframe
-                    src={video.vanguard_vimeo_link}
+                    src={getVimeoEmbedUrl(video.vanguard_vimeo_link)}
                     width="100%"
                     height="100%"
                     frameBorder="0"
