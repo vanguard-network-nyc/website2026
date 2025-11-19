@@ -110,10 +110,15 @@ const VideoDetailPage = () => {
               className="bg-white rounded-xl shadow-lg overflow-hidden mb-8"
             >
               <div className="aspect-video bg-black">
-                {video.vimeo_embedder ? (
-                  <div 
+                {video.vanguard_vimeo_link ? (
+                  <iframe
+                    src={video.vanguard_vimeo_link}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
                     className="w-full h-full"
-                    dangerouslySetInnerHTML={{ __html: video.vimeo_embedder }}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
