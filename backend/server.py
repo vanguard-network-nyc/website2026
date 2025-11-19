@@ -616,7 +616,7 @@ async def fetch_airtable_videos():
                 category = fields.get("Category", "")
                 tags_raw = fields.get("Tags", [])
                 keywords_raw = fields.get("Keywords", [])
-                vimeo_embedder = fields.get("Vimeo Embedder", "")
+                vanguard_vimeo_link = fields.get("Vanguard Vimeo Link", "")
                 softr_order = fields.get("Softr Order (Videos Members Page)", 0)
                 
                 # Handle featured speakers - can be a list or string
