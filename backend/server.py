@@ -71,6 +71,7 @@ class AirtableArticle(BaseModel):
     tags: Optional[List[str]] = None
     published_to_web: Optional[str] = None  # date field for sorting
     type_content: Optional[str] = None  # type of detailed content
+    keywords: Optional[List[str]] = None  # keywords from video for similarity matching
 
 class AirtableInThePress(BaseModel):
     id: str
