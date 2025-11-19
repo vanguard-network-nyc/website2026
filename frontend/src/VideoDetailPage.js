@@ -254,55 +254,6 @@ const VideoDetailPage = () => {
             )}
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            {/* Similar Videos */}
-            {similarVideos.length > 0 && (
-              <motion.div
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-white rounded-xl shadow-lg p-6"
-              >
-                <h3 className="text-xl font-bold text-slate-900 mb-6">Similar Videos</h3>
-                <div className="space-y-4">
-                  {similarVideos.map((similarVideo) => (
-                    <Link
-                      key={similarVideo.id}
-                      to={`/video/${similarVideo.id}`}
-                      className="block group"
-                    >
-                      <div className="flex gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                        <div className="flex-shrink-0">
-                          {similarVideo.headshot ? (
-                            <img
-                              src={similarVideo.headshot}
-                              alt={similarVideo.video_description}
-                              className="w-16 h-12 object-cover rounded-lg"
-                            />
-                          ) : (
-                            <div className="w-16 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-                              <Play size={16} className="text-gray-500" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-medium text-slate-900 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
-                            {similarVideo.vimeo_name || similarVideo.video_description}
-                          </h4>
-                          {similarVideo.featured_speakers && (
-                            <p className="text-xs text-slate-600 mt-1 line-clamp-1">
-                              {similarVideo.featured_speakers}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </div>
         </div>
 
         {/* Explore More Videos CTA */}
