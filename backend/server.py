@@ -1030,6 +1030,62 @@ async def get_article(article_id: str):
         logger.error(f"Error in get_article: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch article")
 
+@api_router.get("/articles/similar/{article_id}", response_model=List[AirtableArticle])
+async def get_similar_articles(article_id: str):
+    """Get similar articles based on keyword matching"""
+    try:
+        all_articles = await fetch_airtable_articles()
+        
+        # Find the target article
+        target_article = None
+        for article in all_articles:
+            if article.id == article_id:
+                target_article = article
+                break
+        
+        if not target_article:
+            return []
+        
+        # If no keywords, return empty list
+        if not target_article.keywords or len(target_article.keywords) == 0:
+            return []
+        
+        # Calculate similarity scores
+        similar_articles = []
+        target_keywords = set(target_article.keywords)
+        
+        for article in all_articles:
+            # Skip the article itself
+            if article.id == article_id:
+                continue
+            
+            # Skip articles without keywords
+            if not article.keywords or len(article.keywords) == 0:
+                continue
+            
+            # Calculate similarity (number of matching keywords)
+            article_keywords = set(article.keywords)
+            common_keywords = target_keywords.intersection(article_keywords)
+            similarity_score = len(common_keywords)
+            
+            # Only include articles with at least 1 matching keyword
+            if similarity_score > 0:
+                similar_articles.append({
+                    'article': article,
+                    'score': similarity_score
+                })
+        
+        # Sort by similarity score (descending) and return top 3
+        similar_articles.sort(key=lambda x: x['score'], reverse=True)
+        top_similar = [item['article'] for item in similar_articles[:3]]
+        
+        logger.info(f"Found {len(top_similar)} similar articles for article {article_id}")
+        return top_similar
+        
+    except Exception as e:
+        logger.error(f"Error in get_similar_articles: {str(e)}")
+        return []
+
 @api_router.get("/newsroom", response_model=List[AirtableNewsroom])
 async def get_newsroom():
     """Get newsroom articles from Airtable"""
