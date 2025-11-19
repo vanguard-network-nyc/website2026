@@ -58,6 +58,7 @@ class AirtableVideo(BaseModel):
     tags: Optional[List[str]] = None
     keywords: Optional[List[str]] = None
     vanguard_vimeo_link: Optional[str] = None  # Direct Vimeo URL
+    vimeo_long_description: Optional[str] = None  # Long description for video
     softr_order: Optional[int] = None  # sort order
 
 class AirtableArticle(BaseModel):
