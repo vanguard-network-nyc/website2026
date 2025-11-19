@@ -660,6 +660,7 @@ async def fetch_airtable_videos():
                     tags=tags,
                     keywords=keywords,
                     vanguard_vimeo_link=vanguard_vimeo_link,
+                    vimeo_long_description=vimeo_long_description,
                     softr_order=softr_order
                 )
                 videos.append(video)
