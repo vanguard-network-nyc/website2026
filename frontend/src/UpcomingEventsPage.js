@@ -500,8 +500,8 @@ const UpcomingEventsPage = () => {
                         {/* Audience and Location */}
                         <div className="flex flex-col gap-3 mb-6">
                           {event.audience_network && (
-                            <div className="flex items-center gap-2 text-slate-600">
-                              <Users size={16} className="text-[#00A8E1]" />
+                            <div className="flex items-start gap-2 text-slate-600">
+                              <Users size={16} className="text-[#00A8E1] flex-shrink-0 mt-0.5" />
                               <span className="text-sm"><span className="font-medium">Audience:</span> {event.audience_network}</span>
                             </div>
                           )}
