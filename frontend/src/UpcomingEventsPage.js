@@ -66,15 +66,13 @@ const UpcomingEventsPage = () => {
     console.log('Filtering events, total events:', events.length); // Debug log
     let filtered = [...events]; // Create a copy of the events array
 
-    // Filter by search term (title, session leader, location, event date)
+    // Filter by search term (title and session leader only)
     if (searchTerm) {
       console.log('Filtering by search term:', searchTerm); // Debug log
       filtered = filtered.filter(event => {
         const titleMatch = event.event_title.toLowerCase().includes(searchTerm.toLowerCase());
         const sessionLeaderMatch = event.session_leader_name && event.session_leader_name.toLowerCase().includes(searchTerm.toLowerCase());
-        const locationMatch = event.location && event.location.toLowerCase().includes(searchTerm.toLowerCase());
-        const dateMatch = event.start_date && formatEventDate(event.start_date).toLowerCase().includes(searchTerm.toLowerCase());
-        return titleMatch || sessionLeaderMatch || locationMatch || dateMatch;
+        return titleMatch || sessionLeaderMatch;
       });
     }
 
