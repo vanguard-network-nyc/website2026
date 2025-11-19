@@ -272,7 +272,7 @@ const PodcastDetailPage = () => {
                       transition={{ delay: 0.9 + index * 0.1 }}
                       className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col"
                     >
-                      <div className="relative h-[190px] overflow-hidden">
+                      <div className="relative h-[240px] overflow-hidden">
                         {similarPodcast.thumbnail ? (
                           <img
                             src={similarPodcast.thumbnail}
