@@ -62,6 +62,25 @@ const ArticleDetailPage = () => {
     }
   };
 
+  const fetchSimilarArticles = async () => {
+    try {
+      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const response = await fetch(`${backendUrl}/api/articles/similar/${id}`);
+      
+      if (!response.ok) {
+        console.warn('Failed to fetch similar articles');
+        setSimilarArticles([]);
+        return;
+      }
+      
+      const similarData = await response.json();
+      setSimilarArticles(similarData);
+    } catch (err) {
+      console.warn('Error fetching similar articles:', err);
+      setSimilarArticles([]);
+    }
+  };
+
   const formatDate = (dateString) => {
     if (!dateString) return '';
     try {
