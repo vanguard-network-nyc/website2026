@@ -158,7 +158,7 @@ const VideoDetailPage = () => {
                 <div className="mb-6">
                   <div className="flex items-center gap-2 text-slate-600 mb-2">
                     <User size={20} />
-                    <span className="font-semibold">Featured Speakers</span>
+                    <span className="font-semibold">Featured Speaker(s)</span>
                   </div>
                   <p className="text-lg text-slate-800 font-medium">
                     {video.featured_speakers}
@@ -166,11 +166,11 @@ const VideoDetailPage = () => {
                 </div>
               )}
 
-              {video.category && (
+              {video.vimeo_long_description && (
                 <div className="mb-6">
-                  <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-                    {video.category}
-                  </span>
+                  <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">
+                    {video.vimeo_long_description}
+                  </p>
                 </div>
               )}
 
@@ -187,22 +187,6 @@ const VideoDetailPage = () => {
                         className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full"
                       >
                         {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {video.keywords && video.keywords.length > 0 && (
-                <div>
-                  <h3 className="font-semibold text-slate-800 mb-3">Keywords</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {video.keywords.map((keyword, index) => (
-                      <span 
-                        key={index} 
-                        className="bg-slate-100 text-slate-700 text-sm px-3 py-1 rounded-full"
-                      >
-                        {keyword}
                       </span>
                     ))}
                   </div>
