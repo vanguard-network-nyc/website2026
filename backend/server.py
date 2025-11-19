@@ -657,7 +657,7 @@ async def fetch_airtable_videos():
                     category=category,
                     tags=tags,
                     keywords=keywords,
-                    vimeo_embedder=vimeo_embedder,
+                    vanguard_vimeo_link=vanguard_vimeo_link,
                     softr_order=softr_order
                 )
                 videos.append(video)
