@@ -173,25 +173,6 @@ const VideoDetailPage = () => {
                   </p>
                 </div>
               )}
-
-              {video.tags && video.tags.length > 0 && (
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 text-slate-600 mb-3">
-                    <Tag size={20} />
-                    <span className="font-semibold">Tags</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {video.tags.map((tag, index) => (
-                      <span 
-                        key={index} 
-                        className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </motion.div>
 
             {/* Similar Videos Section */}
