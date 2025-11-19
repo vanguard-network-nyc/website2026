@@ -65,7 +65,7 @@ const MembershipApplicationPage = () => {
     { value: 'Senior In-House Counsel Network', label: 'Senior In-House Counsel Network' },
     { value: 'Life Sciences CEO Network', label: 'Life Sciences CEO Network' },
     { value: 'Risk Management Network', label: 'Risk Management Network' },
-    { value: 'Senior Executive Network', label: 'Senior Executive Network' },
+    { value: 'Senior Leaders Network', label: 'Senior Leaders Network' },
     { value: 'Not sure', label: 'Not sure' }
   ];
 
