@@ -134,7 +134,7 @@ const VideoDetailPage = () => {
               className="bg-white rounded-xl shadow-lg p-8"
             >
               <h1 className="text-3xl font-bold text-slate-900 mb-6">
-                {video.video_description}
+                {video.vimeo_name || video.video_description}
               </h1>
 
               {video.featured_speakers && (
