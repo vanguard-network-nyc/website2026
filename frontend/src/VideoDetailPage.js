@@ -17,6 +17,18 @@ const VideoDetailPage = () => {
     }
   }, [id]);
 
+  const getVimeoEmbedUrl = (vimeoLink) => {
+    if (!vimeoLink) return null;
+    // Extract video ID from various Vimeo URL formats
+    // https://vimeo.com/1137704539 -> 1137704539
+    // https://vimeo.com/showcase/123/video/456 -> 456
+    const match = vimeoLink.match(/vimeo\.com\/(?:.*\/)?(\d+)/);
+    if (match && match[1]) {
+      return `https://player.vimeo.com/video/${match[1]}`;
+    }
+    return vimeoLink;
+  };
+
   const fetchVideo = async () => {
     try {
       setLoading(true);
