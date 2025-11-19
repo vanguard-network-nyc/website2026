@@ -356,22 +356,6 @@ const UpcomingEventsPage = () => {
               </div>
             </div>
           </div>
-          
-          {(searchTerm || selectedAudience !== 'All' || selectedLocation !== 'All') && (
-            <div className="mt-6 flex justify-end items-center">
-              <button
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedAudience('All');
-                  setSelectedLocation('All');
-                  setSelectedDate(null);
-                }}
-                className="text-[#00A8E1] hover:text-[#0096c7] font-medium"
-              >
-                Clear all filters
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Calendar View */}
