@@ -286,7 +286,7 @@ const ArticleDetailPage = () => {
                     </h3>
                     {similarArticle.featured_speaker_linkedin && (
                       <p className="text-xs mb-3">
-                        <span className="font-medium text-slate-600">Featured Speaker:</span> <span className="font-bold text-slate-900">{similarArticle.featured_speaker_linkedin}</span>
+                        <span className="font-medium text-slate-600">Featured Speaker(s):</span> <span className="font-bold text-slate-900">{similarArticle.featured_speaker_linkedin}</span>
                       </p>
                     )}
                     <Link
