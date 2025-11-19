@@ -193,6 +193,65 @@ const VideoDetailPage = () => {
                 </div>
               )}
             </motion.div>
+
+            {/* Similar Videos Section */}
+            {similarVideos.length > 0 && (
+              <motion.div 
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                className="mb-12 pt-8"
+              >
+                <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-lg flex items-center justify-center">
+                    <Play size={20} className="text-white" />
+                  </div>
+                  Similar Videos
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {similarVideos.slice(0, 3).map((similarVideo, index) => (
+                    <motion.div
+                      key={similarVideo.id}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.9 + index * 0.1 }}
+                      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col"
+                    >
+                      <div className="relative h-[220px] overflow-hidden">
+                        {similarVideo.headshot ? (
+                          <img
+                            src={similarVideo.headshot}
+                            alt={similarVideo.vimeo_name || similarVideo.video_description}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                            <Play size={32} className="text-white opacity-50" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-4 flex flex-col flex-grow">
+                        <h3 className="font-bold text-slate-900 mb-2 line-clamp-3 text-sm">
+                          {similarVideo.vimeo_name || similarVideo.video_description}
+                        </h3>
+                        {similarVideo.featured_speakers && (
+                          <p className="text-xs mb-3">
+                            <span className="font-medium text-slate-600">Featured Speaker(s):</span> <span className="font-bold text-slate-900">{similarVideo.featured_speakers}</span>
+                          </p>
+                        )}
+                        <Link
+                          to={`/video/${similarVideo.id}`}
+                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 px-4 rounded-lg font-medium text-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
+                        >
+                          <Play size={16} />
+                          Watch Video
+                        </Link>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
 
           {/* Sidebar */}
