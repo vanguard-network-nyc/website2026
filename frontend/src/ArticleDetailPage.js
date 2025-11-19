@@ -7,6 +7,7 @@ import { ArrowLeft, User, Tag, Calendar, FileText } from 'lucide-react';
 const ArticleDetailPage = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
+  const [similarArticles, setSimilarArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFromNewsroom, setIsFromNewsroom] = useState(false);
@@ -16,6 +17,12 @@ const ArticleDetailPage = () => {
       fetchArticle();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (article && !isFromNewsroom) {
+      fetchSimilarArticles();
+    }
+  }, [article, isFromNewsroom]);
 
   const fetchArticle = async () => {
     try {
