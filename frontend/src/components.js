@@ -3697,7 +3697,8 @@ const BookPage = () => (
                 />
               </div>
               <h3 className="text-xl font-bold" style={{ color: '#045184' }}>Ken Banta</h3>
-              <p className="text-slate-600">Author & Leadership Expert</p>
+              <p className="text-slate-600">Founder & CEO</p>
+              <p className="text-slate-600">The Vanguard Network</p>
             </div>
             <div className="md:col-span-2">
               <h3 className="text-2xl font-bold mb-4" style={{ color: '#045184' }}>Meet the Author</h3>
