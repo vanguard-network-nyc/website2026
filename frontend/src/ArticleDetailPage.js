@@ -260,7 +260,7 @@ const ArticleDetailPage = () => {
                           blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                         }}
                       >
-                        {article.body_of_qa}
+                        {article.body_qa}
                       </ReactMarkdown>
                     </div>
                   </motion.div>
