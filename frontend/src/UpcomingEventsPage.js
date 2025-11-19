@@ -498,36 +498,36 @@ const UpcomingEventsPage = () => {
                           </div>
                         )}
                         
-                        {/* Session Leader, Audience, and Location Row */}
-                        <div className="flex flex-wrap items-center gap-3 mb-6">
-                          <div className="flex flex-col gap-2">
-                            {event.session_leader_name ? (
-                              <div className="flex items-center gap-2 text-slate-600">
-                                <Users size={16} className="text-[#00A8E1]" />
-                                <span className="text-sm">Session Leader: {event.session_leader_name}</span>
-                              </div>
-                            ) : (
-                              <div className="flex items-center gap-2 text-slate-600">
-                                <Users size={16} className="text-[#00A8E1]" />
-                                <span className="text-sm">Leadership Community Event</span>
-                              </div>
-                            )}
-                            
-                            {event.audience_network && (
-                              <div className="text-sm text-slate-500 ml-6">
-                                <span className="font-medium">Audience:</span> {event.audience_network}
-                              </div>
-                            )}
-                          </div>
+                        {/* Session Leader, Audience, and Location */}
+                        <div className="flex flex-col gap-3 mb-6">
+                          {event.session_leader_name ? (
+                            <div className="flex items-center gap-2 text-slate-600">
+                              <Users size={16} className="text-[#00A8E1]" />
+                              <span className="text-sm">Session Leader: {event.session_leader_name}</span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2 text-slate-600">
+                              <Users size={16} className="text-[#00A8E1]" />
+                              <span className="text-sm">Leadership Community Event</span>
+                            </div>
+                          )}
+                          
+                          {event.audience_network && (
+                            <div className="text-sm text-slate-500 ml-6">
+                              <span className="font-medium">Audience:</span> {event.audience_network}
+                            </div>
+                          )}
                           
                           {event.location && (
-                            <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                              event.location === 'Virtual' 
-                                ? 'bg-blue-100 text-blue-800 border border-blue-200' 
-                                : 'bg-green-100 text-green-800 border border-green-200'
-                            }`}>
-                              📍 {event.location}
-                            </span>
+                            <div className="ml-6">
+                              <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                                event.location === 'Virtual' 
+                                  ? 'bg-blue-100 text-blue-800 border border-blue-200' 
+                                  : 'bg-green-100 text-green-800 border border-green-200'
+                              }`}>
+                                📍 {event.location}
+                              </span>
+                            </div>
                           )}
                         </div>
                       </div>
