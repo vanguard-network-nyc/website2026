@@ -121,7 +121,7 @@ const VideoDetailPage = () => {
               transition={{ duration: 0.6 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden mb-8"
             >
-              <div className="bg-black" style={{ paddingBottom: 'calc(56.25% + 50px)' }}>
+              <div className="aspect-video bg-black">
                 {video.vanguard_vimeo_link ? (
                   <iframe
                     src={getVimeoEmbedUrl(video.vanguard_vimeo_link)}
