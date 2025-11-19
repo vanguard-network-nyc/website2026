@@ -250,7 +250,7 @@ const ArticleDetailPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mb-12"
+            className="mb-12 pt-8"
           >
             <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-lg flex items-center justify-center">
@@ -267,7 +267,7 @@ const ArticleDetailPage = () => {
                   transition={{ delay: 0.9 + index * 0.1 }}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-200 flex flex-col"
                 >
-                  <div className="relative h-[190px] overflow-hidden">
+                  <div className="relative h-[220px] overflow-hidden">
                     {similarArticle.photo ? (
                       <img
                         src={similarArticle.photo}
@@ -281,7 +281,7 @@ const ArticleDetailPage = () => {
                     )}
                   </div>
                   <div className="p-4 flex flex-col flex-grow">
-                    <h3 className="font-bold text-slate-900 mb-2 line-clamp-2 text-sm">
+                    <h3 className="font-bold text-slate-900 mb-2 line-clamp-3 text-sm">
                       {similarArticle.blog_title}
                     </h3>
                     {similarArticle.featured_speaker_linkedin && (
