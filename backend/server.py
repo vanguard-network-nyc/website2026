@@ -518,7 +518,7 @@ async def fetch_airtable_articles():
             tags_raw = fields.get("tags", [])
             published_to_web = fields.get("Published to Web", "")
             type_content_raw = fields.get("Type of detailed content", "")
-            keywords_raw = fields.get("Keywords (from video)", [])
+            keywords_raw = fields.get("Keywords (From video)", [])
             
             # Handle type_content - can be a list or string
             type_content = ""
