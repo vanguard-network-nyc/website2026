@@ -2913,9 +2913,6 @@ const TeamPage = () => {
         </div>
       ))}
 
-      {/* End of Dynamic Team Sections */}
-      </div>
-
       {/* Our Approach */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
