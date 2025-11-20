@@ -3491,14 +3491,16 @@ const ContactPage = () => {
                   <span>Comprehensive advisory services and support</span>
                 </li>
               </ul>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
-                style={{ color: '#045184' }}
-              >
-                Learn More About Our Services
-              </motion.button>
+              <Link to="/advisory">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
+                  style={{ color: '#045184' }}
+                >
+                  Learn More About Our Services
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>
