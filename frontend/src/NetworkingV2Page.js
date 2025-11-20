@@ -79,7 +79,7 @@ const NetworkingV2Page = () => {
       description: "For CEOs in the life sciences community addressing industry-specific leadership challenges.",
       target: "Life Sciences CEOs",
       icon: <Target size={32} />,
-      gradient: 'from-[#01C219] to-[#10b981]',
+      gradient: 'from-[#01C219] to-[#047857]',
       features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
       image: "/vanguard-boston-3.jpg"
     },
