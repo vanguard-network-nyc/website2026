@@ -162,6 +162,11 @@ GC_MEMBERS_BASE_ID = "appcKcpx0rQ37ChAo"
 GC_MEMBERS_TABLE_ID = "tbliGbJTIk94Fpzhf"
 GC_MEMBERS_VIEW_ID = "viwkLl46jwSJdt7Ol"
 
+# Team Directory Configuration
+TEAM_BASE_ID = "appcKcpx0rQ37ChAo"
+TEAM_TABLE_ID = "tblTeamDirectory"  # You'll need to provide the actual table ID
+TEAM_VIEW_NAME = "Emergent Team Listing"
+
 async def fetch_airtable_gc_members():
     """Fetch GC Exchange members from Airtable"""
     try:
