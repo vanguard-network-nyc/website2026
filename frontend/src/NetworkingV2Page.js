@@ -403,7 +403,7 @@ const NetworkingV2Page = () => {
                   {/* Features */}
                   <div className="mb-6 flex-grow">
                     <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Key Features</h4>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="flex flex-col gap-2">
                       {network.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center text-sm text-slate-600">
                           <CheckCircle2 size={14} className="text-green-500 mr-2 flex-shrink-0" />
