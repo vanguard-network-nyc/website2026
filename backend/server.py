@@ -875,6 +875,64 @@ async def fetch_airtable_events():
         logger.error(f"Error fetching Airtable events: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch events: {str(e)}")
 
+
+async def fetch_airtable_team():
+    """Fetch team members from Airtable"""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        
+        team_members = []
+        offset = None
+        
+        while True:
+            params = {
+                "view": TEAM_VIEW_NAME
+            }
+            if offset:
+                params["offset"] = offset
+            
+            url = f"https://api.airtable.com/v0/{TEAM_BASE_ID}/{TEAM_TABLE_ID}"
+            
+            response = requests.get(url, headers=headers, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            for record in data.get("records", []):
+                fields = record.get("fields", {})
+                
+                # Get image URL from attachment field
+                image_url = None
+                emergent_headshot = fields.get("Emergent Headshot", [])
+                if emergent_headshot and isinstance(emergent_headshot, list) and len(emergent_headshot) > 0:
+                    image_url = emergent_headshot[0].get("url", "")
+                
+                team_member = {
+                    "id": record["id"],
+                    "name": fields.get("Name", ""),
+                    "role": fields.get("Title (External)", ""),
+                    "bio": fields.get("Job Description (Public)", ""),
+                    "image": image_url,
+                    "linkedin": fields.get("Emergent LinkedIn", ""),
+                    "section": fields.get("Emergent Section", "")
+                }
+                
+                team_members.append(team_member)
+            
+            offset = data.get("offset")
+            if not offset:
+                break
+        
+        logger.info(f"Successfully fetched {len(team_members)} team members from Airtable")
+        return team_members
+        
+    except Exception as e:
+        logger.error(f"Error fetching Airtable team members: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch team members: {str(e)}")
+
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
