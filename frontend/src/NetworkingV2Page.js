@@ -88,7 +88,7 @@ const NetworkingV2Page = () => {
       description: "For senior executives who lead risk-related functions across various industries.",
       target: "Risk Management Leaders",
       icon: <Shield size={32} />,
-      gradient: 'from-[#f59e0b] to-[#d97706]',
+      gradient: 'from-[#FF6D00] to-[#d97706]',
       features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
       image: "/vanguard-boston-5.jpg"
     },
