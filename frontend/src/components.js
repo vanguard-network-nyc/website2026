@@ -3428,7 +3428,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium" style={{ color: '#045184' }}>Office</p>
-                    <p className="text-slate-600">33 Irving Place<br />New York, NY 10003</p>
+                    <p className="text-slate-600">216 E 7th Street, #8<br />New York, NY 10009</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
