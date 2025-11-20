@@ -131,11 +131,12 @@ const NetworkingV2Page = () => {
 
   const monthlyUpdates = [
     {
-      title: "Newswire",
-      description: "Stay updated with the latest leadership insights, industry trends, and strategic developments from our network of executives.",
+      title: "Newsroom",
+      description: "Stay updated with the latest news, announcements, and media features from The Vanguard Network.",
       icon: <Newspaper size={32} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]',
-      buttonText: "Access Newswire"
+      buttonText: "Access Newsroom",
+      link: "/newsroom"
     },
     {
       title: "C-suite Confidential Series",
