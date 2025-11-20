@@ -2859,11 +2859,18 @@ const TeamPage = () => {
       {/* Dynamic Team Sections */}
       {Object.entries(sections)
         .sort(([sectionA], [sectionB]) => {
-          // Leadership Team always first
-          if (sectionA === 'Leadership Team') return -1;
-          if (sectionB === 'Leadership Team') return 1;
-          // Then alphabetical order for other sections
-          return sectionA.localeCompare(sectionB);
+          // Define custom order
+          const order = {
+            'Leadership Team': 1,
+            'Senior Leadership Team': 2,
+            'Content & Media Team': 3
+          };
+          
+          // Get order values, default to 999 for unknown sections
+          const orderA = order[sectionA] || 999;
+          const orderB = order[sectionB] || 999;
+          
+          return orderA - orderB;
         })
         .map(([sectionName, members], sectionIndex) => (
         <div key={sectionName} className="mb-16">
