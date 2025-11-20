@@ -151,6 +151,7 @@ function App() {
             <Route path="/newsroom-item/:id" element={<NewsroomDetailPage />} />
             <Route path="/application" element={<MembershipApplicationPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </AnimatePresence>
         <Footer />
