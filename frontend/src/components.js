@@ -2786,7 +2786,52 @@ const ProgramsPage = () => {
 );
 };
 
-const TeamPage = () => (
+const TeamPage = () => {
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [sections, setSections] = useState({});
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/team`);
+        if (!response.ok) throw new Error('Failed to fetch team members');
+        const data = await response.json();
+        
+        // Group team members by section
+        const grouped = data.reduce((acc, member) => {
+          const section = member.section || 'Other';
+          if (!acc[section]) {
+            acc[section] = [];
+          }
+          acc[section].push(member);
+          return acc;
+        }, {});
+        
+        setSections(grouped);
+        setTeamMembers(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching team members:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#045184] mx-auto mb-4"></div>
+          <p className="text-slate-600 text-lg">Loading team members...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
   <motion.div
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
