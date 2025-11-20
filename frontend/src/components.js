@@ -3620,10 +3620,7 @@ const BookPage = () => (
               href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center gap-2"
-              style={{ backgroundColor: '#045184' }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#033d6b'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = '#045184'}
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg"
             >
               Order on Amazon
               <ArrowRight size={20} />
