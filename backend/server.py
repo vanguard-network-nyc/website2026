@@ -116,6 +116,15 @@ class AirtableEvent(BaseModel):
     location: Optional[str] = None
     audience_network: Optional[str] = None
 
+class AirtableTeamMember(BaseModel):
+    id: str
+    name: str
+    role: Optional[str] = None  # Title (External)
+    bio: Optional[str] = None  # Job Description (Public)
+    image: Optional[str] = None  # Emergent Headshot
+    linkedin: Optional[str] = None  # Emergent LinkedIn
+    section: Optional[str] = None  # Emergent Section
+
 # Airtable configuration
 AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN')
 
