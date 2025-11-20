@@ -483,7 +483,7 @@ const NetworkingV2Page = () => {
                       href={update.link}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`${update.title === "Newsroom" ? "bg-[#045184] hover:bg-[#034063]" : "bg-[#00A8E1] hover:bg-[#0090c7]"} text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mx-auto`}
+                      className={`${update.title === "Newsroom" ? "bg-[#045184] hover:bg-[#034063]" : "bg-[#00A8E1] hover:bg-[#0090c7]"} text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 w-full max-w-[200px] mx-auto`}
                     >
                       {update.buttonText}
                       <ArrowRight size={16} />
@@ -492,7 +492,7 @@ const NetworkingV2Page = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`${update.title === "Newsroom" ? "bg-[#045184] hover:bg-[#034063]" : "bg-[#00A8E1] hover:bg-[#0090c7]"} text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mx-auto`}
+                      className={`${update.title === "Newsroom" ? "bg-[#045184] hover:bg-[#034063]" : "bg-[#00A8E1] hover:bg-[#0090c7]"} text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 w-full max-w-[200px] mx-auto`}
                     >
                       {update.buttonText}
                       <ArrowRight size={16} />
