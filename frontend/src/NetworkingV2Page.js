@@ -511,38 +511,6 @@ const NetworkingV2Page = () => {
           </div>
         </motion.div>
 
-        {/* Image Section */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
-          className="mb-16"
-        >
-          <div className="text-center">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1.8, duration: 0.8 }}
-              className="flex justify-center"
-            >
-              <div 
-                className="overflow-hidden rounded-2xl shadow-2xl" 
-                style={{ maxWidth: '100%' }}
-              >
-                <img
-                  src="/vanguard-boston-8.jpg"
-                  alt="Vanguard Boston Networking Event June 2025"
-                  className="max-w-full h-auto"
-                  style={{ 
-                    maxHeight: '600px',
-                    border: 'none'
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
         {/* Monthly Leadership Updates */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
