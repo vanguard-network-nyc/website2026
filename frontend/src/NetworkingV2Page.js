@@ -362,18 +362,16 @@ const NetworkingV2Page = () => {
             <h2 className="text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
           </div>
 
-          {/* Core Vanguard Leadership Network - Featured */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            className="mb-12"
-          >
-            <div className="max-w-4xl mx-auto">
-              <motion.div
-                className="bg-white rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-500 border-2 border-blue-200 overflow-hidden group relative"
-                whileHover={{ y: -8 }}
-              >
+          {/* All Networks Grid */}
+          <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto">
+            {/* Core Network Card */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+              whileHover={{ y: -5 }}
+            >
                 {/* Core Network Badge */}
                 <div className="absolute top-4 right-4 z-10">
                   <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
