@@ -322,7 +322,7 @@ const NetworkingV2Page = () => {
                 </div>
                 <div>
                   <p className="text-white font-semibold">Need an Introduction?</p>
-                  <p className="text-white/90 text-sm">Contact Tony Powe, Vanguard COO</p>
+                  <p className="text-white/90 text-sm">Contact Tony Powe, Co-Founder & COO</p>
                 </div>
               </a>
             </div>
