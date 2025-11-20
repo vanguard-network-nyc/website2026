@@ -143,7 +143,8 @@ const NetworkingV2Page = () => {
       description: "Exclusive insights from C-suite executives sharing confidential strategies, challenges, and solutions from the boardroom.",
       icon: <Shield size={32} />,
       gradient: 'from-[#045184] to-[#0369a1]',
-      buttonText: "View Series"
+      buttonText: "View Series",
+      link: "https://members.thevanguardnetwork.com/events?filter-by-Type%20of%20Event=Open%20Webinar&filter-by-Audience%20(Network)=C-Suite"
     }
   ];
 
