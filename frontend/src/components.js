@@ -2967,6 +2967,16 @@ const TeamPage = () => (
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
                 <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
                 <p className="text-xs text-slate-500 italic mb-4 font-medium">{member.focus}</p>
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+                  >
+                    <Linkedin className="text-white" size={20} />
+                  </a>
+                )}
               </div>
               
               <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
