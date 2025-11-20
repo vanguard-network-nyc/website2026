@@ -3395,10 +3395,9 @@ const ContactPage = () => {
                 whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full text-white py-3 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ backgroundColor: isSubmitting ? '#6b7280' : '#00A8E1' }}
-                onMouseEnter={(e) => !isSubmitting && (e.target.style.backgroundColor = '#0096C7')}
-                onMouseLeave={(e) => !isSubmitting && (e.target.style.backgroundColor = '#00A8E1')}
+                className={`w-full text-white py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  isSubmitting ? 'bg-gray-500' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg'
+                }`}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
