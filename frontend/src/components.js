@@ -2864,7 +2864,7 @@ const TeamPage = () => (
                   />
                 </motion.div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                <p className="text-sm font-semibold italic mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
                 <p className="text-xs text-slate-500 mb-4 font-medium">{member.focus}</p>
                 {member.linkedin && (
                   <a
