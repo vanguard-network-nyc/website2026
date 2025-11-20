@@ -63,7 +63,8 @@ const NetworkingV2Page = () => {
       icon: <Shield size={32} />,
       gradient: 'from-[#045184] to-[#00A8E1]',
       features: ["Monthly Virtual Exchanges", "Bi-annual Forums", "Strategic Sounding Board", "Leadership Advisory"],
-      image: "/vanguard-boston-1.jpg"
+      image: "/vanguard-boston-1.jpg",
+      link: "https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC"
     },
     {
       name: "Senior In-House Counsel Network", 
@@ -72,7 +73,8 @@ const NetworkingV2Page = () => {
       icon: <Users size={32} />,
       gradient: 'from-[#913D88] to-[#6B2D66]',
       features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
-      image: "/vanguard-boston-4.jpg"
+      image: "/vanguard-boston-4.jpg",
+      link: "https://members.thevanguardnetwork.com/network-details-senior-counsel/senior-in-house-counsel-network/r/rec4wMsveeZoUvTOa"
     },
     {
       name: "Life Sciences CEO Network",
@@ -81,7 +83,8 @@ const NetworkingV2Page = () => {
       icon: <Target size={32} />,
       gradient: 'from-[#01C219] to-[#047857]',
       features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
-      image: "/vanguard-boston-3.jpg"
+      image: "/vanguard-boston-3.jpg",
+      link: "https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw"
     },
     {
       name: "Risk Management Network",
@@ -90,7 +93,8 @@ const NetworkingV2Page = () => {
       icon: <Shield size={32} />,
       gradient: 'from-[#FF6D00] to-[#d97706]',
       features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
-      image: "/vanguard-boston-5.jpg"
+      image: "/vanguard-boston-5.jpg",
+      link: "https://members.thevanguardnetwork.com/network-details-risk-management/risk-management-network/r/recv0BDur4fZPVSp7"
     },
     {
       name: "Senior Leaders Network",
@@ -99,7 +103,8 @@ const NetworkingV2Page = () => {
       icon: <Users size={32} />,
       gradient: 'from-[#14B8A6] to-[#0F766E]',
       features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
-      image: "/vanguard-boston-1.jpg"
+      image: "/vanguard-boston-1.jpg",
+      link: "https://members.thevanguardnetwork.com/network-details-board/senior-leaders-network/r/recmEciU5mwqEPJt5"
     }
   ];
 
