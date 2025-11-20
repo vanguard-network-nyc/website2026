@@ -3508,7 +3508,7 @@ const ContactPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 shadow-lg"
+          className="bg-white rounded-2xl p-8 shadow-lg mb-12"
         >
           <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>Leadership Team</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
