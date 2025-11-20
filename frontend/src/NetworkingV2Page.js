@@ -96,7 +96,7 @@ const NetworkingV2Page = () => {
 
   // Core foundational network that encompasses all members
   const coreNetwork = {
-    name: "Vanguard Leadership Network",
+    name: "Senior Leaders Network",
     description: "Our foundational network for all senior executives and board members who want to be part of our broader leadership community. This inclusive network welcomes any senior leader seeking authentic peer connections and strategic insights.",
     target: "All Senior Executives & Board Members",
     icon: <Users size={32} />,
