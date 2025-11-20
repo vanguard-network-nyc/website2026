@@ -61,7 +61,7 @@ const NetworkingV2Page = () => {
       description: "For General Counsel and Chief Legal Officers seeking strategic leadership development and peer connections.",
       target: "GC & CLO",
       icon: <Shield size={32} />,
-      gradient: 'from-[#045184] to-[#0369a1]',
+      gradient: 'from-[#045184] to-[#00A8E1]',
       features: ["Monthly Virtual Exchanges", "Bi-annual Forums", "Strategic Sounding Board", "Leadership Advisory"],
       image: "/vanguard-boston-1.jpg"
     },
