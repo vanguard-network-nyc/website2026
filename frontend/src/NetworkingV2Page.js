@@ -362,67 +362,7 @@ const NetworkingV2Page = () => {
 
           {/* All Networks Grid */}
           <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto">
-            {/* Core Network Card */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
-              className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)] flex flex-col"
-              whileHover={{ y: -5 }}
-            >
-              {/* Image Header */}
-              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${coreNetwork.image}')` }}>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                <div className={`absolute inset-0 bg-gradient-to-br ${coreNetwork.gradient} opacity-60`}></div>
-                
-                {/* Icon and Title Overlay */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex items-center gap-4">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
-                    >
-                      {coreNetwork.icon}
-                    </motion.div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">{coreNetwork.name}</h3>
-                      <p className="text-sm font-semibold text-white/80">{coreNetwork.target}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Content */}
-              <div className="p-8 flex flex-col flex-grow">
-                <p className="text-slate-600 leading-relaxed mb-6 font-medium">
-                  {coreNetwork.description}
-                </p>
-                
-                {/* Features */}
-                <div className="mb-6 flex-grow">
-                  <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Key Features</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {coreNetwork.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-slate-600">
-                        <CheckCircle2 size={14} className="text-green-500 mr-2 flex-shrink-0" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${coreNetwork.gradient} hover:shadow-lg mt-auto`}
-                >
-                  Learn More
-                  <ArrowRight size={16} />
-                </motion.button>
-              </div>
-            </motion.div>
-
-            {/* Specialized Network Cards */}
+            {/* All Network Cards */}
             {membershipNetworks.map((network, index) => (
               <motion.div
                 key={network.name}
