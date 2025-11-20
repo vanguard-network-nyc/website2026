@@ -113,19 +113,19 @@ const NetworkingV2Page = () => {
       title: "Articles/Podcasts/Videos",
       description: "Access premium content that can be re-purposed by you for your teams, including articles, podcasts, and videos from industry leaders.",
       icon: <BookOpen size={32} />,
-      gradient: 'from-[#00A8E1] to-[#0284c7]'
+      gradient: 'from-[#913D88] to-[#6B2D66]'
     },
     {
       title: "Live Events",
       description: "Join live webinars and discussion groups with fellow executives to share insights and discuss current challenges.",
       icon: <Video size={32} />,
-      gradient: 'from-[#045184] to-[#0369a1]'
+      gradient: 'from-[#01C219] to-[#047857]'
     },
     {
       title: "AI Chat Bot 'Elsie'",
       description: "Search our leadership knowledge database using our AI Bot 'Elsie' to get insights from top leaders on almost any leadership topic.",
       icon: <Bot size={32} />,
-      gradient: 'from-[#10b981] to-[#059669]'
+      gradient: 'from-[#FF6D00] to-[#d97706]'
     }
   ];
 
