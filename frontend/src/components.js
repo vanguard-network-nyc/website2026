@@ -2911,8 +2911,10 @@ const TeamPage = () => {
             </motion.div>
           ))}
         </div>
+        </div>
+      ))}
 
-        {/* Senior Leadership */}
+      {/* End of Dynamic Team Sections */}
         <motion.h3
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
