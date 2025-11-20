@@ -3414,7 +3414,7 @@ const ContactPage = () => {
               <h3 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                     <Mail className="text-white" size={24} />
                   </div>
                   <div>
@@ -3423,7 +3423,7 @@ const ContactPage = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                     <MapPin className="text-white" size={24} />
                   </div>
                   <div>
@@ -3432,7 +3432,7 @@ const ContactPage = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                     <Globe className="text-white" size={24} />
                   </div>
                   <div>
@@ -3448,7 +3448,7 @@ const ContactPage = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                     <Linkedin className="text-white" size={24} />
                   </div>
                   <div>
