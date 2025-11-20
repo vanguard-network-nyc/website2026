@@ -2856,17 +2856,18 @@ const TeamPage = () => {
         </p>
       </motion.div>
 
-      {/* Leadership Team */}
-      <div className="mb-16">
-        <motion.h2
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-4xl font-bold text-center mb-12"
-          style={{ color: '#045184' }}
-        >
-          Leadership Team
-        </motion.h2>
+      {/* Dynamic Team Sections */}
+      {Object.entries(sections).map(([sectionName, members], sectionIndex) => (
+        <div key={sectionName} className="mb-16">
+          <motion.h2
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 + (sectionIndex * 0.2), duration: 0.8 }}
+            className="text-4xl font-bold text-center mb-12"
+            style={{ color: '#045184' }}
+          >
+            {sectionName}
+          </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
           {[
