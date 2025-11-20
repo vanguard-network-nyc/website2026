@@ -189,7 +189,7 @@ const VideosPage = () => {
                       
                       <Link
                         to={`/video/${video.id}`}
-                        className="w-full bg-[#045184] hover:bg-[#033d6b] text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
+                        className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto hover:shadow-lg"
                       >
                         <Play size={16} />
                         Click to Watch
