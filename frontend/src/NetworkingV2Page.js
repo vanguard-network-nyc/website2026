@@ -372,76 +372,59 @@ const NetworkingV2Page = () => {
               className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
               whileHover={{ y: -5 }}
             >
-                {/* Core Network Badge */}
-                <div className="absolute top-4 right-4 z-10">
-                  <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    CORE NETWORK
+              {/* Image Header */}
+              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${coreNetwork.image}')` }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${coreNetwork.gradient} opacity-60`}></div>
+                
+                {/* Icon and Title Overlay */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="flex items-center gap-4">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
+                    >
+                      {coreNetwork.icon}
+                    </motion.div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">{coreNetwork.name}</h3>
+                      <p className="text-sm font-semibold text-white/80">{coreNetwork.target}</p>
+                    </div>
                   </div>
                 </div>
-
-                {/* Image Header */}
-                <div className="h-64 bg-cover bg-center relative" style={{ backgroundImage: `url('${coreNetwork.image}')` }}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${coreNetwork.gradient} opacity-60`}></div>
-                  
-                  {/* Icon and Title Overlay */}
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="flex items-center gap-6">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        className="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
-                      >
-                        {coreNetwork.icon}
-                      </motion.div>
-                      <div>
-                        <h3 className="text-3xl font-bold text-white group-hover:text-purple-200 transition-colors duration-300">{coreNetwork.name}</h3>
-                        <p className="text-lg font-semibold text-white/90">{coreNetwork.target}</p>
+              </div>
+              
+              {/* Content */}
+              <div className="p-8">
+                <p className="text-slate-600 leading-relaxed mb-6 font-medium">
+                  {coreNetwork.description}
+                </p>
+                
+                {/* Features */}
+                <div className="mb-6">
+                  <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Key Features</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {coreNetwork.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-sm text-slate-600">
+                        <CheckCircle2 size={14} className="text-green-500 mr-2 flex-shrink-0" />
+                        {feature}
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
                 
-                {/* Content */}
-                <div className="p-8">
-                  <p className="text-slate-600 leading-relaxed mb-6 font-medium text-lg">
-                    {coreNetwork.description}
-                  </p>
-                  
-                  {/* Features */}
-                  <div className="mb-8">
-                    <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wide">Core Network Benefits</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {coreNetwork.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-slate-600">
-                          <CheckCircle2 size={14} className="text-purple-500 mr-2 flex-shrink-0" />
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`w-full text-white px-6 py-4 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${coreNetwork.gradient} hover:shadow-lg text-lg`}
-                  >
-                    Join Core Network
-                    <ArrowRight size={20} />
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${coreNetwork.gradient} hover:shadow-lg`}
+                >
+                  Learn More
+                  <ArrowRight size={16} />
+                </motion.button>
+              </div>
+            </motion.div>
 
-          {/* Specialized Networks */}
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">Specialized Networks</h3>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
-              All core network members can also join specialized networks tailored to specific leadership roles and industries.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Specialized Network Cards */}
             {membershipNetworks.map((network, index) => (
               <motion.div
                 key={network.name}
