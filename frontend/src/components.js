@@ -896,7 +896,7 @@ const Footer = () => {
   const footerLinks = [
     { name: 'Contact Us', path: '/contact' },
     { name: 'Our Team', path: '/team' },
-    { name: 'LinkedIn', path: 'https://www.linkedin.com/company/the-vanguard-network' },
+    { name: 'LinkedIn', path: 'https://www.linkedin.com/company/thevanguardnetwork/' },
     { name: 'Privacy Policy', path: '/privacy' },
     { name: 'Terms of Use', path: '/terms' },
     { name: 'Become a Member', path: '/networking' }
