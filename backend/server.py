@@ -164,7 +164,7 @@ GC_MEMBERS_VIEW_ID = "viwkLl46jwSJdt7Ol"
 
 # Team Directory Configuration
 TEAM_BASE_ID = "appcKcpx0rQ37ChAo"
-TEAM_TABLE_ID = "tblTeamDirectory"  # You'll need to provide the actual table ID
+TEAM_TABLE_ID = "tblSUfzhtyMYe2Tpj"
 TEAM_VIEW_NAME = "Emergent Team Listing"
 
 async def fetch_airtable_gc_members():
