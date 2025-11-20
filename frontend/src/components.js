@@ -3528,7 +3528,15 @@ const ContactPage = () => {
                 />
               </div>
               <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Ken Banta</h4>
-              <p className="text-slate-600 font-medium">Founder and CEO</p>
+              <p className="text-slate-600 font-medium mb-3">Founder and CEO</p>
+              <a
+                href="https://www.linkedin.com/in/kenbanta/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+              >
+                <Linkedin className="text-white" size={20} />
+              </a>
             </motion.div>
             <motion.div
               initial={{ y: 30, opacity: 0 }}
@@ -3544,7 +3552,15 @@ const ContactPage = () => {
                 />
               </div>
               <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Tony Powe</h4>
-              <p className="text-slate-600 font-medium">Co-Founder and Chief Operating Officer</p>
+              <p className="text-slate-600 font-medium mb-3">Co-Founder and Chief Operating Officer</p>
+              <a
+                href="https://www.linkedin.com/in/tonypowe/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+              >
+                <Linkedin className="text-white" size={20} />
+              </a>
             </motion.div>
           </div>
         </motion.div>
