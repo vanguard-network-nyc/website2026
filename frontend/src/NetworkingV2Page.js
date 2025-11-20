@@ -97,7 +97,7 @@ const NetworkingV2Page = () => {
       description: "A community for senior leaders from diverse industries, bringing together a wide range of experience and skills.",
       target: "All Other Senior Leaders & Board Members",
       icon: <Users size={32} />,
-      gradient: 'from-[#6366f1] to-[#8b5cf6]',
+      gradient: 'from-[#00A8E1] to-[#045184]',
       features: ["Open to All Senior Leaders", "Foundational Community Access", "Cross-Industry Networking", "Inclusive Leadership Discussions", "Board Member Connections", "Universal Peer Support"],
       image: "/vanguard-boston-1.jpg"
     }
