@@ -4030,8 +4030,8 @@ const NewHero = () => {
 const NewStatsSection = () => {
   const stats = [
     { number: "37+", label: "Countries Represented" },
-    { number: "358", label: "Participating Companies" },
-    { number: "1,995", label: "Top Leaders Engaged" },
+    { number: "358+", label: "Participating Companies" },
+    { number: "1,995+", label: "Top Leaders Engaged" },
     { number: "25 Years", label: "Leadership Expertise" }
   ];
 
