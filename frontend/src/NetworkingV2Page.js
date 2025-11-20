@@ -457,13 +457,13 @@ const NetworkingV2Page = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 flex flex-col flex-grow">
                   <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                     {network.description}
                   </p>
                   
                   {/* Features */}
-                  <div className="mb-6">
+                  <div className="mb-6 flex-grow">
                     <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Key Features</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {network.features.map((feature, idx) => (
@@ -478,7 +478,7 @@ const NetworkingV2Page = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg`}
+                    className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg mt-auto`}
                   >
                     Learn More
                     <ArrowRight size={16} />
