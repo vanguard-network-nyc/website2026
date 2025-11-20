@@ -573,14 +573,15 @@ const NetworkingV2Page = () => {
           <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
             Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
           </p>
-          <motion.button
+          <motion.a
+            href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
             Apply for Membership
             <ArrowRight size={20} />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </motion.div>
