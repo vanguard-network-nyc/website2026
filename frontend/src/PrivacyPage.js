@@ -10,7 +10,7 @@ const PrivacyPage = () => {
       className="min-h-screen bg-gradient-to-b from-slate-50 to-white"
     >
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-20">
+      <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-20 pt-32">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-5xl font-bold mb-4">Privacy Policy</h1>
           <p className="text-xl text-white/90">Last updated September 14, 2021</p>
