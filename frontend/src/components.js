@@ -2868,26 +2868,9 @@ const TeamPage = () => {
           >
             {sectionName}
           </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-          {[
-            {
-              name: 'Ken Banta',
-              role: 'Founder & CEO',
-              image: '/ken-banta-new.jpg',
-              bio: 'Ken sets the overall direction of The Vanguard Network (TVN) and how it operates to benefit members and clients. He launched TVN in 2014, and nurtured its growth from periodic meetings of healthcare leaders to today\'s organization supporting multiple networks of C-suite leaders, a robust roster of webinars and other digital content, leadership development programs, and insightful advisory services. Ken graduated from Amherst College and attended Oxford University as a Rhodes Scholar. Ken lives in the East Village in New York City and enjoys the excitement of backcountry skiing.',
-              focus: 'Strategic Leadership & Organizational Development',
-              linkedin: 'https://www.linkedin.com/in/kenbanta/'
-            },
-            {
-              name: 'Tony Powe',
-              role: 'Co-Founder & COO',
-              image: '/tony-powe-team.jpg',
-              bio: 'Tony leads operations, member services, and partner relations. He has 30+ years of experience heading up operations and customer relations in eleven for- and non-profit organizations on three continents, many of them startups, and 6 of them as owner/founder. Tony has an MA in French and German from St. Andrews University in Scotland. He divides his time between the East Village in New York City and the 13th district in Paris.',
-              focus: 'Operations & Member Services',
-              linkedin: 'https://www.linkedin.com/in/tonypowe/'
-            }
-          ].map((member, index) => (
+          
+          <div className={`${sectionName === 'Leadership Team' ? 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto' : 'flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12'}`}>
+          {members.map((member, index) => (
             <motion.div
               key={member.name}
               initial={{ y: 50, opacity: 0 }}
