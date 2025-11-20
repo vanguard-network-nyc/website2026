@@ -2872,11 +2872,11 @@ const TeamPage = () => {
           <div className={`${sectionName === 'Leadership Team' ? 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto' : 'flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12'}`}>
           {members.map((member, index) => (
             <motion.div
-              key={member.name}
+              key={member.id}
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 + index * 0.1, duration: 0.8 }}
-              className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+              transition={{ delay: 0.5 + (sectionIndex * 0.3) + (index * 0.1), duration: 0.8 }}
+              className={`bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${sectionName !== 'Leadership Team' ? 'w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]' : ''}`}
               whileHover={{ scale: 1.02 }}
             >
               <div className="text-center mb-6">
