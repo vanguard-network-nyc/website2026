@@ -360,9 +360,6 @@ const NetworkingV2Page = () => {
               <Award size={32} className="text-white" />
             </motion.div>
             <h2 className="text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Join our foundational leadership network, then choose from specialized networks designed for specific roles and industries.
-            </p>
           </div>
 
           {/* Core Vanguard Leadership Network - Featured */}
