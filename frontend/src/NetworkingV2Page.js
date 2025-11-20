@@ -70,7 +70,7 @@ const NetworkingV2Page = () => {
       description: "For Deputy General Counsel and Associate General Counsel looking to advance their leadership skills.",
       target: "Deputy GC & Associate GC",
       icon: <Users size={32} />,
-      gradient: 'from-[#00A8E1] to-[#0284c7]',
+      gradient: 'from-[#913D88] to-[#6B2D66]',
       features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
       image: "/vanguard-boston-4.jpg"
     },
