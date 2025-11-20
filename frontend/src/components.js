@@ -2914,7 +2914,7 @@ const TeamPage = () => {
                 )}
               </div>
               
-              {member.bio && <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>}
+              {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
             </motion.div>
           ))}
         </div>
