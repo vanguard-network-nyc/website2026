@@ -85,7 +85,7 @@ const NetworkingV2Page = () => {
     },
     {
       name: "Risk Management Network",
-      description: "For senior executives who lead risk-related functions across various industries.",
+      description: "A peer network for senior executives who lead risk-related functions and navigate enterprise risk across various industries.",
       target: "Risk Management Leaders",
       icon: <Shield size={32} />,
       gradient: 'from-[#FF6D00] to-[#d97706]',
