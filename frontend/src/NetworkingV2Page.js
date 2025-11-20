@@ -110,8 +110,8 @@ const NetworkingV2Page = () => {
 
   const memberWebsiteFeatures = [
     {
-      title: "Articles/Blogs/Podcasts",
-      description: "Access premium content that can be re-purposed by you for your teams, including articles, blogs, and podcasts from industry leaders.",
+      title: "Articles/Podcasts/Videos",
+      description: "Access premium content that can be re-purposed by you for your teams, including articles, podcasts, and videos from industry leaders.",
       icon: <BookOpen size={32} />,
       gradient: 'from-[#00A8E1] to-[#0284c7]'
     },
