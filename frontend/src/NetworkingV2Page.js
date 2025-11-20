@@ -482,6 +482,7 @@ const NetworkingV2Page = () => {
                   {update.link ? (
                     <motion.a
                       href={update.link}
+                      {...(update.link.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`${update.title === "Newsroom" ? "bg-[#045184] hover:bg-[#034063]" : "bg-[#00A8E1] hover:bg-[#0090c7]"} text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap mx-auto w-[240px]`}
