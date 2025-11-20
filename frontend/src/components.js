@@ -2857,7 +2857,15 @@ const TeamPage = () => {
       </motion.div>
 
       {/* Dynamic Team Sections */}
-      {Object.entries(sections).map(([sectionName, members], sectionIndex) => (
+      {Object.entries(sections)
+        .sort(([sectionA], [sectionB]) => {
+          // Leadership Team always first
+          if (sectionA === 'Leadership Team') return -1;
+          if (sectionB === 'Leadership Team') return 1;
+          // Then alphabetical order for other sections
+          return sectionA.localeCompare(sectionB);
+        })
+        .map(([sectionName, members], sectionIndex) => (
         <div key={sectionName} className="mb-16">
           <motion.h2
             initial={{ y: 30, opacity: 0 }}
