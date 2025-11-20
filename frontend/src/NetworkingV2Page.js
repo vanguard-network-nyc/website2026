@@ -285,6 +285,36 @@ const NetworkingV2Page = () => {
           </div>
         </motion.div>
 
+        {/* Call to Action - First Instance */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.6, duration: 0.5 }}
+            className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-6"
+          >
+            <Star size={32} className="text-white" />
+          </motion.div>
+          <h2 className="text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
+          <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
+          </p>
+          <motion.a
+            href="/application"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+          >
+            Apply for Membership
+            <ArrowRight size={20} />
+          </motion.a>
+        </motion.div>
+
         {/* Valuable Networking Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
