@@ -2985,7 +2985,7 @@ const TeamPage = () => (
           Content & Media Team
         </motion.h3>
         
-        <div className="flex flex-wrap gap-8 justify-center">
+        <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto">
           {[
             {
               name: 'James Pallot',
