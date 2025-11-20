@@ -3003,7 +3003,8 @@ const TeamPage = () => {
       </motion.div>
     </div>
   </motion.div>
-);
+  );
+};
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
