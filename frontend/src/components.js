@@ -3419,7 +3419,12 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium" style={{ color: '#045184' }}>Email</p>
-                    <p className="text-slate-600">contact@vanguardgroup.nyc</p>
+                    <a 
+                      href="mailto:contact@vanguardgroup.nyc"
+                      className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                    >
+                      contact@vanguardgroup.nyc
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
