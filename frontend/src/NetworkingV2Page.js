@@ -430,8 +430,8 @@ const NetworkingV2Page = () => {
                 key={network.name}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.4 + index * 0.1, duration: 0.8 }}
-                className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group"
+                transition={{ delay: 1.5 + index * 0.1, duration: 0.8 }}
+                className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
                 whileHover={{ y: -5 }}
               >
                 {/* Image Header */}
