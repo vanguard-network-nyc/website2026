@@ -488,7 +488,6 @@ const NetworkingV2Page = () => {
             ))}
           </div>
         </motion.div>
-      </div>
 
         {/* Monthly Leadership Updates */}
         <motion.div
