@@ -369,7 +369,7 @@ const NetworkingV2Page = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+              className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)] flex flex-col"
               whileHover={{ y: -5 }}
             >
               {/* Image Header */}
