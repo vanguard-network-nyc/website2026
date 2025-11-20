@@ -247,7 +247,7 @@ const PodcastsPage = () => {
                       
                       <Link
                         to={`/podcast/${podcast.id}`}
-                        className="w-full bg-[#045184] hover:bg-[#033d6b] text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto"
+                        className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 mt-auto hover:shadow-lg"
                       >
                         <Headphones size={16} />
                         Click to Listen
