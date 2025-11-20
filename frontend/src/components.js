@@ -943,7 +943,7 @@ const Footer = () => {
           <div className="flex items-center space-x-4">
             <motion.a
               whileHover={{ scale: 1.1, color: '#0077b5' }}
-              href="https://www.linkedin.com/company/the-vanguard-network"
+              href="https://www.linkedin.com/company/thevanguardnetwork/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/60 hover:text-[#0077b5] transition-colors duration-200"
@@ -957,13 +957,6 @@ const Footer = () => {
               className="text-white/60 hover:text-blue-400 transition-colors duration-200"
             >
               <Mail size={20} />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1, color: '#3b82f6' }}
-              href="#"
-              className="text-white/60 hover:text-blue-400 transition-colors duration-200"
-            >
-              <Phone size={20} />
             </motion.a>
           </div>
         </div>
