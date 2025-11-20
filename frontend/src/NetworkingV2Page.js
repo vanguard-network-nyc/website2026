@@ -418,14 +418,17 @@ const NetworkingV2Page = () => {
                     </div>
                   </div>
                   
-                  <motion.button
+                  <motion.a
+                    href={network.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg mt-auto`}
                   >
                     Learn More
                     <ArrowRight size={16} />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </motion.div>
             ))}
