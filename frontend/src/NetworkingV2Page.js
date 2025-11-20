@@ -139,7 +139,7 @@ const NetworkingV2Page = () => {
       link: "/newsroom"
     },
     {
-      title: "C-suite Confidential Series",
+      title: "Unlocking Leadership Series",
       description: "Exclusive insights from C-suite executives sharing confidential strategies, challenges, and solutions from the boardroom.",
       icon: <Shield size={32} />,
       gradient: 'from-[#045184] to-[#0369a1]',
