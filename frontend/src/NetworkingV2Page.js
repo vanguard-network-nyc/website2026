@@ -97,7 +97,7 @@ const NetworkingV2Page = () => {
   // Core foundational network that encompasses all members
   const coreNetwork = {
     name: "Senior Leaders Network",
-    description: "Our foundational network for all senior executives and board members who want to be part of our broader leadership community. This inclusive network welcomes any senior leader seeking authentic peer connections and strategic insights.",
+    description: "A community for senior leaders from diverse industries, bringing together a wide range of experience and skills.",
     target: "All Other Senior Leaders & Board Members",
     icon: <Users size={32} />,
     gradient: 'from-[#6366f1] to-[#8b5cf6]',
