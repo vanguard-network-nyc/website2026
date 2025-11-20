@@ -2906,7 +2906,7 @@ const TeamPage = () => {
                 )}
               </div>
               
-              <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>
+              {member.bio && <p className="text-slate-600 text-sm leading-relaxed">{member.bio}</p>}
             </motion.div>
           ))}
         </div>
