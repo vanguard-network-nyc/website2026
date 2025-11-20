@@ -2964,7 +2964,7 @@ const TeamPage = () => {
                 transition={{ delay: 1.5 + index * 0.1, duration: 0.6 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: '#00A8E1' }}>
+                <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                   <div className="text-white">{approach.icon}</div>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{approach.title}</h3>
