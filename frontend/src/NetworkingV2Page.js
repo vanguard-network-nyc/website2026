@@ -313,7 +313,7 @@ const NetworkingV2Page = () => {
                 If you are looking to connect with members, contact Tony Powe, Vanguard COO, for an introduction to another Vanguard member.
               </p>
               
-              <div className="mt-8 flex items-center gap-4 p-4 rounded-lg bg-gradient-to-r from-[#00A8E1] to-[#0284c7]">
+              <div className="mt-8 flex items-center gap-4 p-4 rounded-lg bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                 <div className="text-white">
                   <Users size={32} />
                 </div>
