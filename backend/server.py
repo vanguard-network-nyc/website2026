@@ -1097,7 +1097,7 @@ async def get_articles():
         return articles
     except Exception as e:
         logger.error(f"Error in get_articles: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch articles")
+        return []
 
 @api_router.get("/article/{article_id}")
 async def get_article(article_id: str):
