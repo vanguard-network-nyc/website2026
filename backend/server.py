@@ -1002,7 +1002,7 @@ async def get_podcasts():
         return podcasts
     except Exception as e:
         logger.error(f"Error in get_podcasts: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch podcasts")
+        return []
 
 @api_router.get("/podcast/{podcast_id}")
 async def get_podcast(podcast_id: str):
