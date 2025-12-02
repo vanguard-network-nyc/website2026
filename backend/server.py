@@ -1245,6 +1245,7 @@ async def get_upcoming_events():
         return events
     except Exception as e:
         logger.error(f"Error in get_upcoming_events: {str(e)}")
+        return []
 
 @api_router.get("/team", response_model=List[AirtableTeamMember])
 async def get_team_members():
@@ -1255,10 +1256,7 @@ async def get_team_members():
         return team_members
     except Exception as e:
         logger.error(f"Error in get_team_members: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch team members")
-
-
-        raise HTTPException(status_code=500, detail="Failed to fetch events")
+        return []
 
 # Membership Application Models
 class MembershipApplicationSubmit(BaseModel):
