@@ -1208,7 +1208,7 @@ async def get_in_the_press():
         return press_articles
     except Exception as e:
         logger.error(f"Error in get_in_the_press: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch In the Press articles")
+        return []
 
 @api_router.get("/in-the-press/{press_id}")
 async def get_in_the_press_article(press_id: str):
