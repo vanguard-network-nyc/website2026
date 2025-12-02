@@ -1234,7 +1234,7 @@ async def get_gc_members():
         return gc_members
     except Exception as e:
         logger.error(f"Error in get_gc_members: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch GC members")
+        return []
 
 @api_router.get("/events", response_model=List[AirtableEvent])
 async def get_upcoming_events():
