@@ -1179,7 +1179,7 @@ async def get_newsroom():
         return newsroom_articles
     except Exception as e:
         logger.error(f"Error in get_newsroom: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch newsroom articles")
+        return []
 
 @api_router.get("/newsroom/{article_id}")
 async def get_newsroom_article(article_id: str):
