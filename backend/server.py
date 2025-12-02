@@ -991,7 +991,7 @@ async def get_similar_podcasts(podcast_id: str):
         
     except Exception as e:
         logger.error(f"Error in get_similar_podcasts: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch similar podcasts")
+        return []
 
 @api_router.get("/podcasts", response_model=List[AirtablePodcast])
 async def get_podcasts():
