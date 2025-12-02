@@ -1028,7 +1028,7 @@ async def get_videos():
         return videos
     except Exception as e:
         logger.error(f"Error in get_videos: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch videos")
+        return []
 
 @api_router.get("/video/{video_id}")
 async def get_video(video_id: str):
