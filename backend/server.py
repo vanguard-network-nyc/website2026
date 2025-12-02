@@ -1086,7 +1086,7 @@ async def get_similar_videos(video_id: str):
         
     except Exception as e:
         logger.error(f"Error in get_similar_videos: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to fetch similar videos")
+        return []
 
 @api_router.get("/articles", response_model=List[AirtableArticle])
 async def get_articles():
