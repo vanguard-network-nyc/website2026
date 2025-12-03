@@ -955,13 +955,14 @@ const Footer = () => {
             >
               <Linkedin size={20} />
             </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.1, color: '#3b82f6' }}
-              href="#"
-              className="text-white/60 hover:text-blue-400 transition-colors duration-200"
-            >
-              <Mail size={20} />
-            </motion.a>
+            <Link to="/contact">
+              <motion.div
+                whileHover={{ scale: 1.1, color: '#3b82f6' }}
+                className="text-white/60 hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+              >
+                <Mail size={20} />
+              </motion.div>
+            </Link>
           </div>
         </div>
       </div>
