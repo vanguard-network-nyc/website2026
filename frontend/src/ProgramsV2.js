@@ -27,6 +27,7 @@ const ProgramsV2 = () => {
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeTab, setActiveTab] = useState('current'); // 'current' or 'customized'
 
   const currentPrograms = [
     {
