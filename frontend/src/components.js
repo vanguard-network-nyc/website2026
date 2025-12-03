@@ -1576,8 +1576,10 @@ const AdvisoryPage = () => {
             </Link>
           </motion.div>
         </motion.div>
+        )}
 
         {/* Client and Stakeholder Engagement Section */}
+        {activeTab === 'client' && (
         <motion.div
           id="client-and-stakeholder-engagement"
           initial={{ y: 50, opacity: 0 }}
