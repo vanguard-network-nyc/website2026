@@ -409,77 +409,93 @@ const ProgramsV2 = () => {
                       </div>
                       
                       {/* Action Button */}
-                      <div className="mt-auto pt-4">
                       {program.name === "GC EXCHANGE" ? (
-                        <Link 
-                          to="/gc-exchange"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/gc-exchange" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "SENIOR IN-HOUSE COUNSEL EXCHANGE" ? (
-                        <Link 
-                          to="/senior-counsel-exchange"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/senior-counsel-exchange" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "LIFE SCIENCES CEO EXCHANGES" ? (
-                        <Link 
-                          to="/life-sciences-ceo"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/life-sciences-ceo" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "NEXT GENERATION GC" ? (
-                        <Link 
-                          to="/next-gen-gc"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/next-gen-gc" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "NEW LEADERS PROGRAM" ? (
-                        <Link 
-                          to="/new-leaders"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/new-leaders" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "LAW ASSOCIATES ACCELERATOR" ? (
-                        <Link 
-                          to="/law-associates"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/law-associates" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : program.name === "RISK MANAGEMENT NETWORK" ? (
-                        <Link 
-                          to="/risk-management"
-                          className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                        <Link to="/risk-management" onClick={() => window.scrollTo(0, 0)}>
+                          <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                          >
+                            Learn More
+                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </motion.button>
                         </Link>
                       ) : (
-                        <button className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-4 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group">
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                        >
                           Learn More
-                          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                          <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </motion.button>
                       )}
-                      </div>
                     </div>
                   </motion.div>
                 ))}
