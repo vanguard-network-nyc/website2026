@@ -1656,20 +1656,22 @@ const AdvisoryPage = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="mb-6"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mb-6">
-                <Target size={32} className="text-white" />
-              </div>
-            </motion.div>
-            
-            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-              Real-World Leadership Development
-            </h2>
+            <div className="flex items-center gap-4 mb-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="flex-shrink-0"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                  <Target size={32} className="text-white" />
+                </div>
+              </motion.div>
+              
+              <h2 className="text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+                Real-World Leadership Development
+              </h2>
+            </div>
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
               Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders - shared through powerful peer-to-peer exchanges.
             </p>
