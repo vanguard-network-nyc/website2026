@@ -288,15 +288,17 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <Link
-                to="/members"
+              <a
+                href="https://members.thevanguardnetwork.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
                 style={{ backgroundColor: '#00A8E1' }}
                 onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
               >
                 MEMBER SITE
-              </Link>
+              </a>
             </motion.div>
           </nav>
 
