@@ -338,7 +338,7 @@ const ProgramsV2 = () => {
             <>
               {/* Programs Grid */}
               <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
-                {programs.map((program, index) => (
+                {currentPrograms.map((program, index) => (
                   <motion.div
                     key={program.name}
                     initial={{ y: 30, opacity: 0 }}
