@@ -1536,8 +1536,7 @@ const AdvisoryPage = () => {
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]"
-        >
+          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
