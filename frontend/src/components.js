@@ -1225,7 +1225,7 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Tab Content Sections - Display Directly Below Tabs */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-2">
       <div className="space-y-12">
         
         {/* Strategic Counsel Section */}
@@ -1234,9 +1234,19 @@ const AdvisoryPage = () => {
           id="strategic-counsel"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-4 border-blue-500"
-          style={{ scrollMarginTop: '120px', borderImage: 'linear-gradient(to right, #045184, #00A8E1) 1' }}
+          transition={{ duration: 0.4 }}
+          className="relative"
+          style={{ scrollMarginTop: '120px' }}
+        >
+          {/* Visual Indicator Bar */}
+          <div className="absolute -top-2 left-0 right-0 h-1 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-t-2xl"></div>
+          
+          {/* Tab Badge */}
+          <div className="absolute -top-6 left-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 py-1 rounded-t-lg text-sm font-semibold shadow-lg">
+            Strategic Counsel
+          </div>
+          
+          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-4 border-blue-500"
         >
           <div className="px-4 sm:px-6 lg:px-8">
             {/* Strategic Counsel Title */}
