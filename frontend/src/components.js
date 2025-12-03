@@ -1411,11 +1411,11 @@ const AdvisoryPage = () => {
         {activeTab === 'organizational' && (
         <motion.div
           id="organizational-transformation"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-white rounded-2xl py-8 md:py-12 shadow-lg"
-          style={{ scrollMarginTop: '120px' }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-4 border-blue-500"
+          style={{ scrollMarginTop: '120px', borderImage: 'linear-gradient(to right, #045184, #00A8E1) 1' }}
         >
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
