@@ -50,7 +50,7 @@ const GCExchangePage = () => {
           className="mb-8"
         >
           <Link
-            to="/programs-v2"
+            to="/programs"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
           >
             <ArrowLeft size={20} />
