@@ -420,7 +420,7 @@ const ProgramsV2 = () => {
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
                         </Link>
-                      ) : program.name === "LIFE SCIENCES CEO EXCHANGES" ? (
+                      ) : program.name === "LIFE SCIENCES CEO EXCHANGE" ? (
                         <Link to="/life-sciences-ceo" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
