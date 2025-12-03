@@ -208,6 +208,18 @@ frontend:
         agent: "testing"
         comment: "COMPREHENSIVE MOBILE BANNER TESTING COMPLETED: ✅ RESPONSIVE BEHAVIOR WORKING - Banner successfully adapts to different viewport sizes. Testing confirmed: 1) Desktop (1920px): Banner displays in single line (flex-row), size 1920x49px, 2) Mobile (390px): Banner content stacks properly (flex-col), size 390x53px, fits screen width without overflow, 3) Banner navigation functional on both viewports with correct href='/global-counsel-leaders', 4) Content properly stacks with 'Now incorporating the [logo] Community. Read more' layout. Minor: Banner overlaps header by 5px on mobile (banner bottom: 53px, header top: 48px) but doesn't significantly impact functionality. Overall responsive implementation successful."
 
+  - task: "Executive Advisory Team Dividing Line Alignment"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/components.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL ALIGNMENT ISSUE FOUND: Executive Advisory Team section has misaligned dividing lines. Testing revealed 16px difference in divider positions - Cards 1&4 (Ken Banta, Aileen Gonsalves) have dividers at 542.25px from card top, while Cards 2&3 (Richard Hulme, Garrick Isert) have dividers at 558.25px from card top. All other requirements met: ✅ 4-column layout (lg:grid-cols-4), ✅ 4 team member cards present, ✅ All cards have min-h-[580px] and consistent 631.25px actual height, ✅ Position titles in correct color #045184, ✅ All cards have border-t border-slate-200 dividing lines. The misalignment appears to be caused by different content lengths in the description paragraphs, causing the flex-grow elements to push dividers to different vertical positions despite identical card heights."
+
   - task: "FastAPI backend service health"
     implemented: true
     working: true
