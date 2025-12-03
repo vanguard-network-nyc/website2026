@@ -1840,6 +1840,7 @@ const AdvisoryPage = () => {
             Get Started Today
           </motion.button>
         </motion.div>
+    </div>
       </div>
     </div>
   </motion.div>
