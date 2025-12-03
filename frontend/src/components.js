@@ -1787,7 +1787,7 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">RICHARD HULME</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Managing Director</p>
-              <div style={{ height: '200px', marginBottom: '16px' }}>
+              <div style={{ height: '260px', marginBottom: '16px' }}>
                 <p className="text-slate-600 leading-relaxed text-sm">
                   Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
                 </p>
