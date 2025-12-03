@@ -352,17 +352,6 @@ const ProgramsV2 = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                       <div className="absolute inset-0 bg-gradient-to-br from-[#045184] to-[#00A8E1] opacity-60"></div>
                       
-                      {/* Status Badge */}
-                      <div className="absolute top-4 right-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                          program.status === 'Active' 
-                            ? 'bg-green-500 text-white' 
-                            : 'bg-yellow-500 text-white'
-                        }`}>
-                          {program.status}
-                        </span>
-                      </div>
-                      
                       {/* Icon and Title Overlay */}
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="flex items-center gap-4">
