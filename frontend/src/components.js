@@ -1753,7 +1753,7 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr">
             {/* Ken Banta */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col h-full">
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
