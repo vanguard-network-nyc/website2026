@@ -1221,10 +1221,19 @@ const AdvisoryPage = () => {
             </motion.button>
           </div>
         </div>
-      </motion.div>
-    </div>
 
-    {/* Continuation Section */}
+        {/* Tab Content - Sections Display Below Tabs */}
+        <div className="mt-8">
+          {/* Strategic Counsel Section */}
+          {activeTab === 'strategic' && (
+          <motion.div
+            id="strategic-counsel"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+            style={{ scrollMarginTop: '120px' }}
+          >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
