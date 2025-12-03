@@ -1674,6 +1674,7 @@ const AdvisoryPage = () => {
             </Link>
           </motion.div>
         </motion.div>
+        )}
 
         {/* Selected Advisory Engagements Section */}
         <motion.div
