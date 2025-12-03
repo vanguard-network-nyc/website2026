@@ -1403,6 +1403,7 @@ const AdvisoryPage = () => {
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
+          </div>
         </motion.div>
         )}
 
