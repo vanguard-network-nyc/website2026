@@ -31,7 +31,7 @@ const ProgramsV2 = () => {
 
   const currentPrograms = [
     {
-      name: "GC EXCHANGE",
+      name: "GENERAL COUNSEL EXCHANGE",
       description: "A highly pragmatic leadership problem-solving group that meets monthly, moderated by Vanguard. Monthly, in virtual format; face-to-face sessions occur at our bi-annual Forums.",
       format: "Monthly Virtual + Bi-annual In-Person",
       audience: "General Counsel",
