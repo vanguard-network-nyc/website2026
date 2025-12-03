@@ -398,7 +398,7 @@ const ProgramsV2 = () => {
                       </div>
                       
                       {/* Action Button */}
-                      {program.name === "GC EXCHANGE" ? (
+                      {program.name === "GENERAL COUNSEL EXCHANGE" ? (
                         <Link to="/gc-exchange" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
