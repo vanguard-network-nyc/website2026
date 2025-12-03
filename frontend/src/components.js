@@ -1225,18 +1225,18 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Tab Content Sections - Display Directly Below Tabs */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
       <div className="space-y-12">
         
         {/* Strategic Counsel Section */}
         {activeTab === 'strategic' && (
         <motion.div
           id="strategic-counsel"
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-2xl py-8 md:py-12 shadow-lg"
-          style={{ scrollMarginTop: '120px' }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-4 border-blue-500"
+          style={{ scrollMarginTop: '120px', borderImage: 'linear-gradient(to right, #045184, #00A8E1) 1' }}
         >
           <div className="px-4 sm:px-6 lg:px-8">
             {/* Strategic Counsel Title */}
