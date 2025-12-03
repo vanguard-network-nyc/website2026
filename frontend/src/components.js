@@ -1606,6 +1606,7 @@ const AdvisoryPage = () => {
           </div>
         </motion.div>
         )}
+      </div>
 
       <motion.div
         initial={{ y: 50, opacity: 0 }}
