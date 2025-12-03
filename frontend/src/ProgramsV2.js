@@ -520,20 +520,12 @@ const ProgramsV2 = () => {
                   </motion.div>
                 ))}
               </div>
-          </div>
+            </>
+          )}
 
-        {/* Customized Programs Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-slate-900 mb-4">
-              Customized Leadership Solutions
-            </h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">
-              Tailored programs designed specifically for your organization's unique needs and leadership challenges.
-            </p>
-          </div>
-
-          <div className="grid gap-8">
+          {/* Customized Programs Content */}
+          {activeTab === 'customized' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {customizedPrograms.map((program, index) => (
               <motion.div
                 key={program.name}
