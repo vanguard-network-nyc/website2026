@@ -1227,6 +1227,86 @@ const AdvisoryPage = () => {
     {/* Tab Content Sections - Display Directly Below Tabs */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
       <div className="space-y-12">
+        {/* SECTIONS_GO_HERE */}
+      </div>
+    </div>
+
+    {/* Continuation Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <div className="max-w-5xl mx-auto">
+          <p className="text-xl text-slate-600 leading-relaxed font-medium text-center italic">
+            We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
+          </p>
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Main Content */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Overview Section */}
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16 relative overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="mb-6"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mb-6">
+                <Target size={32} className="text-white" />
+              </div>
+            </motion.div>
+            
+            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+              Real-World Leadership Development
+            </h2>
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
+              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders - shared through powerful peer-to-peer exchanges.
+            </p>
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
+              These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
+            </p>
+            <p className="text-slate-600 leading-relaxed text-lg font-medium">
+              We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
+            </p>
+          </div>
+          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
+            <div className="text-center relative z-10">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
+              >
+                200+
+              </motion.div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">CEOs & C-Suite Executives</h3>
+              <p className="text-slate-600 font-medium text-lg mb-6">In our network participating in ongoing catalyzing conversations</p>
+              <p className="text-slate-600 leading-relaxed text-base italic">
+                Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
         {/* Strategic Counsel Section */}
         {activeTab === 'strategic' && (
         <motion.div
@@ -1599,85 +1679,6 @@ const AdvisoryPage = () => {
           </motion.div>
         </motion.div>
         )}
-      </div>
-    </div>
-
-    {/* Continuation Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xl text-slate-600 leading-relaxed font-medium text-center italic">
-            We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
-          </p>
-        </div>
-      </motion.div>
-    </div>
-
-    {/* Main Content */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      {/* Overview Section */}
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16 relative overflow-hidden"
-      >
-        {/* Background Pattern */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="mb-6"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mb-6">
-                <Target size={32} className="text-white" />
-              </div>
-            </motion.div>
-            
-            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-              Real-World Leadership Development
-            </h2>
-            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders - shared through powerful peer-to-peer exchanges.
-            </p>
-            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
-            </p>
-            <p className="text-slate-600 leading-relaxed text-lg font-medium">
-              We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
-            </p>
-          </div>
-          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-10 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
-            <div className="text-center relative z-10">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
-              >
-                200+
-              </motion.div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">CEOs & C-Suite Executives</h3>
-              <p className="text-slate-600 font-medium text-lg mb-6">In our network participating in ongoing catalyzing conversations</p>
-              <p className="text-slate-600 leading-relaxed text-base italic">
-                Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
 
         {/* Selected Advisory Engagements Section */}
         <motion.div
