@@ -1072,7 +1072,7 @@ const AdvisoryPage = () => {
       </motion.div>
     </div>
 
-    {/* Three Approaches Section - Moved to top */}
+    {/* Three Approaches Section with Tabs */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
@@ -1101,101 +1101,125 @@ const AdvisoryPage = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {[
-            {
-              title: 'Strategic Counsel',
-              description: 'Direct one-on-one coaching and strategic sounding board support for senior executives. Includes both coaching relationships and confidential strategic guidance.',
-              image: 'https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg',
-              gradient: 'from-[#045184] to-[#0369a1]',
-              bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
-              details: (
-                <div className="flex gap-6">
-                  <a href="#strategic-counsel" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
-                    Strategic Counsel
-                  </a>
-                </div>
-              )
-            },
-            {
-              title: 'Organizational Transformation',
-              description: 'We help transform what your people believe, the way they work, and how they behave. Grounded in decades of experience with major multinationals and global service firms.',
-              image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
-              gradient: 'from-[#10b981] to-[#059669]',
-              bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
-              backgroundImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40',
-              details: (
-                <div className="flex gap-6">
-                  <a href="#organizational-transformation" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
-                    Learn More
-                  </a>
-                </div>
-              )
-            },
-            {
-              title: 'Client and Stakeholder Engagement',
-              description: 'Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.',
-              image: 'https://images.unsplash.com/photo-1564368587612-f303d38c9063',
-              gradient: 'from-[#00A8E1] to-[#0284c7]',
-              bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-              details: (
-                <div className="flex gap-6">
-                  <a href="#client-and-stakeholder-engagement" className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-2 underline-offset-2 transition-colors duration-200">
-                    Learn More
-                  </a>
-                </div>
-              )
-            }
-          ].map((approach, index) => (
-            <motion.div
-              key={approach.title}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
-              className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden"
-              whileHover={{ y: -8 }}
+        {/* Tab Navigation Block */}
+        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
+          <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
+              Click below to explore our advisory services
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {/* Strategic Counsel Tab */}
+            <motion.button
+              onClick={() => setActiveTab('strategic')}
+              whileHover={{ scale: activeTab !== 'strategic' ? 1.02 : 1 }}
+              whileTap={{ scale: 0.98 }}
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
+                activeTab === 'strategic'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
+              }`}
             >
-              {/* Image with overlaid title - matching landing page style */}
-              <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${approach.image}')` }}>
-                {/* Banner for Landing Page connection */}
-                {approach.showBanner && (
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1 rounded-lg text-xs font-semibold shadow-md">
-                    <span className="flex items-center gap-1">
-                      <Target size={12} />
-                      Featured on Landing Page
-                    </span>
-                  </div>
-                )}
-                
-                {/* Landing Page Link indicator */}
-                {approach.landingPageLink && !approach.showBanner && (
-                  <div className="absolute top-4 left-4 bg-white/90 text-slate-700 px-3 py-1 rounded-lg text-xs font-medium border border-slate-200">
-                    <span className="flex items-center gap-1">
-                      <ArrowRight size={12} />
-                      See details on Landing Page
-                    </span>
-                  </div>
-                )}
-                
-                {/* Title overlay with gradient - matching landing page */}
-                <div className="h-full bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
-                    {approach.title}
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'strategic' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                    Strategic Counsel
                   </h3>
+                  <p className={`text-base mb-2 ${activeTab === 'strategic' ? 'text-white/90' : 'text-slate-600'}`}>
+                    Direct one-on-one coaching and strategic sounding board support for senior executives.
+                  </p>
+                </div>
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'strategic' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'strategic' ? 'text-white' : 'text-[#00A8E1]'} />
                 </div>
               </div>
-              
-              {/* Content section */}
-              <div className="p-6">
-                <p className="text-slate-600 leading-relaxed font-medium text-lg mb-4">
-                  {approach.description}
-                </p>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  {approach.details}
-                </p>
+              {activeTab === 'strategic' && (
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
+                  Currently viewing
+                </div>
+              )}
+              {activeTab !== 'strategic' && (
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
+                </div>
+              )}
+            </motion.button>
+
+            {/* Organizational Transformation Tab */}
+            <motion.button
+              onClick={() => setActiveTab('organizational')}
+              whileHover={{ scale: activeTab !== 'organizational' ? 1.02 : 1 }}
+              whileTap={{ scale: 0.98 }}
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+                activeTab === 'organizational'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'organizational' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                    Organizational Transformation
+                  </h3>
+                  <p className={`text-base mb-2 ${activeTab === 'organizational' ? 'text-white/90' : 'text-slate-600'}`}>
+                    Transform what your people believe, the way they work, and how they behave.
+                  </p>
+                </div>
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'organizational' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'organizational' ? 'text-white' : 'text-[#00A8E1]'} />
+                </div>
               </div>
-            </motion.div>
-          ))}
+              {activeTab === 'organizational' && (
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
+                  Currently viewing
+                </div>
+              )}
+              {activeTab !== 'organizational' && (
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
+                </div>
+              )}
+            </motion.button>
+
+            {/* Client and Stakeholder Engagement Tab */}
+            <motion.button
+              onClick={() => setActiveTab('client')}
+              whileHover={{ scale: activeTab !== 'client' ? 1.02 : 1 }}
+              whileTap={{ scale: 0.98 }}
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+                activeTab === 'client'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'client' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                    Client and Stakeholder Engagement
+                  </h3>
+                  <p className={`text-base mb-2 ${activeTab === 'client' ? 'text-white/90' : 'text-slate-600'}`}>
+                    Leadership Exchanges that transform supplier relationships into peer and trusted advisor roles.
+                  </p>
+                </div>
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'client' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'client' ? 'text-white' : 'text-[#00A8E1]'} />
+                </div>
+              </div>
+              {activeTab === 'client' && (
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
+                  Currently viewing
+                </div>
+              )}
+              {activeTab !== 'client' && (
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
+                </div>
+              )}
+            </motion.button>
+          </div>
         </div>
       </motion.div>
     </div>
