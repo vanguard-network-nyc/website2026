@@ -620,7 +620,7 @@ const ProgramsV2 = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
