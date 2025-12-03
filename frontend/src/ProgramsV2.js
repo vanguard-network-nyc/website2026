@@ -337,7 +337,7 @@ const ProgramsV2 = () => {
           {activeTab === 'current' && (
             <>
               {/* Programs Grid */}
-              <div className={`grid gap-8 ${viewMode === 'cards' ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'}`}>
+              <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
                 {filteredPrograms.map((program, index) => (
                   <motion.div
                     key={program.name}
