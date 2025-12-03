@@ -1834,8 +1834,6 @@ const AdvisoryPage = () => {
           </motion.button>
         </motion.div>
     </div>
-      </div>
-    </div>
   </motion.div>
   );
 };
