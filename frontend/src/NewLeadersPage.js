@@ -369,7 +369,7 @@ const NewLeadersPage = () => {
                 Get Started
               </Link>
               <Link
-                to="/programs-v2"
+                to="/programs"
                 className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
               >
                 <Calendar size={20} />
