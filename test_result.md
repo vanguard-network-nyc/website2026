@@ -49,7 +49,7 @@
 ##
 test_plan:
   current_focus: 
-    - "Enhanced Newsroom Search and Filter Functionality"
+    - "Executive Advisory Team Dividing Line Alignment"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
