@@ -1243,8 +1243,7 @@ const AdvisoryPage = () => {
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]"
-        >
+          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
           <div className="px-4 sm:px-6 lg:px-8">
             {/* Strategic Counsel Title */}
             <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">STRATEGIC COUNSEL</h2>
