@@ -464,7 +464,7 @@ const ProgramsV2 = () => {
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
                         </Link>
-                      ) : program.name === "RISK MANAGEMENT NETWORK" ? (
+                      ) : program.name === "RISK MANAGEMENT EXCHANGE" ? (
                         <Link to="/risk-management" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
