@@ -251,40 +251,85 @@ const ProgramsV2 = () => {
         <div className="mb-16">
           {/* Tab Navigation Block */}
           <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
+            <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
+              <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
+                Click below to explore our programs
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Current Leadership Programs Tab */}
-              <button
+              <motion.button
                 onClick={() => setActiveTab('current')}
-                className={`p-8 text-left transition-all duration-300 ${
+                whileHover={{ scale: activeTab !== 'current' ? 1.02 : 1 }}
+                whileTap={{ scale: 0.98 }}
+                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
                   activeTab === 'current'
-                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white'
-                    : 'bg-white text-slate-900 hover:bg-slate-50'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                    : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
                 }`}
               >
-                <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900'}`}>
-                  Current Leadership Programs
-                </h2>
-                <p className={`text-lg ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
-                  Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
-                </p>
-              </button>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                      Current Leadership Programs
+                    </h2>
+                    <p className={`text-lg mb-2 ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
+                      Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
+                    </p>
+                  </div>
+                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'current' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={28} className={activeTab === 'current' ? 'text-white' : 'text-[#00A8E1]'} />
+                  </div>
+                </div>
+                {activeTab === 'current' && (
+                  <div className="mt-3 flex items-center text-sm text-white/80">
+                    <CheckCircle2 size={16} className="mr-2" />
+                    Currently viewing
+                  </div>
+                )}
+                {activeTab !== 'current' && (
+                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Click to view programs →
+                  </div>
+                )}
+              </motion.button>
 
               {/* Customized Leadership Solutions Tab */}
-              <button
+              <motion.button
                 onClick={() => setActiveTab('customized')}
-                className={`p-8 text-left transition-all duration-300 border-t md:border-t-0 md:border-l border-slate-200 ${
+                whileHover={{ scale: activeTab !== 'customized' ? 1.02 : 1 }}
+                whileTap={{ scale: 0.98 }}
+                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
                   activeTab === 'customized'
-                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white'
-                    : 'bg-white text-slate-900 hover:bg-slate-50'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                    : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
                 }`}
               >
-                <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'customized' ? 'text-white' : 'text-slate-900'}`}>
-                  Customized Leadership Solutions
-                </h2>
-                <p className={`text-lg ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
-                  Tailored programs designed specifically for your organization's unique needs and leadership challenges.
-                </p>
-              </button>
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'customized' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                      Customized Leadership Solutions
+                    </h2>
+                    <p className={`text-lg mb-2 ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
+                      Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+                    </p>
+                  </div>
+                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'customized' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={28} className={activeTab === 'customized' ? 'text-white' : 'text-[#00A8E1]'} />
+                  </div>
+                </div>
+                {activeTab === 'customized' && (
+                  <div className="mt-3 flex items-center text-sm text-white/80">
+                    <CheckCircle2 size={16} className="mr-2" />
+                    Currently viewing
+                  </div>
+                )}
+                {activeTab !== 'customized' && (
+                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Click to view programs →
+                  </div>
+                )}
+              </motion.button>
             </div>
           </div>
 
