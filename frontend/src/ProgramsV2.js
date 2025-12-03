@@ -337,24 +337,24 @@ const ProgramsV2 = () => {
           {activeTab === 'current' && (
             <>
               {/* Programs Grid */}
-              <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
+              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {currentPrograms.map((program, index) => (
                   <motion.div
                     key={program.name}
                     initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200 flex flex-col h-full"
+                    className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group flex flex-col"
+                    whileHover={{ y: -5 }}
                   >
-                    <div className="relative h-80 overflow-hidden">
-                      <img
-                        src={program.backgroundImage || program.image}
-                        alt={program.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    {/* Image Header */}
+                    <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${program.backgroundImage}')` }}>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#045184] to-[#00A8E1] opacity-60"></div>
+                      
+                      {/* Status Badge */}
                       <div className="absolute top-4 right-4">
-                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                           program.status === 'Active' 
                             ? 'bg-green-500 text-white' 
                             : 'bg-yellow-500 text-white'
@@ -362,55 +362,53 @@ const ProgramsV2 = () => {
                           {program.status}
                         </span>
                       </div>
-                      <div className="absolute bottom-4 left-4">
-                        <div className="flex items-center gap-2">
-                          <div className="text-white">{program.icon}</div>
-                          <span className="text-white font-bold text-lg">{program.category}</span>
+                      
+                      {/* Icon and Title Overlay */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="flex items-center gap-4">
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
+                          >
+                            {program.icon}
+                          </motion.div>
+                          <div>
+                            <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">{program.name}</h3>
+                            <p className="text-sm font-semibold text-white/80">{program.audience}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
                     
+                    {/* Content */}
                     <div className="p-8 flex flex-col flex-grow">
-                      {/* Content Area - grows to fill available space */}
-                      <div className="flex-grow">
-                        <div className="flex justify-between items-start mb-4">
-                          <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#045184] transition-colors">
-                            {program.name}
-                          </h3>
-                          <span className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                            {program.level}
-                          </span>
-                        </div>
-                        
-                        <p className="text-slate-600 mb-6 leading-relaxed">
-                          {program.description}
-                        </p>
-                        
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-center gap-2">
-                            <Clock size={16} className="text-[#00A8E1]" />
-                            <span className="text-sm text-slate-600">{program.duration}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Users size={16} className="text-[#00A8E1]" />
-                            <span className="text-sm text-slate-600">{program.participants}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="mb-6">
-                          <h4 className="font-semibold text-slate-800 mb-3">Key Features:</h4>
-                          <div className="grid grid-cols-1 gap-2">
-                            {program.features.map((feature, featureIndex) => (
-                              <div key={featureIndex} className="flex items-center gap-2">
-                                <CheckCircle2 size={16} className="text-green-500" />
-                                <span className="text-sm text-slate-600">{feature}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
+                      <p className="text-slate-600 leading-relaxed mb-6 font-medium">
+                        {program.description}
+                      </p>
+                      
+                      {/* Program Details */}
+                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
+                        <span className="flex items-center gap-2">
+                          <Clock size={16} />
+                          {program.duration}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <Users size={16} />
+                          {program.participants}
+                        </span>
                       </div>
                       
-                      {/* Button Area - always at bottom */}
+                      {/* Features */}
+                      <div className="space-y-3 mb-8 flex-grow">
+                        {program.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-start gap-3">
+                            <CheckCircle2 size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
+                            <span className="text-slate-700 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Action Button */}
                       <div className="mt-auto pt-4">
                       {program.name === "GC EXCHANGE" ? (
                         <Link 
