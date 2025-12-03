@@ -1812,7 +1812,7 @@ const AdvisoryPage = () => {
             </div>
 
             {/* Aileen Gonsalves */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/aileen-gonsalves.jpg" 
