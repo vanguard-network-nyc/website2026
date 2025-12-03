@@ -325,7 +325,7 @@ const ProgramsV2 = () => {
                   </div>
                 )}
                 {activeTab !== 'customized' && (
-                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
                     Click to view programs →
                   </div>
                 )}
