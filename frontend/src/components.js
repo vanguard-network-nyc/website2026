@@ -1840,8 +1840,7 @@ const AdvisoryPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
-          className="text-center rounded-2xl p-12"
-          style={{ backgroundColor: '#00A8E1' }}
+          className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
         >
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
