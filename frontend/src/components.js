@@ -1766,10 +1766,12 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">KEN BANTA</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
-              <p className="text-slate-600 leading-relaxed text-sm mb-4 flex-grow">
-                Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
-              </p>
-              <div className="pt-4 border-t border-slate-200 mt-auto">
+              <div style={{ height: '168px' }}>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-slate-200">
                 <p className="text-xs text-slate-500 text-center">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
               </div>
             </div>
