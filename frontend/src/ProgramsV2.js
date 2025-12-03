@@ -607,10 +607,6 @@ const ProgramsV2 = () => {
                       Get Custom Quote
                       <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </motion.button>
-                    
-                    <p className="text-center text-slate-500 text-xs mt-3">
-                      Free consultation available
-                    </p>
                   </div>
                 </motion.div>
               ))}
