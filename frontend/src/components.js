@@ -1224,6 +1224,12 @@ const AdvisoryPage = () => {
       </motion.div>
     </div>
 
+    {/* Tab Content Sections - Display Directly Below Tabs */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      {/* Tab content will be inserted here from Detailed Services section */}
+    </div>
+
+    {/* Continuation Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
