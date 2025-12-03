@@ -1516,13 +1516,14 @@ const AdvisoryPage = () => {
           className="bg-white rounded-2xl py-8 md:py-12 shadow-lg"
           style={{ scrollMarginTop: '120px' }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">CLIENT AND STAKEHOLDER ENGAGEMENT</h2>
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+              >
+                <h2 className="text-4xl font-bold text-slate-900 mb-6">CLIENT AND STAKEHOLDER ENGAGEMENT</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.
               </p>
