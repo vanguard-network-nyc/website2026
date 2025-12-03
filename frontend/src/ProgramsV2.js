@@ -234,15 +234,45 @@ const ProgramsV2 = () => {
           </motion.p>
         </div>
 
-        {/* Current Programs Section */}
+        {/* Combined Programs Section with Tabs */}
         <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-slate-900 mb-4">
-              Current Leadership Programs
-            </h2>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto">
-              Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
-            </p>
+          {/* Tab Navigation Block */}
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Current Leadership Programs Tab */}
+              <button
+                onClick={() => setActiveTab('current')}
+                className={`p-8 text-left transition-all duration-300 ${
+                  activeTab === 'current'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white'
+                    : 'bg-white text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900'}`}>
+                  Current Leadership Programs
+                </h2>
+                <p className={`text-lg ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
+                  Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
+                </p>
+              </button>
+
+              {/* Customized Leadership Solutions Tab */}
+              <button
+                onClick={() => setActiveTab('customized')}
+                className={`p-8 text-left transition-all duration-300 border-t md:border-t-0 md:border-l border-slate-200 ${
+                  activeTab === 'customized'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white'
+                    : 'bg-white text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'customized' ? 'text-white' : 'text-slate-900'}`}>
+                  Customized Leadership Solutions
+                </h2>
+                <p className={`text-lg ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
+                  Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+                </p>
+              </button>
+            </div>
           </div>
 
           {/* Search and Filters */}
