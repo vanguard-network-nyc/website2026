@@ -1753,69 +1753,67 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Ken Banta */}
-            <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/ken-banta.jpg" 
                   alt="Ken Banta" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">KEN BANTA</h3>
-              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Founder & CEO</p>
-              <p className="text-slate-600 leading-relaxed text-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">KEN BANTA</h3>
+              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4">
                 Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
               </p>
-              <div className="mt-4">
-                <p className="text-xs text-slate-500">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
+              <div className="pt-4 border-t border-slate-200">
+                <p className="text-xs text-slate-500 text-center">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
               </div>
             </div>
 
             {/* Richard Hulme */}
-            <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/richard-hulme.jpg" 
                   alt="Richard Hulme" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">RICHARD HULME</h3>
-              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Managing Director</p>
-              <p className="text-slate-600 leading-relaxed text-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">RICHARD HULME</h3>
+              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Managing Director</p>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4">
                 Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
               </p>
-              <div className="mt-4">
-                <p className="text-xs text-slate-500">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
+              <div className="pt-4 border-t border-slate-200">
+                <p className="text-xs text-slate-500 text-center">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Garrick Isert */}
-            <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/garrick-isert.jpg" 
                   alt="Garrick Isert" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">GARRICK ISERT</h3>
-              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
-              <p className="text-slate-600 leading-relaxed text-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">GARRICK ISERT</h3>
+              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4">
                 Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
               </p>
-              <div className="mt-4">
-                <p className="text-xs text-slate-500">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
+              <div className="pt-4 border-t border-slate-200">
+                <p className="text-xs text-slate-500 text-center">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
               </div>
             </div>
 
             {/* Aileen Gonsalves */}
-            <div className="text-center">
-              <div className="w-48 h-48 rounded-full mx-auto mb-6 overflow-hidden shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/aileen-gonsalves.jpg" 
                   alt="Aileen Gonsalves" 
@@ -1823,13 +1821,13 @@ const AdvisoryPage = () => {
                   style={{ objectPosition: 'calc(50% - 40px) 30%' }}
                 />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">AILEEN GONSALVES</h3>
-              <p className="text-lg mb-4" style={{ color: '#00A8E1' }}>Principal</p>
-              <p className="text-slate-600 leading-relaxed text-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">AILEEN GONSALVES</h3>
+              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4">
                 Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
               </p>
-              <div className="mt-4">
-                <p className="text-xs text-slate-500">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
+              <div className="pt-4 border-t border-slate-200">
+                <p className="text-xs text-slate-500 text-center">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
               </div>
             </div>
           </div>
