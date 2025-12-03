@@ -1300,10 +1300,11 @@ const AdvisoryPage = () => {
         </div>
       </motion.div>
 
-      {/* Detailed Services */}
+      {/* Detailed Services - Conditionally Rendered Based on Active Tab */}
       <div className="space-y-12">
         
         {/* Strategic Counsel Section */}
+        {activeTab === 'strategic' && (
         <motion.div
           id="strategic-counsel"
           initial={{ y: 50, opacity: 0 }}
