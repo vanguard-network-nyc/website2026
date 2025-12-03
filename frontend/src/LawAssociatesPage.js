@@ -163,7 +163,7 @@ const LawAssociatesPage = () => {
           className="mb-8"
         >
           <Link
-            to="/programs-v2"
+            to="/programs"
             className="inline-flex items-center gap-2 text-slate-600 hover:text-[#045184] transition-colors duration-200"
           >
             <ArrowLeft size={20} />
