@@ -1532,7 +1532,7 @@ const AdvisoryPage = () => {
           style={{ scrollMarginTop: '120px' }}
         >
           {/* Upward Triangle Caret Indicator */}
-          <div className="absolute -top-4 left-1/2 md:left-5/6 transform -translate-x-1/2">
+          <div className="absolute -top-4 left-1/2 md:left-[83.33%] transform -translate-x-1/2">
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
