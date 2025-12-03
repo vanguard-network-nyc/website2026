@@ -1846,13 +1846,15 @@ const AdvisoryPage = () => {
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Join the 200+ CEOs and C-suite executives who trust The Vanguard Network for their leadership development and strategic guidance.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
-          >
-            Get Started Today
-          </motion.button>
+          <Link to="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+            >
+              Get Started Today
+            </motion.button>
+          </Link>
         </motion.div>
     </div>
   </motion.div>
