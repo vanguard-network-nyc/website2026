@@ -1785,10 +1785,10 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">RICHARD HULME</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Managing Director</p>
-              <p className="text-slate-600 leading-relaxed text-sm mb-4 flex-grow">
+              <p className="text-slate-600 leading-relaxed text-sm mb-4 h-44 overflow-hidden">
                 Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
               </p>
-              <div className="pt-4 border-t border-slate-200 mt-auto">
+              <div className="pt-4 border-t border-slate-200">
                 <p className="text-xs text-slate-500 text-center">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
               </div>
             </div>
