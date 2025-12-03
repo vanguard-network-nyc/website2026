@@ -167,7 +167,7 @@ const Header = () => {
       name: 'NETWORKS', 
       path: '/networking'
     },
-    { name: 'PROGRAMS', path: '/programs-v2' },
+    { name: 'PROGRAMS', path: '/programs' },
     { name: 'EVENTS', path: '/upcoming-events' },
     { 
       name: 'CONTENT', 
