@@ -1226,7 +1226,11 @@ const AdvisoryPage = () => {
 
     {/* Tab Content Sections - Display Directly Below Tabs */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      {/* Detailed Services - Conditionally Rendered Based on Active Tab */}
       <div className="space-y-12">
+        {/* Sections from Detailed Services will appear here - they are already defined below, so we'll move them */}
+      </div>
+    </div>
 
     {/* Continuation Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
