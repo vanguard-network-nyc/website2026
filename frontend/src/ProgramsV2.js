@@ -189,6 +189,19 @@ const ProgramsV2 = () => {
       duration: "Ongoing",
       participants: "10-25 Clients",
       icon: <Globe size={28} />
+    },
+    {
+      name: "NEXT GENERATION LEADER",
+      description: "Based on our top leadership work, helping high-potentials move from 'next level' roles into a C-suite or Partner position. All the technical and managerial competencies that drive success at other levels are insufficient at the higher organizational levels.",
+      target: "High-Potential Leaders",
+      benefits: ["Six-Month Modular Program", "Face-to-Face & Virtual Elements", "Runs Concurrently with Full-Time Jobs", "Customized to Role or Organization"],
+      color: "#00A8E1",
+      gradient: "from-[#00A8E1] to-[#0284c7]",
+      bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+      backgroundImage: "https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
+      duration: "6 Months",
+      participants: "15-20 Leaders",
+      icon: <TrendingUp size={28} />
     }
   ];
 
