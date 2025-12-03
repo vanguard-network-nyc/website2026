@@ -1824,7 +1824,7 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">AILEEN GONSALVES</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
-              <p className="text-slate-600 leading-relaxed text-sm mb-4" style={{ minHeight: '200px' }}>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4" style={{ height: '224px' }}>
                 Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
               </p>
               <div className="pt-4 border-t border-slate-200">
