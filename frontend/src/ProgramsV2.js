@@ -121,7 +121,7 @@ const ProgramsV2 = () => {
       icon: <Shield size={28} />
     },
     {
-      name: "RISK MANAGEMENT NETWORK",
+      name: "RISK MANAGEMENT EXCHANGE",
       description: "A peer network for senior executives with strategic accountability for risk across law, compliance, finance, cybersecurity, and operations.",
       format: "Monthly Virtual Exchanges",
       audience: "Risk Management Leaders",
