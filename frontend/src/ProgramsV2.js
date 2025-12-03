@@ -526,111 +526,81 @@ const ProgramsV2 = () => {
           {/* Customized Programs Content */}
           {activeTab === 'customized' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {customizedPrograms.map((program, index) => (
-              <motion.div
-                key={program.name}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-slate-200 group"
-              >
-                  <div className="grid grid-cols-1 xl:grid-cols-5 gap-0">
-                    {/* Content Section */}
-                    <div className="xl:col-span-3 p-10">
-                      <div className="flex items-start gap-6 mb-8">
-                        <motion.div 
-                          whileHover={{ rotate: 5, scale: 1.1 }}
-                          className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-r ${program.gradient} shadow-lg`}
-                        >
-                          <div className="text-white">{program.icon}</div>
-                        </motion.div>
-                        <div className="flex-1">
-                          <h3 className="text-3xl font-bold text-slate-900 mb-3 group-hover:text-[#045184] transition-colors duration-300">
-                            {program.name}
-                          </h3>
-                          <p className="text-lg font-bold mb-2" style={{ color: program.color }}>
-                            {program.target}
-                          </p>
-                          <div className="flex items-center gap-4 text-sm text-slate-500">
-                            <span className="flex items-center gap-2">
-                              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                              Duration: {program.duration}
-                            </span>
-                            <span className="flex items-center gap-2">
-                              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                              Participants: {program.participants}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <p className="text-slate-600 leading-relaxed mb-8 text-lg font-medium">
-                        {program.description}
-                      </p>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {program.benefits.map((benefit, benefitIndex) => (
-                          <motion.div 
-                            key={benefitIndex} 
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.2 + benefitIndex * 0.1 }}
-                            className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 group-hover:bg-slate-100 transition-colors duration-300"
-                          >
-                            <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${program.gradient}`}></div>
-                            <span className="text-slate-700 font-medium">{benefit}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
+              {customizedPrograms.map((program, index) => (
+                <motion.div
+                  key={program.name}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden group flex flex-col"
+                  whileHover={{ y: -5 }}
+                >
+                  {/* Image Header */}
+                  <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${program.backgroundImage}')` }}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${program.gradient} opacity-60`}></div>
                     
-                    {/* Action Section */}
-                    <div className={`xl:col-span-2 p-10 bg-gradient-to-br ${program.bgColor} flex items-center justify-center relative overflow-hidden`}>
-                      {/* Background Image */}
-                      {program.backgroundImage && (
-                        <div className="absolute inset-0">
-                          <img
-                            src={program.backgroundImage}
-                            alt={`${program.name} background`}
-                            className="w-full h-full object-cover opacity-20"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
-                        </div>
-                      )}
-                      
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-white/20"></div>
-                        <div className="absolute bottom-4 left-4 w-20 h-20 rounded-full bg-white/10"></div>
-                      </div>
-                      
-                      <div className="text-center relative z-10">
-                        <motion.div 
+                    {/* Icon and Title Overlay */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="flex items-center gap-4">
+                        <motion.div
                           whileHover={{ scale: 1.1, rotate: 5 }}
-                          className={`w-32 h-32 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-2xl bg-gradient-to-r ${program.gradient}`}
+                          className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white"
                         >
-                          <BookOpen size={56} className="text-white" />
+                          {program.icon}
                         </motion.div>
-                        
-                        <motion.button 
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`group/btn text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl bg-gradient-to-r ${program.gradient} relative overflow-hidden`}
-                        >
-                          <span className="relative z-10 flex items-center gap-3">
-                            Get Custom Quote
-                            <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </span>
-                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                        </motion.button>
-                        
-                        <p className="text-slate-600 mt-4 text-sm font-medium">
-                          Free consultation available
-                        </p>
+                        <div>
+                          <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">{program.name}</h3>
+                          <p className="text-sm font-semibold text-white/80">{program.target}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Content */}
+                  <div className="p-8 flex flex-col flex-grow">
+                    <p className="text-slate-600 leading-relaxed mb-6 font-medium">
+                      {program.description}
+                    </p>
+                    
+                    {/* Program Details */}
+                    <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
+                      <span className="flex items-center gap-2">
+                        <Clock size={16} />
+                        {program.duration}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <Users size={16} />
+                        {program.participants}
+                      </span>
+                    </div>
+                    
+                    {/* Benefits */}
+                    <div className="space-y-3 mb-8 flex-grow">
+                      {program.benefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-start gap-3">
+                          <CheckCircle2 size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-slate-700 text-sm">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Action Button */}
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r ${program.gradient} hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn`}
+                    >
+                      Get Custom Quote
+                      <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </motion.button>
+                    
+                    <p className="text-center text-slate-500 text-xs mt-3">
+                      Free consultation available
+                    </p>
+                  </div>
                 </motion.div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
