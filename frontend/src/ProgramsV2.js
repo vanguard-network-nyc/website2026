@@ -275,8 +275,11 @@ const ProgramsV2 = () => {
             </div>
           </div>
 
-          {/* Search and Filters */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
+          {/* Current Programs Content */}
+          {activeTab === 'current' && (
+            <>
+              {/* Search and Filters */}
+              <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
                 <div className="flex flex-col lg:flex-row gap-6 items-center">
                   {/* Search */}
                   <div className="relative flex-1">
