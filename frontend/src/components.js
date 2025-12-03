@@ -1417,13 +1417,14 @@ const AdvisoryPage = () => {
           className="bg-white rounded-2xl py-8 md:py-12 shadow-lg"
           style={{ scrollMarginTop: '120px' }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">ORGANIZATIONAL TRANSFORMATION</h2>
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+              >
+                <h2 className="text-4xl font-bold text-slate-900 mb-6">ORGANIZATIONAL TRANSFORMATION</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 We help transform what your people believe, the way they work, and how they behave. Our approach is grounded in decades of experience with major multinationals and global service firms.
               </p>
