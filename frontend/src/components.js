@@ -1620,7 +1620,7 @@ const AdvisoryPage = () => {
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <p className="text-xl text-slate-600 leading-relaxed font-medium text-center italic">
             We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
           </p>
@@ -1628,7 +1628,8 @@ const AdvisoryPage = () => {
       </motion.div>
     </div>
 
-      {/* Overview Section */}
+    {/* Overview Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
