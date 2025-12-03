@@ -1238,11 +1238,12 @@ const AdvisoryPage = () => {
           className="bg-white rounded-2xl py-8 md:py-12 shadow-lg"
           style={{ scrollMarginTop: '120px' }}
         >
-          {/* Strategic Counsel Title */}
-          <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">STRATEGIC COUNSEL</h2>
-          
-          {/* Coaching Subsection */}
-          <div className="mb-12">
+          <div className="px-4 sm:px-6 lg:px-8">
+            {/* Strategic Counsel Title */}
+            <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">STRATEGIC COUNSEL</h2>
+            
+            {/* Coaching Subsection */}
+            <div className="mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
