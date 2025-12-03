@@ -1633,10 +1633,10 @@ const AdvisoryPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12"
+        className="text-center mt-12 mb-12"
       >
         <div className="max-w-7xl mx-auto">
-          <p className="text-xl text-slate-600 leading-relaxed font-medium text-center italic">
+          <p className="text-slate-600 leading-relaxed font-bold text-center italic" style={{ fontSize: '21px' }}>
             We're pragmatic, results-driven, and focused on enabling leaders to own and sustain transformation, not on deploying large consulting teams.
           </p>
         </div>
