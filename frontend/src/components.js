@@ -1025,22 +1025,21 @@ const AboutPage = () => (
 );
 
 const AdvisoryPage = () => {
+  const [activeTab, setActiveTab] = useState('strategic'); // 'strategic', 'organizational', 'client'
+
   useEffect(() => {
     // Handle hash navigation on page load
     const hash = window.location.hash;
     if (hash) {
       const id = hash.replace('#', '');
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - 165; // Account for fixed header + banner
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 300); // Give more time for page to render
+      // Set active tab based on hash
+      if (id === 'strategic-counsel') {
+        setActiveTab('strategic');
+      } else if (id === 'organizational-transformation') {
+        setActiveTab('organizational');
+      } else if (id === 'client-and-stakeholder-engagement') {
+        setActiveTab('client');
+      }
     }
   }, []);
 
