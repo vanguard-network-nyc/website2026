@@ -1304,9 +1304,6 @@ const AdvisoryPage = () => {
         </div>
       </motion.div>
 
-      {/* Detailed Services - Conditionally Rendered Based on Active Tab */}
-      <div className="space-y-12">
-        
         {/* Strategic Counsel Section */}
         {activeTab === 'strategic' && (
         <motion.div
