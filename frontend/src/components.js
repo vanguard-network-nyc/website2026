@@ -1478,8 +1478,10 @@ const AdvisoryPage = () => {
             </Link>
           </motion.div>
         </motion.div>
+        )}
 
         {/* Organizational Transformation Section */}
+        {activeTab === 'organizational' && (
         <motion.div
           id="organizational-transformation"
           initial={{ y: 50, opacity: 0 }}
