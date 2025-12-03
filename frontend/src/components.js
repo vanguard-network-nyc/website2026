@@ -1756,7 +1756,7 @@ const AdvisoryPage = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr">
             {/* Ken Banta */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col h-full min-h-[580px]">
+            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex flex-col" style={{ height: '680px' }}>
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/ken-banta.jpg" 
@@ -1766,10 +1766,10 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">KEN BANTA</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
-              <p className="text-slate-600 leading-relaxed text-sm mb-4" style={{ height: '144px' }}>
+              <p className="text-slate-600 leading-relaxed text-sm mb-4 flex-grow">
                 Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
               </p>
-              <div className="pt-4 border-t border-slate-200">
+              <div className="pt-4 border-t border-slate-200 mt-auto">
                 <p className="text-xs text-slate-500 text-center">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
               </div>
             </div>
