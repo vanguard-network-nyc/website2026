@@ -1817,8 +1817,10 @@ const AdvisoryPage = () => {
             </div>
           </div>
         </motion.div>
+    </div>
 
-        {/* Call to Action */}
+    {/* Call to Action */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
