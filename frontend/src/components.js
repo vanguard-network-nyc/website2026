@@ -1425,15 +1425,12 @@ const AdvisoryPage = () => {
           className="relative"
           style={{ scrollMarginTop: '120px' }}
         >
-          {/* Visual Indicator Bar */}
-          <div className="absolute -top-2 left-0 right-0 h-1 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-t-2xl"></div>
-          
-          {/* Tab Badge */}
-          <div className="absolute -top-6 left-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 py-1 rounded-t-lg text-sm font-semibold shadow-lg">
-            Organizational Transformation
+          {/* Upward Triangle Caret Indicator */}
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-4 border-blue-500"
+          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]"
         >
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
