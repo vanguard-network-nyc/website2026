@@ -61,7 +61,7 @@ const ProgramsV2 = () => {
       icon: <BookOpen size={28} />
     },
     {
-      name: "LIFE SCIENCES CEO EXCHANGES",
+      name: "LIFE SCIENCES CEO EXCHANGE",
       description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
       format: "Quarterly Virtual + Bi-annual In-Person",
       audience: "Life Sciences CEOs",
