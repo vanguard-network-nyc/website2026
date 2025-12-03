@@ -1804,10 +1804,10 @@ const AdvisoryPage = () => {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">GARRICK ISERT</h3>
               <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
-              <p className="text-slate-600 leading-relaxed text-sm mb-4 flex-grow">
+              <p className="text-slate-600 leading-relaxed text-sm mb-4 h-44 overflow-hidden">
                 Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
               </p>
-              <div className="pt-4 border-t border-slate-200 mt-auto">
+              <div className="pt-4 border-t border-slate-200">
                 <p className="text-xs text-slate-500 text-center">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
               </div>
             </div>
