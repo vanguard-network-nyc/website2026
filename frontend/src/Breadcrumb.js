@@ -41,7 +41,12 @@ const Breadcrumb = ({ customTitle }) => {
       {pathnames.map((value, index) => {
         const last = index === pathnames.length - 1;
         const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-        const displayName = breadcrumbNameMap[value] || value;
+        let displayName = breadcrumbNameMap[value] || value;
+        
+        // If this is the last item and we have a custom title, use it
+        if (last && customTitle) {
+          displayName = customTitle;
+        }
 
         return (
           <React.Fragment key={to}>
