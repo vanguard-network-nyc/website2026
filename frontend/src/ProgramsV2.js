@@ -69,7 +69,7 @@ const ProgramsV2 = () => {
       level: "Executive",
       status: "Active",
       image: "/life-sciences-ceo-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1758979616545-d818639849dd",
+      backgroundImage: "https://images.unsplash.com/photo-1658567695327-8ee7a1452f84",
       duration: "Ongoing",
       participants: "8-10",
       features: ["Quarterly CEO Sessions", "AI Focus", "Leadership Development", "Industry-Specific"],
