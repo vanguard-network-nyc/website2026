@@ -97,6 +97,7 @@ const VideoDetailPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb />
         {/* Back Button */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
