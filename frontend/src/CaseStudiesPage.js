@@ -110,7 +110,7 @@ const CaseStudiesPage = () => {
         "Recommended a change in the Board chair to support the growth of the organization, with experience to manage a challenging board"
       ],
       outcome: "With our counsel a new Board Chair was recruited with the requisite capabilities. This drove significant board alignment. The new Chair also played a valuable internal and external role with the company assisting in strategic priority setting and business development.",
-      image: "https://images.unsplash.com/photo-1589639293663-f9399bb41721",
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/0ctnnbou_5.jpg",
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     },
