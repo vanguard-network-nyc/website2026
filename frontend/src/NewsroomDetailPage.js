@@ -186,14 +186,10 @@ const NewsroomDetailPage = () => {
                   rehypePlugins={[]}
                 >
                   {article.body_of_blog
-                    // Remove trailing spaces before closing bold markers
-                    .replace(/\s+\*\*/g, '**')
-                    // Remove leading spaces after opening bold markers
-                    .replace(/\*\*\s+/g, '**')
-                    // Remove trailing spaces before closing italic markers
-                    .replace(/\s+_/g, '_')
-                    // Remove leading spaces after opening italic markers
-                    .replace(/_\s+/g, '_')
+                    // Only fix trailing space before closing ** when it's at end of a sentence (before period/punctuation)
+                    .replace(/([.!?])\s+\*\*/g, '$1**')
+                    // Only fix trailing space before closing _ when it's at end of a sentence
+                    .replace(/([.!?])\s+_/g, '$1_')
                   }
                 </ReactMarkdown>
               </div>
