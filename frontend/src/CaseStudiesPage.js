@@ -285,35 +285,24 @@ const CaseStudiesPage = () => {
 
         {/* Call to Action */}
         <motion.div
-          initial={{ y: 30, opacity: 0 }}
+          initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-16 text-center"
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-16 px-8 rounded-2xl mt-16"
         >
-          <div className="bg-white rounded-2xl shadow-xl p-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
-              Ready to Transform Your Organization?
-            </h2>
-            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-              These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/advisory"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg"
-              >
-                <Target size={20} />
-                Explore Our Advisory Services
-              </Link>
-              <a
-                href="mailto:info@thevanguardnetwork.com"
-                className="inline-flex items-center gap-2 bg-slate-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-slate-700 transition-colors duration-200 shadow-lg"
-              >
-                <Building2 size={20} />
-                Contact Us
-              </a>
-            </div>
-          </div>
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Organization?</h2>
+          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            Discover how our proven methodologies and expert guidance can help your leadership team achieve exceptional results.
+          </p>
+          <Link to="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+            >
+              Contact Us
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </motion.div>
