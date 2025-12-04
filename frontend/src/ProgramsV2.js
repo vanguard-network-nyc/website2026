@@ -506,8 +506,8 @@ const ProgramsV2 = () => {
                 >
                   {/* Image Header */}
                   <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${program.backgroundImage}')` }}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#045184] to-[#00A8E1] opacity-80"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#045184] to-[#00A8E1] opacity-0"></div>
                     
                     {/* Icon and Title Overlay */}
                     <div className="absolute bottom-6 left-6 right-6">
