@@ -84,7 +84,7 @@ const ProgramsV2 = () => {
       level: "Emerging",
       status: "Enrollment Open",
       image: "/next-generation-gc-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1709626011485-6fe000ea2dbc",
       duration: "6 Months",
       participants: "15-20",
       features: ["6-Month Acceleration", "GC-Led Development", "Career Trajectory", "Vanguard Exclusive"],
