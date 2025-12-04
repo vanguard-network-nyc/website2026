@@ -185,12 +185,7 @@ const NewsroomDetailPage = () => {
                     br: () => <br />,
                   }}
                 >
-                  {article.body_of_blog
-                    // ONLY fix trailing space before closing **: "text **" -> "text**"
-                    .replace(/(\S)\s+\*\*/g, '$1**')
-                    // ONLY fix leading space after opening **: "** text" -> "**text"  
-                    .replace(/\*\*\s+(\S)/g, '**$1')
-                  }
+                  {article.body_of_blog}
                 </ReactMarkdown>
               </div>
             )}
