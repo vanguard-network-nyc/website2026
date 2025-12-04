@@ -84,7 +84,7 @@ const ProgramsV2 = () => {
       level: "Emerging",
       status: "Enrollment Open",
       image: "/next-generation-gc-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1709626011485-6fe000ea2dbc",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/xve7cseq_4.png",
       duration: "6 Months",
       participants: "15-20",
       features: ["6-Month Acceleration", "GC-Led Development", "Career Trajectory", "Vanguard Exclusive"],
