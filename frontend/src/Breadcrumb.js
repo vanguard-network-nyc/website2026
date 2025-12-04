@@ -22,7 +22,10 @@ const Breadcrumb = () => {
     'videos': 'Videos',
     'video': 'Video',
     'newsroom': 'Newsroom',
-    'in-the-press': 'In The Press'
+    'in-the-press': 'In The Press',
+    'privacy': 'Privacy Policy',
+    'terms': 'Terms of Use',
+    'about': 'About'
   };
 
   return (
