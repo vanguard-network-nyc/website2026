@@ -75,7 +75,7 @@ const CaseStudiesPage = () => {
         "Clarifying priorities and aligning the right team members to execute"
       ],
       outcome: "After several years, success far exceeded expectations.",
-      image: "https://images.pexels.com/photos/2182981/pexels-photo-2182981.jpeg",
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/ktdnet3n_3.jpg",
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     },
