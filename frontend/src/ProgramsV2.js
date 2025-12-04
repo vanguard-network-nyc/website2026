@@ -114,7 +114,7 @@ const ProgramsV2 = () => {
       level: "Professional Development",
       status: "Enrollment Open",
       image: "/law-associates-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxib2FyZHJvb20lMjBtZWV0aW5nfGVufDB8fHx8MTc1ODExNzY1NHww&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1634392567955-408d650bdec5",
       duration: "Flexible",
       participants: "Up to 20 per cohort",
       features: ["Interactive Faculty Sessions", "Peer Development", "Business Partnership Focus", "EQ & Leadership Skills"],
