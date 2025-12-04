@@ -159,7 +159,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1736325263301-488931888151",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/8v0udasx_9.jpg",
       duration: "6-9 Months",
       participants: "10-15 Leaders",
       icon: <Zap size={28} />
