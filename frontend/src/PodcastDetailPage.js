@@ -132,6 +132,7 @@ const PodcastDetailPage = () => {
     >
       {/* Back Navigation */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <Breadcrumb />
         <Link
           to="/podcasts"
           className="inline-flex items-center gap-2 text-[#00A8E1] hover:text-[#0096c7] font-medium transition-colors"
