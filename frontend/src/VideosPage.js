@@ -97,6 +97,7 @@ const VideosPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb />
         {/* Header */}
         <div className="text-center mb-12">
           <motion.h1 
