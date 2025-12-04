@@ -349,7 +349,7 @@ const ProgramsV2 = () => {
                   >
                     {/* Image Header */}
                     <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${program.backgroundImage}')` }}>
-                      <div className="absolute inset-0 bg-[#045184]/50"></div>
+                      <div className="absolute inset-0 bg-[#045184]/60"></div>
                       
                       {/* Icon and Title Overlay */}
                       <div className="absolute bottom-6 left-6 right-6">
