@@ -292,17 +292,24 @@ const CaseStudiesPage = () => {
         >
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Organization?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Discover how our proven methodologies and expert guidance can help your leadership team achieve exceptional results.
+            These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
           </p>
-          <Link to="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/advisory"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg"
             >
+              <Target size={20} />
+              Explore Our Advisory Services
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg"
+            >
+              <Building2 size={20} />
               Contact Us
-            </motion.button>
-          </Link>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </motion.div>
