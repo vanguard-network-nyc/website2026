@@ -185,7 +185,7 @@ const NewsroomDetailPage = () => {
                   remarkPlugins={[]}
                   rehypePlugins={[]}
                 >
-                  {article.body_of_blog}
+                  {article.body_of_blog.replace(/\s+(\*\*)/g, '$1')}
                 </ReactMarkdown>
               </div>
             )}
