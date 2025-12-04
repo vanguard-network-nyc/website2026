@@ -188,20 +188,20 @@ const NewsroomDetailPage = () => {
                   {(() => {
                     let text = article.body_of_blog;
                     
-                    // Clean up bold markdown: remove spaces immediately adjacent to **
-                    // Match ** followed by spaces, or spaces followed by **
-                    text = text.replace(/\*\*\s+/g, '**');  // Remove space after opening **
-                    text = text.replace(/\s+\*\*/g, '**');  // Remove space before closing **
+                    // CRITICAL: Only remove non-newline whitespace adjacent to markdown markers
+                    // This preserves line breaks while cleaning up formatting issues
                     
-                    // Clean up italic markdown: remove spaces immediately adjacent to _
-                    text = text.replace(/_\s+/g, '_');      // Remove space after opening _
-                    text = text.replace(/\s+_/g, '_');      // Remove space before closing _
+                    // For bold (**):
+                    // Remove spaces/tabs after opening ** (but not newlines)
+                    text = text.replace(/\*\*[ \t]+/g, '**');
+                    // Remove spaces/tabs before closing ** (but not newlines)  
+                    text = text.replace(/[ \t]+\*\*/g, '**');
                     
-                    // Fix any double spaces that might have been created
-                    text = text.replace(/  +/g, ' ');
-                    
-                    // Ensure proper spacing after punctuation if it was removed
-                    text = text.replace(/([.!?])([A-Z])/g, '$1 $2');
+                    // For italic (_):
+                    // Remove spaces/tabs after opening _ (but not newlines)
+                    text = text.replace(/_[ \t]+/g, '_');
+                    // Remove spaces/tabs before closing _ (but not newlines)
+                    text = text.replace(/[ \t]+_/g, '_');
                     
                     return text;
                   })()}
