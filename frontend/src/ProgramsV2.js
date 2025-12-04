@@ -185,7 +185,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1729459101598-9baa041bd27b",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/j0blfj1g_11.jpg",
       duration: "Ongoing",
       participants: "10-25 Clients",
       icon: <Globe size={28} />
