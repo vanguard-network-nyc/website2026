@@ -186,10 +186,12 @@ const NewsroomDetailPage = () => {
                   }}
                 >
                   {article.body_of_blog
-                    // Only fix: remove space IMMEDIATELY before closing ** (e.g., "text. **" -> "text.**")
+                    // Fix: remove space before closing ** when followed by whitespace
                     .replace(/\s+\*\*(\s)/g, '**$1')
-                    // Only fix: remove space IMMEDIATELY after opening ** (e.g., "** text" -> "**text")
+                    // Fix: remove space after opening ** when preceded by whitespace  
                     .replace(/(\s)\*\*\s+/g, '$1**')
+                    // Fix: add space after closing ** if followed immediately by letter
+                    .replace(/\*\*([A-Z])/g, '** $1')
                   }
                 </ReactMarkdown>
               </div>
