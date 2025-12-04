@@ -159,7 +159,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1736325263301-488931888151",
       duration: "6-9 Months",
       participants: "10-15 Leaders",
       icon: <Zap size={28} />
@@ -198,7 +198,7 @@ const ProgramsV2 = () => {
       color: "#00A8E1",
       gradient: "from-[#00A8E1] to-[#0284c7]",
       bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1573497490790-9053816a01d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1736325263301-488931888151",
       duration: "6 Months",
       participants: "15-20 Leaders",
       icon: <TrendingUp size={28} />
