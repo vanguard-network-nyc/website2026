@@ -185,7 +185,7 @@ const ProgramsV2 = () => {
       color: "#045184",
       gradient: "from-[#045184] to-[#0369a1]",
       bgColor: "from-[#045184]/5 to-[#0369a1]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxib2FyZHJvb20lMjBtZWV0aW5nfGVufDB8fHx8MTc1ODExNzY1NHww&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1729459101598-9baa041bd27b",
       duration: "Ongoing",
       participants: "10-25 Clients",
       icon: <Globe size={28} />
