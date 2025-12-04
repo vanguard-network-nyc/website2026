@@ -54,7 +54,7 @@ const ProgramsV2 = () => {
       level: "Senior",
       status: "Active",
       image: "/senior-counsel-exchange-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1734380881505-6e1b5801e4d8",
+      backgroundImage: "https://images.unsplash.com/photo-1736325263301-488931888151",
       duration: "Ongoing",
       participants: "10-12",
       features: ["Monthly Virtual Sessions", "Problem-Solving Focus", "Peer Collaboration", "GC Reports Network"],
