@@ -130,20 +130,9 @@ const PodcastDetailPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
-      {/* Back Navigation */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <Breadcrumb />
-        <Link
-          to="/podcasts"
-          className="inline-flex items-center gap-2 text-[#00A8E1] hover:text-[#0096c7] font-medium transition-colors"
-        >
-          <ArrowLeft size={20} />
-          Back to Podcasts
-        </Link>
-      </div>
-
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumb customTitle={podcast?.title} />
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
