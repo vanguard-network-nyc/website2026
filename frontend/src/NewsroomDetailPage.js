@@ -185,7 +185,12 @@ const NewsroomDetailPage = () => {
                     br: () => <br />,
                   }}
                 >
-                  {article.body_of_blog}
+                  {article.body_of_blog
+                    // Only fix: remove space IMMEDIATELY before closing ** (e.g., "text. **" -> "text.**")
+                    .replace(/\s+\*\*(\s)/g, '**$1')
+                    // Only fix: remove space IMMEDIATELY after opening ** (e.g., "** text" -> "**text")
+                    .replace(/(\s)\*\*\s+/g, '$1**')
+                  }
                 </ReactMarkdown>
               </div>
             )}
