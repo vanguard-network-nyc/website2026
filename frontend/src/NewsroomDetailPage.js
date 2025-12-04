@@ -188,8 +188,12 @@ const NewsroomDetailPage = () => {
                   {(() => {
                     let text = article.body_of_blog;
                     
-                    // CRITICAL: Only remove non-newline whitespace adjacent to markdown markers
-                    // This preserves line breaks while cleaning up formatting issues
+                    // CRITICAL: Handle ALL markdown formatting issues from Airtable
+                    
+                    // Fix edge case: Add space before ** if missing (e.g., "word**text**" -> "word **text**")
+                    text = text.replace(/([a-zA-Z0-9])(\*\*)/g, '$1 $2');
+                    // Fix edge case: Add space after ** if missing and before letter
+                    text = text.replace(/(\*\*)([a-zA-Z0-9])/g, '$1 $2');
                     
                     // For bold (**):
                     // Remove spaces/tabs after opening ** (but not newlines)
@@ -198,10 +202,17 @@ const NewsroomDetailPage = () => {
                     text = text.replace(/[ \t]+\*\*/g, '**');
                     
                     // For italic (_):
+                    // Add space before _ if missing
+                    text = text.replace(/([a-zA-Z0-9])(_)/g, '$1 $2');
+                    // Add space after _ if missing
+                    text = text.replace(/(_)([a-zA-Z0-9])/g, '$1 $2');
                     // Remove spaces/tabs after opening _ (but not newlines)
                     text = text.replace(/_[ \t]+/g, '_');
                     // Remove spaces/tabs before closing _ (but not newlines)
                     text = text.replace(/[ \t]+_/g, '_');
+                    
+                    // Clean up any double spaces created
+                    text = text.replace(/  +/g, ' ');
                     
                     return text;
                   })()}
