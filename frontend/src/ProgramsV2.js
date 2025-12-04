@@ -54,7 +54,7 @@ const ProgramsV2 = () => {
       level: "Senior",
       status: "Active",
       image: "/senior-counsel-exchange-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1736325263301-488931888151",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/m8lgl096_2.png",
       duration: "Ongoing",
       participants: "10-12",
       features: ["Monthly Virtual Sessions", "Problem-Solving Focus", "Peer Collaboration", "GC Reports Network"],
