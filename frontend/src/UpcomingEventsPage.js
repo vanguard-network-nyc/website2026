@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Breadcrumb from './Breadcrumb';
 import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown } from 'lucide-react';
 
 const UpcomingEventsPage = () => {
@@ -237,6 +238,7 @@ const UpcomingEventsPage = () => {
     >
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <Breadcrumb />
         <div className="text-center mb-16">
           <motion.h1 
             initial={{ y: 30, opacity: 0 }}
