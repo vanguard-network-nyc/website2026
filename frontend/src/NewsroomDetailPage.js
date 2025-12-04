@@ -90,21 +90,7 @@ const NewsroomDetailPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <Link
-            to="/newsroom"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
-          >
-            <ArrowLeft size={20} />
-            Back to Newsroom
-          </Link>
-        </motion.div>
+        <Breadcrumb customTitle={article?.blog_title} />
 
         <article className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Newsroom Header Image - Use rectangular detail image */}
