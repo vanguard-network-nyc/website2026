@@ -99,7 +99,7 @@ const ProgramsV2 = () => {
       level: "Entry",
       status: "Enrollment Open",
       image: "/new-leaders-program.jpg",
-      backgroundImage: "https://images.pexels.com/photos/17483848/pexels-photo-17483848.png",
+      backgroundImage: "https://images.unsplash.com/photo-1659948782648-72d1583efcf2",
       duration: "6-12 Months",
       participants: "20-25",
       features: ["Leadership Jump-Start", "Senior Executive Led", "Pragmatic Focus", "Graduate & New Hire"],
