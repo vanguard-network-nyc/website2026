@@ -185,12 +185,26 @@ const NewsroomDetailPage = () => {
                   remarkPlugins={[]}
                   rehypePlugins={[]}
                 >
-                  {article.body_of_blog
-                    // Only fix trailing space before closing ** when it's at end of a sentence (before period/punctuation)
-                    .replace(/([.!?])\s+\*\*/g, '$1**')
-                    // Only fix trailing space before closing _ when it's at end of a sentence
-                    .replace(/([.!?])\s+_/g, '$1_')
-                  }
+                  {(() => {
+                    let text = article.body_of_blog;
+                    
+                    // Clean up bold markdown: remove spaces immediately adjacent to **
+                    // Match ** followed by spaces, or spaces followed by **
+                    text = text.replace(/\*\*\s+/g, '**');  // Remove space after opening **
+                    text = text.replace(/\s+\*\*/g, '**');  // Remove space before closing **
+                    
+                    // Clean up italic markdown: remove spaces immediately adjacent to _
+                    text = text.replace(/_\s+/g, '_');      // Remove space after opening _
+                    text = text.replace(/\s+_/g, '_');      // Remove space before closing _
+                    
+                    // Fix any double spaces that might have been created
+                    text = text.replace(/  +/g, ' ');
+                    
+                    // Ensure proper spacing after punctuation if it was removed
+                    text = text.replace(/([.!?])([A-Z])/g, '$1 $2');
+                    
+                    return text;
+                  })()}
                 </ReactMarkdown>
               </div>
             )}
