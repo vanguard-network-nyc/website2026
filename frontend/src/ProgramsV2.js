@@ -129,7 +129,7 @@ const ProgramsV2 = () => {
       level: "Executive",
       status: "Enrollment Open",
       image: "/risk-management-program.jpg",
-      backgroundImage: "https://images.pexels.com/photos/18069160/pexels-photo-18069160.png",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/oue0cjec_7.jpg",
       duration: "Annual Membership",
       participants: "Senior Risk Leaders",
       features: ["Monthly Virtual Exchanges", "Guest Expert Insights", "Confidential Peer Discussions", "Actionable Playbooks"],
