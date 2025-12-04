@@ -146,7 +146,7 @@ const CaseStudiesPage = () => {
         "Led facilitated dialogues to showcase partner expertise as business advisors"
       ],
       outcome: "The program effectively repositioned the firm's partners as advisors and peers, versus legal vendors, leading to strengthened relationships and new engagements with both existing and prospective clients.",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/oue0cjec_7.jpg",
       icon: <Users size={24} />,
       color: "from-cyan-500 to-blue-600"
     }
