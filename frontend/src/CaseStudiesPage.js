@@ -231,6 +231,7 @@ const CaseStudiesPage = () => {
             >
               {/* Image Header */}
               <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${study.image}')` }}>
+                <div className="absolute inset-0 bg-[#045184]/60"></div>
                 <div className="absolute top-4 left-4">
                   <span className={`bg-gradient-to-r ${study.color} text-white px-3 py-1 rounded-lg text-sm font-semibold shadow-md flex items-center gap-2`}>
                     {study.icon}
