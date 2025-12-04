@@ -99,7 +99,7 @@ const ProgramsV2 = () => {
       level: "Entry",
       status: "Enrollment Open",
       image: "/new-leaders-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1659948782648-72d1583efcf2",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/0ctnnbou_5.jpg",
       duration: "6-12 Months",
       participants: "20-25",
       features: ["Leadership Jump-Start", "Senior Executive Led", "Pragmatic Focus", "Graduate & New Hire"],
