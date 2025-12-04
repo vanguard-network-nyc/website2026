@@ -178,30 +178,8 @@ const CaseStudiesPage = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
-          >
-            <ArrowLeft size={20} />
-            Back to Home
-          </Link>
-        </motion.div>
-
-        {/* Page Header */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <div className="mb-8">
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full">
-              Client Success Stories
-            </span>
-          </div>
-          
           <h1 
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
+            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight text-center"
           >
             Case Studies
           </h1>
