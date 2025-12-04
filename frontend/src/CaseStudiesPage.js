@@ -40,7 +40,7 @@ const CaseStudiesPage = () => {
         "Built cultural transformation initiatives that addressed core conflict areas and reinforced new behaviors"
       ],
       outcome: "In three years, the company achieved a dramatic transformation, rising from worst to best performer in its peer group. The cultural reset created sustained competitive advantage and established a foundation for continued growth and market leadership.",
-      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12",
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/tgsz0vgk_1.jpg",
       icon: <TrendingUp size={24} />,
       color: "from-green-500 to-emerald-600"
     },
