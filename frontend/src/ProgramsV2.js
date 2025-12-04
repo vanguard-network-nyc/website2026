@@ -172,7 +172,7 @@ const ProgramsV2 = () => {
       color: "#00A8E1",
       gradient: "from-[#00A8E1] to-[#0284c7]",
       bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
-      backgroundImage: "https://images.unsplash.com/photo-1546572797-e8c933a75a1f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxDRU8lMjBleGVjdXRpdmV8ZW58MHx8fHwxNzU4MTE3NjY5fDA&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1758979616545-d818639849dd",
       duration: "14 Weeks",
       participants: "15-20 New Hires",
       icon: <Briefcase size={28} />
