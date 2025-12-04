@@ -39,7 +39,7 @@ const ProgramsV2 = () => {
       level: "Executive",
       status: "Active",
       image: "/gc-exchange-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxib2FyZHJvb20lMjBtZWV0aW5nfGVufDB8fHx8MTc1ODExNzY1NHww&ixlib=rb-4.1.0&q=85",
+      backgroundImage: "https://images.unsplash.com/photo-1651135093201-11f08d2dedea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdyYWRpZW50JTIwYmx1ZXxlbnwwfHx8Ymx1ZXwxNzY0ODcwNzUyfDA&ixlib=rb-4.1.0&q=85",
       duration: "Ongoing",
       participants: "12-15",
       features: ["Monthly Problem-Solving Sessions", "Bi-annual Forums", "Peer Networking", "Vanguard Moderation"],
