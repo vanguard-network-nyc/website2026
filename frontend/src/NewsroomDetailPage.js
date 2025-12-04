@@ -185,7 +185,16 @@ const NewsroomDetailPage = () => {
                   remarkPlugins={[]}
                   rehypePlugins={[]}
                 >
-                  {article.body_of_blog.replace(/(\S)\s+\*\*(?=\s*\n)/g, '$1**')}
+                  {article.body_of_blog
+                    // Remove trailing spaces before closing bold markers
+                    .replace(/\s+\*\*/g, '**')
+                    // Remove leading spaces after opening bold markers
+                    .replace(/\*\*\s+/g, '**')
+                    // Remove trailing spaces before closing italic markers
+                    .replace(/\s+_/g, '_')
+                    // Remove leading spaces after opening italic markers
+                    .replace(/_\s+/g, '_')
+                  }
                 </ReactMarkdown>
               </div>
             )}
