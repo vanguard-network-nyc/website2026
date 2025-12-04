@@ -114,7 +114,7 @@ const ProgramsV2 = () => {
       level: "Professional Development",
       status: "Enrollment Open",
       image: "/law-associates-program.jpg",
-      backgroundImage: "https://images.pexels.com/photos/1544947/pexels-photo-1544947.jpeg",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/87tq6qrj_6.png",
       duration: "Flexible",
       participants: "Up to 20 per cohort",
       features: ["Interactive Faculty Sessions", "Peer Development", "Business Partnership Focus", "EQ & Leadership Skills"],
