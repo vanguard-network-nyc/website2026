@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ customTitle }) => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -16,16 +16,17 @@ const Breadcrumb = () => {
     'upcoming-events': 'Events',
     'content': 'Content',
     'articles': 'Articles',
-    'article': 'Article',
+    'article': 'Articles',
     'podcasts': 'Podcasts',
-    'podcast': 'Podcast',
+    'podcast': 'Podcasts',
     'videos': 'Videos',
-    'video': 'Video',
+    'video': 'Videos',
     'newsroom': 'Newsroom',
     'in-the-press': 'In The Press',
     'privacy': 'Privacy Policy',
     'terms': 'Terms of Use',
-    'about': 'About'
+    'about': 'About',
+    'book': 'Book'
   };
 
   return (
