@@ -238,7 +238,7 @@ const CaseStudiesPage = () => {
                     {study.category}
                   </span>
                 </div>
-                <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                <div className="h-full bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 relative z-10">
                   <h3 className="text-2xl font-bold text-white group-hover:text-blue-200 transition-colors duration-300">
                     {study.title}
                   </h3>
