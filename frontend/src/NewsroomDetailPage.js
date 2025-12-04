@@ -169,7 +169,7 @@ const NewsroomDetailPage = () => {
               <div className="prose prose-lg max-w-none mb-8">
                 <ReactMarkdown
                   components={{
-                    p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed" {...props} />,
+                    p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed whitespace-pre-line" {...props} />,
                     strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
                     em: ({node, ...props}) => <em className="italic" {...props} />,
                     ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
@@ -180,13 +180,12 @@ const NewsroomDetailPage = () => {
                     h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
                     a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
                     blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
+                    br: () => <br />,
                   }}
                 >
                   {article.body_of_blog
-                    .replace(/\*\* /g, '**')
-                    .replace(/ \*\*/g, '**')
-                    .replace(/_ /g, '_')
-                    .replace(/ _/g, '_')
+                    .replace(/\*\*([^*]+) \*\*/g, '**$1**')
+                    .replace(/_([^_]+) _/g, '_$1_')
                   }
                 </ReactMarkdown>
               </div>
