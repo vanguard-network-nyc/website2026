@@ -69,7 +69,7 @@ const ProgramsV2 = () => {
       level: "Executive",
       status: "Active",
       image: "/life-sciences-ceo-program.jpg",
-      backgroundImage: "https://images.unsplash.com/photo-1658567695327-8ee7a1452f84",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/ktdnet3n_3.jpg",
       duration: "Ongoing",
       participants: "8-10",
       features: ["Quarterly CEO Sessions", "AI Focus", "Leadership Development", "Industry-Specific"],
