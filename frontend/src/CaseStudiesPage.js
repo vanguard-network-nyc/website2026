@@ -295,19 +295,25 @@ const CaseStudiesPage = () => {
             These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/advisory"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg"
-            >
-              <Target size={20} />
-              Explore Our Advisory Services
+            <Link to="/advisory">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+              >
+                <Target size={20} />
+                Explore Our Advisory Services
+              </motion.button>
             </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg"
-            >
-              <Building2 size={20} />
-              Contact Us
+            <Link to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+              >
+                <Building2 size={20} />
+                Contact Us
+              </motion.button>
             </Link>
           </div>
         </motion.div>
