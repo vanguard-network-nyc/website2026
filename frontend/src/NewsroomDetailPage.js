@@ -182,11 +182,10 @@ const NewsroomDetailPage = () => {
                     blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                     br: () => <br />,
                   }}
+                  remarkPlugins={[]}
+                  rehypePlugins={[]}
                 >
-                  {article.body_of_blog
-                    .replace(/\s+\*\*/g, '**')
-                    .replace(/\s+_(?=[^_]*_)/g, '_')
-                  }
+                  {article.body_of_blog}
                 </ReactMarkdown>
               </div>
             )}
