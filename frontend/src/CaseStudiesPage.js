@@ -128,7 +128,7 @@ const CaseStudiesPage = () => {
         "Facilitated focused dialogue on pragmatic, real-world solutions"
       ],
       outcome: "The session generated pragmatic, real-world insights and action steps, creating meaningful collaboration between thought leaders and establishing a foundation for addressing rural healthcare challenges through technology innovation.",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b94467d2eb",
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/87tq6qrj_6.png",
       icon: <Users size={24} />,
       color: "from-cyan-500 to-blue-600"
     },
