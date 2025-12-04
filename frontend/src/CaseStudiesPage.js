@@ -93,7 +93,7 @@ const CaseStudiesPage = () => {
         "Internal and external leadership communications to drive engagement"
       ],
       outcome: "The company shifted from a downward spiral to sustained growth, ultimately being acquired at a significant premium.",
-      image: "https://images.pexels.com/photos/4342498/pexels-photo-4342498.jpeg", 
+      image: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/xve7cseq_4.png", 
       icon: <Target size={24} />,
       color: "from-blue-500 to-indigo-600"
     },
