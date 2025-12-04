@@ -184,8 +184,8 @@ const NewsroomDetailPage = () => {
                   }}
                 >
                   {article.body_of_blog
-                    .replace(/\*\*(.+?)\s+\*\*/g, '**$1**')
-                    .replace(/_(.+?)\s+_/g, '_$1_')
+                    .replace(/\*\*([^\n*]+?)\s+\*\*/g, '**$1**')
+                    .replace(/_([^\n_]+?)\s+_/g, '_$1_')
                   }
                 </ReactMarkdown>
               </div>
