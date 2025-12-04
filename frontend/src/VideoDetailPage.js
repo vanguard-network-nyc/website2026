@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import Breadcrumb from './Breadcrumb';
 import { ArrowLeft, User, Tag, Calendar, Play } from 'lucide-react';
 
 const VideoDetailPage = () => {
