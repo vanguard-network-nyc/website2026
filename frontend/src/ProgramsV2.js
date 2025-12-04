@@ -129,7 +129,7 @@ const ProgramsV2 = () => {
       level: "Executive",
       status: "Enrollment Open",
       image: "/risk-management-program.jpg",
-      backgroundImage: "https://images.pexels.com/photos/34991887/pexels-photo-34991887.jpeg",
+      backgroundImage: "https://images.pexels.com/photos/18069160/pexels-photo-18069160.png",
       duration: "Annual Membership",
       participants: "Senior Risk Leaders",
       features: ["Monthly Virtual Exchanges", "Guest Expert Insights", "Confidential Peer Discussions", "Actionable Playbooks"],
