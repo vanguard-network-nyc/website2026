@@ -312,7 +312,7 @@ const NetworkingV2Page = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
-            Apply for Membership
+            Apply to Join
             <ArrowRight size={20} />
           </motion.a>
         </motion.div>
@@ -613,7 +613,7 @@ const NetworkingV2Page = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
-            Apply for Membership
+            Apply to Join
             <ArrowRight size={20} />
           </motion.a>
         </motion.div>
