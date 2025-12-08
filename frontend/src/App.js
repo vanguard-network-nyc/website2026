@@ -28,6 +28,7 @@ import NewsroomDetailPage from './NewsroomDetailPage';
 import MembershipApplicationPage from './MembershipApplicationPage';
 import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
+import BackToTopButton from './ScrollToTop';
 
 // ScrollToTop component to handle scroll restoration on route change
 function ScrollToTop() {
