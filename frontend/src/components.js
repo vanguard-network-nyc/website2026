@@ -1308,17 +1308,17 @@ const AdvisoryPage = () => {
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                    alt="Client testimonial"
-                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/wctgezyh_Jim%20Jenson.jpg"
+                    alt="Jim Jenson testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
                   <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                    "The coaching approach helped me develop more effective decision-making skills and significantly improved how I develop my team. The insights were practical and immediately applicable."
+                    "Too often in my experience, consultants deliver generic advice -- or recommendations that are disconnected from our reality. Vanguard is different. An hour of Ken's time can be worth several days of conventional consulting."
                   </blockquote>
-                  <div className="text-slate-900 font-bold">Michael Chen</div>
-                  <div className="text-slate-600 text-sm">Chief Operating Officer, Global Manufacturing Corp</div>
+                  <div className="text-slate-900 font-bold">Jim Jenson</div>
+                  <div className="text-slate-600 text-sm">CEO, Morphoceuticals</div>
                 </div>
               </div>
             </motion.div>
