@@ -1381,7 +1381,7 @@ const AdvisoryPage = () => {
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
                   <img 
-                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/m59dager_Ram2.0.png"
+                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/kzouq217_Ram.jpeg"
                     alt="Ram Charan testimonial"
                     className="w-20 h-20 rounded-full object-cover shadow-lg"
                   />
