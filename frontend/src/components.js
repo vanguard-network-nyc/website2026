@@ -1381,17 +1381,17 @@ const AdvisoryPage = () => {
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
                   <img 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
-                    alt="Client testimonial"
-                    className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/3r0sk2lj_Ram2.0.png"
+                    alt="Ram Charan testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
                   <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                    "Having Ken and Richard as strategic sounding boards has been invaluable during critical decision-making moments. Their experience and perspective helped me navigate complex stakeholder challenges with confidence."
+                    "Asking the right questions is often the most important role a trusted advisor can play. Not many consultants have this capability. Ken Banta is world-class."
                   </blockquote>
-                  <div className="text-slate-900 font-bold">Sarah Rodriguez</div>
-                  <div className="text-slate-600 text-sm">Chief Executive Officer, TechForward Solutions</div>
+                  <div className="text-slate-900 font-bold">Ram Charan</div>
+                  <div className="text-slate-600 text-sm">Business Consultant and Best-Selling Author, Charan Associates</div>
                 </div>
               </div>
             </motion.div>
