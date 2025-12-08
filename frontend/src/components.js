@@ -4293,7 +4293,7 @@ const NewWhatWeDoSection = () => {
             What Makes Us Different
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our peer-to-peer networks or supporting your business.
+            Like you, we know that AI and new technologies are simply tools. The real differentiator in exceptional leadership is 'the human factor'. That's why we focus on people, whether in our peer-to-peer networks or supporting your business.
           </p>
         </motion.div>
 
