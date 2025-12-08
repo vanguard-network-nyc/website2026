@@ -193,6 +193,11 @@ const NewsroomDetailPage = () => {
                     text = text.replace(/_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, ', _[$1]($2)_');
                     text = text.replace(/(\w)_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, '$1, _[$2]($3)_');
                     
+                    // Fix bold markers with trailing space: "**text **" -> "**text**"
+                    // Markdown requires no space before closing ** for bold to work
+                    text = text.replace(/\s+\*\*(\s*)$/gm, '**$1');
+                    text = text.replace(/\s+\*\*(\n)/g, '**$1');
+                    
                     return text;
                   })()}
                 </ReactMarkdown>
