@@ -1,10 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Breadcrumb from './Breadcrumb';
-import { ArrowLeft, User, Tag, Calendar, FileText } from 'lucide-react';
+import { User, Tag, Calendar, FileText } from 'lucide-react';
+
+// Define markdown components outside the component to avoid re-creation on each render
+const teaserComponents = {
+  p: (props) => <p className="mb-4" {...props} />,
+  strong: (props) => <strong className="font-bold" {...props} />,
+  em: (props) => <em className="italic" {...props} />,
+};
+
+const bodyComponents = {
+  p: (props) => <p className="mb-4 text-slate-700 leading-relaxed whitespace-pre-line" {...props} />,
+  strong: (props) => <strong className="font-bold" {...props} />,
+  em: (props) => <em className="italic" {...props} />,
+  ul: (props) => <ul className="list-disc ml-6 mb-4" {...props} />,
+  ol: (props) => <ol className="list-decimal ml-6 mb-4" {...props} />,
+  li: (props) => <li className="mb-2" {...props} />,
+  h1: (props) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+  h2: (props) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
+  h3: (props) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
+  a: (props) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+  blockquote: (props) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
+  br: () => <br />,
+};
+
+// Helper function to preprocess markdown text
+const preprocessMarkdown = (text) => {
+  if (!text) return '';
+  let processed = text;
+  
+  // Fix malformed italics around links: "word_, [link text](url)_" -> "word, _[link text](url)_"
+  processed = processed.replace(/_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, ', _[$1]($2)_');
+  processed = processed.replace(/(\w)_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, '$1, _[$2]($3)_');
+  
+  // Fix bold markers with trailing space: "**text **" -> "**text**"
+  processed = processed.replace(/\s+\*\*(\s*)$/gm, '**$1');
+  processed = processed.replace(/\s+\*\*(\n)/g, '**$1');
+  
+  return processed;
+};
 
 const NewsroomDetailPage = () => {
   const { id } = useParams();
@@ -12,18 +50,11 @@ const NewsroomDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (id) {
-      fetchNewsroomItem();
-    }
-  }, [id]);
-
-  const fetchNewsroomItem = async () => {
+  const fetchNewsroomItem = useCallback(async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       
-      // Fetch from newsroom API only
       const response = await fetch(`${backendUrl}/api/newsroom/${id}`);
         
       if (!response.ok) {
@@ -44,7 +75,13 @@ const NewsroomDetailPage = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      fetchNewsroomItem();
+    }
+  }, [id, fetchNewsroomItem]);
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -54,7 +91,7 @@ const NewsroomDetailPage = () => {
         month: 'long',
         day: 'numeric'
       });
-    } catch (error) {
+    } catch (err) {
       return dateString;
     }
   };
@@ -140,13 +177,7 @@ const NewsroomDetailPage = () => {
             {/* Description */}
             {article.description_teaser && (
               <div className="text-xl text-slate-600 mb-8 leading-relaxed font-light prose prose-xl max-w-none">
-                <ReactMarkdown
-                  components={{
-                    p: ({node, ...props}) => <p className="mb-4" {...props} />,
-                    strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
-                    em: ({node, ...props}) => <em className="italic" {...props} />,
-                  }}
-                >
+                <ReactMarkdown components={teaserComponents}>
                   {article.description_teaser}
                 </ReactMarkdown>
               </div>
@@ -170,36 +201,9 @@ const NewsroomDetailPage = () => {
               <div className="prose prose-lg max-w-none mb-8">
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
-                  components={{
-                    p: ({node, ...props}) => <p className="mb-4 text-slate-700 leading-relaxed whitespace-pre-line" {...props} />,
-                    strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
-                    em: ({node, ...props}) => <em className="italic" {...props} />,
-                    ul: ({node, ...props}) => <ul className="list-disc ml-6 mb-4" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal ml-6 mb-4" {...props} />,
-                    li: ({node, ...props}) => <li className="mb-2" {...props} />,
-                    h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
-                    h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
-                    h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
-                    a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
-                    blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
-                    br: () => <br />,
-                  }}
+                  components={bodyComponents}
                 >
-                  {(() => {
-                    let text = article.body_of_blog;
-                    
-                    // Fix malformed italics around links: "word_, [link text](url)_" -> "word, _[link text](url)_"
-                    // This handles cases where underscore is incorrectly placed before the link opening bracket
-                    text = text.replace(/_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, ', _[$1]($2)_');
-                    text = text.replace(/(\w)_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, '$1, _[$2]($3)_');
-                    
-                    // Fix bold markers with trailing space: "**text **" -> "**text**"
-                    // Markdown requires no space before closing ** for bold to work
-                    text = text.replace(/\s+\*\*(\s*)$/gm, '**$1');
-                    text = text.replace(/\s+\*\*(\n)/g, '**$1');
-                    
-                    return text;
-                  })()}
+                  {preprocessMarkdown(article.body_of_blog)}
                 </ReactMarkdown>
               </div>
             )}
