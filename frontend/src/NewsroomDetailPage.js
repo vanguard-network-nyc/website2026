@@ -185,7 +185,16 @@ const NewsroomDetailPage = () => {
                     br: () => <br />,
                   }}
                 >
-                  {article.body_of_blog}
+                  {(() => {
+                    let text = article.body_of_blog;
+                    
+                    // Fix italic markers: ensure proper spacing around underscores for markdown parsing
+                    // Pattern: "word_ _word" or "word_word_" should become "word _word_ "
+                    text = text.replace(/(\w)_\s+_(\w)/g, '$1 _$2_');
+                    text = text.replace(/(\w)_(\w)_/g, '$1 _$2_');
+                    
+                    return text;
+                  })()}
                 </ReactMarkdown>
               </div>
             )}
