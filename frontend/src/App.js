@@ -156,6 +156,7 @@ function App() {
           </Routes>
         </AnimatePresence>
         <Footer />
+        <BackToTopButton />
       </div>
     </Router>
   );
