@@ -1489,17 +1489,17 @@ const AdvisoryPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHw0fHxjb3Jwb3JhdGUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTgwNTIzOTh8MA&ixlib=rb-4.1.0&q=85"
-                  alt="Client testimonial"
-                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                  src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/xlsk8jvy_Mohamed%20Ladha.jpeg"
+                  alt="Mohamed Ladha testimonial"
+                  className="w-20 h-20 rounded-full object-cover shadow-lg"
                 />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                  "The Vanguard Network's transformation approach helped us shift our entire organizational culture. Their practical methodology and hands-on guidance enabled sustainable change that our employees embraced rather than resisted."
+                  "Ken and his team at Vanguard played a very important role in building alignment on our leadership team and assisting me to further build my CEO bandwidth -- all in a lean and focused fashion."
                 </blockquote>
-                <div className="text-slate-900 font-bold">Jennifer Thompson</div>
-                <div className="text-slate-600 text-sm">Chief Transformation Officer, GlobalTech Innovations</div>
+                <div className="text-slate-900 font-bold">Mohamed Ladha</div>
+                <div className="text-slate-600 text-sm">President and General Manager, North America, Recordati Rare Diseases</div>
               </div>
             </div>
           </motion.div>
