@@ -1596,17 +1596,17 @@ const AdvisoryPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1642257859842-c95f9fa8121d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwzfHxjb3Jwb3JhdGUlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTgwNTIzOTh8MA&ixlib=rb-4.1.0&q=85"
-                  alt="Client testimonial"
-                  className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                  src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/0g7g48xr_goodman_mark_lo1.jpg"
+                  alt="Mark Goodman testimonial"
+                  className="w-20 h-20 rounded-full object-cover shadow-lg"
                 />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                  "The client engagement programs transformed how we interact with our key stakeholders. We moved from being seen as vendors to becoming trusted strategic partners. The ROI has been exceptional and lasting."
+                  "It's remarkable, but TVN does it: By facilitating close, substantive interactions on a regular basis, TVN helps our firm ensure that general counsels always view us as a trusted peer and partner and never as a vendor."
                 </blockquote>
-                <div className="text-slate-900 font-bold">Marcus Williams</div>
-                <div className="text-slate-600 text-sm">Chief Client Officer, Pinnacle Advisory Group</div>
+                <div className="text-slate-900 font-bold">Mark Goodman</div>
+                <div className="text-slate-600 text-sm">Partner, Debevoise & Plimpton</div>
               </div>
             </div>
           </motion.div>
