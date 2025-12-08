@@ -1855,7 +1855,7 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Join the 200+ CEOs and C-suite executives who trust The Vanguard Network for their leadership development and strategic guidance.
+            Join the 2,000+ CEOs and C-suite executives who trust The Vanguard Network for their leadership development and strategic guidance.
           </p>
           <Link to="/contact">
             <motion.button
