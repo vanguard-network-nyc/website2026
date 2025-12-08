@@ -188,10 +188,10 @@ const NewsroomDetailPage = () => {
                   {(() => {
                     let text = article.body_of_blog;
                     
-                    // Fix italic markers: ensure proper spacing around underscores for markdown parsing
-                    // Pattern: "word_ _word" or "word_word_" should become "word _word_ "
-                    text = text.replace(/(\w)_\s+_(\w)/g, '$1 _$2_');
-                    text = text.replace(/(\w)_(\w)_/g, '$1 _$2_');
+                    // Fix malformed italics around links: "word_, [link text](url)_" -> "word, _[link text](url)_"
+                    // This handles cases where underscore is incorrectly placed before the link opening bracket
+                    text = text.replace(/_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, ', _[$1]($2)_');
+                    text = text.replace(/(\w)_,\s*\[([^\]]+)\]\(([^)]+)\)_/g, '$1, _[$2]($3)_');
                     
                     return text;
                   })()}
