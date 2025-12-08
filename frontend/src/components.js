@@ -2405,7 +2405,7 @@ const ProgramsPage = () => {
           >
             {[
               { label: "Active Programs", value: "5+", icon: <Award size={24} /> },
-              { label: "Program Participants", value: "200+", icon: <Users size={24} /> },
+              { label: "Program Participants", value: "2,000+", icon: <Users size={24} /> },
               { label: "Success Rate", value: "95%", icon: <Target size={24} /> }
             ].map((stat, index) => (
               <div key={stat.label} className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40">
