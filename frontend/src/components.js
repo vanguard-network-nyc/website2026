@@ -1694,7 +1694,7 @@ const AdvisoryPage = () => {
                 transition={{ delay: 0.6, duration: 0.5 }}
                 className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
               >
-                200+
+                2,000+
               </motion.div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">CEOs & C-Suite Executives</h3>
               <p className="text-slate-600 font-medium text-lg mb-6">In our network participating in ongoing catalyzing conversations</p>
