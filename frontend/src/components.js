@@ -1384,6 +1384,7 @@ const AdvisoryPage = () => {
                     src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/3r0sk2lj_Ram2.0.png"
                     alt="Ram Charan testimonial"
                     className="w-20 h-20 rounded-full object-cover shadow-lg"
+                    style={{ objectPosition: 'left center' }}
                   />
                 </div>
                 <div className="flex-1 text-center md:text-left">
