@@ -123,8 +123,8 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#01C219] to-[#047857]'
     },
     {
-      title: "AI Chat Bot 'Elsie'",
-      description: "Search our leadership knowledge database using our AI Bot 'Elsie' to get insights from top leaders on almost any leadership topic.",
+      title: "Digital Assistant 'Elsie'",
+      description: "Search our leadership knowledge database using our Digital Assistant 'Elsie' to get insights from top leaders on almost any leadership topic.",
       icon: <Bot size={32} />,
       gradient: 'from-[#FF6D00] to-[#d97706]'
     }
