@@ -1249,7 +1249,7 @@ const AdvisoryPage = () => {
           <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
           <div className="px-4 sm:px-6 lg:px-8">
             {/* Strategic Counsel Title */}
-            <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">STRATEGIC COUNSEL</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">Strategic Counsel</h2>
             
             {/* Coaching Subsection */}
             <div className="mb-12">
