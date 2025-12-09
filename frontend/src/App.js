@@ -23,7 +23,6 @@ import LawAssociatesPage from './LawAssociatesPage';
 import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
-import NewsroomArticlePage from './NewsroomArticlePage';
 import NewsroomDetailPage from './NewsroomDetailPage';
 import MembershipApplicationPage from './MembershipApplicationPage';
 import PrivacyPage from './PrivacyPage';
