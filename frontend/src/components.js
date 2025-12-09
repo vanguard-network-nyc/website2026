@@ -2362,6 +2362,11 @@ const NewStatsSection = () => {
             </motion.div>
           ))}
         </div>
+        <div className="text-right mt-6">
+          <p className="text-sm italic text-slate-500">
+            *Data current as of November 2025. Figures are updated quarterly.
+          </p>
+        </div>
       </div>
     </section>
   );
