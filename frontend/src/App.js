@@ -43,11 +43,6 @@ function ScrollToTop() {
 
 const {
   Header,
-  Hero,
-  ServicesSection,
-  TestimonnialSection,
-  VideoTestimonial,
-  ProgramsSection,
   Footer,
   AdvisoryPage,
   TeamPage,
@@ -56,14 +51,8 @@ const {
   NewHero,
   NewStatsSection,
   NewWhatWeDoSection,
-  OriginalWhatWeDoSection,
   NewAboutSection,
-  SubstackPostsSection,
-  NewSpecializedGroupsSection,
-  NewIntegrationSection,
   NewContentLibrarySection,
-  ExecutiveNetworksSection,
-  LeadershipAdvisorySection,
   VideoQuoteSection,
   NewsroomSliderSection
 } = Components;
