@@ -1174,7 +1174,7 @@ const AdvisoryPage = () => {
 
             {/* Organizational Transformation Tab */}
             <motion.button
-              onClick={() => setActiveTab('organizational')}
+              onClick={() => handleTabChange('organizational')}
               whileHover={{ scale: activeTab !== 'organizational' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
               className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
