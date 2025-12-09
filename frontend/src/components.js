@@ -2272,6 +2272,49 @@ const NetworkingPage = () => (
 const ProgramsPage = () => {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
   const [selectedLevel, setSelectedLevel] = React.useState('All');
+  const [activeSection, setActiveSection] = React.useState('current'); // 'current' or 'customized'
+
+  // Map section keys to their corresponding hash IDs
+  const sectionToHash = {
+    'current': 'current-programs',
+    'customized': 'customized-solutions'
+  };
+
+  // Handle section change and update URL hash
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    const hash = sectionToHash[section];
+    if (hash) {
+      window.history.replaceState(null, '', `#${hash}`);
+    }
+    // Scroll to the programs section
+    setTimeout(() => {
+      const element = document.getElementById('programs-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
+  React.useEffect(() => {
+    // Handle hash navigation on page load
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      if (id === 'current-programs') {
+        setActiveSection('current');
+      } else if (id === 'customized-solutions') {
+        setActiveSection('customized');
+      }
+      // Scroll to the programs section after a short delay
+      setTimeout(() => {
+        const element = document.getElementById('programs-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }, []);
   
   const programs = [
     {
