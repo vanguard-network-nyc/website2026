@@ -11,7 +11,7 @@ const NotFoundPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-20 min-h-screen"
       style={{
-        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+        background: 'linear-gradient(135deg, rgba(4, 81, 132, 0.06), rgba(0, 168, 225, 0.06))'
       }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
