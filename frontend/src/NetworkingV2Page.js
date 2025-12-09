@@ -13,7 +13,6 @@ import {
   BookOpen,
   Video,
   Bot,
-  Newspaper,
   ArrowRight,
   Mail,
   Phone,
