@@ -1137,7 +1137,7 @@ const AdvisoryPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3">
             {/* Strategic Counsel Tab */}
             <motion.button
-              onClick={() => setActiveTab('strategic')}
+              onClick={() => handleTabChange('strategic')}
               whileHover={{ scale: activeTab !== 'strategic' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
               className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
