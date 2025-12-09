@@ -287,7 +287,7 @@ const ProgramsV2 = () => {
         {/* Combined Programs Section with Tabs */}
         <div className="mb-16">
           {/* Tab Navigation Block */}
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
+          <div id="programs-tabs-section" className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12" style={{ scrollMarginTop: '100px' }}>
             <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
               <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
                 Click below to explore our programs
@@ -296,7 +296,7 @@ const ProgramsV2 = () => {
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Current Leadership Programs Tab */}
               <motion.button
-                onClick={() => setActiveTab('current')}
+                onClick={() => handleTabChange('current')}
                 whileHover={{ scale: activeTab !== 'current' ? 1.02 : 1 }}
                 whileTap={{ scale: 0.98 }}
                 className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
@@ -333,7 +333,7 @@ const ProgramsV2 = () => {
 
               {/* Customized Leadership Solutions Tab */}
               <motion.button
-                onClick={() => setActiveTab('customized')}
+                onClick={() => handleTabChange('customized')}
                 whileHover={{ scale: activeTab !== 'customized' ? 1.02 : 1 }}
                 whileTap={{ scale: 0.98 }}
                 className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
