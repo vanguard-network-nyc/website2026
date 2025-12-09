@@ -972,60 +972,6 @@ const Footer = () => {
 };
 
 // Additional Pages
-const AboutPage = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
-  >
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-5xl font-bold text-slate-900 mb-6">About The Vanguard Network</h1>
-        <p className="text-xl text-slate-600 leading-relaxed">
-          Transforming leadership through innovation, expertise, and community.
-        </p>
-      </motion.div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1573496130103-a442a3754d0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxsZWFkZXJzaGlwJTIwZGV2ZWxvcG1lbnR8ZW58MHx8fGJsdWV8MTc1MDgzOTA3Nnww&ixlib=rb-4.1.0&q=85"
-            alt="About Us"
-            className="w-full rounded-xl shadow-lg"
-          />
-        </motion.div>
-        
-        <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Mission</h2>
-          <p className="text-slate-600 mb-6 leading-relaxed">
-            At The Vanguard Network, we believe that exceptional leadership is the cornerstone of organizational success. 
-            Our mission is to develop high-performance leaders who can navigate complexity, inspire teams, and drive 
-            meaningful change in their organizations.
-          </p>
-          <p className="text-slate-600 leading-relaxed">
-            Through our comprehensive advisory services, exclusive networking opportunities, and innovative programs, 
-            we empower current and future executives to reach their full potential and create lasting impact.
-          </p>
-        </motion.div>
-      </div>
-    </div>
-  </motion.div>
-);
-
 const AdvisoryPage = () => {
   const [activeTab, setActiveTab] = useState('strategic'); // 'strategic', 'organizational', 'client'
 
