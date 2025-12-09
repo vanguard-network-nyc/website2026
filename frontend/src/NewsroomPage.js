@@ -242,7 +242,7 @@ const NewsroomPage = () => {
             {/* Results Count */}
             <div className="text-center mt-4">
               <p className="text-slate-600">
-                Showing {filteredArticles.length} of {newsArticles.length} article{newsArticles.length !== 1 ? 's' : ''}
+                Showing {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, filteredArticles.length)} of {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''}
                 {searchTerm && ` for "${searchTerm}"`}
                 {selectedType !== 'All' && ` in ${selectedType}`}
               </p>
