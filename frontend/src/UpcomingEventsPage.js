@@ -488,7 +488,7 @@ const UpcomingEventsPage = () => {
                     <div className="p-6 flex flex-col flex-grow">
                       {/* Content Area - grows to fill available space */}
                       <div className="flex-grow">
-                        <h3 className="text-[17px] font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-[#045184] transition-colors leading-tight">
+                        <h3 className="text-[17px] font-bold text-slate-900 mb-3 line-clamp-3 group-hover:text-[#045184] transition-colors leading-tight">
                           {formatEventTitle(event.event_title)}
                         </h3>
                         
