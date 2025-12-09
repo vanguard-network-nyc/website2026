@@ -1211,7 +1211,7 @@ const AdvisoryPage = () => {
 
             {/* Client and Stakeholder Engagement Tab */}
             <motion.button
-              onClick={() => setActiveTab('client')}
+              onClick={() => handleTabChange('client')}
               whileHover={{ scale: activeTab !== 'client' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
               className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
