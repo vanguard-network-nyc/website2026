@@ -9,7 +9,10 @@ const NotFoundPage = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-40 pb-20 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+      className="pt-40 pb-20 min-h-screen"
+      style={{
+        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+      }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
