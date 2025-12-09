@@ -1029,6 +1029,22 @@ const AboutPage = () => (
 const AdvisoryPage = () => {
   const [activeTab, setActiveTab] = useState('strategic'); // 'strategic', 'organizational', 'client'
 
+  // Map tab keys to their corresponding hash IDs
+  const tabToHash = {
+    'strategic': 'strategic-counsel',
+    'organizational': 'organizational-transformation',
+    'client': 'client-and-stakeholder-engagement'
+  };
+
+  // Handle tab change and update URL hash
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    const hash = tabToHash[tab];
+    if (hash) {
+      window.history.replaceState(null, '', `#${hash}`);
+    }
+  };
+
   useEffect(() => {
     // Handle hash navigation on page load
     const hash = window.location.hash;
@@ -1042,6 +1058,13 @@ const AdvisoryPage = () => {
       } else if (id === 'client-and-stakeholder-engagement') {
         setActiveTab('client');
       }
+      // Scroll to the services section after a short delay
+      setTimeout(() => {
+        const element = document.getElementById('advisory-services-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
     }
   }, []);
 
