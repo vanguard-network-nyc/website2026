@@ -2928,6 +2928,7 @@ const ProgramsPage = () => {
           ))}
         </div>
       </motion.div>
+      )}
 
       {/* Enhanced Call to Action */}
       <motion.div
