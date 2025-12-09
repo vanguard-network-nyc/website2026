@@ -2551,7 +2551,100 @@ const ProgramsPage = () => {
           </div>
         </motion.div>
 
+        {/* Programs Section Navigation Tabs */}
+        <div id="programs-section" className="mb-12" style={{ scrollMarginTop: '100px' }}>
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
+              <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
+                Click below to explore our programs
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Current Programs Tab */}
+              <motion.button
+                onClick={() => handleSectionChange('current')}
+                whileHover={{ scale: activeSection !== 'current' ? 1.02 : 1 }}
+                whileTap={{ scale: 0.98 }}
+                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
+                  activeSection === 'current'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                    : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Award size={28} className={activeSection === 'current' ? 'text-white' : 'text-[#045184]'} />
+                      <h3 className={`text-2xl font-bold ${activeSection === 'current' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                        Current Programs
+                      </h3>
+                    </div>
+                    <p className={`text-base mb-2 ${activeSection === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
+                      Structured exchanges and development programs for leaders at every level.
+                    </p>
+                  </div>
+                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeSection !== 'current' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={28} className={activeSection === 'current' ? 'text-white' : 'text-[#00A8E1]'} />
+                  </div>
+                </div>
+                {activeSection === 'current' && (
+                  <div className="mt-3 flex items-center text-sm text-white/80">
+                    <CheckCircle2 size={16} className="mr-2" />
+                    Currently viewing
+                  </div>
+                )}
+                {activeSection !== 'current' && (
+                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                    Click to view details →
+                  </div>
+                )}
+              </motion.button>
+
+              {/* Customized Solutions Tab */}
+              <motion.button
+                onClick={() => handleSectionChange('customized')}
+                whileHover={{ scale: activeSection !== 'customized' ? 1.02 : 1 }}
+                whileTap={{ scale: 0.98 }}
+                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+                  activeSection === 'customized'
+                    ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                    : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
+                }`}
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Target size={28} className={activeSection === 'customized' ? 'text-white' : 'text-[#00A8E1]'} />
+                      <h3 className={`text-2xl font-bold ${activeSection === 'customized' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                        Customized Solutions
+                      </h3>
+                    </div>
+                    <p className={`text-base mb-2 ${activeSection === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
+                      Tailored programs designed for your organization's unique leadership challenges.
+                    </p>
+                  </div>
+                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeSection !== 'customized' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={28} className={activeSection === 'customized' ? 'text-white' : 'text-[#00A8E1]'} />
+                  </div>
+                </div>
+                {activeSection === 'customized' && (
+                  <div className="mt-3 flex items-center text-sm text-white/80">
+                    <CheckCircle2 size={16} className="mr-2" />
+                    Currently viewing
+                  </div>
+                )}
+                {activeSection !== 'customized' && (
+                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                    Click to view details →
+                  </div>
+                )}
+              </motion.button>
+            </div>
+          </div>
+        </div>
+
         {/* Current Leadership Programs Section */}
+        {activeSection === 'current' && (
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
