@@ -2270,9 +2270,9 @@ const NetworkingPage = () => (
 );
 
 const ProgramsPage = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState('All');
-  const [selectedLevel, setSelectedLevel] = React.useState('All');
-  const [activeSection, setActiveSection] = React.useState('current'); // 'current' or 'customized'
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedLevel, setSelectedLevel] = useState('All');
+  const [activeSection, setActiveSection] = useState('current'); // 'current' or 'customized'
 
   // Map section keys to their corresponding hash IDs
   const sectionToHash = {
@@ -2297,7 +2297,7 @@ const ProgramsPage = () => {
   };
 
   // Handle hash navigation on page load
-  React.useEffect(() => {
+  useEffect(() => {
     const hash = window.location.hash;
     console.log('ProgramsPage useEffect - hash:', hash);
     if (hash) {
