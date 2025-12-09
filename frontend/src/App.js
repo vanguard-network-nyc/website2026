@@ -126,7 +126,6 @@ function App() {
             <Route path="/networking" element={<NetworkingV2Page />} />
             <Route path="/programs" element={<ProgramsV2 />} />
             <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
-            <Route path="/content" element={<ContentPage />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/article/:id" element={<ArticleDetailPage />} />
             <Route path="/podcasts" element={<PodcastsPage />} />
