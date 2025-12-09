@@ -1099,7 +1099,7 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Three Approaches Section with Tabs */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="advisory-services-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '100px' }}>
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
