@@ -148,8 +148,10 @@ const NewsroomPage = () => {
     }
   };
 
-  // Use filtered articles from Airtable
-  const displayArticles = filteredArticles;
+  // Calculate pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const displayArticles = filteredArticles.slice(indexOfFirstItem, indexOfLastItem);
 
   if (loading) {
     return (
