@@ -2299,11 +2299,15 @@ const ProgramsPage = () => {
   // Handle hash navigation on page load
   React.useEffect(() => {
     const hash = window.location.hash;
+    console.log('ProgramsPage useEffect - hash:', hash);
     if (hash) {
       const id = hash.replace('#', '');
+      console.log('ProgramsPage useEffect - id:', id);
       if (id === 'current-programs') {
+        console.log('Setting activeSection to current');
         setActiveSection('current');
       } else if (id === 'customized-solutions') {
+        console.log('Setting activeSection to customized');
         setActiveSection('customized');
       }
       // Scroll to the programs section after a short delay
