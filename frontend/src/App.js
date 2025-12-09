@@ -144,7 +144,6 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
             <Route path="/newsroom" element={<NewsroomPage />} />
-            <Route path="/newsroom/:slug" element={<NewsroomArticlePage />} />
             <Route path="/newsroom-item/:id" element={<NewsroomDetailPage />} />
             <Route path="/application" element={<MembershipApplicationPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
