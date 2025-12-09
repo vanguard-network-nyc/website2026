@@ -2272,17 +2272,7 @@ const NetworkingPage = () => (
 const ProgramsPage = () => {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
   const [selectedLevel, setSelectedLevel] = React.useState('All');
-  
-  // Initialize activeSection based on URL hash
-  const getInitialSection = () => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash.replace('#', '');
-      if (hash === 'customized-solutions') return 'customized';
-    }
-    return 'current';
-  };
-  
-  const [activeSection, setActiveSection] = React.useState(getInitialSection);
+  const [activeSection, setActiveSection] = React.useState('current'); // 'current' or 'customized'
 
   // Map section keys to their corresponding hash IDs
   const sectionToHash = {
@@ -2306,17 +2296,23 @@ const ProgramsPage = () => {
     }, 100);
   };
 
+  // Handle hash navigation on page load
   React.useEffect(() => {
-    // Handle hash navigation on page load - scroll to section if hash present
     const hash = window.location.hash;
     if (hash) {
+      const id = hash.replace('#', '');
+      if (id === 'current-programs') {
+        setActiveSection('current');
+      } else if (id === 'customized-solutions') {
+        setActiveSection('customized');
+      }
       // Scroll to the programs section after a short delay
       setTimeout(() => {
         const element = document.getElementById('programs-section');
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 300);
+      }, 100);
     }
   }, []);
   
