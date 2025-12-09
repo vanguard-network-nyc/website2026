@@ -2339,7 +2339,7 @@ const NewStatsSection = () => {
     <section 
       className="py-16"
       style={{
-        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+        background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2624,7 +2624,7 @@ const VideoQuoteSection = () => {
     <section 
       className="py-24"
       style={{
-        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+        background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2690,7 +2690,7 @@ const NewAboutSection = () => {
     <section 
       className="py-24"
       style={{
-        background: 'linear-gradient(45deg, rgba(127, 48, 203, 0.12), rgba(1, 220, 186, 0.12))'
+        background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
