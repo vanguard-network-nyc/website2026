@@ -2763,8 +2763,10 @@ const ProgramsPage = () => {
             </div>
           )}
         </motion.div>
+        )}
 
       {/* Customized Leadership Programs Section */}
+      {activeSection === 'customized' && (
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
