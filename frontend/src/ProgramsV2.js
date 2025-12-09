@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
@@ -29,6 +29,41 @@ const ProgramsV2 = () => {
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('current'); // 'current' or 'customized'
+
+  // Map tab keys to their corresponding hash IDs
+  const tabToHash = {
+    'current': 'current-programs',
+    'customized': 'customized-solutions'
+  };
+
+  // Handle tab change and update URL hash
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    const hash = tabToHash[tab];
+    if (hash) {
+      window.history.replaceState(null, '', `#${hash}`);
+    }
+  };
+
+  // Handle hash navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      if (id === 'current-programs') {
+        setActiveTab('current');
+      } else if (id === 'customized-solutions') {
+        setActiveTab('customized');
+      }
+      // Scroll to the programs section after a short delay
+      setTimeout(() => {
+        const element = document.getElementById('programs-tabs-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }, []);
 
   const currentPrograms = [
     {
