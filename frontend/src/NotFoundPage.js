@@ -100,6 +100,19 @@ const NotFoundPage = () => {
                 Newsroom
               </Link>
             </div>
+            
+            {/* Contact Us */}
+            <div className="mt-6 pt-6 border-t border-slate-200">
+              <p className="text-slate-600 mb-3">
+                Can't find what you're looking for?
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold transition-colors"
+              >
+                Contact Us →
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>
