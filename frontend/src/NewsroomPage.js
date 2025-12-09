@@ -103,6 +103,7 @@ const NewsroomPage = () => {
     }
 
     setFilteredArticles(filtered);
+    setCurrentPage(1); // Reset to first page when filtering changes
   };
 
   const getUniqueTypes = () => {
