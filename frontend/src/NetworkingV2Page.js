@@ -130,25 +130,6 @@ const NetworkingV2Page = () => {
     }
   ];
 
-  const monthlyUpdates = [
-    {
-      title: "Newsroom",
-      description: "Stay updated with the latest news, announcements, and media features from The Vanguard Network.",
-      icon: <Newspaper size={32} />,
-      gradient: 'from-[#00A8E1] to-[#0284c7]',
-      buttonText: "Access Newsroom",
-      link: "/newsroom"
-    },
-    {
-      title: "Unlocking Leadership Series",
-      description: "Exclusive insights from C-suite executives sharing confidential strategies, challenges, and solutions from the boardroom.",
-      icon: <Shield size={32} />,
-      gradient: 'from-[#045184] to-[#0369a1]',
-      buttonText: "View Series",
-      link: "https://members.thevanguardnetwork.com/events?filter-by-Type%20of%20Event=Open%20Webinar&filter-by-Audience%20(Network)=C-Suite"
-    }
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
