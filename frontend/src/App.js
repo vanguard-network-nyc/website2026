@@ -137,6 +137,7 @@ function App() {
             <Route path="/application" element={<MembershipApplicationPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AnimatePresence>
         <Footer />
