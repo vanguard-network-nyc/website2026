@@ -6395,7 +6395,6 @@ const Components = {
   AboutPage,
   AdvisoryPage,
   NetworkingPage,
-  ProgramsPage,
   TeamPage,
   ContactPage,
   BookPage,
