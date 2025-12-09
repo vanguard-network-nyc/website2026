@@ -145,74 +145,8 @@ const NewsroomPage = () => {
     }
   };
 
-  const hardcodedArticles = [
-    {
-      id: 7,
-      title: "Ken Banta, CEO and Founder of The Vanguard Network, Moderates Nantucket Project Discussion on AI and Healthcare",
-      description: "The Vanguard Network announced today that its CEO and founder, Ken Banta, facilitated a dynamic discussion at The Nantucket Project event in New York City.",
-      image: "https://static.wixstatic.com/media/e6a994_b33b414425f3453684365c283a661d22~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_b33b414425f3453684365c283a661d22~mv2.png",
-      date: "September 28, 2024",
-      readTime: "2 min read",
-      link: "/newsroom/ken-banta-moderates-nantucket-project-discussion-on-ai-and-healthcare"
-    },
-    {
-      id: 1,
-      title: "Vanguard Network Launches Next Gen GC Program in Washington, DC",
-      description: "On September 30, 2025, The Vanguard Network launched the inaugural module of its Next Gen GC Program in Washington, DC.",
-      image: "https://static.wixstatic.com/media/e6a994_3924142a7bf2420a89eb36e198270a99~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_3924142a7bf2420a89eb36e198270a99~mv2.webp",
-      date: "September 30, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/vanguard-network-launches-next-gen-gc-program-in-washington-dc"
-    },
-    {
-      id: 2,
-      title: "The Vanguard Network Welcomes E. Leigh Dance as Senior Global Advisor",
-      description: "The Vanguard Network (TVN) is pleased to announce that E. Leigh Dance has joined as Senior Global Advisor, with a focus on expanding and enriching Vanguard's General Counsel Network.",
-      image: "https://static.wixstatic.com/media/e6a994_5397c3a55566443498feaea80adb750c~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_5397c3a55566443498feaea80adb750c~mv2.webp",
-      date: "September 27, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/tvn-welcomes-leigh-dance"
-    },
-    {
-      id: 3,
-      title: "The Vanguard Network Featured on Your Partner In Success Radio",
-      description: "The Vanguard Network is pleased to share that its founder and CEO, Ken Banta, was recently featured on the leadership podcast Your Partner In Success Radio with host Denise Griffitts.",
-      image: "https://static.wixstatic.com/media/e6a994_c58f3de85a63453daab62333cc19ccfa~mv2.jpg/v1/fill/w_271,h_271,fp_0.50_0.50,q_90,enc_avif,quality_auto/e6a994_c58f3de85a63453daab62333cc19ccfa~mv2.webp",
-      date: "September 24, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/the-vanguard-network-featured-on-your-partner-in-success-radio"
-    },
-    {
-      id: 4,
-      title: "The Vanguard Network Featured on Pharm Exec Podcast",
-      description: "Ken Banta discusses leadership development and organizational transformation in the pharmaceutical industry on this leading industry podcast.",
-      image: "https://static.wixstatic.com/media/e6a994_29bbd547e1624bd8b746c48306d3c96e~mv2.webp/v1/fill/w_271,h_271,al_c,q_90,enc_avif,quality_auto/e6a994_29bbd547e1624bd8b746c48306d3c96e~mv2.webp",
-      date: "September 20, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/the-vanguard-network-featured-on-pharm-exec-podcast"
-    },
-    {
-      id: 5,
-      title: "The Vanguard Network Featured on Skot Waldron Podcast",
-      description: "Executive leadership insights shared by The Vanguard Network on Skot Waldron's leadership development podcast series.",
-      image: "https://static.wixstatic.com/media/e6a994_26e53e3a3fbe48b79aa9d011c1e3be03~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_26e53e3a3fbe48b79aa9d011c1e3be03~mv2.png",
-      date: "September 15, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/the-vanguard-network-featured-on-skot-waldron-podcast"
-    },
-    {
-      id: 6,
-      title: "The Vanguard Network Featured on The Daily Helping Podcast",
-      description: "Ken Banta shares insights on leadership excellence and organizational transformation on The Daily Helping podcast with host Dr. Sherry Walling.",
-      image: "https://static.wixstatic.com/media/e6a994_1e187b6933204c23a867e0968a191f36~mv2.png/v1/fill/w_271,h_271,fp_0.50_0.50,q_95,enc_avif,quality_auto/e6a994_1e187b6933204c23a867e0968a191f36~mv2.png",
-      date: "September 10, 2024",
-      readTime: "1 min read",
-      link: "/newsroom/the-vanguard-network-featured-on-the-daily-helping-podcast"
-    }
-  ];
-
-  // Use fetched articles if available, otherwise fall back to hardcoded articles
-  const displayArticles = newsArticles.length > 0 ? filteredArticles : hardcodedArticles;
+  // Use filtered articles from Airtable
+  const displayArticles = filteredArticles;
 
   if (loading) {
     return (
