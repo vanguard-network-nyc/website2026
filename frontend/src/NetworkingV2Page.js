@@ -209,7 +209,7 @@ const NetworkingV2Page = () => {
             href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
             Apply to Join
             <ArrowRight size={20} />
@@ -444,7 +444,7 @@ const NetworkingV2Page = () => {
             href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
             Apply to Join
             <ArrowRight size={20} />
