@@ -2665,8 +2665,12 @@ const VideoQuoteSection = () => {
                 "Our sole focus is unlocking high-performance leadership, so that's why we don't take the cookie-cutter approach."
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center text-white text-2xl font-bold">
-                  KB
+                <div className="w-16 h-16 rounded-full overflow-hidden shadow-md">
+                  <img 
+                    src="/ken-banta.jpg" 
+                    alt="Ken Banta" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <p className="font-bold text-lg text-slate-900">Ken Banta</p>
