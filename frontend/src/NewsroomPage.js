@@ -182,14 +182,6 @@ const NewsroomPage = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-4 mb-8">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="w-20 h-20 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center shadow-xl"
-            >
-              <Newspaper size={40} className="text-white" />
-            </motion.div>
             <h1 
               className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
             >
