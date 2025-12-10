@@ -22,9 +22,9 @@ const GlobalCounselLeadersPage = () => {
           <div className="mb-8">
             <div className="bg-slate-800 rounded-lg p-6 inline-block mb-6">
               <img
-                src="https://static.wixstatic.com/media/e6a994_bd455b954f66416bbe659fd0d75d691a~mv2.png/v1/fill/w_598,h_58,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL%2BPowered%2BBy%2BLogo%2BHorizontal%2BKO-1000_edited.png"
-                alt="Global Counsel Leaders powered by The Vanguard Network"
-                className="h-16"
+                src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
+                alt="Global Counsel Leaders"
+                className="h-12"
               />
             </div>
           </div>
