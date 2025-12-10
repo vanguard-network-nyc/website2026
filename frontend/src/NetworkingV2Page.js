@@ -134,6 +134,7 @@ const NetworkingV2Page = () => {
       </div>
 
       {/* The Human Factor Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
