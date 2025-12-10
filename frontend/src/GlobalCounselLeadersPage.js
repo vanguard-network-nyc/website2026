@@ -29,7 +29,7 @@ const GlobalCounselLeadersPage = () => {
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 leading-tight">
             Bringing New Leaders Of The World's<br />
             Best-In-Class Legal & Compliance Functions Into TVN
           </h1>
