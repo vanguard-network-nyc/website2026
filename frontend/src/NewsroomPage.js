@@ -447,7 +447,7 @@ const NewsroomPage = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
             >
-              <Newspaper size={20} />
+              <Mail size={20} />
               Contact Us
             </motion.a>
             <motion.a
