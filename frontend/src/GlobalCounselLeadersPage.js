@@ -35,7 +35,7 @@ const GlobalCounselLeadersPage = () => {
           </h1>
           
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            The integration of Global Counsel Leaders (GCL) brings enhanced global reach and expertise to The Vanguard Network, 
+            The integration of Global Counsel Leaders (GCL) brings enhanced global reach and expertise to The Vanguard Network (TVN), 
             expanding our leadership development capabilities for senior executives worldwide.
           </p>
         </motion.div>
