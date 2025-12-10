@@ -59,7 +59,11 @@ const NotFoundPage = () => {
             </Link>
             <button
               onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold border border-[#045184] transition-all duration-300 hover:bg-slate-50 hover:shadow-md"
+              className="inline-flex items-center gap-2 text-[#045184] px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-slate-50 hover:shadow-md"
+              style={{
+                background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
+                border: '2px solid transparent'
+              }}
             >
               <ArrowLeft size={20} />
               Go Back
