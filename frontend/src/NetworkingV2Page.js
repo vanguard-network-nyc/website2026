@@ -135,74 +135,7 @@ const NetworkingV2Page = () => {
         </div>
       </div>
 
-      {/* Network Membership Benefits Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-20"
-        >
-          {/* Section Header */}
-          <div className="text-center mb-16 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
-            <div className="relative py-12 px-8">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center mx-auto mb-6"
-              >
-                <Network size={32} className="text-white" />
-              </motion.div>
-              <h2 className="text-5xl font-bold text-slate-900 mb-6">
-                Network Membership Benefits
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-                Join an exclusive community of senior executives and access valuable networking opportunities, expert insights, and collaborative resources tailored to your leadership journey.
-              </p>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {membershipBenefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 + index * 0.2, duration: 0.8 }}
-                className="group bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-200 overflow-hidden"
-                whileHover={{ y: -8 }}
-              >
-                {/* Image Header with Icon Overlay */}
-                <div className="h-48 bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: `url('${benefit.image}')` }}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgGradient} opacity-40`}></div>
-                  <div className="absolute bottom-6 left-6">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${benefit.gradient} flex items-center justify-center shadow-lg text-white backdrop-blur-sm`}
-                    >
-                      {benefit.icon}
-                    </motion.div>
-                  </div>
-                </div>
-                
-                {/* Content section */}
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed font-medium text-lg">
-                    {benefit.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* The Human Factor Section */}
+      {/* The Human Factor Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
