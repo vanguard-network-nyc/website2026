@@ -3021,7 +3021,7 @@ const NewContentLibrarySection = () => {
                 >
                   {/* Intro Header Section */}
                   <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
-                    <div className="flex items-center justify-center text-blue-600 mb-2" style={{ height: '32px' }}>
+                    <div className="flex items-center justify-center text-[#045184] mb-2" style={{ height: '32px' }}>
                       {insight.type === 'Article' ? <Newspaper size={24} /> : 
                        insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
                        insight.type === 'Video' ? <Video size={24} /> : 
@@ -3222,7 +3222,6 @@ const NewsroomSliderSection = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Newspaper size={40} className="text-blue-600" />
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
               Latest from Our Newsroom
             </h2>
