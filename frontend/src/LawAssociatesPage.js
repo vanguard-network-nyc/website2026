@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Clock, Target, CheckCircle, Star, Award, Briefcase } from 'lucide-react';
+import { ArrowLeft, Users, Clock, Target, CheckCircle, Star, Award, Mail } from 'lucide-react';
 
 const LawAssociatesPage = () => {
   const coreModules = [
