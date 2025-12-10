@@ -2896,7 +2896,7 @@ const NewContentLibrarySection = () => {
         });
       }
 
-      // Add Substack post from November 6
+      // Add latest Substack post
       if (substackPost) {
         // Extract description from content
         const stripHtmlTags = (html) => {
@@ -2905,7 +2905,7 @@ const NewContentLibrarySection = () => {
           return div.textContent || div.innerText || '';
         };
         const description = stripHtmlTags(substackPost.description || substackPost.content);
-        const excerpt = description.length > 150 ? description.substring(0, 150) + '...' : description;
+        const excerpt = description.length > 300 ? description.substring(0, 300) + '...' : description;
         
         insights.push({
           type: "Substack",
