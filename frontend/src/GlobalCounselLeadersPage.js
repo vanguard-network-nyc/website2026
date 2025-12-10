@@ -20,7 +20,7 @@ const GlobalCounselLeadersPage = () => {
           className="text-center mb-16"
         >
           <div className="mb-8">
-            <div className="bg-slate-800 rounded-lg p-6 inline-block mb-6">
+            <div className="inline-block mb-6">
               <img
                 src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
                 alt="Global Counsel Leaders"
