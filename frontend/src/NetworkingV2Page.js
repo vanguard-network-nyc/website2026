@@ -28,33 +28,6 @@ const NetworkingV2Page = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const membershipBenefits = [
-    {
-      title: 'Reach Out to Peers',
-      description: 'Connect with peers on specific topics and challenges directly through our platform.',
-      icon: <MessageCircle size={48} />,
-      gradient: 'from-[#045184] to-[#0369a1]',
-      bgGradient: 'from-[#045184]/5 to-[#0369a1]/5',
-      image: "https://customer-assets.emergentagent.com/job_vanguard-network-1/artifacts/n1m7q7ws_vanguard%20april%2028-15.jpg"
-    },
-    {
-      title: 'Warm Introductions',
-      description: 'Get warm introductions via the Vanguard team to other network members.',
-      icon: <UserCheck size={48} />,
-      gradient: 'from-[#00A8E1] to-[#0284c7]',
-      bgGradient: 'from-[#00A8E1]/5 to-[#0284c7]/5',
-      image: "https://customer-assets.emergentagent.com/job_vanguard-network-1/artifacts/jhap0mmp_Reception_Richard%20Alleyne%2C%20Heather%20White_vanguard%20may11th-GC%20forum-97%20%281%29.jpeg"
-    },
-    {
-      title: 'Local Peer Meet-ups',
-      description: 'Organize and participate in local peer meet-ups in your geographic area.',
-      icon: <MapPin size={48} />,
-      gradient: 'from-[#10b981] to-[#059669]',
-      bgGradient: 'from-[#10b981]/5 to-[#059669]/5',
-      image: "/vanguard-boston-11.jpg"
-    }
-  ];
-
   const membershipNetworks = [
     {
       name: "General Counsel Network",
