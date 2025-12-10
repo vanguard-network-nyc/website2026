@@ -23,13 +23,21 @@ const NewsroomPage = () => {
   const [selectedType, setSelectedType] = useState('All');
   const [selectedSpeaker, setSelectedSpeaker] = useState('All');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const pageParam = searchParams.get('page');
+    return pageParam ? parseInt(pageParam, 10) : 1;
+  });
   const itemsPerPage = 30;
 
   // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  // Update URL when page changes
+  useEffect(() => {
+    setSearchParams({ page: currentPage.toString() }, { replace: true });
+  }, [currentPage, setSearchParams]);
 
   useEffect(() => {
     fetchNewsroomArticles();
