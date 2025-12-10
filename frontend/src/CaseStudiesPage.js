@@ -314,7 +314,7 @@ const CaseStudiesPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
               >
-                <Building2 size={20} />
+                <Mail size={20} />
                 Contact Us
               </motion.button>
             </Link>
