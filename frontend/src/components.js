@@ -2311,7 +2311,7 @@ const NewHero = () => {
               style={{ 
                 color: '#045184',
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
-                border: '3px solid transparent'
+                border: '2px solid transparent'
               }}
             >
               Leadership Advisory
@@ -2802,7 +2802,7 @@ const NewAboutSection = () => {
               style={{ 
                 color: '#045184',
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
-                border: '3px solid transparent'
+                border: '2px solid transparent'
               }}
             >
               Learn More
