@@ -48,7 +48,7 @@ const GlobalCounselLeadersPage = () => {
           className="mb-16"
         >
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center justify-center gap-3 mb-6">
               <Globe size={32} className="text-[#045184]" />
               <h2 className="text-3xl font-bold text-slate-900">Global Integration</h2>
             </div>
