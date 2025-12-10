@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import { Headphones, User, Search, Filter, Play, ArrowRight, ExternalLink, Users, Mic, Calendar } from 'lucide-react';
 
 const PodcastsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [podcasts, setPodcasts] = useState([]);
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpeaker, setSelectedSpeaker] = useState('All');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const pageParam = searchParams.get('page');
+    return pageParam ? parseInt(pageParam, 10) : 1;
+  });
   const itemsPerPage = 30;
 
   // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  // Update URL when page changes
+  useEffect(() => {
+    setSearchParams({ page: currentPage.toString() }, { replace: true });
+  }, [currentPage, setSearchParams]);
 
   useEffect(() => {
     fetchPodcasts();
