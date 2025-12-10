@@ -31,7 +31,7 @@ const GlobalCounselLeadersPage = () => {
           
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 leading-tight">
             Bringing New Leaders Of The World's<br />
-            Best-In-Class Legal & Compliance Functions Into TVN
+            Best-In-Class Legal & Compliance Functions Into The Vanguard Network
           </h1>
           
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
