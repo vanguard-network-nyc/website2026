@@ -139,13 +139,12 @@ const NewsroomDetailPage = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="w-full bg-slate-100 flex items-center justify-center"
-              style={{ height: '436px' }}
+              className="w-full bg-slate-100"
             >
               <img
                 src={article.newsroom_detail_image || article.photo}
                 alt={article.blog_title}
-                className="w-full h-full object-contain"
+                className="w-full h-auto max-h-[600px] object-contain"
               />
             </motion.div>
           )}
