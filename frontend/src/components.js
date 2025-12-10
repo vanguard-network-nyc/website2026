@@ -2846,13 +2846,10 @@ const NewContentLibrarySection = () => {
       const latestPodcast = podcasts && podcasts.length > 0 ? podcasts[0] : null;
       const latestVideo = videos && videos.length > 0 ? videos[0] : null;
       
-      // Find the November 6 Substack post
+      // Get the latest Substack post
       let substackPost = null;
-      if (substackData.status === 'ok' && substackData.items) {
-        substackPost = substackData.items.find(item => {
-          const pubDate = new Date(item.pubDate);
-          return pubDate.getMonth() === 10 && pubDate.getDate() === 6; // November is month 10
-        }) || substackData.items[0]; // Fallback to latest if November 6 not found
+      if (substackData.status === 'ok' && substackData.items && substackData.items.length > 0) {
+        substackPost = substackData.items[0]; // Always use the latest post
       }
 
       const insights = [];
