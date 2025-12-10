@@ -1328,7 +1328,7 @@ const AdvisoryPage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+              className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
             >
               Get Started Today
             </motion.button>
@@ -1549,18 +1549,14 @@ const TeamPage = () => {
         >
           <Link
             to="/contact"
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
-            style={{ color: '#045184' }}
+            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
           >
             Get Started Today
             <ArrowRight size={20} />
           </Link>
           <Link
             to="/advisory"
-            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
-            style={{ borderColor: 'white' }}
-            onMouseEnter={(e) => e.target.style.color = '#045184'}
-            onMouseLeave={(e) => e.target.style.color = 'white'}
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
           >
             Learn About Our Services
             <Target size={20} />
@@ -2237,8 +2233,7 @@ const BookPage = () => (
           href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2"
-          style={{ color: '#045184' }}
+          className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2"
         >
           Order Your Copy Today
           <ArrowRight size={20} />

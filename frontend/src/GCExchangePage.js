@@ -340,7 +340,7 @@ const GCExchangePage = () => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSfMnPiPKkngbiZCeLtGCekiepzaydfas1hAguO6LSoNdeTS1Q/viewform?usp=sf_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-white text-[#045184] hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Users size={20} />
               Apply Here
