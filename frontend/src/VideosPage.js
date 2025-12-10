@@ -17,15 +17,28 @@ const VideosPage = () => {
   });
   const itemsPerPage = 30;
 
+  // Sync state with URL params on mount and when URL changes externally (e.g., back button)
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
+    if (pageFromUrl !== currentPage) {
+      setCurrentPage(pageFromUrl);
+    }
+  }, [searchParams]);
+
   // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  // Update URL when page changes
+  // Update URL when page changes from user interaction
   useEffect(() => {
-    setSearchParams({ page: currentPage.toString() });
-  }, [currentPage, setSearchParams]);
+    const pageParam = searchParams.get('page');
+    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
+    if (currentPage !== pageFromUrl) {
+      setSearchParams({ page: currentPage.toString() });
+    }
+  }, [currentPage]);
 
   useEffect(() => {
     fetchVideos();
