@@ -7,7 +7,7 @@ import {
   Calendar, 
   Clock, 
   ArrowRight,
-  Newspaper,
+  Mail,
   ExternalLink,
   Search,
   Filter
