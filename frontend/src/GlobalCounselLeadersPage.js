@@ -49,39 +49,22 @@ const GlobalCounselLeadersPage = () => {
         >
           <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
             <div className="flex items-center gap-3 mb-6">
-              <Globe size={32} className="text-blue-600" />
+              <Globe size={32} className="text-[#045184]" />
               <h2 className="text-3xl font-bold text-slate-900">Global Integration</h2>
             </div>
             
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <p className="mb-6">
-                Through the integration of Global Counsel Leaders, The Vanguard Network now includes distinguished 
-                leadership members from top-tier organizations across more than 26 countries on every continent. 
-                This strategic integration leverages GCL's proven track record of successful roundtables and conferences 
-                that have connected legal and compliance leaders worldwide.
+                With the integration of Global Counsel Leaders (GCL), TVN gains important new top leadership members and takes advantage of GCL's legacy of successful, highly-rated roundtables and conferences in more than 26 countries across every continent.
               </p>
               
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border-l-4 border-blue-600">
-                <h3 className="font-bold text-slate-900 mb-3">Enhanced Global Capabilities</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>Access to leadership expertise across 26+ countries</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>Proven frameworks for international peer-to-peer learning</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>Enhanced networking opportunities for legal and compliance executives</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                    <span>Strengthened position as the premier leadership development provider</span>
-                  </li>
-                </ul>
-              </div>
+              <p className="mb-6">
+                GCL was founded by thought leader E. Leigh Dance, who has 25 years of experience helping in-house legal chiefs around the world. Leigh's articles on issues facing general counsel have appeared in The Wall Street Journal, Financial Times, American Lawyer, and Legal Week. Leigh continues with TVN as Senior Global Advisor.
+              </p>
+              
+              <p>
+                GCL further enriches TVN's position as the premier provider of peer-to-peer leadership development for senior executives in corporate law, the life sciences, and other domains.
+              </p>
             </div>
           </div>
         </motion.section>
