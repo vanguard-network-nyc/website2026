@@ -23,7 +23,7 @@ const RiskManagementPage = () => {
     {
       title: "Actionable Playbooks",
       description: "Anonymized summaries to share with your internal teams",
-      icon: <Briefcase size={24} />
+      icon: <Award size={24} />
     },
     {
       title: "Proprietary Resources",
@@ -462,7 +462,7 @@ const RiskManagementPage = () => {
               rel="noopener noreferrer"
               className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
             >
-              <Users size={20} />
+              <Mail size={20} />
               Contact Us to Join
             </motion.a>
             <motion.a
@@ -471,7 +471,7 @@ const RiskManagementPage = () => {
               href="mailto:tony@vanguardgroup.nyc?subject=Risk%20Management%20Network%20Inquiry"
               className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
             >
-              <Briefcase size={20} />
+              <Mail size={20} />
               Email Tony Powe
             </motion.a>
           </div>
