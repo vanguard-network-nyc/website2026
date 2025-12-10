@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Globe, Users, BookOpen, Calendar, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Globe, Users, BookOpen, Calendar, Mail } from 'lucide-react';
 
 const GlobalCounselLeadersPage = () => {
   return (
