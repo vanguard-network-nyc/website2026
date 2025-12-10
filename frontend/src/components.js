@@ -3025,9 +3025,9 @@ const NewContentLibrarySection = () => {
                   <div className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-gray-200 p-4">
                     <div className="flex items-center justify-center text-[#045184] mb-2" style={{ height: '32px' }}>
                       {insight.type === 'Article' ? <Newspaper size={24} /> : 
-                       insight.type === 'Podcast' ? <MessageCircle size={24} /> : 
+                       insight.type === 'Podcast' ? <Headphones size={24} /> : 
                        insight.type === 'Video' ? <Video size={24} /> : 
-                       <Newspaper size={24} />}
+                       <FileText size={24} />}
                     </div>
                     <h3 className="text-base font-bold text-slate-900 mb-2 text-center whitespace-nowrap overflow-hidden" style={{ height: '24px', lineHeight: '24px' }}>
                       {insight.type === 'Article' ? 'Articles' : 
