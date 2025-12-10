@@ -18,8 +18,14 @@ const ArticlesPage = () => {
   });
   const itemsPerPage = 30;
 
-  // Initialize filter from URL parameters
+  // Sync state with URL params on mount and when URL changes externally (e.g., back button)
   useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
+    if (pageFromUrl !== currentPage) {
+      setCurrentPage(pageFromUrl);
+    }
+    
     const categoryParam = searchParams.get('category');
     if (categoryParam) {
       if (categoryParam === 'organizational-transformation') {
@@ -35,15 +41,19 @@ const ArticlesPage = () => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  // Update URL when page changes
+  // Update URL when page changes from user interaction
   useEffect(() => {
-    const params = { page: currentPage.toString() };
-    const categoryParam = searchParams.get('category');
-    if (categoryParam) {
-      params.category = categoryParam;
+    const pageParam = searchParams.get('page');
+    const pageFromUrl = pageParam ? parseInt(pageParam, 10) : 1;
+    if (currentPage !== pageFromUrl) {
+      const params = { page: currentPage.toString() };
+      const categoryParam = searchParams.get('category');
+      if (categoryParam) {
+        params.category = categoryParam;
+      }
+      setSearchParams(params);
     }
-    setSearchParams(params);
-  }, [currentPage, setSearchParams]);
+  }, [currentPage]);
 
   useEffect(() => {
     fetchArticles();
