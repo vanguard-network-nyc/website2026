@@ -132,21 +132,16 @@ const NewsroomDetailPage = () => {
           <Breadcrumb customTitle={article?.blog_title} />
         </div>
 
-        <article className="bg-white shadow-lg overflow-hidden">
+        <article className="bg-white shadow-lg">
           {/* Newsroom Header Image - Use rectangular detail image */}
           {(article.newsroom_detail_image || article.photo) && (
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="h-[436px] md:h-[564px] overflow-hidden bg-slate-100 flex items-center justify-center"
-            >
+            <div className="h-[436px] md:h-[564px] overflow-hidden bg-slate-100 flex items-center justify-center">
               <img
                 src={article.newsroom_detail_image || article.photo}
                 alt={article.blog_title}
                 className="w-full h-full object-contain"
               />
-            </motion.div>
+            </div>
           )}
 
           {/* Article Content */}
