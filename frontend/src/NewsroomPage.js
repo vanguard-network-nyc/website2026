@@ -8,6 +8,7 @@ import {
   Clock, 
   ArrowRight,
   Mail,
+  Newspaper,
   ExternalLink,
   Search,
   Filter
