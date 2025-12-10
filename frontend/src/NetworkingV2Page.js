@@ -7,8 +7,6 @@ import {
   Network, 
   Target, 
   MessageCircle,
-  UserCheck,
-  MapPin,
   Shield,
   BookOpen,
   Video,
