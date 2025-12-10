@@ -38,7 +38,9 @@ import {
   Linkedin,
   Globe,
   Calendar,
-  ExternalLink
+  ExternalLink,
+  Headphones,
+  FileText
 } from 'lucide-react';
 
 // GCL Banner Component
