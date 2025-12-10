@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
-import { ArrowLeft, TrendingUp, Target, Users, CheckCircle, Building2, Globe, Award } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Target, Users, CheckCircle, Mail, Globe, Award } from 'lucide-react';
 
 const CaseStudiesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
