@@ -160,10 +160,24 @@ const NetworkingV2Page = () => {
               Each exchange — whether in a Forum, roundtable, or off-the-record session — brings leaders face to face with the challenges and opportunities they won't find in the headlines. The result: <span className="font-bold text-blue-600">authentic connection, sharper foresight, and the kind of practical wisdom that only comes from shared experience.</span>
             </p>
             
-            <div className="bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-2xl p-8 mb-8">
-              <p className="text-lg text-slate-600 leading-relaxed italic">
-                "Vanguard members say that what sets our network apart is its intimacy and honesty. Here, you don't have to prove you belong — you already do. You're among people who've been where you are, who know the pressure of leading at the top, and who are ready to help you see around corners."
-              </p>
+            {/* Testimonial */}
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8 mb-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
+                    alt="Ann Kappler testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "What sets The Vanguard Network apart are the conversations about real-world leadership challenges we face as senior executives. We are among others who've been where we are, who know the pressure of leading at the top, and who are ready to help us see around corners."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Ann Kappler</div>
+                  <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, Prudential Financial</div>
+                </div>
+              </div>
             </div>
             
             <p className="text-lg text-slate-600 leading-relaxed text-center">
