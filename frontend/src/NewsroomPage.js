@@ -457,7 +457,7 @@ const NewsroomPage = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              className="bg-transparent border-2 border-[#045184] text-[#045184] hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
             >
               Follow on LinkedIn
               <ExternalLink size={20} />
