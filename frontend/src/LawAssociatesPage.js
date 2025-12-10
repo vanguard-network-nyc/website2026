@@ -450,7 +450,7 @@ const LawAssociatesPage = () => {
               rel="noopener noreferrer"
               className="bg-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#0284c7] transition-all duration-300 flex items-center gap-2"
             >
-              <Briefcase size={20} />
+              <Mail size={20} />
               Contact Us
             </motion.a>
             <motion.button
