@@ -216,35 +216,46 @@ const GlobalCounselLeadersPage = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-8 md:p-12 text-white">
-            <h2 className="text-3xl font-bold mb-6">Experience Enhanced Global Leadership Development</h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Discover how the integration of Global Counsel Leaders enhances our ability to serve senior executives 
-              in legal, compliance, and leadership functions worldwide.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/gc-exchange"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-              >
-                <Users size={20} />
-                Join GC Exchange
-              </Link>
-              <Link
-                to="/programs"
-                className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-              >
-                <Calendar size={20} />
-                View All Programs
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-              >
-                Learn More
-                <ExternalLink size={16} />
-              </Link>
+          <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
+            <div className="relative z-10">
+              <h2 className="text-4xl font-bold mb-6">Experience Enhanced Global Leadership Development</h2>
+              <p className="text-xl mb-8 max-w-3xl mx-auto">
+                Discover how the integration of Global Counsel Leaders enhances our ability to serve senior executives 
+                in legal, compliance, and leadership functions worldwide.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/gc-exchange">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <Users size={20} />
+                    Join GC Exchange
+                  </motion.button>
+                </Link>
+                <Link to="/programs">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
+                  >
+                    <BookOpen size={20} />
+                    View All Programs
+                  </motion.button>
+                </Link>
+                <Link to="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <Mail size={20} />
+                    Contact Us
+                  </motion.button>
+                </Link>
+              </div>
             </div>
           </div>
         </motion.section>
