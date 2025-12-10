@@ -325,7 +325,11 @@ const PodcastDetailPage = () => {
               </Link>
               <Link
                 to="/upcoming-events"
-                className="inline-flex items-center gap-2 border-2 border-[#045184] text-[#045184] px-6 py-3 rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#045184] hover:to-[#00A8E1] hover:text-white hover:border-transparent transition-all duration-300"
+                className="inline-flex items-center gap-2 text-[#045184] px-6 py-3 rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#045184] hover:to-[#00A8E1] hover:text-white transition-all duration-300 relative"
+                style={{
+                  background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
+                  border: '2px solid transparent'
+                }}
               >
                 <Clock size={20} />
                 Upcoming Events

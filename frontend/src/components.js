@@ -2310,8 +2310,8 @@ const NewHero = () => {
               className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
               style={{ 
                 color: '#045184',
-                border: '3px solid #045184',
-                backgroundColor: '#ffffff'
+                background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
+                border: '3px solid transparent'
               }}
             >
               Leadership Advisory
@@ -2798,10 +2798,11 @@ const NewAboutSection = () => {
             </Link>
             <a
               href="/networking"
-              className="bg-transparent px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               style={{ 
                 color: '#045184',
-                border: '3px solid #045184'
+                background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
+                border: '3px solid transparent'
               }}
             >
               Learn More
