@@ -613,7 +613,7 @@ const UpcomingEventsPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
               >
-                <ExternalLink size={20} />
+                <Mail size={20} />
                 Contact Us
               </motion.a>
             </div>
