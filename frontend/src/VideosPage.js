@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import { Search, Play, User } from 'lucide-react';
 
 const VideosPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [videos, setVideos] = useState([]);
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const pageParam = searchParams.get('page');
+    return pageParam ? parseInt(pageParam, 10) : 1;
+  });
   const itemsPerPage = 30;
 
   // Scroll to top when component mounts or page changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  // Update URL when page changes
+  useEffect(() => {
+    setSearchParams({ page: currentPage.toString() }, { replace: true });
+  }, [currentPage, setSearchParams]);
 
   useEffect(() => {
     fetchVideos();
