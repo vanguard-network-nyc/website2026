@@ -12,7 +12,10 @@ const ArticlesPage = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('All');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const pageParam = searchParams.get('page');
+    return pageParam ? parseInt(pageParam, 10) : 1;
+  });
   const itemsPerPage = 30;
 
   // Initialize filter from URL parameters
@@ -31,6 +34,16 @@ const ArticlesPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  // Update URL when page changes
+  useEffect(() => {
+    const params = { page: currentPage.toString() };
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      params.category = categoryParam;
+    }
+    setSearchParams(params, { replace: true });
+  }, [currentPage, setSearchParams]);
 
   useEffect(() => {
     fetchArticles();
