@@ -24,7 +24,7 @@ const VideosPage = () => {
 
   // Update URL when page changes
   useEffect(() => {
-    setSearchParams({ page: currentPage.toString() }, { replace: true });
+    setSearchParams({ page: currentPage.toString() });
   }, [currentPage, setSearchParams]);
 
   useEffect(() => {

@@ -42,7 +42,7 @@ const ArticlesPage = () => {
     if (categoryParam) {
       params.category = categoryParam;
     }
-    setSearchParams(params, { replace: true });
+    setSearchParams(params);
   }, [currentPage, setSearchParams]);
 
   useEffect(() => {
