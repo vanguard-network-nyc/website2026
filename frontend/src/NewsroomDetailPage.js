@@ -127,10 +127,12 @@ const NewsroomDetailPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumb customTitle={article?.blog_title} />
+      <div className="max-w-4xl mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 mb-4">
+          <Breadcrumb customTitle={article?.blog_title} />
+        </div>
 
-        <article className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <article className="bg-white shadow-lg overflow-hidden">
           {/* Newsroom Header Image - Use rectangular detail image */}
           {(article.newsroom_detail_image || article.photo) && (
             <motion.div
