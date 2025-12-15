@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Users, Clock, Target, CheckCircle, Star, Award, Mail, Home } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, Star, Award, Mail, Home, ChevronRight } from 'lucide-react';
 
 const LawAssociatesPage = () => {
   const coreModules = [
@@ -156,16 +156,20 @@ const LawAssociatesPage = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center mb-8 text-sm">
-          <Link to="/" className="text-slate-600 hover:text-[#045184]">
+        <nav className="flex items-center space-x-2 text-sm mb-6">
+          <Link to="/" className="flex items-center text-slate-600 hover:text-[#045184] transition-colors duration-200">
             <Home size={16} />
           </Link>
-          <span className="mx-2 text-slate-400">›</span>
-          <Link to="/programs" className="text-slate-600 hover:text-[#045184]">Programs</Link>
-          <span className="mx-2 text-slate-400">›</span>
-          <Link to="/programs" className="text-slate-600 hover:text-[#045184]">Current Leadership Programs</Link>
-          <span className="mx-2 text-slate-400">›</span>
-          <span className="text-slate-900 font-medium">Law Associates</span>
+          <ChevronRight size={16} className="text-slate-400" />
+          <Link to="/programs" className="text-slate-600 hover:text-[#045184] transition-colors duration-200">
+            Programs
+          </Link>
+          <ChevronRight size={16} className="text-slate-400" />
+          <Link to="/programs" className="text-slate-600 hover:text-[#045184] transition-colors duration-200">
+            Current Leadership Programs
+          </Link>
+          <ChevronRight size={16} className="text-slate-400" />
+          <span className="text-[#045184] font-semibold">Law Associates</span>
         </nav>
 
         {/* Hero Section */}
