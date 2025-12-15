@@ -435,7 +435,7 @@ const ProgramsV2 = () => {
                       
                       {/* Action Button */}
                       {program.name === "GENERAL COUNSEL EXCHANGE" ? (
-                        <Link to="/gc-exchange" onClick={() => window.scrollTo(0, 0)}>
+                        <a href="https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -444,9 +444,9 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </Link>
+                        </a>
                       ) : program.name === "SENIOR IN-HOUSE COUNSEL EXCHANGE" ? (
-                        <Link to="/senior-counsel-exchange" onClick={() => window.scrollTo(0, 0)}>
+                        <a href="https://members.thevanguardnetwork.com/network-details-senior-counsel/senior-in-house-counsel-network/r/rec4wMsveeZoUvTOa" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -455,9 +455,9 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </Link>
+                        </a>
                       ) : program.name === "LIFE SCIENCES CEO EXCHANGE" ? (
-                        <Link to="/life-sciences-ceo" onClick={() => window.scrollTo(0, 0)}>
+                        <a href="https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -466,9 +466,9 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </Link>
+                        </a>
                       ) : program.name === "NEXT GENERATION GC" ? (
-                        <Link to="/next-gen-gc" onClick={() => window.scrollTo(0, 0)}>
+                        <a href="https://members.thevanguardnetwork.com/next-gen-gc" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -477,7 +477,7 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </Link>
+                        </a>
                       ) : program.name === "NEW LEADERS PROGRAM" ? (
                         <Link to="/new-leaders" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
@@ -501,7 +501,7 @@ const ProgramsV2 = () => {
                           </motion.button>
                         </Link>
                       ) : program.name === "RISK MANAGEMENT EXCHANGE" ? (
-                        <Link to="/risk-management" onClick={() => window.scrollTo(0, 0)}>
+                        <a href="https://members.thevanguardnetwork.com/network-details-risk-management/risk-management-network/r/recv0BDur4fZPVSp7" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -510,7 +510,7 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </Link>
+                        </a>
                       ) : (
                         <motion.button 
                           whileHover={{ scale: 1.02 }}
