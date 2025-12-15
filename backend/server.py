@@ -1389,9 +1389,10 @@ Timestamp: {datetime.utcnow().isoformat()}
         
         msg.attach(MIMEText(body, 'plain'))
         
-        # Try to send email
+        # Try to send email via relay
         try:
-            with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=10) as server:
+            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
+                server.starttls()
                 if sender_password:
                     server.login(sender_email, sender_password)
                 server.send_message(msg)
