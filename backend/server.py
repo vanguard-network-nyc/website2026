@@ -1294,9 +1294,9 @@ class CustomQuoteSubmit(BaseModel):
 async def submit_contact_form(form_data: ContactFormSubmit):
     """Send contact form submission via email"""
     try:
-        # Email configuration
+        # Email configuration - Use port 465 with SSL for Google Workspace
         smtp_server = "smtp.gmail.com"
-        smtp_port = 587
+        smtp_port = 465
         sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
         sender_password = os.environ.get('SMTP_PASSWORD', '')
         recipient_email = "romeo@vanguardgroup.nyc"
@@ -1357,9 +1357,9 @@ Timestamp: {datetime.utcnow().isoformat()}
 async def submit_custom_quote(form_data: CustomQuoteSubmit):
     """Send custom quote form submission via email"""
     try:
-        # Email configuration
+        # Email configuration - Use port 465 with SSL for Google Workspace
         smtp_server = "smtp.gmail.com"
-        smtp_port = 587
+        smtp_port = 465
         sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
         sender_password = os.environ.get('SMTP_PASSWORD', '')
         recipient_email = "romeo@vanguardgroup.nyc"
