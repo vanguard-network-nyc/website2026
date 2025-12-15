@@ -127,21 +127,6 @@ const ProgramsV2 = () => {
       icon: <Target size={28} />
     },
     {
-      name: "NEW LEADERS PROGRAM",
-      description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
-      format: "6-12 Month Program",
-      audience: "Graduate Students & New Hires",
-      category: "General",
-      level: "Entry",
-      status: "Enrollment Open",
-      image: "/new-leaders-program.jpg",
-      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/0ctnnbou_5.jpg",
-      duration: "6-12 Months",
-      participants: "20-25",
-      features: ["Leadership Jump-Start", "Senior Executive Led", "Pragmatic Focus", "Graduate & New Hire"],
-      icon: <Users size={28} />
-    },
-    {
       name: "LAW ASSOCIATES ACCELERATOR",
       description: "A comprehensive program designed to accelerate the success of law firm associates through EQ development and business understanding, led by GCs and business leaders.",
       format: "Modular Program",
