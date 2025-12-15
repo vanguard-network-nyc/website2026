@@ -77,7 +77,7 @@ const LawAssociatesPage = () => {
       name: "Craig Tooman",
       title: "CEO",
       company: "Silence Therapeutics",
-      image: "https://static.wixstatic.com/media/e6a994_08d6d421426c462b9efc7537b56fd2da~mv2.jpg/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_08d6d421426c462b9efc7537b56fd2da~mv2.jpg"
+      image: "https://static.wixstatic.com/media/e6a994_8a8eee9e954649b48bab176c080ec4ea~mv2.jpeg"
     },
     {
       name: "Gina Beredo",
