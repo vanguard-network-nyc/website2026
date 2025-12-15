@@ -264,6 +264,73 @@ const ProgramsV2 = () => {
     return categoryMatch && levelMatch && searchMatch;
   });
 
+  const handleQuoteModalOpen = (solutionName) => {
+    setSelectedSolution(solutionName);
+    setQuoteFormData(prev => ({
+      ...prev,
+      customizedSolution: solutionName
+    }));
+    setShowQuoteModal(true);
+  };
+
+  const handleQuoteFormChange = (e) => {
+    const { name, value } = e.target;
+    setQuoteFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleQuoteSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const payload = {
+        fullName: quoteFormData.fullName,
+        email: quoteFormData.email,
+        company: quoteFormData.company,
+        customizedSolution: quoteFormData.customizedSolution,
+        message: quoteFormData.message,
+        timestamp: new Date().toISOString(),
+        source: 'Custom Quote Form - Programs Page'
+      };
+
+      const formDataToSend = new FormData();
+      Object.keys(payload).forEach(key => {
+        formDataToSend.append(key, payload[key]);
+      });
+
+      const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setQuoteFormData({
+          fullName: '',
+          email: '',
+          company: '',
+          customizedSolution: '',
+          message: ''
+        });
+        setTimeout(() => {
+          setShowQuoteModal(false);
+          setSubmitStatus(null);
+        }, 2000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
