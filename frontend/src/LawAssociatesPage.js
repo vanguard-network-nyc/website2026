@@ -290,9 +290,9 @@ const LawAssociatesPage = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
         >
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Exceptional Faculty</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Faculty</h2>
           <p className="text-slate-600 text-center mb-8 max-w-4xl mx-auto leading-relaxed">
-            Faculty drawn from alumni in-house counsel, GCs, CEOs, C-Suite executives, search experts, in-house coaches, and career development professionals from our network of over 300+ top executives.
+            Faculty drawn from alumni in-house counsel, GCs, CEOs, C-suite executives, search experts, in-house coaches, and career development professionals from our network of over 300+ top executives.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {faculty.map((member, index) => (
