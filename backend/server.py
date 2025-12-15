@@ -1274,6 +1274,136 @@ class MembershipApplicationSubmit(BaseModel):
     recommended_by: Optional[str] = None
     source_of_inquiry: Optional[str] = "Website sign up"
 
+class ContactFormSubmit(BaseModel):
+    fullName: str
+    email: str
+    company: Optional[str] = None
+    interestArea: Optional[str] = None
+    message: str
+    source: str
+
+class CustomQuoteSubmit(BaseModel):
+    fullName: str
+    email: str
+    company: Optional[str] = None
+    customizedSolution: str
+    message: str
+    source: str
+
+@api_router.post("/contact/submit")
+async def submit_contact_form(form_data: ContactFormSubmit):
+    """Send contact form submission via email"""
+    try:
+        # Email configuration
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
+        sender_password = os.environ.get('SMTP_PASSWORD', '')
+        recipient_email = "romeo@vanguardgroup.nyc"
+        
+        # Create email message
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = f"New Contact Form Submission - {form_data.source}"
+        
+        # Email body
+        body = f"""
+New Contact Form Submission
+
+Full Name: {form_data.fullName}
+Email: {form_data.email}
+Company: {form_data.company or 'Not provided'}
+Interest Area: {form_data.interestArea or 'Not provided'}
+
+Message:
+{form_data.message}
+
+---
+Source: {form_data.source}
+Timestamp: {datetime.utcnow().isoformat()}
+        """
+        
+        msg.attach(MIMEText(body, 'plain'))
+        
+        # Send email
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            if sender_password:
+                server.login(sender_email, sender_password)
+            server.send_message(msg)
+        
+        logger.info(f"Contact form email sent successfully to {recipient_email}")
+        
+        return {
+            "status": "success",
+            "message": "Contact form submitted successfully"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error sending contact form email: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to send contact form: {str(e)}"
+        )
+
+@api_router.post("/quote/submit")
+async def submit_custom_quote(form_data: CustomQuoteSubmit):
+    """Send custom quote form submission via email"""
+    try:
+        # Email configuration
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
+        sender_password = os.environ.get('SMTP_PASSWORD', '')
+        recipient_email = "romeo@vanguardgroup.nyc"
+        
+        # Create email message
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = f"New Custom Quote Request - {form_data.customizedSolution}"
+        
+        # Email body
+        body = f"""
+New Custom Quote Request
+
+Full Name: {form_data.fullName}
+Email: {form_data.email}
+Company: {form_data.company or 'Not provided'}
+Customized Solution: {form_data.customizedSolution}
+
+Message:
+{form_data.message}
+
+---
+Source: {form_data.source}
+Timestamp: {datetime.utcnow().isoformat()}
+        """
+        
+        msg.attach(MIMEText(body, 'plain'))
+        
+        # Send email
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            if sender_password:
+                server.login(sender_email, sender_password)
+            server.send_message(msg)
+        
+        logger.info(f"Custom quote email sent successfully to {recipient_email}")
+        
+        return {
+            "status": "success",
+            "message": "Custom quote request submitted successfully"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error sending custom quote email: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to send custom quote: {str(e)}"
+        )
+
 @api_router.post("/membership/application")
 async def submit_membership_application(application: MembershipApplicationSubmit):
     """Submit a new membership application to Airtable"""
