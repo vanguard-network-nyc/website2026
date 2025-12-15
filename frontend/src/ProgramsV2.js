@@ -829,7 +829,6 @@ const ProgramsV2 = () => {
                     onChange={handleQuoteFormChange}
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200"
                   >
-                    <option value="">Select the solution you're interested in</option>
                     {customizedPrograms.map((program) => (
                       <option key={program.name} value={program.name}>
                         {program.name}
