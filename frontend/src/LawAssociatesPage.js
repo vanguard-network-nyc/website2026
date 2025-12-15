@@ -347,7 +347,7 @@ const LawAssociatesPage = () => {
             <div className="flex items-start gap-6 mb-6">
               <div className="flex-shrink-0">
                 <img
-                  src="https://static.wixstatic.com/media/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg/v1/fill/w_101,h_101,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg"
+                  src="https://static.wixstatic.com/media/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg/v1/fill/w_101,h_101,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg"
                   alt="Doug Barnard"
                   className="w-24 h-24 rounded-full object-cover border-4 border-white/30"
                 />
