@@ -1355,53 +1355,55 @@ async def submit_contact_form(form_data: ContactFormSubmit):
 
 @api_router.post("/quote/submit")
 async def submit_custom_quote(form_data: CustomQuoteSubmit):
-    """Send custom quote form submission via email"""
+    """Send custom quote form submission via email using Resend"""
     try:
-        # Email configuration - Use SMTP relay for Google Workspace
-        smtp_server = "smtp-relay.gmail.com"
-        smtp_port = 587
-        sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
-        sender_password = os.environ.get('SMTP_PASSWORD', '')
-        recipient_email = "romeo@vanguardgroup.nyc"
-        
-        # Create email message
-        msg = MIMEMultipart()
-        msg['From'] = sender_email
-        msg['To'] = recipient_email
-        msg['Subject'] = f"New Custom Quote Request - {form_data.customizedSolution}"
+        # Configure Resend API
+        resend.api_key = os.environ.get('RESEND_API_KEY')
         
         # Email body
-        body = f"""
-New Custom Quote Request
-
-Full Name: {form_data.fullName}
-Email: {form_data.email}
-Company: {form_data.company or 'Not provided'}
-Customized Solution: {form_data.customizedSolution}
-
-Message:
-{form_data.message}
-
----
-Source: {form_data.source}
-Timestamp: {datetime.utcnow().isoformat()}
+        html_body = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+            <h2 style="color: #045184;">New Custom Quote Request</h2>
+            <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Full Name:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.fullName}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Email:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.email}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Company:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.company or 'Not provided'}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Customized Solution:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><span style="color: #045184; font-weight: bold;">{form_data.customizedSolution}</span></td>
+                </tr>
+            </table>
+            <h3 style="color: #045184; margin-top: 20px;">Message:</h3>
+            <p style="background: #f5f5f5; padding: 15px; border-left: 4px solid #00A8E1;">{form_data.message}</p>
+            <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
+            <p style="font-size: 12px; color: #666;">
+                <strong>Source:</strong> {form_data.source}<br>
+                <strong>Timestamp:</strong> {datetime.utcnow().isoformat()}
+            </p>
+        </body>
+        </html>
         """
         
-        msg.attach(MIMEText(body, 'plain'))
+        # Send email via Resend
+        params = {
+            "from": "The Vanguard Network <noreply@updates.thevanguardnetwork.com>",
+            "to": ["romeo@vanguardgroup.nyc"],
+            "subject": f"New Custom Quote Request - {form_data.customizedSolution}",
+            "html": html_body,
+        }
         
-        # Try to send email via relay
-        try:
-            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
-                server.starttls()
-                if sender_password:
-                    server.login(sender_email, sender_password)
-                server.send_message(msg)
-            logger.info(f"Custom quote email sent successfully to {recipient_email}")
-        except (smtplib.SMTPAuthenticationError, smtplib.SMTPException) as smtp_error:
-            # If email fails, log the submission for manual follow-up
-            logger.warning(f"SMTP failed, logging submission: {form_data.fullName} ({form_data.email})")
-            logger.warning(f"SMTP error details: {str(smtp_error)}")
-            # In production, store in database or use alternative notification
+        email = resend.Emails.send(params)
+        logger.info(f"Custom quote email sent successfully via Resend: {email}")
         
         return {
             "status": "success",
@@ -1409,8 +1411,8 @@ Timestamp: {datetime.utcnow().isoformat()}
         }
         
     except Exception as e:
-        logger.error(f"Unexpected error in custom quote submission: {str(e)}")
-        # Still return success to user even if there's an error
+        logger.error(f"Error sending custom quote via Resend: {str(e)}")
+        # Still return success to user
         return {
             "status": "success",
             "message": "Custom quote request submitted successfully"
