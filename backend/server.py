@@ -1329,9 +1329,9 @@ async def submit_contact_form(form_data: ContactFormSubmit):
         </html>
         """
         
-        # Send email via Resend
+        # Send email via Resend (using onboarding domain)
         params = {
-            "from": "The Vanguard Network <noreply@updates.thevanguardnetwork.com>",
+            "from": "The Vanguard Network <onboarding@resend.dev>",
             "to": ["romeo@vanguardgroup.nyc"],
             "subject": f"New Contact Form Submission - {form_data.source}",
             "html": html_body,
@@ -1394,9 +1394,9 @@ async def submit_custom_quote(form_data: CustomQuoteSubmit):
         </html>
         """
         
-        # Send email via Resend
+        # Send email via Resend (using onboarding domain)
         params = {
-            "from": "The Vanguard Network <noreply@updates.thevanguardnetwork.com>",
+            "from": "The Vanguard Network <onboarding@resend.dev>",
             "to": ["romeo@vanguardgroup.nyc"],
             "subject": f"New Custom Quote Request - {form_data.customizedSolution}",
             "html": html_body,
