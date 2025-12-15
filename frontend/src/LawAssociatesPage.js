@@ -156,44 +156,25 @@ const LawAssociatesPage = () => {
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
-          <Link
-            to="/programs"
-            className="inline-flex items-center gap-2 text-slate-600 hover:text-[#045184] transition-colors duration-200"
-          >
-            <ArrowLeft size={20} />
-            Back to Programs
-          </Link>
-        </motion.div>
+        {/* Breadcrumb */}
+        <Breadcrumb 
+          customPath={[
+            { name: 'Home', path: '/' },
+            { name: 'Programs', path: '/programs' },
+            { name: 'Customized Solutions', path: '/programs#customized-solutions' },
+            { name: 'Law Associates', path: '/law-associates' }
+          ]}
+        />
 
         {/* Hero Section */}
         <div className="relative mb-16">
-          {/* Hero Image */}
-          <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
-            <img
-              src="https://static.wixstatic.com/media/11062b_642d21e59e4d48cdbb705699a159c146~mv2.jpg/v1/fill/w_1919,h_1150,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_642d21e59e4d48cdbb705699a159c146~mv2.jpg"
-              alt="Law Associates Accelerator Program"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div className="absolute bottom-8 left-8 text-white">
-              <h2 className="text-2xl font-bold">ASSOCIATE ACCELERATOR PROGRAM</h2>
-            </div>
-          </div>
-          
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-6 pb-2">
               LAW ASSOCIATES ACCELERATOR
             </h1>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8">
