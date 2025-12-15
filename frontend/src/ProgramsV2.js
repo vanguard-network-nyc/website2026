@@ -287,24 +287,23 @@ const ProgramsV2 = () => {
     setSubmitStatus(null);
 
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+      
       const payload = {
         fullName: quoteFormData.fullName,
         email: quoteFormData.email,
         company: quoteFormData.company,
         customizedSolution: quoteFormData.customizedSolution,
         message: quoteFormData.message,
-        timestamp: new Date().toISOString(),
         source: 'Custom Quote Form - Programs Page'
       };
 
-      const formDataToSend = new FormData();
-      Object.keys(payload).forEach(key => {
-        formDataToSend.append(key, payload[key]);
-      });
-
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
+      const response = await fetch(`${backendUrl}/api/quote/submit`, {
         method: 'POST',
-        body: formDataToSend
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
