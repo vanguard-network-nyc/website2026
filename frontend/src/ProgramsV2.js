@@ -160,6 +160,19 @@ const ProgramsV2 = () => {
 
   const customizedPrograms = [
     {
+      name: "NEW LEADERS PROGRAM",
+      description: "A six to twelve month program to jump-start leadership capabilities among graduate students and newer hires, led by more senior executives. Highly pragmatic focus on capabilities.",
+      target: "Graduate Students & New Hires",
+      benefits: ["Leadership Jump-Start", "Senior Executive Led", "Pragmatic Focus", "Graduate & New Hire"],
+      color: "#00A8E1",
+      gradient: "from-[#00A8E1] to-[#0284c7]",
+      bgColor: "from-[#00A8E1]/5 to-[#0284c7]/5",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/0ctnnbou_5.jpg",
+      duration: "6-12 Months",
+      participants: "20-25",
+      icon: <Users size={28} />
+    },
+    {
       name: "CEO & C-SUITE",
       description: "Customized programs to yield high-performance amongst C-suite leaders across a portfolio of companies or global teams using the Vanguard roundtable model.",
       target: "C-Suite Executives",
