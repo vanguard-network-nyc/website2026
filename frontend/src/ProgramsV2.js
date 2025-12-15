@@ -670,6 +670,7 @@ const ProgramsV2 = () => {
                     <motion.button 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={() => handleQuoteModalOpen(program.name)}
                       className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                     >
                       Get Custom Quote
