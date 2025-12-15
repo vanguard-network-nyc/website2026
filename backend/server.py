@@ -12,6 +12,9 @@ from datetime import datetime
 import requests
 import json
 import httpx
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 ROOT_DIR = Path(__file__).parent
