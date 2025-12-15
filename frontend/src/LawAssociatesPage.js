@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Users, Clock, Target, CheckCircle, Star, Award, Mail } from 'lucide-react';
+import { Users, Clock, Target, CheckCircle, Star, Award, Mail, Home } from 'lucide-react';
 
 const LawAssociatesPage = () => {
   const coreModules = [
@@ -156,12 +156,14 @@ const LawAssociatesPage = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <nav className="flex mb-8 text-sm">
-          <Link to="/" className="text-slate-600 hover:text-[#045184]">Home</Link>
+        <nav className="flex items-center mb-8 text-sm">
+          <Link to="/" className="text-slate-600 hover:text-[#045184]">
+            <Home size={16} />
+          </Link>
           <span className="mx-2 text-slate-400">›</span>
           <Link to="/programs" className="text-slate-600 hover:text-[#045184]">Programs</Link>
           <span className="mx-2 text-slate-400">›</span>
-          <Link to="/programs#customized-solutions" className="text-slate-600 hover:text-[#045184]">Customized Solutions</Link>
+          <Link to="/programs" className="text-slate-600 hover:text-[#045184]">Current Leadership Programs</Link>
           <span className="mx-2 text-slate-400">›</span>
           <span className="text-slate-900 font-medium">Law Associates</span>
         </nav>
@@ -175,7 +177,7 @@ const LawAssociatesPage = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-6 pb-2">
-              LAW ASSOCIATES ACCELERATOR
+              Law Associates Accelerator
             </h1>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8">
               Associates are the future of every law firm–whether they become partners, or go in-house to corporate law departments–and thus swiftly become potential clients of the firm.
