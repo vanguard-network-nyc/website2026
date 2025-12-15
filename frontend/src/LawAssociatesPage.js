@@ -101,7 +101,7 @@ const LawAssociatesPage = () => {
       name: "Ram Charan",
       title: "Strategy Advisor",
       company: "",
-      image: "https://static.wixstatic.com/media/e6a994_474ca3c2fe0343bdafda67dc2ed47523~mv2.png/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_474ca3c2fe0343bdafda67dc2ed47523~mv2.png"
+      image: "https://static.wixstatic.com/media/e6a994_9b33113579784848bc689bac0e3657fb~mv2.png"
     },
     {
       name: "Heather White",
