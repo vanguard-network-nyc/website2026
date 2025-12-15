@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Users, Clock, Target, CheckCircle, Star, Award, Mail } from 'lucide-react';
-import Breadcrumb from './Breadcrumb';
 
 const LawAssociatesPage = () => {
   const coreModules = [
