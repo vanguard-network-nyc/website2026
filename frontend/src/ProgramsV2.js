@@ -20,7 +20,8 @@ import {
   Star,
   Zap,
   Briefcase,
-  Globe
+  Globe,
+  X
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
@@ -29,6 +30,17 @@ const ProgramsV2 = () => {
   const [viewMode, setViewMode] = useState('cards');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('current'); // 'current' or 'customized'
+  const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const [selectedSolution, setSelectedSolution] = useState('');
+  const [quoteFormData, setQuoteFormData] = useState({
+    fullName: '',
+    email: '',
+    company: '',
+    customizedSolution: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   // Map tab keys to their corresponding hash IDs
   const tabToHash = {
