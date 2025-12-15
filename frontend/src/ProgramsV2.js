@@ -266,6 +266,10 @@ const ProgramsV2 = () => {
 
   const handleQuoteModalOpen = (solutionName) => {
     setSelectedSolution(solutionName);
+    setQuoteFormData(prev => ({
+      ...prev,
+      customizedSolution: solutionName
+    }));
     setShowQuoteModal(true);
   };
 
