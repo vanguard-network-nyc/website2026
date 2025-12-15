@@ -1595,6 +1595,8 @@ const ContactPage = () => {
     setSubmitStatus(null);
 
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+      
       // Prepare the data payload
       const payload = {
         fullName: formData.fullName,
@@ -1602,28 +1604,24 @@ const ContactPage = () => {
         company: formData.company,
         interestArea: formData.interestArea,
         message: formData.message,
-        timestamp: new Date().toISOString(),
         source: 'The Vanguard Network Contact Form'
       };
 
       console.log('Submitting form data:', payload);
 
-      // Convert to form data for better Zapier compatibility
-      const formDataToSend = new FormData();
-      Object.keys(payload).forEach(key => {
-        formDataToSend.append(key, payload[key]);
-      });
-
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/18240047/umfuu73/', {
+      const response = await fetch(`${backendUrl}/api/contact/submit`, {
         method: 'POST',
-        body: formDataToSend
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
       });
 
       console.log('Response status:', response.status);
 
       // Check if the response is ok (status 200-299)
       if (response.ok) {
-        const responseData = await response.text();
+        const responseData = await response.json();
         console.log('Success response:', responseData);
         
         setSubmitStatus('success');
