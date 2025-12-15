@@ -417,36 +417,29 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-slate-900 rounded-2xl p-8 md:p-12 text-white text-center"
+          className="text-center"
         >
-          <h2 className="text-3xl font-bold mb-6">Ready to Accelerate Your Associates?</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Transform your associates into confident leaders and business partners through our proven curriculum designed by GCs and industry leaders.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSemh6GaEPGl5UnY09qJVJtPXfnVhPi7gp6OcKkL1CaMGGsbbw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#0284c7] transition-all duration-300 flex items-center gap-2"
-            >
-              <Mail size={20} />
-              Contact Us
-            </motion.a>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 flex items-center gap-2"
-            >
-              <Award size={20} />
-              Learn More
-            </motion.button>
+          <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
+            <div className="relative z-10">
+              <h2 className="text-4xl font-bold mb-6">Ready to Accelerate Your Associates?</h2>
+              <p className="text-xl mb-8 max-w-3xl mx-auto">
+                Transform your associates into confident leaders and business partners through our proven curriculum designed by GCs and industry leaders.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <motion.a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSemh6GaEPGl5UnY09qJVJtPXfnVhPi7gp6OcKkL1CaMGGsbbw/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <Mail size={20} />
+                  Contact Us
+                </motion.a>
+              </div>
+            </div>
           </div>
-          <p className="text-white/60 mt-6 text-sm">
-            Custom program design and investment structure available upon consultation
-          </p>
         </motion.div>
       </div>
     </motion.div>
