@@ -588,14 +588,27 @@ const ProgramsV2 = () => {
                     </div>
                     
                     {/* Action Button */}
-                    <motion.button 
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                    >
-                      Get Custom Quote
-                      <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </motion.button>
+                    {program.name === "NEW LEADERS PROGRAM" ? (
+                      <Link to="/new-leaders" onClick={() => window.scrollTo(0, 0)}>
+                        <motion.button 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                        >
+                          Learn More
+                          <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </motion.button>
+                      </Link>
+                    ) : (
+                      <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                      >
+                        Get Custom Quote
+                        <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </motion.button>
+                    )}
                   </div>
                 </motion.div>
               ))}
