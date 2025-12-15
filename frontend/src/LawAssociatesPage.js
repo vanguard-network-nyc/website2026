@@ -157,14 +157,15 @@ const LawAssociatesPage = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <Breadcrumb 
-          customPath={[
-            { name: 'Home', path: '/' },
-            { name: 'Programs', path: '/programs' },
-            { name: 'Customized Solutions', path: '/programs#customized-solutions' },
-            { name: 'Law Associates', path: '/law-associates' }
-          ]}
-        />
+        <nav className="flex mb-8 text-sm">
+          <Link to="/" className="text-slate-600 hover:text-[#045184]">Home</Link>
+          <span className="mx-2 text-slate-400">›</span>
+          <Link to="/programs" className="text-slate-600 hover:text-[#045184]">Programs</Link>
+          <span className="mx-2 text-slate-400">›</span>
+          <Link to="/programs#customized-solutions" className="text-slate-600 hover:text-[#045184]">Customized Solutions</Link>
+          <span className="mx-2 text-slate-400">›</span>
+          <span className="text-slate-900 font-medium">Law Associates</span>
+        </nav>
 
         {/* Hero Section */}
         <div className="relative mb-16">
