@@ -1290,53 +1290,55 @@ class CustomQuoteSubmit(BaseModel):
 
 @api_router.post("/contact/submit")
 async def submit_contact_form(form_data: ContactFormSubmit):
-    """Send contact form submission via email"""
+    """Send contact form submission via email using Resend"""
     try:
-        # Email configuration - Use SMTP relay for Google Workspace
-        smtp_server = "smtp-relay.gmail.com"
-        smtp_port = 587
-        sender_email = os.environ.get('SMTP_EMAIL', 'noreply@thevanguardnetwork.com')
-        sender_password = os.environ.get('SMTP_PASSWORD', '')
-        recipient_email = "romeo@vanguardgroup.nyc"
-        
-        # Create email message
-        msg = MIMEMultipart()
-        msg['From'] = sender_email
-        msg['To'] = recipient_email
-        msg['Subject'] = f"New Contact Form Submission - {form_data.source}"
+        # Configure Resend API
+        resend.api_key = os.environ.get('RESEND_API_KEY')
         
         # Email body
-        body = f"""
-New Contact Form Submission
-
-Full Name: {form_data.fullName}
-Email: {form_data.email}
-Company: {form_data.company or 'Not provided'}
-Interest Area: {form_data.interestArea or 'Not provided'}
-
-Message:
-{form_data.message}
-
----
-Source: {form_data.source}
-Timestamp: {datetime.utcnow().isoformat()}
+        html_body = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+            <h2 style="color: #045184;">New Contact Form Submission</h2>
+            <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Full Name:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.fullName}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Email:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.email}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Company:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.company or 'Not provided'}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Interest Area:</strong></td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.interestArea or 'Not provided'}</td>
+                </tr>
+            </table>
+            <h3 style="color: #045184; margin-top: 20px;">Message:</h3>
+            <p style="background: #f5f5f5; padding: 15px; border-left: 4px solid #045184;">{form_data.message}</p>
+            <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
+            <p style="font-size: 12px; color: #666;">
+                <strong>Source:</strong> {form_data.source}<br>
+                <strong>Timestamp:</strong> {datetime.utcnow().isoformat()}
+            </p>
+        </body>
+        </html>
         """
         
-        msg.attach(MIMEText(body, 'plain'))
+        # Send email via Resend
+        params = {
+            "from": "The Vanguard Network <noreply@updates.thevanguardnetwork.com>",
+            "to": ["romeo@vanguardgroup.nyc"],
+            "subject": f"New Contact Form Submission - {form_data.source}",
+            "html": html_body,
+        }
         
-        # Try to send email via relay
-        try:
-            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
-                server.starttls()
-                if sender_password:
-                    server.login(sender_email, sender_password)
-                server.send_message(msg)
-            logger.info(f"Contact form email sent successfully to {recipient_email}")
-        except (smtplib.SMTPAuthenticationError, smtplib.SMTPException) as smtp_error:
-            # If email fails, log the submission for manual follow-up
-            logger.warning(f"SMTP failed, logging submission: {form_data.fullName} ({form_data.email})")
-            logger.warning(f"SMTP error details: {str(smtp_error)}")
-            # In production, store in database or use alternative notification
+        email = resend.Emails.send(params)
+        logger.info(f"Contact form email sent successfully via Resend: {email}")
         
         return {
             "status": "success",
@@ -1344,8 +1346,8 @@ Timestamp: {datetime.utcnow().isoformat()}
         }
         
     except Exception as e:
-        logger.error(f"Unexpected error in contact form submission: {str(e)}")
-        # Still return success to user even if there's an error
+        logger.error(f"Error sending contact form via Resend: {str(e)}")
+        # Still return success to user
         return {
             "status": "success",
             "message": "Contact form submitted successfully"
