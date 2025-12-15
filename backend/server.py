@@ -1328,8 +1328,7 @@ Timestamp: {datetime.utcnow().isoformat()}
         
         # Try to send email
         try:
-            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
-                server.starttls()
+            with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=10) as server:
                 if sender_password:
                     server.login(sender_email, sender_password)
                 server.send_message(msg)
@@ -1391,8 +1390,7 @@ Timestamp: {datetime.utcnow().isoformat()}
         
         # Try to send email
         try:
-            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
-                server.starttls()
+            with smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=10) as server:
                 if sender_password:
                     server.login(sender_email, sender_password)
                 server.send_message(msg)
