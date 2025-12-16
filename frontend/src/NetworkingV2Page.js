@@ -139,7 +139,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
           <div className="text-center mb-12">
             <motion.div
@@ -221,7 +221,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -378,7 +378,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 2.0, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
           <div className="text-center mb-12">
             <motion.div
