@@ -1375,7 +1375,7 @@ const AdvisoryPage = () => {
           </div>
 
           {/* Tablet Layout - Horizontal Full-Width Cards */}
-          <div className="hidden md:block lg:hidden space-y-6">
+          <div className="hidden md:block xl:hidden space-y-6">
             {/* Ken Banta - Horizontal */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
               <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
