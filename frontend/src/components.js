@@ -3224,6 +3224,27 @@ const NewsroomSliderSection = () => {
     }
   };
 
+  // Custom arrow components for slider
+  const CustomPrevArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+      aria-label="Previous slide"
+    >
+      <ChevronLeft size={24} className="text-slate-700" />
+    </button>
+  );
+
+  const CustomNextArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+      aria-label="Next slide"
+    >
+      <ChevronRight size={24} className="text-slate-700" />
+    </button>
+  );
+
   const sliderSettings = {
     dots: true,
     infinite: newsArticles.length > 3,
@@ -3234,6 +3255,8 @@ const NewsroomSliderSection = () => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
     adaptiveHeight: false,
     responsive: [
       {
