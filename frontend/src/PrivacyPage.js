@@ -340,7 +340,7 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
           
           <p className="text-slate-700 leading-relaxed">
-            Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by clicking here. We will respond to your request within 30 days.
+            Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by <Link to="/contact" className="text-[#045184] hover:underline font-medium">clicking here</Link>. We will respond to your request within 30 days.
           </p>
         </section>
       </div>
