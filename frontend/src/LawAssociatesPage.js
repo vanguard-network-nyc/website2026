@@ -350,27 +350,27 @@ const LawAssociatesPage = () => {
 
           <div className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-4 md:p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">Testimonial</h2>
-            {/* Mobile: Headshot with name/title beside it */}
-            <div className="flex items-center gap-4 mb-4 md:hidden">
+            {/* Mobile & Tablet: Headshot with name/title beside it */}
+            <div className="flex items-center gap-4 mb-4 xl:hidden">
               <div className="flex-shrink-0">
                 <img
                   src="https://static.wixstatic.com/media/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg"
                   alt="Doug Barnard"
-                  className="w-20 h-20 rounded-full object-cover border-4 border-white/30"
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-white/30"
                 />
               </div>
               <div>
                 <div className="font-bold text-lg">Doug Barnard</div>
-                <div className="text-white/80 text-sm">Former Senior Vice President, General Counsel, and Secretary</div>
-                <div className="text-white/80 text-sm">CF Industries</div>
+                <div className="text-white/80 text-sm md:text-base">Former Senior Vice President, General Counsel, and Secretary</div>
+                <div className="text-white/80 text-sm md:text-base">CF Industries</div>
               </div>
             </div>
-            {/* Mobile: Quote below */}
-            <blockquote className="text-base leading-relaxed italic mb-4 md:hidden">
+            {/* Mobile & Tablet: Quote below */}
+            <blockquote className="text-base md:text-lg leading-relaxed italic mb-4 xl:hidden">
               "Over my 35 years as a partner at a top law firm and then a general counsel at three large companies, I was struck by how unprepared many law firm associates are to function as leaders and business partners—whether they were on a partner track at their law firm or moving in-house.<br/><br/>The Accelerator program responds to this challenge. Designed and led by GCs, senior counsel, corporate executives, and law firm senior partners, it focuses on critical EQ factors and business insights, from self-awareness to becoming a trusted advisor.<br/><br/>Whatever a law firm's size and focus, this program can significantly enhance the performance of its associates by focusing on what companies, their executives, their GCs, and their senior counsel value most in the attorney-client relationship."
             </blockquote>
-            {/* Desktop/Tablet: Original layout */}
-            <div className="hidden md:flex items-start gap-6 mb-6">
+            {/* Desktop: Original layout */}
+            <div className="hidden xl:flex items-start gap-6 mb-6">
               <div className="flex-shrink-0">
                 <img
                   src="https://static.wixstatic.com/media/e6a994_26e6ccbd052d412b8c76b555916d7c04~mv2.jpeg"
@@ -382,7 +382,7 @@ const LawAssociatesPage = () => {
                 "Over my 35 years as a partner at a top law firm and then a general counsel at three large companies, I was struck by how unprepared many law firm associates are to function as leaders and business partners—whether they were on a partner track at their law firm or moving in-house.<br/><br/>The Accelerator program responds to this challenge. Designed and led by GCs, senior counsel, corporate executives, and law firm senior partners, it focuses on critical EQ factors and business insights, from self-awareness to becoming a trusted advisor.<br/><br/>Whatever a law firm's size and focus, this program can significantly enhance the performance of its associates by focusing on what companies, their executives, their GCs, and their senior counsel value most in the attorney-client relationship."
               </blockquote>
             </div>
-            <div className="hidden md:block border-t border-white/20 pt-4">
+            <div className="hidden xl:block border-t border-white/20 pt-4">
               <div className="font-bold text-lg">Doug Barnard</div>
               <div className="text-white/80">Former Senior Vice President, General Counsel, and Secretary</div>
               <div className="text-white/80">CF Industries</div>
