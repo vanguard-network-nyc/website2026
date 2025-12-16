@@ -223,15 +223,16 @@ const PodcastDetailPage = () => {
                 transition={{ delay: 0.6 }}
                 className="mb-12"
               >
-                <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6 flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-lg flex items-center justify-center">
                     <Play size={20} className="text-white" />
                   </div>
                   Listen Now
                 </h2>
-                <div className="bg-slate-50 rounded-2xl p-6">
+                <div className="bg-slate-50 rounded-2xl p-3 md:p-6">
                   <div 
-                    className="w-full"
+                    className="w-full soundcloud-player-container"
+                    style={{ minHeight: '166px' }}
                     dangerouslySetInnerHTML={{ 
                       __html: getSoundCloudIframe(podcast.soundcloud_embed) 
                     }}
