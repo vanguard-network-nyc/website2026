@@ -591,48 +591,86 @@ const AdvisoryPage = () => {
           </div>
         </div>
         
-        {/* Tab Navigation Block */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
-          <div className="text-center py-3 md:py-4 bg-slate-50 border-b border-slate-200">
-            <p className="text-xs md:text-sm font-semibold text-slate-600 uppercase tracking-wide px-4">
+        {/* Mobile Tab Navigation - Horizontal Pills */}
+        <div className="md:hidden mb-8">
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide text-center mb-3">
+            Select a service
+          </p>
+          <div className="flex gap-2 overflow-x-auto pb-2 px-1">
+            <button
+              onClick={() => handleTabChange('strategic')}
+              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+                activeTab === 'strategic'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+              }`}
+            >
+              Strategic Counsel
+            </button>
+            <button
+              onClick={() => handleTabChange('organizational')}
+              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+                activeTab === 'organizational'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+              }`}
+            >
+              Transformation
+            </button>
+            <button
+              onClick={() => handleTabChange('client')}
+              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+                activeTab === 'client'
+                  ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
+                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+              }`}
+            >
+              Client Engagement
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop Tab Navigation Block - Hidden on Mobile */}
+        <div className="hidden md:block bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12">
+          <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
+            <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide px-4">
               Click below to explore our advisory services
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="grid grid-cols-3">
             {/* Strategic Counsel Tab */}
             <motion.button
               onClick={() => handleTabChange('strategic')}
               whileHover={{ scale: activeTab !== 'strategic' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
-              className={`p-4 md:p-8 text-left transition-all duration-300 cursor-pointer relative group ${
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
                 activeTab === 'strategic'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
                   : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
               }`}
             >
-              <div className="flex items-center md:items-start justify-between">
+              <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className={`text-lg md:text-2xl font-bold mb-1 md:mb-3 ${activeTab === 'strategic' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'strategic' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
                     Strategic Counsel
                   </h3>
-                  <p className={`text-sm md:text-base mb-1 md:mb-2 hidden md:block ${activeTab === 'strategic' ? 'text-white/90' : 'text-slate-600'}`}>
+                  <p className={`text-base mb-2 ${activeTab === 'strategic' ? 'text-white/90' : 'text-slate-600'}`}>
                     Direct one-on-one coaching and strategic sounding board support for senior executives.
                   </p>
                 </div>
-                <div className={`ml-2 md:ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'strategic' ? 'group-hover:translate-x-1' : ''}`}>
-                  <ArrowRight size={24} className={`md:w-7 md:h-7 ${activeTab === 'strategic' ? 'text-white' : 'text-[#00A8E1]'}`} />
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'strategic' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'strategic' ? 'text-white' : 'text-[#00A8E1]'} />
                 </div>
               </div>
               {activeTab === 'strategic' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-white/80">
-                  <CheckCircle2 size={14} className="mr-2" />
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
                   Currently viewing
                 </div>
               )}
               {activeTab !== 'strategic' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
-                  <span className="md:hidden">Tap to view →</span>
-                  <span className="hidden md:inline">Click to view details →</span>
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
                 </div>
               )}
             </motion.button>
@@ -642,35 +680,34 @@ const AdvisoryPage = () => {
               onClick={() => handleTabChange('organizational')}
               whileHover={{ scale: activeTab !== 'organizational' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
-              className={`p-4 md:p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-l border-slate-200 ${
                 activeTab === 'organizational'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
                   : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
               }`}
             >
-              <div className="flex items-center md:items-start justify-between">
+              <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className={`text-lg md:text-2xl font-bold mb-1 md:mb-3 ${activeTab === 'organizational' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'organizational' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
                     Organizational Transformation
                   </h3>
-                  <p className={`text-sm md:text-base mb-1 md:mb-2 hidden md:block ${activeTab === 'organizational' ? 'text-white/90' : 'text-slate-600'}`}>
+                  <p className={`text-base mb-2 ${activeTab === 'organizational' ? 'text-white/90' : 'text-slate-600'}`}>
                     Transform what your people believe, the way they work, and how they behave.
                   </p>
                 </div>
-                <div className={`ml-2 md:ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'organizational' ? 'group-hover:translate-x-1' : ''}`}>
-                  <ArrowRight size={24} className={`md:w-7 md:h-7 ${activeTab === 'organizational' ? 'text-white' : 'text-[#00A8E1]'}`} />
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'organizational' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'organizational' ? 'text-white' : 'text-[#00A8E1]'} />
                 </div>
               </div>
               {activeTab === 'organizational' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-white/80">
-                  <CheckCircle2 size={14} className="mr-2" />
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
                   Currently viewing
                 </div>
               )}
               {activeTab !== 'organizational' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
-                  <span className="md:hidden">Tap to view →</span>
-                  <span className="hidden md:inline">Click to view details →</span>
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
                 </div>
               )}
             </motion.button>
@@ -680,35 +717,34 @@ const AdvisoryPage = () => {
               onClick={() => handleTabChange('client')}
               whileHover={{ scale: activeTab !== 'client' ? 1.02 : 1 }}
               whileTap={{ scale: 0.98 }}
-              className={`p-4 md:p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+              className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-l border-slate-200 ${
                 activeTab === 'client'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
                   : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
               }`}
             >
-              <div className="flex items-center md:items-start justify-between">
+              <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h3 className={`text-lg md:text-2xl font-bold mb-1 md:mb-3 ${activeTab === 'client' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                  <h3 className={`text-2xl font-bold mb-3 ${activeTab === 'client' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
                     Client & Stakeholder Engagement
                   </h3>
-                  <p className={`text-sm md:text-base mb-1 md:mb-2 hidden md:block ${activeTab === 'client' ? 'text-white/90' : 'text-slate-600'}`}>
+                  <p className={`text-base mb-2 ${activeTab === 'client' ? 'text-white/90' : 'text-slate-600'}`}>
                     Leadership Exchanges that transform supplier relationships into peer and trusted advisor roles.
                   </p>
                 </div>
-                <div className={`ml-2 md:ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'client' ? 'group-hover:translate-x-1' : ''}`}>
-                  <ArrowRight size={24} className={`md:w-7 md:h-7 ${activeTab === 'client' ? 'text-white' : 'text-[#00A8E1]'}`} />
+                <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'client' ? 'group-hover:translate-x-1' : ''}`}>
+                  <ArrowRight size={28} className={activeTab === 'client' ? 'text-white' : 'text-[#00A8E1]'} />
                 </div>
               </div>
               {activeTab === 'client' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-white/80">
-                  <CheckCircle2 size={14} className="mr-2" />
+                <div className="mt-3 flex items-center text-sm text-white/80">
+                  <CheckCircle2 size={16} className="mr-2" />
                   Currently viewing
                 </div>
               )}
               {activeTab !== 'client' && (
-                <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
-                  <span className="md:hidden">Tap to view →</span>
-                  <span className="hidden md:inline">Click to view details →</span>
+                <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
+                  Click to view details →
                 </div>
               )}
             </motion.button>
