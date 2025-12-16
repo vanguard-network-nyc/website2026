@@ -2244,7 +2244,7 @@ const BookPage = () => (
         className="text-center rounded-2xl p-12"
         style={{ backgroundColor: '#045184' }}
       >
-        <h2 className="text-4xl font-bold text-white mb-6">Ready to See Around Corners?</h2>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to See Around Corners?</h2>
         <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
           Join thousands of executives who have transformed their leadership approach with insights from America's most successful business leaders.
         </p>
