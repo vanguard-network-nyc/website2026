@@ -1390,7 +1390,7 @@ const AdvisoryPage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+              className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-200 hover:bg-blue-50"
             >
               Get Started Today
             </motion.button>
@@ -1611,14 +1611,14 @@ const TeamPage = () => {
         >
           <Link
             to="/contact"
-            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
+            className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
           >
             Get Started Today
             <ArrowRight size={20} />
           </Link>
           <Link
             to="/advisory"
-            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-200 inline-flex items-center justify-center gap-2"
           >
             Learn About Our Services
             <Target size={20} />
@@ -1999,7 +1999,7 @@ const ContactPage = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="mt-6 w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-50"
+                  className="mt-6 w-full bg-white px-6 py-3 rounded-lg font-semibold text-base transition-all duration-200 hover:bg-blue-50"
                   style={{ color: '#045184' }}
                 >
                   Learn More About Our Services
@@ -2085,7 +2085,7 @@ const ContactPage = () => {
             href="/team"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2"
+            className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
           >
             <Users size={20} />
             Meet Our Team
