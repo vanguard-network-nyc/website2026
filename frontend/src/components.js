@@ -2533,7 +2533,7 @@ const NewWhatWeDoSection = () => {
   ];
 
   return (
-    <section className="pt-24 pb-8 bg-white">
+    <section className="pt-24 pb-0 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
