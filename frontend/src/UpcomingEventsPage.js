@@ -264,13 +264,13 @@ const UpcomingEventsPage = () => {
           <div className="flex flex-col gap-6">
             {/* First Row: Search Bar */}
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={20} />
+              <Search className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
               <input
                 type="text"
-                placeholder="Search events by title or session leader..."
+                placeholder="Search events..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-lg"
+                className="w-full pl-10 md:pl-12 pr-4 py-3 md:py-4 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent text-sm md:text-lg"
               />
             </div>
             
