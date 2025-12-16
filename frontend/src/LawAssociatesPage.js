@@ -156,7 +156,7 @@ const LawAssociatesPage = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm mb-6">
+        <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mb-6">
           <Link to="/" className="flex items-center text-slate-600 hover:text-[#045184] transition-colors duration-200">
             <Home size={16} />
           </Link>
