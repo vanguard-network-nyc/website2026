@@ -275,10 +275,10 @@ const UpcomingEventsPage = () => {
             </div>
             
             {/* Second Row: Filters and View Toggle */}
-            <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+            <div className="flex flex-col lg:flex-row gap-4 items-center justify-between w-full">
               {/* Filter Dropdowns */}
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-slate-600 font-medium">Filters:</span>
+              <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-4 items-center justify-center md:justify-start w-full md:w-auto">
+                <span className="text-slate-600 font-medium text-sm md:text-base">Filters:</span>
                 
                 {/* Audience Filter */}
                 <div className="relative">
