@@ -66,18 +66,40 @@ const PodcastDetailPage = () => {
     }
   };
 
-  // Extract iframe from soundcloud embed code
+  // Extract iframe from soundcloud embed code with mobile-friendly parameters
   const getSoundCloudIframe = (embedCode) => {
     if (!embedCode) return null;
     
-    // If it's already an iframe, use it directly
+    // If it's already an iframe, modify it for better mobile experience
     if (embedCode.includes('<iframe')) {
+      // Extract the src URL from the iframe
+      const srcMatch = embedCode.match(/src="([^"]+)"/);
+      if (srcMatch) {
+        let srcUrl = srcMatch[1];
+        // Add mobile-friendly parameters if not already present
+        if (!srcUrl.includes('hide_related=')) {
+          srcUrl += (srcUrl.includes('?') ? '&' : '?') + 'hide_related=true';
+        }
+        if (!srcUrl.includes('show_comments=')) {
+          srcUrl += '&show_comments=false';
+        }
+        if (!srcUrl.includes('show_playcount=')) {
+          srcUrl += '&show_playcount=false';
+        }
+        if (!srcUrl.includes('show_teaser=')) {
+          srcUrl += '&show_teaser=false';
+        }
+        // Return modified iframe with responsive width
+        return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="${srcUrl}" style="border-radius: 12px;"></iframe>`;
+      }
       return embedCode;
     }
     
-    // If it's just a URL, create an iframe
+    // If it's just a URL, create an iframe with optimal parameters
     if (embedCode.includes('soundcloud.com')) {
-      return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="${embedCode}"></iframe>`;
+      const params = 'hide_related=true&show_comments=false&show_playcount=false&show_teaser=false&visual=false';
+      const separator = embedCode.includes('?') ? '&' : '?';
+      return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="${embedCode}${separator}${params}" style="border-radius: 12px;"></iframe>`;
     }
     
     return embedCode;
