@@ -304,7 +304,7 @@ const NewsroomPage = () => {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
             >
               {/* Article Image */}
-              <div className="relative h-[350px] overflow-hidden bg-gray-100">
+              <div className="relative h-[350px] md:h-[420px] xl:h-[350px] overflow-hidden bg-gray-100">
                 <img
                   src={article.image}
                   alt={article.title}
