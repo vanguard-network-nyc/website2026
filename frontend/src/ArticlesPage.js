@@ -323,14 +323,14 @@ const ArticlesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-12 flex justify-center items-center gap-2"
+            className="mt-12 flex justify-center items-center gap-1 md:gap-2 flex-wrap"
           >
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              className="px-2 md:px-4 py-1.5 md:py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-xs md:text-base"
             >
-              Previous
+              Prev
             </button>
             
             {(() => {
@@ -343,13 +343,13 @@ const ArticlesPage = () => {
                   <button
                     key={1}
                     onClick={() => setCurrentPage(1)}
-                    className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                    className="px-2 md:px-4 py-1.5 md:py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all text-xs md:text-base"
                   >
                     1
                   </button>
                 );
                 if (currentPage > 4) {
-                  pages.push(<span key="ellipsis1" className="px-2 text-slate-400">...</span>);
+                  pages.push(<span key="ellipsis1" className="px-1 md:px-2 text-slate-400 text-xs md:text-base">...</span>);
                 }
               }
               
@@ -359,7 +359,7 @@ const ArticlesPage = () => {
                   <button
                     key={i}
                     onClick={() => setCurrentPage(i)}
-                    className={`px-4 py-2 rounded-lg transition-all ${
+                    className={`px-2 md:px-4 py-1.5 md:py-2 rounded-lg transition-all text-xs md:text-base ${
                       currentPage === i
                         ? 'bg-[#045184] text-white'
                         : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -373,13 +373,13 @@ const ArticlesPage = () => {
               // Show last page
               if (currentPage < totalPages - 2) {
                 if (currentPage < totalPages - 3) {
-                  pages.push(<span key="ellipsis2" className="px-2 text-slate-400">...</span>);
+                  pages.push(<span key="ellipsis2" className="px-1 md:px-2 text-slate-400 text-xs md:text-base">...</span>);
                 }
                 pages.push(
                   <button
                     key={totalPages}
                     onClick={() => setCurrentPage(totalPages)}
-                    className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all"
+                    className="px-2 md:px-4 py-1.5 md:py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all text-xs md:text-base"
                   >
                     {totalPages}
                   </button>
@@ -392,7 +392,7 @@ const ArticlesPage = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredArticles.length / itemsPerPage)))}
               disabled={currentPage === Math.ceil(filteredArticles.length / itemsPerPage)}
-              className="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              className="px-2 md:px-4 py-1.5 md:py-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-xs md:text-base"
             >
               Next
             </button>
