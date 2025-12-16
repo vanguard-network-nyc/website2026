@@ -62,10 +62,10 @@ const LifeSciencesCEOPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12">
             <div>
               <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Program Overview</h2>
-              <p className="text-slate-600 leading-relaxed text-lg mb-6">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg mb-6">
                 The Life Sciences CEO Exchanges bring together senior executives from the life sciences industry to focus on leadership aspects rather than day-to-day operational tasks. Our discussions include cutting-edge topics like AI in development and commercialization, strategic leadership challenges, and industry transformation.
               </p>
-              <p className="text-slate-600 leading-relaxed text-lg">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
                 This executive forum meets quarterly in virtual format, with face-to-face sessions held bi-annually, creating an intimate environment for peer learning and strategic collaboration.
               </p>
             </div>
