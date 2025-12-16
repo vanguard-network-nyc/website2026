@@ -3233,13 +3233,13 @@ const NewsroomSliderSection = () => {
           </p>
         </motion.div>
 
-        {/* Slider */}
+        {/* Desktop Slider - Hidden on Mobile */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="newsroom-slider"
+          className="newsroom-slider hidden md:block"
         >
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
@@ -3284,6 +3284,41 @@ const NewsroomSliderSection = () => {
               </div>
             ))}
           </Slider>
+        </motion.div>
+
+        {/* Mobile Stack Layout - Show only on Mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="md:hidden space-y-6"
+        >
+          {newsArticles.slice(0, 3).map((article, index) => (
+            <Link key={article.id} to={article.link} className="block">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex">
+                {/* Article Image */}
+                <div className="relative w-28 h-28 flex-shrink-0 overflow-hidden bg-slate-100">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Article Content */}
+                <div className="p-4 flex flex-col justify-center flex-grow">
+                  <h3 className="text-sm font-bold text-slate-900 mb-2 line-clamp-2 leading-tight">
+                    {article.title}
+                  </h3>
+                  <span className="inline-flex items-center gap-1 text-blue-600 font-semibold text-xs">
+                    Read More
+                    <ArrowRight size={12} />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </motion.div>
 
         {/* View All Button */}
