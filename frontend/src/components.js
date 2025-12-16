@@ -1037,7 +1037,7 @@ const AdvisoryPage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
               >
-                <h2 className="text-4xl font-bold text-slate-900 mb-6">Client and Stakeholder Engagement</h2>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Client and Stakeholder Engagement</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.
               </p>
