@@ -956,8 +956,8 @@ const AdvisoryPage = () => {
           className="relative"
           style={{ scrollMarginTop: '120px' }}
         >
-          {/* Upward Triangle Caret Indicator */}
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          {/* Upward Triangle Caret Indicator - Points to Organizational Transformation tab (2nd of 3) */}
+          <div className="absolute -top-4 left-1/2 md:left-1/2 transform -translate-x-1/2">
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
