@@ -331,7 +331,7 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 mb-16"
         >
           <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Program Design</h2>
