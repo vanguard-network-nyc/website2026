@@ -204,7 +204,7 @@ const NewsroomPage = () => {
         >
           <div className="flex items-center justify-center gap-4 mb-8">
             <h1 
-              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
+              className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
             >
               Newsroom
             </h1>
@@ -449,7 +449,7 @@ const NewsroomPage = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-center bg-white rounded-3xl p-12 shadow-xl border border-slate-200 mt-16"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Stay Connected</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Stay Connected</h2>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Subscribe to our newsletter or follow us on social media to get the latest updates about The Vanguard Network's programs, events, and thought leadership content.
           </p>

@@ -244,7 +244,7 @@ const UpcomingEventsPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
+            className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
             Events
           </motion.h1>
@@ -593,7 +593,7 @@ const UpcomingEventsPage = () => {
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
               Connect with industry leaders, gain exclusive insights, and accelerate your leadership journey.
             </p>

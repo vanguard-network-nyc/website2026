@@ -115,7 +115,7 @@ const NetworkingV2Page = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
+            className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
             Networking & Community
           </motion.h1>
@@ -150,7 +150,7 @@ const NetworkingV2Page = () => {
             >
               <MessageCircle size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
               Beyond Traditional Networking
             </h2>
           </div>
@@ -201,7 +201,7 @@ const NetworkingV2Page = () => {
           >
             <Star size={32} className="text-white" />
           </motion.div>
-          <h2 className="text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
           <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
             Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
           </p>
@@ -237,7 +237,7 @@ const NetworkingV2Page = () => {
                   </div>
                 </motion.div>
                 
-                <h2 className="text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+                <h2 className="text-2xl md:text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
                   Valuable Networking Opportunities
                 </h2>
               </div>
@@ -300,7 +300,7 @@ const NetworkingV2Page = () => {
             >
               <Award size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
           </div>
 
           {/* All Networks Grid */}
@@ -389,7 +389,7 @@ const NetworkingV2Page = () => {
             >
               <Globe size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">Members Website Features</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Members Website Features</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
               Access exclusive digital resources and tools designed to enhance your leadership capabilities and support your professional development.
             </p>
@@ -436,7 +436,7 @@ const NetworkingV2Page = () => {
           >
             <Star size={32} className="text-white" />
           </motion.div>
-          <h2 className="text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
           <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
             Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
           </p>

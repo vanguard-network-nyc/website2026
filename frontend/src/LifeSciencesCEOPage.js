@@ -41,7 +41,7 @@ const LifeSciencesCEOPage = () => {
               <Award size={40} className="text-white" />
             </motion.div>
             <h1 
-              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
+              className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
             >
               Life Sciences CEO Exchanges
             </h1>
@@ -61,7 +61,7 @@ const LifeSciencesCEOPage = () => {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Program Overview</h2>
+              <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Program Overview</h2>
               <p className="text-slate-600 leading-relaxed text-lg mb-6">
                 The Life Sciences CEO Exchanges bring together senior executives from the life sciences industry to focus on leadership aspects rather than day-to-day operational tasks. Our discussions include cutting-edge topics like AI in development and commercialization, strategic leadership challenges, and industry transformation.
               </p>
@@ -113,7 +113,7 @@ const LifeSciencesCEOPage = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="bg-white rounded-3xl p-12 shadow-xl mb-16 border border-slate-200"
         >
-          <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">Key Focus Areas</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-12">Key Focus Areas</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <motion.div
@@ -185,7 +185,7 @@ const LifeSciencesCEOPage = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="bg-white rounded-3xl p-12 shadow-xl mb-16 border border-slate-200"
         >
-          <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">Program Features</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-12">Program Features</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -266,7 +266,7 @@ const LifeSciencesCEOPage = () => {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="text-center bg-white rounded-3xl p-12 shadow-xl border border-slate-200"
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready to Join Our Executive Community?</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Ready to Join Our Executive Community?</h2>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Connect with fellow Life Sciences CEOs in meaningful discussions about leadership, innovation, and industry transformation. By invitation only.
           </p>

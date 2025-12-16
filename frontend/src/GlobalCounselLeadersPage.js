@@ -29,7 +29,7 @@ const GlobalCounselLeadersPage = () => {
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 leading-tight pb-2">
+          <h1 className="text-2xl md:text-4xl md:text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 leading-tight pb-2">
             Bringing New Leaders Of The World's<br />
             Best-In-Class Legal & Compliance Functions Into The Vanguard Network
           </h1>
@@ -78,7 +78,7 @@ const GlobalCounselLeadersPage = () => {
         >
           <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold mb-6">Experience Enhanced Global Leadership Development</h2>
+              <h2 className="text-2xl md:text-4xl font-bold mb-6">Experience Enhanced Global Leadership Development</h2>
               <p className="text-xl mb-8 max-w-3xl mx-auto">
                 Discover how the integration of Global Counsel Leaders enhances our ability to serve senior executives 
                 in legal, compliance, and leadership functions worldwide.

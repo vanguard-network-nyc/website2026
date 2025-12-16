@@ -230,7 +230,7 @@ const MembershipApplicationPage = () => {
           className="text-center mb-12"
         >
           <h1 
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
+            className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
           >
             Vanguard Membership Application
           </h1>

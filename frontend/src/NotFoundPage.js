@@ -34,7 +34,7 @@ const NotFoundPage = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h1 className="text-3xl sm:text-2xl md:text-4xl font-bold text-slate-900 mb-4">
               Page Not Found
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-lg mx-auto">
