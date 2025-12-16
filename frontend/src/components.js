@@ -345,14 +345,14 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile/Tablet Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-slate-700 pt-4 pb-4"
+              className="lg:hidden border-t border-slate-700 pt-4 pb-4"
             >
               {navItems.map((item, index) => (
                 <motion.div
