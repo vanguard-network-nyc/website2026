@@ -309,31 +309,31 @@ const CaseStudiesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-16 px-8 rounded-2xl mt-16"
+          className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-10 md:py-16 px-4 md:px-8 rounded-2xl mt-16"
         >
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Organization?</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Organization?</h2>
+          <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mx-auto">
             These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/advisory">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
+            <Link to="/advisory" className="w-full sm:w-auto">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-transparent text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                className="bg-transparent text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
               >
-                <Target size={20} />
-                Explore Our Advisory Services
+                <Target size={18} />
+                <span>Explore Advisory Services</span>
               </motion.button>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact" className="w-full sm:w-auto">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                className="bg-white text-[#045184] px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
               >
-                <Mail size={20} />
-                Contact Us
+                <Mail size={18} />
+                <span>Contact Us</span>
               </motion.button>
             </Link>
           </div>
