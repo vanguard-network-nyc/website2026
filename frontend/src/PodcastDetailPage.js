@@ -66,55 +66,13 @@ const PodcastDetailPage = () => {
     }
   };
 
-  // Fix malformed SoundCloud URLs that have "soundcloud:tracks:" prefix
-  const fixSoundCloudUrl = (url) => {
-    // Decode the URL first
-    let decodedUrl = decodeURIComponent(url);
-    // Fix the malformed track URL pattern: soundcloud:tracks:TRACKID -> just TRACKID
-    decodedUrl = decodedUrl.replace(/soundcloud%3Atracks%3A/gi, '');
-    decodedUrl = decodedUrl.replace(/soundcloud:tracks:/gi, '');
-    return decodedUrl;
-  };
-
-  // Extract iframe from soundcloud embed code with mobile-friendly parameters
+  // Extract iframe from soundcloud embed code
   const getSoundCloudIframe = (embedCode) => {
     if (!embedCode) return null;
     
-    // If it's already an iframe, modify it for better mobile experience
+    // If it's already an iframe, just return it as-is (don't modify the URL)
     if (embedCode.includes('<iframe')) {
-      // Extract the src URL from the iframe
-      const srcMatch = embedCode.match(/src="([^"]+)"/);
-      if (srcMatch) {
-        let srcUrl = srcMatch[1];
-        
-        // Fix malformed SoundCloud URLs
-        srcUrl = fixSoundCloudUrl(srcUrl);
-        
-        // Add mobile-friendly parameters if not already present
-        if (!srcUrl.includes('hide_related=')) {
-          srcUrl += (srcUrl.includes('?') ? '&' : '?') + 'hide_related=true';
-        }
-        if (!srcUrl.includes('show_comments=')) {
-          srcUrl += '&show_comments=false';
-        }
-        if (!srcUrl.includes('show_playcount=')) {
-          srcUrl += '&show_playcount=false';
-        }
-        if (!srcUrl.includes('show_teaser=')) {
-          srcUrl += '&show_teaser=false';
-        }
-        // Return modified iframe with responsive width
-        return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="${srcUrl}" style="border-radius: 12px;"></iframe>`;
-      }
       return embedCode;
-    }
-    
-    // If it's just a URL, create an iframe with optimal parameters
-    if (embedCode.includes('soundcloud.com')) {
-      const fixedUrl = fixSoundCloudUrl(embedCode);
-      const params = 'hide_related=true&show_comments=false&show_playcount=false&show_teaser=false&visual=false';
-      const separator = fixedUrl.includes('?') ? '&' : '?';
-      return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="${fixedUrl}${separator}${params}" style="border-radius: 12px;"></iframe>`;
     }
     
     return embedCode;
