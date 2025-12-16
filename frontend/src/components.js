@@ -1560,7 +1560,7 @@ const TeamPage = () => {
         className="text-center rounded-2xl p-12"
         style={{ backgroundColor: '#045184' }}
       >
-        <h2 className="text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
         <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
           Connect with our experienced leadership team to explore how we can help you unlock high-performance leadership and drive transformational change in your organization.
         </p>
