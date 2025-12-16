@@ -164,7 +164,7 @@ const PodcastDetailPage = () => {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 leading-tight"
+                  className="text-3xl lg:text-2xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight"
                 >
                   {podcast.title}
                 </motion.h1>

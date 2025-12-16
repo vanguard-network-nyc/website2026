@@ -181,7 +181,7 @@ const CaseStudiesPage = () => {
           className="mb-8"
         >
           <h1 
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight text-center"
+            className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight text-center"
           >
             Case Studies
           </h1>
@@ -311,7 +311,7 @@ const CaseStudiesPage = () => {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-10 md:py-16 px-4 md:px-8 rounded-2xl mt-16"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Organization?</h2>
+          <h2 className="text-2xl md:text-2xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Organization?</h2>
           <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mx-auto">
             These success stories represent just a fraction of the transformational work we do with executives and organizations. Let's discuss how we can help you achieve similar results.
           </p>

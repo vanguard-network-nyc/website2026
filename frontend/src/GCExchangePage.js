@@ -71,7 +71,7 @@ const GCExchangePage = () => {
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+          <h1 className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 leading-tight">
             GC Exchange
           </h1>
           

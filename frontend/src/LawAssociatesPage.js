@@ -180,7 +180,7 @@ const LawAssociatesPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-6 pb-2">
+            <h1 className="text-2xl md:text-4xl md:text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-6 pb-2">
               Law Associates Accelerator
             </h1>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8">
@@ -427,7 +427,7 @@ const LawAssociatesPage = () => {
         >
           <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="text-4xl font-bold mb-6">Ready to Accelerate Your Associates?</h2>
+              <h2 className="text-2xl md:text-4xl font-bold mb-6">Ready to Accelerate Your Associates?</h2>
               <p className="text-xl mb-8 max-w-3xl mx-auto">
                 Transform your associates into confident leaders and business partners through our proven curriculum designed by GCs and industry leaders.
               </p>

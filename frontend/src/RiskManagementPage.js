@@ -118,7 +118,7 @@ const RiskManagementPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
               RISK MANAGEMENT NETWORK
             </h1>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8">
@@ -419,7 +419,7 @@ const RiskManagementPage = () => {
           <h2 className="text-3xl font-bold mb-6 text-center">Annual Network Membership</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
-              <div className="text-4xl font-bold text-[#00A8E1] mb-2">$10,000</div>
+              <div className="text-2xl md:text-4xl font-bold text-[#00A8E1] mb-2">$10,000</div>
               <p className="text-white/80 mb-4">Annual membership fee</p>
               <div className="bg-green-500 text-white px-4 py-2 rounded-lg inline-block mb-6">
                 <span className="font-bold">Special Offer:</span> First 20 members save 50% for first 2 years

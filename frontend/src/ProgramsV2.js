@@ -345,7 +345,7 @@ const ProgramsV2 = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
+            className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
             Leadership Programs
           </motion.h1>
@@ -694,7 +694,7 @@ const ProgramsV2 = () => {
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Leadership?</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-6">Ready to Transform Your Leadership?</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
               Join over 200+ leaders who have accelerated their growth through our proven programs.
             </p>

@@ -90,7 +90,7 @@ const NewLeadersPage = () => {
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
+          <h1 className="text-2xl md:text-4xl md:text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
             Unlocking Real-World Leadership
           </h1>
           
