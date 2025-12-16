@@ -14,7 +14,7 @@ const NotFoundPage = () => {
         background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <div className="text-center">
           {/* 404 Number */}
           <motion.div
@@ -52,14 +52,14 @@ const NotFoundPage = () => {
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
               <Home size={20} />
               Return to Home
             </Link>
             <button
               onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 text-[#045184] px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-slate-50 hover:shadow-md"
+              className="inline-flex items-center gap-2 text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-slate-50 hover:shadow-md"
               style={{
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
                 border: '2px solid transparent'
@@ -75,7 +75,7 @@ const NotFoundPage = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-16 p-8 bg-white rounded-2xl shadow-lg border border-slate-200"
+            className="mt-16 p-4 md:p-8 bg-white rounded-2xl shadow-lg border border-slate-200"
           >
             <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center justify-center gap-2">
               <Search size={20} className="text-[#045184]" />

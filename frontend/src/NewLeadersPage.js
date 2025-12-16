@@ -42,7 +42,7 @@ const NewLeadersPage = () => {
       exit={{ opacity: 0 }}
       className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -73,7 +73,7 @@ const NewLeadersPage = () => {
               alt="New Leaders Program"
               className="w-full h-96 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end items-center p-8">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end items-center p-4 md:p-8">
               <div className="text-center text-white">
                 <span className="text-lg font-semibold tracking-wider uppercase mb-4 block">
                   New Leaders Program
@@ -107,7 +107,7 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.1, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
               See New Leaders in Action
             </h2>
@@ -135,7 +135,7 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <p className="text-xl mb-6">
                 New Leaders combines peer-to-peer engagement with candid insights from experienced leaders who are not shy about their mistakes. 
@@ -168,12 +168,12 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
               We offer three New Leaders programs:
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
               {/* Core Program */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
                 <div className="flex items-center gap-3 mb-4">
@@ -246,8 +246,8 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 items-center">
               <div>
                 <img
                   src="https://static.wixstatic.com/media/e6a994_b922da178ab646a38f19b283954f1585~mv2.jpeg"
@@ -279,7 +279,7 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
               New Leaders alumni are now advancing their careers at these and other organizations
             </h2>
@@ -311,7 +311,7 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8">Key Program Advisors*</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -353,7 +353,7 @@ const NewLeadersPage = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-8 md:p-12 text-white">
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-4 md:p-8 md:p-6 md:p-12 text-white">
             <h2 className="text-3xl font-bold mb-6">Ready to Unlock Your Leadership Potential?</h2>
             <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
               Join the next generation of leaders who are building real-world capabilities through peer-to-peer engagement 

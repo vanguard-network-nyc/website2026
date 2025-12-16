@@ -221,7 +221,7 @@ const MembershipApplicationPage = () => {
     <>
       <style>{phoneInputStyles}</style>
       <div className="pt-40 pb-20 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Header */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -251,7 +251,7 @@ const MembershipApplicationPage = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
-              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+              className="bg-white rounded-2xl p-4 md:p-8 max-w-md w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-center">
@@ -286,7 +286,7 @@ const MembershipApplicationPage = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
-              className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+              className="bg-white rounded-2xl p-4 md:p-8 max-w-md w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-center">
@@ -314,7 +314,7 @@ const MembershipApplicationPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-xl"
+          className="bg-white rounded-3xl p-4 md:p-8 md:p-6 md:p-12 shadow-xl"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name - Required */}

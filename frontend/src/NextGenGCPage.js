@@ -11,7 +11,7 @@ const NextGenGCPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -66,9 +66,9 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8 mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 text-center">
             <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Users className="text-blue-600" size={32} />
             </div>
@@ -76,7 +76,7 @@ const NextGenGCPage = () => {
             <p className="text-slate-600">Personalized guidance from experienced General Counsels</p>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 text-center">
             <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Target className="text-blue-600" size={32} />
             </div>
@@ -84,7 +84,7 @@ const NextGenGCPage = () => {
             <p className="text-slate-600">Intimate learning environment with carefully chosen participants</p>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 text-center">
             <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
               <Award className="text-blue-600" size={32} />
             </div>
@@ -98,7 +98,7 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <blockquote className="text-xl italic text-slate-700 mb-6 leading-relaxed text-center">
             "There is one thing you can be certain of–the dividends you will receive from your investment could never be more timely."
@@ -114,7 +114,7 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">Custom-Built Curriculum</h2>
           <div className="prose prose-lg max-w-none text-slate-700">
@@ -132,11 +132,11 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Program Components</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8">
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
@@ -196,7 +196,7 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">2025 Program Sessions</h2>
           
@@ -282,11 +282,11 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Eligibility Requirements & Time Commitment</h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">All participants must...</h3>
               <ul className="space-y-3">
@@ -325,11 +325,11 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8 mb-12 text-white"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-4 md:p-8 mb-12 text-white"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Investment</h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div className="text-center">
               <div className="bg-white bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <DollarSign className="text-white" size={40} />
@@ -376,9 +376,9 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 mb-12"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8">
             <blockquote className="text-lg italic text-slate-700 mb-6 leading-relaxed">
               "This program was beneficial for me in so many ways. It helped me better understand the actual job and critical relationships with the CEO, Peers, and Board."
             </blockquote>
@@ -389,7 +389,7 @@ const NextGenGCPage = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8">
             <blockquote className="text-lg italic text-slate-700 mb-6 leading-relaxed">
               "I could have used a session like this earlier in my career. I encountered so many unexpected things, especially in my first GC role."
             </blockquote>
@@ -405,7 +405,7 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Ready to Join the Next Cohort?</h2>
           
@@ -419,7 +419,7 @@ const NextGenGCPage = () => {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSeiCAO6-_L-Zopi4mYbBTGtvmcqroIj75QrePvcd5HOHyBqwA/viewform?usp=sf_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 md:px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
               >
                 Enroll or Nominate
                 <ExternalLink size={16} />
@@ -429,7 +429,7 @@ const NextGenGCPage = () => {
                 href="https://www.thevanguardnetwork.com/_files/ugd/e6a994_4be97e33222a4492a2e9adaa5ca2544f.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-slate-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-slate-600 text-white px-4 md:px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors duration-200"
               >
                 Download PDF
                 <ExternalLink size={16} />
@@ -443,7 +443,7 @@ const NextGenGCPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="bg-slate-100 rounded-xl p-8 text-center"
+          className="bg-slate-100 rounded-xl p-4 md:p-8 text-center"
         >
           <h3 className="text-xl font-bold text-slate-900 mb-4">Need More Information?</h3>
           <p className="text-slate-600 mb-4">

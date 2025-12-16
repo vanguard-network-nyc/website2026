@@ -338,7 +338,7 @@ const ProgramsV2 = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
         <div className="text-center mb-16">
           <motion.h1 
@@ -481,7 +481,7 @@ const ProgramsV2 = () => {
           {activeTab === 'current' && (
             <>
               {/* Programs Grid */}
-              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 md:p-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {currentPrograms.map((program, index) => (
                   <motion.div
                     key={program.name}
@@ -513,7 +513,7 @@ const ProgramsV2 = () => {
                     </div>
                     
                     {/* Content */}
-                    <div className="p-8 flex flex-col flex-grow">
+                    <div className="p-4 md:p-8 flex flex-col flex-grow">
                       <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                         {program.description}
                       </p>
@@ -637,7 +637,7 @@ const ProgramsV2 = () => {
 
           {/* Customized Programs Content */}
           {activeTab === 'customized' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8">
               {customizedPrograms.map((program, index) => (
                 <motion.div
                   key={program.name}
@@ -669,7 +669,7 @@ const ProgramsV2 = () => {
                   </div>
                   
                   {/* Content */}
-                  <div className="p-8 flex flex-col flex-grow">
+                  <div className="p-4 md:p-8 flex flex-col flex-grow">
                     <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                       {program.description}
                     </p>
@@ -719,7 +719,7 @@ const ProgramsV2 = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 text-center"
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
@@ -732,7 +732,7 @@ const ProgramsV2 = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                  className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
                 >
                   <Mail size={20} />
                   Contact Us
@@ -742,7 +742,7 @@ const ProgramsV2 = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-transparent text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                  className="bg-transparent text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2 border-2 border-white"
                 >
                   <BookOpen size={20} />
                   View All Programs
@@ -768,7 +768,7 @@ const ProgramsV2 = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              className="bg-white rounded-2xl p-4 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}

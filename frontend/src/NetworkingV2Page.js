@@ -108,7 +108,7 @@ const NetworkingV2Page = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-20">
         <Breadcrumb />
         <div className="text-center mb-12">
           <motion.h1 
@@ -134,12 +134,12 @@ const NetworkingV2Page = () => {
       </div>
 
       {/* The Human Factor Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-4 md:p-8 md:p-6 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
           <div className="text-center mb-12">
             <motion.div
@@ -161,7 +161,7 @@ const NetworkingV2Page = () => {
             </p>
             
             {/* Testimonial */}
-            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8 mb-8">
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-4 md:p-8 mb-8">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
                   <img 
@@ -191,7 +191,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
+          className="text-center rounded-2xl p-6 md:p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -209,7 +209,7 @@ const NetworkingV2Page = () => {
             href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
             Apply to Join
             <ArrowRight size={20} />
@@ -221,9 +221,9 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-4 md:p-8 md:p-6 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
             <div>
               <div className="flex items-center gap-4 mb-8">
                 <motion.div
@@ -262,7 +262,7 @@ const NetworkingV2Page = () => {
               </a>
             </div>
             
-            <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-10 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-6 md:p-10 relative overflow-hidden">
               <div className="text-center">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -304,7 +304,7 @@ const NetworkingV2Page = () => {
           </div>
 
           {/* All Networks Grid */}
-          <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto">
+          <div className="flex flex-wrap gap-4 md:p-8 justify-center max-w-7xl mx-auto">
             {/* All Network Cards */}
             {membershipNetworks.map((network, index) => (
               <motion.div
@@ -338,7 +338,7 @@ const NetworkingV2Page = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col flex-grow">
+                <div className="p-4 md:p-8 flex flex-col flex-grow">
                   <p className="text-slate-600 leading-relaxed mb-6 font-medium">
                     {network.description}
                   </p>
@@ -378,7 +378,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 2.0, duration: 0.8 }}
-          className="bg-white rounded-3xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
+          className="bg-white rounded-3xl p-4 sm:p-4 md:p-8 md:p-6 md:p-12 lg:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16"
         >
           <div className="text-center mb-12">
             <motion.div
@@ -395,7 +395,7 @@ const NetworkingV2Page = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
             {memberWebsiteFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -426,7 +426,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 2.6, duration: 0.8 }}
-          className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
+          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -444,7 +444,7 @@ const NetworkingV2Page = () => {
             href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
             Apply to Join
             <ArrowRight size={20} />

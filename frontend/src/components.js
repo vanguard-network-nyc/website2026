@@ -225,7 +225,7 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
@@ -426,8 +426,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-slate-900 text-white py-6 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
           {footerLinks.map((link, index) => (
             <motion.div
@@ -541,7 +541,7 @@ const AdvisoryPage = () => {
       style={{ visibility: 'visible' }}
     >
     {/* Hero Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-20">
       <Breadcrumb />
       <motion.div
         initial={{ y: 50, opacity: 0 }}
@@ -563,7 +563,7 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Three Approaches Section with Tabs */}
-    <div id="advisory-services-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '100px' }}>
+    <div id="advisory-services-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8" style={{ scrollMarginTop: '100px' }}>
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -573,7 +573,7 @@ const AdvisoryPage = () => {
         {/* Section Header */}
         <div className="text-center mb-16 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-[#045184]/5 to-[#00A8E1]/5 rounded-3xl transform -skew-y-1"></div>
-          <div className="relative py-12 px-8">
+          <div className="relative py-6 md:py-12 px-4 md:px-8">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -757,7 +757,7 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Tab Content Sections - Display Directly Below Tabs */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-[34px]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 -mt-[34px]">
       <div className="space-y-12">
         
         {/* Strategic Counsel Section */}
@@ -775,14 +775,14 @@ const AdvisoryPage = () => {
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
-          <div className="px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl py-4 md:py-8 md:py-6 md:py-12 shadow-xl border-t-4 border-[#045184]">
+          <div className="px-4 sm:px-6 lg:px-4 md:px-8">
             {/* Strategic Counsel Title */}
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-8 text-center">Strategic Counsel</h2>
             
             {/* Coaching Subsection */}
             <div className="mb-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -800,7 +800,7 @@ const AdvisoryPage = () => {
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
-                className="rounded-xl p-8" 
+                className="rounded-xl p-4 md:p-8" 
                 style={{ backgroundColor: '#045184' }}
               >
                 <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
@@ -832,7 +832,7 @@ const AdvisoryPage = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.8, duration: 0.8 }}
-              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
             >
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
@@ -855,7 +855,7 @@ const AdvisoryPage = () => {
 
           {/* Sounding Board Subsection */}
           <div className="mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
               <motion.div 
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -873,7 +873,7 @@ const AdvisoryPage = () => {
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.6, duration: 0.8 }}
-                className="rounded-xl p-8" 
+                className="rounded-xl p-4 md:p-8" 
                 style={{ backgroundColor: '#045184' }}
               >
                 <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
@@ -905,7 +905,7 @@ const AdvisoryPage = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.8, duration: 0.8 }}
-              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
             >
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
@@ -935,7 +935,7 @@ const AdvisoryPage = () => {
           >
             <Link
               to="/case-studies?category=leadership-advisory"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               View Leadership Advisory Client Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -961,9 +961,9 @@ const AdvisoryPage = () => {
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
-          <div className="px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="bg-white rounded-2xl py-4 md:py-8 md:py-6 md:py-12 shadow-xl border-t-4 border-[#045184]">
+          <div className="px-4 sm:px-6 lg:px-4 md:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -981,7 +981,7 @@ const AdvisoryPage = () => {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="rounded-xl p-8" 
+              className="rounded-xl p-4 md:p-8" 
               style={{ backgroundColor: '#045184' }}
             >
               <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
@@ -1013,7 +1013,7 @@ const AdvisoryPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
           >
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
@@ -1042,7 +1042,7 @@ const AdvisoryPage = () => {
           >
             <Link
               to="/case-studies?category=organizational-transformation"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               View Organizational Transformation Client Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -1068,9 +1068,9 @@ const AdvisoryPage = () => {
             <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[16px] border-b-[#045184]"></div>
           </div>
           
-          <div className="bg-white rounded-2xl py-8 md:py-12 shadow-xl border-t-4 border-[#045184]">
-          <div className="px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="bg-white rounded-2xl py-4 md:py-8 md:py-6 md:py-12 shadow-xl border-t-4 border-[#045184]">
+          <div className="px-4 sm:px-6 lg:px-4 md:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -1088,7 +1088,7 @@ const AdvisoryPage = () => {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="rounded-xl p-8" 
+              className="rounded-xl p-4 md:p-8" 
               style={{ backgroundColor: '#045184' }}
             >
               <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
@@ -1120,7 +1120,7 @@ const AdvisoryPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8"
+            className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
           >
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-shrink-0">
@@ -1149,7 +1149,7 @@ const AdvisoryPage = () => {
           >
             <Link
               to="/case-studies?category=client-stakeholder-engagement"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               View Client & Stakeholder Engagement Client Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -1176,17 +1176,17 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Overview Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="bg-white rounded-3xl p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16 relative overflow-hidden"
+        className="bg-white rounded-3xl p-6 md:p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 mb-16 relative overflow-hidden"
       >
         {/* Background Pattern */}
         <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center relative z-10">
           <div>
             <div className="flex items-center gap-4 mb-8">
               <motion.div
@@ -1214,7 +1214,7 @@ const AdvisoryPage = () => {
               We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-10 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-6 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
             <div className="text-center relative z-10">
               <motion.div
@@ -1237,12 +1237,12 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Selected Advisory Engagements Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg"
         >
           <div className="text-center">
             <motion.h2
@@ -1276,16 +1276,16 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Executive Advisory Team Section */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8 auto-rows-fr">
             {/* Ken Banta */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
@@ -1375,12 +1375,12 @@ const AdvisoryPage = () => {
     </div>
 
     {/* Call to Action */}
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.8 }}
-          className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
+          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
@@ -1390,7 +1390,7 @@ const AdvisoryPage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
+              className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50"
             >
               Get Started Today
             </motion.button>
@@ -1453,7 +1453,7 @@ const TeamPage = () => {
     exit={{ opacity: 0 }}
     className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
       <Breadcrumb />
       {/* Hero Section */}
       <motion.div
@@ -1551,11 +1551,11 @@ const TeamPage = () => {
         transition={{ delay: 1.3, duration: 0.8 }}
         className="mb-16"
       >
-        <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+        <div className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg">
           <h2 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>
             Our Commitment to Excellence
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
             {[
               {
                 title: 'Proven Experience',
@@ -1596,7 +1596,7 @@ const TeamPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.7, duration: 0.8 }}
-        className="text-center rounded-2xl p-12"
+        className="text-center rounded-2xl p-6 md:p-12"
         style={{ backgroundColor: '#045184' }}
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
@@ -1611,14 +1611,14 @@ const TeamPage = () => {
         >
           <Link
             to="/contact"
-            className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
+            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center justify-center gap-2"
           >
             Get Started Today
             <ArrowRight size={20} />
           </Link>
           <Link
             to="/advisory"
-            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
           >
             Learn About Our Services
             <Target size={20} />
@@ -1717,7 +1717,7 @@ const ContactPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -1735,12 +1735,12 @@ const ContactPage = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 mb-16">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="bg-white rounded-2xl p-4 md:p-8 shadow-lg"
+            className="bg-white rounded-2xl p-4 md:p-4 md:p-8 shadow-lg"
           >
             <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
             
@@ -1914,7 +1914,7 @@ const ContactPage = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg">
               <h3 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Get in Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -1975,7 +1975,7 @@ const ContactPage = () => {
               </div>
             </div>
             
-            <div className="rounded-2xl p-8 shadow-lg" style={{ backgroundColor: '#045184' }}>
+            <div className="rounded-2xl p-4 md:p-8 shadow-lg" style={{ backgroundColor: '#045184' }}>
               <h3 className="text-2xl font-bold mb-4 text-white">Why Choose The Vanguard Network?</h3>
               <ul className="space-y-3 text-white/90">
                 <li className="flex items-start gap-3">
@@ -2014,10 +2014,10 @@ const ContactPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 shadow-lg mb-12"
+          className="bg-white rounded-2xl p-4 md:p-8 shadow-lg mb-12"
         >
           <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>Leadership Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 max-w-4xl mx-auto">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -2074,7 +2074,7 @@ const ContactPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-center bg-white rounded-3xl p-8 shadow-xl border border-slate-200"
+          className="text-center bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200"
         >
           <h3 className="text-2xl font-bold text-slate-900 mb-4">Want to Learn More About Our Team?</h3>
           <p className="text-slate-600 mb-6 leading-relaxed max-w-2xl mx-auto">
@@ -2085,7 +2085,7 @@ const ContactPage = () => {
             href="/team"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2"
+            className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2"
           >
             <Users size={20} />
             Meet Our Team
@@ -2103,7 +2103,7 @@ const BookPage = () => (
     exit={{ opacity: 0 }}
     className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
       <Breadcrumb />
       {/* Hero Section */}
       <motion.div
@@ -2126,7 +2126,7 @@ const BookPage = () => (
       </motion.div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center mb-16">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -2147,7 +2147,7 @@ const BookPage = () => (
               href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2 hover:shadow-lg"
             >
               Order on Amazon
               <ArrowRight size={20} />
@@ -2203,8 +2203,8 @@ const BookPage = () => (
         transition={{ delay: 0.8, duration: 0.8 }}
         className="mb-16"
       >
-        <div className="bg-white rounded-2xl p-8 shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8 items-center">
             <div className="text-center">
               <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden">
                 <img 
@@ -2240,7 +2240,7 @@ const BookPage = () => (
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12" style={{ color: '#045184' }}>
           What You'll Gain
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
           {[
             {
               title: "Leadership Mastery",
@@ -2280,7 +2280,7 @@ const BookPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="text-center rounded-2xl p-12"
+        className="text-center rounded-2xl p-6 md:p-12"
         style={{ backgroundColor: '#045184' }}
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to See Around Corners?</h2>
@@ -2293,7 +2293,7 @@ const BookPage = () => (
           href="https://www.amazon.com/Seeing-Around-Corners-Americas-Insightful/dp/B0DVRGTDFY/ref=sr_1_1?crid=1UDTUUR939EFS&dib=eyJ2IjoiMSJ9.uUAnkAmvXkDTtplju1-ThXQ0DHyhnwLwFjWvT31MoLU.3z-zY1JbDLqiOwgPc_MyAB-R0brStxvJF9eIRL0VIGA&dib_tag=se&keywords=seeing+around+corners+ken+banta&qid=1739209893&sprefix=seeing+around+corners+ken+banta,aps,82&sr=8-1"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white text-[#045184] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2"
+          className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2"
         >
           Order Your Copy Today
           <ArrowRight size={20} />
@@ -2326,7 +2326,7 @@ const NewHero = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -2358,14 +2358,14 @@ const NewHero = () => {
           >
             <Link
               to="/networking"
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
               Peer-to-Peer Networks
               <ArrowRight size={20} />
             </Link>
             <Link
               to="/advisory"
-              className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
+              className="px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
               style={{ 
                 color: '#045184',
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
@@ -2392,13 +2392,13 @@ const NewStatsSection = () => {
 
   return (
     <section 
-      className="py-16"
+      className="py-8 md:py-16"
       style={{
         background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8 text-center">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -2469,7 +2469,7 @@ const NewWhatWeDoSection = () => {
 
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -2485,7 +2485,7 @@ const NewWhatWeDoSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8">
           {services.slice(0, 3).map((service, index) => (
             <motion.div
               key={service.title}
@@ -2603,7 +2603,7 @@ const NewWhatWeDoSection = () => {
         </div>
 
         {/* Second row for remaining services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 mt-8">
           {services.slice(3).map((service, index) => (
             <motion.div
               key={service.title}
@@ -2682,8 +2682,8 @@ const VideoQuoteSection = () => {
         background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <div className="grid md:grid-cols-2 gap-6 md:p-12 items-center">
           {/* Video Side */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -2752,7 +2752,7 @@ const NewAboutSection = () => {
         background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -2774,7 +2774,7 @@ const NewAboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-12 border border-gray-200 mb-8"
+          className="bg-white rounded-xl shadow-lg p-6 md:p-12 border border-gray-200 mb-8"
         >
           <div className="flex flex-col items-center text-center">
             {/* Round Image Frame - Larger and Centered */}
@@ -2809,9 +2809,9 @@ const NewAboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-8 border border-gray-200 mb-8"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 border border-gray-200 mb-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-8">
             <div className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-bold text-slate-900 mb-2">By Invitation Only</h4>
               <p className="text-slate-600">
@@ -2839,7 +2839,7 @@ const NewAboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-8 text-center border border-gray-200"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 text-center border border-gray-200"
         >
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
             Unlock Your Leadership Potential
@@ -2850,13 +2850,13 @@ const NewAboutSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/application"
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Apply to Join
             </Link>
             <a
               href="/networking"
-              className="px-8 py-3 rounded-lg font-semibold transition-all duration-300"
+              className="px-4 md:px-8 py-3 rounded-lg font-semibold transition-all duration-300"
               style={{ 
                 color: '#045184',
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
@@ -3041,7 +3041,7 @@ const NewContentLibrarySection = () => {
 
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -3066,7 +3066,7 @@ const NewContentLibrarySection = () => {
           className="mb-16"
         >
           {loading ? (
-            <div className="text-center py-12">
+            <div className="text-center py-6 md:py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
               <p className="text-slate-600">Loading latest insights...</p>
             </div>
@@ -3259,7 +3259,7 @@ const NewsroomSliderSection = () => {
   if (loading) {
     return (
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           </div>
@@ -3274,7 +3274,7 @@ const NewsroomSliderSection = () => {
 
   return (
     <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -3303,7 +3303,7 @@ const NewsroomSliderSection = () => {
         >
           <Slider {...sliderSettings}>
             {newsArticles.map((article) => (
-              <div key={article.id} className="px-4 py-8 h-full">
+              <div key={article.id} className="px-4 py-4 md:py-8 h-full">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-100 flex flex-col h-full min-h-[630px]">
                   {/* Article Image */}
                   <div className="relative h-[324px] overflow-hidden bg-slate-100 flex-shrink-0">
@@ -3391,7 +3391,7 @@ const NewsroomSliderSection = () => {
         >
           <Link
             to="/newsroom"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300"
           >
             <span>View All Updates</span>
             <ArrowRight size={20} />
