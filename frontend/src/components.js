@@ -340,7 +340,7 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-slate-700 pt-4 pb-4"
+              className="xl:hidden border-t border-slate-700 pt-4 pb-4"
             >
               {navItems.map((item, index) => (
                 <motion.div
