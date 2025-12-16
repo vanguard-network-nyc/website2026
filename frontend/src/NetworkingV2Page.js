@@ -262,18 +262,18 @@ const NetworkingV2Page = () => {
               </a>
             </div>
             
-            <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-10 relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-10 relative overflow-hidden">
               <div className="text-center">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1.2, duration: 0.5 }}
-                  className="text-7xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
+                  className="text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
                 >
                   200+
                 </motion.div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Senior Executives</h3>
-                <p className="text-slate-600 font-medium text-lg mb-6">In our network participating in ongoing catalyzing conversations</p>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Senior Executives</h3>
+                <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
                 <div className="flex justify-center">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
                     <Network size={32} className="text-white" />
