@@ -1244,7 +1244,7 @@ const AdvisoryPage = () => {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="bg-white rounded-2xl p-8 md:p-12 shadow-lg"
         >
-          <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 auto-rows-fr">
             {/* Ken Banta */}
