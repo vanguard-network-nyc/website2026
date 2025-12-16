@@ -9,7 +9,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import { 
   Menu, 
   X, 
-  ChevronRight, 
+  ChevronRight,
+  ChevronLeft, 
   ChevronDown,
   Play, 
   Users, 
