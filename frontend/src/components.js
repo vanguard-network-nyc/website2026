@@ -1572,7 +1572,7 @@ const TeamPage = () => {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5 + (sectionIndex * 0.3) + (index * 0.1), duration: 0.8 }}
-              className={`bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${sectionName !== 'Leadership Team' ? 'w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]' : ''}`}
+              className={`bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${sectionName !== 'Leadership Team' ? 'w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]' : ''}`}
               whileHover={{ scale: 1.02 }}
             >
               <div className="text-center mb-6">
