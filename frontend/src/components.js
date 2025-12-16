@@ -1455,7 +1455,7 @@ const TeamPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 + (sectionIndex * 0.2), duration: 0.8 }}
-            className="text-4xl font-bold text-center mb-12"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12"
             style={{ color: '#045184' }}
           >
             {sectionName}
