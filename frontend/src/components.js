@@ -930,7 +930,7 @@ const AdvisoryPage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
               >
-                <h2 className="text-4xl font-bold text-slate-900 mb-6">Organizational Transformation</h2>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Organizational Transformation</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
                 We help transform what your people believe, the way they work, and how they behave. Our approach is grounded in decades of experience with major multinationals and global service firms.
               </p>
