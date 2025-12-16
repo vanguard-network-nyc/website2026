@@ -1565,7 +1565,7 @@ const TeamPage = () => {
             {sectionName}
           </motion.h2>
           
-          <div className={`${sectionName === 'Leadership Team' ? 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto' : 'flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12'}`}>
+          <div className={`${sectionName === 'Leadership Team' ? 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-7xl xl:max-w-4xl mx-auto' : 'flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12'}`}>
           {members.map((member, index) => (
             <motion.div
               key={member.id}
