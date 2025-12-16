@@ -582,7 +582,7 @@ const AdvisoryPage = () => {
             >
               <Users size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-5xl font-bold text-slate-900 mb-6">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
               Three Ways We Work With Executives<br />To Build High-Performance Organizations
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
