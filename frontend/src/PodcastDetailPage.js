@@ -253,7 +253,7 @@ const PodcastDetailPage = () => {
                   Listen Now
                 </h2>
                 
-                {/* Mobile: Custom player card without iframe overlay */}
+                {/* Mobile: Custom player card with two options */}
                 <div className="md:hidden bg-gradient-to-r from-[#ff5500] to-[#ff7700] rounded-2xl p-4 text-white">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -265,33 +265,45 @@ const PodcastDetailPage = () => {
                     </div>
                   </div>
                   
-                  {/* Waveform visual */}
-                  <div className="flex items-end justify-center gap-0.5 h-12 mb-4">
-                    {[...Array(40)].map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="bg-white/40 rounded-full w-1"
-                        style={{ height: `${Math.random() * 100}%`, minHeight: '4px' }}
-                      />
-                    ))}
-                  </div>
-                  
-                  {/* Action buttons */}
-                  <div className="flex gap-3">
+                  {/* Action buttons - Two options */}
+                  <div className="flex flex-col gap-3">
                     <a 
                       href={decodeURIComponent(podcast.soundcloud_embed?.match(/url=([^&"]+)/)?.[1] || '').replace('https://api.soundcloud.com/tracks/', 'https://soundcloud.com/the-vanguard-network/')}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-white text-[#ff5500] py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/90 transition-colors"
+                      className="w-full bg-white text-[#ff5500] py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/90 transition-colors"
                     >
-                      <Play size={18} />
-                      Play on SoundCloud
+                      <ExternalLink size={18} />
+                      Open in SoundCloud
                     </a>
+                    <button 
+                      onClick={() => setShowBrowserPlayer(!showBrowserPlayer)}
+                      className="w-full bg-white/20 text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/30 transition-colors border-2 border-white/40"
+                    >
+                      <Headphones size={18} />
+                      {showBrowserPlayer ? 'Hide Player' : 'Listen in Browser'}
+                    </button>
                   </div>
                   <p className="text-white/60 text-xs text-center mt-3">
-                    Opens in SoundCloud app or website
+                    Choose your preferred listening option
                   </p>
                 </div>
+                
+                {/* Mobile: Browser player (shown when toggled) */}
+                {showBrowserPlayer && (
+                  <div className="md:hidden mt-4 bg-slate-50 rounded-2xl p-4">
+                    <p className="text-xs text-slate-500 mb-3 text-center">
+                      Tap the play button below to listen directly
+                    </p>
+                    <div 
+                      className="w-full soundcloud-player-container overflow-hidden rounded-xl"
+                      style={{ minHeight: '166px' }}
+                      dangerouslySetInnerHTML={{ 
+                        __html: getSoundCloudIframe(podcast.soundcloud_embed) 
+                      }}
+                    />
+                  </div>
+                )}
 
                 {/* Desktop: Standard SoundCloud embed */}
                 <div className="hidden md:block bg-slate-50 rounded-2xl p-6">
