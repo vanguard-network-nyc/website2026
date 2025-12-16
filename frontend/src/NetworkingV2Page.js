@@ -270,7 +270,7 @@ const NetworkingV2Page = () => {
                   transition={{ delay: 1.2, duration: 0.5 }}
                   className="text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
                 >
-                  200+
+                  2,000+
                 </motion.div>
                 <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">Senior Executives</h3>
                 <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
