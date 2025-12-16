@@ -364,8 +364,8 @@ const ProgramsV2 = () => {
         <div className="mb-16">
           {/* Tab Navigation Block */}
           <div id="programs-tabs-section" className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden mb-12" style={{ scrollMarginTop: '100px' }}>
-            <div className="text-center py-4 bg-slate-50 border-b border-slate-200">
-              <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
+            <div className="text-center py-3 md:py-4 bg-slate-50 border-b border-slate-200">
+              <p className="text-xs md:text-sm font-semibold text-slate-600 uppercase tracking-wide px-4">
                 Click below to explore our programs
               </p>
             </div>
@@ -375,34 +375,34 @@ const ProgramsV2 = () => {
                 onClick={() => handleTabChange('current')}
                 whileHover={{ scale: activeTab !== 'current' ? 1.02 : 1 }}
                 whileTap={{ scale: 0.98 }}
-                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group ${
+                className={`p-4 md:p-8 text-left transition-all duration-300 cursor-pointer relative group ${
                   activeTab === 'current'
                     ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
                     : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
                 }`}
               >
-                <div className="flex items-start justify-between">
+                <div className="flex items-center md:items-start justify-between">
                   <div className="flex-1">
-                    <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                    <h2 className={`text-lg md:text-3xl font-bold mb-1 md:mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
                       Current Leadership Programs
                     </h2>
-                    <p className={`text-lg mb-2 ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
+                    <p className={`text-sm md:text-lg mb-1 md:mb-2 hidden md:block ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
                       Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
                     </p>
                   </div>
-                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'current' ? 'group-hover:translate-x-1' : ''}`}>
-                    <ArrowRight size={28} className={activeTab === 'current' ? 'text-white' : 'text-[#00A8E1]'} />
+                  <div className={`ml-2 md:ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'current' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={24} className={`md:w-7 md:h-7 ${activeTab === 'current' ? 'text-white' : 'text-[#00A8E1]'}`} />
                   </div>
                 </div>
                 {activeTab === 'current' && (
-                  <div className="mt-3 flex items-center text-sm text-white/80">
-                    <CheckCircle2 size={16} className="mr-2" />
+                  <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-white/80">
+                    <CheckCircle2 size={14} className="mr-2" />
                     Currently viewing
                   </div>
                 )}
                 {activeTab !== 'current' && (
-                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
-                    Click to view programs →
+                  <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
+                    Tap to view programs →
                   </div>
                 )}
               </motion.button>
@@ -412,34 +412,34 @@ const ProgramsV2 = () => {
                 onClick={() => handleTabChange('customized')}
                 whileHover={{ scale: activeTab !== 'customized' ? 1.02 : 1 }}
                 whileTap={{ scale: 0.98 }}
-                className={`p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
+                className={`p-4 md:p-8 text-left transition-all duration-300 cursor-pointer relative group border-t md:border-t-0 md:border-l border-slate-200 ${
                   activeTab === 'customized'
                     ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
                     : 'bg-white text-slate-900 hover:bg-blue-50 hover:shadow-md'
                 }`}
               >
-                <div className="flex items-start justify-between">
+                <div className="flex items-center md:items-start justify-between">
                   <div className="flex-1">
-                    <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'customized' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
-                      Customized Leadership Solutions
+                    <h2 className={`text-lg md:text-3xl font-bold mb-1 md:mb-3 ${activeTab === 'customized' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
+                      Customized Solutions
                     </h2>
-                    <p className={`text-lg mb-2 ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
+                    <p className={`text-sm md:text-lg mb-1 md:mb-2 hidden md:block ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
                       Tailored programs designed specifically for your organization's unique needs and leadership challenges.
                     </p>
                   </div>
-                  <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'customized' ? 'group-hover:translate-x-1' : ''}`}>
-                    <ArrowRight size={28} className={activeTab === 'customized' ? 'text-white' : 'text-[#00A8E1]'} />
+                  <div className={`ml-2 md:ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'customized' ? 'group-hover:translate-x-1' : ''}`}>
+                    <ArrowRight size={24} className={`md:w-7 md:h-7 ${activeTab === 'customized' ? 'text-white' : 'text-[#00A8E1]'}`} />
                   </div>
                 </div>
                 {activeTab === 'customized' && (
-                  <div className="mt-3 flex items-center text-sm text-white/80">
-                    <CheckCircle2 size={16} className="mr-2" />
+                  <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-white/80">
+                    <CheckCircle2 size={14} className="mr-2" />
                     Currently viewing
                   </div>
                 )}
                 {activeTab !== 'customized' && (
-                  <div className="mt-3 flex items-center text-sm text-[#00A8E1] font-semibold">
-                    Click to view programs →
+                  <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
+                    Tap to view programs →
                   </div>
                 )}
               </motion.button>
