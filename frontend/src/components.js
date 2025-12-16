@@ -1343,7 +1343,7 @@ const AdvisoryPage = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
           className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
         >
-          <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Transform Your Leadership?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Join the 2,000+ CEOs and C-suite executives who trust The Vanguard Network for their leadership development and strategic guidance.
           </p>
