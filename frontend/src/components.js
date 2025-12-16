@@ -1286,7 +1286,8 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8 auto-rows-fr">
+          {/* Mobile & Desktop Layout - Vertical Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:p-8 auto-rows-fr md:hidden lg:grid">
             {/* Ken Banta */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
@@ -1369,6 +1370,69 @@ const AdvisoryPage = () => {
               </div>
               <div className="pt-4 border-t border-slate-200">
                 <p className="text-xs text-slate-500 text-center">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tablet Layout - Horizontal Full-Width Cards */}
+          <div className="hidden md:block lg:hidden space-y-6">
+            {/* Ken Banta - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/ken-banta.jpg" alt="Ken Banta" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">KEN BANTA</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
+              </div>
+            </div>
+
+            {/* Richard Hulme - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/richard-hulme.jpg" alt="Richard Hulme" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">RICHARD HULME</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Managing Director</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
+              </div>
+            </div>
+
+            {/* Garrick Isert - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/garrick-isert.jpg" alt="Garrick Isert" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">GARRICK ISERT</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
+              </div>
+            </div>
+
+            {/* Aileen Gonsalves - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 40px) 30%' }} />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
               </div>
             </div>
           </div>
