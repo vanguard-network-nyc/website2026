@@ -3373,7 +3373,7 @@ const NewsroomSliderSection = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-6">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900">
-              Latest from Our Newsroom
+              Latest From Our Newsroom
             </h2>
           </div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
