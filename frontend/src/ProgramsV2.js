@@ -440,7 +440,8 @@ const ProgramsV2 = () => {
                 )}
                 {activeTab !== 'customized' && (
                   <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
-                    Tap to view programs →
+                    <span className="md:hidden">Tap to view →</span>
+                    <span className="hidden md:inline">Click to view programs →</span>
                   </div>
                 )}
               </motion.button>
