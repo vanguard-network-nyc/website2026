@@ -10,7 +10,6 @@ const PodcastDetailPage = () => {
   const [similarPodcasts, setSimilarPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showBrowserPlayer, setShowBrowserPlayer] = useState(false);
 
   useEffect(() => {
     fetchPodcast();
