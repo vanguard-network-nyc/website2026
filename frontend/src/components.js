@@ -323,13 +323,26 @@ const Header = () => {
             </motion.div>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          {/* Mobile/Tablet Menu Button and Member Site */}
+          <div className="lg:hidden flex items-center gap-3">
+            <a
+              href="https://members.thevanguardnetwork.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white px-3 py-1.5 rounded-lg font-medium text-sm transition-colors duration-200"
+              style={{ backgroundColor: '#00A8E1' }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+            >
+              MEMBER SITE
+            </a>
+            <button
+              className="text-white p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
