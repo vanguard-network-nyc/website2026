@@ -218,7 +218,7 @@ const Header = () => {
               <img
                 src="/logo.png"
                 alt="The Vanguard Network Logo"
-                className="h-16 w-auto object-contain max-w-xs"
+                className="h-10 md:h-16 w-auto object-contain max-w-[140px] md:max-w-xs"
                 onError={(e) => {
                   console.error('Logo failed to load:', e);
                   e.target.style.display = 'none';
