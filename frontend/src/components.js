@@ -2198,7 +2198,7 @@ const BookPage = () => (
         transition={{ delay: 1.0, duration: 0.8 }}
         className="mb-16"
       >
-        <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#045184' }}>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12" style={{ color: '#045184' }}>
           What You'll Gain
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
