@@ -251,7 +251,49 @@ const PodcastDetailPage = () => {
                   </div>
                   Listen Now
                 </h2>
-                <div className="bg-slate-50 rounded-2xl p-3 md:p-6">
+                
+                {/* Mobile: Custom player card without iframe overlay */}
+                <div className="md:hidden bg-gradient-to-r from-[#ff5500] to-[#ff7700] rounded-2xl p-4 text-white">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Play size={32} className="text-white" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-sm line-clamp-2">{podcast.title}</p>
+                      <p className="text-white/80 text-xs mt-1">The Vanguard Network</p>
+                    </div>
+                  </div>
+                  
+                  {/* Waveform visual */}
+                  <div className="flex items-end justify-center gap-0.5 h-12 mb-4">
+                    {[...Array(40)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="bg-white/40 rounded-full w-1"
+                        style={{ height: `${Math.random() * 100}%`, minHeight: '4px' }}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Action buttons */}
+                  <div className="flex gap-3">
+                    <a 
+                      href={decodeURIComponent(podcast.soundcloud_embed?.match(/url=([^&"]+)/)?.[1] || '').replace('https://api.soundcloud.com/tracks/', 'https://soundcloud.com/the-vanguard-network/')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-white text-[#ff5500] py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-white/90 transition-colors"
+                    >
+                      <Play size={18} />
+                      Play on SoundCloud
+                    </a>
+                  </div>
+                  <p className="text-white/60 text-xs text-center mt-3">
+                    Opens in SoundCloud app or website
+                  </p>
+                </div>
+
+                {/* Desktop: Standard SoundCloud embed */}
+                <div className="hidden md:block bg-slate-50 rounded-2xl p-6">
                   <div 
                     className="w-full soundcloud-player-container overflow-hidden rounded-xl"
                     style={{ minHeight: '166px' }}
@@ -259,20 +301,6 @@ const PodcastDetailPage = () => {
                       __html: getSoundCloudIframe(podcast.soundcloud_embed) 
                     }}
                   />
-                  {/* Mobile-friendly action buttons below player */}
-                  <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
-                    <a 
-                      href={podcast.soundcloud_embed?.match(/url=([^&"]+)/)?.[1]?.replace('%2F', '/') || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#ff5500] text-white rounded-lg text-sm font-medium hover:bg-[#ff7700] transition-colors"
-                    >
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1zm1.697.607c-.066 0-.12.063-.128.142l-.203 1.547.203 1.498c.007.08.062.138.128.138.064 0 .117-.058.126-.138l.228-1.498-.228-1.547c-.009-.079-.062-.142-.126-.142zm1.327-.48c-.08 0-.145.083-.152.19l-.176 2.027.176 1.936c.007.107.072.186.152.186.078 0 .143-.079.151-.186l.199-1.936-.199-2.027c-.008-.107-.073-.19-.151-.19zm1.318-.152c-.092 0-.168.102-.176.236l-.159 2.179.159 1.875c.008.133.084.231.176.231.091 0 .166-.098.175-.231l.18-1.875-.18-2.179c-.009-.134-.084-.236-.175-.236zm1.303-.067c-.106 0-.193.12-.2.279l-.142 2.245.142 1.82c.007.159.094.275.2.275.105 0 .19-.116.199-.275l.161-1.82-.161-2.245c-.009-.159-.094-.279-.199-.279zm1.292.019c-.118 0-.215.14-.222.319l-.125 2.226.125 1.773c.007.179.104.315.222.315.116 0 .213-.136.221-.315l.142-1.773-.142-2.226c-.008-.179-.105-.319-.221-.319zm1.284.086c-.131 0-.238.158-.246.358l-.108 2.14.108 1.731c.008.2.115.354.246.354.129 0 .236-.154.244-.354l.123-1.731-.123-2.14c-.008-.2-.115-.358-.244-.358z"/>
-                      </svg>
-                      Open in SoundCloud
-                    </a>
-                  </div>
                 </div>
               </motion.div>
             )}
