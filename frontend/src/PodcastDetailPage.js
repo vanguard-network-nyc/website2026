@@ -78,6 +78,29 @@ const PodcastDetailPage = () => {
     return embedCode;
   };
 
+  // Extract SoundCloud track URL from embed code for external link
+  const getSoundCloudDirectUrl = (embedCode) => {
+    if (!embedCode) return null;
+    
+    // Extract the url parameter from the embed
+    const urlMatch = embedCode.match(/url=([^&"]+)/);
+    if (urlMatch) {
+      // Decode the URL
+      let trackUrl = decodeURIComponent(urlMatch[1]);
+      // Further decode if double-encoded
+      trackUrl = decodeURIComponent(trackUrl);
+      
+      // Extract track ID from api.soundcloud.com/tracks/XXXXX format
+      const trackIdMatch = trackUrl.match(/tracks\/(?:soundcloud:tracks:)?(\d+)/);
+      if (trackIdMatch) {
+        const trackId = trackIdMatch[1];
+        // Return direct SoundCloud URL that works on mobile
+        return `https://soundcloud.com/the-vanguard-network?track_id=${trackId}`;
+      }
+    }
+    return null;
+  };
+
   if (loading) {
     return (
       <motion.div
