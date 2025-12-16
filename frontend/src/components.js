@@ -1683,9 +1683,9 @@ const ContactPage = () => {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className="bg-white rounded-2xl p-4 md:p-8 shadow-lg"
           >
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#045184' }}>Send us a Message</h2>
             
             {submitStatus === 'success' && (
               <motion.div
