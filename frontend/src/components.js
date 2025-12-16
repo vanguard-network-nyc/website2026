@@ -1161,7 +1161,7 @@ const AdvisoryPage = () => {
                 </div>
               </motion.div>
               
-              <h2 className="text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
                 Real-World Leadership Development
               </h2>
             </div>
