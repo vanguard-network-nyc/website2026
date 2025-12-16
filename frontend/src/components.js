@@ -1210,7 +1210,7 @@ const AdvisoryPage = () => {
             <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
               These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
             </p>
-            <p className="text-slate-600 leading-relaxed text-lg font-medium">
+            <p className="text-slate-600 leading-relaxed text-base md:text-lg font-medium">
               We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
             </p>
           </div>
@@ -1440,7 +1440,7 @@ const TeamPage = () => {
       <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#045184] mx-auto mb-4"></div>
-          <p className="text-slate-600 text-lg">Loading team members...</p>
+          <p className="text-slate-600 text-base md:text-lg">Loading team members...</p>
         </div>
       </div>
     );

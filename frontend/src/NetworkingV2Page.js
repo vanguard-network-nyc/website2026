@@ -244,7 +244,7 @@ const NetworkingV2Page = () => {
               <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
                 In addition to our Forums and events we can also initiate warm introductions to other Vanguard members and have a pulse on the C-suite marketplace.
               </p>
-              <p className="text-slate-600 leading-relaxed text-lg font-medium">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg font-medium">
                 If you are looking to connect with members, contact Tony Powe, Vanguard COO, for an introduction to another Vanguard member.
               </p>
               
