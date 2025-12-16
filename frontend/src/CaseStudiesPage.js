@@ -198,7 +198,25 @@ const CaseStudiesPage = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mb-12"
         >
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Mobile: Vertical stack */}
+          <div className="flex flex-col md:hidden gap-3 px-2">
+            {categories.map((category) => (
+              <button
+                key={category.slug}
+                onClick={() => handleCategoryChange(category.slug)}
+                className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold transition-all duration-300 text-sm w-full ${
+                  selectedCategory === category.slug
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+                }`}
+              >
+                {category.icon}
+                <span className="text-center">{category.name}</span>
+              </button>
+            ))}
+          </div>
+          {/* Desktop: Horizontal wrap */}
+          <div className="hidden md:flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
               <button
                 key={category.slug}
