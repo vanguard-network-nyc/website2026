@@ -326,7 +326,7 @@ const Header = () => {
 
           {/* Mobile/Tablet Menu Button */}
           <button
-            className="lg:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
