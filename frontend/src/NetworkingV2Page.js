@@ -161,7 +161,7 @@ const NetworkingV2Page = () => {
             </p>
             
             {/* Testimonial */}
-            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-8 mb-8">
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8 mb-8">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="flex-shrink-0">
                   <img 
