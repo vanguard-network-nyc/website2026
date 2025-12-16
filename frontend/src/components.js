@@ -591,41 +591,44 @@ const AdvisoryPage = () => {
           </div>
         </div>
         
-        {/* Mobile Tab Navigation - Horizontal Pills */}
-        <div className="md:hidden mb-8">
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide text-center mb-3">
+        {/* Mobile Tab Navigation - Horizontal Tabs with Two Lines */}
+        <div className="md:hidden mb-6">
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide text-center mb-4">
             Select a service
           </p>
-          <div className="flex gap-2 overflow-x-auto pb-2 px-1">
+          <div className="grid grid-cols-3 gap-2">
             <button
               onClick={() => handleTabChange('strategic')}
-              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+              className={`px-2 py-4 rounded-xl font-semibold text-xs transition-all duration-300 text-center leading-tight ${
                 activeTab === 'strategic'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+                  : 'bg-white text-slate-700 border-2 border-slate-200 hover:border-[#00A8E1]'
               }`}
             >
-              Strategic Counsel
+              <span className="block">Strategic</span>
+              <span className="block">Counsel</span>
             </button>
             <button
               onClick={() => handleTabChange('organizational')}
-              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+              className={`px-2 py-4 rounded-xl font-semibold text-xs transition-all duration-300 text-center leading-tight ${
                 activeTab === 'organizational'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+                  : 'bg-white text-slate-700 border-2 border-slate-200 hover:border-[#00A8E1]'
               }`}
             >
-              Transformation
+              <span className="block">Organizational</span>
+              <span className="block">Transformation</span>
             </button>
             <button
               onClick={() => handleTabChange('client')}
-              className={`flex-1 min-w-[100px] px-3 py-3 rounded-xl font-semibold text-xs transition-all duration-300 whitespace-nowrap ${
+              className={`px-2 py-4 rounded-xl font-semibold text-xs transition-all duration-300 text-center leading-tight ${
                 activeTab === 'client'
                   ? 'bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white shadow-lg'
-                  : 'bg-white text-slate-700 border border-slate-200 hover:border-[#00A8E1]'
+                  : 'bg-white text-slate-700 border-2 border-slate-200 hover:border-[#00A8E1]'
               }`}
             >
-              Client Engagement
+              <span className="block">Client</span>
+              <span className="block">Engagement</span>
             </button>
           </div>
         </div>
