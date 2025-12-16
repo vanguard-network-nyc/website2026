@@ -3010,7 +3010,7 @@ const NewContentLibrarySection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             Our Content & Thought Leadership
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
