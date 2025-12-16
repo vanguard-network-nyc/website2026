@@ -1287,7 +1287,7 @@ const AdvisoryPage = () => {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
           {/* Mobile & Desktop Layout - Vertical Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:p-8 auto-rows-fr md:hidden lg:grid">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 md:p-8 auto-rows-fr md:hidden xl:grid">
             {/* Ken Banta */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
