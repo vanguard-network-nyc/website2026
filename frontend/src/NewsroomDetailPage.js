@@ -128,7 +128,7 @@ const NewsroomDetailPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <div className="max-w-4xl mx-auto">
-        <div className="px-4 sm:px-6 lg:px-8 mb-4">
+        <div className="px-4 sm:px-6 lg:px-4 md:px-8 mb-4">
           <Breadcrumb customTitle={article?.blog_title} />
         </div>
 
@@ -154,7 +154,7 @@ const NewsroomDetailPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 md:p-12"
+            className="p-4 md:p-8 md:p-6 md:p-12"
           >
             {/* Article Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -239,7 +239,7 @@ const NewsroomDetailPage = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
               Stay Updated
             </h3>

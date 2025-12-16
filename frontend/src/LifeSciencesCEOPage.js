@@ -24,7 +24,7 @@ const LifeSciencesCEOPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -57,9 +57,9 @@ const LifeSciencesCEOPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 shadow-xl mb-16 border border-slate-200"
+          className="bg-white rounded-3xl p-6 md:p-12 shadow-xl mb-16 border border-slate-200"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12">
             <div>
               <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Program Overview</h2>
               <p className="text-slate-600 leading-relaxed text-lg mb-6">
@@ -70,7 +70,7 @@ const LifeSciencesCEOPage = () => {
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8">
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-4 md:p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Program Details</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -111,11 +111,11 @@ const LifeSciencesCEOPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 shadow-xl mb-16 border border-slate-200"
+          className="bg-white rounded-3xl p-6 md:p-12 shadow-xl mb-16 border border-slate-200"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-12">Key Focus Areas</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:p-8">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -183,11 +183,11 @@ const LifeSciencesCEOPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-3xl p-12 shadow-xl mb-16 border border-slate-200"
+          className="bg-white rounded-3xl p-6 md:p-12 shadow-xl mb-16 border border-slate-200"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-center text-slate-900 mb-12">Program Features</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8">
             {[
               {
                 title: "Quarterly CEO Sessions",
@@ -234,10 +234,10 @@ const LifeSciencesCEOPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-3xl p-12 text-white mb-16 relative overflow-hidden"
+          className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-3xl p-6 md:p-12 text-white mb-16 relative overflow-hidden"
         >
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-8 right-8 w-32 h-32 rounded-full bg-white/20"></div>
+            <div className="absolute top-4 md:p-8 right-8 w-32 h-32 rounded-full bg-white/20"></div>
             <div className="absolute bottom-8 left-8 w-24 h-24 rounded-full bg-white/10"></div>
           </div>
           
@@ -264,7 +264,7 @@ const LifeSciencesCEOPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-center bg-white rounded-3xl p-12 shadow-xl border border-slate-200"
+          className="text-center bg-white rounded-3xl p-6 md:p-12 shadow-xl border border-slate-200"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Ready to Join Our Executive Community?</h2>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -276,7 +276,7 @@ const LifeSciencesCEOPage = () => {
               href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
             >
               <MessageCircle size={20} />
               Apply for Membership
@@ -285,7 +285,7 @@ const LifeSciencesCEOPage = () => {
               href="/programs"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              className="bg-transparent border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
             >
               View All Programs
               <ChevronRight size={20} />

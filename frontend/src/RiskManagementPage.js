@@ -79,7 +79,7 @@ const RiskManagementPage = () => {
       transition={{ duration: 0.5 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -143,7 +143,7 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-2xl p-8 md:p-12 text-white mb-16"
+          className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-2xl p-4 md:p-8 md:p-6 md:p-12 text-white mb-16"
         >
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">Program Overview</h2>
@@ -156,7 +156,7 @@ const RiskManagementPage = () => {
               href="https://customer-assets.emergentagent.com/job_67390483-fba1-42f2-92d7-d334222fbadd/artifacts/4wooz3yr_Risk%20Management%20one-pager.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-3 bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg"
             >
               <svg
                 className="w-6 h-6"
@@ -182,10 +182,10 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">The New Risk Landscape</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div>
               <p className="text-slate-600 leading-relaxed mb-6">
                 Risk has moved to the center of the enterprise agenda. In today's volatile environment, understanding and managing risk is not just a defensive necessity–it's a strategic imperative.
@@ -251,7 +251,7 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-8 md:p-12 text-white mb-16"
+          className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-4 md:p-8 md:p-6 md:p-12 text-white mb-16"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Why Join?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -275,10 +275,10 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Expert Insight</h2>
-          <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="flex flex-col lg:flex-row items-center gap-4 md:p-8">
             <div className="flex-shrink-0">
               <img
                 src="https://static.wixstatic.com/media/e6a994_4eca26453771428a95c70f3a0d8caabf~mv2.jpg/v1/fill/w_387,h_346,al_c,lg_1,q_80,enc_avif,quality_auto/e6a994_4eca26453771428a95c70f3a0d8caabf~mv2.jpg"
@@ -304,7 +304,7 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Network Advisors</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -367,7 +367,7 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Our Members Are Leaders From These And Other Organizations</h2>
           <div className="flex justify-center">
@@ -414,10 +414,10 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="bg-slate-900 rounded-2xl p-8 md:p-12 text-white mb-16"
+          className="bg-slate-900 rounded-2xl p-4 md:p-8 md:p-6 md:p-12 text-white mb-16"
         >
           <h2 className="text-3xl font-bold mb-6 text-center">Annual Network Membership</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div>
               <div className="text-2xl md:text-4xl font-bold text-[#00A8E1] mb-2">$10,000</div>
               <p className="text-white/80 mb-4">Annual membership fee</p>
@@ -447,7 +447,7 @@ const RiskManagementPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-2xl p-8 md:p-12 text-white text-center"
+          className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-2xl p-4 md:p-8 md:p-6 md:p-12 text-white text-center"
         >
           <h2 className="text-3xl font-bold mb-6">Ready to Join the Network?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -460,7 +460,7 @@ const RiskManagementPage = () => {
               href="https://forms.gle/JxfducHuD8dyQYdc8"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+              className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={20} />
               Contact Us to Join
@@ -469,7 +469,7 @@ const RiskManagementPage = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:tony@vanguardgroup.nyc?subject=Risk%20Management%20Network%20Inquiry"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
+              className="border-2 border-white text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
             >
               <Mail size={20} />
               Email Tony Powe

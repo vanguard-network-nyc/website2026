@@ -154,7 +154,7 @@ const LawAssociatesPage = () => {
       transition={{ duration: 0.5 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">
           <Link to="/" className="flex items-center text-slate-600 hover:text-[#045184] transition-colors duration-200">
@@ -205,10 +205,10 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Program Context</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div>
               <p className="text-slate-600 leading-relaxed mb-6">
                 Often, associates do not receive the careful and calibrated development that will enable them to become their best on whichever track they advance. In particular, they need development support in two critical areas:
@@ -294,7 +294,7 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Faculty</h2>
           <p className="text-slate-600 text-center mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -331,9 +331,9 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8 mb-16"
         >
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
+          <div className="bg-white rounded-2xl p-4 md:p-8 shadow-lg">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Program Design</h2>
             <p className="text-slate-600 leading-relaxed mb-6">
               Based on The Vanguard Network's proven approach with top leaders across sectors. Each module features cohorts of up to 20 participants seated at tables of 4-5 individuals.
@@ -348,7 +348,7 @@ const LawAssociatesPage = () => {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-br from-[#045184] to-[#00A8E1] rounded-2xl p-4 md:p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">Testimonial</h2>
             <div className="flex items-start gap-6 mb-6">
               <div className="flex-shrink-0">
@@ -375,10 +375,10 @@ const LawAssociatesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-16"
+          className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg mb-16"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Vanguard & Gravitas Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 max-w-2xl mx-auto">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -438,7 +438,7 @@ const LawAssociatesPage = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <Mail size={20} />
                   Contact Us

@@ -20,7 +20,7 @@ const TermsPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-4xl mx-auto px-6 py-8 md:py-16">
         {/* Agreement to Terms */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">AGREEMENT TO TERMS</h2>

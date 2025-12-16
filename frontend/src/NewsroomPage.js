@@ -194,7 +194,7 @@ const NewsroomPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -269,10 +269,10 @@ const NewsroomPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8"
         >
           {displayArticles.length === 0 ? (
-            <div className="col-span-full text-center py-16">
+            <div className="col-span-full text-center py-8 md:py-16">
               <Newspaper className="mx-auto h-16 w-16 text-slate-300 mb-4" />
               <h3 className="text-xl font-semibold text-slate-600 mb-2">No articles found</h3>
               <p className="text-slate-500 mb-6">
@@ -447,7 +447,7 @@ const NewsroomPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-center bg-white rounded-3xl p-12 shadow-xl border border-slate-200 mt-16"
+          className="text-center bg-white rounded-3xl p-6 md:p-12 shadow-xl border border-slate-200 mt-16"
         >
           <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Stay Connected</h2>
           <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -459,7 +459,7 @@ const NewsroomPage = () => {
               href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
             >
               <Mail size={20} />
               Contact Us
@@ -470,7 +470,7 @@ const NewsroomPage = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-[#045184] px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              className="text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center gap-2 justify-center"
               style={{
                 background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
                 border: '2px solid transparent'

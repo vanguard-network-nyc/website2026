@@ -171,7 +171,7 @@ const CaseStudiesPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         {/* Back Button */}
         <motion.div
@@ -274,7 +274,7 @@ const CaseStudiesPage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8"
         >
           {filteredCaseStudies.map((study, index) => (
             <motion.div
@@ -301,7 +301,7 @@ const CaseStudiesPage = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-4 md:p-8">
                 <p className="text-slate-600 leading-relaxed mb-6 text-lg">
                   {study.summary}
                 </p>
@@ -344,7 +344,7 @@ const CaseStudiesPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-10 md:py-16 px-4 md:px-8 rounded-2xl mt-16"
+          className="text-center bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-10 md:py-8 md:py-16 px-4 md:px-4 md:px-8 rounded-2xl mt-16"
         >
           <h2 className="text-2xl md:text-2xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Organization?</h2>
           <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mx-auto">
@@ -355,7 +355,7 @@ const CaseStudiesPage = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-transparent text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
+                className="bg-transparent text-white px-6 md:px-4 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
               >
                 <Target size={18} />
                 <span>Explore Advisory Services</span>
@@ -365,7 +365,7 @@ const CaseStudiesPage = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#045184] px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
+                className="bg-white text-[#045184] px-6 md:px-4 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
               >
                 <Mail size={18} />
                 <span>Contact Us</span>

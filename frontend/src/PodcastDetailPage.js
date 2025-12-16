@@ -105,7 +105,7 @@ const PodcastDetailPage = () => {
         animate={{ opacity: 1 }}
         className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center"
       >
-        <div className="text-center max-w-md mx-auto p-8">
+        <div className="text-center max-w-md mx-auto p-4 md:p-8">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <ExternalLink className="text-red-600" size={32} />
           </div>
@@ -131,7 +131,7 @@ const PodcastDetailPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb customTitle={podcast?.title} />
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -159,7 +159,7 @@ const PodcastDetailPage = () => {
               </div>
               
               {/* Info Section */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
+              <div className="p-4 md:p-8 lg:p-6 md:p-12 flex flex-col justify-center">
                 <motion.h1 
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -190,7 +190,7 @@ const PodcastDetailPage = () => {
           </div>
 
           {/* Content Section */}
-          <div className="p-8 lg:p-12">
+          <div className="p-4 md:p-8 lg:p-6 md:p-12">
             {/* Description */}
             {podcast.description && (
               <motion.div 
@@ -309,7 +309,7 @@ const PodcastDetailPage = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
               Want More Leadership Insights?
             </h3>

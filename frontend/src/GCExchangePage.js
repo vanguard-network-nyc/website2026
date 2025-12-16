@@ -41,7 +41,7 @@ const GCExchangePage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -85,7 +85,7 @@ const GCExchangePage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="bg-white rounded-xl shadow-lg p-8 mb-8 max-w-4xl mx-auto"
+            className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-8 max-w-4xl mx-auto"
           >
             <blockquote className="text-xl italic text-slate-700 mb-6 leading-relaxed">
               "The exchange has been a unique opportunity to work on real world leadership challenges with peer GCs. 
@@ -101,7 +101,7 @@ const GCExchangePage = () => {
 
           <Link
             to="#apply"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Users size={20} />
             Apply to Join
@@ -115,7 +115,7 @@ const GCExchangePage = () => {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Context</h2>
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <p className="mb-4">
@@ -154,9 +154,9 @@ const GCExchangePage = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8">Program</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-green-500 mt-1 flex-shrink-0" />
@@ -208,16 +208,16 @@ const GCExchangePage = () => {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8">Participants Include</h2>
             
             {loading ? (
-              <div className="text-center py-12">
+              <div className="text-center py-6 md:py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
                 <p className="text-slate-600">Loading participants...</p>
               </div>
             ) : error && gcMembers.length === 0 ? (
-              <div className="text-center py-12">
+              <div className="text-center py-6 md:py-12">
                 <p className="text-slate-600 mb-4">Unable to load participants at the moment.</p>
                 <button 
                   onClick={fetchGCMembers}
@@ -227,7 +227,7 @@ const GCExchangePage = () => {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:p-8">
                 {gcMembers.map((member, index) => (
                   <motion.div
                     key={member.id}
@@ -276,7 +276,7 @@ const GCExchangePage = () => {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-8">What Vanguard Does</h2>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3">
@@ -312,7 +312,7 @@ const GCExchangePage = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Investment</h2>
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg">
               <div className="text-slate-700">
@@ -331,7 +331,7 @@ const GCExchangePage = () => {
           transition={{ delay: 0.9, duration: 0.8 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-8 md:p-12 text-white">
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-xl p-4 md:p-8 md:p-6 md:p-12 text-white">
             <h2 className="text-3xl font-bold mb-6">Ready to Join the GC Exchange?</h2>
             <p className="text-xl mb-8 text-blue-100">
               Connect with peer General Counsels and elevate your leadership through collaborative problem-solving.
@@ -340,7 +340,7 @@ const GCExchangePage = () => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSfMnPiPKkngbiZCeLtGCekiepzaydfas1hAguO6LSoNdeTS1Q/viewform?usp=sf_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white text-[#045184] hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-white text-[#045184] hover:bg-blue-50 px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Users size={20} />
               Apply Here

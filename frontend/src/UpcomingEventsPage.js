@@ -212,7 +212,7 @@ const UpcomingEventsPage = () => {
         animate={{ opacity: 1 }}
         className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center"
       >
-        <div className="text-center max-w-md mx-auto p-8">
+        <div className="text-center max-w-md mx-auto p-4 md:p-8">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <ExternalLink className="text-red-600" size={32} />
           </div>
@@ -237,7 +237,7 @@ const UpcomingEventsPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
         <div className="text-center mb-16">
           <motion.h1 
@@ -260,7 +260,7 @@ const UpcomingEventsPage = () => {
         </div>
 
         {/* Search and View Controls */}
-        <div className="bg-white rounded-2xl p-8 shadow-xl mb-12 border border-slate-200">
+        <div className="bg-white rounded-2xl p-4 md:p-8 shadow-xl mb-12 border border-slate-200">
           <div className="flex flex-col gap-6">
             {/* First Row: Search Bar */}
             <div className="relative">
@@ -449,7 +449,7 @@ const UpcomingEventsPage = () => {
         {viewMode === 'grid' && (
           <>
             {filteredEvents.length > 0 ? (
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 md:p-8 md:grid-cols-2 lg:grid-cols-3">
                 {filteredEvents.map((event, index) => (
                   <motion.div
                     key={event.id}
@@ -542,7 +542,7 @@ const UpcomingEventsPage = () => {
               <motion.div
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="text-center py-16"
+                className="text-center py-8 md:py-16"
               >
                 <div className="w-24 h-24 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Search size={48} className="text-slate-400" />
@@ -589,7 +589,7 @@ const UpcomingEventsPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 text-center"
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
@@ -602,7 +602,7 @@ const UpcomingEventsPage = () => {
                 href="/application"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+                className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
               >
                 <Users size={20} />
                 Apply to Join
@@ -611,7 +611,7 @@ const UpcomingEventsPage = () => {
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
+                className="border-2 border-white text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
               >
                 <Mail size={20} />
                 Contact Us

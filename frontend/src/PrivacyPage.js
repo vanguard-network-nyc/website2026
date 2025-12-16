@@ -20,7 +20,7 @@ const PrivacyPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-4xl mx-auto px-6 py-8 md:py-16">
         {/* Introduction */}
         <div className="prose prose-lg max-w-none mb-16">
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
@@ -41,7 +41,7 @@ const PrivacyPage = () => {
         </div>
 
         {/* Table of Contents */}
-        <div className="bg-slate-100 rounded-2xl p-8 mb-16">
+        <div className="bg-slate-100 rounded-2xl p-4 md:p-8 mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Table of Contents</h2>
           <ol className="space-y-3 text-lg">
             <li><a href="#section-1" className="text-[#045184] hover:text-[#00A8E1] hover:underline">1. WHAT INFORMATION DO WE COLLECT?</a></li>

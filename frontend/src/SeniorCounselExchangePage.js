@@ -11,7 +11,7 @@ const SeniorCounselExchangePage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -55,7 +55,7 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">Context</h2>
           <div className="prose prose-lg max-w-none text-slate-700">
@@ -73,7 +73,7 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">The Program</h2>
           <div className="prose prose-lg max-w-none text-slate-700">
@@ -100,7 +100,7 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <blockquote className="text-xl italic text-slate-700 mb-6 leading-relaxed text-center">
             "Networking plays a critical part in our roles today. Vanguard provides a unique platform for senior counsel where candid conversations about real issues can take place and lasting introductions made. I certainly benefited from this on my journey to GC."
@@ -118,11 +118,11 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">How It Works</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-8 mb-8">
             <div className="text-center">
               <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Users className="text-blue-600" size={32} />
@@ -172,11 +172,11 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8 mb-12 text-white"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-4 md:p-8 mb-12 text-white"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Investment & Benefits</h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:p-8">
             <div>
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-white bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center">
@@ -230,7 +230,7 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">Membership Criteria</h2>
           <div className="text-center">
@@ -245,11 +245,11 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-xl shadow-lg p-8 mb-12"
+          className="bg-white rounded-xl shadow-lg p-4 md:p-8 mb-12"
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Get Started</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8">
             <div className="text-center">
               <h3 className="text-xl font-bold text-slate-900 mb-4">For General Counsels</h3>
               <p className="text-slate-600 mb-6">Nominate qualified participants from your legal team</p>
@@ -257,7 +257,7 @@ const SeniorCounselExchangePage = () => {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfnL6we0cjUiNT0vJxwBIbquCBd27GFNrxKkIAiNoIWQPP58A/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 md:px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
               >
                 Nominate Participants
                 <ExternalLink size={16} />
@@ -271,7 +271,7 @@ const SeniorCounselExchangePage = () => {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSe0wbTyZqRuFckkL1bAVQhzULty10OAdGpQ7lYeaBav9OGKJA/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-green-600 text-white px-4 md:px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200"
               >
                 Register Here
                 <ExternalLink size={16} />
@@ -285,7 +285,7 @@ const SeniorCounselExchangePage = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="bg-slate-100 rounded-xl p-8 text-center"
+          className="bg-slate-100 rounded-xl p-4 md:p-8 text-center"
         >
           <h3 className="text-xl font-bold text-slate-900 mb-4">Need More Information?</h3>
           <p className="text-slate-600 mb-4">

@@ -11,7 +11,7 @@ const GlobalCounselLeadersPage = () => {
       exit={{ opacity: 0 }}
       className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Hero Section */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -47,7 +47,7 @@ const GlobalCounselLeadersPage = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mb-16"
         >
-          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-8 md:p-6 md:p-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Globe size={32} className="text-[#045184]" />
               <h2 className="text-3xl font-bold text-slate-900">Global Integration</h2>
@@ -89,7 +89,7 @@ const GlobalCounselLeadersPage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                    className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
                   >
                     <Users size={20} />
                     Join GC Exchange
@@ -99,7 +99,7 @@ const GlobalCounselLeadersPage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-transparent text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                    className="bg-transparent text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2 border-2 border-white"
                   >
                     <BookOpen size={20} />
                     View All Programs
@@ -109,7 +109,7 @@ const GlobalCounselLeadersPage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white text-[#045184] px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
+                    className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2 border-2 border-white"
                   >
                     <Mail size={20} />
                     Contact Us
