@@ -405,30 +405,30 @@ const PodcastsPage = () => {
         transition={{ delay: 0.8, duration: 0.8 }}
         className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 text-center"
       >
-        <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-6 md:p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-bold mb-6">Want to Be Featured?</h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Want to Be Featured?</h2>
+            <p className="text-base md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto">
               Share your leadership insights and expertise with our community. Join our podcast as a guest speaker.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all duration-300 flex items-center gap-2"
+                className="bg-white text-[#045184] px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                <Mic size={20} />
-                Become a Guest
+                <Mic size={18} />
+                <span>Become a Guest</span>
               </motion.a>
               <motion.a
                 href="/upcoming-events"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center gap-2"
+                className="border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                <Users size={20} />
-                View Events
+                <Users size={18} />
+                <span>View Events</span>
               </motion.a>
             </div>
           </div>
