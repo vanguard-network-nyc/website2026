@@ -449,7 +449,7 @@ const UpcomingEventsPage = () => {
         {viewMode === 'grid' && (
           <>
             {filteredEvents.length > 0 ? (
-              <div className="grid gap-4 md:p-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 md:p-8 md:grid-cols-2 xl:grid-cols-3">
                 {filteredEvents.map((event, index) => (
                   <motion.div
                     key={event.id}
