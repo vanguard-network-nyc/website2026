@@ -316,14 +316,14 @@ const PodcastDetailPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/podcasts"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
               >
                 <Headphones size={20} />
                 More Podcasts
               </Link>
               <Link
                 to="/upcoming-events"
-                className="inline-flex items-center gap-2 text-[#045184] px-6 py-3 rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#045184] hover:to-[#00A8E1] hover:text-white transition-all duration-300 relative"
+                className="inline-flex items-center justify-center gap-2 text-[#045184] px-6 py-3 rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#045184] hover:to-[#00A8E1] hover:text-white transition-all duration-300 relative"
                 style={{
                   background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
                   border: '2px solid transparent'
