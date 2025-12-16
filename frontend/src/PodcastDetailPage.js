@@ -257,24 +257,6 @@ const PodcastDetailPage = () => {
                       __html: getSoundCloudIframe(podcast.soundcloud_embed) 
                     }}
                   />
-                  
-                  {/* Mobile-only: External link button (opens in new tab) */}
-                  {getSoundCloudDirectUrl(podcast.soundcloud_embed) && (
-                    <div className="md:hidden mt-4 pt-4 border-t border-slate-200">
-                      <p className="text-xs text-slate-500 mb-3 text-center">
-                        Having trouble with the player? Open directly in SoundCloud:
-                      </p>
-                      <a
-                        href={getSoundCloudDirectUrl(podcast.soundcloud_embed)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full bg-[#ff5500] text-white py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#e64d00] transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                        Open in SoundCloud
-                      </a>
-                    </div>
-                  )}
                 </div>
               </motion.div>
             )}
