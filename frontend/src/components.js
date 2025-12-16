@@ -651,7 +651,8 @@ const AdvisoryPage = () => {
               )}
               {activeTab !== 'organizational' && (
                 <div className="mt-2 md:mt-3 flex items-center text-xs md:text-sm text-[#00A8E1] font-semibold">
-                  Tap to view details →
+                  <span className="md:hidden">Tap to view →</span>
+                  <span className="hidden md:inline">Click to view details →</span>
                 </div>
               )}
             </motion.button>
