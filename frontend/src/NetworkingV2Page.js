@@ -191,7 +191,7 @@ const NetworkingV2Page = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="text-center rounded-2xl p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
+          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
         >
           <motion.div
             initial={{ scale: 0 }}
