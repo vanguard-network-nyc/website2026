@@ -2438,7 +2438,7 @@ const NewWhatWeDoSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
             What Makes Us Different
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
@@ -2721,7 +2721,7 @@ const NewAboutSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
             About The Vanguard Network
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
