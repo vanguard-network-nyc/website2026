@@ -2248,7 +2248,7 @@ const BookPage = () => (
 // New Hero Section
 const NewHero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-32 md:pt-0">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
