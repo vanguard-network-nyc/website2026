@@ -553,7 +553,7 @@ const AdvisoryPage = () => {
         <h1 
           className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
         >
-          Leadership Advising & Development
+          Leadership Advisory & Development
         </h1>
         <div className="max-w-5xl mx-auto">
           <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-16">
