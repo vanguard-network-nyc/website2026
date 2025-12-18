@@ -409,8 +409,8 @@ const Header = () => {
                     MEMBER SITE
                   </a>
                 </motion.div>
-              </nav>
-            </motion.div>
+              </div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </div>
