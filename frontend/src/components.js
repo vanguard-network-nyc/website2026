@@ -340,25 +340,25 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col"
+              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col overflow-y-auto"
               style={{ top: '120px' }}
             >
-              <div className="px-4 py-3 flex-1 flex flex-col">
+              <div className="px-4 py-2 flex-1 flex flex-col min-h-0">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: index * 0.03 }}
                   >
                     {item.dropdown ? (
-                      <div className="border-b border-slate-600/30 py-1.5">
-                        <div className="text-white font-medium">{item.name}</div>
+                      <div className="border-b border-slate-600/30 py-1">
+                        <div className="text-white font-medium text-sm">{item.name}</div>
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.path}
-                            className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-xs transition-colors duration-200 py-px"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {subItem.name}
@@ -371,7 +371,7 @@ const Header = () => {
                           href={item.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
+                          className="block text-white hover:text-blue-400 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30 py-1.5"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -379,7 +379,7 @@ const Header = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
+                          className="block text-white hover:text-blue-400 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30 py-1.5"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -391,14 +391,14 @@ const Header = () => {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="mt-auto pt-3"
+                  transition={{ delay: 0.3 }}
+                  className="mt-auto pt-2 pb-2"
                 >
                   <a
                     href="https://members.thevanguardnetwork.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-center"
+                    className="block text-white px-4 py-1.5 rounded-lg font-medium text-sm transition-colors duration-200 text-center"
                     style={{ backgroundColor: '#00A8E1' }}
                     onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                     onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
