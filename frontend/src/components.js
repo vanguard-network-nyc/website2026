@@ -343,7 +343,7 @@ const Header = () => {
               className="xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col"
               style={{ top: '120px' }}
             >
-              <div className="px-4 flex-1 flex flex-col justify-evenly" style={{ paddingTop: '2vh', paddingBottom: '2vh' }}>
+              <div className="px-4 flex-1 flex flex-col justify-evenly" style={{ paddingTop: '1vh', paddingBottom: '1vh' }}>
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
