@@ -352,14 +352,13 @@ const Header = () => {
                     transition={{ delay: index * 0.03 }}
                   >
                     {item.dropdown ? (
-                      <div className="border-b border-slate-600/30" style={{ paddingTop: 'min(1vh, 6px)', paddingBottom: 'min(1vh, 6px)' }}>
-                        <div className="text-white font-medium" style={{ fontSize: 'clamp(14px, 3.5vw, 16px)' }}>{item.name}</div>
+                      <div className="border-b border-slate-600/30 py-1.5">
+                        <div className="text-white font-medium">{item.name}</div>
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.path}
-                            className="block text-blue-300 hover:text-blue-100 pl-4 transition-colors duration-200"
-                            style={{ fontSize: 'clamp(12px, 3vw, 14px)', paddingTop: 'min(0.5vh, 2px)', paddingBottom: 'min(0.5vh, 2px)' }}
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {subItem.name}
@@ -372,8 +371,7 @@ const Header = () => {
                           href={item.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
-                          style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', paddingTop: 'min(1.5vh, 8px)', paddingBottom: 'min(1.5vh, 8px)' }}
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -381,8 +379,7 @@ const Header = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
-                          style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', paddingTop: 'min(1.5vh, 8px)', paddingBottom: 'min(1.5vh, 8px)' }}
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
