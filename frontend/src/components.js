@@ -340,10 +340,10 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col overflow-y-auto"
+              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col"
               style={{ top: '120px' }}
             >
-              <div className="px-4 py-2 flex-1 flex flex-col min-h-0">
+              <div className="px-4 flex-1 flex flex-col justify-evenly" style={{ paddingTop: 'min(2vh, 8px)', paddingBottom: 'min(2vh, 8px)' }}>
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -352,13 +352,14 @@ const Header = () => {
                     transition={{ delay: index * 0.03 }}
                   >
                     {item.dropdown ? (
-                      <div className="border-b border-slate-600/30 py-1">
-                        <div className="text-white font-medium text-sm">{item.name}</div>
+                      <div className="border-b border-slate-600/30" style={{ paddingTop: 'min(1vh, 6px)', paddingBottom: 'min(1vh, 6px)' }}>
+                        <div className="text-white font-medium" style={{ fontSize: 'clamp(14px, 3.5vw, 16px)' }}>{item.name}</div>
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.path}
-                            className="block text-blue-300 hover:text-blue-100 pl-4 text-xs transition-colors duration-200 py-px"
+                            className="block text-blue-300 hover:text-blue-100 pl-4 transition-colors duration-200"
+                            style={{ fontSize: 'clamp(12px, 3vw, 14px)', paddingTop: 'min(0.5vh, 2px)', paddingBottom: 'min(0.5vh, 2px)' }}
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {subItem.name}
@@ -371,7 +372,8 @@ const Header = () => {
                           href={item.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-white hover:text-blue-400 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30 py-1.5"
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
+                          style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', paddingTop: 'min(1.5vh, 8px)', paddingBottom: 'min(1.5vh, 8px)' }}
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -379,7 +381,8 @@ const Header = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className="block text-white hover:text-blue-400 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30 py-1.5"
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
+                          style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', paddingTop: 'min(1.5vh, 8px)', paddingBottom: 'min(1.5vh, 8px)' }}
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -392,14 +395,14 @@ const Header = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="mt-auto pt-2 pb-2"
+                  style={{ marginTop: 'min(2vh, 12px)' }}
                 >
                   <a
                     href="https://members.thevanguardnetwork.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-white px-4 py-1.5 rounded-lg font-medium text-sm transition-colors duration-200 text-center"
-                    style={{ backgroundColor: '#00A8E1' }}
+                    className="block text-white px-4 rounded-lg font-medium transition-colors duration-200 text-center"
+                    style={{ backgroundColor: '#00A8E1', fontSize: 'clamp(14px, 3.5vw, 16px)', paddingTop: 'min(1.5vh, 8px)', paddingBottom: 'min(1.5vh, 8px)' }}
                     onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                     onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
                     onClick={() => setIsMenuOpen(false)}
