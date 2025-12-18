@@ -343,7 +343,7 @@ const Header = () => {
               className="xl:hidden absolute left-0 right-0 top-full bg-gradient-to-r from-[#0c2340] to-[#045184] overflow-y-auto z-50"
               style={{ maxHeight: 'calc(100vh - 120px)' }}
             >
-              <nav className="px-4 py-4">
+              <div className="px-4 py-4">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
