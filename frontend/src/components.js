@@ -343,68 +343,67 @@ const Header = () => {
               className="xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col"
               style={{ top: '120px' }}
             >
-            <div className="px-4 py-2 flex-1 flex flex-col justify-between">
-                <div>
-                  {navItems.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      {item.dropdown ? (
-                        // Mobile dropdown - compact
-                        <div className="py-1 border-b border-slate-600/30">
-                          <div className="text-white font-medium text-sm">{item.name}</div>
-                          <div className="flex flex-wrap gap-x-4">
-                            {item.dropdown.map((subItem, subIndex) => (
-                              <Link
-                                key={subItem.name}
-                                to={subItem.path}
-                                className="text-blue-300 hover:text-blue-100 py-0.5 text-xs transition-colors duration-200"
-                                onClick={() => setIsMenuOpen(false)}
-                              >
-                                {subItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        // Regular mobile link - handle external links
-                        item.external ? (
-                          <a
-                            href={item.path}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-white hover:text-blue-400 py-1.5 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {item.name}
-                          </a>
-                        ) : (
+              <div className="px-4 flex-1 flex flex-col justify-evenly" style={{ paddingTop: '2vh', paddingBottom: '2vh' }}>
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    {item.dropdown ? (
+                      // Mobile dropdown
+                      <div className="border-b border-slate-600/30" style={{ paddingTop: '0.8vh', paddingBottom: '0.8vh' }}>
+                        <div className="text-white font-medium" style={{ marginBottom: '0.5vh' }}>{item.name}</div>
+                        {item.dropdown.map((subItem, subIndex) => (
                           <Link
-                            to={item.path}
-                            className="block text-white hover:text-blue-400 py-1.5 font-medium text-sm transition-colors duration-200 border-b border-slate-600/30"
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200"
+                            style={{ paddingTop: '0.3vh', paddingBottom: '0.3vh' }}
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            {item.name}
+                            {subItem.name}
                           </Link>
-                        )
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
+                        ))}
+                      </div>
+                    ) : (
+                      // Regular mobile link - handle external links
+                      item.external ? (
+                        <a
+                          href={item.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
+                          style={{ paddingTop: '1vh', paddingBottom: '1vh' }}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.path}
+                          className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30"
+                          style={{ paddingTop: '1vh', paddingBottom: '1vh' }}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    )}
+                  </motion.div>
+                ))}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="pb-4"
+                  style={{ marginTop: '2vh' }}
                 >
                   <a
                     href="https://members.thevanguardnetwork.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200 text-center"
+                    className="block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-center"
                     style={{ backgroundColor: '#00A8E1' }}
                     onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                     onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
