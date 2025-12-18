@@ -340,10 +340,10 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col"
+              className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col overflow-y-auto"
               style={{ top: '120px' }}
             >
-              <div className="px-4 flex-1 flex flex-col justify-evenly" style={{ paddingTop: 'min(2vh, 8px)', paddingBottom: 'min(2vh, 8px)' }}>
+              <div className="px-4 flex-1 flex flex-col" style={{ paddingTop: '8px', paddingBottom: '12px' }}>
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
