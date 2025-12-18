@@ -419,10 +419,10 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex-col"
-              style={{ top: '120px' }}
+              className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-40 flex-col"
+              style={{ top: '140px' }}
             >
-              <div className="px-6 py-6">
+              <div className="px-8 py-6">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -431,13 +431,13 @@ const Header = () => {
                     transition={{ delay: index * 0.05 }}
                   >
                     {item.dropdown ? (
-                      <div className="border-b border-slate-600/30 py-2">
-                        <div className="text-white font-medium text-lg">{item.name}</div>
+                      <div className="border-b border-slate-600/30 py-2 lg:py-3">
+                        <div className="text-white font-medium text-lg lg:text-xl">{item.name}</div>
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.name}
                             to={subItem.path}
-                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base transition-colors duration-200 py-1"
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {subItem.name}
@@ -450,7 +450,7 @@ const Header = () => {
                           href={item.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block text-white hover:text-blue-400 font-medium text-lg transition-colors duration-200 border-b border-slate-600/30 py-3"
+                          className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -458,7 +458,7 @@ const Header = () => {
                       ) : (
                         <Link
                           to={item.path}
-                          className="block text-white hover:text-blue-400 font-medium text-lg transition-colors duration-200 border-b border-slate-600/30 py-3"
+                          className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -477,7 +477,7 @@ const Header = () => {
                     href="https://members.thevanguardnetwork.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block text-white px-6 py-3 rounded-lg font-medium text-lg transition-colors duration-200"
+                    className="inline-block text-white px-6 py-3 rounded-lg font-medium text-lg lg:text-xl transition-colors duration-200"
                     style={{ backgroundColor: '#00A8E1' }}
                     onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                     onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
