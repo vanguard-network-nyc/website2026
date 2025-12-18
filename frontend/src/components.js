@@ -412,78 +412,81 @@ const Header = () => {
           )}
         </AnimatePresence>
 
-        {/* Tablet Navigation (768px - 1279px) - Dropdown style */}
+        {/* Tablet Navigation (768px - 1279px) - Full Screen */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="hidden md:block xl:hidden border-t border-slate-700 pt-4 pb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex-col"
+              style={{ top: '120px' }}
             >
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {item.dropdown ? (
-                    <div className="py-2">
-                      <div className="text-white font-medium mb-2">{item.name}</div>
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block text-blue-300 hover:text-blue-100 py-1 pl-4 text-sm transition-colors duration-200"
+              <div className="px-6 py-6">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    {item.dropdown ? (
+                      <div className="border-b border-slate-600/30 py-2">
+                        <div className="text-white font-medium text-lg">{item.name}</div>
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base transition-colors duration-200 py-1"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      item.external ? (
+                        <a
+                          href={item.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-white hover:text-blue-400 font-medium text-lg transition-colors duration-200 border-b border-slate-600/30 py-3"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {subItem.name}
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.path}
+                          className="block text-white hover:text-blue-400 font-medium text-lg transition-colors duration-200 border-b border-slate-600/30 py-3"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
                         </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    item.external ? (
-                      <a
-                        href={item.path}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </a>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className="block text-white hover:text-blue-400 py-2 font-medium transition-colors duration-200"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    )
-                  )}
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                className="pt-3"
-              >
-                <a
-                  href="https://members.thevanguardnetwork.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
-                  style={{ backgroundColor: '#00A8E1' }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-                  onClick={() => setIsMenuOpen(false)}
+                      )
+                    )}
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="pt-4"
                 >
-                  MEMBER SITE
-                </a>
-              </motion.div>
+                  <a
+                    href="https://members.thevanguardnetwork.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-white px-6 py-3 rounded-lg font-medium text-lg transition-colors duration-200"
+                    style={{ backgroundColor: '#00A8E1' }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    MEMBER SITE
+                  </a>
+                </motion.div>
+              </div>
             </motion.nav>
           )}
         </AnimatePresence>
