@@ -1,6 +1,29 @@
 # Mobile Responsiveness Test Results
 
-## Test Date: December 16, 2025
+## Test Date: December 18, 2025
+
+## Latest Changes (December 18, 2025)
+
+### Mobile/Tablet Menu Fix
+- Fixed mobile menu (< 768px) to have MEMBER SITE button closer to last menu item
+- Fixed tablet menu (768px - 1279px) to have MEMBER SITE button closer to last menu item
+- Removed `mt-auto` and excessive margins that were creating large gaps
+
+### Executive Advisory Team Card Alignment Fix
+- Fixed card alignment on `/advisory` page desktop view
+- Implemented flexbox layout (`flex flex-col h-full`) for equal height cards
+- Used `flex-grow` on bio section to push footer credentials to bottom
+- All 4 team member cards now have footer aligned at same horizontal level
+
+## Test Scenarios to Verify (December 18)
+1. Mobile menu (375px) - MEMBER SITE button close to last menu item
+2. Tablet menu (1024px) - MEMBER SITE button close to last menu item  
+3. Desktop nav (1440px) - No regression, horizontal nav works
+4. Advisory page card alignment on desktop - footers aligned horizontally
+
+---
+
+## Previous Test Date: December 16, 2025
 
 ## Changes Made for Mobile Optimization
 
