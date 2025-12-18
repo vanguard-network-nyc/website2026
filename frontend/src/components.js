@@ -336,12 +336,12 @@ const Header = () => {
         {/* Mobile/Tablet Full-Screen Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
+            <motion.nav
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'calc(100vh - 100%)' }}
+              animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="xl:hidden fixed left-0 right-0 bg-gradient-to-r from-[#0c2340] to-[#045184] overflow-y-auto"
-              style={{ top: '100%', maxHeight: 'calc(100vh - 120px)' }}
+              className="xl:hidden absolute left-0 right-0 top-full bg-gradient-to-r from-[#0c2340] to-[#045184] overflow-y-auto z-50"
+              style={{ maxHeight: 'calc(100vh - 120px)' }}
             >
               <nav className="px-4 py-4">
                 {navItems.map((item, index) => (
