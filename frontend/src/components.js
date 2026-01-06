@@ -2579,18 +2579,18 @@ const NewWhatWeDoSection = () => {
   const services = [
     {
       title: "Leadership Advisory",
-      description: "We deliver three complementary advisory services to accelerate your leadership impact and drive organizational transformation.",
+      description: "We focus on leadership advisory services in three areas:",
       details: [
         { 
-          text: "<span class='font-semibold'>Organizational Transformation:</span> Catalyzing change by transforming what your people believe, the way they work, and how they behave.",
+          text: "Organizational Transformation",
           anchor: "organizational-transformation"
         },
         { 
-          text: "<span class='font-semibold'>Strategic Counsel:</span> One-on-one coaching and confidential sounding boards for senior executives navigating complex decisions.",
+          text: "Strategic Counsel",
           anchor: "strategic-counsel"
         },
         { 
-          text: "<span class='font-semibold'>Client & Stakeholder Engagement:</span> Leadership Dialogues that transform supplier relationships into trusted advisor roles through relevant conversations with clients and stakeholders.",
+          text: "Client & Stakeholder Engagement",
           anchor: "client-and-stakeholder-engagement"
         }
       ],
