@@ -2651,9 +2651,9 @@ const NewWhatWeDoSection = () => {
                   {service.description}
                 </p>
                 {service.title === "Leadership Advisory" && Array.isArray(service.details) ? (
-                  <div className="text-slate-600 text-sm mb-6 leading-relaxed space-y-2">
+                  <ul className="text-slate-600 text-sm mb-6 leading-relaxed space-y-2 list-disc list-inside">
                     {service.details.map((item, idx) => (
-                      <p key={idx}>
+                      <li key={idx}>
                         <Link
                           to={`/advisory#${item.anchor}`}
                           onClick={() => {
@@ -2673,9 +2673,9 @@ const NewWhatWeDoSection = () => {
                         >
                           {item.text}
                         </Link>
-                      </p>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 ) : (
                   <p 
                     className="text-slate-600 text-sm mb-6 leading-relaxed"
