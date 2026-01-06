@@ -2651,13 +2651,11 @@ const NewWhatWeDoSection = () => {
                   {service.description}
                 </p>
                 {service.title === "Leadership Advisory" && Array.isArray(service.details) ? (
-                  <div className="text-slate-600 text-sm mb-6 leading-relaxed space-y-4">
+                  <div className="text-slate-600 text-sm mb-6 leading-relaxed space-y-2">
                     {service.details.map((item, idx) => (
                       <p key={idx}>
-                        <span dangerouslySetInnerHTML={{ __html: item.text }}></span>
-                        {' '}
                         <Link
-                          to="/advisory"
+                          to={`/advisory#${item.anchor}`}
                           onClick={() => {
                             setTimeout(() => {
                               const element = document.getElementById(item.anchor);
@@ -2673,7 +2671,7 @@ const NewWhatWeDoSection = () => {
                           }}
                           className="text-blue-600 hover:text-blue-700 font-semibold"
                         >
-                          Learn more
+                          {item.text}
                         </Link>
                       </p>
                     ))}
