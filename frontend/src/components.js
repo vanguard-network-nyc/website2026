@@ -2941,11 +2941,8 @@ const NewAboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            About The Vanguard Network
+            What Makes Us Different
           </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            More than a professional association, we are a high-impact platform where senior leaders connect, grow, and lead with purpose through tailored advisory programs and exclusive peer forums.
-          </p>
         </motion.div>
 
         {/* Quote Container */}
