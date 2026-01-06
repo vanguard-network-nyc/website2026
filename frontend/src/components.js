@@ -2504,14 +2504,14 @@ const NewHero = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center"
           >
             <Link
-              to="/networking"
+              to="/advisory"
               className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
-              Peer-to-Peer Networks
+              Leadership Advisory
               <ArrowRight size={20} />
             </Link>
             <Link
-              to="/advisory"
+              to="/networking"
               className="px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 relative"
               style={{ 
                 color: '#045184',
@@ -2519,7 +2519,7 @@ const NewHero = () => {
                 border: '2px solid transparent'
               }}
             >
-              Leadership Advisory
+              Peer-to-Peer Networks
             </Link>
           </motion.div>
         </motion.div>
