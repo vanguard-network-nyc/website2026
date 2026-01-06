@@ -2624,7 +2624,7 @@ const NewWhatWeDoSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            What Makes Us Different
+            What We Do
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Like you, we know that AI and new technologies are simply tools. The real differentiator in exceptional leadership is 'the human factor'. That's why we focus on people, whether in our peer-to-peer networks or supporting your business.
