@@ -2610,8 +2610,12 @@ const NewWhatWeDoSection = () => {
     },
     {
       title: "Custom Programs",
-      description: "We offer special leadership and career development programs tailored to your organization's unique needs and challenges.",
-      details: "We also offer specialized leadership and career-development programs–including the flagship <span class='font-semibold'>Next Generation GC</span> program, widely recognized as the gold standard for developing high-potential legal leaders.",
+      description: "Leadership programs developed with our C-suite members:",
+      details: [
+        "Lead by top Executives",
+        "Driven by peer-to-peer interactions",
+        "Centered on real-world challenges"
+      ],
       image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
       link: "/programs"
     }
