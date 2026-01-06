@@ -2599,8 +2599,12 @@ const NewWhatWeDoSection = () => {
     },
     {
       title: "Peer-to-Peer Networks",
-      description: "Participation in Forums, Leadership Dialogues, and our virtual platform, allows members to engage in intimate, cross-sector peer discussions.",
-      details: "Focus on tackling real-world leadership challenges through structured peer exchanges and collaborative problem-solving sessions.",
+      description: "Our members engage in peer-to-peer conversations around leadership topics that matter most:",
+      details: [
+        "No podium",
+        "No PowerPoint",
+        "No presentations"
+      ],
       image: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
       link: "/networking"
     },
