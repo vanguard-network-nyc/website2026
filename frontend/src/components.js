@@ -2680,6 +2680,12 @@ const NewWhatWeDoSection = () => {
                       </li>
                     ))}
                   </ul>
+                ) : service.title === "Peer-to-Peer Networks" && Array.isArray(service.details) ? (
+                  <ul className="text-slate-600 text-sm mb-6 leading-relaxed space-y-1 list-disc list-inside">
+                    {service.details.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
                 ) : (
                   <p 
                     className="text-slate-600 text-sm mb-6 leading-relaxed"
