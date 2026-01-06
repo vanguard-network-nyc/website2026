@@ -2516,10 +2516,9 @@ const NewHero = () => {
             </Link>
             <Link
               to="/networking"
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
             >
               Peer-to-Peer Networks
-              <ArrowRight size={20} />
             </Link>
           </motion.div>
         </motion.div>
