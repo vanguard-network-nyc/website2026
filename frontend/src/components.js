@@ -2708,7 +2708,7 @@ const NewWhatWeDoSection = () => {
                     href="/advisory"
                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
                   >
-                    Learn more
+                    Discover more
                     <ArrowRight size={16} />
                   </a>
                 ) : service.title === "Client and Stakeholder Engagement" ? (
