@@ -3162,10 +3162,10 @@ const NewContentLibrarySection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-            Our Content & Thought Leadership
+            Pragmatic Leadership Insights From Those Who Know
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Members gain access to a rich library featuring leadership insights from Vanguard faculty, members, and affiliate contributors spanning leadership development, board dynamics, and organizational transformation.
+            From leadership development to board dynamics, organizational transformation and more. Top executives explain what works and what doesn't.
           </p>
         </motion.div>
 
