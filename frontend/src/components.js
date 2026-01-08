@@ -2543,7 +2543,7 @@ const NewWhatWeDoSection = () => {
   ];
 
   return (
-    <section className="pt-[10px] pb-0 bg-white">
+    <section className="pt-0 pb-0 bg-white">
       {/* Hero Image Section - Full Width */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
