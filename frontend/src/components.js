@@ -2544,22 +2544,22 @@ const NewWhatWeDoSection = () => {
 
   return (
     <section className="pt-24 pb-0 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
-        {/* Hero Image Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <img 
-            src="https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/h5eblom2_hero.png"
-            alt="Leadership conversations and peer networking"
-            className="w-full rounded-2xl shadow-xl"
-          />
-        </motion.div>
+      {/* Hero Image Section - Full Width */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="mb-16 w-full"
+      >
+        <img 
+          src="https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/h5eblom2_hero.png"
+          alt="Leadership conversations and peer networking"
+          className="w-full"
+        />
+      </motion.div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
