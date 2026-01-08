@@ -3074,7 +3074,7 @@ const NewContentLibrarySection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-            Pragmatic Leadership Insights From Those Who Know
+            Real World Insights
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
             Vanguard's rich library of content features members and other real world experts talking about the leadership topics that matter most.
