@@ -303,7 +303,7 @@ const NetworkingV2Page = () => {
             >
               <Globe size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Members Website Features</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Member Resources</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
               Access exclusive digital resources and tools designed to enhance your leadership capabilities and support your professional development.
             </p>
