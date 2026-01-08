@@ -54,7 +54,8 @@ const {
   NewAboutSection,
   NewContentLibrarySection,
   VideoQuoteSection,
-  NewsroomSliderSection
+  NewsroomSliderSection,
+  ImageSliderSection
 } = Components;
 
 // Component to handle scroll restoration with transition overlay
