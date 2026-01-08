@@ -1216,8 +1216,8 @@ const AdvisoryPage = () => {
         {/* Background Pattern */}
         <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center relative z-10">
-          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-6 md:p-10 relative overflow-hidden">
+        <div className="relative z-10">
+          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
             <div className="text-center relative z-10">
               <motion.div
@@ -1230,37 +1230,10 @@ const AdvisoryPage = () => {
               </motion.div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">CEOs & C-Suite Executives</h3>
               <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base italic">
+              <p className="text-slate-600 leading-relaxed text-sm md:text-base italic max-w-2xl mx-auto">
                 Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
               </p>
             </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-4 mb-8">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex-shrink-0"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
-                  <Target size={32} className="text-white" />
-                </div>
-              </motion.div>
-              
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-                Real-World Leadership Development
-              </h2>
-            </div>
-            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              Our approach draws on the wisdom of hundreds of CEOs, board directors, and C-suite leaders - shared through powerful peer-to-peer exchanges.
-            </p>
-            <p className="text-slate-600 leading-relaxed mb-6 text-lg font-medium">
-              These real-world insights cut through theory, offering proven strategies for today's most pressing leadership challenges.
-            </p>
-            <p className="text-slate-600 leading-relaxed text-base md:text-lg font-medium">
-              We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
-            </p>
           </div>
         </div>
       </motion.div>
