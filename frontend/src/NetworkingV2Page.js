@@ -127,7 +127,7 @@ const NetworkingV2Page = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="w-full mb-8"
           >
-            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-6 md:p-8">
+            <div className="bg-[#ffffff] rounded-xl p-6 md:p-8 shadow-lg">
               <div className="flex flex-col md:flex-row items-center gap-6 max-w-5xl mx-auto">
                 <div className="flex-shrink-0">
                   <img 
