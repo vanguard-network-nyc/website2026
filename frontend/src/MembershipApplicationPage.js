@@ -232,10 +232,10 @@ const MembershipApplicationPage = () => {
           <h1 
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight"
           >
-            Vanguard Membership Application
+            Vanguard Network Membership
           </h1>
-          <p className="text-xl text-slate-600 leading-relaxed">
-            Join our exclusive network of senior executives and leaders
+          <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            We're delighted that you are interested in a membership of the Vanguard Network. Please complete the information below so that we can get back to you. If you heard about us through someone else, please let us know.
           </p>
         </motion.div>
 
