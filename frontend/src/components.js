@@ -3573,7 +3573,7 @@ const ImageSliderSection = () => {
         }
         .slider-track {
           display: flex;
-          animation: scroll 30s linear infinite;
+          animation: scroll 20s linear infinite;
         }
         .slider-slide {
           flex-shrink: 0;
