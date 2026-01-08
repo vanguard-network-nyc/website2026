@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import { 
@@ -10,37 +10,17 @@ import {
   Users, 
   ArrowRight,
   Mail,
-  Filter,
-  Grid,
-  List,
   Clock,
   TrendingUp,
   CheckCircle2,
-  Search,
   Star,
   Zap,
   Briefcase,
-  Globe,
-  X
+  Globe
 } from 'lucide-react';
 
 const ProgramsV2 = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedLevel, setSelectedLevel] = useState('All');
-  const [viewMode, setViewMode] = useState('cards');
-  const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('current'); // 'current' or 'customized'
-  const [showQuoteModal, setShowQuoteModal] = useState(false);
-  const [selectedSolution, setSelectedSolution] = useState('');
-  const [quoteFormData, setQuoteFormData] = useState({
-    fullName: '',
-    email: '',
-    company: '',
-    customizedSolution: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   // Map tab keys to their corresponding hash IDs
   const tabToHash = {
