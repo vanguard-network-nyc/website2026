@@ -1019,7 +1019,7 @@ const AdvisoryPage = () => {
               className="rounded-xl p-4 md:p-8" 
               style={{ backgroundColor: '#045184' }}
             >
-              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Examples</h3>
               <ul className="space-y-3 text-white">
                 {[
                   "Cultural transformation",
@@ -1126,7 +1126,7 @@ const AdvisoryPage = () => {
               className="rounded-xl p-4 md:p-8" 
               style={{ backgroundColor: '#045184' }}
             >
-              <h3 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Examples</h3>
               <ul className="space-y-3 text-white">
                 {[
                   "Strategic relationship building",
