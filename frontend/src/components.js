@@ -1481,7 +1481,7 @@ const AdvisoryPage = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-200 hover:bg-blue-50"
             >
-              Get Started Today
+              Contact Us
             </motion.button>
           </Link>
         </motion.div>
