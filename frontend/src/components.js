@@ -3077,7 +3077,7 @@ const NewContentLibrarySection = () => {
             Pragmatic Leadership Insights From Those Who Know
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            From leadership development to board dynamics, organizational transformation and more. Top executives explain what works and what doesn't.
+            Vanguard's rich library of content features members and other real world experts talking about the leadership topics that matter most.
           </p>
         </motion.div>
 
