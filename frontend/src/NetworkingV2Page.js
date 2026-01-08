@@ -350,18 +350,14 @@ const NetworkingV2Page = () => {
           >
             <Star size={32} className="text-white" />
           </motion.div>
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">Join Us — Where Real Conversations Create Real Impact</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Be part of a community where real conversations create real impact. Connect with leaders who understand the demands of leadership at the top and are ready to share their wisdom and experience.
-          </p>
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Ready to Learn More?</h2>
           <motion.a
-            href="/application"
+            href="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
           >
-            Apply to Join
-            <ArrowRight size={20} />
+            Contact Us
           </motion.a>
         </motion.div>
       </div>
