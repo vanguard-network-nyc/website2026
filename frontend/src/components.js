@@ -639,7 +639,7 @@ const AdvisoryPage = () => {
         </h1>
         <div className="max-w-5xl mx-auto">
           <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-16">
-            We know that leadership is the catalyst for change and transformation, powered by the human factor that drives authentic connections between leaders and their teams.
+            Leadership is the catalyst for change and transformation–powered by the human factor.
           </p>
         </div>
       </motion.div>
