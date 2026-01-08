@@ -1003,10 +1003,13 @@ const AdvisoryPage = () => {
               >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Organizational Transformation</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
-                We help transform what your people believe, the way they work, and how they behave. Our approach is grounded in decades of experience with major multinationals and global service firms.
+                We'll help you clarify the shape of the future, and how to get there. Then, we will work with you to engage your teams, earn their trust, and build high performance for the long-term.
+              </p>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Our approach is grounded in decades of experience with organizations ranging from earlier stage enterprises to Fortune 100 companies.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                We're not a conventional large strategic consultancy. Instead, we're a lean and focused team with deep, real-world experience in catalyzing organizational change that sticks and delivers measurable results.
+                We're not a conventional large strategy consulting firm. Instead, we are a lean and focused senior team with decades of real-world success in catalyzing organizational change that sticks and delivers measurable results.
               </p>
             </motion.div>
             <motion.div 
