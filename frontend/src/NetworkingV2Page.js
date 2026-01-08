@@ -214,7 +214,7 @@ const NetworkingV2Page = () => {
             >
               <Award size={32} className="text-white" />
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Membership Networks</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Member Networks</h2>
           </div>
 
           {/* All Networks Grid */}
