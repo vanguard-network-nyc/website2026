@@ -2098,66 +2098,6 @@ const ContactPage = () => {
           </motion.div>
         </div>
 
-        {/* Leadership Team Section */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="bg-white rounded-2xl p-4 md:p-8 shadow-lg mb-12"
-        >
-          <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>Leadership Team</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:p-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
-                <img 
-                  src="/ken-banta.jpg" 
-                  alt="Ken Banta" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Ken Banta</h4>
-              <p className="text-slate-600 font-medium mb-3">Founder and CEO</p>
-              <a
-                href="https://www.linkedin.com/in/kenbanta/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-              >
-                <Linkedin className="text-white" size={20} />
-              </a>
-            </motion.div>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.1, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-lg">
-                <img 
-                  src="/tony-powe-team.jpg" 
-                  alt="Tony Powe" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="text-xl font-bold mb-2" style={{ color: '#045184' }}>Tony Powe</h4>
-              <p className="text-slate-600 font-medium mb-3">Co-Founder and Chief Operating Officer</p>
-              <a
-                href="https://www.linkedin.com/in/tonypowe/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-              >
-                <Linkedin className="text-white" size={20} />
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
-
         {/* Our Team Link Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -2165,10 +2105,7 @@ const ContactPage = () => {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-center bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200"
         >
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">Want to Learn More About Our Team?</h3>
-          <p className="text-slate-600 mb-6 leading-relaxed max-w-2xl mx-auto">
-            Meet our complete leadership team, advisory board, and the experienced professionals who make The Vanguard Network possible.
-          </p>
+          <h3 className="text-2xl font-bold text-slate-900 mb-6">The Vanguard Network Team</h3>
           
           <motion.a
             href="/team"
@@ -2177,7 +2114,7 @@ const ContactPage = () => {
             className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
           >
             <Users size={20} />
-            Meet Our Team
+            About Our Team
           </motion.a>
         </motion.div>
       </div>
