@@ -668,9 +668,6 @@ const AdvisoryPage = () => {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
               Three Ways We Work With Executives<br />To Build High-Performance Organizations
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
-              Our comprehensive approach delivers three distinct types of advisory services to accelerate your leadership impact and organizational success.
-            </p>
           </div>
         </div>
         
