@@ -10,7 +10,7 @@ const Breadcrumb = ({ customTitle, lightMode = false }) => {
     'advisory': 'Advisory',
     'programs': 'Programs',
     'networking': 'Networking',
-    'case-studies': 'Case Studies',
+    'success-stories': 'Success Stories',
     'contact': 'Contact',
     'team': 'Team',
     'upcoming-events': 'Events',
