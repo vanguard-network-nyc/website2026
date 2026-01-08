@@ -117,17 +117,44 @@ const NetworkingV2Page = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
-            Networking & Community
+            A Community of Leaders
           </motion.h1>
           
+          {/* Ann Kappler Testimonial - Moved to top */}
           <motion.div 
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="max-w-7xl mx-auto mb-8 px-4 sm:px-6 lg:px-4 md:px-8"
+          >
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
+                    alt="Ann Kappler testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "What sets The Vanguard Network apart are the conversations about real-world leadership challenges we face as senior executives. We are among others who've been where we are, who know the pressure of leading at the top, and who are ready to help us see around corners."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Ann Kappler</div>
+                  <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, Prudential Financial</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-5xl mx-auto"
           >
             <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium mb-8">
-              Networking built on the human factor — where leaders connect beyond roles and titles to exchange real experiences through confidential, peer-to-peer conversations based on trust rather than performance.
+              What began more than a decade ago as periodic conversations among healthcare executives has grown into a powerful community of senior leaders across industries–united by a core belief: <span className="font-bold">high-performance leadership drives organizational success.</span>
             </p>
           </motion.div>
         </div>
@@ -151,37 +178,22 @@ const NetworkingV2Page = () => {
               <MessageCircle size={32} className="text-white" />
             </motion.div>
             <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
-              Beyond Traditional Networking
+              Members-Driven
             </h2>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl text-slate-700 leading-relaxed mb-8 font-medium">
-              Each exchange — whether in a Forum, roundtable, or off-the-record session — brings leaders face to face with the challenges and opportunities they won't find in the headlines. The result: <span className="font-bold text-blue-600">authentic connection, sharper foresight, and the kind of practical wisdom that only comes from shared experience.</span>
+            <p className="text-xl text-slate-700 leading-relaxed mb-6 font-medium">
+              In a rapidly changing world, leaders come together here to stay agile, relevant, and effective. As our community has grown, so too has the breadth and depth of peer-to-peer leadership insights, shaped directly by the real challenges our members face.
             </p>
-            
-            {/* Testimonial */}
-            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-4 md:p-8 mb-8">
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="flex-shrink-0">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
-                    alt="Ann Kappler testimonial"
-                    className="w-20 h-20 rounded-full object-cover shadow-lg"
-                  />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                    "What sets The Vanguard Network apart are the conversations about real-world leadership challenges we face as senior executives. We are among others who've been where we are, who know the pressure of leading at the top, and who are ready to help us see around corners."
-                  </blockquote>
-                  <div className="text-slate-900 font-bold">Ann Kappler</div>
-                  <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, Prudential Financial</div>
-                </div>
-              </div>
-            </div>
-            
-            <p className="text-lg text-slate-600 leading-relaxed text-center">
-              <span className="font-semibold text-slate-900">If you believe that leadership starts with listening, empathy, and courage, you'll find your peers here.</span>
+            <p className="text-xl text-slate-700 leading-relaxed mb-6 font-medium">
+              Over time, those shared needs and experiences have given rise to different networks, each focused on critical executive roles and responsibilities. Whether in General Counsel, Risk Management, Life Sciences Leadership, or other executive domains, members connect with peers who understand their world, and push their leadership forward.
+            </p>
+            <p className="text-xl text-slate-700 leading-relaxed mb-6 font-medium">
+              There is no podium, no PowerPoint, no presentations. Just candid, expert-to-expert dialogue, where leaders learn with and from one another across every interaction and channel.
+            </p>
+            <p className="text-xl text-slate-700 leading-relaxed mb-8 font-medium">
+              Today, The Vanguard Network brings together top executives who know that leadership is not a solo pursuit, but a collective discipline, strengthened by experience, reflection, and the willingness to share what works.
             </p>
           </div>
         </motion.div>
