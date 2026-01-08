@@ -723,10 +723,7 @@ const ProgramsV2 = () => {
       >
         <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-6 md:p-16 text-white relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Ready to Transform Your Leadership?</h2>
-            <p className="text-base md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto">
-              Join over 200+ leaders who have accelerated their growth through our proven programs.
-            </p>
+            <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8">To Find Out More</h2>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
               <Link to="/contact" className="w-full sm:w-auto">
                 <motion.button
@@ -736,16 +733,6 @@ const ProgramsV2 = () => {
                 >
                   <Mail size={18} />
                   <span>Contact Us</span>
-                </motion.button>
-              </Link>
-              <Link to="/programs" onClick={() => window.scrollTo(0, 0)} className="w-full sm:w-auto">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-transparent text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-white hover:text-[#045184] transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white w-full"
-                >
-                  <BookOpen size={18} />
-                  <span>View All Programs</span>
                 </motion.button>
               </Link>
             </div>
