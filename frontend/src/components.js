@@ -2515,7 +2515,7 @@ const NewWhatWeDoSection = () => {
           anchor: "client-and-stakeholder-engagement"
         }
       ],
-      image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg",
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/3fsauvqm_Vanguard%20GC%20may%206th-49.jpg",
       link: "/advisory"
     },
     {
