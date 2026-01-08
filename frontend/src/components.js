@@ -3622,7 +3622,8 @@ const Components = {
   NewContentLibrarySection,
   GCLBanner,
   VideoQuoteSection,
-  NewsroomSliderSection
+  NewsroomSliderSection,
+  ImageSliderSection
 };
 
 export default Components;
