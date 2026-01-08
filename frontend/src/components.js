@@ -738,7 +738,7 @@ const AdvisoryPage = () => {
                     Strategic Counsel
                   </h3>
                   <p className={`text-base mb-2 ${activeTab === 'strategic' ? 'text-white/90' : 'text-slate-600'}`}>
-                    Direct one-on-one coaching and strategic sounding board support for senior executives.
+                    Work with other experienced leaders who understand your challenges. We'll help you test your thinking and verify your action plan.
                   </p>
                 </div>
                 <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'strategic' ? 'group-hover:translate-x-1' : ''}`}>
