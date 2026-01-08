@@ -1183,7 +1183,7 @@ const AdvisoryPage = () => {
             className="mt-8 text-center"
           >
             <Link
-              to="/case-studies?category=client-stakeholder-engagement"
+              to="/success-stories?category=client-stakeholder-engagement"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
               Success Stories
