@@ -344,7 +344,7 @@ const NetworkingV2Page = () => {
         >
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Ready to Learn More?</h2>
           <motion.a
-            href="/contact"
+            href="/application"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
