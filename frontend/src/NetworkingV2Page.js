@@ -108,7 +108,7 @@ const NetworkingV2Page = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
     >
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         <div className="text-center">
           <motion.h1 
@@ -151,7 +151,7 @@ const NetworkingV2Page = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="max-w-5xl mx-auto py-12"
+            className="max-w-5xl mx-auto mt-10 mb-10"
           >
             <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium">
               What began more than a decade ago as periodic conversations among healthcare executives has grown into a powerful community of senior leaders across industries–united by a core belief: <span className="font-bold">high-performance leadership drives organizational success.</span>
