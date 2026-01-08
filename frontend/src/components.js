@@ -1285,7 +1285,7 @@ const AdvisoryPage = () => {
               className="flex justify-center"
             >
               <img
-                src="https://customer-assets.emergentagent.com/job_menu-redesign-10/artifacts/39xusaio_TVN%20Advisory.jpg"
+                src="https://customer-assets.emergentagent.com/job_menu-redesign-10/artifacts/8761e9d6_TVN%20Advisory.png"
                 alt="Selected Advisory Engagements"
                 className="max-w-full h-auto rounded-lg"
                 style={{ 
