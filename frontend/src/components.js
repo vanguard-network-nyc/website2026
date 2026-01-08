@@ -1113,10 +1113,10 @@ const AdvisoryPage = () => {
               >
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">Client and Stakeholder Engagement</h2>
               <p className="text-slate-600 leading-relaxed mb-6">
-                Leadership Exchanges that bring together clients and stakeholders in highly relevant conversations, transforming supplier relationships into peer and trusted advisor roles.
+                We understand the critical importance of getting close to clients, prospects, and other stakeholders. And we know how to do it.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                We apply our signature approaches to leadership interactions to build and deepen external relationships through curated conversations and strategic dinner discussions that deliver measurable business impact.
+                We apply ten years of catalyzing leadership conversations among our C-suite members to building the same kinds of interactions for you. Over working dinners and small group dialogues curated by Vanguard, you build trusted relationships and interact as a peer with selected participants. Never a PowerPoint or credentials presentation; you demonstrate what you can do.
               </p>
             </motion.div>
             <motion.div 
