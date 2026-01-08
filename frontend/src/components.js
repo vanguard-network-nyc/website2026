@@ -2099,6 +2099,7 @@ const ContactPage = () => {
         </div>
 
         {/* Our Team Link Section */}
+        <div className="md:px-12">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -2117,6 +2118,7 @@ const ContactPage = () => {
             About Our Team
           </motion.a>
         </motion.div>
+        </div>
       </div>
     </motion.div>
   );
