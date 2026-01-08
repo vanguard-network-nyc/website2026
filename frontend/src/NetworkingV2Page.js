@@ -182,7 +182,7 @@ const NetworkingV2Page = () => {
             </h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <p className="text-xl text-slate-700 leading-relaxed mb-6 font-medium">
               In a rapidly changing world, leaders come together here to stay agile, relevant, and effective. As our community has grown, so too has the breadth and depth of peer-to-peer leadership insights, shaped directly by the real challenges our members face.
             </p>
