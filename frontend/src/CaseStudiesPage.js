@@ -183,11 +183,11 @@ const CaseStudiesPage = () => {
           <h1 
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight text-center"
           >
-            Case Studies
+            Success Stories
           </h1>
           
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Real-world examples of how the human factor drives transformational results for executives and organizations through our advisory services.
+            Here's how our focus on the human factor helps to drive transformational outcomes for executives and their organizations.
           </p>
         </motion.div>
 
