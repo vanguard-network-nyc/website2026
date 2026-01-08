@@ -163,6 +163,7 @@ function HomePage() {
       <NewContentLibrarySection />
       <VideoQuoteSection />
       <NewsroomSliderSection />
+      <ImageSliderSection />
     </motion.div>
   );
 }
