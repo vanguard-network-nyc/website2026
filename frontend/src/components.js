@@ -182,7 +182,7 @@ const Header = () => {
       path: '/advisory',
       dropdown: [
         { name: 'Advisory Services', path: '/advisory' },
-        { name: 'Client Success Stories', path: '/case-studies' }
+        { name: 'Success Stories', path: '/success-stories' }
       ]
     },
     { 
