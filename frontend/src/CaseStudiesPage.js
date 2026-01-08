@@ -212,8 +212,8 @@ const CaseStudiesPage = () => {
                     : 'bg-white text-slate-700 border-2 border-slate-200 hover:border-[#00A8E1]'
                 }`}
               >
-                <span className="block">All Case</span>
-                <span className="block">Studies</span>
+                <span className="block">All Success</span>
+                <span className="block">Stories</span>
               </button>
               <button
                 onClick={() => handleCategoryChange('leadership-advisory')}
