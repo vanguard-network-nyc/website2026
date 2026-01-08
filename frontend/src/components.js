@@ -860,7 +860,7 @@ const AdvisoryPage = () => {
             {/* Strategic Counsel Title */}
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-8 text-center">Strategic Counsel</h2>
             
-            {/* Coaching Subsection */}
+            {/* Strategic Counsel Content */}
             <div className="mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
               <motion.div
@@ -868,12 +868,14 @@ const AdvisoryPage = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
               >
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Coaching</h3>
                 <p className="text-slate-600 leading-relaxed mb-6">
-                  We work with leaders on specific development goals to help them be more effective decision-makers and developers of their people. This can include exploring additional personal or professional growth areas, creating and implementing organizational strategies for incremental improvement, and contributing to enterprise transformational change.
+                  From our decades of experience as top leaders, we know the critical dimensions of your role–from dealing with a delicate internal issue, to managing external pressures on the business, to making a complex transaction work, and so much more.
+                </p>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  Our services are distinguishable from those of a typical large strategy or management consultancy. We are a small, focused senior team that understands what you are facing.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
-                  We also help leaders similarly with their teams, developing high performance and overcoming barriers. This work can include customized training and development programs, building effective working cultures, and carrying out talent assessments and development plans.
+                  We don't bring hundreds of charts or data analysis to the situation. Instead, we engage in an intimate, structured conversation that helps to clarify your insights, recommendations, and decisions. We will help you test your thinking and verify your action plan. And we can help you turn that plan into performance.
                 </p>
               </motion.div>
               <motion.div 
@@ -883,14 +885,14 @@ const AdvisoryPage = () => {
                 className="rounded-xl p-4 md:p-8" 
                 style={{ backgroundColor: '#045184' }}
               >
-                <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
+                <h4 className="text-2xl font-bold text-white mb-4">Examples</h4>
                 <ul className="space-y-3 text-white">
                   {[
-                    "Effective decision-making",
-                    "People development", 
-                    "Organizational strategy",
-                    "Transformational change",
-                    "Team development"
+                    "Making the tough calls",
+                    "C-suite dynamics", 
+                    "Board relations",
+                    "Succession planning",
+                    "Stakeholder management"
                   ].map((item, index) => (
                     <motion.li
                       key={item}
@@ -907,80 +909,7 @@ const AdvisoryPage = () => {
               </motion.div>
             </div>
             
-            {/* Coaching Testimonial */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.8, duration: 0.8 }}
-              className="mt-12 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
-            >
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="flex-shrink-0">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/wctgezyh_Jim%20Jenson.jpg"
-                    alt="Jim Jenson testimonial"
-                    className="w-20 h-20 rounded-full object-cover shadow-lg"
-                  />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                    "Too often in my experience, consultants deliver generic advice -- or recommendations that are disconnected from our reality. Vanguard is different. An hour of Ken's time can be worth several days of conventional consulting."
-                  </blockquote>
-                  <div className="text-slate-900 font-bold">Jim Jenson</div>
-                  <div className="text-slate-600 text-sm">CEO, Morphoceuticals</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sounding Board Subsection */}
-          <div className="mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center">
-              <motion.div 
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1.4, duration: 0.8 }}
-              >
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Sounding Board</h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  This approach is typically most appropriate for the senior leader in the organization or team and their direct reports.
-                </p>
-                <p className="text-slate-600 leading-relaxed">
-                  TVN's Ken Banta and Richard Hulme have decades of experience supporting CEOs and C-suite executives and their reports as they work through specific challenges and develop strategy and execution plans for themselves and their teams.
-                </p>
-              </motion.div>
-              <motion.div 
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1.6, duration: 0.8 }}
-                className="rounded-xl p-4 md:p-8" 
-                style={{ backgroundColor: '#045184' }}
-              >
-                <h4 className="text-2xl font-bold text-white mb-4">Key Focus Areas</h4>
-                <ul className="space-y-3 text-white">
-                  {[
-                    "CEO and C-suite support",
-                    "Leadership team dynamics",
-                    "Strategic decision-making",
-                    "Board relations",
-                    "Stakeholder management"
-                  ].map((item, index) => (
-                    <motion.li
-                      key={item}
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 1.8 + index * 0.1, duration: 0.5 }}
-                      className="flex items-center"
-                    >
-                      <div className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#00A8E1' }}></div>
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-            
-            {/* Sounding Board Testimonial */}
+            {/* Ram Charan Testimonial */}
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -1004,20 +933,45 @@ const AdvisoryPage = () => {
                 </div>
               </div>
             </motion.div>
+
+            {/* Jim Jenson Testimonial */}
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 2.0, duration: 0.8 }}
+              className="mt-8 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
+            >
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_ux-revamp-suite/artifacts/wctgezyh_Jim%20Jenson.jpg"
+                    alt="Jim Jenson testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "Too often in my experience, consultants deliver generic advice -- or recommendations that are disconnected from our reality. Vanguard is different. An hour of Ken's time can be worth several days of conventional consulting."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Jim Jenson</div>
+                  <div className="text-slate-600 text-sm">CEO, Morphoceuticals</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
           
           {/* Case Study Link */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 2.0, duration: 0.8 }}
+            transition={{ delay: 2.2, duration: 0.8 }}
             className="mt-8 text-center"
           >
             <Link
               to="/case-studies?category=leadership-advisory"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
             >
-              View Leadership Advisory Client Success Stories
+              Success Stories
               <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
