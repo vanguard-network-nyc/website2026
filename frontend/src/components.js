@@ -2526,7 +2526,7 @@ const NewWhatWeDoSection = () => {
         "No PowerPoint",
         "No presentations"
       ],
-      image: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/drlsgrja_Vanguard%20GC%20may%206th-152.jpg",
       link: "/networking"
     },
     {
