@@ -1229,7 +1229,7 @@ const AdvisoryPage = () => {
                 2,000+
               </motion.div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">CEOs and C-suite Executive Members and Participants</h3>
-              <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
+              <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">Their experience and insights, combined with ours, is what creates Vanguard's edge as trusted advisors to senior leaders.</p>
               <p className="text-slate-600 leading-relaxed text-sm md:text-base italic max-w-2xl mx-auto">
                 Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
               </p>
