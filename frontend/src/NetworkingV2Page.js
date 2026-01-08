@@ -87,8 +87,8 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#913D88] to-[#6B2D66]'
     },
     {
-      title: "Live Events",
-      description: "Join live webinars and discussion groups with fellow executives to share insights and discuss current challenges.",
+      title: "Events",
+      description: "Join webinars and discussion groups with fellow executives to share insights and discuss current challenges.",
       icon: <Video size={32} />,
       gradient: 'from-[#01C219] to-[#047857]'
     },
