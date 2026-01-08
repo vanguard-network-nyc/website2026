@@ -128,7 +128,7 @@ function App() {
             <Route path="/risk-management" element={<RiskManagementPage />} />
             <Route path="/global-counsel-leaders" element={<GlobalCounselLeadersPage />} />
             <Route path="/new-leaders" element={<NewLeadersPage />} />
-            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/success-stories" element={<CaseStudiesPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/book" element={<BookPage />} />
