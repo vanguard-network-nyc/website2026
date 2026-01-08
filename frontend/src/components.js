@@ -2415,7 +2415,7 @@ const NewHero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed max-w-4xl mx-auto"
           >
-            We unlock high-performance leadership through advisory services, peer-to-peer networks, custom programs, and curated content.
+            We help build high-performance leadership through advisory services, peer-to-peer networks, custom programs, and curated content.
           </motion.p>
           
           <motion.div
