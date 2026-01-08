@@ -3440,8 +3440,7 @@ const NewsroomSliderSection = () => {
             to="/newsroom"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300"
           >
-            <span>View All Updates</span>
-            <ArrowRight size={20} />
+            <span>Visit the Newsroom</span>
           </Link>
         </motion.div>
       </div>
