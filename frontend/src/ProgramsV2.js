@@ -686,7 +686,7 @@ const ProgramsV2 = () => {
                     </div>
                     
                     {/* Benefits */}
-                    <div className="space-y-3 mb-8 flex-grow">
+                    <div className="space-y-3 flex-grow">
                       {program.benefits.map((benefit, benefitIndex) => (
                         <div key={benefitIndex} className="flex items-start gap-3">
                           <CheckCircle2 size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
@@ -694,18 +694,6 @@ const ProgramsV2 = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    {/* Action Button */}
-                    <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
-                      <motion.button 
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                      >
-                        Learn More
-                        <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </motion.button>
-                    </Link>
                   </div>
                 </motion.div>
               ))}
