@@ -2406,7 +2406,7 @@ const NewHero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-3xl sm:text-4xl md:text-7xl font-bold mb-8 tracking-tight text-slate-900"
           >
-            The Human Factor:<br />Unlocking the Power of Leadership
+            The Human Factor<br />Unlocking the Power of Leadership
           </motion.h1>
           
           <motion.p
