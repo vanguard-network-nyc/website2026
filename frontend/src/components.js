@@ -1287,12 +1287,12 @@ const AdvisoryPage = () => {
               <img
                 src="https://customer-assets.emergentagent.com/job_menu-redesign-10/artifacts/8761e9d6_TVN%20Advisory.png"
                 alt="Selected Advisory Engagements"
-                className="max-w-full h-auto rounded-lg"
+                className="w-full h-auto rounded-lg"
                 style={{ 
-                  maxHeight: '600px',
                   border: 'none',
                   boxShadow: 'none',
-                  background: 'transparent'
+                  background: 'transparent',
+                  imageRendering: 'auto'
                 }}
               />
             </motion.div>
