@@ -74,7 +74,7 @@ const NetworkingV2Page = () => {
       icon: <Users size={32} />,
       gradient: 'from-[#14B8A6] to-[#0F766E]',
       features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
-      image: "/vanguard-boston-1.jpg",
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
       link: "https://members.thevanguardnetwork.com/network-details-board/senior-leaders-network/r/recmEciU5mwqEPJt5"
     }
   ];
