@@ -1217,6 +1217,24 @@ const AdvisoryPage = () => {
         <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:p-12 items-center relative z-10">
+          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-6 md:p-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
+            <div className="text-center relative z-10">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
+              >
+                2,000+
+              </motion.div>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">CEOs & C-Suite Executives</h3>
+              <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
+              <p className="text-slate-600 leading-relaxed text-sm md:text-base italic">
+                Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
+              </p>
+            </div>
+          </div>
           <div>
             <div className="flex items-center gap-4 mb-8">
               <motion.div
@@ -1243,24 +1261,6 @@ const AdvisoryPage = () => {
             <p className="text-slate-600 leading-relaxed text-base md:text-lg font-medium">
               We combine this with decades of experience advising top leadership at major multinationals and global service firms, as well as in dozens of one-on-one advisory engagements.
             </p>
-          </div>
-          <div className="bg-gradient-to-br from-[#045184]/10 via-blue-50 to-[#00A8E1]/10 rounded-2xl p-6 md:p-6 md:p-10 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5"></div>
-            <div className="text-center relative z-10">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="text-5xl md:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent"
-              >
-                2,000+
-              </motion.div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4">CEOs & C-Suite Executives</h3>
-              <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">In our network participating in ongoing catalyzing conversations</p>
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base italic">
-                Like you, we know that AI and new technologies are tools. The real differentiator is 'the human factor'. That's why we focus on people, whether in our executive networks or supporting your business.
-              </p>
-            </div>
           </div>
         </div>
       </motion.div>
