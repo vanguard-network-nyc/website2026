@@ -246,16 +246,24 @@ const UpcomingEventsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
-            Events
+            Events Calendar
           </motion.h1>
           
           <motion.p 
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
+            className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
           >
-            Join our leadership community at exclusive events designed to accelerate your growth and expand your network.
+            There's something for everyone here. No podium. No PowerPoint. No presentations.
+          </motion.p>
+          <motion.p 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium mt-4"
+          >
+            Our events engage you in candid peer-to-peer leadership conversations on immediate, real-world topics. From navigating complex stakeholder relationships and working effectively with your board, to avoiding burnout and sustaining leadership resilience, each session is grounded in the challenges leaders are facing right now.
           </motion.p>
         </div>
 
