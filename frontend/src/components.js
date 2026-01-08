@@ -2556,7 +2556,7 @@ const NewWhatWeDoSection = () => {
             What We Do
           </h2>
           <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Like you, we know that AI and new technologies are simply tools. The real differentiator in exceptional leadership is 'the human factor'. That's why we focus on people in our peer-to-peer networks and advisory services.
+            Like you, we recognize that AI and new technologies are transformational tools and capabilities. But technology alone does not generate high performance. It takes powerful leadership to apply those capabilities with purpose, and to make them a force multiplier for your teams. That's why the people factor is at the center of everything we do, from our peer-to-peer networks to advising C-suite executives and their teams.
           </p>
         </motion.div>
 
