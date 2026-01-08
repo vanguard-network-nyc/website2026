@@ -125,25 +125,23 @@ const NetworkingV2Page = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-5xl mx-auto mb-8"
+            className="w-full mb-8"
           >
-            <div className="bg-white rounded-3xl p-6 md:p-12 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500">
-              <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-6 md:p-8">
-                <div className="flex flex-col md:flex-row items-center gap-6">
-                  <div className="flex-shrink-0">
-                    <img 
-                      src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
-                      alt="Ann Kappler testimonial"
-                      className="w-20 h-20 rounded-full object-cover shadow-lg"
-                    />
-                  </div>
-                  <div className="flex-1 text-center md:text-left">
-                    <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
-                      "What sets The Vanguard Network apart are the conversations about real-world leadership challenges we face as senior executives. We are among others who've been where we are, who know the pressure of leading at the top, and who are ready to help us see around corners."
-                    </blockquote>
-                    <div className="text-slate-900 font-bold">Ann Kappler</div>
-                    <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, Prudential Financial</div>
-                  </div>
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-6 md:p-8">
+              <div className="flex flex-col md:flex-row items-center gap-6 max-w-5xl mx-auto">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
+                    alt="Ann Kappler testimonial"
+                    className="w-20 h-20 rounded-full object-cover shadow-lg"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                    "What sets The Vanguard Network apart are the conversations about real-world leadership challenges we face as senior executives. We are among others who've been where we are, who know the pressure of leading at the top, and who are ready to help us see around corners."
+                  </blockquote>
+                  <div className="text-slate-900 font-bold">Ann Kappler</div>
+                  <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, Prudential Financial</div>
                 </div>
               </div>
             </div>
