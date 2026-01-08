@@ -454,7 +454,7 @@ const ProgramsV2 = () => {
                       Customized Solutions
                     </h2>
                     <p className={`text-lg mb-2 ${activeTab === 'customized' ? 'text-white/90' : 'text-slate-600'}`}>
-                      Tailored programs designed specifically for your organization's unique needs and leadership challenges.
+                      Every organization is different. We start with our proven leadership curriculums, and tailor the focus and structure to your specific context, priorities, and leadership challenges. The work is practical and grounded in real-world situations, led by experienced CEOs, GCs and senior executives. Our sessions build business understanding, judgment, and the ability to lead effectively from where the organization is today to where it needs to be.
                     </p>
                   </div>
                   <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'customized' ? 'group-hover:translate-x-1' : ''}`}>
