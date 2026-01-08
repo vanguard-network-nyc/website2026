@@ -775,7 +775,7 @@ const AdvisoryPage = () => {
                     Organizational Transformation
                   </h3>
                   <p className={`text-base mb-2 ${activeTab === 'organizational' ? 'text-white/90' : 'text-slate-600'}`}>
-                    Transform what your people believe, the way they work, and how they behave.
+                    It's all about the people. Get them on board with the change agenda, and success will follow.
                   </p>
                 </div>
                 <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'organizational' ? 'group-hover:translate-x-1' : ''}`}>
