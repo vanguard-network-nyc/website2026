@@ -2537,7 +2537,7 @@ const NewWhatWeDoSection = () => {
         "Driven by peer-to-peer interactions",
         "Centered on real-world challenges"
       ],
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/u5kuh7ms_vanguard%20chicago122.jpeg",
       link: "/programs"
     }
   ];
