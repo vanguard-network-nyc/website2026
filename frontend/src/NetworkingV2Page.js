@@ -342,14 +342,6 @@ const NetworkingV2Page = () => {
           transition={{ delay: 2.6, duration: 0.8 }}
           className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 2.8, duration: 0.5 }}
-            className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-6"
-          >
-            <Star size={32} className="text-white" />
-          </motion.div>
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Ready to Learn More?</h2>
           <motion.a
             href="/contact"
