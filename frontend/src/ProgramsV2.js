@@ -414,10 +414,10 @@ const ProgramsV2 = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h2 className={`text-3xl font-bold mb-3 ${activeTab === 'current' ? 'text-white' : 'text-slate-900 group-hover:text-[#045184]'}`}>
-                      Current Leadership Programs
+                      Leadership Programs
                     </h2>
                     <p className={`text-lg mb-2 ${activeTab === 'current' ? 'text-white/90' : 'text-slate-600'}`}>
-                      Join our established programs designed to accelerate leadership growth through specialized exchanges and expert-led sessions.
+                      Most leadership programs are business school or consultancy driven, with familiar content. Ours are very different. We accelerate the GC readiness of key in-house senior counsel, and help to transform law firm associates from lawyers into valued business partners. All through interactive sessions with GCs and other top executives around real-world challenges.
                     </p>
                   </div>
                   <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'current' ? 'group-hover:translate-x-1' : ''}`}>
