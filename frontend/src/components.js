@@ -1562,76 +1562,116 @@ const TeamPage = () => {
       </motion.div>
 
       {/* Dynamic Team Sections */}
-      {Object.entries(sections)
-        .sort(([sectionA], [sectionB]) => {
-          // Define custom order
-          const order = {
-            'Leadership Team': 1,
-            'Senior Leadership Team': 2,
-            'Content & Media Team': 3
-          };
-          
-          // Get order values, default to 999 for unknown sections
-          const orderA = order[sectionA] || 999;
-          const orderB = order[sectionB] || 999;
-          
-          return orderA - orderB;
-        })
-        .map(([sectionName, members], sectionIndex) => (
-        <div key={sectionName} className="mb-16">
-          <motion.h2
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 + (sectionIndex * 0.2), duration: 0.8 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12"
-            style={{ color: '#045184' }}
-          >
-            {sectionName}
-          </motion.h2>
-          
-          <div className={`${sectionName === 'Leadership Team' ? 'grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-7xl xl:max-w-4xl mx-auto' : 'flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12'}`}>
-          {members.map((member, index) => (
-            <motion.div
-              key={member.id}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 + (sectionIndex * 0.3) + (index * 0.1), duration: 0.8 }}
-              className={`bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${sectionName !== 'Leadership Team' ? 'w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]' : ''}`}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="text-center mb-6">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
-                  className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
-                >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
-                {member.linkedin && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                  >
-                    <Linkedin className="text-white" size={20} />
-                  </a>
-                )}
+      {(() => {
+        // Separate Leadership Team from others
+        const leadershipTeam = sections['Leadership Team'] || [];
+        const seniorLeadership = sections['Senior Leadership Team'] || [];
+        const contentMedia = sections['Content & Media Team'] || [];
+        
+        // Combine Senior Leadership and Content & Media teams
+        const combinedTeam = [...seniorLeadership, ...contentMedia].sort((a, b) => {
+          // Sort by last name
+          const lastNameA = a.name.split(' ').slice(-1)[0].toLowerCase();
+          const lastNameB = b.name.split(' ').slice(-1)[0].toLowerCase();
+          return lastNameA.localeCompare(lastNameB);
+        });
+        
+        return (
+          <>
+            {/* Leadership Team - Ken Banta and Tony Powe */}
+            {leadershipTeam.length > 0 && (
+              <div className="mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-7xl xl:max-w-4xl mx-auto">
+                  {leadershipTeam.map((member, index) => (
+                    <motion.div
+                      key={member.id}
+                      initial={{ y: 50, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.5 + (index * 0.1), duration: 0.8 }}
+                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="text-center mb-6">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
+                          className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                        >
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </motion.div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+                          >
+                            <Linkedin className="text-white" size={20} />
+                          </a>
+                        )}
+                      </div>
+                      {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              
-              {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
-            </motion.div>
-          ))}
-        </div>
-        </div>
-      ))}
+            )}
+            
+            {/* Combined Team - Sorted alphabetically by last name */}
+            {combinedTeam.length > 0 && (
+              <div className="mb-16">
+                <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12">
+                  {combinedTeam.map((member, index) => (
+                    <motion.div
+                      key={member.id}
+                      initial={{ y: 50, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.8 + (index * 0.1), duration: 0.8 }}
+                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      <div className="text-center mb-6">
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
+                          className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                        >
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </motion.div>
+                        <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                        <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+                          >
+                            <Linkedin className="text-white" size={20} />
+                          </a>
+                        )}
+                      </div>
+                      {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        );
+      })()}
 
       {/* Our Approach */}
       <motion.div
