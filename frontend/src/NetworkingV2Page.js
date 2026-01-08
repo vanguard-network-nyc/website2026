@@ -125,7 +125,7 @@ const NetworkingV2Page = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="max-w-7xl mx-auto mb-8 px-4 sm:px-6 lg:px-4 md:px-8"
+            className="max-w-5xl mx-auto mb-8"
           >
             <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8">
               <div className="flex flex-col md:flex-row items-center gap-6">
