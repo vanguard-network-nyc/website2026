@@ -154,7 +154,7 @@ const CaseStudiesPage = () => {
   ];
 
   const categories = [
-    { name: 'All Case Studies', slug: 'all', icon: <Award size={20} />, color: 'from-slate-500 to-gray-600' },
+    { name: 'All Success Stories', slug: 'all', icon: <Award size={20} />, color: 'from-slate-500 to-gray-600' },
     { name: 'Leadership Advisory', slug: 'leadership-advisory', icon: <Target size={20} />, color: 'from-blue-500 to-indigo-600' },
     { name: 'Organizational Transformation', slug: 'organizational-transformation', icon: <TrendingUp size={20} />, color: 'from-green-500 to-emerald-600' },
     { name: 'Client and Stakeholder Engagement', slug: 'client-stakeholder-engagement', icon: <Users size={20} />, color: 'from-cyan-500 to-blue-600' }
