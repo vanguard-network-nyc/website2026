@@ -812,7 +812,7 @@ const AdvisoryPage = () => {
                     Client & Stakeholder Engagement
                   </h3>
                   <p className={`text-base mb-2 ${activeTab === 'client' ? 'text-white/90' : 'text-slate-600'}`}>
-                    Leadership Exchanges that transform supplier relationships into peer and trusted advisor roles.
+                    Transform supplier relationships into peer and trusted advisor roles.
                   </p>
                 </div>
                 <div className={`ml-4 flex-shrink-0 transition-transform duration-300 ${activeTab !== 'client' ? 'group-hover:translate-x-1' : ''}`}>
