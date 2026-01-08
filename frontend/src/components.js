@@ -1232,6 +1232,31 @@ const AdvisoryPage = () => {
               <p className="text-slate-600 font-medium text-base md:text-lg mb-4 md:mb-6">Their experience and insights, combined with ours, is what creates Vanguard's edge as trusted advisors to senior leaders.</p>
             </div>
           </div>
+          
+          {/* Brandon Smith Testimonial */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="mt-8 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-4 md:p-8"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_menu-redesign-10/artifacts/f05c23mk_1616816784873.jpeg"
+                  alt="Brandon Smith testimonial"
+                  className="w-20 h-20 rounded-full object-cover shadow-lg"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <blockquote className="text-lg italic text-slate-700 mb-4 leading-relaxed">
+                  "Vanguard delivers exceptional outcomes for its members by accumulating insight from outstanding leaders across professions, industries and geographies."
+                </blockquote>
+                <div className="text-slate-900 font-bold">Brandon Smith</div>
+                <div className="text-slate-600 text-sm">Executive Vice President and General Counsel, CHS Inc.</div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </div>
