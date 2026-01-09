@@ -220,6 +220,10 @@ const MembershipApplicationPage = () => {
 
   return (
     <>
+      <SEO 
+        title="Membership Application"
+        description="Apply to join The Vanguard Network. Connect with 2,000+ senior executives through our exclusive peer-to-peer leadership community."
+      />
       <style>{phoneInputStyles}</style>
       <div className="pt-40 pb-20 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
