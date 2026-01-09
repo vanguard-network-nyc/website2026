@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
+import useArticleSchema from './useArticleSchema';
 import { ArrowLeft, User, Tag, Calendar, Play } from 'lucide-react';
 
 const VideoDetailPage = () => {
