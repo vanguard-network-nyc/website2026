@@ -544,7 +544,7 @@ const Footer = () => {
         
         <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/60 text-sm mb-4 md:mb-0">
-            © 2025 The Vanguard Network
+            © 2026 The Vanguard Network
           </p>
           
           <div className="flex items-center space-x-4">
