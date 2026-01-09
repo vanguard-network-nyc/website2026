@@ -29,22 +29,19 @@ import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
 import BackToTopButton from './ScrollToTop';
 
-// Instant scroll to top - runs synchronously before paint
-function ScrollToTop() {
-  const { pathname, hash } = useLocation();
-  
-  // Use useLayoutEffect to scroll BEFORE the browser paints
+// PageWrapper: Forces instant scroll to top BEFORE any paint
+// This is the key fix for the page transition scroll bug
+function PageWrapper({ children }) {
+  // useLayoutEffect runs synchronously BEFORE the browser paints
+  // This ensures scroll happens before the user sees anything
   useLayoutEffect(() => {
-    // Only scroll to top if there's no hash (anchor)
-    if (!hash) {
-      // Force immediate scroll using multiple methods
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-  }, [pathname, hash]);
+    // Immediately reset scroll position using all methods
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
-  return null;
+  return children;
 }
 
 // Google Analytics 4 Page View Tracker for SPA
