@@ -80,6 +80,10 @@ const RiskManagementPage = () => {
       transition={{ duration: 0.5 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Risk Management Network"
+        description="Join senior risk executives in peer-to-peer discussions on enterprise risk, AI governance, cybersecurity, and regulatory compliance."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
