@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 import { Users, Clock, Target, CheckCircle, Star, Award, Mail, Home, ChevronRight } from 'lucide-react';
 
 const LawAssociatesPage = () => {
