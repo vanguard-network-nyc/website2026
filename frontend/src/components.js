@@ -461,14 +461,14 @@ const Header = () => {
                     <div className="border-b border-slate-600/30 py-2 lg:py-3">
                       <div className="text-white font-medium text-lg lg:text-xl">{item.name}</div>
                       {item.dropdown.map((subItem) => (
-                        <Link
+                        <ScrollLink
                           key={subItem.name}
                           to={subItem.path}
                           className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {subItem.name}
-                        </Link>
+                        </ScrollLink>
                       ))}
                     </div>
                   ) : (
@@ -483,13 +483,13 @@ const Header = () => {
                         {item.name}
                       </a>
                     ) : (
-                      <Link
+                      <ScrollLink
                         to={item.path}
                         className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {item.name}
-                      </Link>
+                      </ScrollLink>
                     )
                   )}
                 </motion.div>
