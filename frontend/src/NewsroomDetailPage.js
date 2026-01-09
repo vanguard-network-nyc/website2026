@@ -121,6 +121,13 @@ const NewsroomDetailPage = () => {
     </div>
   );
 
+  // Prepare article data for SEO schema
+  const articleSchemaData = article ? {
+    author: article.featured_speaker_linkedin || 'The Vanguard Network',
+    datePublished: article.publish_by || article.published_to_web || new Date().toISOString(),
+    dateModified: article.publish_by || article.published_to_web || new Date().toISOString()
+  } : null;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -128,6 +135,14 @@ const NewsroomDetailPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      {article && (
+        <SEO 
+          title={article.blog_title}
+          description={article.description_teaser ? article.description_teaser.substring(0, 160) : `News and updates from The Vanguard Network about ${article.type_content || 'leadership insights'}.`}
+          image={article.newsroom_detail_image || article.photo}
+          article={articleSchemaData}
+        />
+      )}
       <div className="max-w-4xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-4 md:px-8 mb-4">
           <Breadcrumb customTitle={article?.blog_title} />
