@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { Headphones, Video, FileText, ArrowRight, Clock, ChevronRight, ChevronLeft, Calendar, Play } from 'lucide-react';
+import { Headphones, Video, FileText, ArrowRight, Clock, ChevronRight, ChevronLeft, Calendar, Play, Newspaper } from 'lucide-react';
 
 const NewContentLibrarySection = () => {
   const [featuredInsights, setFeaturedInsights] = useState([]);
