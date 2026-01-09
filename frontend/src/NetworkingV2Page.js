@@ -22,11 +22,6 @@ import {
 } from 'lucide-react';
 
 const NetworkingV2Page = () => {
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const membershipNetworks = [
     {
       name: "General Counsel Network",
