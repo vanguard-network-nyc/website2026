@@ -38,10 +38,12 @@ function ScrollToTop() {
   useLayoutEffect(() => {
     // Only scroll to top if there's no hash (anchor)
     if (!hash) {
-      // Force immediate scroll - no animation
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      window.scrollTo(0, 0);
+      // Force immediate scroll using multiple methods for cross-browser support
+      requestAnimationFrame(() => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
+      });
     }
   }, [pathname, hash]);
 
