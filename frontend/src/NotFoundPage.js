@@ -5,11 +5,7 @@ import { Home, ArrowLeft, Search } from 'lucide-react';
 
 const NotFoundPage = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="pt-40 pb-20 min-h-screen"
+    <div className="pt-40 pb-20 min-h-screen"
       style={{
         background: 'linear-gradient(135deg, #f8fafc, #f0f9ff)'
       }}

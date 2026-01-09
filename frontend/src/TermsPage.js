@@ -5,11 +5,7 @@ import Breadcrumb from './Breadcrumb';
 
 const TermsPage = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24"
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24"
     >
       <SEO 
         title="Terms of Use"

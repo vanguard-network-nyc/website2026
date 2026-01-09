@@ -37,11 +37,7 @@ const NewLeadersPage = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    <div className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <SEO 
         title="New Leaders Program"
