@@ -155,6 +155,10 @@ const LawAssociatesPage = () => {
       transition={{ duration: 0.5 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Law Associates Leadership Program"
+        description="Transform law firm associates into valued business partners. Interactive leadership sessions with GCs and top executives on real-world challenges."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Breadcrumb */}
         <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mb-6">
