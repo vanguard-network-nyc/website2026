@@ -394,7 +394,7 @@ const NewLeadersPage = () => {
           </div>
         </motion.section>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
