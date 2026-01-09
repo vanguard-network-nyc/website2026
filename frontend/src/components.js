@@ -2398,7 +2398,7 @@ const NewHero = () => {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg"
-          alt="Professional executives"
+          alt="Executive leadership team in a peer networking session"
           className="w-full h-full object-cover opacity-25"
         />
         {/* Gradient overlay - subtle dark gradient for depth and readability */}
