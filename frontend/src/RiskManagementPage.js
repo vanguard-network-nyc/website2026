@@ -481,7 +481,7 @@ const RiskManagementPage = () => {
           </p>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
