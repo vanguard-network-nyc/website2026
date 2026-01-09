@@ -112,6 +112,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <GAPageViewTracker />
       <ScrollHandler setIsTransitioning={setIsTransitioning} />
       {isTransitioning && (
         <div style={{
