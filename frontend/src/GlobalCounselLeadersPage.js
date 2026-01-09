@@ -90,11 +90,7 @@ const GlobalCounselLeadersPage = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link to="/gc-exchange">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -103,7 +99,7 @@ const GlobalCounselLeadersPage = () => {
                     <Users size={20} />
                     Join GC Exchange
                   </motion.button>
-                </a>
+                </Link>
                 <Link to="/programs">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
