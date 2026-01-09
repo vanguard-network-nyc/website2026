@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
 import Slider from 'react-slick';
@@ -44,6 +44,29 @@ import {
   Headphones,
   FileText
 } from 'lucide-react';
+
+// Custom ScrollLink component that scrolls to top BEFORE navigation
+const ScrollLink = ({ to, children, className, onClick, ...props }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    // Scroll to top immediately before navigation
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    // Call any additional onClick handler
+    if (onClick) onClick(e);
+    // Navigate after scroll
+    navigate(to);
+  };
+  
+  return (
+    <a href={to} onClick={handleClick} className={className} {...props}>
+      {children}
+    </a>
+  );
+};
 
 // GCL Banner Component
 const GCLBanner = () => {
