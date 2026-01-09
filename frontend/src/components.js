@@ -1322,7 +1322,7 @@ const AdvisoryPage = () => {
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/ken-banta.jpg" 
-                  alt="Ken Banta" 
+                alt="Ken Banta - Founder and Managing Director of The Vanguard Network" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -2294,7 +2294,7 @@ const BookPage = () => (
               <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden">
                 <img 
                   src="/ken-banta-headshot.jpg" 
-                  alt="Ken Banta" 
+                alt="Ken Banta - Founder and Managing Director of The Vanguard Network" 
                   className="w-full h-full object-cover"
                 />
               </div>
