@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 import { ArrowLeft, Users, Calendar, MapPin, CheckCircle, ExternalLink } from 'lucide-react';
 
 const GCExchangePage = () => {
