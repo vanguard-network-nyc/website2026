@@ -284,24 +284,24 @@ const Header = () => {
                 {item.dropdown ? (
                   // Dropdown menu
                   <div className="relative">
-                    <Link 
+                    <ScrollLink 
                       to={item.path || '#'}
                       className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group flex items-center"
                     >
                       {item.name}
                       <ChevronDown size={16} className="ml-1" />
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
-                    </Link>
+                    </ScrollLink>
                     {/* Dropdown content */}
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       {item.dropdown.map((subItem, subIndex) => (
-                        <Link
+                        <ScrollLink
                           key={subItem.name}
                           to={subItem.path}
                           className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
                         >
                           {subItem.name}
-                        </Link>
+                        </ScrollLink>
                       ))}
                     </div>
                   </div>
@@ -318,13 +318,13 @@ const Header = () => {
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
                     </a>
                   ) : (
-                    <Link
+                    <ScrollLink
                       to={item.path}
                       className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
                     >
                       {item.name}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
-                    </Link>
+                    </ScrollLink>
                   )
                 )}
               </motion.div>
