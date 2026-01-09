@@ -79,32 +79,7 @@ const {
   ImageSliderSection
 } = Components;
 
-// Component to handle scroll restoration with transition overlay
-function ScrollHandler({ setIsTransitioning }) {
-  const location = useLocation();
-  
-  useLayoutEffect(() => {
-    // Scroll to top IMMEDIATELY if no hash - this runs BEFORE paint
-    if (!location.hash) {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-    
-    // Show overlay briefly for smooth transition
-    setIsTransitioning(true);
-    const timer = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname, location.hash, setIsTransitioning]);
-  
-  return null;
-}
-
 function App() {
-  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Disable automatic scroll restoration
   useEffect(() => {
