@@ -3574,7 +3574,7 @@ const ImageSliderSection = () => {
         .slider-track {
           display: flex;
           width: calc(416px * 40);
-          animation: scroll 50s linear infinite;
+          animation: scroll 60s linear infinite;
         }
         .slider-slide {
           flex-shrink: 0;
