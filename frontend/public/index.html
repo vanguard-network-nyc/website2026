@@ -9,6 +9,21 @@
         <!-- Robots -->
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         
+        <!-- Preconnect to external domains for faster resource loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://customer-assets.emergentagent.com" />
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        
+        <!-- DNS Prefetch for additional external resources -->
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://w.soundcloud.com" />
+        
+        <!-- Preload critical fonts -->
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+        
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="The Vanguard Network" />
@@ -28,6 +43,23 @@
         <meta name="publisher" content="The Vanguard Network" />
         
         <title>The Vanguard Network | Executive Leadership Network & Advisory</title>
+        
+        <!-- Critical CSS for above-the-fold content (reduces CLS) -->
+        <style>
+            /* Prevent layout shift during load */
+            html, body { margin: 0; padding: 0; }
+            #root { min-height: 100vh; }
+            /* Reserve space for header to prevent CLS */
+            .header-placeholder { height: 80px; }
+            /* Optimize font loading */
+            body { 
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            /* Image aspect ratio hints */
+            img { max-width: 100%; height: auto; }
+        </style>
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
