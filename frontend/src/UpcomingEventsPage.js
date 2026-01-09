@@ -15,11 +15,6 @@ const UpcomingEventsPage = () => {
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'calendar'
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // Scroll to top when component mounts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   useEffect(() => {
     fetchEvents();
   }, []);
