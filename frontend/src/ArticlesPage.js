@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { Search, Filter, FileText, User, Tag, Calendar, ChevronDown } from 'lucide-react';
 
 const ArticlesPage = () => {
