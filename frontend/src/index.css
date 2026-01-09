@@ -34,11 +34,10 @@ html {
 /* Optimize image rendering */
 img {
     content-visibility: auto;
-    image-rendering: -webkit-optimize-contrast;
 }
 
-/* Prevent CLS for images */
-img:not([width]):not([height]) {
+/* Only apply aspect-ratio to specific image containers, not all images */
+.aspect-ratio-16-9 {
     aspect-ratio: 16/9;
 }
 
