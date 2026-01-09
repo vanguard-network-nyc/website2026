@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown, Mail } from 'lucide-react';
 
 const UpcomingEventsPage = () => {
