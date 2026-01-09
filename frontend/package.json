@@ -18,7 +18,8 @@
     "react-select": "^5.10.2",
     "react-slick": "^0.31.0",
     "remark-gfm": "^4.0.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
