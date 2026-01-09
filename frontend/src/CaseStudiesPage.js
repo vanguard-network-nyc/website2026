@@ -166,11 +166,7 @@ const CaseStudiesPage = () => {
     : caseStudies.filter(study => study.categorySlug === selectedCategory);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
+    <div className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <SEO 
         title="Success Stories"
