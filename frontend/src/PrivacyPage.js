@@ -345,7 +345,7 @@ const PrivacyPage = () => {
           </p>
         </section>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
