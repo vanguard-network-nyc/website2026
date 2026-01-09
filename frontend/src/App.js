@@ -136,7 +136,7 @@ function App() {
       )}
       <div className="App">
         <Header />
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/advisory" element={<AdvisoryPage />} />
