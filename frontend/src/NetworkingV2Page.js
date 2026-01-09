@@ -166,7 +166,7 @@ const NetworkingV2Page = () => {
             <p className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium">
               What began more than a decade ago as periodic conversations among healthcare executives has grown into a powerful community of senior leaders across industries–united by a core belief: <span className="font-bold">high-performance leadership drives organizational success.</span>
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
 

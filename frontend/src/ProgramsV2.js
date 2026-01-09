@@ -271,7 +271,6 @@ const ProgramsV2 = () => {
             Leadership Programs
           </h1>
           
-          <motion.p 
           <p
             className="text-2xl text-slate-600 max-w-5xl mx-auto leading-relaxed font-medium"
           >
