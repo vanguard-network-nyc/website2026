@@ -375,6 +375,30 @@ const CaseStudiesPage = () => {
             </Link>
           </div>
         </motion.div>
+
+        {/* Related Pages Section - Internal Linking */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+          className="mt-16"
+        >
+          <h3 className="text-xl font-bold text-slate-900 mb-6">Learn More About Our Work</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/advisory" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Advisory Services</h4>
+              <p className="text-sm text-slate-600 mt-1">Explore our leadership advisory and transformation services</p>
+            </Link>
+            <Link to="/team" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Our Team</h4>
+              <p className="text-sm text-slate-600 mt-1">Meet the experienced advisors behind our success stories</p>
+            </Link>
+            <Link to="/networking" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Peer Networks</h4>
+              <p className="text-sm text-slate-600 mt-1">Join a community of senior executives</p>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );
