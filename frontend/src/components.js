@@ -1510,7 +1510,7 @@ const AdvisoryPage = () => {
           </Link>
         </motion.div>
     </div>
-  </motion.div>
+  </div>
   );
 };
 
