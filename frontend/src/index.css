@@ -2,19 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Optimize rendering performance */
+* {
+    box-sizing: border-box;
+}
+
+/* Reduce layout shifts */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Content visibility for off-screen content */
+.content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+}
+
+/* GPU acceleration for animations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* Optimize image rendering */
+img {
+    content-visibility: auto;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Prevent CLS for images */
+img:not([width]):not([height]) {
+    aspect-ratio: 16/9;
+}
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    /* Optimize text rendering */
+    text-rendering: optimizeLegibility;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
 
 /* Custom animations for smooth video loop transitions */
 @keyframes pulse-slow {
