@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumb';
 import SEO from '../SEO';
-import { Users, Linkedin, Globe, Mail, ChevronRight, ChevronDown, X, ExternalLink } from 'lucide-react';
+import { Users, Linkedin, Globe, Mail, ChevronRight, ChevronDown, X, ExternalLink, ArrowRight, Award, Target } from 'lucide-react';
 
 const TeamPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
