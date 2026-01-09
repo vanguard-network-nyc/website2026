@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { ArrowLeft, User, Tag, Calendar, FileText, ChevronDown } from 'lucide-react';
 
 const ArticleDetailPage = () => {

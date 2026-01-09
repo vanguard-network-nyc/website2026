@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { User, Tag, Calendar, FileText } from 'lucide-react';
 
 // Define markdown components outside the component to avoid re-creation on each render
