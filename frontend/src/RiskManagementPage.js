@@ -287,7 +287,7 @@ const RiskManagementPage = () => {
             <div className="flex-shrink-0">
               <img
                 src="https://static.wixstatic.com/media/e6a994_4eca26453771428a95c70f3a0d8caabf~mv2.jpg/v1/fill/w_387,h_346,al_c,lg_1,q_80,enc_avif,quality_auto/e6a994_4eca26453771428a95c70f3a0d8caabf~mv2.jpg"
-                alt="Avi Gesser"
+              alt="Avi Gesser - Partner at Debevoise & Plimpton, Risk Management Expert"
                 className="w-48 h-48 rounded-full object-cover border-4 border-slate-200"
               />
             </div>
