@@ -396,7 +396,7 @@ const NetworkingV2Page = () => {
           </motion.a>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
