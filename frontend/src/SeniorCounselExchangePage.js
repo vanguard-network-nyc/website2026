@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 import { ArrowLeft, Users, Calendar, MapPin, CheckCircle, ExternalLink, DollarSign, Clock, Target } from 'lucide-react';
 
 const SeniorCounselExchangePage = () => {
