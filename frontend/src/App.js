@@ -176,12 +176,7 @@ function App() {
 
 function HomePage() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div>
       <SEO 
         title="Executive Leadership Network & Advisory"
         description="Join 2,000+ senior executives in peer-to-peer leadership networks. Expert advisory services for C-suite leaders focused on the human factor in leadership."
@@ -194,7 +189,7 @@ function HomePage() {
       <VideoQuoteSection />
       <NewsroomSliderSection />
       <ImageSliderSection />
-    </motion.div>
+    </div>
   );
 }
 
