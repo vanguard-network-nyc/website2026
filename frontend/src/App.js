@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import Components from './components';
@@ -30,15 +30,20 @@ import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
 import BackToTopButton from './ScrollToTop';
 
-// ScrollToTop component to handle scroll restoration on route change
+// Instant scroll to top - runs synchronously before paint
 function ScrollToTop() {
-  const { pathname } = useLocation();
-
+  const { pathname, hash } = useLocation();
+  
+  // Use useLayoutEffect to scroll BEFORE the browser paints
   useLayoutEffect(() => {
-    // Immediately scroll to top without animation when route changes
-    // Using scrollTo with behavior: 'instant' prevents any smooth scrolling
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [pathname]);
+    // Only scroll to top if there's no hash (anchor)
+    if (!hash) {
+      // Force immediate scroll - no animation
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   return null;
 }
