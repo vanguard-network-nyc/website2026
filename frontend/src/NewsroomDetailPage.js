@@ -129,6 +129,13 @@ const NewsroomDetailPage = () => {
     dateModified: article.publish_by || article.published_to_web || new Date().toISOString()
   } : null;
 
+  // Inject Article schema directly into DOM (bypasses react-helmet limitations)
+  useArticleSchema(article, {
+    title: article?.blog_title,
+    description: article?.description_teaser?.substring(0, 160),
+    image: article?.newsroom_detail_image || article?.photo
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
