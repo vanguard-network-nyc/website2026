@@ -2571,7 +2571,7 @@ const NewWhatWeDoSection = () => {
       >
         <img 
           src="https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/h5eblom2_hero.png"
-          alt="Leadership conversations and peer networking"
+          alt="Senior executives engaged in leadership conversations and peer networking at The Vanguard Network"
           className="w-full"
           loading="eager"
           decoding="async"
