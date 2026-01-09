@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { Headphones, User, Search, Filter, Play, ArrowRight, ExternalLink, Users, Mic, Calendar } from 'lucide-react';
 
 const PodcastsPage = () => {
