@@ -169,6 +169,10 @@ const ArticlesPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Articles & Insights"
+        description="Leadership insights and articles from top executives. Explore expert perspectives on management, strategy, and organizational transformation."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         {/* Header */}
