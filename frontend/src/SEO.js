@@ -64,6 +64,48 @@ const SEO = ({
       "item": item.url
     }))
   } : null;
+
+  // Event Schema
+  const eventSchema = event ? {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": event.name || title,
+    "description": event.description || description,
+    "startDate": event.startDate,
+    "endDate": event.endDate,
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": event.isVirtual 
+      ? "https://schema.org/OnlineEventAttendanceMode" 
+      : "https://schema.org/OfflineEventAttendanceMode",
+    "location": event.isVirtual ? {
+      "@type": "VirtualLocation",
+      "url": event.url || canonicalUrl
+    } : {
+      "@type": "Place",
+      "name": event.location,
+      "address": event.address
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": siteName,
+      "url": siteUrl
+    },
+    "image": image
+  } : null;
+
+  // FAQ Schema
+  const faqSchema = faq && faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faq.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  } : null;
   
   return (
     <Helmet>
