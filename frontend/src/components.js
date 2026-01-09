@@ -7,6 +7,10 @@ import Slider from 'react-slick';
 import ReactMarkdown from 'react-markdown';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+// Import extracted layout components
+import { Header, Footer, GCLBanner } from './components/layout';
+
 import { 
   Menu, 
   X, 
