@@ -108,6 +108,10 @@ const NetworkingV2Page = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
     >
+      <SEO 
+        title="Peer-to-Peer Leadership Networks"
+        description="Join exclusive peer-to-peer networks for General Counsel, Senior Leaders, and executives. Connect with 2,000+ leaders through meaningful conversations."
+      />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
