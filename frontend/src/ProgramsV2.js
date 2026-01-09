@@ -608,6 +608,30 @@ const ProgramsV2 = () => {
         </div>
       </div>
 
+      {/* Related Pages Section - Internal Linking */}
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16"
+      >
+        <h3 className="text-xl font-bold text-slate-900 mb-6">Explore Related Resources</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Link to="/networking" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+            <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Peer-to-Peer Networks</h4>
+            <p className="text-sm text-slate-600 mt-1">Connect with senior executives through our membership networks</p>
+          </Link>
+          <Link to="/advisory" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+            <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Advisory Services</h4>
+            <p className="text-sm text-slate-600 mt-1">One-on-one leadership advisory and organizational transformation</p>
+          </Link>
+          <Link to="/success-stories" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+            <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Success Stories</h4>
+            <p className="text-sm text-slate-600 mt-1">See how we've helped executives and organizations transform</p>
+          </Link>
+        </div>
+      </motion.div>
+
       {/* Enhanced Call to Action */}
       <motion.div
         initial={{ y: 50, opacity: 0 }}
