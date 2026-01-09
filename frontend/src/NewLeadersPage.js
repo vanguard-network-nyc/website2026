@@ -43,6 +43,10 @@ const NewLeadersPage = () => {
       exit={{ opacity: 0 }}
       className="pt-48 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="New Leaders Program"
+        description="Accelerate your transition into senior leadership. Practical guidance from experienced executives for emerging leaders."
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}
         <motion.div
