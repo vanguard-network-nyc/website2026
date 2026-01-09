@@ -34,9 +34,10 @@ import BackToTopButton from './ScrollToTop';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Immediately scroll to top without animation when route changes
-    window.scrollTo(0, 0);
+    // Using scrollTo with behavior: 'instant' prevents any smooth scrolling
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
 
   return null;
