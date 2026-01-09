@@ -2395,7 +2395,7 @@ const BookPage = () => (
         </motion.a>
       </motion.div>
     </div>
-  </motion.div>
+  </div>
 );
 
 // NEW HOMEPAGE COMPONENTS BASED ON REFERENCE DESIGN - LIGHT THEME
