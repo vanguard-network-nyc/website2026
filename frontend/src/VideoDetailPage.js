@@ -106,14 +106,6 @@ const VideoDetailPage = () => {
     dateModified: new Date().toISOString()
   } : null;
 
-  // Inject Article schema directly into DOM (bypasses react-helmet limitations)
-  useArticleSchema(video, {
-    title: video?.vimeo_name || video?.video_description,
-    description: video?.vimeo_long_description?.substring(0, 160),
-    image: video?.headshot,
-    author: video?.featured_speakers
-  });
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
