@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 
 const TermsPage = () => {
