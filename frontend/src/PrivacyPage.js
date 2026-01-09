@@ -12,6 +12,10 @@ const PrivacyPage = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24"
     >
+      <SEO 
+        title="Privacy Policy"
+        description="The Vanguard Network privacy policy. Learn how we collect, use, and protect your personal information."
+      />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-20">
         <div className="max-w-4xl mx-auto px-6">
