@@ -1385,7 +1385,7 @@ const AdvisoryPage = () => {
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/aileen-gonsalves.jpg" 
-                  alt="Aileen Gonsalves" 
+                  alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" 
                   className="w-full h-full object-cover"
                   style={{ objectPosition: 'calc(50% - 20px) 20%' }}
                 />
