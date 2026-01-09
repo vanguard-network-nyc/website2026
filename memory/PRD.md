@@ -45,74 +45,58 @@ The Vanguard Network is an executive leadership platform serving C-suite executi
 #### Phase 6: Advanced SEO - Schema Markup ✅
 - Organization schema in `index.html`
 - WebPage schema via `SEO.js` component
-- Article schema for detail pages:
-  - `ArticleDetailPage.js`
-  - `NewsroomDetailPage.js`
-  - `PodcastDetailPage.js`
-  - `VideoDetailPage.js`
-- Custom `useArticleSchema.js` hook for dynamic JSON-LD injection
+- Event schema support added to `SEO.js`
+- FAQ schema support added to `SEO.js`
 
-### Code Refactoring (In Progress) - January 2025
+### PWA Support (Complete) - January 2025 ✅
+- Created `manifest.json` with app metadata
+- Created `service-worker.js` for offline caching
+- Added PWA meta tags to `index.html`
+- Service worker registration in `index.html`
 
-#### Layout Components Extracted ✅
-- `GCLBanner.js` → `/components/layout/GCLBanner.js`
-- `Header.js` → `/components/layout/Header.js`
-- `Footer.js` → `/components/layout/Footer.js`
-- Index file: `/components/layout/index.js`
+### Content Updates (Complete) - January 2025
+- Updated GCL page CTA to link to: `https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC`
 
 ---
 
 ## Current Architecture
 
 ```
-/app/frontend/src/
-├── components/
-│   ├── layout/
-│   │   ├── GCLBanner.js
-│   │   ├── Header.js
-│   │   ├── Footer.js
-│   │   └── index.js
-│   └── ui/              # Shadcn components
-├── pages/               # (Future: extracted page components)
-├── components.js        # Monolithic file (partially refactored)
-├── SEO.js              # Reusable SEO component
-├── OptimizedImage.js   # Lazy-loading image component
-├── useArticleSchema.js # Article schema hook
-├── webVitals.js        # Web Vitals reporting
-└── App.js              # Main routing
+/app/frontend/
+├── public/
+│   ├── index.html          # PWA meta tags, schema, analytics
+│   ├── manifest.json       # PWA manifest
+│   ├── service-worker.js   # PWA service worker
+│   ├── sitemap.xml         # SEO sitemap
+│   └── robots.txt          # SEO robots
+└── src/
+    ├── components.js       # Main components file
+    ├── SEO.js              # Reusable SEO component (with Event/FAQ schema)
+    ├── OptimizedImage.js   # Lazy-loading image component
+    ├── webVitals.js        # Web Vitals reporting
+    └── App.js              # Main routing
 ```
 
 ---
 
 ## Prioritized Backlog
 
-### P0 - Critical
-None - All critical SEO tasks complete
-
 ### P1 - High Priority
-- Complete extraction of page components from `components.js`:
+- Extract page components from `components.js` to separate files:
   - `AdvisoryPage` → `/pages/AdvisoryPage.js`
   - `TeamPage` → `/pages/TeamPage.js`
   - `ContactPage` → `/pages/ContactPage.js`
   - `BookPage` → `/pages/BookPage.js`
-- Extract homepage sections to `/components/home/`:
-  - `NewHero`
-  - `NewStatsSection`
-  - `NewWhatWeDoSection`
-  - `NewAboutSection`
-  - `NewContentLibrarySection`
-  - `ImageSliderSection`
-  - `NewsroomSliderSection`
+- Extract homepage sections to `/components/home/`
 
 ### P2 - Medium Priority
-- Fix ESLint warnings in `components.js` (unescaped entities)
-- Move animation variants to shared utilities file
-- Clean up unused imports
+- Fix ESLint warnings (unescaped entities) in components.js
+- Add Article schema to detail pages (ArticleDetailPage, NewsroomDetailPage, etc.)
 
 ### P3 - Low Priority / Future
-- Add more structured data types (Event, FAQ, etc.)
-- Progressive Web App (PWA) support
-- Image optimization with WebP format
+- Add more PWA icons (logo192.png, logo512.png)
+- Implement push notifications
+- Add offline page
 
 ---
 
@@ -120,13 +104,13 @@ None - All critical SEO tasks complete
 
 | File | Purpose |
 |------|---------|
-| `/frontend/src/SEO.js` | Reusable SEO meta tags component |
-| `/frontend/src/useArticleSchema.js` | Article JSON-LD schema hook |
-| `/frontend/src/components.js` | Main components file (being refactored) |
-| `/frontend/src/components/layout/` | Extracted layout components |
+| `/frontend/src/SEO.js` | Reusable SEO component with Event/FAQ schema |
+| `/frontend/src/components.js` | Main components file |
+| `/frontend/public/manifest.json` | PWA manifest |
+| `/frontend/public/service-worker.js` | PWA service worker |
 | `/frontend/public/sitemap.xml` | Site map for search engines |
 | `/frontend/public/robots.txt` | Crawler instructions |
-| `/frontend/public/index.html` | Base HTML with GA4, GSC, Organization schema |
+| `/frontend/public/index.html` | Base HTML with PWA, GA4, GSC, Organization schema |
 
 ---
 
@@ -137,6 +121,7 @@ None - All critical SEO tasks complete
 - **SoundCloud**: Podcast embeds
 - **Google Search Console**: Site verification & indexing
 - **Google Analytics 4**: Traffic analytics
+- **PostHog**: Product analytics
 
 ---
 
