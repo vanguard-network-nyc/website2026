@@ -13,7 +13,9 @@
 
 /* Reduce layout shifts */
 html {
-    scroll-behavior: smooth;
+    /* Remove smooth scroll to prevent navigation scroll animation */
+    /* Smooth scroll is handled explicitly where needed via JavaScript */
+    scroll-behavior: auto;
 }
 
 /* Content visibility for off-screen content */
