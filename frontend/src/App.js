@@ -88,56 +88,40 @@ function App() {
   
   return (
     <Router>
-      <ScrollToTop />
       <GAPageViewTracker />
-      <ScrollHandler setIsTransitioning={setIsTransitioning} />
-      {isTransitioning && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: '#f8fafc',
-          zIndex: 99999,
-          pointerEvents: 'none'
-        }} />
-      )}
       <div className="App">
         <Header />
-        <AnimatePresence mode="sync">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/advisory" element={<AdvisoryPage />} />
-            <Route path="/networking" element={<NetworkingV2Page />} />
-            <Route path="/programs" element={<ProgramsV2 />} />
-            <Route path="/upcoming-events" element={<UpcomingEventsPage />} />
-            <Route path="/articles" element={<ArticlesPage />} />
-            <Route path="/article/:id" element={<ArticleDetailPage />} />
-            <Route path="/podcasts" element={<PodcastsPage />} />
-            <Route path="/podcast/:id" element={<PodcastDetailPage />} />
-            <Route path="/videos" element={<VideosPage />} />
-            <Route path="/video/:id" element={<VideoDetailPage />} />
-            <Route path="/gc-exchange" element={<GCExchangePage />} />
-            <Route path="/senior-counsel-exchange" element={<SeniorCounselExchangePage />} />
-            <Route path="/next-gen-gc" element={<NextGenGCPage />} />
-            <Route path="/life-sciences-ceo" element={<LifeSciencesCEOPage />} />
-            <Route path="/law-associates" element={<LawAssociatesPage />} />
-            <Route path="/risk-management" element={<RiskManagementPage />} />
-            <Route path="/global-counsel-leaders" element={<GlobalCounselLeadersPage />} />
-            <Route path="/new-leaders" element={<NewLeadersPage />} />
-            <Route path="/success-stories" element={<CaseStudiesPage />} />
-            <Route path="/team" element={<TeamPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/book" element={<BookPage />} />
-            <Route path="/newsroom" element={<NewsroomPage />} />
-            <Route path="/newsroom-item/:id" element={<NewsroomDetailPage />} />
-            <Route path="/application" element={<MembershipApplicationPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </AnimatePresence>
+        <Routes>
+          <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+          <Route path="/advisory" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
+          <Route path="/networking" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
+          <Route path="/programs" element={<PageWrapper><ProgramsV2 /></PageWrapper>} />
+          <Route path="/upcoming-events" element={<PageWrapper><UpcomingEventsPage /></PageWrapper>} />
+          <Route path="/articles" element={<PageWrapper><ArticlesPage /></PageWrapper>} />
+          <Route path="/article/:id" element={<PageWrapper><ArticleDetailPage /></PageWrapper>} />
+          <Route path="/podcasts" element={<PageWrapper><PodcastsPage /></PageWrapper>} />
+          <Route path="/podcast/:id" element={<PageWrapper><PodcastDetailPage /></PageWrapper>} />
+          <Route path="/videos" element={<PageWrapper><VideosPage /></PageWrapper>} />
+          <Route path="/video/:id" element={<PageWrapper><VideoDetailPage /></PageWrapper>} />
+          <Route path="/gc-exchange" element={<PageWrapper><GCExchangePage /></PageWrapper>} />
+          <Route path="/senior-counsel-exchange" element={<PageWrapper><SeniorCounselExchangePage /></PageWrapper>} />
+          <Route path="/next-gen-gc" element={<PageWrapper><NextGenGCPage /></PageWrapper>} />
+          <Route path="/life-sciences-ceo" element={<PageWrapper><LifeSciencesCEOPage /></PageWrapper>} />
+          <Route path="/law-associates" element={<PageWrapper><LawAssociatesPage /></PageWrapper>} />
+          <Route path="/risk-management" element={<PageWrapper><RiskManagementPage /></PageWrapper>} />
+          <Route path="/global-counsel-leaders" element={<PageWrapper><GlobalCounselLeadersPage /></PageWrapper>} />
+          <Route path="/new-leaders" element={<PageWrapper><NewLeadersPage /></PageWrapper>} />
+          <Route path="/success-stories" element={<PageWrapper><CaseStudiesPage /></PageWrapper>} />
+          <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
+          <Route path="/book" element={<PageWrapper><BookPage /></PageWrapper>} />
+          <Route path="/newsroom" element={<PageWrapper><NewsroomPage /></PageWrapper>} />
+          <Route path="/newsroom-item/:id" element={<PageWrapper><NewsroomDetailPage /></PageWrapper>} />
+          <Route path="/application" element={<PageWrapper><MembershipApplicationPage /></PageWrapper>} />
+          <Route path="/privacy" element={<PageWrapper><PrivacyPage /></PageWrapper>} />
+          <Route path="/terms" element={<PageWrapper><TermsPage /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFoundPage /></PageWrapper>} />
+        </Routes>
         <Footer />
         <BackToTopButton />
       </div>
