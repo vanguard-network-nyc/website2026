@@ -107,7 +107,7 @@ const RiskManagementPage = () => {
           <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
             <img
               src="https://static.wixstatic.com/media/11062b_642d21e59e4d48cdbb705699a159c146~mv2.jpg/v1/fill/w_1919,h_1150,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_642d21e59e4d48cdbb705699a159c146~mv2.jpg"
-              alt="Risk Management Network"
+              alt="Risk Management Network - Senior executives collaborating on enterprise risk strategy"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
