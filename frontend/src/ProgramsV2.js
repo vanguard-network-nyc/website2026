@@ -265,14 +265,11 @@ const ProgramsV2 = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
         <div className="text-center mb-16">
-          <motion.h1 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <h1 
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
             Leadership Programs
-          </motion.h1>
+          </h1>
           
           <motion.p 
             initial={{ y: 30, opacity: 0 }}
