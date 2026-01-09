@@ -242,6 +242,28 @@ const ProgramsV2 = () => {
       <SEO 
         title="Leadership Programs"
         description="Transform your leadership with our customized programs for GCs, senior counsel, and executives. Real-world focused, led by experienced CEOs and senior leaders."
+        faq={[
+          {
+            question: "What types of leadership programs does The Vanguard Network offer?",
+            answer: "We offer a variety of programs including the Vanguard Accelerator for General Counsel, Next Level for Senior Counsel, New Leaders Program for graduates and new hires, CEO & C-Suite roundtables, Next Generation C-Suite development, and customized programs for high-potential leaders."
+          },
+          {
+            question: "How long are the leadership programs?",
+            answer: "Program durations vary based on objectives. The Vanguard Accelerator runs for 6-9 months, the Next Level program is 6-12 months, New Leaders Program is 6-12 months, and the High-Potential New Hires curriculum is 14 weeks. Custom programs can be tailored to your organization's needs."
+          },
+          {
+            question: "Who leads the leadership programs?",
+            answer: "Our programs are led by experienced CEOs, senior executives, and leadership development experts. They bring real-world experience and focus on practical, applicable leadership skills rather than theoretical concepts."
+          },
+          {
+            question: "Can programs be customized for our organization?",
+            answer: "Yes, all our programs can be customized to meet your organization's specific needs. We work with enterprises to tailor content, duration, and format to align with your leadership development goals and company culture."
+          },
+          {
+            question: "What is the format of the programs?",
+            answer: "Programs combine face-to-face sessions with virtual elements, allowing participants to continue their full-time roles while developing their leadership capabilities. Formats include peer exchanges, roundtables, one-on-one coaching, and group problem-solving sessions."
+          }
+        ]}
       />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
