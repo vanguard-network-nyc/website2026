@@ -137,7 +137,7 @@ const NetworkingV2Page = () => {
                 <div className="flex-shrink-0">
                   <img 
                     src="https://customer-assets.emergentagent.com/job_layout-repair-20/artifacts/dwx24vf5_xZBfFpdm64Rh34PqxTf2PrcixrwcMZGVfl7QH2gPdaE.jpg"
-                    alt="Ann Kappler testimonial"
+                alt="Ann Kappler - Executive Vice President and General Counsel at Prudential Financial"
                     className="w-20 h-20 rounded-full object-cover shadow-lg"
                   />
                 </div>
