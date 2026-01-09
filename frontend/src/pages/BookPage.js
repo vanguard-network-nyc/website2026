@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumb';
 import SEO from '../SEO';
-import { BookOpen, ExternalLink, Star, Award, CheckCircle2 } from 'lucide-react';
+import { BookOpen, ExternalLink, Star, Award, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const BookPage = () => (
   <motion.div
