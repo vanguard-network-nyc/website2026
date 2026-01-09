@@ -24,6 +24,10 @@ const LifeSciencesCEOPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Life Sciences CEO Exchange"
+        description="Exclusive peer network for Life Sciences CEOs. Strategic discussions on AI, innovation, and industry transformation with fellow executives."
+      />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
