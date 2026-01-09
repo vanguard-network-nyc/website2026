@@ -3568,6 +3568,10 @@ const ImageSliderSection = () => {
                 src={src} 
                 alt={`Leadership event ${index + 1}`}
                 className="slider-image"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="300"
               />
             </div>
           ))}
@@ -3578,6 +3582,11 @@ const ImageSliderSection = () => {
                 src={src} 
                 alt={`Leadership event ${index + 1}`}
                 className="slider-image"
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="300"
+              />
               />
             </div>
           ))}
