@@ -110,13 +110,13 @@ const SEO = ({
       <meta name="publisher" content="The Vanguard Network" />
       
       {/* WebPage/Article Schema */}
-      <script type="application/ld+json">
+      <script type="application/ld+json" data-schema-type="page">
         {JSON.stringify(webPageSchema)}
       </script>
       
       {/* Breadcrumb Schema */}
       {breadcrumbSchema && (
-        <script type="application/ld+json">
+        <script type="application/ld+json" data-schema-type="breadcrumb">
           {JSON.stringify(breadcrumbSchema)}
         </script>
       )}
