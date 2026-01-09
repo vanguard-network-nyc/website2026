@@ -45,14 +45,15 @@ The Vanguard Network is an executive leadership platform serving C-suite executi
 #### Phase 6: Advanced SEO - Schema Markup ✅
 - Organization schema in `index.html`
 - WebPage schema via `SEO.js` component
-- Event schema support added to `SEO.js`
-- FAQ schema support added to `SEO.js`
+- Event schema support added to `SEO.js` and implemented on `/upcoming-events`
+- FAQ schema support added to `SEO.js` and implemented on `/networking` and `/programs`
 
 ### PWA Support (Complete) - January 2025 ✅
 - Created `manifest.json` with app metadata
 - Created `service-worker.js` for offline caching
 - Added PWA meta tags to `index.html`
 - Service worker registration in `index.html`
+- Created PWA icons: `logo192.png` and `logo512.png`
 
 ### Content Updates (Complete) - January 2025
 - Updated GCL page CTA to link to: `https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC`
@@ -67,11 +68,16 @@ The Vanguard Network is an executive leadership platform serving C-suite executi
 │   ├── index.html          # PWA meta tags, schema, analytics
 │   ├── manifest.json       # PWA manifest
 │   ├── service-worker.js   # PWA service worker
+│   ├── logo192.png         # PWA icon (192x192)
+│   ├── logo512.png         # PWA icon (512x512)
 │   ├── sitemap.xml         # SEO sitemap
 │   └── robots.txt          # SEO robots
 └── src/
     ├── components.js       # Main components file
-    ├── SEO.js              # Reusable SEO component (with Event/FAQ schema)
+    ├── SEO.js              # SEO component (Event/FAQ/Article schema)
+    ├── NetworkingV2Page.js # Networking page with FAQ schema
+    ├── ProgramsV2.js       # Programs page with FAQ schema
+    ├── UpcomingEventsPage.js # Events page with Event schema
     ├── OptimizedImage.js   # Lazy-loading image component
     ├── webVitals.js        # Web Vitals reporting
     └── App.js              # Main routing
@@ -79,24 +85,45 @@ The Vanguard Network is an executive leadership platform serving C-suite executi
 
 ---
 
+## Schema Implementation Details
+
+### Event Schema (`/upcoming-events`)
+Dynamically generates Event schema for the first upcoming event with:
+- name, startDate, endDate
+- location (virtual or physical)
+- description
+- organizer (The Vanguard Network)
+
+### FAQ Schema (`/networking` and `/programs`)
+**Networking Page FAQs:**
+1. What is The Vanguard Network?
+2. Who can join the peer networks?
+3. What benefits do members receive?
+4. How do the peer exchanges work?
+5. Is membership confidential?
+
+**Programs Page FAQs:**
+1. What types of leadership programs are offered?
+2. How long are the leadership programs?
+3. Who leads the leadership programs?
+4. Can programs be customized?
+5. What is the format of the programs?
+
+---
+
 ## Prioritized Backlog
 
 ### P1 - High Priority
-- Extract page components from `components.js` to separate files:
-  - `AdvisoryPage` → `/pages/AdvisoryPage.js`
-  - `TeamPage` → `/pages/TeamPage.js`
-  - `ContactPage` → `/pages/ContactPage.js`
-  - `BookPage` → `/pages/BookPage.js`
-- Extract homepage sections to `/components/home/`
+- Extract page components from `components.js` to separate files (careful refactoring)
 
 ### P2 - Medium Priority
-- Fix ESLint warnings (unescaped entities) in components.js
-- Add Article schema to detail pages (ArticleDetailPage, NewsroomDetailPage, etc.)
+- Add Article schema to detail pages
+- Fix ESLint warnings in components.js
 
 ### P3 - Low Priority / Future
-- Add more PWA icons (logo192.png, logo512.png)
-- Implement push notifications
-- Add offline page
+- Implement push notifications for PWA
+- Add offline fallback page
+- Server-side rendering for better SEO schema visibility
 
 ---
 
@@ -104,13 +131,14 @@ The Vanguard Network is an executive leadership platform serving C-suite executi
 
 | File | Purpose |
 |------|---------|
-| `/frontend/src/SEO.js` | Reusable SEO component with Event/FAQ schema |
-| `/frontend/src/components.js` | Main components file |
+| `/frontend/src/SEO.js` | SEO component with Event/FAQ/Article schema |
+| `/frontend/src/NetworkingV2Page.js` | Networking page with FAQ schema |
+| `/frontend/src/ProgramsV2.js` | Programs page with FAQ schema |
+| `/frontend/src/UpcomingEventsPage.js` | Events page with Event schema |
 | `/frontend/public/manifest.json` | PWA manifest |
 | `/frontend/public/service-worker.js` | PWA service worker |
-| `/frontend/public/sitemap.xml` | Site map for search engines |
-| `/frontend/public/robots.txt` | Crawler instructions |
-| `/frontend/public/index.html` | Base HTML with PWA, GA4, GSC, Organization schema |
+| `/frontend/public/logo192.png` | PWA icon 192x192 |
+| `/frontend/public/logo512.png` | PWA icon 512x512 |
 
 ---
 
