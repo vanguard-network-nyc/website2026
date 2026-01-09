@@ -2575,7 +2575,7 @@ const NewWhatWeDoSection = () => {
           className="w-full"
           loading="eager"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </motion.div>
 
