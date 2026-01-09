@@ -624,6 +624,10 @@ const AdvisoryPage = () => {
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100"
       style={{ visibility: 'visible' }}
     >
+    <SEO 
+      title="Leadership Advisory & Development"
+      description="Expert leadership advisory services for C-suite executives. Organizational transformation, strategic counsel, and stakeholder engagement powered by the human factor."
+    />
     {/* Hero Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-20">
       <Breadcrumb />
