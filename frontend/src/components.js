@@ -11,6 +11,21 @@ import 'slick-carousel/slick/slick-theme.css';
 // Import extracted layout components
 import { Header, Footer, GCLBanner } from './components/layout';
 
+// Import extracted page components
+import { AdvisoryPage, TeamPage, ContactPage, BookPage } from './pages';
+
+// Import extracted home components
+import { 
+  NewHero, 
+  NewStatsSection, 
+  NewWhatWeDoSection, 
+  VideoQuoteSection, 
+  NewAboutSection, 
+  NewContentLibrarySection, 
+  NewsroomSliderSection, 
+  ImageSliderSection 
+} from './components/home';
+
 import { 
   Menu, 
   X, 
