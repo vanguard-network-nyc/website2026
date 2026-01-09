@@ -459,7 +459,7 @@ const NextGenGCPage = () => {
           </a>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

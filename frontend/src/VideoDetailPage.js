@@ -284,7 +284,7 @@ const VideoDetailPage = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -675,7 +675,7 @@ const ProgramsV2 = () => {
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

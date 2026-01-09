@@ -396,7 +396,7 @@ const CaseStudiesPage = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

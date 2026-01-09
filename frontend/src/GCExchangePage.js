@@ -353,7 +353,7 @@ const GCExchangePage = () => {
           </div>
         </motion.section>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

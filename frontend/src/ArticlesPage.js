@@ -395,7 +395,7 @@ const ArticlesPage = () => {
           </motion.div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
