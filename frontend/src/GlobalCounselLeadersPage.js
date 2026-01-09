@@ -125,7 +125,7 @@ const GlobalCounselLeadersPage = () => {
           </div>
         </motion.section>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
