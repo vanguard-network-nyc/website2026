@@ -1364,7 +1364,7 @@ const AdvisoryPage = () => {
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/garrick-isert.jpg" 
-                  alt="Garrick Isert" 
+                  alt="Garrick Isert - Senior Advisor at The Vanguard Network" 
                   className="w-full h-full object-cover"
                 />
               </div>
