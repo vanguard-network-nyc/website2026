@@ -1453,7 +1453,7 @@ const AdvisoryPage = () => {
             {/* Aileen Gonsalves - Horizontal */}
             <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
               <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 40px) 30%' }} />
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
