@@ -403,7 +403,7 @@ const TermsPage = () => {
           </div>
         </section>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
