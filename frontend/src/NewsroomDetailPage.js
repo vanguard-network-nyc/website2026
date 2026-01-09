@@ -276,7 +276,7 @@ const NewsroomDetailPage = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

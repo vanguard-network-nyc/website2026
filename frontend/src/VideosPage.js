@@ -309,7 +309,7 @@ const VideosPage = () => {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

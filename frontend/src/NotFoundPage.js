@@ -119,7 +119,7 @@ const NotFoundPage = () => {
           </motion.div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

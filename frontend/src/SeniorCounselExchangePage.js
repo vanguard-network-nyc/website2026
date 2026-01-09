@@ -301,7 +301,7 @@ const SeniorCounselExchangePage = () => {
           </a>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

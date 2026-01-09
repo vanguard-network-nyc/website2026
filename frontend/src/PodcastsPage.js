@@ -430,7 +430,7 @@ const PodcastsPage = () => {
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -294,7 +294,7 @@ const LifeSciencesCEOPage = () => {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
