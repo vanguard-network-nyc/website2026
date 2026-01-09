@@ -164,6 +164,20 @@ const SEO = ({
           {JSON.stringify(breadcrumbSchema)}
         </script>
       )}
+
+      {/* Event Schema */}
+      {eventSchema && (
+        <script type="application/ld+json" data-schema-type="event">
+          {JSON.stringify(eventSchema)}
+        </script>
+      )}
+
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script type="application/ld+json" data-schema-type="faq">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
     </Helmet>
   );
 };
