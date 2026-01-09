@@ -121,6 +121,13 @@ const ArticleDetailPage = () => {
     </div>
   );
 
+  // Prepare article data for SEO schema
+  const articleSchemaData = article ? {
+    author: article.featured_speaker_linkedin || 'The Vanguard Network',
+    datePublished: article.publish_by || article.published_to_web || new Date().toISOString(),
+    dateModified: article.publish_by || article.published_to_web || new Date().toISOString()
+  } : null;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -128,6 +135,14 @@ const ArticleDetailPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      {article && (
+        <SEO 
+          title={article.blog_title}
+          description={article.description_teaser ? article.description_teaser.substring(0, 160) : `Read insights from ${article.featured_speaker_linkedin || 'The Vanguard Network'} on leadership and executive development.`}
+          image={article.photo}
+          article={articleSchemaData}
+        />
+      )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb customTitle={article?.blog_title} />
 
