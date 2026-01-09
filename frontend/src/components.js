@@ -3130,7 +3130,6 @@ const ImageSliderSection = () => {
                 width="400"
                 height="300"
               />
-              />
             </div>
           ))}
         </div>
