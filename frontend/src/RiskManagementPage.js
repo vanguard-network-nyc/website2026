@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 import { ArrowLeft, Users, Clock, Target, CheckCircle, Star, Award, Mail, Shield, Globe, TrendingUp, AlertTriangle } from 'lucide-react';
 
 const RiskManagementPage = () => {
