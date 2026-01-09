@@ -554,12 +554,12 @@ const Footer = () => {
                   {link.name}
                 </a>
               ) : (
-                <Link
+                <ScrollLink
                   to={link.path}
                   className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
                 >
                   {link.name}
-                </Link>
+                </ScrollLink>
               )}
             </motion.div>
           ))}
