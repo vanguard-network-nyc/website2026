@@ -32,14 +32,19 @@ import BackToTopButton from './ScrollToTop';
 // PageWrapper: Forces instant scroll to top BEFORE any paint
 // This is the key fix for the page transition scroll bug
 function PageWrapper({ children }) {
+  const location = useLocation();
+  
   // useLayoutEffect runs synchronously BEFORE the browser paints
   // This ensures scroll happens before the user sees anything
   useLayoutEffect(() => {
-    // Immediately reset scroll position using all methods
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, []);
+    // Only scroll to top if there's no hash (anchor link)
+    if (!location.hash) {
+      // Immediately reset scroll position using all methods
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, [location.pathname, location.hash]);
 
   return children;
 }
