@@ -169,6 +169,10 @@ const PodcastsPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Podcasts"
+        description="Listen to leadership podcasts featuring top executives and industry leaders. Insights on management, strategy, and the human factor in leadership."
+      />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
