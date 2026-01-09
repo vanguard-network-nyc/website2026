@@ -1343,7 +1343,7 @@ const AdvisoryPage = () => {
               <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
                 <img 
                   src="/richard-hulme.jpg" 
-                  alt="Richard Hulme" 
+                  alt="Richard Hulme - Senior Advisor at The Vanguard Network" 
                   className="w-full h-full object-cover"
                 />
               </div>
