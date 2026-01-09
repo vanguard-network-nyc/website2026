@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 import { ArrowLeft, Users, BookOpen, Calendar, CheckCircle, ExternalLink, LinkedinIcon, Target, Award, Globe } from 'lucide-react';
 
 const NewLeadersPage = () => {
