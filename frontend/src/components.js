@@ -57,7 +57,7 @@ const ScrollLink = ({ to, children, className, onClick, ...props }) => {
     document.body.scrollTop = 0;
     // Call any additional onClick handler
     if (onClick) onClick(e);
-    // Navigate after scroll
+    // Navigate immediately - the scroll already happened synchronously
     navigate(to);
   };
   
