@@ -135,14 +135,6 @@ const PodcastDetailPage = () => {
     dateModified: new Date().toISOString()
   } : null;
 
-  // Inject Article schema directly into DOM (bypasses react-helmet limitations)
-  useArticleSchema(podcast, {
-    title: podcast?.title,
-    description: podcast?.description?.substring(0, 160),
-    image: podcast?.thumbnail,
-    author: podcast?.featured_speaker
-  });
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
