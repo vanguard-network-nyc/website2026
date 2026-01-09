@@ -52,6 +52,13 @@ const NewsroomDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Inject Article schema directly into DOM (must be called before any early returns)
+  useArticleSchema(article, {
+    title: article?.blog_title,
+    description: article?.description_teaser?.substring(0, 160),
+    image: article?.newsroom_detail_image || article?.photo
+  });
+
   const fetchNewsroomItem = useCallback(async () => {
     try {
       setLoading(true);
