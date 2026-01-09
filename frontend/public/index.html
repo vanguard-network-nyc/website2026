@@ -62,6 +62,60 @@
         
         <title>The Vanguard Network | Executive Leadership Network & Advisory</title>
         
+        <!-- Organization Schema (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "The Vanguard Network",
+            "alternateName": "TVN",
+            "url": "https://thevanguardnetwork.com",
+            "logo": "https://thevanguardnetwork.com/tvn-logo.png",
+            "description": "The Vanguard Network is a premier executive leadership organization offering peer-to-peer networks and advisory services for C-suite leaders.",
+            "foundingDate": "2014",
+            "founder": {
+                "@type": "Person",
+                "name": "Ken Banta"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "New York",
+                "addressRegion": "NY",
+                "addressCountry": "US"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "url": "https://thevanguardnetwork.com/contact"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/company/the-vanguard-network"
+            ],
+            "areaServed": "Worldwide",
+            "serviceType": ["Executive Leadership Networks", "Leadership Advisory", "Executive Coaching", "Leadership Development Programs"]
+        }
+        </script>
+        
+        <!-- WebSite Schema (JSON-LD) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "The Vanguard Network",
+            "url": "https://thevanguardnetwork.com",
+            "description": "Join 2,000+ senior executives in peer-to-peer leadership networks. Expert advisory services for C-suite leaders focused on the human factor in leadership.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "The Vanguard Network"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://thevanguardnetwork.com/articles?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+        </script>
+        
         <!-- Critical CSS for above-the-fold content (reduces CLS) -->
         <style>
             /* Prevent layout shift during load */
