@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import ReactMarkdown from 'react-markdown';
 import { Newspaper, ArrowRight, ChevronRight, ChevronLeft, Calendar } from 'lucide-react';
 
 const NewsroomSliderSection = () => {
