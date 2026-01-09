@@ -111,6 +111,28 @@ const NetworkingV2Page = () => {
       <SEO 
         title="Peer-to-Peer Leadership Networks"
         description="Join exclusive peer-to-peer networks for General Counsel, Senior Leaders, and executives. Connect with 2,000+ leaders through meaningful conversations."
+        faq={[
+          {
+            question: "What is The Vanguard Network?",
+            answer: "The Vanguard Network is a premier executive leadership organization offering peer-to-peer networks for General Counsel, Senior Leaders, and C-suite executives. We connect over 2,000 leaders through meaningful conversations focused on real-world leadership challenges."
+          },
+          {
+            question: "Who can join the peer networks?",
+            answer: "Our networks are designed for senior executives including General Counsel, Chief Legal Officers, Deputy GC, Associate GC, and Senior Leaders across various industries. Each network is tailored to specific leadership roles and career stages."
+          },
+          {
+            question: "What benefits do members receive?",
+            answer: "Members gain access to monthly virtual exchanges, bi-annual forums, strategic sounding boards, leadership advisory services, problem-solving sessions, career development resources, and exclusive peer networking opportunities."
+          },
+          {
+            question: "How do the peer exchanges work?",
+            answer: "Our exchanges are candid, confidential conversations among peers facing similar challenges. There are no podiums, no PowerPoints, no presentations - just meaningful discussions about real leadership challenges led by experienced facilitators."
+          },
+          {
+            question: "Is membership confidential?",
+            answer: "Yes, all discussions within our networks operate under strict confidentiality. This allows members to speak openly about challenges and receive honest feedback from their peers."
+          }
+        ]}
       />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
