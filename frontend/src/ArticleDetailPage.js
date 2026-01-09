@@ -16,6 +16,13 @@ const ArticleDetailPage = () => {
   const [error, setError] = useState(null);
   const [isFromNewsroom, setIsFromNewsroom] = useState(false);
 
+  // Inject Article schema directly into DOM (must be called before any early returns)
+  useArticleSchema(article, {
+    title: article?.blog_title,
+    description: article?.description_teaser?.substring(0, 160),
+    image: article?.photo
+  });
+
   useEffect(() => {
     if (id) {
       fetchArticle();
