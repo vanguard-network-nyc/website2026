@@ -240,6 +240,15 @@ const UpcomingEventsPage = () => {
       <SEO 
         title="Upcoming Events"
         description="Join exclusive leadership events, forums, and exchanges. Network with senior executives and industry leaders at The Vanguard Network events."
+        event={filteredEvents.length > 0 ? {
+          name: filteredEvents[0].title,
+          startDate: filteredEvents[0].start_date,
+          endDate: filteredEvents[0].end_date,
+          location: filteredEvents[0].location,
+          description: filteredEvents[0].description || `Join us for ${filteredEvents[0].title} - an exclusive leadership event from The Vanguard Network.`,
+          isVirtual: filteredEvents[0].location?.toLowerCase().includes('virtual') || filteredEvents[0].location?.toLowerCase().includes('online'),
+          url: filteredEvents[0].registration_link
+        } : null}
       />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
