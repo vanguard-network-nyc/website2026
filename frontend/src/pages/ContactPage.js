@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Breadcrumb from '../Breadcrumb';
 import SEO from '../SEO';
-import { Mail, Phone, MapPin, ArrowRight, CheckCircle2, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, CheckCircle2, Globe, Linkedin } from 'lucide-react';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
