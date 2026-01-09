@@ -1855,6 +1855,10 @@ const ContactPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with The Vanguard Network. Connect with our team to learn about leadership advisory services and peer-to-peer executive networks."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         <motion.div
