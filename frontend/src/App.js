@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import Components from './components';
+import SEO from './SEO';
 import ProgramsV2 from './ProgramsV2';
 import NetworkingV2Page from './NetworkingV2Page';
 import UpcomingEventsPage from './UpcomingEventsPage';
