@@ -7,10 +7,6 @@ import Slider from 'react-slick';
 import ReactMarkdown from 'react-markdown';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-// Import extracted layout components
-import { Header, Footer, GCLBanner } from './components/layout';
-
 import { 
   Menu, 
   X, 
@@ -48,6 +44,61 @@ import {
   Headphones,
   FileText
 } from 'lucide-react';
+
+// GCL Banner Component
+const GCLBanner = () => {
+  return (
+    <motion.div
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="fixed top-0 left-0 w-full bg-gray-200 text-slate-800 py-2 sm:py-3 px-2 sm:px-4 border-b border-gray-300 z-50"
+    >
+      <div className="max-w-7xl mx-auto">
+        <Link 
+          to="/global-counsel-leaders"
+          className="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-2 hover:opacity-80 transition-opacity duration-200"
+        >
+          {/* Mobile: Line 1 - "Now incorporating the" centered */}
+          <span className="text-xs font-bold text-center sm:hidden">
+            Now incorporating the
+          </span>
+          {/* Mobile: Line 2 - Logo + Community + Read more */}
+          <div className="flex items-center justify-center gap-1 sm:hidden">
+            <img
+              src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
+              alt="Global Counsel Leaders"
+              className="h-4"
+            />
+            <span className="text-xs font-bold">Community.</span>
+            <span className="text-blue-700 font-bold text-xs flex items-center gap-0.5">
+              Read more
+              <ArrowRight size={12} />
+            </span>
+          </div>
+          {/* Desktop: All on one line */}
+          <div className="hidden sm:flex items-center gap-2">
+            <span className="text-sm font-bold">
+              Now incorporating the
+            </span>
+            <img
+              src="https://static.wixstatic.com/media/e6a994_d8ffd6feab98477786e859a280b2eb5d~mv2.png/v1/fill/w_338,h_32,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/GCL.png"
+              alt="Global Counsel Leaders"
+              className="h-6"
+            />
+            <span className="text-sm font-bold">
+              Community.
+            </span>
+            <span className="text-blue-700 font-bold text-sm flex items-center gap-1">
+              Read more
+              <ArrowRight size={14} />
+            </span>
+          </div>
+        </Link>
+      </div>
+    </motion.div>
+  );
+};
 
 // Animation variants for consistent scroll and page load animations
 const fadeInUpVariants = {
@@ -111,6 +162,415 @@ const useScrollAnimation = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   
   return { ref, isInView };
+};
+
+// Header Component
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { 
+      name: 'ADVISORY', 
+      path: '/advisory',
+      dropdown: [
+        { name: 'Advisory Services', path: '/advisory' },
+        { name: 'Success Stories', path: '/success-stories' }
+      ]
+    },
+    { 
+      name: 'NETWORKS', 
+      path: '/networking'
+    },
+    { name: 'PROGRAMS', path: '/programs' },
+    { name: 'EVENTS', path: '/upcoming-events' },
+    { 
+      name: 'CONTENT', 
+      dropdown: [
+        { name: 'Articles', path: '/articles' },
+        { name: 'Podcasts', path: '/podcasts' },
+        { name: 'Videos', path: '/videos' },
+        { name: 'Book', path: '/book' }
+      ]
+    },
+    { name: 'NEWSROOM', path: '/newsroom' },
+    { 
+      name: 'CONTACT', 
+      path: '/contact',
+      dropdown: [
+        { name: 'Contact Us', path: '/contact' },
+        { name: 'Our Team', path: '/team' }
+      ]
+    }
+  ];
+
+  return (
+    <>
+      <GCLBanner />
+      <motion.header
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
+          isScrolled ? 'backdrop-blur-md shadow-lg' : ''
+        }`}
+        style={{ 
+          top: '48px',
+          backgroundColor: isScrolled ? 'rgba(4, 81, 132, 0.95)' : '#045184'
+        }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center"
+            >
+              <img
+                src="/logo.png"
+                alt="The Vanguard Network Logo"
+                className="h-10 md:h-16 w-auto object-contain max-w-[140px] md:max-w-xs"
+                onError={(e) => {
+                  console.error('Logo failed to load:', e);
+                  e.target.style.display = 'none';
+                }}
+                onLoad={() => console.log('Logo loaded successfully')}
+              />
+            </motion.div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center space-x-8">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="relative group"
+              >
+                {item.dropdown ? (
+                  // Dropdown menu
+                  <div className="relative">
+                    <Link 
+                      to={item.path || '#'}
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group flex items-center"
+                    >
+                      {item.name}
+                      <ChevronDown size={16} className="ml-1" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </Link>
+                    {/* Dropdown content */}
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  // Regular link - handle external links
+                  item.external ? (
+                    <a
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="text-white hover:text-blue-400 font-medium transition-colors duration-200 relative group"
+                    >
+                      {item.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-200 group-hover:w-full"></span>
+                    </Link>
+                  )
+                )}
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <a
+                href="https://members.thevanguardnetwork.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+                style={{ backgroundColor: '#00A8E1' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+              >
+                MEMBER SITE
+              </a>
+            </motion.div>
+          </nav>
+
+          {/* Mobile/Tablet Menu Button */}
+          <button
+            className="xl:hidden text-white p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+      </div>
+    </motion.header>
+
+      {/* Mobile Navigation (phones only < 768px) - Full Screen - Outside header for proper fixed positioning */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="md:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex flex-col overflow-y-auto"
+            style={{ top: '120px' }}
+          >
+            <div className="px-4 py-4">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.03 }}
+                >
+                  {item.dropdown ? (
+                    <div className="border-b border-slate-600/30 py-1.5">
+                      <div className="text-white font-medium">{item.name}</div>
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    item.external ? (
+                      <a
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className="block text-white hover:text-blue-400 font-medium transition-colors duration-200 border-b border-slate-600/30 py-2"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  )}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="pt-4"
+              >
+                <a
+                  href="https://members.thevanguardnetwork.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-center"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  MEMBER SITE
+                </a>
+              </motion.div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
+      {/* Tablet Navigation (768px - 1279px) - Full Screen - Outside header for proper fixed positioning */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex-col"
+            style={{ top: '140px' }}
+          >
+            <div className="px-8 py-6">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  {item.dropdown ? (
+                    <div className="border-b border-slate-600/30 py-2 lg:py-3">
+                      <div className="text-white font-medium text-lg lg:text-xl">{item.name}</div>
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    item.external ? (
+                      <a
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )
+                  )}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="pt-4"
+              >
+                <a
+                  href="https://members.thevanguardnetwork.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-white px-6 py-3 rounded-lg font-medium text-lg lg:text-xl transition-colors duration-200"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  MEMBER SITE
+                </a>
+              </motion.div>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+// Hero Section
+const Footer = () => {
+  const footerLinks = [
+    { name: 'Contact Us', path: '/contact' },
+    { name: 'Our Team', path: '/team' },
+    { name: 'LinkedIn', path: 'https://www.linkedin.com/company/thevanguardnetwork/' },
+    { name: 'Privacy Policy', path: '/privacy' },
+    { name: 'Terms of Use', path: '/terms' },
+    { name: 'Become a Member', path: '/networking' }
+  ];
+
+  return (
+    <footer className="bg-slate-900 text-white py-6 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+          {footerLinks.map((link, index) => (
+            <motion.div
+              key={link.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              {link.path.startsWith('http') ? (
+                <a
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={link.path}
+                  className="text-white/70 hover:text-blue-400 transition-colors duration-200 text-sm"
+                >
+                  {link.name}
+                </Link>
+              )}
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/60 text-sm mb-4 md:mb-0">
+            © 2026 The Vanguard Network
+          </p>
+          
+          <div className="flex items-center space-x-4">
+            <motion.a
+              whileHover={{ scale: 1.1, color: '#0077b5' }}
+              href="https://www.linkedin.com/company/thevanguardnetwork/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-[#0077b5] transition-colors duration-200"
+              title="Follow us on LinkedIn"
+            >
+              <Linkedin size={20} />
+            </motion.a>
+            <Link to="/contact">
+              <motion.div
+                whileHover={{ scale: 1.1, color: '#3b82f6' }}
+                className="text-white/60 hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+              >
+                <Mail size={20} />
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 // Additional Pages
@@ -3129,6 +3589,7 @@ const ImageSliderSection = () => {
                 decoding="async"
                 width="400"
                 height="300"
+              />
               />
             </div>
           ))}

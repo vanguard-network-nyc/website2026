@@ -14,14 +14,6 @@ const VideoDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Inject Article schema directly into DOM (must be called before any early returns)
-  useArticleSchema(video, {
-    title: video?.vimeo_name || video?.video_description,
-    description: video?.vimeo_long_description?.substring(0, 160),
-    image: video?.headshot,
-    author: video?.featured_speakers
-  });
-
   useEffect(() => {
     if (id) {
       fetchVideo();
@@ -105,6 +97,14 @@ const VideoDetailPage = () => {
     datePublished: new Date().toISOString(),
     dateModified: new Date().toISOString()
   } : null;
+
+  // Inject Article schema directly into DOM (bypasses react-helmet limitations)
+  useArticleSchema(video, {
+    title: video?.vimeo_name || video?.video_description,
+    description: video?.vimeo_long_description?.substring(0, 160),
+    image: video?.headshot,
+    author: video?.featured_speakers
+  });
 
   return (
     <motion.div
