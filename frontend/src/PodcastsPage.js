@@ -28,11 +28,6 @@ const PodcastsPage = () => {
     }
   }, [searchParams]);
 
-  // Scroll to top when component mounts or page changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
   // Update URL when page changes from user interaction
   useEffect(() => {
     const pageParam = searchParams.get('page');
