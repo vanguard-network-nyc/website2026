@@ -3573,7 +3573,8 @@ const ImageSliderSection = () => {
         }
         .slider-track {
           display: flex;
-          animation: scroll 20s linear infinite;
+          width: calc(416px * 40);
+          animation: scroll 40s linear infinite;
         }
         .slider-slide {
           flex-shrink: 0;
@@ -3592,13 +3593,24 @@ const ImageSliderSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(calc(-416px * 20));
           }
         }
         @media (max-width: 768px) {
+          .slider-track {
+            width: calc(296px * 40);
+          }
           .slider-slide {
             width: 280px;
             height: 210px;
+          }
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-296px * 20));
+            }
           }
         }
       `}</style>
