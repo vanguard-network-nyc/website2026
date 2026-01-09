@@ -119,6 +119,13 @@ const PodcastDetailPage = () => {
     );
   }
 
+  // Prepare article data for SEO schema (treating podcast as article type)
+  const articleSchemaData = podcast ? {
+    author: podcast.featured_speaker || 'The Vanguard Network',
+    datePublished: new Date().toISOString(),
+    dateModified: new Date().toISOString()
+  } : null;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -126,6 +133,14 @@ const PodcastDetailPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
+      {podcast && (
+        <SEO 
+          title={podcast.title}
+          description={podcast.description ? podcast.description.substring(0, 160) : `Listen to ${podcast.featured_speaker || 'leadership experts'} discuss insights on executive development and leadership.`}
+          image={podcast.thumbnail}
+          article={articleSchemaData}
+        />
+      )}
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb customTitle={podcast?.title} />
