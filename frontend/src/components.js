@@ -253,7 +253,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <ScrollLink to="/" className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
@@ -269,7 +269,7 @@ const Header = () => {
                 onLoad={() => console.log('Logo loaded successfully')}
               />
             </motion.div>
-          </Link>
+          </ScrollLink>
 
           {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center space-x-8">
