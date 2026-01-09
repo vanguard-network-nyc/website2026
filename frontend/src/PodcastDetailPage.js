@@ -13,6 +13,14 @@ const PodcastDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Inject Article schema directly into DOM (must be called before any early returns)
+  useArticleSchema(podcast, {
+    title: podcast?.title,
+    description: podcast?.description?.substring(0, 160),
+    image: podcast?.thumbnail,
+    author: podcast?.featured_speaker
+  });
+
   useEffect(() => {
     fetchPodcast();
   }, [id]);
