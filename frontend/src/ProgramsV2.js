@@ -239,6 +239,10 @@ const ProgramsV2 = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100"
     >
+      <SEO 
+        title="Leadership Programs"
+        description="Transform your leadership with our customized programs for GCs, senior counsel, and executives. Real-world focused, led by experienced CEOs and senior leaders."
+      />
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <Breadcrumb />
