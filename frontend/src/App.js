@@ -157,6 +157,10 @@ function HomePage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <SEO 
+        title="Executive Leadership Network & Advisory"
+        description="Join 2,000+ senior executives in peer-to-peer leadership networks. Expert advisory services for C-suite leaders focused on the human factor in leadership."
+      />
       <NewHero />
       <NewStatsSection />
       <NewWhatWeDoSection />
