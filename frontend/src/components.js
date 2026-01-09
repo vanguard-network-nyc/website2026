@@ -2221,7 +2221,7 @@ const BookPage = () => (
           <div className="w-80 h-[500px] rounded-xl shadow-lg mx-auto mb-8 overflow-hidden bg-gray-100">
             <img
               src="/book-cover.jpg"
-              alt="Seeing Around Corners Book Cover"
+              alt="Seeing Around Corners Book Cover - C-Suite Wisdom from Top Leaders"
               className="w-full h-full object-cover"
             />
           </div>
