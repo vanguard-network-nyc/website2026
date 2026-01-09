@@ -2184,6 +2184,10 @@ const BookPage = () => (
     exit={{ opacity: 0 }}
     className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
   >
+    <SEO 
+      title="Seeing Around Corners - Book"
+      description="C-suite wisdom from America's most insightful leaders. Exclusive advice from legendary CEOs and industry-shaping experts on leadership challenges."
+    />
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
       <Breadcrumb />
       {/* Hero Section */}
