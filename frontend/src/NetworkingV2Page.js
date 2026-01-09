@@ -340,6 +340,30 @@ const NetworkingV2Page = () => {
           </div>
         </motion.div>
 
+        {/* Related Pages Section - Internal Linking */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 2.4, duration: 0.8 }}
+          className="mb-16"
+        >
+          <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/programs" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Leadership Programs</h4>
+              <p className="text-sm text-slate-600 mt-1">Customized programs to accelerate leadership development</p>
+            </Link>
+            <Link to="/upcoming-events" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Upcoming Events</h4>
+              <p className="text-sm text-slate-600 mt-1">Join our forums, exchanges, and leadership gatherings</p>
+            </Link>
+            <Link to="/articles" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+              <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Articles & Insights</h4>
+              <p className="text-sm text-slate-600 mt-1">Leadership perspectives from top executives</p>
+            </Link>
+          </div>
+        </motion.div>
+
         {/* Call to Action */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
