@@ -11,6 +11,10 @@ const TermsPage = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gradient-to-b from-slate-50 to-white pt-24"
     >
+      <SEO 
+        title="Terms of Use"
+        description="The Vanguard Network terms of use. Review our terms and conditions for using our website and services."
+      />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-20">
         <div className="max-w-4xl mx-auto px-6">
