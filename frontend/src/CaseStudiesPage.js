@@ -172,6 +172,10 @@ const CaseStudiesPage = () => {
       exit={{ opacity: 0 }}
       className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
+      <SEO 
+        title="Success Stories"
+        description="Discover how The Vanguard Network's focus on the human factor drives transformational outcomes for executives and their organizations."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         <Breadcrumb />
         {/* Back Button */}
