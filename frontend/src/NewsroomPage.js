@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import Breadcrumb from './Breadcrumb';
+import SEO from './SEO';
 import { 
   Calendar, 
   Clock, 
