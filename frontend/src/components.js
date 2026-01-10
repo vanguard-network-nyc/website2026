@@ -1750,8 +1750,7 @@ const TeamPage = () => {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.7, duration: 0.8 }}
-        className="text-center rounded-2xl p-6 md:p-12"
-        style={{ backgroundColor: '#045184' }}
+        className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Work with Our Team?</h2>
         <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
