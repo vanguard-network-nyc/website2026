@@ -1270,7 +1270,7 @@ class MembershipApplicationSubmit(BaseModel):
     country: str
     network_interest: list  # Changed to list for multiple selections
     recommended_by: Optional[str] = None
-    source_of_inquiry: Optional[str] = "Website sign up"
+    source_of_inquiry: Optional[str] = "Emergent Membership Application"
 
 class ContactFormSubmit(BaseModel):
     fullName: str
