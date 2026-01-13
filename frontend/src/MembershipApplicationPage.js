@@ -53,7 +53,7 @@ const MembershipApplicationPage = () => {
     country: '',
     network_interest: [], // Changed to array for multiple selections
     recommended_by: '',
-    source_of_inquiry: 'Website sign up' // Hidden field, pre-filled
+    source_of_inquiry: 'Emergent Membership Application' // Hidden field, pre-filled
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -201,7 +201,7 @@ const MembershipApplicationPage = () => {
         country: '',
         network_interest: [],
         recommended_by: '',
-        source_of_inquiry: 'Website sign up'
+        source_of_inquiry: 'Emergent Membership Application'
       });
       
       // Increment reset key to force re-render of phone and country components
