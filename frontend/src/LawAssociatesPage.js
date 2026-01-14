@@ -435,17 +435,16 @@ const LawAssociatesPage = () => {
                 Transform your associates into confident leaders and business partners through our proven curriculum designed by GCs and industry leaders.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSemh6GaEPGl5UnY09qJVJtPXfnVhPi7gp6OcKkL1CaMGGsbbw/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <Mail size={20} />
-                  Contact Us
-                </motion.a>
+                <Link to="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Mail size={20} />
+                    Contact Us
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </div>
