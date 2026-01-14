@@ -443,38 +443,40 @@ const NewsroomPage = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-center bg-white rounded-3xl p-6 md:p-12 shadow-xl border border-slate-200 mt-16"
+          className="md:mx-8 mt-16"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Stay Connected</h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Subscribe to our newsletter or follow us on social media to get the latest updates about The Vanguard Network's programs, events, and thought leadership content.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
-            >
-              <Mail size={20} />
-              Contact Us
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/company/40948215"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-300 flex items-center gap-2 justify-center"
-              style={{
-                background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
-                border: '2px solid transparent'
-              }}
-            >
-              Follow on LinkedIn
-              <ExternalLink size={20} />
-            </motion.a>
+          <div className="text-center bg-white rounded-3xl p-6 md:p-12 shadow-xl border border-slate-200">
+            <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Stay Connected</h2>
+            <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Subscribe to our newsletter or follow us on social media to get the latest updates about The Vanguard Network's programs, events, and thought leadership content.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:shadow-lg transition-all duration-300 flex items-center gap-2 justify-center"
+              >
+                <Mail size={20} />
+                Contact Us
+              </motion.a>
+              <motion.a
+                href="https://www.linkedin.com/company/40948215"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base transition-all duration-300 flex items-center gap-2 justify-center"
+                style={{
+                  background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #045184, #00A8E1) border-box',
+                  border: '2px solid transparent'
+                }}
+              >
+                Follow on LinkedIn
+                <ExternalLink size={20} />
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </div>
