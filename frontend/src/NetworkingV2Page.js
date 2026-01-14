@@ -345,12 +345,29 @@ const NetworkingV2Page = () => {
           </div>
         </motion.div>
 
+        {/* Call to Action */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 2.4, duration: 0.8 }}
+          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1] mb-16"
+        >
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Ready to Learn More?</h2>
+          <motion.a
+            href="/application"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
+          >
+            Contact Us
+          </motion.a>
+        </motion.div>
+
         {/* Related Pages Section - Internal Linking */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 2.4, duration: 0.8 }}
-          className="mb-16"
+          transition={{ delay: 2.6, duration: 0.8 }}
         >
           <h3 className="text-xl font-bold text-slate-900 mb-6">Explore More</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -367,24 +384,6 @@ const NetworkingV2Page = () => {
               <p className="text-sm text-slate-600 mt-1">Leadership perspectives from top executives</p>
             </Link>
           </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 2.6, duration: 0.8 }}
-          className="text-center rounded-2xl p-6 md:p-12 bg-gradient-to-r from-[#045184] to-[#00A8E1]"
-        >
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Ready to Learn More?</h2>
-          <motion.a
-            href="/application"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-white text-[#045184] px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:bg-blue-50 inline-flex items-center gap-2 shadow-lg"
-          >
-            Contact Us
-          </motion.a>
         </motion.div>
       </div>
     </div>
