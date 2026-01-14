@@ -604,22 +604,24 @@ const UpcomingEventsPage = () => {
         transition={{ delay: 0.8, duration: 0.8 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 text-center"
       >
-        <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Most of Our Events Are For Vanguard Members</h2>
-            <p className="text-base md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto">
-              We'd be delighted to introduce you to the Vanguard Network.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-              <motion.a
-                href="/application"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#045184] px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
-              >
-                <Mail size={18} />
-                <span>Contact Us to Learn More</span>
-              </motion.a>
+        <div className="md:mx-8">
+          <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-16 text-white relative overflow-hidden">
+            <div className="relative z-10">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Most of Our Events Are For Vanguard Members</h2>
+              <p className="text-base md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto">
+                We'd be delighted to introduce you to the Vanguard Network.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
+                <motion.a
+                  href="/application"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-[#045184] px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm md:text-lg hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                  <Mail size={18} />
+                  <span>Contact Us to Learn More</span>
+                </motion.a>
+              </div>
             </div>
           </div>
         </div>
