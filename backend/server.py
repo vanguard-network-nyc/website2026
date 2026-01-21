@@ -804,6 +804,8 @@ async def fetch_airtable_events():
             event_title = fields.get("Event Title", "")
             date_time = fields.get("Date & Time being/end", "")
             start_date = fields.get("Start Date", "")
+            end_date = fields.get("End Date", "")
+            timezone = fields.get("Timezone", "") or fields.get("Time Zone", "") or fields.get("TZ", "") or "ET"
             listing_picture = fields.get("Listing Picture", [])
             append_to_magic_link = fields.get("Append to magic link", "")
             default_signup_url = fields.get("Default Sign up URL (for NON-members)", "")
