@@ -562,7 +562,7 @@ const UpcomingEventsPage = () => {
                         {event.start_date && (
                           <div className="flex items-center gap-2 text-slate-600 mb-4">
                             <Clock size={16} className="text-[#00A8E1]" />
-                            <span className="text-sm">{formatEventDate(event.start_date)}</span>
+                            <span className="text-sm">{formatEventDate(event.start_date, event.timezone)}</span>
                           </div>
                         )}
                         
