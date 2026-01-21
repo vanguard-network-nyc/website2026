@@ -135,15 +135,26 @@ const UpcomingEventsPage = () => {
   const formatEventDate = (dateString) => {
     if (!dateString) return 'Date TBA';
     try {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
+      // Parse the ISO date string without timezone conversion
+      // This keeps the date/time as stored in Airtable (event's local timezone)
+      const [datePart, timePart] = dateString.replace('Z', '').split('T');
+      const [year, month, day] = datePart.split('-').map(Number);
+      const [hours, minutes] = timePart ? timePart.split(':').map(Number) : [0, 0];
+      
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      
+      // Create date object just to get day of week (using UTC to avoid timezone shift)
+      const tempDate = new Date(Date.UTC(year, month - 1, day));
+      const dayOfWeek = dayNames[tempDate.getUTCDay()];
+      
+      // Format time
+      const hour12 = hours % 12 || 12;
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      
+      return `${dayOfWeek}, ${monthNames[month - 1]} ${day}, ${year}, ${timeStr}`;
     } catch (error) {
       return 'Date TBA';
     }
@@ -152,11 +163,15 @@ const UpcomingEventsPage = () => {
   const formatEventTime = (dateString) => {
     if (!dateString) return '';
     try {
-      const date = new Date(dateString);
-      return date.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit'
-      });
+      // Parse the ISO date string without timezone conversion
+      const timePart = dateString.replace('Z', '').split('T')[1];
+      if (!timePart) return '';
+      
+      const [hours, minutes] = timePart.split(':').map(Number);
+      const hour12 = hours % 12 || 12;
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      
+      return `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
     } catch (error) {
       return '';
     }
