@@ -207,19 +207,24 @@ const UpcomingEventsPage = () => {
   // Get unique months for calendar view
   const getEventsByMonth = () => {
     const eventsByMonth = {};
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                        'July', 'August', 'September', 'October', 'November', 'December'];
+    
     filteredEvents.forEach(event => {
       if (event.start_date) {
-        const date = new Date(event.start_date);
-        const monthKey = `${date.getFullYear()}-${date.getMonth()}`;
-        const monthName = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-        
-        if (!eventsByMonth[monthKey]) {
-          eventsByMonth[monthKey] = {
-            name: monthName,
-            events: []
-          };
+        const parsed = parseDateWithoutTZ(event.start_date);
+        if (parsed) {
+          const monthKey = `${parsed.year}-${parsed.month - 1}`;
+          const monthName = `${monthNames[parsed.month - 1]} ${parsed.year}`;
+          
+          if (!eventsByMonth[monthKey]) {
+            eventsByMonth[monthKey] = {
+              name: monthName,
+              events: []
+            };
+          }
+          eventsByMonth[monthKey].events.push(event);
         }
-        eventsByMonth[monthKey].events.push(event);
       }
     });
     return eventsByMonth;
