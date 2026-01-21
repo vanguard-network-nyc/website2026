@@ -132,6 +132,33 @@ const UpcomingEventsPage = () => {
     return title.replace(/\n+/g, ' ').trim();
   };
 
+  // Helper to parse date without timezone conversion
+  const parseDateWithoutTZ = (dateString) => {
+    if (!dateString) return null;
+    try {
+      const [datePart, timePart] = dateString.replace('Z', '').split('T');
+      const [year, month, day] = datePart.split('-').map(Number);
+      const [hours, minutes] = timePart ? timePart.split(':').map(Number) : [0, 0];
+      return { year, month, day, hours, minutes };
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Get day of month without timezone conversion
+  const getEventDay = (dateString) => {
+    const parsed = parseDateWithoutTZ(dateString);
+    return parsed ? parsed.day : '?';
+  };
+
+  // Get short month and day (e.g., "Jan 22") without timezone conversion
+  const getShortDate = (dateString) => {
+    const parsed = parseDateWithoutTZ(dateString);
+    if (!parsed) return '';
+    const shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${shortMonths[parsed.month - 1]} ${parsed.day}`;
+  };
+
   const formatEventDate = (dateString) => {
     if (!dateString) return 'Date TBA';
     try {
