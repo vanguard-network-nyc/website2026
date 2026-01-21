@@ -862,6 +862,8 @@ async def fetch_airtable_events():
                 event_title=event_title,
                 date_time=date_time,
                 start_date=start_date,
+                end_date=end_date,
+                timezone=timezone,
                 listing_picture=picture_url,
                 registration_url=final_registration_url,
                 default_signup_url=default_signup_url,
