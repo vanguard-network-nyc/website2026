@@ -107,6 +107,8 @@ class AirtableEvent(BaseModel):
     event_title: str
     date_time: Optional[str] = None
     start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    timezone: Optional[str] = None
     listing_picture: Optional[str] = None
     registration_url: Optional[str] = None
     default_signup_url: Optional[str] = None
