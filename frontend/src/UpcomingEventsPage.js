@@ -25,6 +25,19 @@ const UpcomingEventsPage = () => {
     }
   }, [events, searchTerm, selectedAudience, selectedLocation, selectedDate]);
 
+  // Helper to parse date without timezone conversion
+  const parseDateWithoutTZ = (dateString) => {
+    if (!dateString) return null;
+    try {
+      const [datePart, timePart] = dateString.replace('Z', '').split('T');
+      const [year, month, day] = datePart.split('-').map(Number);
+      const [hours, minutes] = timePart ? timePart.split(':').map(Number) : [0, 0];
+      return { year, month, day, hours, minutes };
+    } catch (error) {
+      return null;
+    }
+  };
+
   const fetchEvents = async () => {
     try {
       setLoading(true);
