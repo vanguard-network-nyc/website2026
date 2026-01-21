@@ -94,8 +94,12 @@ const UpcomingEventsPage = () => {
       console.log('Filtering by selected date:', selectedDate); // Debug log
       filtered = filtered.filter(event => {
         if (!event.start_date) return false;
-        const eventDate = new Date(event.start_date).toDateString();
-        return eventDate === selectedDate.toDateString();
+        const parsed = parseDateWithoutTZ(event.start_date);
+        if (!parsed) return false;
+        // Compare year, month, day without timezone conversion
+        return parsed.year === selectedDate.getFullYear() && 
+               parsed.month === selectedDate.getMonth() + 1 && 
+               parsed.day === selectedDate.getDate();
       });
     }
 
