@@ -530,10 +530,7 @@ const UpcomingEventsPage = () => {
                       {event.start_date && (
                         <div className="absolute bottom-4 left-4">
                           <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-medium">
-                            {new Date(event.start_date).toLocaleDateString('en-US', { 
-                              month: 'short', 
-                              day: 'numeric' 
-                            })}
+                            {getShortDate(event.start_date)}
                           </div>
                         </div>
                       )}
