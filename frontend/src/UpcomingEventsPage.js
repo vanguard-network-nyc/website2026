@@ -163,7 +163,7 @@ const UpcomingEventsPage = () => {
     return `${shortMonths[parsed.month - 1]} ${parsed.day}`;
   };
 
-  const formatEventDate = (dateString) => {
+  const formatEventDate = (dateString, timezone) => {
     if (!dateString) return 'Date TBA';
     try {
       // Parse the ISO date string without timezone conversion
@@ -185,13 +185,16 @@ const UpcomingEventsPage = () => {
       const ampm = hours >= 12 ? 'PM' : 'AM';
       const timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
       
-      return `${dayOfWeek}, ${monthNames[month - 1]} ${day}, ${year}, ${timeStr}`;
+      // Add timezone if available
+      const tzStr = timezone ? ` ${timezone}` : '';
+      
+      return `${dayOfWeek}, ${monthNames[month - 1]} ${day}, ${year}, ${timeStr}${tzStr}`;
     } catch (error) {
       return 'Date TBA';
     }
   };
 
-  const formatEventTime = (dateString) => {
+  const formatEventTime = (dateString, timezone) => {
     if (!dateString) return '';
     try {
       // Parse the ISO date string without timezone conversion
@@ -202,7 +205,10 @@ const UpcomingEventsPage = () => {
       const hour12 = hours % 12 || 12;
       const ampm = hours >= 12 ? 'PM' : 'AM';
       
-      return `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      // Add timezone if available
+      const tzStr = timezone ? ` ${timezone}` : '';
+      
+      return `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}${tzStr}`;
     } catch (error) {
       return '';
     }
