@@ -475,7 +475,7 @@ const UpcomingEventsPage = () => {
                             <div className="flex items-center gap-4">
                               <span className="flex items-center gap-1">
                                 <Clock size={14} />
-                                {formatEventTime(event.start_date)}
+                                {formatEventTime(event.start_date, event.timezone)}
                               </span>
                               {event.session_leader_name && (
                                 <span className="flex items-center gap-1">
