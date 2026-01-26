@@ -16,7 +16,7 @@ const TermsPage = () => {
         <div className="max-w-4xl mx-auto px-6">
           <Breadcrumb lightMode={true} />
           <h1 className="text-3xl md:text-5xl font-bold mb-4">Terms of Use</h1>
-          <p className="text-xl text-white/90">Last updated September 14, 2021</p>
+          <p className="text-xl text-white/90">Last updated January 26, 2026</p>
         </div>
       </div>
 
