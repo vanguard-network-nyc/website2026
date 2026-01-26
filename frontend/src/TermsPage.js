@@ -27,7 +27,7 @@ const TermsPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">AGREEMENT TO TERMS</h2>
           
           <p className="text-slate-700 leading-relaxed mb-4">
-            These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and The Vanguard Group For Leadership LLC, dba The Vanguard Network ("Company", "we", "us", or "our"), concerning your access to and use of the <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a>, or <a href="https://community.vanguardgroupforleaders.com" className="text-[#045184] hover:text-[#00A8E1]">https://community.vanguardgroupforleaders.com</a> website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the "Site"). You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+            These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and The Vanguard Group For Leadership LLC, dba The Vanguard Network ("Company", "we", "us", or "our"), concerning your access to and use of the <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a>, or <a href="https://members.thevanguardnetwork.com/" className="text-[#045184] hover:text-[#00A8E1]">https://members.thevanguardnetwork.com/</a> website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the "Site"). You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
@@ -90,7 +90,7 @@ const TermsPage = () => {
             As a user of the Site, you agree not to:
           </p>
 
-          <ol className="list-decimal pl-6 space-y-2 text-slate-700 mb-4">
+          <ul className="list-disc pl-6 space-y-2 text-slate-700">
             <li>Systematically retrieve data or other content from the Site to create or compile, directly or indirectly, a collection, compilation, database, or directory without written permission from us.</li>
             <li>Make any unauthorized use of the Site, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email, or creating user accounts by automated means or under false pretenses.</li>
             <li>Use the Site to advertise or offer to sell goods and services.</li>
@@ -113,7 +113,7 @@ const TermsPage = () => {
             <li>Except as may be the result of standard search engine or Internet browser usage, use, launch, develop, or distribute any automated system, including without limitation, any spider, robot, cheat utility, scraper, or offline reader that accesses the Site, or using or launching any unauthorized script or other software.</li>
             <li>Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Site.</li>
             <li>Use the Site in a manner inconsistent with any applicable laws or regulations.</li>
-          </ol>
+          </ul>
         </section>
 
         {/* User Generated Contributions */}
@@ -124,7 +124,7 @@ const TermsPage = () => {
             The Site may invite you to chat, contribute to, or participate in blogs, message boards, online forums, and other functionality, and may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Site, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, "Contributions"). Contributions may be viewable by other users of the Site and through third-party websites. As such, any Contributions you transmit may be treated as non-confidential and non-proprietary. When you create or make available any Contributions, you thereby represent and warrant that:
           </p>
 
-          <ol className="list-decimal pl-6 space-y-2 text-slate-700 mb-4">
+          <ul className="list-disc pl-6 space-y-2 text-slate-700">
             <li>The creation, distribution, transmission, public display, or performance, and the accessing, downloading, or copying of your Contributions do not and will not infringe the proprietary rights, including but not limited to the copyright, patent, trademark, trade secret, or moral rights of any third party.</li>
             <li>You are the creator and owner of or have the necessary licenses, rights, consents, releases, and permissions to use and to authorize us, the Site, and other users of the Site to use your Contributions in any manner contemplated by the Site and these Terms of Use.</li>
             <li>You have the written consent, release, and/or permission of each and every identifiable individual person in your Contributions to use the name or likeness of each and every such identifiable individual person to enable inclusion and use of your Contributions in any manner contemplated by the Site and these Terms of Use.</li>
@@ -139,9 +139,9 @@ const TermsPage = () => {
             <li>Your Contributions do not violate any federal or state law concerning child pornography, or otherwise intended to protect the health or well-being of minors.</li>
             <li>Your Contributions do not include any offensive comments that are connected to race, national origin, gender, sexual preference, or physical handicap.</li>
             <li>Your Contributions do not otherwise violate, or link to material that violates, any provision of these Terms of Use, or any applicable law or regulation.</li>
-          </ol>
+          </ul>
 
-          <p className="text-slate-700 leading-relaxed">
+          <p className="text-slate-700 leading-relaxed mt-4">
             Any use of the Site in violation of the foregoing violates these Terms of Use and may result in, among other things, termination or suspension of your rights to use the Site.
           </p>
         </section>
@@ -208,7 +208,7 @@ const TermsPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">PRIVACY POLICY</h2>
           
           <p className="text-slate-700 leading-relaxed">
-            We care about data privacy and security. Please review our Privacy Policy: <a href="https://app.termly.io/document/privacy-policy/74f9e7c3-2f8e-44a1-bd56-9419ba0927e5" target="_blank" rel="noopener noreferrer" className="text-[#045184] hover:text-[#00A8E1]">https://app.termly.io/document/privacy-policy/74f9e7c3-2f8e-44a1-bd56-9419ba0927e5</a>. By using the Site, you agree to be bound by our Privacy Policy, which is incorporated into these Terms of Use. Please be advised the Site is hosted in the United States. If you access the Site from the European Union, Asia, or any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the United States, then through your continued use of the Site, you are transferring your data to the United States, and you expressly consent to have your data transferred to and processed in the United States.
+            We care about data privacy and security. Please review our Privacy Policy: <a href="https://www.thevanguardnetwork.com/privacy" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com/privacy</a>. By using the Site, you agree to be bound by our Privacy Policy, which is incorporated into these Terms of Use. Please be advised the Site is hosted in the United States. If you access the Site from the European Union, Asia, or any other region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ from applicable laws in the United States, then through your continued use of the Site, you are transferring your data to the United States, and you expressly consent to have your data transferred to and processed in the United States.
           </p>
         </section>
 
@@ -222,14 +222,14 @@ const TermsPage = () => {
             We respect the intellectual property rights of others. If you believe that any material available on or through the Site infringes upon any copyright you own or control, please immediately notify our Designated Copyright Agent using the contact information provided below (a "Notification"). A copy of your Notification will be sent to the person who posted or stored the material addressed in the Notification. Please be advised that pursuant to federal law you may be held liable for damages if you make material misrepresentations in a Notification. Thus, if you are not sure that material located on or linked to by the Site infringes your copyright, you should consider first contacting an attorney.
           </p>
 
-          <p className="text-slate-700 leading-relaxed mb-6">
+          <p className="text-slate-700 leading-relaxed mb-4">
             All Notifications should meet the requirements of DMCA 17 U.S.C. § 512(c)(3) and include the following information: (1) A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed; (2) identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works on the Site are covered by the Notification, a representative list of such works on the Site; (3) identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit us to locate the material; (4) information reasonably sufficient to permit us to contact the complaining party, such as an address, telephone number, and, if available, an email address at which the complaining party may be contacted; (5) a statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; and (6) a statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed upon.
           </p>
 
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Counter Notification</h3>
           
           <p className="text-slate-700 leading-relaxed mb-4">
-            If you believe your own copyrighted material has been removed from the Site as a result of a mistake or misidentification, you may submit a written counter notification to [us/our Designated Copyright Agent] using the contact information provided below (a "Counter Notification"). To be an effective Counter Notification under the DMCA, your Counter Notification must include substantially the following: (1) identification of the material that has been removed or disabled and the location at which the material appeared before it was removed or disabled; (2) a statement that you consent to the jurisdiction of the Federal District Court in which your address is located, or if your address is outside the United States, for any judicial district in which we are located; (3) a statement that you will accept service of process from the party that filed the Notification or the party's agent; (4) your name, address, and telephone number; (5) a statement under penalty of perjury that you have a good faith belief that the material in question was removed or disabled as a result of a mistake or misidentification of the material to be removed or disabled; and (6) your physical or electronic signature.
+            If you believe your own copyrighted material has been removed from the Site as a result of a mistake or misidentification, you may submit a written counter-notification to us using the contact information provided below (a "Counter Notification"). To be an effective Counter Notification under the DMCA, your Counter Notification must include substantially the following: (1) identification of the material that has been removed or disabled and the location at which the material appeared before it was removed or disabled; (2) a statement that you consent to the jurisdiction of the Federal District Court in which your address is located, or if your address is outside the United States, for any judicial district in which we are located; (3) a statement that you will accept service of process from the party that filed the Notification or the party's agent; (4) your name, address, and telephone number; (5) a statement under penalty of perjury that you have a good faith belief that the material in question was removed or disabled as a result of a mistake or misidentification of the material to be removed or disabled; and (6) your physical or electronic signature.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-6">
@@ -239,11 +239,13 @@ const TermsPage = () => {
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Designated Copyright Agent</h3>
           
           <div className="bg-slate-100 rounded-lg p-6">
-            <p className="text-slate-700">Monte Albers de Leon, Esq.</p>
+            <p className="text-slate-700">The Vanguard Group For Leadership LLC</p>
+            <p className="text-slate-700">d/b/a The Vanguard Network</p>
             <p className="text-slate-700">Attn: Copyright Agent</p>
-            <p className="text-slate-700">33 West 60th St., 2nd Floor</p>
-            <p className="text-slate-700">New York, NY 10023</p>
-            <p className="text-slate-700"><a href="mailto:monte@montealbersdeleon.com" className="text-[#045184] hover:text-[#00A8E1]">monte@montealbersdeleon.com</a></p>
+            <p className="text-slate-700">216 E 7th Street, #8</p>
+            <p className="text-slate-700">New York, NY 10009</p>
+            <p className="text-slate-700">United States</p>
+            <p className="text-slate-700">Email: <a href="mailto:copyright@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">copyright@vanguardgroup.nyc</a></p>
           </div>
         </section>
 
@@ -289,15 +291,19 @@ const TermsPage = () => {
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Binding Arbitration</h3>
           
           <p className="text-slate-700 leading-relaxed mb-4">
-            If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute (except those Disputes expressly excluded below) will be finally and exclusively resolved by binding arbitration. YOU UNDERSTAND THAT WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. The arbitration shall be commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association ("AAA") and, where appropriate, the AAA's Supplementary Procedures for Consumer Related Disputes ("AAA Consumer Rules"), both of which are available at the AAA website <a href="http://www.adr.org" target="_blank" rel="noopener noreferrer" className="text-[#045184] hover:text-[#00A8E1]">www.adr.org</a>. Your arbitration fees and your share of arbitrator compensation shall be governed by the AAA Consumer Rules and, where appropriate, limited by the AAA Consumer Rules. If such costs are determined to by the arbitrator to be excessive, we will pay all arbitration fees and expenses. The arbitration may be conducted in person, through the submission of documents, by phone, or online. The arbitrator will make a decision in writing, but need not provide a statement of reasons unless requested by either Party. The arbitrator must follow applicable law, and any award may be challenged if the arbitrator fails to do so. Except where otherwise required by the applicable AAA rules or applicable law, the arbitration will take place in United States County, New York. Except as otherwise provided herein, the Parties may litigate in court to compel arbitration, stay proceedings pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered by the arbitrator.
+            PLEASE READ THIS SECTION CAREFULLY. IT AFFECTS YOUR LEGAL RIGHTS. THIS SECTION REQUIRES MOST DISPUTES TO BE RESOLVED THROUGH BINDING ARBITRATION ON AN INDIVIDUAL BASIS AND LIMITS YOUR ABILITY TO BRING CLAIMS IN COURT, INCLUDING THE RIGHT TO A JURY TRIAL AND TO PARTICIPATE IN CLASS ACTIONS.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-4">
+            If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute (except those Disputes expressly excluded below) will be finally and exclusively resolved by binding arbitration. YOU UNDERSTAND THAT WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. The arbitration shall be commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association ("AAA") and, where appropriate, the AAA's Supplementary Procedures for Consumer Related Disputes ("AAA Consumer Rules"), both of which are available at the AAA website www.adr.org. Your arbitration fees and your share of arbitrator compensation shall be governed by the AAA Consumer Rules and, where appropriate, limited by the AAA Consumer Rules. If such costs are determined to by the arbitrator to be excessive, we will pay all arbitration fees and expenses. The arbitration may be conducted in person, through the submission of documents, by phone, or online. The arbitrator will make a decision in writing, but need not provide a statement of reasons unless requested by either Party. The arbitrator must follow applicable law, and any award may be challenged if the arbitrator fails to do so. Except where otherwise required by the applicable AAA rules or applicable law, the arbitration will take place in United States County, New York. Except as otherwise provided herein, the Parties may litigate in court to compel arbitration, stay proceedings pending arbitration, or to confirm, modify, vacate, or enter judgment on the award entered by the arbitrator.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-6">
-            If for any reason, a Dispute proceeds in court rather than arbitration, the Dispute shall be commenced or prosecuted in the state and federal courts located in New York County, New York, and the Parties hereby consent to, and waive all defenses of lack of personal jurisdiction, and forum non conveniens with respect to venue and jurisdiction in such state and federal courts. Application of the United Nations Convention on Contracts for the International Sale of Goods and the the Uniform Computer Information Transaction Act (UCITA) are excluded from these Terms of Use.
+            If for any reason, a Dispute proceeds in court rather than arbitration, the Dispute shall be commenced or prosecuted in the state and federal courts located in New York County, New York, and the Parties hereby consent to, and waive all defenses of lack of personal jurisdiction, and forum non conveniens with respect to venue and jurisdiction in such state and federal courts. Application of the United Nations Convention on Contracts for the International Sale of Goods and the Uniform Computer Information Transaction Act (UCITA) is excluded from these Terms of Use.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-6">
-            In no event shall any Dispute brought by either Party related in any way to the Site be commenced more than one (1) years after the cause of action arose. If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court.
+            In no event shall any Dispute brought by either Party related in any way to the Site be commenced more than one (1) year after the cause of action arose to the extent permitted by applicable law. If this provision is found to be illegal or unenforceable, then neither Party will elect to arbitrate any Dispute falling within that portion of this provision found to be illegal or unenforceable and such Dispute shall be decided by a court of competent jurisdiction within the courts listed for jurisdiction above, and the Parties agree to submit to the personal jurisdiction of that court.
           </p>
 
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Restrictions</h3>
@@ -354,7 +360,7 @@ const TermsPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">USER DATA</h2>
           
           <p className="text-slate-700 leading-relaxed">
-            We will maintain certain data that you transmit to the Site for the purpose of managing the performance of the Site, as well as data relating to your use of the Site. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Site. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data.
+            We will maintain certain data that you transmit to the Site for the purpose of managing the performance of the Site, as well as data relating to your use of the Site. Although we perform regular routine backups of data, you are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Site. You agree that we shall have no liability to you for any loss or corruption of any such data, and you hereby waive any right of action against us arising from any such loss or corruption of such data. For information about how we collect, use, and protect personal information, please review our Privacy Policy.
           </p>
         </section>
 
@@ -367,7 +373,7 @@ const TermsPage = () => {
           </p>
         </section>
 
-        {/* California Users */}
+        {/* California Users and Residents */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">CALIFORNIA USERS AND RESIDENTS</h2>
           
@@ -399,7 +405,7 @@ const TermsPage = () => {
             <p className="text-slate-700">New York, NY 10009</p>
             <p className="text-slate-700">United States</p>
             <p className="text-slate-700">Phone: +1 (585) 354-0826</p>
-            <p className="text-slate-700"><a href="mailto:kbanta@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">kbanta@vanguardgroup.nyc</a></p>
+            <p className="text-slate-700">Email: <a href="mailto:terms@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">terms@vanguardgroup.nyc</a></p>
           </div>
         </section>
       </div>
