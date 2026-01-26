@@ -26,19 +26,19 @@ const PrivacyPage = () => {
         {/* Introduction */}
         <div className="prose prose-lg max-w-none mb-16">
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            Thank you for choosing to be part of our community at The Vanguard Group For Leadership LLC, dba The Vanguard Network ("Company", "we", "us", or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at <a href="mailto:ken@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">ken@vanguardgroup.nyc</a>.
+            Thank you for choosing to be part of our community at The Vanguard Group For Leadership LLC, dba The Vanguard Network ("Company", "we", "us", or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our privacy policy (this "Privacy Policy"), or our practices with regards to your personal information, please contact us at <a href="mailto:privacy@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">privacy@vanguardgroup.nyc</a>.
           </p>
 
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            When you visit our website <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a>, or <a href="https://community.vanguardgroupforleaders.com" className="text-[#045184] hover:text-[#00A8E1]">https://community.vanguardgroupforleaders.com</a>, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy policy, we describe our privacy policy. We seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Sites and our services.
+            When you visit our website <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a> or <a href="https://members.thevanguardnetwork.com/" className="text-[#045184] hover:text-[#00A8E1]">https://members.thevanguardnetwork.com/</a> and use our services, you trust us with your personal information. We take your privacy very seriously. In this Privacy Policy, we describe how we collect, use, and protect your personal information. We seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this Privacy Policy that you do not agree with, please discontinue use of our Sites and our services.
           </p>
 
           <p className="text-lg text-slate-700 leading-relaxed mb-6">
-            This privacy policy applies to all information collected through our website (such as <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a>, or <a href="https://community.vanguardgroupforleaders.com" className="text-[#045184] hover:text-[#00A8E1]">https://community.vanguardgroupforleaders.com</a>), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services").
+            This Privacy Policy applies to all information collected through our website (such as <a href="https://www.thevanguardnetwork.com" className="text-[#045184] hover:text-[#00A8E1]">https://www.thevanguardnetwork.com</a>, or <a href="https://members.thevanguardnetwork.com/" className="text-[#045184] hover:text-[#00A8E1]">https://members.thevanguardnetwork.com/</a>), and/or any related services, sales, marketing or events (we refer to them collectively in this Privacy Policy as the "Services").
           </p>
 
           <p className="text-lg text-slate-700 leading-relaxed mb-12">
-            Please read this privacy policy carefully as it will help you make informed decisions about sharing your personal information with us.
+            Please read this Privacy Policy carefully as it will help you make informed decisions about sharing your personal information with us.
           </p>
         </div>
 
@@ -77,15 +77,23 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make and the products and features you use. The personal information we collect can include the following:
+            The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make and the products and features you use. The categories of personal information we may collect include the following:
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-2">
-            <strong>Name and Contact Data.</strong> We collect your first and last name, email address, postal address, phone number, and other similar contact data.
+            <strong>Identifiers and Contact Information.</strong> We collect your first and last name, email address, postal address, phone number, and other similar contact data.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-2">
+            <strong>Account Credentials and Security Information.</strong> We collect passwords, password hints, and similar security information used for authentication and account access.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-2">
+            <strong>Payment Information.</strong> If you make purchases through the Services, payment information may be collected and processed by third-party payment processors. We do not store full payment card numbers on our systems.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            <strong>Credentials.</strong> We collect passwords, password hints, and similar security information used for authentication and account access.
+            <strong>Sensitive Personal Information.</strong> In limited circumstances, we may collect information that may be considered sensitive personal information under applicable privacy laws (such as account login credentials, where applicable). We use such information only as necessary to provide the Services, maintain security, and comply with legal obligations.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-6">
@@ -112,29 +120,29 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">2. HOW DO WE USE YOUR INFORMATION?</h2>
           
           <p className="text-slate-600 italic mb-4">
-            <strong>In Short:</strong> We process your information for purposes based on legitimate business interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.
+            <strong>In Short:</strong> We use your information to operate our Services, communicate with you, maintain security, and comply with legal obligations.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            We use personal information collected via our Services for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations. We indicate the specific processing grounds we rely on next to each purpose listed below.
+            We use personal information collected via our Services for a variety of business purposes described below, including to provide and administer the Services, communicate with users, and support our business operations and legal compliance.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">We use the information we collect or receive:</p>
 
           <ul className="list-disc pl-6 space-y-3 text-slate-700">
-            <li>To facilitate account creation and logon process. If you choose to link your account with us to a third party account (such as your Google or Facebook account), we use the information you allowed us to collect from those third parties to facilitate account creation and logon process for the performance of the contract.</li>
-            <li>To send administrative information to you. We may use your personal information to send you product, service and new feature information and/or information about changes to our terms, conditions, and policies.</li>
-            <li>Fulfill and manage your orders. We may use your information to fulfill and manage your orders, payments, returns, and exchanges made through the Services.</li>
-            <li>To post testimonials. We post testimonials on our Services that may contain personal information. Prior to posting a testimonial, we will obtain your consent to use your name and testimonial. If you wish to update, or delete your testimonial, please contact us at <a href="mailto:ginger@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">ginger@vanguardgroup.nyc</a> and be sure to include your name, testimonial location, and contact information.</li>
-            <li>Request Feedback. We may use your information to request feedback and to contact you about your use of our Services.</li>
-            <li>To protect our Services. We may use your information as part of our efforts to keep our Services safe and secure (for example, for fraud monitoring and prevention).</li>
-            <li>To enable user-to-user communications. We may use your information in order to enable user-to-user communications with each user's consent.</li>
-            <li>To enforce our terms, conditions and policies for Business Purposes, Legal Reasons and Contractual.</li>
-            <li>To respond to legal requests and prevent harm. If we receive a subpoena or other legal request, we may need to inspect the data we hold to determine how to respond.</li>
-            <li>To manage user accounts. We may use your information for the purposes of managing our account and keeping it in working order.</li>
-            <li>To deliver services to the user. We may use your information to provide you with the requested service.</li>
-            <li>To respond to user inquiries/offer support to users. We may use your information to respond to your inquiries and solve any potential issues you might have with the use of our Services.</li>
-            <li>For other Business Purposes. We may use your information for other Business Purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns and to evaluate and improve our Services, products, marketing and your experience. We may use and store this information in aggregated and anonymized form so that it is not associated with individual end users and does not include personal information. We will not use identifiable personal information without your consent.</li>
+            <li><strong>To facilitate account creation and logon process.</strong> If you choose to link your account with us to a third-party account (such as your Google or Facebook account), we use the information you allowed us to collect from those third parties to facilitate account creation and logon.</li>
+            <li><strong>To send administrative information to you.</strong> We may use your personal information to send you product, service, and new feature information and/or information about changes to our terms, conditions, and policies.</li>
+            <li><strong>Fulfill and manage your orders.</strong> We may use your information to fulfill and manage your orders, payments, returns, and exchanges made through the Services.</li>
+            <li><strong>To post testimonials.</strong> We post testimonials on our Services that may contain personal information. Prior to posting a testimonial, we will obtain your consent to use your name and testimonial. If you wish to update or delete your testimonial, please contact us at <a href="mailto:privacy@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">privacy@vanguardgroup.nyc</a> and be sure to include your name, testimonial location, and contact information.</li>
+            <li><strong>Request feedback.</strong> We may use your information to request feedback and to contact you about your use of our Services.</li>
+            <li><strong>To protect our Services.</strong> We may use your information as part of our efforts to keep our Services safe and secure (for example, for fraud monitoring and prevention).</li>
+            <li><strong>To enable user-to-user communications.</strong> We may use your information to enable user-to-user communications, where applicable and with user consent.</li>
+            <li><strong>To enforce our terms, conditions, and policies</strong> for business, legal, and contractual purposes.</li>
+            <li><strong>To respond to legal requests and prevent harm.</strong> If we receive a subpoena or other legal request, we may need to review the data we hold to determine how to respond.</li>
+            <li><strong>To manage user accounts.</strong> We may use your information for the purposes of managing user accounts and keeping them in working order.</li>
+            <li><strong>To deliver services to the user.</strong> We may use your information to provide you with the requested Services.</li>
+            <li><strong>To respond to user inquiries and offer support.</strong> We may use your information to respond to your inquiries and resolve issues related to the use of our Services.</li>
+            <li><strong>For other business purposes.</strong> We may use your information for other business purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns, and evaluating and improving our Services, products, marketing, and user experience. We may use and store this information in aggregated or de-identified form so that it is not associated with individual users.</li>
           </ul>
         </section>
 
@@ -147,11 +155,11 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            We may process or share data based on the following legal basis:
+            We may process or share personal information for the purposes described below, consistent with applicable privacy laws:
           </p>
 
           <ul className="list-disc pl-6 space-y-3 text-slate-700 mb-6">
-            <li><strong>Consent:</strong> We may process your data if you have given us specific consent to use your personal information in a specific purpose.</li>
+            <li><strong>Consent:</strong> We may process your data if you have given us specific consent to use your personal information for a specific purpose.</li>
             <li><strong>Legitimate Interests:</strong> We may process your data when it is reasonably necessary to achieve our legitimate business interests.</li>
             <li><strong>Performance of a Contract:</strong> Where we have entered into a contract with you, we may process your personal information to fulfill the terms of our contract.</li>
             <li><strong>Legal Obligations:</strong> We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, a judicial proceeding, court order, or legal process, such as in response to a court order or a subpoena (including in response to public authorities to meet national security or law enforcement requirements).</li>
@@ -163,10 +171,10 @@ const PrivacyPage = () => {
           </p>
 
           <ul className="list-disc pl-6 space-y-3 text-slate-700">
-            <li><strong>Vendors, Consultants and Other Third-Party Service Providers.</strong> We may share your data with third party vendors, service providers, contractors or agents who perform services for us or on our behalf and require access to such information to do that work. Examples include: payment processing, data analysis, email delivery, hosting services, customer service and marketing efforts. We may allow selected third parties to use tracking technology on the Services, which will enable them to collect data about how you interact with the Services over time. This information may be used to, among other things, analyze and track data, determine the popularity of certain content and better understand online activity. Unless described in this Policy, we do not share, sell, rent or trade any of your information with third parties for their promotional purposes.</li>
+            <li><strong>Vendors, Consultants and Other Third-Party Service Providers.</strong> We may share your data with third party vendors, service providers, contractors or agents who perform services for us or on our behalf and require access to such information to do that work. Examples include: payment processing, data analysis, email delivery, hosting services, customer service and marketing efforts. We may allow selected third parties to use tracking technology on the Services, which will enable them to collect data about how you interact with the Services over time. This information may be used to, among other things, analyze and track data, determine the popularity of certain content and better understand online activity. We do not sell personal information. Additional information about California privacy rights, including how to exercise those rights, is provided in the California Residents section below.</li>
             <li><strong>Business Transfers.</strong> We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
-            <li><strong>Third-Party Advertisers.</strong> We may use third-party advertising companies to serve ads when you visit the Services. These companies may use information about your visits to our Website(s) and other websites that are contained in web cookies and other tracking technologies in order to provide advertisements about goods and services of interest to you.</li>
-            <li><strong>Affiliates.</strong> We may share your information with our affiliates, in which case we will require those affiliates to honor this privacy policy. Affiliates include our parent company and any subsidiaries, joint venture partners or other companies that we control or that are under common control with us.</li>
+            <li><strong>Third-Party Advertisers.</strong> We may use third-party advertising companies to serve ads when you visit the Services. These companies may use information about your visits to our Website(s) and other websites that are contained in web cookies and other tracking technologies in order to provide advertisements about goods and services of interest to you. You can learn more about these practices and your available choices in the "California Residents" section below and in this Privacy Policy.</li>
+            <li><strong>Affiliates.</strong> We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners or other companies that we control or that are under common control with us.</li>
             <li><strong>Business Partners.</strong> We may share your information with our business partners to offer you certain products, services or promotions.</li>
           </ul>
         </section>
@@ -179,8 +187,16 @@ const PrivacyPage = () => {
             <strong>In Short:</strong> We may use cookies and other tracking technologies to collect and store your information.
           </p>
 
+          <p className="text-slate-700 leading-relaxed mb-4">
+            We may use cookies and similar tracking technologies (such as web beacons and pixels) to access or store information when you visit or interact with the Services. These technologies help us operate the Services, maintain security, understand usage patterns, and improve functionality and performance.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-4">
+            Cookies may be session cookies (which expire when you close your browser) or persistent cookies (which remain on your device for a set period of time), and may be set by us or by third-party service providers acting on our behalf.
+          </p>
+
           <p className="text-slate-700 leading-relaxed">
-            We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Policy.
+            You can control cookies through your browser settings. Most browsers allow you to remove or reject cookies; however, doing so may affect the availability or functionality of certain features of the Services.
           </p>
         </section>
 
@@ -193,7 +209,7 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed">
-            The Services may contain advertisements from third parties that are not affiliated with us and which may link to other websites, online services or mobile applications. We cannot guarantee the safety and privacy of data you provide to any third parties. Any data collected by third parties is not covered by this privacy policy. We are not responsible for the content or privacy and security practices and policies of any third parties, including other websites, services or applications that may be linked to or from the Services. You should review the policies of such third parties and contact them directly to respond to your questions.
+            The Services may contain advertisements from third parties that are not affiliated with us and which may link to other websites, online services or mobile applications. We are not responsible for the safety or privacy of any information you provide to third parties. Any data collected by third parties is not covered by this Privacy Policy. We are not responsible for the content or privacy and security practices and policies of any third parties, including other websites, services or applications that may be linked to or from the Services. You should review the policies of such third parties and contact them directly to respond to your questions.
           </p>
         </section>
 
@@ -202,11 +218,11 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
           
           <p className="text-slate-600 italic mb-4">
-            <strong>In Short:</strong> We keep your information for as long as necessary to fulfill the purposes outlined in this privacy policy unless otherwise required by law.
+            <strong>In Short:</strong> We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Policy unless otherwise required by law.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements). No purpose in this policy will require us keeping your personal information for longer than the period of time in which users have an account with us.
+            We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Policy, including to provide the Services, comply with legal obligations, resolve disputes, and enforce our agreements, unless a longer retention period is required or permitted by law (such as tax, accounting or other legal requirements). No purpose in this policy will require us keeping your personal information for longer than the period of time in which users have an account with us, except as necessary for the foregoing purposes.
           </p>
 
           <p className="text-slate-700 leading-relaxed">
@@ -223,7 +239,7 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed">
-            We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, please also remember that we cannot guarantee that the internet itself is 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the services within a secure environment.
+            We have implemented reasonable administrative, technical, and organizational safeguards designed to protect the security of any personal information we process. However, please note that no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure. Although we strive to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.
           </p>
         </section>
 
@@ -236,7 +252,7 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed">
-            We do not knowingly solicit data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at <a href="mailto:tony@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">tony@vanguardgroup.nyc</a>.
+            We do not knowingly solicit data from or market to children under 18 years of age. By using the Services, you represent that you are at least 18 years of age or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users under 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at <a href="mailto:privacy@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">privacy@vanguardgroup.nyc</a>.
           </p>
         </section>
 
@@ -250,6 +266,10 @@ const PrivacyPage = () => {
 
           <p className="text-slate-700 leading-relaxed mb-4">
             If you are resident in the European Economic Area and you believe we are unlawfully processing your personal information, you also have the right to complain to your local data protection supervisory authority. You can find their contact details here: <a href="http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm" target="_blank" rel="noopener noreferrer" className="text-[#045184] hover:text-[#00A8E1]">http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm</a>.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-6">
+            Depending on your jurisdiction (including California), you may have additional rights regarding your personal information. Please see the "California Residents" section below for more information.
           </p>
 
           <h3 className="text-2xl font-semibold text-slate-800 mb-4">Account Information</h3>
@@ -271,13 +291,9 @@ const PrivacyPage = () => {
             <strong>Cookies and similar technologies:</strong> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. To opt-out of interest-based advertising by advertisers on our Services visit <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[#045184] hover:text-[#00A8E1]">http://www.aboutads.info/choices/</a>.
           </p>
 
-          <p className="text-slate-700 leading-relaxed mb-4">
-            <strong>Opting out of email marketing:</strong> You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. You will then be removed from the marketing email list – however, we will still need to send you service-related emails that are necessary for the administration and use of your account. To otherwise opt-out, you may:
+          <p className="text-slate-700 leading-relaxed">
+            <strong>Opting out of email marketing:</strong> You can unsubscribe from our marketing email list at any time by clicking the unsubscribe link in the emails we send or by contacting us at <a href="mailto:privacy@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">privacy@vanguardgroup.nyc</a>. You will be removed from the marketing email list; however, we may still send you service-related emails that are necessary for the administration and use of your account. You may also manage certain communication preferences through your account settings, where available.
           </p>
-
-          <ul className="list-disc pl-6 space-y-2 text-slate-700">
-            <li>Note your preferences when you register an account with the site.</li>
-          </ul>
         </section>
 
         {/* Section 10 */}
@@ -285,7 +301,7 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">10. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
           
           <p className="text-slate-700 leading-relaxed">
-            Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. No uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this privacy policy.
+            Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. No uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to Do-Not-Track browser signals or similar mechanisms that automatically communicate a preference not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Policy.
           </p>
         </section>
 
@@ -294,15 +310,23 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">11. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h2>
           
           <p className="text-slate-600 italic mb-4">
-            <strong>In Short:</strong> Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.
+            <strong>In Short:</strong> Yes. California residents have specific rights regarding their personal information under California privacy laws.
           </p>
 
           <p className="text-slate-700 leading-relaxed mb-4">
-            California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
+            California residents are entitled to certain rights regarding their personal information under the California Consumer Privacy Act, as amended by the California Privacy Rights Act ("CPRA"). These rights may include, subject to applicable exceptions, the right to request access to, correction of, or deletion of personal information, the right to limit the use of sensitive personal information, and the right to opt out of certain disclosures of personal information.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-4">
+            We do not sell personal information. Additional information about California privacy rights, and how to exercise those rights, is provided in this Privacy Policy.
+          </p>
+
+          <p className="text-slate-700 leading-relaxed mb-4">
+            California Civil Code Section 1798.83, also known as the "Shine the Light" law, permits California residents to request and obtain, once per year and free of charge, information about categories of personal information (if any) disclosed to third parties for their direct marketing purposes and the names and addresses of those third parties. Requests may be submitted using the contact information provided below.
           </p>
 
           <p className="text-slate-700 leading-relaxed">
-            If you are under 18 years of age, reside in California, and have a registered account with the Services, you have the right to request removal of unwanted data that you publicly post on the Services. To request removal of such data, please contact us using the contact information provided below, and include the email address associated with your account and a statement that you reside in California. We will make sure the data is not publicly displayed on the Services, but please be aware that the data may not be completely or comprehensively removed from our systems.
+            If you are under 18 years of age, reside in California, and have a registered account with the Services, you have the right to request removal of unwanted data that you publicly post on the Services. To request removal, please contact us using the information below and include the email address associated with your account and a statement that you reside in California. Please note that removal may not ensure complete or comprehensive deletion from all systems.
           </p>
         </section>
 
@@ -315,7 +339,7 @@ const PrivacyPage = () => {
           </p>
 
           <p className="text-slate-700 leading-relaxed">
-            We may update this privacy policy from time to time. The updated version will be indicated by an updated "Revised" date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy policy, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
+            We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Revised" date and the updated version will be effective as soon as it is accessible. If we make material changes to this Privacy Policy, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Policy frequently to be informed of how we are protecting your information.
           </p>
         </section>
 
@@ -324,15 +348,15 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">13. HOW CAN YOU CONTACT US ABOUT THIS POLICY?</h2>
           
           <p className="text-slate-700 leading-relaxed mb-4">
-            If you have questions or comments about this policy, you may contact our Data Protection Officer (DPO), Tony Powe, by email at <a href="mailto:tony@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">tony@vanguardgroup.nyc</a>, or by post to:
+            If you have questions or comments about this Privacy Policy or our privacy practices, you may contact us at:
           </p>
 
           <div className="bg-slate-100 rounded-lg p-6 mb-6">
             <p className="text-slate-700 font-medium">The Vanguard Group For Leadership LLC</p>
-            <p className="text-slate-700">Tony Powe</p>
             <p className="text-slate-700">216 E 7th Street, #8</p>
             <p className="text-slate-700">New York, NY 10009</p>
             <p className="text-slate-700">United States</p>
+            <p className="text-slate-700">Email: <a href="mailto:privacy@vanguardgroup.nyc" className="text-[#045184] hover:text-[#00A8E1]">privacy@vanguardgroup.nyc</a></p>
           </div>
         </section>
 
@@ -341,7 +365,7 @@ const PrivacyPage = () => {
           <h2 className="text-3xl font-bold text-slate-900 mb-6">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
           
           <p className="text-slate-700 leading-relaxed">
-            Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by <Link to="/contact" className="text-[#045184] hover:underline font-medium">clicking here</Link>. We will respond to your request within 30 days.
+            Depending on your jurisdiction, you may have the right to request access to the personal information we collect about you, request correction of that information, or request deletion in certain circumstances. To submit a request, please contact us using the email address above. We will respond to verified requests in accordance with applicable law.
           </p>
         </section>
       </div>
