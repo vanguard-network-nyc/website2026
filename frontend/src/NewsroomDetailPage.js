@@ -25,7 +25,13 @@ const bodyComponents = {
   h1: (props) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
   h2: (props) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
   h3: (props) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
-  a: (props) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+  a: (props) => {
+    const href = props.href || '';
+    const isVanguardLink = href.includes('thevanguardnetwork.com');
+    return isVanguardLink 
+      ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
+      : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
+  },
   blockquote: (props) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
   br: () => <br />,
 };
