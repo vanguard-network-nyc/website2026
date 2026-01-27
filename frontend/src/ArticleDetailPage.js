@@ -215,7 +215,13 @@ const ArticleDetailPage = () => {
                     h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
                     h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
                     h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
-                    a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                    a: ({node, ...props}) => {
+                      const href = props.href || '';
+                      const isVanguardLink = href.includes('thevanguardnetwork.com');
+                      return isVanguardLink 
+                        ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
+                        : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
+                    },
                     blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                   }}
                 >
@@ -263,7 +269,13 @@ const ArticleDetailPage = () => {
                           h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
                           h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
                           h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
-                          a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                          a: ({node, ...props}) => {
+                            const href = props.href || '';
+                            const isVanguardLink = href.includes('thevanguardnetwork.com');
+                            return isVanguardLink 
+                              ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
+                              : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
+                          },
                           blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
                         }}
                       >
