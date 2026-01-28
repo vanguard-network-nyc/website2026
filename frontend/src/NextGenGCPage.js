@@ -426,6 +426,8 @@ const NextGenGCPage = () => {
               
               <a
                 href="https://www.thevanguardnetwork.com/_files/ugd/e6a994_4be97e33222a4492a2e9adaa5ca2544f.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-slate-600 text-white px-4 md:px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors duration-200"
               >
                 Download PDF
