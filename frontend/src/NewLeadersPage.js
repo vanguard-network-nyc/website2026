@@ -206,6 +206,8 @@ const NewLeadersPage = () => {
                 </p>
                 <a
                   href="https://www.thevanguardnetwork.com/_files/ugd/e6a994_6135cf8595124a89a23c346507bfc874.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
                 >
                   Learn More
@@ -224,6 +226,8 @@ const NewLeadersPage = () => {
                 </p>
                 <a
                   href="https://www.thevanguardnetwork.com/_files/ugd/e6a994_dde1e8f7c3244a229fa8e507806a1e5e.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
                 >
                   Learn More
