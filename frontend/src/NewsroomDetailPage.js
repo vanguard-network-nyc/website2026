@@ -27,8 +27,10 @@ const bodyComponents = {
   h3: (props) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
   a: (props) => {
     const href = props.href || '';
-    // Main vanguard site links open in same tab, members subdomain and other external links open in new tab
-    const isMainVanguardLink = href.includes('thevanguardnetwork.com') && !href.includes('members.thevanguardnetwork.com');
+    // PDFs always open in new tab
+    const isPdfLink = href.toLowerCase().endsWith('.pdf');
+    // Main vanguard site links (non-PDF) open in same tab, everything else opens in new tab
+    const isMainVanguardLink = href.includes('thevanguardnetwork.com') && !href.includes('members.thevanguardnetwork.com') && !isPdfLink;
     return isMainVanguardLink 
       ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
       : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
