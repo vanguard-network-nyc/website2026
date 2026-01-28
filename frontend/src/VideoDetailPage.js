@@ -13,6 +13,14 @@ const VideoDetailPage = () => {
   const [similarVideos, setSimilarVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Inject Article schema directly into DOM (must be called before any early returns)
+  useArticleSchema(video, {
+    title: video?.vimeo_name || video?.video_description,
+    description: video?.vimeo_long_description?.substring(0, 160),
+    image: video?.headshot,
+    author: video?.featured_speakers
+  });
+
 
   useEffect(() => {
     if (id) {
@@ -98,13 +106,7 @@ const VideoDetailPage = () => {
     dateModified: new Date().toISOString()
   } : null;
 
-  // Inject Article schema directly into DOM (bypasses react-helmet limitations)
-  useArticleSchema(video, {
-    title: video?.vimeo_name || video?.video_description,
-    description: video?.vimeo_long_description?.substring(0, 160),
-    image: video?.headshot,
-    author: video?.featured_speakers
-  });
+
 
   return (
     <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
