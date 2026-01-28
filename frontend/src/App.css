@@ -4,9 +4,9 @@
   overflow-x: hidden;
 }
 
-/* Smooth scrolling behavior */
+/* Instant scroll for page navigation - smooth scroll handled via JS for anchor links */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 /* Custom scrollbar */
