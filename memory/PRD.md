@@ -12,11 +12,11 @@ Executive leadership network website built with React frontend and FastAPI backe
 ## What's Been Implemented
 
 ### January 28, 2026
-- **External Link Behavior Fix:** Standardized link behavior across all pages
-  - Links to `thevanguardnetwork.com` (main site) open in SAME tab
-  - Links to `members.thevanguardnetwork.com` open in NEW tab
-  - All other external links open in NEW tab
-  - Updated: NewsroomDetailPage, ArticleDetailPage, VideoDetailPage, NewLeadersPage, NextGenGCPage, PrivacyPage, TermsPage
+- **External Link Behavior Fix (Complete):** Fixed all link behavior across the site
+  - Root cause: Script in index.html was incorrectly stripping target="_blank" from members subdomain links
+  - Updated script to correctly handle: main site (same tab), members subdomain (new tab), PDFs (new tab)
+  - Updated ReactMarkdown components to handle PDF links correctly
+  - Verified: Networking, Programs, Upcoming Events, Privacy, Terms, New Leaders pages
 
 - **Page Scroll Fix:** Fixed gradual scroll-up animation when navigating via footer links
   - Changed `scroll-behavior: smooth` to `auto` in App.css
