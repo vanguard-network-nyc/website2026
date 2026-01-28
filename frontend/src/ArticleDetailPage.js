@@ -217,8 +217,9 @@ const ArticleDetailPage = () => {
                     h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
                     a: ({node, ...props}) => {
                       const href = props.href || '';
-                      const isVanguardLink = href.includes('thevanguardnetwork.com');
-                      return isVanguardLink 
+                      // Main vanguard site links open in same tab, members subdomain and other external links open in new tab
+                      const isMainVanguardLink = href.includes('thevanguardnetwork.com') && !href.includes('members.thevanguardnetwork.com');
+                      return isMainVanguardLink 
                         ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
                         : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
                     },
@@ -271,8 +272,9 @@ const ArticleDetailPage = () => {
                           h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2" {...props} />,
                           a: ({node, ...props}) => {
                             const href = props.href || '';
-                            const isVanguardLink = href.includes('thevanguardnetwork.com');
-                            return isVanguardLink 
+                            // Main vanguard site links open in same tab, members subdomain and other external links open in new tab
+                            const isMainVanguardLink = href.includes('thevanguardnetwork.com') && !href.includes('members.thevanguardnetwork.com');
+                            return isMainVanguardLink 
                               ? <a className="text-blue-600 hover:text-blue-700 underline" {...props} />
                               : <a className="text-blue-600 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer" {...props} />;
                           },
