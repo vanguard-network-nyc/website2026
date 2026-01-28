@@ -12,6 +12,12 @@ Executive leadership network website built with React frontend and FastAPI backe
 ## What's Been Implemented
 
 ### January 28, 2026
+- **External Link Behavior Fix:** Standardized link behavior across all pages
+  - Links to `thevanguardnetwork.com` (main site) open in SAME tab
+  - Links to `members.thevanguardnetwork.com` open in NEW tab
+  - All other external links open in NEW tab
+  - Updated: NewsroomDetailPage, ArticleDetailPage, VideoDetailPage, NewLeadersPage, NextGenGCPage, PrivacyPage, TermsPage
+
 - **Page Scroll Fix:** Fixed gradual scroll-up animation when navigating via footer links
   - Changed `scroll-behavior: smooth` to `auto` in App.css
   - Pages now load instantly at top position
