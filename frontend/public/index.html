@@ -245,12 +245,18 @@
               var href = link.getAttribute("href");
               if (!href) return;
 
-              // Only change Vanguard internal links
-              var isVanguard =
+              // Skip PDF files - they should always open in new tab
+              if (href.toLowerCase().endsWith('.pdf')) return;
+              
+              // Skip members subdomain - should open in new tab
+              if (href.indexOf("members.thevanguardnetwork.com") !== -1) return;
+
+              // Only change main Vanguard site links (not members subdomain)
+              var isMainVanguard =
                 href.indexOf("thevanguardnetwork.com") !== -1 ||
                 href.indexOf("www.thevanguardnetwork.com") !== -1;
 
-              if (isVanguard) {
+              if (isMainVanguard) {
                 link.removeAttribute("target");
                 // rel is mainly needed with target=_blank; safe to remove for internal links
                 link.removeAttribute("rel");
