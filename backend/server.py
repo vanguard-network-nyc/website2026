@@ -1516,6 +1516,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Middleware to add no-cache headers for Airtable content endpoints
+# This ensures fresh Airtable attachment URLs are always fetched
+from starlette.middleware.base import BaseHTTPMiddleware
+
+class NoCacheMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        # Add no-cache headers for endpoints that return Airtable data with attachment URLs
+        airtable_endpoints = [
+            '/api/articles', '/api/article/',
+            '/api/podcasts', '/api/podcast/',
+            '/api/videos', '/api/video/',
+            '/api/newsroom', '/api/newsroom/',
+            '/api/events', '/api/team',
+            '/api/gc-members', '/api/in-the-press'
+        ]
+        if any(request.url.path.startswith(ep) for ep in airtable_endpoints):
+            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
+app.add_middleware(NoCacheMiddleware)
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
