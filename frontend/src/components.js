@@ -1334,7 +1334,7 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          {/* Horizontal Cards Layout - All Screen Sizes */}
+          {/* Horizontal Cards Layout - All Screen Sizes - Sorted Alphabetically by Last Name */}
           <div className="space-y-6">
             {/* Ken Banta */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
@@ -1348,6 +1348,36 @@ const AdvisoryPage = () => {
                   Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
                 </p>
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
+              </div>
+            </div>
+
+            {/* Judy Gawlik Brown */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor, Strategy, Finance & Corporate Transformation" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">JUDY GAWLIK BROWN</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
+              </div>
+            </div>
+
+            {/* Aileen Gonsalves */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
               </div>
             </div>
 
@@ -1381,33 +1411,18 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
-            {/* Aileen Gonsalves */}
+            {/* David Robinson */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson - Executive Advisor, Governance, Insurance & Public Policy" className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
-                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">DAVID ROBINSON</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
+                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.
                 </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
-              </div>
-            </div>
-
-            {/* Judy Gawlik Brown */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor, Strategy, Finance & Corporate Transformation" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">JUDY GAWLIK BROWN</h3>
-                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, University of Connecticut School of Law (Insurance Law & Policy) | Board Chair, Capital Region Development Authority | Board member, The iQuilt Partnership | Former Chair, MetroHartford Alliance</p>
               </div>
             </div>
 
@@ -1423,21 +1438,6 @@ const AdvisoryPage = () => {
                   Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
                 </p>
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University graduate | Frequent speaker and mentor to senior legal executives</p>
-              </div>
-            </div>
-
-            {/* David Robinson */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson - Executive Advisor, Governance, Insurance & Public Policy" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">DAVID ROBINSON</h3>
-                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, University of Connecticut School of Law (Insurance Law & Policy) | Board Chair, Capital Region Development Authority | Board member, The iQuilt Partnership | Former Chair, MetroHartford Alliance</p>
               </div>
             </div>
           </div>
