@@ -1546,6 +1546,51 @@ const AdvisoryPage = () => {
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
               </div>
             </div>
+
+            {/* Judy Gawlik Brown - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">JUDY GAWLIK BROWN</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth | Independent Director at Agilent Technologies and Belden Inc.</p>
+              </div>
+            </div>
+
+            {/* Tom Sabatino - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg" alt="Tom Sabatino" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">TOM SABATINO</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Legal, Governance & Corporate Strategy</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University | Mentor to senior legal executives</p>
+              </div>
+            </div>
+
+            {/* David Robinson - Horizontal */}
+            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
+              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-1">DAVID ROBINSON</h3>
+                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As EVP and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions during his 18-year tenure.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, UConn School of Law | Board Chair, Capital Region Development Authority | Former Chair, MetroHartford Alliance</p>
+              </div>
+            </div>
           </div>
         </motion.div>
     </div>
