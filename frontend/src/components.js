@@ -1229,6 +1229,32 @@ const AdvisoryPage = () => {
       </motion.div>
     </div>
 
+    {/* Video Section */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.1, duration: 0.8 }}
+        className="bg-white rounded-3xl p-6 md:p-12 md:p-16 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 relative overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
+        
+        <div className="relative z-10">
+          <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://player.vimeo.com/video/1161202462?h=0&title=0&byline=0&portrait=0"
+              className="w-full h-full"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="Vanguard Network Advisory Video"
+            ></iframe>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+
     {/* Overview Section */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
       <motion.div
