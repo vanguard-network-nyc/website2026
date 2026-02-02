@@ -1334,167 +1334,16 @@ const AdvisoryPage = () => {
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
           
-          {/* Mobile & Desktop Layout - Vertical Cards */}
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 md:p-8 auto-rows-fr md:hidden xl:grid">
+          {/* Horizontal Cards Layout - All Screen Sizes */}
+          <div className="space-y-6">
             {/* Ken Banta */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="/ken-banta.jpg" 
-                alt="Ken Banta - Founder and Managing Director of The Vanguard Network" 
-                  className="w-full h-full object-cover"
-                />
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/ken-banta.jpg" alt="Ken Banta - Founder and Managing Director of The Vanguard Network" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">KEN BANTA</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
-              </div>
-            </div>
-
-            {/* Richard Hulme */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="/richard-hulme.jpg" 
-                  alt="Richard Hulme - Senior Advisor at The Vanguard Network" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">RICHARD HULME</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Managing Director</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
-              </div>
-            </div>
-
-            {/* Garrick Isert */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="/garrick-isert.jpg" 
-                  alt="Garrick Isert - Senior Advisor at The Vanguard Network" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">GARRICK ISERT</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
-              </div>
-            </div>
-
-            {/* Aileen Gonsalves */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="/aileen-gonsalves.jpg" 
-                  alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" 
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: 'calc(50% - 20px) 20%' }}
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">AILEEN GONSALVES</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Principal</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
-              </div>
-            </div>
-
-            {/* Judy Gawlik Brown */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" 
-                  alt="Judy Gawlik Brown - Executive Advisor, Strategy, Finance & Corporate Transformation" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">JUDY GAWLIK BROWN</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">CPA | MBA, University of Chicago Booth | Independent Director at Agilent Technologies and Belden Inc.</p>
-              </div>
-            </div>
-
-            {/* Tom Sabatino */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg" 
-                  alt="Tom Sabatino - Executive Advisor, Legal, Governance & Corporate Strategy" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">TOM SABATINO</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Executive Advisor, Legal, Governance & Corporate Strategy</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">University of Pennsylvania Law School | Wesleyan University | Mentor to senior legal executives</p>
-              </div>
-            </div>
-
-            {/* David Robinson */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300" style={{ height: '680px' }}>
-              <div className="w-40 h-40 rounded-full mx-auto mb-4 overflow-hidden shadow-md">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" 
-                  alt="David Robinson - Executive Advisor, Governance, Insurance & Public Policy" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">DAVID ROBINSON</h3>
-              <p className="text-base mb-4 text-center font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
-              <div style={{ height: '260px', marginBottom: '16px' }}>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As EVP and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions during his 18-year tenure.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-200">
-                <p className="text-xs text-slate-500 text-center">Faculty, UConn School of Law | Board Chair, Capital Region Development Authority | Former Chair, MetroHartford Alliance</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Tablet Layout - Horizontal Full-Width Cards */}
-          <div className="hidden md:block xl:hidden space-y-6">
-            {/* Ken Banta - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/ken-banta.jpg" alt="Ken Banta" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">KEN BANTA</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">KEN BANTA</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Founder & CEO</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
                   Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
                 </p>
@@ -1502,14 +1351,14 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
-            {/* Richard Hulme - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/richard-hulme.jpg" alt="Richard Hulme" className="w-full h-full object-cover" />
+            {/* Richard Hulme */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/richard-hulme.jpg" alt="Richard Hulme - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">RICHARD HULME</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Managing Director</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">RICHARD HULME</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Managing Director</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
                   Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
                 </p>
@@ -1517,14 +1366,14 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
-            {/* Garrick Isert - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/garrick-isert.jpg" alt="Garrick Isert" className="w-full h-full object-cover" />
+            {/* Garrick Isert */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/garrick-isert.jpg" alt="Garrick Isert - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">GARRICK ISERT</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">GARRICK ISERT</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
                   Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
                 </p>
@@ -1532,14 +1381,14 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
-            {/* Aileen Gonsalves - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
+            {/* Aileen Gonsalves */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">AILEEN GONSALVES</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Principal</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
                   Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
                 </p>
@@ -1547,48 +1396,48 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
-            {/* Judy Gawlik Brown - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown" className="w-full h-full object-cover" />
+            {/* Judy Gawlik Brown */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor, Strategy, Finance & Corporate Transformation" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">JUDY GAWLIK BROWN</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">JUDY GAWLIK BROWN</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Strategy, Finance & Corporate Transformation</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations.
+                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
                 </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth | Independent Director at Agilent Technologies and Belden Inc.</p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
               </div>
             </div>
 
-            {/* Tom Sabatino - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg" alt="Tom Sabatino" className="w-full h-full object-cover" />
+            {/* Tom Sabatino */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg" alt="Tom Sabatino - Executive Advisor, Legal, Governance & Corporate Strategy" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">TOM SABATINO</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Legal, Governance & Corporate Strategy</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">TOM SABATINO</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Legal, Governance & Corporate Strategy</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
+                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
                 </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University | Mentor to senior legal executives</p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University graduate | Frequent speaker and mentor to senior legal executives</p>
               </div>
             </div>
 
-            {/* David Robinson - Horizontal */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl flex items-start gap-6">
-              <div className="w-32 h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson" className="w-full h-full object-cover" />
+            {/* David Robinson */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson - Executive Advisor, Governance, Insurance & Public Policy" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">DAVID ROBINSON</h3>
-                <p className="text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1">DAVID ROBINSON</h3>
+                <p className="text-sm md:text-base mb-3 font-semibold" style={{ color: '#045184' }}>Executive Advisor, Governance, Insurance & Public Policy</p>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As EVP and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions during his 18-year tenure.
+                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.
                 </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, UConn School of Law | Board Chair, Capital Region Development Authority | Former Chair, MetroHartford Alliance</p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, University of Connecticut School of Law (Insurance Law & Policy) | Board Chair, Capital Region Development Authority | Board member, The iQuilt Partnership | Former Chair, MetroHartford Alliance</p>
               </div>
             </div>
           </div>
