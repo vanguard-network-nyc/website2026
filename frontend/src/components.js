@@ -599,6 +599,16 @@ const Footer = () => {
 // Additional Pages
 const AdvisoryPage = () => {
   const [activeTab, setActiveTab] = useState('strategic'); // 'strategic', 'organizational', 'client'
+  const [videoEnded, setVideoEnded] = useState(false);
+  const advisoryVideoRef = React.useRef(null);
+
+  const handleVideoReplay = () => {
+    if (advisoryVideoRef.current) {
+      advisoryVideoRef.current.currentTime = 0;
+      advisoryVideoRef.current.play();
+      setVideoEnded(false);
+    }
+  };
 
   // Map tab keys to their corresponding hash IDs
   const tabToHash = {
