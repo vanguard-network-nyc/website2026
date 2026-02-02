@@ -1253,16 +1253,36 @@ const AdvisoryPage = () => {
         <div className="relative z-10">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
             <video 
+              ref={advisoryVideoRef}
               className="w-full h-full object-cover"
               controls
               controlsList="nodownload nofullscreen noremoteplayback"
               disablePictureInPicture
               playsInline
               poster="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4toivnvn_The%20Vanguard%20Network%20GC%20Consulting%20Service.png"
+              onEnded={() => setVideoEnded(true)}
+              onPlay={() => setVideoEnded(false)}
             >
               <source src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/fkw8ajfl_The%20Vanguard%20Network%20GC%20Consulting%20Service.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            {/* Replay Button Overlay */}
+            {videoEnded && (
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <button
+                  onClick={handleVideoReplay}
+                  className="flex flex-col items-center gap-3 text-white hover:scale-110 transition-transform duration-300"
+                >
+                  <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/50 hover:bg-white/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                      <path d="M3 3v5h5"/>
+                    </svg>
+                  </div>
+                  <span className="text-lg font-semibold">Replay</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
