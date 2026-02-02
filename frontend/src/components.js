@@ -1241,15 +1241,18 @@ const AdvisoryPage = () => {
         <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
         
         <div className="relative z-10">
-          <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              src="https://player.vimeo.com/video/1161202462?h=0&title=0&byline=0&portrait=0"
-              className="w-full h-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="Vanguard Network Advisory Video"
-            ></iframe>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
+            <video 
+              className="w-full h-full object-cover"
+              controls
+              controlsList="nodownload nofullscreen noremoteplayback"
+              disablePictureInPicture
+              playsInline
+              poster="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4toivnvn_The%20Vanguard%20Network%20GC%20Consulting%20Service.png"
+            >
+              <source src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/fkw8ajfl_The%20Vanguard%20Network%20GC%20Consulting%20Service.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </motion.div>
