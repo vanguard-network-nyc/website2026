@@ -166,19 +166,41 @@ const UpcomingEventsPage = () => {
   const formatEventDate = (dateString, timezone) => {
     if (!dateString) return 'Date TBA';
     try {
-      // Parse the ISO date string without timezone conversion
-      // This keeps the date/time as stored in Airtable (event's local timezone)
-      const [datePart, timePart] = dateString.replace('Z', '').split('T');
-      const [year, month, day] = datePart.split('-').map(Number);
-      const [hours, minutes] = timePart ? timePart.split(':').map(Number) : [0, 0];
+      // Parse the ISO date string (UTC) and convert to event's local timezone
+      const date = new Date(dateString);
+      
+      // Define timezone offsets (negative because UTC - offset = local)
+      const timezoneOffsets = {
+        'EST': -5,
+        'EDT': -4,
+        'CST': -6,
+        'CDT': -5,
+        'MST': -7,
+        'MDT': -6,
+        'PST': -8,
+        'PDT': -7,
+        'ET': -5,  // Default to EST
+        'CT': -6,
+        'MT': -7,
+        'PT': -8
+      };
+      
+      // Get the offset for the event's timezone (default to EST if not found)
+      const offset = timezoneOffsets[timezone] || -5;
+      
+      // Create a new date adjusted for the timezone
+      const localDate = new Date(date.getTime() + (offset * 60 * 60 * 1000));
       
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
                           'July', 'August', 'September', 'October', 'November', 'December'];
       const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       
-      // Create date object just to get day of week (using UTC to avoid timezone shift)
-      const tempDate = new Date(Date.UTC(year, month - 1, day));
-      const dayOfWeek = dayNames[tempDate.getUTCDay()];
+      const year = localDate.getUTCFullYear();
+      const month = localDate.getUTCMonth();
+      const day = localDate.getUTCDate();
+      const hours = localDate.getUTCHours();
+      const minutes = localDate.getUTCMinutes();
+      const dayOfWeek = dayNames[localDate.getUTCDay()];
       
       // Format time
       const hour12 = hours % 12 || 12;
@@ -188,7 +210,7 @@ const UpcomingEventsPage = () => {
       // Add timezone if available
       const tzStr = timezone ? ` ${timezone}` : '';
       
-      return `${dayOfWeek}, ${monthNames[month - 1]} ${day}, ${year}, ${timeStr}${tzStr}`;
+      return `${dayOfWeek}, ${monthNames[month]} ${day}, ${year}, ${timeStr}${tzStr}`;
     } catch (error) {
       return 'Date TBA';
     }
