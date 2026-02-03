@@ -127,9 +127,9 @@ const UpcomingEventsPage = () => {
       console.log('Filtering by selected date:', selectedDate); // Debug log
       filtered = filtered.filter(event => {
         if (!event.start_date) return false;
-        const parsed = parseDateWithoutTZ(event.start_date);
+        const parsed = parseDateToLocal(event.start_date, event.timezone);
         if (!parsed) return false;
-        // Compare year, month, day without timezone conversion
+        // Compare year, month, day in event's local timezone
         return parsed.year === selectedDate.getFullYear() && 
                parsed.month === selectedDate.getMonth() + 1 && 
                parsed.day === selectedDate.getDate();
