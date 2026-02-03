@@ -524,7 +524,7 @@ const UpcomingEventsPage = () => {
                       >
                         <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-xl flex items-center justify-center">
                           <span className="text-white font-bold text-sm">
-                            {getEventDay(event.start_date)}
+                            {getEventDay(event.start_date, event.timezone)}
                           </span>
                         </div>
                         
