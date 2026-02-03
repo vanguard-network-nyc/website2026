@@ -169,15 +169,15 @@ const UpcomingEventsPage = () => {
     return title.replace(/\n+/g, ' ').trim();
   };
 
-  // Get day of month without timezone conversion
-  const getEventDay = (dateString) => {
-    const parsed = parseDateWithoutTZ(dateString);
+  // Get day of month in event's local timezone
+  const getEventDay = (dateString, timezone) => {
+    const parsed = parseDateToLocal(dateString, timezone);
     return parsed ? parsed.day : '?';
   };
 
-  // Get short month and day (e.g., "Jan 22") without timezone conversion
-  const getShortDate = (dateString) => {
-    const parsed = parseDateWithoutTZ(dateString);
+  // Get short month and day (e.g., "Jan 22") in event's local timezone
+  const getShortDate = (dateString, timezone) => {
+    const parsed = parseDateToLocal(dateString, timezone);
     if (!parsed) return '';
     const shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${shortMonths[parsed.month - 1]} ${parsed.day}`;
