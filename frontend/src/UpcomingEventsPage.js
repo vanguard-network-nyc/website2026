@@ -283,7 +283,7 @@ const UpcomingEventsPage = () => {
     
     filteredEvents.forEach(event => {
       if (event.start_date) {
-        const parsed = parseDateWithoutTZ(event.start_date);
+        const parsed = parseDateToLocal(event.start_date, event.timezone);
         if (parsed) {
           const monthKey = `${parsed.year}-${parsed.month - 1}`;
           const monthName = `${monthNames[parsed.month - 1]} ${parsed.year}`;
