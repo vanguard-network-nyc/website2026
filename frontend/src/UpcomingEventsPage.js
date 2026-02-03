@@ -25,17 +25,37 @@ const UpcomingEventsPage = () => {
     }
   }, [events, searchTerm, selectedAudience, selectedLocation, selectedDate]);
 
-  // Helper to parse date without timezone conversion
-  const parseDateWithoutTZ = (dateString) => {
+  // Helper to parse date and convert from UTC to local timezone
+  const parseDateToLocal = (dateString, timezone = 'EST') => {
     if (!dateString) return null;
     try {
-      const [datePart, timePart] = dateString.replace('Z', '').split('T');
-      const [year, month, day] = datePart.split('-').map(Number);
-      const [hours, minutes] = timePart ? timePart.split(':').map(Number) : [0, 0];
-      return { year, month, day, hours, minutes };
+      const date = new Date(dateString);
+      
+      // Define timezone offsets
+      const timezoneOffsets = {
+        'EST': -5, 'EDT': -4, 'CST': -6, 'CDT': -5,
+        'MST': -7, 'MDT': -6, 'PST': -8, 'PDT': -7,
+        'ET': -5, 'CT': -6, 'MT': -7, 'PT': -8
+      };
+      
+      const offset = timezoneOffsets[timezone] || -5;
+      const localDate = new Date(date.getTime() + (offset * 60 * 60 * 1000));
+      
+      return {
+        year: localDate.getUTCFullYear(),
+        month: localDate.getUTCMonth() + 1,
+        day: localDate.getUTCDate(),
+        hours: localDate.getUTCHours(),
+        minutes: localDate.getUTCMinutes()
+      };
     } catch (error) {
       return null;
     }
+  };
+
+  // Legacy helper for backward compatibility (uses EST by default)
+  const parseDateWithoutTZ = (dateString) => {
+    return parseDateToLocal(dateString, 'EST');
   };
 
   const fetchEvents = async () => {
