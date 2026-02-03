@@ -606,7 +606,7 @@ const UpcomingEventsPage = () => {
                       {event.start_date && (
                         <div className="absolute bottom-4 left-4">
                           <div className="bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-sm font-medium">
-                            {getShortDate(event.start_date)}
+                            {getShortDate(event.start_date, event.timezone)}
                           </div>
                         </div>
                       )}
