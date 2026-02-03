@@ -219,11 +219,30 @@ const UpcomingEventsPage = () => {
   const formatEventTime = (dateString, timezone) => {
     if (!dateString) return '';
     try {
-      // Parse the ISO date string without timezone conversion
-      const timePart = dateString.replace('Z', '').split('T')[1];
-      if (!timePart) return '';
+      // Parse the ISO date string (UTC) and convert to event's local timezone
+      const date = new Date(dateString);
       
-      const [hours, minutes] = timePart.split(':').map(Number);
+      // Define timezone offsets
+      const timezoneOffsets = {
+        'EST': -5,
+        'EDT': -4,
+        'CST': -6,
+        'CDT': -5,
+        'MST': -7,
+        'MDT': -6,
+        'PST': -8,
+        'PDT': -7,
+        'ET': -5,
+        'CT': -6,
+        'MT': -7,
+        'PT': -8
+      };
+      
+      const offset = timezoneOffsets[timezone] || -5;
+      const localDate = new Date(date.getTime() + (offset * 60 * 60 * 1000));
+      
+      const hours = localDate.getUTCHours();
+      const minutes = localDate.getUTCMinutes();
       const hour12 = hours % 12 || 12;
       const ampm = hours >= 12 ? 'PM' : 'AM';
       
