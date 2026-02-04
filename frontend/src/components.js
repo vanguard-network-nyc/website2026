@@ -3004,10 +3004,86 @@ const NewContentLibrarySection = () => {
       const videos = await videosResponse.json();
       const substackData = await substackResponse.json();
 
-      // Get the latest entry from each type
-      const latestArticle = articles && articles.length > 0 ? articles[0] : null;
-      const latestPodcast = podcasts && podcasts.length > 0 ? podcasts[0] : null;
-      const latestVideo = videos && videos.length > 0 ? videos[0] : null;
+      // Helper function to normalize titles for comparison
+      const normalizeTitle = (title) => {
+        if (!title) return '';
+        return title.toLowerCase().trim();
+      };
+
+      // Helper function to get title from each content type
+      const getTitle = (item, type) => {
+        if (!item) return '';
+        if (type === 'article') return item.blog_title || item.title || '';
+        if (type === 'podcast') return item.title || '';
+        if (type === 'video') return item.vimeo_name || item.video_description || '';
+        return '';
+      };
+
+      // Helper function to get featured speaker/image for comparison
+      const getSpeakerImage = (item, type) => {
+        if (!item) return '';
+        if (type === 'article') return item.photo || '';
+        if (type === 'podcast') return item.thumbnail || '';
+        if (type === 'video') return item.headshot || '';
+        return '';
+      };
+
+      // Select items avoiding duplicates
+      let selectedArticle = articles && articles.length > 0 ? articles[0] : null;
+      let selectedPodcast = podcasts && podcasts.length > 0 ? podcasts[0] : null;
+      let selectedVideo = videos && videos.length > 0 ? videos[0] : null;
+
+      // Check for duplicate titles or images and adjust selections
+      const articleTitle = normalizeTitle(getTitle(selectedArticle, 'article'));
+      const podcastTitle = normalizeTitle(getTitle(selectedPodcast, 'podcast'));
+      const videoTitle = normalizeTitle(getTitle(selectedVideo, 'video'));
+
+      const articleImage = getSpeakerImage(selectedArticle, 'article');
+      const podcastImage = getSpeakerImage(selectedPodcast, 'podcast');
+      const videoImage = getSpeakerImage(selectedVideo, 'video');
+
+      // Check podcast vs article for duplicates
+      if (selectedPodcast && selectedArticle) {
+        const titleMatch = articleTitle && podcastTitle && articleTitle === podcastTitle;
+        const imageMatch = articleImage && podcastImage && articleImage === podcastImage;
+        if (titleMatch || imageMatch) {
+          // Use second podcast if available
+          if (podcasts.length > 1) {
+            selectedPodcast = podcasts[1];
+          }
+        }
+      }
+
+      // Check video vs article for duplicates
+      if (selectedVideo && selectedArticle) {
+        const titleMatch = articleTitle && videoTitle && articleTitle === videoTitle;
+        const imageMatch = articleImage && videoImage && articleImage === videoImage;
+        if (titleMatch || imageMatch) {
+          // Use second video if available
+          if (videos.length > 1) {
+            selectedVideo = videos[1];
+          }
+        }
+      }
+
+      // Check video vs podcast for duplicates (with updated podcast selection)
+      const updatedPodcastTitle = normalizeTitle(getTitle(selectedPodcast, 'podcast'));
+      const updatedPodcastImage = getSpeakerImage(selectedPodcast, 'podcast');
+      const updatedVideoTitle = normalizeTitle(getTitle(selectedVideo, 'video'));
+      const updatedVideoImage = getSpeakerImage(selectedVideo, 'video');
+
+      if (selectedVideo && selectedPodcast) {
+        const titleMatch = updatedPodcastTitle && updatedVideoTitle && updatedPodcastTitle === updatedVideoTitle;
+        const imageMatch = updatedPodcastImage && updatedVideoImage && updatedPodcastImage === updatedVideoImage;
+        if (titleMatch || imageMatch) {
+          // Use second video if not already changed, otherwise try second podcast
+          if (selectedVideo === (videos && videos[0]) && videos.length > 1) {
+            selectedVideo = videos[1];
+          } else if (selectedPodcast === (podcasts && podcasts[0]) && podcasts.length > 1) {
+            selectedPodcast = podcasts[1];
+          }
+        }
+      }
       
       // Get the latest Substack post
       let substackPost = null;
@@ -3017,45 +3093,45 @@ const NewContentLibrarySection = () => {
 
       const insights = [];
 
-      // Add latest article
-      if (latestArticle) {
+      // Add selected article
+      if (selectedArticle) {
         insights.push({
           type: "Article",
-          category: latestArticle.category || "Leadership Development",
-          title: latestArticle.blog_title || latestArticle.title,
-          description: latestArticle.description || latestArticle.summary || "Exploring leadership insights and organizational transformation.",
-          author: latestArticle.author || "Vanguard Faculty",
-          duration: `${Math.ceil((latestArticle.blog_title?.length || 100) / 10)} min read`,
-          image: latestArticle.photo || "https://images.unsplash.com/photo-1543132220-7bc04a0e790a",
-          link: `/article/${latestArticle.id}`
+          category: selectedArticle.category || "Leadership Development",
+          title: selectedArticle.blog_title || selectedArticle.title,
+          description: selectedArticle.description || selectedArticle.summary || "Exploring leadership insights and organizational transformation.",
+          author: selectedArticle.author || "Vanguard Faculty",
+          duration: `${Math.ceil((selectedArticle.blog_title?.length || 100) / 10)} min read`,
+          image: selectedArticle.photo || "https://images.unsplash.com/photo-1543132220-7bc04a0e790a",
+          link: `/article/${selectedArticle.id}`
         });
       }
 
-      // Add latest podcast
-      if (latestPodcast) {
+      // Add selected podcast
+      if (selectedPodcast) {
         insights.push({
           type: "Podcast",
-          category: latestPodcast.category || "Board Dynamics",
-          title: latestPodcast.title || "Leadership Insights Podcast",
-          description: latestPodcast.description || "A candid discussion with experienced leaders about governance and strategy.",
-          author: latestPodcast.featured_speaker || "Member Contributor",
-          duration: latestPodcast.duration || "45 min listen",
-          image: latestPodcast.thumbnail || "https://images.unsplash.com/photo-1579525109384-ddf54825044f",
-          link: `/podcast/${latestPodcast.id}`
+          category: selectedPodcast.category || "Board Dynamics",
+          title: selectedPodcast.title || "Leadership Insights Podcast",
+          description: selectedPodcast.description || "A candid discussion with experienced leaders about governance and strategy.",
+          author: selectedPodcast.featured_speaker || "Member Contributor",
+          duration: selectedPodcast.duration || "45 min listen",
+          image: selectedPodcast.thumbnail || "https://images.unsplash.com/photo-1579525109384-ddf54825044f",
+          link: `/podcast/${selectedPodcast.id}`
         });
       }
 
-      // Add latest video
-      if (latestVideo) {
+      // Add selected video
+      if (selectedVideo) {
         insights.push({
           type: "Video",
-          category: latestVideo.category || "Personal Awareness",
-          title: latestVideo.vimeo_name || latestVideo.video_description || "Leadership Development Video",
-          description: latestVideo.description || "Understanding how leadership principles drive better strategic decisions.",
-          author: latestVideo.featured_speakers || "Affiliate Contributor",
-          duration: latestVideo.duration || "12 min watch",
-          image: latestVideo.headshot || "https://images.unsplash.com/photo-1562935345-5080389daccd",
-          link: `/video/${latestVideo.id}`
+          category: selectedVideo.category || "Personal Awareness",
+          title: selectedVideo.vimeo_name || selectedVideo.video_description || "Leadership Development Video",
+          description: selectedVideo.description || "Understanding how leadership principles drive better strategic decisions.",
+          author: selectedVideo.featured_speakers || "Affiliate Contributor",
+          duration: selectedVideo.duration || "12 min watch",
+          image: selectedVideo.headshot || "https://images.unsplash.com/photo-1562935345-5080389daccd",
+          link: `/video/${selectedVideo.id}`
         });
       }
 
