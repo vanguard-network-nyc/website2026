@@ -459,7 +459,7 @@ const ProgramsV2 = () => {
                       
                       {/* Action Button */}
                       {program.name === "GENERAL COUNSEL EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC" target="_blank" rel="noopener noreferrer">
+                        <a href="https://members.thevanguardnetwork.com/gc-exchange" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
