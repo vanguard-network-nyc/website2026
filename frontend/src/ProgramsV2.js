@@ -470,7 +470,7 @@ const ProgramsV2 = () => {
                           </motion.button>
                         </a>
                       ) : program.name === "SENIOR IN-HOUSE COUNSEL EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/network-details-senior-counsel/senior-in-house-counsel-network/r/rec4wMsveeZoUvTOa" target="_blank" rel="noopener noreferrer">
+                        <a href="https://members.thevanguardnetwork.com/senior-counsel-exchange" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
