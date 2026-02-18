@@ -525,7 +525,7 @@ const ProgramsV2 = () => {
                           </motion.button>
                         </Link>
                       ) : program.name === "RISK MANAGEMENT EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/network-details-risk-management/risk-management-network/r/recv0BDur4fZPVSp7" target="_blank" rel="noopener noreferrer">
+                        <a href="https://members.thevanguardnetwork.com/risk-management-exchange" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
