@@ -2978,20 +2978,22 @@ const NewContentLibrarySection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchFeaturedInsights();
+    const controller = new AbortController();
+    fetchFeaturedInsights(controller.signal);
+    return () => controller.abort();
   }, []);
 
-  const fetchFeaturedInsights = async () => {
+  const fetchFeaturedInsights = async (signal) => {
     try {
       setLoading(true);
       const backendUrl = process.env.REACT_APP_BACKEND_URL;
       
       // Fetch latest from each content type and Substack
       const [articlesResponse, podcastsResponse, videosResponse, substackResponse] = await Promise.all([
-        fetch(`${backendUrl}/api/articles`),
-        fetch(`${backendUrl}/api/podcasts`),
-        fetch(`${backendUrl}/api/videos`),
-        fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://kenbanta.substack.com/feed'))
+        fetch(`${backendUrl}/api/articles`, { signal }),
+        fetch(`${backendUrl}/api/podcasts`, { signal }),
+        fetch(`${backendUrl}/api/videos`, { signal }),
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://kenbanta.substack.com/feed'), { signal })
       ]);
 
       const articles = await articlesResponse.json();
@@ -3094,7 +3096,7 @@ const NewContentLibrarySection = () => {
           type: "Article",
           category: selectedArticle.category || "Leadership Development",
           title: selectedArticle.blog_title || selectedArticle.title,
-          description: selectedArticle.description || selectedArticle.summary || "Exploring leadership insights and organizational transformation.",
+          description: selectedArticle.description_teaser || selectedArticle.description || selectedArticle.summary || "Exploring leadership insights and organizational transformation.",
           author: selectedArticle.author || "Vanguard Faculty",
           duration: `${Math.ceil((selectedArticle.blog_title?.length || 100) / 10)} min read`,
           image: selectedArticle.photo || "https://images.unsplash.com/photo-1543132220-7bc04a0e790a",
@@ -3156,6 +3158,7 @@ const NewContentLibrarySection = () => {
 
       setFeaturedInsights(insights);
     } catch (error) {
+      if (error.name === 'AbortError') return;
       console.error('Error fetching featured insights:', error);
       // Fallback to hardcoded data if API fails
       setFeaturedInsights([
@@ -3350,14 +3353,16 @@ const NewsroomSliderSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchNewsroomArticles();
+    const controller = new AbortController();
+    fetchNewsroomArticles(controller.signal);
+    return () => controller.abort();
   }, []);
 
-  const fetchNewsroomArticles = async () => {
+  const fetchNewsroomArticles = async (signal) => {
     try {
       setLoading(true);
       const backendUrl = process.env.REACT_APP_BACKEND_URL;
-      const response = await fetch(`${backendUrl}/api/newsroom`);
+      const response = await fetch(`${backendUrl}/api/newsroom`, { signal });
       
       if (!response.ok) {
         throw new Error(`Failed to fetch newsroom articles: ${response.status}`);
@@ -3378,6 +3383,7 @@ const NewsroomSliderSection = () => {
       
       setNewsArticles(recentArticles);
     } catch (err) {
+      if (err.name === 'AbortError') return;
       console.error('Error fetching newsroom articles:', err);
       // Use fallback articles if fetch fails
       setNewsArticles([]);
