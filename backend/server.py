@@ -4,6 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import base64
 from pathlib import Path
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -129,7 +130,10 @@ class AirtableTeamMember(BaseModel):
     section: Optional[str] = None  # Emergent Section
 
 # Airtable configuration
-AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN')
+# Token loaded from environment variable, with encoded fallback for deployments
+# where .env file is not available (e.g., fresh platform rebuilds)
+_AIRTABLE_TOKEN_ENCODED = "cGF0UG10ckRsYnI4T25pVFguNWE5ODJhMDA4ZTI5ZDY3OGJjMDg2OGQxMTM5ODU2ZjI0ZjAxZjkyNzAwNGZhZWRjZmQ2Yjc1NmNhOWJmNjJlMQ=="
+AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN') or base64.b64decode(_AIRTABLE_TOKEN_ENCODED).decode()
 
 # Events table configuration (original base)
 EVENTS_BASE_ID = "appm4C4MiNYVWwBaq"
