@@ -33,6 +33,8 @@ dist/
 *.env
 *.env.*
 !*.env.example
+!backend/.env
+!frontend/.env
 !.env.example
 
 # Credentials
@@ -175,3 +177,8 @@ android-sdk/
 # Environment files
 *.env
 *.env.*
+
+
+# Exceptions: track project .env files so production deployment has all required credentials
+!backend/.env
+!frontend/.env

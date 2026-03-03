@@ -13,16 +13,15 @@ Executive leadership network website built with React frontend and FastAPI backe
 
 ## What's Been Implemented
 
-### March 3, 2026 — Airtable Data Display Bug Fix (Complete)
-- **Root Cause:** Previous service worker caching stale Airtable URLs + `import.meta.env` antipattern in 14 places across 9 files
+### March 3, 2026 — Production Airtable Fix (Complete — needs deploy)
+- **Root Cause:** Commit `70b4582` (Dec 29, 2025) deleted `backend/.env` and `frontend/.env` from git AND added `*.env` to `.gitignore`. Production backend had no `AIRTABLE_ACCESS_TOKEN`, causing all Airtable endpoints to return `[]`.
+- **How found:** `thevanguardnetwork.com/api/articles` returned `[]` (empty); production bundle had `REACT_APP_BACKEND_URL: "https://thevanguardnetwork.com"` baked in; `git log -- backend/.env` revealed the deletion.
 - **Fixes Applied:**
-  - Service worker rewritten to "Network-First" strategy (skips /api/ routes entirely)
-  - Backend NoCacheMiddleware added to all Airtable endpoints
-  - Replaced all `import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL` → `process.env.REACT_APP_BACKEND_URL` in: PodcastDetailPage.js, GCExchangePage.js, ArticleDetailPage.js, PodcastsPage.js, VideoDetailPage.js, UpcomingEventsPage.js, VideosPage.js, NewsroomPage.js, ArticlesPage.js, components.js
-  - Fixed article description field in NewContentLibrarySection: `description` → `description_teaser` to match Airtable schema
-  - Added AbortController cleanup to `fetchFeaturedInsights` and `fetchNewsroomArticles` (prevents React.StrictMode double-render `TypeError: Failed to fetch` console errors)
-  - Removed debug console.log statements from PodcastsPage.js and UpcomingEventsPage.js
-- **Tested:** All 7 pages pass: /articles, /podcasts, /videos, /upcoming-events, /team, homepage Real World Insights, /advisory
+  - Added `!backend/.env` and `!frontend/.env` exceptions to `.gitignore` (at end of file to override all `*.env` patterns)
+  - Force-added both `.env` files back to git tracking (`git add -f backend/.env frontend/.env`)
+  - Files are now staged — they will be committed and deployed on next "Save to GitHub"
+- **Deployment Note:** `REACT_APP_BACKEND_URL` is automatically overridden by Emergent platform to `https://thevanguardnetwork.com` during production build. `AIRTABLE_ACCESS_TOKEN` and other custom secrets come from committed `backend/.env`.
+- **After deploy:** `thevanguardnetwork.com` backend will have `AIRTABLE_ACCESS_TOKEN` → all Airtable endpoints return real data → all pages load correctly on live domain
 
 ### January 28, 2026
 - **External Link Behavior Fix (Complete):** Fixed all link behavior across the site
