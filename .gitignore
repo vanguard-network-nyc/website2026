@@ -182,3 +182,7 @@ android-sdk/
 # Exceptions: track project .env files so production deployment has all required credentials
 !backend/.env
 !frontend/.env
+-e 
+# Environment files
+*.env
+*.env.*
