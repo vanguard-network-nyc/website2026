@@ -38,7 +38,7 @@ const ArticleDetailPage = () => {
   const fetchArticle = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       
       // First try to fetch from regular articles API
       let response = await fetch(`${backendUrl}/api/article/${id}`);
@@ -75,7 +75,7 @@ const ArticleDetailPage = () => {
 
   const fetchSimilarArticles = async () => {
     try {
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/articles/similar/${id}`);
       
       if (!response.ok) {

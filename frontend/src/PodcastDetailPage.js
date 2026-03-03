@@ -33,7 +33,7 @@ const PodcastDetailPage = () => {
 
   const fetchSimilarPodcasts = async () => {
     try {
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/podcasts/similar/${id}`);
       
       if (!response.ok) {
@@ -53,7 +53,7 @@ const PodcastDetailPage = () => {
   const fetchPodcast = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/podcasts`);
       
       if (!response.ok) {

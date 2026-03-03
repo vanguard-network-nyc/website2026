@@ -16,7 +16,7 @@ const GCExchangePage = () => {
   const fetchGCMembers = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/gc-members`);
       
       if (!response.ok) {

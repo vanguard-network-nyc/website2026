@@ -51,8 +51,7 @@ const PodcastsPage = () => {
   const fetchPodcasts = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
-      console.log('Backend URL:', backendUrl); // Debug log
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/podcasts`);
       
       if (!response.ok) {
@@ -60,7 +59,6 @@ const PodcastsPage = () => {
       }
       
       const podcastData = await response.json();
-      console.log('Fetched podcasts:', podcastData.length); // Debug log
       
       setPodcasts(podcastData);
       setFilteredPodcasts(podcastData);
@@ -73,12 +71,10 @@ const PodcastsPage = () => {
   };
 
   const filterPodcasts = () => {
-    console.log('Filtering podcasts, total podcasts:', podcasts.length); // Debug log
     let filtered = [...podcasts];
 
     // Filter by search term (title, featured speaker)
     if (searchTerm) {
-      console.log('Filtering by search term:', searchTerm); // Debug log
       filtered = filtered.filter(podcast => {
         const titleMatch = podcast.title.toLowerCase().includes(searchTerm.toLowerCase());
         const speakerMatch = podcast.featured_speaker && podcast.featured_speaker.toLowerCase().includes(searchTerm.toLowerCase());
@@ -91,7 +87,6 @@ const PodcastsPage = () => {
       filtered = filtered.filter(podcast => podcast.featured_speaker === selectedSpeaker);
     }
 
-    console.log('Filtered podcasts count:', filtered.length); // Debug log
     setFilteredPodcasts(filtered);
   };
 

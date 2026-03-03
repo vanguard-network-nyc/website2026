@@ -61,8 +61,7 @@ const UpcomingEventsPage = () => {
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
-      console.log('Backend URL:', backendUrl); // Debug log
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/events`);
       
       if (!response.ok) {
@@ -70,7 +69,6 @@ const UpcomingEventsPage = () => {
       }
       
       const eventData = await response.json();
-      console.log('Fetched events:', eventData.length); // Debug log
       
       // Sort events by start date
       const sortedEvents = eventData.sort((a, b) => {
@@ -80,10 +78,8 @@ const UpcomingEventsPage = () => {
         return new Date(a.start_date) - new Date(b.start_date);
       });
       
-      console.log('Setting events and filtered events'); // Debug log
       setEvents(sortedEvents);
       setFilteredEvents(sortedEvents); // Initialize filtered events
-      console.log('Events set, turning off loading'); // Debug log
     } catch (err) {
       console.error('Error fetching events:', err);
       setError(err.message);
@@ -93,12 +89,10 @@ const UpcomingEventsPage = () => {
   };
 
   const filterEvents = () => {
-    console.log('Filtering events, total events:', events.length); // Debug log
     let filtered = [...events]; // Create a copy of the events array
 
     // Filter by search term (title and session leader only)
     if (searchTerm) {
-      console.log('Filtering by search term:', searchTerm); // Debug log
       filtered = filtered.filter(event => {
         const titleMatch = event.event_title.toLowerCase().includes(searchTerm.toLowerCase());
         const sessionLeaderMatch = event.session_leader_name && event.session_leader_name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -108,7 +102,6 @@ const UpcomingEventsPage = () => {
 
     // Filter by audience
     if (selectedAudience !== 'All') {
-      console.log('Filtering by audience:', selectedAudience); // Debug log
       filtered = filtered.filter(event => 
         event.audience_network && event.audience_network.toLowerCase().includes(selectedAudience.toLowerCase())
       );
@@ -116,7 +109,6 @@ const UpcomingEventsPage = () => {
 
     // Filter by location
     if (selectedLocation !== 'All') {
-      console.log('Filtering by location:', selectedLocation); // Debug log
       filtered = filtered.filter(event => 
         event.location && event.location === selectedLocation
       );
@@ -124,7 +116,6 @@ const UpcomingEventsPage = () => {
 
     // Filter by selected date from calendar
     if (selectedDate) {
-      console.log('Filtering by selected date:', selectedDate); // Debug log
       filtered = filtered.filter(event => {
         if (!event.start_date) return false;
         const parsed = parseDateToLocal(event.start_date, event.timezone);
@@ -136,7 +127,6 @@ const UpcomingEventsPage = () => {
       });
     }
 
-    console.log('Filtered events count:', filtered.length); // Debug log
     setFilteredEvents(filtered);
   };
 
@@ -302,7 +292,6 @@ const UpcomingEventsPage = () => {
   };
 
   if (loading) {
-    console.log('Component is in loading state'); // Debug log
     return (
       <motion.div
         initial={{ opacity: 0 }}

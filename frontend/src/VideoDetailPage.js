@@ -44,7 +44,7 @@ const VideoDetailPage = () => {
   const fetchVideo = async () => {
     try {
       setLoading(true);
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/video/${id}`);
       
       if (!response.ok) {
@@ -63,7 +63,7 @@ const VideoDetailPage = () => {
 
   const fetchSimilarVideos = async () => {
     try {
-      const backendUrl = import.meta.env?.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL;
+      const backendUrl = process.env.REACT_APP_BACKEND_URL;
       const response = await fetch(`${backendUrl}/api/videos/similar/${id}`);
       
       if (response.ok) {
