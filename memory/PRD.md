@@ -20,7 +20,7 @@ Executive leadership network website built with React frontend and FastAPI backe
   - Added `!backend/.env` and `!frontend/.env` exceptions to `.gitignore` (at end of file to override all `*.env` patterns)
   - Force-added both `.env` files back to git tracking (`git add -f backend/.env frontend/.env`)
   - Files are now staged — they will be committed and deployed on next "Save to GitHub"
-- **Deployment Note:** `REACT_APP_BACKEND_URL` is automatically overridden by Emergent platform to `https://thevanguardnetwork.com` during production build. `AIRTABLE_ACCESS_TOKEN` and other custom secrets come from committed `backend/.env`.
+  - Added `/api/health` endpoint: returns `{status, airtable_token_set, airtable, mongodb}` — instantly diagnoses env var or connectivity issues without digging through logs
 - **After deploy:** `thevanguardnetwork.com` backend will have `AIRTABLE_ACCESS_TOKEN` → all Airtable endpoints return real data → all pages load correctly on live domain
 
 ### January 28, 2026

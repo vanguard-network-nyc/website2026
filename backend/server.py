@@ -945,6 +945,47 @@ async def fetch_airtable_team():
 async def root():
     return {"message": "Hello World"}
 
+@api_router.get("/health")
+async def health_check():
+    """Health check endpoint — returns status of all critical integrations."""
+    status = {
+        "status": "ok",
+        "airtable_token_set": bool(AIRTABLE_ACCESS_TOKEN),
+        "airtable": "unknown",
+        "mongodb": "unknown",
+    }
+
+    # Test Airtable connectivity with a minimal 1-record fetch
+    try:
+        if not AIRTABLE_ACCESS_TOKEN:
+            status["airtable"] = "error: AIRTABLE_ACCESS_TOKEN not set"
+            status["status"] = "degraded"
+        else:
+            resp = requests.get(
+                f"https://api.airtable.com/v0/{ARTICLES_BASE_ID}/{ARTICLES_TABLE_ID}",
+                headers={"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"},
+                params={"maxRecords": 1, "view": ARTICLES_VIEW_ID},
+                timeout=5,
+            )
+            if resp.status_code == 200:
+                status["airtable"] = "ok"
+            else:
+                status["airtable"] = f"error: HTTP {resp.status_code} — {resp.json().get('error', {}).get('type', 'unknown')}"
+                status["status"] = "degraded"
+    except Exception as e:
+        status["airtable"] = f"error: {str(e)}"
+        status["status"] = "degraded"
+
+    # Test MongoDB connectivity
+    try:
+        await db.command("ping")
+        status["mongodb"] = "ok"
+    except Exception as e:
+        status["mongodb"] = f"error: {str(e)}"
+        status["status"] = "degraded"
+
+    return status
+
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
     status_dict = input.dict()
