@@ -2388,8 +2388,9 @@ const BookPage = () => (
         <img
           src="https://customer-assets.emergentagent.com/job_940d05c1-9801-4ea8-a46b-d12c95ba2860/artifacts/3phwycqx_Ken%20Banta%20at%20Next%20Gen%20GC%2C%20Mar%202%2C%202026.jpg"
           alt="Ken Banta at the closing Next Gen GC Module in Washington, DC, March 2026"
-          className="w-full object-cover"
-          style={{ maxHeight: '520px', objectPosition: 'center top' }}
+          className="w-full h-auto block"
+          width="7008"
+          height="4672"
         />
         <div className="px-6 py-3" style={{ backgroundColor: '#045184' }}>
           <p className="text-white/80 text-sm text-right">Ken Banta at the closing Next Gen GC Module in Washington, DC, March 2026</p>
