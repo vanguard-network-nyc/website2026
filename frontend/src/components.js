@@ -2383,16 +2383,16 @@ const BookPage = () => (
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.35, duration: 0.8 }}
-        className="rounded-2xl overflow-hidden shadow-lg mb-8"
+        className="rounded-2xl overflow-hidden shadow-lg mb-16"
       >
         <img
           src="https://customer-assets.emergentagent.com/job_940d05c1-9801-4ea8-a46b-d12c95ba2860/artifacts/3phwycqx_Ken%20Banta%20at%20Next%20Gen%20GC%2C%20Mar%202%2C%202026.jpg"
-          alt="Ken Banta at Next Gen GC, March 2026"
+          alt="Ken Banta at the closing Next Gen GC Module in Washington, DC, March 2026"
           className="w-full object-cover"
           style={{ maxHeight: '520px', objectPosition: 'center top' }}
         />
         <div className="px-6 py-3" style={{ backgroundColor: '#045184' }}>
-          <p className="text-white/80 text-sm text-right">Ken Banta at the Next Gen GC Program, March 2026</p>
+          <p className="text-white/80 text-sm text-right">Ken Banta at the closing Next Gen GC Module in Washington, DC, March 2026</p>
         </div>
       </motion.div>
 
