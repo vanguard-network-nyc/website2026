@@ -237,13 +237,12 @@ const Header = () => {
 
   return (
     <>
-      <GCLBanner />
       <motion.header
         className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled ? 'backdrop-blur-md shadow-lg' : ''
         }`}
         style={{ 
-          top: '48px',
+          top: '0px',
           backgroundColor: isScrolled ? 'rgba(4, 81, 132, 0.95)' : '#045184'
         }}
         initial={{ y: -100 }}
