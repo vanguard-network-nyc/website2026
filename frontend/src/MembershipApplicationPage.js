@@ -211,7 +211,14 @@ const MembershipApplicationPage = () => {
     } catch (error) {
       console.error('Error submitting application:', error);
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'An error occurred while submitting your application. Please try again.');
+      
+      let message;
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        message = 'Unable to reach the server. Please check your internet connection and try again. If the problem persists, please email us directly.';
+      } else {
+        message = error.message || 'An error occurred while submitting your application. Please try again.';
+      }
+      setErrorMessage(message);
       
       // Scroll to top to show error modal
       window.scrollTo({ top: 0, behavior: 'smooth' });
