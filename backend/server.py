@@ -1504,10 +1504,8 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         if application.further_details:
             fields_dict["Message"] = application.further_details
 
-        # Networks Interested In is a multipleRecordLinks field in Airtable — cannot accept
-        # plain text values even with typecast. Storing as readable text in Notes instead.
         if application.network_interest:
-            fields_dict["Notes"] = "Networks Interested In: " + ", ".join(application.network_interest)
+            fields_dict["Networks Interested In"] = application.network_interest
 
         airtable_data = {
             "records": [{"fields": fields_dict}],
