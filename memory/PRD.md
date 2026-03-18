@@ -13,6 +13,13 @@ Executive leadership network website built with React frontend and FastAPI backe
 
 ## What's Been Implemented
 
+### March 18, 2026 — CORS Fix for Membership Application Form (Complete — needs deploy)
+- **Root Cause:** The CORSMiddleware had `allow_credentials=True` combined with `allow_origins=["*"]`. This violates the CORS spec — when `Access-Control-Allow-Origin` is `*`, browsers reject responses that also include `Access-Control-Allow-Credentials: true`. This caused "Failed to fetch" TypeError on the live site when making cross-origin requests from `www.thevanguardnetwork.com` to `thevanguardnetwork.com`.
+- **Fix Applied:** Removed `allow_credentials=True` from CORSMiddleware in `server.py`. The app doesn't use cookies or auth headers for cross-origin requests, so credentials support is unnecessary.
+- **Additional Fix:** Improved error messaging in `MembershipApplicationPage.js` — "Failed to fetch" now shows a user-friendly message about checking internet connection.
+- **Testing:** All 7 backend tests pass, frontend E2E test passes. CORS headers verified spec-compliant.
+- **After deploy:** The form at `www.thevanguardnetwork.com/application` will work correctly for cross-origin submissions.
+
 ### March 3, 2026 — Production Airtable Fix (Complete — needs deploy)
 - **Root Cause:** Commit `70b4582` (Dec 29, 2025) deleted `backend/.env` and `frontend/.env` from git AND added `*.env` to `.gitignore`. Production backend had no `AIRTABLE_ACCESS_TOKEN`, causing all Airtable endpoints to return `[]`.
 - **How found:** `thevanguardnetwork.com/api/articles` returned `[]` (empty); production bundle had `REACT_APP_BACKEND_URL: "https://thevanguardnetwork.com"` baked in; `git log -- backend/.env` revealed the deletion.
@@ -73,9 +80,11 @@ Executive leadership network website built with React frontend and FastAPI backe
 - `/app/frontend/public/index.html` - GA4, service worker registration, Clear-Site-Data tag
 
 ## Known Issues
+- Production `www` subdomain does NOT proxy `/api/*` to the backend (nginx serves static React files). The non-www domain (`thevanguardnetwork.com`) correctly proxies. Cross-origin requests from www to non-www work via CORS.
 - Production environment may have SSL certificate issues (external team manages)
 - `components.js` is monolithic and needs refactoring
 - `Clear-Site-Data` meta tag still present in index.html (should be removed, P1)
+- Some Airtable fields (Country, Recommended By) in the membership form may not exist in the Airtable table schema — data is silently dropped (noted in test iteration 2)
 
 ## Deployment
 User clicks "Save to GitHub" → CI/CD pipeline deploys to production at thevanguardnetwork.com
