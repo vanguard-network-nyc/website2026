@@ -1470,10 +1470,10 @@ async def submit_custom_quote(form_data: CustomQuoteSubmit):
 async def submit_membership_application(application: MembershipApplicationSubmit):
     """Submit a new membership application to Airtable"""
     try:
-        membership_base_id = os.environ.get('MEMBERSHIP_BASE_ID')
-        membership_table_name = os.environ.get('MEMBERSHIP_TABLE_NAME')
+        membership_base_id = os.environ.get('MEMBERSHIP_BASE_ID', 'appqyKMZnFfgSuJKt')
+        membership_table_name = "Membership Contact Inquiry Form (Softr)"
         
-        if not membership_base_id or not membership_table_name:
+        if not membership_base_id:
             raise HTTPException(
                 status_code=500,
                 detail="Membership Airtable configuration is missing"
@@ -1485,17 +1485,16 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         }
         
         # Map form fields to Airtable field names for 'Membership Contact Inquiry Form (Softr)' table
-        # Field names verified against actual Airtable table schema
         fields_dict = {
             "Name": application.full_name,
             "Email (Work)": application.work_email,
             "Phone Number": application.phone_number,
             "Company": application.company_name,
             "Job Title": application.job_title,
-            "Source of Inquiry": application.source_of_inquiry  # Hidden field from form
+            "Country": application.country,
+            "Source of Inquiry": application.source_of_inquiry,
         }
-        
-        # Add optional fields only if they have values
+
         if application.personal_email:
             fields_dict["Email (Personal)"] = application.personal_email
 
@@ -1504,19 +1503,15 @@ async def submit_membership_application(application: MembershipApplicationSubmit
 
         if application.further_details:
             fields_dict["Message"] = application.further_details
-        
-        # Networks Interested In is a linked record field in Airtable
-        # With typecast=True, Airtable will try to resolve names to linked record IDs
+
+        # Networks Interested In is a multipleRecordLinks field in Airtable — cannot accept
+        # plain text values even with typecast. Storing as readable text in Notes instead.
         if application.network_interest:
-            fields_dict["Networks Interested In"] = application.network_interest
-        
+            fields_dict["Notes"] = "Networks Interested In: " + ", ".join(application.network_interest)
+
         airtable_data = {
-            "records": [
-                {
-                    "fields": fields_dict
-                }
-            ],
-            "typecast": True  # Let Airtable try to convert values to appropriate types
+            "records": [{"fields": fields_dict}],
+            "typecast": True
         }
         
         url = f"https://api.airtable.com/v0/{membership_base_id}/{membership_table_name}"
