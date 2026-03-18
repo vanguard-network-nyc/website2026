@@ -1317,6 +1317,7 @@ class MembershipApplicationSubmit(BaseModel):
     country: str
     network_interest: list  # Changed to list for multiple selections
     recommended_by: Optional[str] = None
+    further_details: Optional[str] = None
     source_of_inquiry: Optional[str] = "Emergent Membership Application"
 
 class ContactFormSubmit(BaseModel):
@@ -1483,30 +1484,34 @@ async def submit_membership_application(application: MembershipApplicationSubmit
             "Content-Type": "application/json"
         }
         
-        # Map form fields to Airtable field names
-        # Note: If a field causes "INVALID_VALUE_FOR_COLUMN" error, it might be a linked record
-        # or multiple select field in Airtable. In that case, we store it as text in a compatible field.
+        # Map form fields to Airtable field names for 'Membership Contact Inquiry Form (Softr)' table
+        # Field names verified against actual Airtable table schema
         fields_dict = {
             "Name": application.full_name,
-            "Work Email": application.work_email,
+            "Email (Work)": application.work_email,
             "Phone Number": application.phone_number,
             "Company": application.company_name,
-            "Position": application.job_title,
-            "Country": application.country,
+            "Job Title": application.job_title,
             "Source of Inquiry": application.source_of_inquiry  # Hidden field from form
         }
         
         # Add optional fields only if they have values
         if application.personal_email:
-            fields_dict["Personal Email"] = application.personal_email
-            
+            fields_dict["Email (Personal)"] = application.personal_email
+
+        # Build message from further_details and/or recommended_by
+        message_parts = []
         if application.recommended_by:
-            fields_dict["Recommended By"] = application.recommended_by
+            message_parts.append(f"Recommended By: {application.recommended_by}")
+        if application.further_details:
+            message_parts.append(application.further_details)
+        if message_parts:
+            fields_dict["Message"] = "\n\n".join(message_parts)
         
-        # Try to add Network field - convert array to comma-separated string
-        # Multiple selections are joined together
+        # Networks Interested In is a linked record field in Airtable
+        # With typecast=True, Airtable will try to resolve names to linked record IDs
         if application.network_interest:
-            fields_dict["Network"] = ", ".join(application.network_interest)
+            fields_dict["Networks Interested In"] = application.network_interest
         
         airtable_data = {
             "records": [

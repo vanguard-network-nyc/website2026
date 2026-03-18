@@ -53,6 +53,7 @@ const MembershipApplicationPage = () => {
     country: '',
     network_interest: [], // Changed to array for multiple selections
     recommended_by: '',
+    further_details: '',
     source_of_inquiry: 'Emergent Membership Application' // Hidden field, pre-filled
   });
 
@@ -201,6 +202,7 @@ const MembershipApplicationPage = () => {
         country: '',
         network_interest: [],
         recommended_by: '',
+        further_details: '',
         source_of_inquiry: 'Emergent Membership Application'
       });
       
@@ -569,6 +571,22 @@ const MembershipApplicationPage = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
                 placeholder="Who recommended you to apply?"
+              />
+            </div>
+
+            {/* Further Details - Optional */}
+            <div>
+              <label htmlFor="further_details" className="block text-sm font-bold text-slate-900 mb-2">
+                Further Details <span className="text-slate-400 font-normal">(Optional)</span>
+              </label>
+              <textarea
+                id="further_details"
+                name="further_details"
+                value={formData.further_details}
+                onChange={handleChange}
+                rows={4}
+                className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none resize-none"
+                placeholder="Add any additional details you'd like to share with us"
               />
             </div>
 
