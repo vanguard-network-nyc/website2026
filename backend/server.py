@@ -1318,7 +1318,7 @@ class MembershipApplicationSubmit(BaseModel):
     network_interest: list  # Changed to list for multiple selections
     recommended_by: Optional[str] = None
     further_details: Optional[str] = None
-    source_of_inquiry: Optional[str] = "Emergent Membership Application"
+    source_of_inquiry: Optional[str] = "Main website"
 
 class ContactFormSubmit(BaseModel):
     fullName: str
@@ -1499,14 +1499,11 @@ async def submit_membership_application(application: MembershipApplicationSubmit
         if application.personal_email:
             fields_dict["Email (Personal)"] = application.personal_email
 
-        # Build message from further_details and/or recommended_by
-        message_parts = []
         if application.recommended_by:
-            message_parts.append(f"Recommended By: {application.recommended_by}")
+            fields_dict["Recommended By"] = application.recommended_by
+
         if application.further_details:
-            message_parts.append(application.further_details)
-        if message_parts:
-            fields_dict["Message"] = "\n\n".join(message_parts)
+            fields_dict["Message"] = application.further_details
         
         # Networks Interested In is a linked record field in Airtable
         # With typecast=True, Airtable will try to resolve names to linked record IDs
