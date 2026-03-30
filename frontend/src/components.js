@@ -2310,7 +2310,7 @@ const BookPage = () => (
             <div className="text-center">
               <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden">
                 <img 
-                  src="/ken-banta-headshot.jpg" 
+                  src="/ken-banta.jpg" 
                 alt="Ken Banta - Founder and Managing Director of The Vanguard Network" 
                   className="w-full h-full object-cover"
                 />
