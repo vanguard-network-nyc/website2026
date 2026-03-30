@@ -408,10 +408,9 @@ const LawAssociatesPage = () => {
             >
               <div className="w-48 h-48 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
                 <img
-                  src="https://static.wixstatic.com/media/e6a994_976059df6973424ba1feb8159a60fc31~mv2.jpg/v1/crop/x_0,y_0,w_2400,h_2396/fill/w_225,h_225,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ken%20Banta.jpg"
+                  src="/ken-banta.jpg"
                   alt="Ken Banta"
                   className="w-full h-full object-cover"
-                  style={{ transform: 'scaleX(-1)' }}
                 />
               </div>
               <h3 className="font-bold text-slate-900 mb-2 text-lg">Ken Banta</h3>
