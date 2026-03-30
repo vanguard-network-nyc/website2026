@@ -1534,17 +1534,6 @@ const TeamPage = () => {
         if (!response.ok) throw new Error('Failed to fetch team members');
         const data = await response.json();
         
-        // Override headshots with local images for leadership
-        const headshotOverrides = {
-          'Ken Banta': '/ken-banta.jpg',
-          'Tony Powe': '/tony-powe.jpg',
-        };
-        data.forEach(member => {
-          if (headshotOverrides[member.name]) {
-            member.image = headshotOverrides[member.name];
-          }
-        });
-        
         // Group team members by section
         const grouped = data.reduce((acc, member) => {
           const section = member.section || 'Other';
