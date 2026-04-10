@@ -417,76 +417,76 @@ async def fetch_airtable_newsroom():
         newsroom_articles = []
         offset = None
         
-        while True:
-            params = {
-                'view': NEWSROOM_VIEW_ID,
-            }
-            if offset:
-                params['offset'] = offset
-            
-            async with httpx.AsyncClient() as client:
-                response = await client.get(url, headers=headers, params=params)
-            
-            if response.status_code != 200:
-                logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
-                break
-            
-            data = response.json()
-            
-            for record in data.get("records", []):
-                fields = record.get("fields", {})
+        async with httpx.AsyncClient(timeout=30) as http_client:
+            while True:
+                params = {
+                    'view': NEWSROOM_VIEW_ID,
+                }
+                if offset:
+                    params['offset'] = offset
                 
-                blog_title = fields.get("Blog Title", "")
-                description_teaser = fields.get("Description (teaser)", "")
-                social_image_raw = fields.get("Social:Image", [])
-                photo_raw = fields.get("Photo", [])
-                newsroom_detail_image_raw = fields.get("Newsroom (Rectangular Image for details page)", [])
-                body_of_blog = fields.get("Body of Blog", "")
-                publish_by = fields.get("Publish By", "")
-                featured_speakers_raw = fields.get("Featured Speakers", [])
-                type_of_news_raw = fields.get("Type of News", [])
+                response = await http_client.get(url, headers=headers, params=params)
                 
-                featured_speakers = ""
-                if featured_speakers_raw:
-                    if isinstance(featured_speakers_raw, list):
-                        featured_speakers = ", ".join(featured_speakers_raw)
-                    else:
-                        featured_speakers = str(featured_speakers_raw)
+                if response.status_code != 200:
+                    logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
+                    break
                 
-                type_of_news = ""
-                if type_of_news_raw:
-                    if isinstance(type_of_news_raw, list):
-                        type_of_news = ", ".join(type_of_news_raw)
-                    else:
-                        type_of_news = str(type_of_news_raw)
+                data = response.json()
                 
-                photo_url = None
-                if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
-                    photo_url = social_image_raw[0].get("url", "")
-                elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
-                    photo_url = photo_raw[0].get("url", "")
+                for record in data.get("records", []):
+                    fields = record.get("fields", {})
+                    
+                    blog_title = fields.get("Blog Title", "")
+                    description_teaser = fields.get("Description (teaser)", "")
+                    social_image_raw = fields.get("Social:Image", [])
+                    photo_raw = fields.get("Photo", [])
+                    newsroom_detail_image_raw = fields.get("Newsroom (Rectangular Image for details page)", [])
+                    body_of_blog = fields.get("Body of Blog", "")
+                    publish_by = fields.get("Publish By", "")
+                    featured_speakers_raw = fields.get("Featured Speakers", [])
+                    type_of_news_raw = fields.get("Type of News", [])
+                    
+                    featured_speakers = ""
+                    if featured_speakers_raw:
+                        if isinstance(featured_speakers_raw, list):
+                            featured_speakers = ", ".join(featured_speakers_raw)
+                        else:
+                            featured_speakers = str(featured_speakers_raw)
+                    
+                    type_of_news = ""
+                    if type_of_news_raw:
+                        if isinstance(type_of_news_raw, list):
+                            type_of_news = ", ".join(type_of_news_raw)
+                        else:
+                            type_of_news = str(type_of_news_raw)
+                    
+                    photo_url = None
+                    if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
+                        photo_url = social_image_raw[0].get("url", "")
+                    elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                        photo_url = photo_raw[0].get("url", "")
+                    
+                    newsroom_detail_image = None
+                    if newsroom_detail_image_raw and isinstance(newsroom_detail_image_raw, list) and len(newsroom_detail_image_raw) > 0:
+                        newsroom_detail_image = newsroom_detail_image_raw[0].get("url", "")
+                    
+                    if blog_title and description_teaser:
+                        article = AirtableNewsroom(
+                            id=record.get("id", ""),
+                            blog_title=blog_title,
+                            description_teaser=description_teaser,
+                            photo=photo_url,
+                            newsroom_detail_image=newsroom_detail_image,
+                            body_of_blog=body_of_blog,
+                            publish_by=publish_by,
+                            featured_speakers=featured_speakers,
+                            type_of_news=type_of_news
+                        )
+                        newsroom_articles.append(article)
                 
-                newsroom_detail_image = None
-                if newsroom_detail_image_raw and isinstance(newsroom_detail_image_raw, list) and len(newsroom_detail_image_raw) > 0:
-                    newsroom_detail_image = newsroom_detail_image_raw[0].get("url", "")
-                
-                if blog_title and description_teaser:
-                    article = AirtableNewsroom(
-                        id=record.get("id", ""),
-                        blog_title=blog_title,
-                        description_teaser=description_teaser,
-                        photo=photo_url,
-                        newsroom_detail_image=newsroom_detail_image,
-                        body_of_blog=body_of_blog,
-                        publish_by=publish_by,
-                        featured_speakers=featured_speakers,
-                        type_of_news=type_of_news
-                    )
-                    newsroom_articles.append(article)
-            
-            offset = data.get("offset")
-            if not offset:
-                break
+                offset = data.get("offset")
+                if not offset:
+                    break
         
         return newsroom_articles
         
