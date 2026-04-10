@@ -413,89 +413,80 @@ async def fetch_airtable_newsroom():
             'Content-Type': 'application/json'
         }
         
-        # First try to fetch from the specific newsroom view
         url = f"https://api.airtable.com/v0/{NEWSROOM_BASE_ID}/{NEWSROOM_TABLE_ID}"
-        params = {
-            'view': NEWSROOM_VIEW_ID,
-            'maxRecords': 100
-        }
+        newsroom_articles = []
+        offset = None
         
-        async with httpx.AsyncClient() as client:
-            response = await client.get(url, headers=headers, params=params)
-        
-        if response.status_code != 200:
-            logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
-            # Fall back to fetching all records without sorting
+        while True:
             params = {
-                'maxRecords': 100
+                'view': NEWSROOM_VIEW_ID,
             }
+            if offset:
+                params['offset'] = offset
+            
             async with httpx.AsyncClient() as client:
                 response = await client.get(url, headers=headers, params=params)
-        
-        response.raise_for_status()
-        data = response.json()
-        newsroom_articles = []
-        
-        for record in data.get("records", []):
-            fields = record.get("fields", {})
             
-            # Extract fields
-            blog_title = fields.get("Blog Title", "")
-            description_teaser = fields.get("Description (teaser)", "")
-            social_image_raw = fields.get("Social:Image", [])
-            photo_raw = fields.get("Photo", [])
-            newsroom_detail_image_raw = fields.get("Newsroom (Rectangular Image for details page)", [])
-            body_of_blog = fields.get("Body of Blog", "")
-            publish_by = fields.get("Publish By", "")  # Capital B
-            featured_speakers_raw = fields.get("Featured Speakers", [])
-            type_of_news_raw = fields.get("Type of News", [])
+            if response.status_code != 200:
+                logging.warning(f"Error fetching newsroom from view {NEWSROOM_VIEW_ID}: {response.status_code}")
+                break
             
-            # Handle featured speakers - can be a list or string
-            featured_speakers = ""
-            if featured_speakers_raw:
-                if isinstance(featured_speakers_raw, list):
-                    featured_speakers = ", ".join(featured_speakers_raw)
-                else:
-                    featured_speakers = str(featured_speakers_raw)
+            data = response.json()
             
-            # Handle type of news - can be a list or string
-            type_of_news = ""
-            if type_of_news_raw:
-                if isinstance(type_of_news_raw, list):
-                    type_of_news = ", ".join(type_of_news_raw)
-                else:
-                    type_of_news = str(type_of_news_raw)
+            for record in data.get("records", []):
+                fields = record.get("fields", {})
+                
+                blog_title = fields.get("Blog Title", "")
+                description_teaser = fields.get("Description (teaser)", "")
+                social_image_raw = fields.get("Social:Image", [])
+                photo_raw = fields.get("Photo", [])
+                newsroom_detail_image_raw = fields.get("Newsroom (Rectangular Image for details page)", [])
+                body_of_blog = fields.get("Body of Blog", "")
+                publish_by = fields.get("Publish By", "")
+                featured_speakers_raw = fields.get("Featured Speakers", [])
+                type_of_news_raw = fields.get("Type of News", [])
+                
+                featured_speakers = ""
+                if featured_speakers_raw:
+                    if isinstance(featured_speakers_raw, list):
+                        featured_speakers = ", ".join(featured_speakers_raw)
+                    else:
+                        featured_speakers = str(featured_speakers_raw)
+                
+                type_of_news = ""
+                if type_of_news_raw:
+                    if isinstance(type_of_news_raw, list):
+                        type_of_news = ", ".join(type_of_news_raw)
+                    else:
+                        type_of_news = str(type_of_news_raw)
+                
+                photo_url = None
+                if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
+                    photo_url = social_image_raw[0].get("url", "")
+                elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
+                    photo_url = photo_raw[0].get("url", "")
+                
+                newsroom_detail_image = None
+                if newsroom_detail_image_raw and isinstance(newsroom_detail_image_raw, list) and len(newsroom_detail_image_raw) > 0:
+                    newsroom_detail_image = newsroom_detail_image_raw[0].get("url", "")
+                
+                if blog_title and description_teaser:
+                    article = AirtableNewsroom(
+                        id=record.get("id", ""),
+                        blog_title=blog_title,
+                        description_teaser=description_teaser,
+                        photo=photo_url,
+                        newsroom_detail_image=newsroom_detail_image,
+                        body_of_blog=body_of_blog,
+                        publish_by=publish_by,
+                        featured_speakers=featured_speakers,
+                        type_of_news=type_of_news
+                    )
+                    newsroom_articles.append(article)
             
-            # Handle listing image - prioritize Social:Image, fallback to Photo
-            photo_url = None
-            
-            # Try Social:Image first (note: single colon, not double)
-            if social_image_raw and isinstance(social_image_raw, list) and len(social_image_raw) > 0:
-                photo_url = social_image_raw[0].get("url", "")
-            
-            # Fallback to Photo field if Social:Image is not available
-            elif photo_raw and isinstance(photo_raw, list) and len(photo_raw) > 0:
-                photo_url = photo_raw[0].get("url", "")
-            
-            # Handle detail page rectangular image
-            newsroom_detail_image = None
-            if newsroom_detail_image_raw and isinstance(newsroom_detail_image_raw, list) and len(newsroom_detail_image_raw) > 0:
-                newsroom_detail_image = newsroom_detail_image_raw[0].get("url", "")
-            
-            # Only include articles that have substantial content
-            if blog_title and description_teaser:
-                article = AirtableNewsroom(
-                    id=record.get("id", ""),
-                    blog_title=blog_title,
-                    description_teaser=description_teaser,
-                    photo=photo_url,
-                    newsroom_detail_image=newsroom_detail_image,
-                    body_of_blog=body_of_blog,
-                    publish_by=publish_by,
-                    featured_speakers=featured_speakers,
-                    type_of_news=type_of_news
-                )
-                newsroom_articles.append(article)
+            offset = data.get("offset")
+            if not offset:
+                break
         
         return newsroom_articles
         
