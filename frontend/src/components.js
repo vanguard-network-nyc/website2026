@@ -1430,7 +1430,7 @@ const AdvisoryPage = () => {
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM SABATINO</h3>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He has served as Chief Legal Officer, General Counsel, and senior executive at companies including Rite Aid, Aetna, Walgreens Boots Alliance, Hertz, United Airlines, Schering-Plough, and Baxter.
+                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He currently serves as Interim General Counsel at Tractor Supply Company.
                 </p>
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University graduate | Frequent speaker and mentor to senior legal executives</p>
               </div>
@@ -2978,8 +2978,7 @@ const NewAboutSection = () => {
               <div className="text-center">
                 <p className="text-xl font-bold text-slate-900 mb-1">Tom Sabatino</p>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Past Chief Legal Officer, Rite Aid<br />
-                  Past GC, Tenneco, Aetna, Hertz, Walgreens, United Airlines, Schering-Plough
+                  Interim General Counsel, Tractor Supply Company
                 </p>
               </div>
             </div>

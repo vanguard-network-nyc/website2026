@@ -52,8 +52,8 @@ const LawAssociatesPage = () => {
     },
     {
       name: "Tom Sabatino",
-      title: "Past Chief Legal Officer",
-      company: "Rite Aid; Chair of The Vanguard GC Network",
+      title: "Interim General Counsel",
+      company: "Tractor Supply Company",
       image: "https://static.wixstatic.com/media/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png/v1/fill/w_192,h_192,q_75,enc_avif,quality_auto/e6a994_ab92d0708e7a4a32bd495d6b1b85b08e~mv2.png"
     },
     {
