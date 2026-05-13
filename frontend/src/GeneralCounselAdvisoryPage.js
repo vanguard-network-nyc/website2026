@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus } from 'lucide-react';
+import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus, Linkedin } from 'lucide-react';
 
 const Breadcrumb = () => (
   <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
@@ -317,9 +317,9 @@ const GeneralCounselAdvisoryPage = () => {
                     href={advisor.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block text-xs font-semibold text-[#0077b5] border border-[#0077b5] px-3 py-1.5 rounded hover:bg-[#0077b5] hover:text-white transition-all duration-200"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
                   >
-                    LinkedIn
+                    <Linkedin className="text-white" size={20} />
                   </a>
                 </div>
               </motion.div>
