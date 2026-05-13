@@ -44,7 +44,7 @@ const advisors = [
     title: "General Counsel & CLO (Multiple F500)",
     creds: "Held GC and CLO roles at Rite Aid, Walgreens Boots Alliance, Kraft, and Tractor Supply Company. Deep expertise in complex regulated environments.",
     linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
-    photo: null
+    photo: "/tom-sabatino-gc.jpg"
   },
   {
     name: "Jos\u00e9 Ram\u00f3n Gonz\u00e1lez",
