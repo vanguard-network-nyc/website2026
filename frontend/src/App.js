@@ -25,6 +25,7 @@ import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
 import NewsroomDetailPage from './NewsroomDetailPage';
 import MembershipApplicationPage from './MembershipApplicationPage';
+import GeneralCounselAdvisoryPage from './GeneralCounselAdvisoryPage';
 import PrivacyPage from './PrivacyPage';
 import TermsPage from './TermsPage';
 import BackToTopButton from './ScrollToTop';
@@ -99,6 +100,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
           <Route path="/advisory" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
+          <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/networking" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
           <Route path="/programs" element={<PageWrapper><ProgramsV2 /></PageWrapper>} />
           <Route path="/upcoming-events" element={<PageWrapper><UpcomingEventsPage /></PageWrapper>} />
