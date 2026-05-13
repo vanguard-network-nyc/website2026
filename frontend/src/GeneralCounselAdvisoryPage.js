@@ -171,14 +171,37 @@ const GeneralCounselAdvisoryPage = () => {
           <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
           <div className="relative z-10">
             {/* Video placeholder - will be replaced with actual video */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900 flex items-center justify-center" data-testid="gc-advisory-video-placeholder">
-              <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border-2 border-white/30 mx-auto mb-4">
-                  <Play size={36} className="text-white/70 ml-1" />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900" data-testid="gc-advisory-video">
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                controls
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+                playsInline
+                poster="https://customer-assets.emergentagent.com/job_bd5a3673-ce27-4ed7-bb3d-08a15bf1fa08/artifacts/j9qafml8_The%20Vanguard%20Network%20GC%20Advisory%20Service.png"
+                onEnded={() => setVideoEnded(true)}
+                onPlay={() => setVideoEnded(false)}
+              >
+                <source src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/fkw8ajfl_The%20Vanguard%20Network%20GC%20Consulting%20Service.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {videoEnded && (
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                  <button
+                    onClick={handleVideoReplay}
+                    className="flex flex-col items-center gap-3 text-white hover:scale-110 transition-transform duration-300"
+                  >
+                    <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/50 hover:bg-white/30">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                      </svg>
+                    </div>
+                    <span className="text-lg font-semibold">Replay</span>
+                  </button>
                 </div>
-                <p className="text-white/50 text-sm tracking-wide uppercase">Video coming soon</p>
-                <p className="text-white/30 text-xs mt-2">Ken, David & Tom introduce the service</p>
-              </div>
+              )}
             </div>
           </div>
         </motion.div>
