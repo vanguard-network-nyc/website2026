@@ -295,7 +295,7 @@ const GeneralCounselAdvisoryPage = () => {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
                 data-testid={`advisor-card-${index}`}
               >
                 {/* Photo placeholder */}
@@ -309,10 +309,10 @@ const GeneralCounselAdvisoryPage = () => {
                     </div>
                   )}
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex flex-col flex-grow">
                   <h3 className="text-lg font-bold text-slate-900 mb-1">{advisor.name}</h3>
                   <p className="text-xs font-semibold text-[#00A8E1] uppercase tracking-wide mb-3">{advisor.title}</p>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4">{advisor.creds}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">{advisor.creds}</p>
                   <a
                     href={advisor.linkedin}
                     target="_blank"
