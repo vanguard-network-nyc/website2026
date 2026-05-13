@@ -180,7 +180,7 @@ const GeneralCounselAdvisoryPage = () => {
   return (
     <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100" data-testid="gc-advisory-page">
       <SEO
-        title="Vanguard Strategic Counsel Service — General Counsel Advisory"
+        title="General Counsel Advisory"
         description="Confidential advisory for General Counsel navigating the most complex dimensions of their role. Seven senior advisors with decades of real GC experience. Complimentary 60-minute consultation."
         image="https://customer-assets.emergentagent.com/job_bd5a3673-ce27-4ed7-bb3d-08a15bf1fa08/artifacts/j9qafml8_The%20Vanguard%20Network%20GC%20Advisory%20Service.png"
         breadcrumbs={[
