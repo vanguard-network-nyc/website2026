@@ -33,7 +33,7 @@ const advisors = [
     photo: "/ken-banta.jpg"
   },
   {
-    name: "David C. Robinson",
+    name: "David Robinson",
     title: "Former EVP & General Counsel",
     creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
     linkedin: "https://www.linkedin.com/in/david-c-robinson-b6523a14/",
