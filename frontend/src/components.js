@@ -1258,7 +1258,7 @@ const AdvisoryPage = () => {
               controlsList="nodownload nofullscreen noremoteplayback"
               disablePictureInPicture
               playsInline
-              poster="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4toivnvn_The%20Vanguard%20Network%20GC%20Consulting%20Service.png"
+              poster="https://customer-assets.emergentagent.com/job_bd5a3673-ce27-4ed7-bb3d-08a15bf1fa08/artifacts/j9qafml8_The%20Vanguard%20Network%20GC%20Advisory%20Service.png"
               onEnded={() => setVideoEnded(true)}
               onPlay={() => setVideoEnded(false)}
             >
