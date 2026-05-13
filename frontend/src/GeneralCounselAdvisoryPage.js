@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus, Linkedin } from 'lucide-react';
+import SEO from './SEO';
 
 const Breadcrumb = () => (
   <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
@@ -14,15 +15,6 @@ const Breadcrumb = () => (
     <span className="text-[#045184] font-medium">General Counsel Advisory</span>
   </nav>
 );
-
-const SEO = ({ title, description }) => {
-  React.useEffect(() => {
-    document.title = `${title} | The Vanguard Network`;
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', description);
-  }, [title, description]);
-  return null;
-};
 
 const advisors = [
   {
@@ -132,11 +124,70 @@ const GeneralCounselAdvisoryPage = () => {
     }
   };
 
+  // Inject VideoObject and Service structured data
+  React.useEffect(() => {
+    const videoSchema = {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "The Vanguard Network GC Advisory Service",
+      "description": "Ken Banta, David Robinson, and Tom Sabatino introduce the Vanguard Strategic Counsel Service for General Counsel.",
+      "thumbnailUrl": "https://customer-assets.emergentagent.com/job_bd5a3673-ce27-4ed7-bb3d-08a15bf1fa08/artifacts/j9qafml8_The%20Vanguard%20Network%20GC%20Advisory%20Service.png",
+      "contentUrl": "https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/fkw8ajfl_The%20Vanguard%20Network%20GC%20Consulting%20Service.mp4",
+      "uploadDate": "2025-01-01",
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Vanguard Network",
+        "url": "https://thevanguardnetwork.com"
+      }
+    };
+
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Vanguard Strategic Counsel Service",
+      "description": "Confidential, senior advisory for General Counsel navigating the most complex dimensions of their role.",
+      "provider": {
+        "@type": "Organization",
+        "name": "The Vanguard Network",
+        "url": "https://thevanguardnetwork.com"
+      },
+      "serviceType": "Executive Advisory",
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "General Counsel, Chief Legal Officers, Senior Legal Executives"
+      }
+    };
+
+    const videoScript = document.createElement('script');
+    videoScript.type = 'application/ld+json';
+    videoScript.setAttribute('data-schema-type', 'video');
+    videoScript.textContent = JSON.stringify(videoSchema);
+    document.head.appendChild(videoScript);
+
+    const serviceScript = document.createElement('script');
+    serviceScript.type = 'application/ld+json';
+    serviceScript.setAttribute('data-schema-type', 'service');
+    serviceScript.textContent = JSON.stringify(serviceSchema);
+    document.head.appendChild(serviceScript);
+
+    return () => {
+      document.head.removeChild(videoScript);
+      document.head.removeChild(serviceScript);
+    };
+  }, []);
+
   return (
     <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100" data-testid="gc-advisory-page">
       <SEO
-        title="Vanguard Strategic Counsel Service"
-        description="Confidential advisory for General Counsel navigating the most complex dimensions of their role. Senior, experienced advisors who speak your language."
+        title="Vanguard Strategic Counsel Service — General Counsel Advisory"
+        description="Confidential advisory for General Counsel navigating the most complex dimensions of their role. Seven senior advisors with decades of real GC experience. Complimentary 60-minute consultation."
+        image="https://customer-assets.emergentagent.com/job_bd5a3673-ce27-4ed7-bb3d-08a15bf1fa08/artifacts/j9qafml8_The%20Vanguard%20Network%20GC%20Advisory%20Service.png"
+        breadcrumbs={[
+          { name: "Home", url: "https://thevanguardnetwork.com/" },
+          { name: "Advisory", url: "https://thevanguardnetwork.com/advisory" },
+          { name: "General Counsel Advisory", url: "https://thevanguardnetwork.com/general-counsel-advisory" }
+        ]}
       />
 
       {/* Hero Section */}
