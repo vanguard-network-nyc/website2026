@@ -37,7 +37,7 @@ const advisors = [
     title: "Former EVP & General Counsel",
     creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
     linkedin: "https://www.linkedin.com/in/david-c-robinson-b6523a14/",
-    photo: null
+    photo: "/david-robinson-gc.jpg"
   },
   {
     name: "Tom Sabatino",
@@ -51,28 +51,28 @@ const advisors = [
     title: "Former Chief Legal Officer, Equitable Holdings",
     creds: "25+ years of senior legal leadership at major publicly held corporations. Former CLO & Corporate Secretary at Equitable Holdings.",
     linkedin: "https://www.linkedin.com/in/joseramongonzalez/",
-    photo: null
+    photo: "/jose-gonzalez-gc.jpg"
   },
   {
     name: "Stephen Gauster",
     title: "Former EVP & General Counsel, MetLife",
     creds: "Former EVP & GC at MetLife. Prior roles at Assurant, Prudential, and Cleary Gottlieb. Deep experience leading legal function through enterprise transformation.",
     linkedin: "https://www.linkedin.com/in/stephengauster/",
-    photo: null
+    photo: "/stephen-gauster-gc.jpg"
   },
   {
     name: "Terry Szmagala",
     title: "Former EVP & CLO, Eaton Corporation",
     creds: "Led legal and government affairs functions at Eaton ($130B market cap multinational). Founder of TGS Advisory. Trusted counsel to boards and executive management teams.",
     linkedin: "https://www.linkedin.com/in/taras-szmagala/",
-    photo: null
+    photo: "/terry-szmagala-gc.jpg"
   },
   {
     name: "Michael Watras",
     title: "Founder & CEO, Straightline",
     creds: "Trusted advisor to C-suite executives worldwide for 25+ years. Founder of leading global strategic brand consultancy Straightline. Expert in leadership positioning and organizational narrative.",
     linkedin: "https://www.linkedin.com/in/michael-watras-a8b83627/",
-    photo: null
+    photo: "/michael-watras-gc.jpg"
   }
 ];
 
