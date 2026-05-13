@@ -415,7 +415,7 @@ const GeneralCounselAdvisoryPage = () => {
       {/* Trust Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-8">
         <div className="text-center py-6">
-          <p className="text-slate-500 text-base">
+          <p className="text-slate-500" style={{ fontSize: '18px' }}>
             A service of <span className="font-bold text-slate-700">The Vanguard Network</span> &mdash; trusted by <span className="font-bold text-slate-700">2,000+ senior executives</span> across industries since 2019.
           </p>
         </div>
