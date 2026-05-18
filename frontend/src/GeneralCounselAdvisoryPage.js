@@ -25,6 +25,27 @@ const advisors = [
     photo: "/ken-banta.jpg"
   },
   {
+    name: "Stephen Gauster",
+    title: "Former EVP & General Counsel, MetLife",
+    creds: "Former EVP & GC at MetLife. Prior roles at Assurant, Prudential, and Cleary Gottlieb. Deep experience leading legal function through enterprise transformation.",
+    linkedin: "https://www.linkedin.com/in/stephengauster/",
+    photo: "/stephen-gauster-gc.jpg"
+  },
+  {
+    name: "Jos\u00e9 Ram\u00f3n Gonz\u00e1lez",
+    title: "Former Chief Legal Officer, Equitable Holdings",
+    creds: "25+ years of senior legal leadership at major publicly held corporations. Former CLO & Corporate Secretary at Equitable Holdings.",
+    linkedin: "https://www.linkedin.com/in/joseramongonzalez/",
+    photo: "/jose-gonzalez-gc.jpg"
+  },
+  {
+    name: "Dick Mosher",
+    title: "Senior Advisor, The Vanguard Network",
+    creds: "Worked as a Chief Legal Officer, General Counsel, or Associate General Counsel for public and private corporations; as a senior counsel for prominent US law firms; and led business teams at Ball, Maytag, and Hoover.",
+    linkedin: null,
+    photo: "/dick-mosher-gc.jpg"
+  },
+  {
     name: "David Robinson",
     title: "Former EVP & General Counsel",
     creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
@@ -37,20 +58,6 @@ const advisors = [
     creds: "Held GC and CLO roles at Rite Aid, Walgreens Boots Alliance, Kraft, and Tractor Supply Company. Deep expertise in complex regulated environments.",
     linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
     photo: "/tom-sabatino-gc.jpg"
-  },
-  {
-    name: "Jos\u00e9 Ram\u00f3n Gonz\u00e1lez",
-    title: "Former Chief Legal Officer, Equitable Holdings",
-    creds: "25+ years of senior legal leadership at major publicly held corporations. Former CLO & Corporate Secretary at Equitable Holdings.",
-    linkedin: "https://www.linkedin.com/in/joseramongonzalez/",
-    photo: "/jose-gonzalez-gc.jpg"
-  },
-  {
-    name: "Stephen Gauster",
-    title: "Former EVP & General Counsel, MetLife",
-    creds: "Former EVP & GC at MetLife. Prior roles at Assurant, Prudential, and Cleary Gottlieb. Deep experience leading legal function through enterprise transformation.",
-    linkedin: "https://www.linkedin.com/in/stephengauster/",
-    photo: "/stephen-gauster-gc.jpg"
   },
   {
     name: "Terry Szmagala",
@@ -356,7 +363,7 @@ const GeneralCounselAdvisoryPage = () => {
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-[#00A8E1] mb-4">The Team</p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-            Seven Senior Advisors. Decades of Real Experience.
+            Eight Senior Advisors. Decades of Real Experience.
           </h2>
           <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-3xl mb-12">
             Every advisor on our team has held, or closely supported, the GC role at major corporations. We speak your language because we've lived in your seat.
@@ -387,39 +394,42 @@ const GeneralCounselAdvisoryPage = () => {
                   <h3 className="text-lg font-bold text-slate-900 mb-1">{advisor.name}</h3>
                   <p className="text-xs font-semibold text-[#00A8E1] uppercase tracking-wide mb-3">{advisor.title}</p>
                   <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">{advisor.creds}</p>
-                  <a
-                    href={advisor.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                  >
-                    <Linkedin className="text-white" size={20} />
-                  </a>
+                  {advisor.linkedin && (
+                    <a
+                      href={advisor.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+                    >
+                      <Linkedin className="text-white" size={20} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
-
-            {/* "Learn more" card */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-              className="bg-gradient-to-br from-slate-100 to-blue-50 rounded-2xl flex items-center justify-center min-h-[280px]"
-            >
-              <div className="text-center p-6">
-                <div className="w-12 h-12 rounded-full bg-[#00A8E1]/10 flex items-center justify-center mx-auto mb-4">
-                  <Plus size={24} className="text-[#00A8E1]" />
-                </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">Want to learn more about our full advisory team?</p>
-                <Link
-                  to="/contact"
-                  className="inline-block text-xs font-semibold text-[#045184] border border-[#045184] px-4 py-2 rounded hover:bg-[#045184] hover:text-white transition-all duration-200"
-                >
-                  Schedule a Call
-                </Link>
-              </div>
-            </motion.div>
           </div>
+        </motion.div>
+      </div>
+
+      {/* Schedule a Call - Standalone Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="bg-white rounded-3xl p-8 md:p-12 shadow-xl text-center"
+        >
+          <div className="w-14 h-14 rounded-full bg-[#00A8E1]/10 flex items-center justify-center mx-auto mb-5">
+            <Plus size={28} className="text-[#00A8E1]" />
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">Want to learn more about our full advisory team?</h3>
+          <p className="text-slate-600 text-base mb-6 max-w-xl mx-auto">Get in touch to discuss how our advisors can support your specific challenges.</p>
+          <Link
+            to="/contact"
+            className="inline-block font-semibold text-sm text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] px-8 py-3 rounded-xl hover:shadow-lg transition-all duration-200"
+          >
+            Schedule a Call
+          </Link>
         </motion.div>
       </div>
 
