@@ -41,8 +41,8 @@ const advisors = [
   {
     name: "Dick Mosher",
     title: "Senior Advisor, The Vanguard Network",
-    creds: "Worked as a Chief Legal Officer, General Counsel, or Associate General Counsel for public and private corporations; as a senior counsel for prominent US law firms; and led business teams at Ball, Maytag, and Hoover.",
-    linkedin: null,
+    creds: "Worked as a CLO, GC, or AGC for public and private corporations; as a senior counsel for prominent US law firms; and led business teams at Ball, Maytag, and Hoover.",
+    linkedin: "https://www.linkedin.com/in/dick-mosher-899b4/",
     photo: "/dick-mosher-gc.jpg"
   },
   {
