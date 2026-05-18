@@ -20,7 +20,7 @@ const advisors = [
   {
     name: "Tom Sabatino",
     title: "10x General Counsel / CLO (Currently Interim GC, Tractor Supply)",
-    creds: "Held ten GC /CLO roles  including Rite Aid, Walgreens, United Airlines, Aetna, Hertz, and Schering-Plough.  Tractor Supply Company. Deep expertise in mergers, transformations,complex regulated environments.",
+    creds: "Held ten GC /CLO roles  including Rite Aid, Walgreens, United Airlines, Aetna, Hertz, and Schering-Plough. Deep expertise in mergers, transformations, complex regulated environments.",
     linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
     photo: "/tom-sabatino-gc.jpg"
   },
