@@ -18,6 +18,20 @@ const Breadcrumb = () => (
 
 const advisors = [
   {
+    name: "Tom Sabatino",
+    title: "10x General Counsel / CLO (Currently Interim GC, Tractor Supply)",
+    creds: "Held ten GC /CLO roles  including Rite Aid, Walgreens, United Airlines, Aetna, Hertz, and Schering-Plough.  Tractor Supply Company. Deep expertise in mergers, transformations,complex regulated environments.",
+    linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
+    photo: "/tom-sabatino-gc.jpg"
+  },
+  {
+    name: "David Robinson",
+    title: "Former EVP & General Counsel",
+    creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
+    linkedin: "https://www.linkedin.com/in/david-c-robinson-b6523a14/",
+    photo: "/david-robinson-gc.jpg"
+  },
+  {
     name: "Ken Banta",
     title: "Founder & CEO, The Vanguard Network",
     creds: "Decades of experience in in-house and advisory leadership. Founder of Vanguard's GC, Life Sciences CEO, and Chief of Staff Networks \u2014 2,000+ senior executives.",
@@ -26,7 +40,7 @@ const advisors = [
   },
   {
     name: "Stephen Gauster",
-    title: "Former EVP & General Counsel, MetLife",
+    title: "CEO, Beekman Estates; Former EVP & General Counsel, MetLife",
     creds: "Former EVP & GC at MetLife. Prior roles at Assurant, Prudential, and Cleary Gottlieb. Deep experience leading legal function through enterprise transformation.",
     linkedin: "https://www.linkedin.com/in/stephengauster/",
     photo: "/stephen-gauster-gc.jpg"
@@ -46,23 +60,9 @@ const advisors = [
     photo: "/dick-mosher-gc.jpg"
   },
   {
-    name: "David Robinson",
-    title: "Former EVP & General Counsel",
-    creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
-    linkedin: "https://www.linkedin.com/in/david-c-robinson-b6523a14/",
-    photo: "/david-robinson-gc.jpg"
-  },
-  {
-    name: "Tom Sabatino",
-    title: "General Counsel & CLO (Multiple F500)",
-    creds: "Held GC and CLO roles at Rite Aid, Walgreens Boots Alliance, Kraft, and Tractor Supply Company. Deep expertise in complex regulated environments.",
-    linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
-    photo: "/tom-sabatino-gc.jpg"
-  },
-  {
     name: "Terry Szmagala",
     title: "Former EVP & CLO, Eaton Corporation",
-    creds: "Led legal and government affairs functions at Eaton ($130B market cap multinational). Founder of TGS Advisory. Trusted counsel to boards and executive management teams.",
+    creds: "Led legal and government affairs functions at Eaton ($130B market cap multinational). Trusted counsel to boards and executive management teams.",
     linkedin: "https://www.linkedin.com/in/taras-szmagala/",
     photo: "/terry-szmagala-gc.jpg"
   },
@@ -116,7 +116,7 @@ const challenges = [
 const steps = [
   { num: "01", title: "We Listen First", description: "We understand your specific situation before offering any perspective. No templates. No assumptions." },
   { num: "02", title: "We Engage Deeply", description: "Through structured conversation, we help you clarify your thinking, stress-test your assumptions, and sharpen your plan." },
-  { num: "03", title: "You Lead the Outcome", description: "We don't hand you a report. We help you reach your own best decision \u2014 and own it with confidence." }
+  { num: "03", title: "You Lead the Outcome", description: "We don't hand you a report. We help you reach your own best decision \u2014 and own it with confidence.  And we are ready to roll up our sleeves and help you execute." }
 ];
 
 const GeneralCounselAdvisoryPage = () => {
@@ -208,27 +208,47 @@ const GeneralCounselAdvisoryPage = () => {
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-[#00A8E1] mb-6">Vanguard Strategic Counsel Service</p>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent py-2 leading-tight">
-            The Trusted Advisor Every General Counsel Deserves &mdash; But Rarely Has
+            The Trusted Advisor Every General Counsel Needs &mdash; But May Not Have
           </h1>
           <div className="max-w-3xl mx-auto">
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-              Confidential. Senior. Experienced. A private advisory relationship built for GCs navigating the most complex dimensions of their role.
+              Confidential. Senior. Experienced. Real World. An advisory relationship built for GCs navigating the most complex dimensions of their role.
             </p>
           </div>
         </motion.div>
       </div>
 
-      {/* Video Section */}
+      {/* CTA Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-center"
+        >
+          <Link to="/contact" data-testid="gc-advisory-hero-cta">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl"
+            >
+              Request Your Complimentary 60-Minute Consultation
+            </motion.button>
+          </Link>
+          <p className="text-slate-500 text-sm mt-4">No pitch. No obligation. Strictly confidential.</p>
+        </motion.div>
+      </div>
+
+      {/* Video Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-20">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
           className="bg-white rounded-3xl p-6 md:p-12 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20"></div>
           <div className="relative z-10">
-            {/* Video placeholder - will be replaced with actual video */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900" data-testid="gc-advisory-video">
               <video
                 ref={videoRef}
@@ -265,27 +285,6 @@ const GeneralCounselAdvisoryPage = () => {
         </motion.div>
       </div>
 
-      {/* CTA Button */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-20">
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-center"
-        >
-          <Link to="/contact" data-testid="gc-advisory-hero-cta">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl"
-            >
-              Request Your Complimentary 60-Minute Consultation
-            </motion.button>
-          </Link>
-          <p className="text-slate-500 text-sm mt-4">No pitch. No obligation. Strictly confidential.</p>
-        </motion.div>
-      </div>
-
       {/* The Challenge Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
@@ -299,7 +298,7 @@ const GeneralCounselAdvisoryPage = () => {
             The GC Role Has Never Been More Demanding
           </h2>
           <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-3xl mb-12">
-            Today's General Counsel is expected to be a legal expert, a business strategist, a people leader, and a board-facing executive &mdash; often simultaneously. The stakes are high and the issues are sensitive. Most GCs can't talk candidly about these challenges with colleagues, direct reports, or even their CEO. That's exactly the gap we were built to fill.
+            Today's General Counsel is expected to be a legal expert, a business strategist, a people leader, and a board-facing executive &mdash; often simultaneously. The stakes are high and the issues are sensitive. Most GCs can't talk  about these challenges with colleagues, direct reports, their CEO, or Board members.  That's why Tom Sabatino, David Robinson, and Ken Banta launched Vanguard's new GC Advisory Service.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -329,7 +328,7 @@ const GeneralCounselAdvisoryPage = () => {
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-[#00A8E1] mb-4">Our Approach</p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-            Not Consultants. Confidants.
+            Not Consultants. Trusted Advisors.
           </h2>
           <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-3xl mb-12">
             We are a small, focused senior team. We don't bring hundreds of charts or data analysis. We engage in an intimate, structured conversation that helps to clarify your insights, recommendations, and decisions &mdash; and helps you test your thinking and verify your action plan.
@@ -363,10 +362,10 @@ const GeneralCounselAdvisoryPage = () => {
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-[#00A8E1] mb-4">The Team</p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-            Eight Senior Advisors. Decades of Real Experience.
+            A Special Team of Senior Advisors. Decades of Top Executive Experience.
           </h2>
           <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-3xl mb-12">
-            Every advisor on our team has held, or closely supported, the GC role at major corporations. We speak your language because we've lived in your seat.
+            Every advisor on our team has held, or closely supported, the GC role at major corporations. We know your world, and we speak your language.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
