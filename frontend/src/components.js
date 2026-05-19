@@ -3678,26 +3678,29 @@ const NewsroomSliderSection = () => {
 // Image Slider Section - Full width horizontal slider with 20 images
 const ImageSliderSection = () => {
   const sliderImages = [
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/jkpjmgxx_1.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/n8bhxx14_2.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/a1pjtqe1_3.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/z2y5xxfu_4.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/52zrcx3f_5.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/lfjanqfw_6.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gnpe1htz_7.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/tn01u7ph_8.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gfpvvoao_9.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/rnqxpk76_10.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/b5ar2pk4_11.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/ig92lkos_12.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/od3u3t8j_13.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/otu490nv_14.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/0350c8bf_15.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/a457e65m_16.jpg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/mepgjo2i_17.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/kzk7a0uj_18.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/vuxecvei_19.jpeg",
-    "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/54l17ktd_20.jpeg"
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/jkpjmgxx_1.jpeg", alt: "The Vanguard Network executive leadership event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/n8bhxx14_2.jpg", alt: "Senior executives networking at Vanguard event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/a1pjtqe1_3.jpg", alt: "C-suite leaders at Vanguard Network forum" },
+    { src: "/gc-forum-2026-1.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/z2y5xxfu_4.jpg", alt: "Leadership discussion at Vanguard Network" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/52zrcx3f_5.jpeg", alt: "General counsel executives at Vanguard gathering" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/lfjanqfw_6.jpeg", alt: "Vanguard Network peer-to-peer leadership event" },
+    { src: "/gc-forum-2026-2.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — executive panel" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gnpe1htz_7.jpeg", alt: "Senior legal executives at Vanguard Network event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/tn01u7ph_8.jpeg", alt: "Executive advisory session at Vanguard Network" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gfpvvoao_9.jpg", alt: "Corporate leadership networking at Vanguard" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/rnqxpk76_10.jpeg", alt: "Vanguard Network executive roundtable" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/b5ar2pk4_11.jpg", alt: "GC Network leaders at Vanguard summit" },
+    { src: "/gc-forum-2026-3.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — group session" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/ig92lkos_12.jpg", alt: "Senior executives at Vanguard leadership forum" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/od3u3t8j_13.jpeg", alt: "Vanguard Network advisory services event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/otu490nv_14.jpg", alt: "Chief legal officers at Vanguard Network event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/0350c8bf_15.jpeg", alt: "Vanguard Network executive leadership gathering" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/a457e65m_16.jpg", alt: "General counsel forum at Vanguard Network" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/mepgjo2i_17.jpeg", alt: "Vanguard Network senior executive networking" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/kzk7a0uj_18.jpeg", alt: "Corporate leaders at Vanguard advisory event" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/vuxecvei_19.jpeg", alt: "Vanguard Network peer leadership exchange" },
+    { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/54l17ktd_20.jpeg", alt: "Executive summit at The Vanguard Network" }
   ];
 
   return (
@@ -3705,11 +3708,11 @@ const ImageSliderSection = () => {
       <div className="slider-container">
         <div className="slider-track">
           {/* First set of images */}
-          {sliderImages.map((src, index) => (
+          {sliderImages.map((img, index) => (
             <div key={`first-${index}`} className="slider-slide">
               <img 
-                src={src} 
-                alt={`Leadership event ${index + 1}`}
+                src={img.src} 
+                alt={img.alt}
                 className="slider-image"
                 loading="lazy"
                 decoding="async"
@@ -3719,11 +3722,11 @@ const ImageSliderSection = () => {
             </div>
           ))}
           {/* Duplicate set for seamless loop */}
-          {sliderImages.map((src, index) => (
+          {sliderImages.map((img, index) => (
             <div key={`second-${index}`} className="slider-slide">
               <img 
-                src={src} 
-                alt={`Leadership event ${index + 1}`}
+                src={img.src} 
+                alt={img.alt}
                 className="slider-image"
                 loading="lazy"
                 decoding="async"
