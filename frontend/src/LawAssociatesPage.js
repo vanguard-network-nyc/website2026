@@ -408,7 +408,7 @@ const LawAssociatesPage = () => {
             >
               <div className="w-48 h-48 rounded-full bg-slate-200 mx-auto mb-4 overflow-hidden">
                 <img
-                  src="/ken-banta.jpg"
+                  src="/ken-banta.jpg?v=2"
                   alt="Ken Banta"
                   className="w-full h-full object-cover"
                 />

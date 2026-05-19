@@ -36,7 +36,7 @@ const advisors = [
     title: "Founder & CEO, The Vanguard Network",
     creds: "Decades of experience in in-house and advisory leadership. Founder of Vanguard's GC, Life Sciences CEO, and Chief of Staff Networks \u2014 2,000+ senior executives.",
     linkedin: "https://www.linkedin.com/in/ken-banta-1651946/",
-    photo: "/ken-banta.jpg"
+    photo: "/ken-banta.jpg?v=2"
   },
   {
     name: "Stephen Gauster",
