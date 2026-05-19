@@ -3690,7 +3690,6 @@ const ImageSliderSection = () => {
     { src: "/gc-forum-2026-5.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — networking session" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gnpe1htz_7.jpeg", alt: "Senior legal executives at Vanguard Network event" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/tn01u7ph_8.jpeg", alt: "Executive advisory session at Vanguard Network" },
-    { src: "/gc-forum-2026-2.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — executive panel" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gfpvvoao_9.jpg", alt: "Corporate leadership networking at Vanguard" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/rnqxpk76_10.jpeg", alt: "Vanguard Network executive roundtable" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/b5ar2pk4_11.jpg", alt: "GC Network leaders at Vanguard summit" },
