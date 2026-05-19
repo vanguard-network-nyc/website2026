@@ -3691,7 +3691,6 @@ const ImageSliderSection = () => {
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/gfpvvoao_9.jpg", alt: "Corporate leadership networking at Vanguard" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/rnqxpk76_10.jpeg", alt: "Vanguard Network executive roundtable" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/b5ar2pk4_11.jpg", alt: "GC Network leaders at Vanguard summit" },
-    { src: "/gc-forum-2026-3.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — group session" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/ig92lkos_12.jpg", alt: "Senior executives at Vanguard leadership forum" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/od3u3t8j_13.jpeg", alt: "Vanguard Network advisory services event" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/otu490nv_14.jpg", alt: "Chief legal officers at Vanguard Network event" },
@@ -3699,6 +3698,7 @@ const ImageSliderSection = () => {
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/a457e65m_16.jpg", alt: "General counsel forum at Vanguard Network" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/mepgjo2i_17.jpeg", alt: "Vanguard Network senior executive networking" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/kzk7a0uj_18.jpeg", alt: "Corporate leaders at Vanguard advisory event" },
+    { src: "/gc-forum-2026-3.jpg", alt: "The Vanguard Network General Counsel Forum, May 2026 — group session" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/vuxecvei_19.jpeg", alt: "Vanguard Network peer leadership exchange" },
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/54l17ktd_20.jpeg", alt: "Executive summit at The Vanguard Network" }
   ];
