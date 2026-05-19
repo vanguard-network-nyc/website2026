@@ -3814,16 +3814,16 @@ const ImageSliderSection = () => {
           data-testid="slider-prev-btn"
           className="slider-ctrl-btn"
         >
-          <ChevronLeft size={18} strokeWidth={1.5} />
+          <ChevronLeft size={18} strokeWidth={1.75} />
         </button>
         <button
           type="button"
           onClick={togglePlay}
           aria-label={isPlaying ? "Pause slider" : "Play slider"}
           data-testid="slider-playpause-btn"
-          className="slider-ctrl-btn"
+          className="slider-ctrl-btn slider-ctrl-btn--primary"
         >
-          {isPlaying ? <Pause size={16} strokeWidth={1.5} /> : <Play size={16} strokeWidth={1.5} />}
+          {isPlaying ? <Pause size={16} strokeWidth={1.75} /> : <Play size={16} strokeWidth={1.75} />}
         </button>
         <button
           type="button"
@@ -3832,7 +3832,7 @@ const ImageSliderSection = () => {
           data-testid="slider-next-btn"
           className="slider-ctrl-btn"
         >
-          <ChevronRight size={18} strokeWidth={1.5} />
+          <ChevronRight size={18} strokeWidth={1.75} />
         </button>
       </div>
 
@@ -3861,33 +3861,46 @@ const ImageSliderSection = () => {
         .slider-controls {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 12px;
+          justify-content: flex-end;
+          gap: 10px;
           margin-top: 24px;
+          padding-right: 32px;
         }
         .slider-ctrl-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 34px;
-          height: 34px;
+          width: 36px;
+          height: 36px;
           border-radius: 9999px;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          background: rgba(255, 255, 255, 0.9);
-          color: #1f2937;
+          border: 1.5px solid #045184;
+          background: #ffffff;
+          color: #045184;
           transition: all 0.2s ease;
           cursor: pointer;
         }
         .slider-ctrl-btn:hover {
-          background: #111827;
-          color: #fff;
-          border-color: #111827;
+          background: #045184;
+          color: #ffffff;
+          border-color: #045184;
+        }
+        .slider-ctrl-btn--primary {
+          background: #045184;
+          color: #ffffff;
+        }
+        .slider-ctrl-btn--primary:hover {
+          background: #00A8E1;
+          color: #ffffff;
+          border-color: #00A8E1;
         }
         .slider-ctrl-btn:focus-visible {
-          outline: 2px solid #111827;
+          outline: 2px solid #00A8E1;
           outline-offset: 2px;
         }
         @media (max-width: 768px) {
+          .slider-controls {
+            padding-right: 16px;
+          }
           .slider-slide {
             width: 280px;
             height: 210px;
