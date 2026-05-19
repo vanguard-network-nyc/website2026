@@ -42,7 +42,8 @@ import {
   Calendar,
   ExternalLink,
   Headphones,
-  FileText
+  FileText,
+  Pause
 } from 'lucide-react';
 
 // Custom ScrollLink component that scrolls to top BEFORE navigation
@@ -3707,10 +3708,72 @@ const ImageSliderSection = () => {
     { src: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/54l17ktd_20.jpeg", alt: "Executive summit at The Vanguard Network" }
   ];
 
+  const trackRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const isPlayingRef = useRef(true);
+  const positionRef = useRef(0);
+  const slideWidthRef = useRef(typeof window !== 'undefined' && window.innerWidth <= 768 ? 296 : 416);
+  const totalWidthRef = useRef(slideWidthRef.current * sliderImages.length);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      slideWidthRef.current = window.innerWidth <= 768 ? 296 : 416;
+      totalWidthRef.current = slideWidthRef.current * sliderImages.length;
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, [sliderImages.length]);
+
+  useEffect(() => {
+    const speedPxPerMs = 0.04; // ~40px/sec, matches original 60s loop feel
+    let lastTime = performance.now();
+    const tick = (now) => {
+      const dt = now - lastTime;
+      lastTime = now;
+      if (isPlayingRef.current && trackRef.current) {
+        positionRef.current -= speedPxPerMs * dt;
+        if (positionRef.current <= -totalWidthRef.current) {
+          positionRef.current += totalWidthRef.current;
+        }
+        trackRef.current.style.transform = `translateX(${positionRef.current}px)`;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  const shiftBy = (delta) => {
+    positionRef.current += delta;
+    // Wrap within [-totalWidth, 0]
+    if (positionRef.current <= -totalWidthRef.current) {
+      positionRef.current += totalWidthRef.current;
+    } else if (positionRef.current > 0) {
+      positionRef.current -= totalWidthRef.current;
+    }
+    if (trackRef.current) {
+      trackRef.current.style.transition = 'transform 0.4s ease';
+      trackRef.current.style.transform = `translateX(${positionRef.current}px)`;
+      window.setTimeout(() => {
+        if (trackRef.current) trackRef.current.style.transition = '';
+      }, 420);
+    }
+  };
+
+  const handleNext = () => shiftBy(-slideWidthRef.current);
+  const handlePrev = () => shiftBy(slideWidthRef.current);
+  const togglePlay = () => setIsPlaying((p) => !p);
+
   return (
     <section className="py-16 bg-white overflow-hidden">
       <div className="slider-container">
-        <div className="slider-track">
+        <div className="slider-track" ref={trackRef}>
           {/* First set of images */}
           {sliderImages.map((img, index) => (
             <div key={`first-${index}`} className="slider-slide">
@@ -3741,6 +3804,38 @@ const ImageSliderSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Custom slider controls */}
+      <div className="slider-controls" data-testid="image-slider-controls">
+        <button
+          type="button"
+          onClick={handlePrev}
+          aria-label="Previous image"
+          data-testid="slider-prev-btn"
+          className="slider-ctrl-btn"
+        >
+          <ChevronLeft size={18} strokeWidth={1.5} />
+        </button>
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label={isPlaying ? "Pause slider" : "Play slider"}
+          data-testid="slider-playpause-btn"
+          className="slider-ctrl-btn"
+        >
+          {isPlaying ? <Pause size={16} strokeWidth={1.5} /> : <Play size={16} strokeWidth={1.5} />}
+        </button>
+        <button
+          type="button"
+          onClick={handleNext}
+          aria-label="Next image"
+          data-testid="slider-next-btn"
+          className="slider-ctrl-btn"
+        >
+          <ChevronRight size={18} strokeWidth={1.5} />
+        </button>
+      </div>
+
       <style>{`
         .slider-container {
           width: 100%;
@@ -3748,8 +3843,8 @@ const ImageSliderSection = () => {
         }
         .slider-track {
           display: flex;
-          width: calc(416px * 40);
-          animation: scroll 60s linear infinite;
+          width: max-content;
+          will-change: transform;
         }
         .slider-slide {
           flex-shrink: 0;
@@ -3763,29 +3858,39 @@ const ImageSliderSection = () => {
           object-fit: cover;
           border-radius: 12px;
         }
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-416px * 20));
-          }
+        .slider-controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin-top: 24px;
+        }
+        .slider-ctrl-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 9999px;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          background: rgba(255, 255, 255, 0.9);
+          color: #1f2937;
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        .slider-ctrl-btn:hover {
+          background: #111827;
+          color: #fff;
+          border-color: #111827;
+        }
+        .slider-ctrl-btn:focus-visible {
+          outline: 2px solid #111827;
+          outline-offset: 2px;
         }
         @media (max-width: 768px) {
-          .slider-track {
-            width: calc(296px * 40);
-          }
           .slider-slide {
             width: 280px;
             height: 210px;
-          }
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(calc(-296px * 20));
-            }
           }
         }
       `}</style>

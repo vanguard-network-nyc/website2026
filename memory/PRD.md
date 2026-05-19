@@ -1,67 +1,44 @@
 # The Vanguard Network — PRD
 
 ## Original Problem Statement
-Corporate website for The Vanguard Network using React frontend + FastAPI backend + Airtable as headless CMS. The site serves 2,000+ senior executives with content pages, advisory services, membership applications, and event information.
+Maintain and extend the production marketing website for The Vanguard Network. The site is a React + FastAPI + Airtable-backed app serving advisory services, executive networks, programs, events, content, and newsroom content.
 
 ## Architecture
-- **Frontend**: React, Tailwind CSS, Framer Motion, react-helmet-async
-- **Backend**: FastAPI (Python), httpx for Airtable API calls
-- **Data Source**: Airtable (headless CMS)
-- **Deployment**: Emergent Platform → thevanguardnetwork.com
+- **Frontend:** React, Tailwind, Framer Motion, react-helmet-async, react-slick (used in newsroom slider)
+- **Backend:** FastAPI, httpx → Airtable CMS
+- **Routing:** All API routes prefixed `/api`
+- **Key files:**
+  - `/app/frontend/src/components.js` (monolithic >3800 lines — HomePage, Header, BookPage, ImageSliderSection, etc.)
+  - `/app/frontend/src/GeneralCounselAdvisoryPage.js`
+  - `/app/frontend/src/SEO.js`
+  - `/app/frontend/public/sitemap.xml`
+  - `/app/backend/server.py`
 
-## What's Been Implemented
+## Implemented
+- **2026-02-19** Homepage image-slider custom controls (prev / play-pause / next) — JS-driven RAF animation; supports manual shift and pause without losing position. Subtle pill-style buttons, fully accessible (aria-labels, data-testids).
+- **Prior** Membership form CORS fix (`allow_credentials=False`).
+- **Prior** `/api/newsroom` pagination (removed `maxRecords: 100`) + `httpx` timeout 5s→30s.
+- **Prior** `/general-counsel-advisory` page built with full SEO (OG tags, VideoObject + Service schema, sitemap entry).
+- **Prior** Homepage slider populated with 7 GC Forum 2026 images + SEO alt tags.
+- **Prior** Tom Sabatino, Ken Banta, Tony Powe, Dick Mosher content updates.
 
-### May 19, 2026 — Homepage Slider Images
-- Added 7 new GC Forum May 2026 photos to homepage image slider
-- Photos spaced randomly among 20 existing images (27 total)
-- Each image has unique descriptive SEO alt text
+## Roadmap / Backlog
 
-### May 18, 2026 — GC Advisory Page Content Updates
-- 12 content/copy changes applied (title, subtitle, section headings, advisor bios)
-- Advisor order changed to: Sabatino, Robinson, Banta, Gauster, González, Mosher, Szmagala, Watras
-- Dick Mosher added as 8th advisor with headshot and LinkedIn
+### P1
+- Add `/general-counsel-advisory` link to Advisory dropdown nav (waits for user go-live confirmation; currently hidden but routable).
+- Remove temporary `Clear-Site-Data` meta tag from `/app/frontend/public/index.html`.
 
-### May 13, 2026 — New General Counsel Advisory Page
-- Created `/general-counsel-advisory` page matching `/advisory` design
-- 8 advisor cards with headshots, LinkedIn links, credentials
-- Video embed with thumbnail and replay overlay
-- Full SEO: page title, description, VideoObject + Service schemas, sitemap entry, breadcrumbs
-- Responsive on desktop, tablet, and mobile
-- Hidden from navigation (to be added to Advisory dropdown when ready)
+### P2
+- Verify `/api/health` endpoint resolves on live production domain (thevanguardnetwork.com).
+- Confirm Google Analytics tracking on production.
 
-### April 10, 2026 — Newsroom Pagination Fix
-- Removed `maxRecords: 100` cap from Airtable fetch
-- Added pagination loop with 30s httpx timeout
-- All 120+ newsroom items now load correctly
+### Refactor (P2)
+- Break `/app/frontend/src/components.js` (>3800 lines) into per-component files.
 
-### March 30, 2026 — Headshot Replacements
-- Ken Banta: new 2026 headshot on advisory, book, LawAssociates pages
-- Tony Powe: new 2026 headshot (team page pulls from Airtable)
-- Tom Sabatino: title updated to "Interim General Counsel, Tractor Supply Company"
+## 3rd-Party Integrations
+- Airtable (CMS) — keys in `/app/backend/.env`
 
-### March 18, 2026 — CORS Fix
-- Removed `allow_credentials=True` from CORSMiddleware
-- Fixed spec violation causing "Failed to fetch" on live site cross-origin requests
-
-### March 3, 2026 — Production Airtable Fix
-- Re-added .env files to git tracking
-- All content pages restored on live domain
-
-## Known Issues
-- Production `www` subdomain does NOT proxy `/api/*` to backend (nginx serves static React files)
-- `Clear-Site-Data` meta tag still in index.html (P1 — should be removed)
-- `components.js` is monolithic (~3800 lines) and needs refactoring
-
-## Backlog
-- P1: Add `/general-counsel-advisory` to Advisory dropdown navigation
-- P1: Remove `Clear-Site-Data` meta tag from index.html
-- P1: Verify membership form + health endpoint on live after deploy
-- P2: Verify Google Analytics tracking on production
-- P2: Refactor monolithic `components.js` into individual component files
-
-## Key Files
-- `/app/frontend/src/GeneralCounselAdvisoryPage.js` — New GC Advisory page
-- `/app/frontend/src/components.js` — Homepage, Advisory, Book, Header, slider
-- `/app/frontend/src/MembershipApplicationPage.js` — Membership form
-- `/app/backend/server.py` — All API endpoints, Airtable logic, CORS config
-- `/app/frontend/public/sitemap.xml` — Includes all pages
+## Notes
+- Production uses non-www domain with strict CORS (no `allow_credentials`).
+- Nginx caches aggressively — allow propagation time for live deploys.
+- `react-slick` used only by NewsroomSliderSection; the homepage image marquee is custom CSS+RAF (not react-slick).
