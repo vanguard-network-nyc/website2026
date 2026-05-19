@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
 import { ArrowLeft, Users, Calendar, MapPin, CheckCircle, ExternalLink, DollarSign, Clock, Target, Award, BookOpen, Star } from 'lucide-react';
 
 const NextGenGCPage = () => {
+  // Inject noindex meta directly (belt-and-suspenders alongside SEO component, robots.txt, and sitemap removal)
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    meta.setAttribute('data-page', 'next-gen-gc-template');
+    document.head.appendChild(meta);
+    return () => {
+      const existing = document.querySelector('meta[data-page="next-gen-gc-template"]');
+      if (existing) existing.remove();
+    };
+  }, []);
+
   return (
     <div className="pt-40 pb-12 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
     >
       <SEO 
         title="Next-Gen GC Program"
         description="Accelerate your path to General Counsel. Leadership development program for high-potential legal executives aspiring to the GC role."
+        noindex={true}
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
         {/* Back Button */}

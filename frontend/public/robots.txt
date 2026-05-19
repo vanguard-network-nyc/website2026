@@ -9,6 +9,7 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
+Disallow: /next-gen-gc-template
 
 # Sitemap location
 Sitemap: https://thevanguardnetwork.com/sitemap.xml
