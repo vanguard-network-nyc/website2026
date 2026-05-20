@@ -69,7 +69,7 @@ const advisors = [
   {
     name: "Michael Watras",
     title: "Founder & CEO, Straightline",
-    creds: "Trusted advisor to C-suite executives worldwide for 25+ years. Founder of leading global strategic brand consultancy Straightline. Expert in leadership positioning and organizational narrative.",
+    creds: "Trusted advisor to C-suite executives worldwide for 25+ years. Founder of leading global strategic brand consultancy Straightline. Expert in leadership positioning and organizational narrative. Clients have included Walgreens, Bausch and Lomb, ABB, Hitachi, and TMobile, to mention a few.",
     linkedin: "https://www.linkedin.com/in/michael-watras-a8b83627/",
     photo: "/michael-watras-gc.jpg"
   }
