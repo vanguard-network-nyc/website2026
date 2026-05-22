@@ -223,6 +223,7 @@ const Header = () => {
         { name: 'Articles', path: '/articles' },
         { name: 'Podcasts', path: '/podcasts' },
         { name: 'Videos', path: '/videos' },
+        { name: 'Reports', path: 'https://members.thevanguardnetwork.com/reports', external: true },
         { name: 'Book', path: '/book' }
       ]
     },
@@ -296,13 +297,25 @@ const Header = () => {
                     {/* Dropdown content */}
                     <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       {item.dropdown.map((subItem, subIndex) => (
-                        <ScrollLink
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
-                        >
-                          {subItem.name}
-                        </ScrollLink>
+                        subItem.external ? (
+                          <a
+                            key={subItem.name}
+                            href={subItem.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                          >
+                            {subItem.name}
+                          </a>
+                        ) : (
+                          <ScrollLink
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                          >
+                            {subItem.name}
+                          </ScrollLink>
+                        )
                       ))}
                     </div>
                   </div>
@@ -383,14 +396,27 @@ const Header = () => {
                     <div className="border-b border-slate-600/30 py-1.5">
                       <div className="text-white font-medium">{item.name}</div>
                       {item.dropdown.map((subItem) => (
-                        <ScrollLink
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </ScrollLink>
+                        subItem.external ? (
+                          <a
+                            key={subItem.name}
+                            href={subItem.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </a>
+                        ) : (
+                          <ScrollLink
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-sm transition-colors duration-200 py-0.5"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </ScrollLink>
+                        )
                       ))}
                     </div>
                   ) : (
@@ -462,14 +488,27 @@ const Header = () => {
                     <div className="border-b border-slate-600/30 py-2 lg:py-3">
                       <div className="text-white font-medium text-lg lg:text-xl">{item.name}</div>
                       {item.dropdown.map((subItem) => (
-                        <ScrollLink
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </ScrollLink>
+                        subItem.external ? (
+                          <a
+                            key={subItem.name}
+                            href={subItem.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </a>
+                        ) : (
+                          <ScrollLink
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {subItem.name}
+                          </ScrollLink>
+                        )
                       ))}
                     </div>
                   ) : (
