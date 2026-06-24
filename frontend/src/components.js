@@ -1494,7 +1494,7 @@ const AdvisoryPage = () => {
             {/* Aileen Gonsalves */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Executive Coach and Leadership Advisor" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Leadership Engagement Coach" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
               </div>
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">AILEEN GONSALVES</h3>
