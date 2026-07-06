@@ -224,6 +224,7 @@ const Header = () => {
         { name: 'Podcasts', path: '/podcasts' },
         { name: 'Videos', path: '/videos' },
         { name: 'Reports', path: 'https://members.thevanguardnetwork.com/reports', external: true },
+        { name: 'The Rx Files', path: 'https://therxfiles.transistor.fm/', external: true },
         { name: 'Book', path: '/book' }
       ]
     },
