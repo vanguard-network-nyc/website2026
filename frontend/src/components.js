@@ -474,78 +474,80 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex-col overflow-y-auto"
+            className="hidden md:flex xl:hidden fixed left-0 right-0 bottom-0 bg-gradient-to-r from-[#0c2340] to-[#045184] z-50 flex-col"
             style={{ top: '140px' }}
           >
-            <div className="px-8 py-6">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  {item.dropdown ? (
-                    <div className="border-b border-slate-600/30 py-2 lg:py-3">
-                      <div className="text-white font-medium text-lg lg:text-xl">{item.name}</div>
-                      {item.dropdown.map((subItem) => (
-                        subItem.external ? (
-                          <a
-                            key={subItem.name}
-                            href={subItem.path}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {subItem.name}
-                          </a>
-                        ) : (
-                          <ScrollLink
-                            key={subItem.name}
-                            to={subItem.path}
-                            className="block text-blue-300 hover:text-blue-100 pl-4 text-base lg:text-lg transition-colors duration-200 py-1 lg:py-1.5"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {subItem.name}
-                          </ScrollLink>
-                        )
-                      ))}
-                    </div>
-                  ) : (
-                    item.external ? (
-                      <a
-                        href={item.path}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </a>
+            <div className="px-8 py-5 flex flex-col h-full">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-1 flex-1">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    {item.dropdown ? (
+                      <div className="border-b border-slate-600/30 py-1">
+                        <div className="text-white font-medium text-base lg:text-lg">{item.name}</div>
+                        {item.dropdown.map((subItem) => (
+                          subItem.external ? (
+                            <a
+                              key={subItem.name}
+                              href={subItem.path}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block text-blue-300 hover:text-blue-100 pl-3 text-sm lg:text-base transition-colors duration-200 py-0.5"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {subItem.name}
+                            </a>
+                          ) : (
+                            <ScrollLink
+                              key={subItem.name}
+                              to={subItem.path}
+                              className="block text-blue-300 hover:text-blue-100 pl-3 text-sm lg:text-base transition-colors duration-200 py-0.5"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {subItem.name}
+                            </ScrollLink>
+                          )
+                        ))}
+                      </div>
                     ) : (
-                      <ScrollLink
-                        to={item.path}
-                        className="block text-white hover:text-blue-400 font-medium text-lg lg:text-xl transition-colors duration-200 border-b border-slate-600/30 py-3 lg:py-4"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </ScrollLink>
-                    )
-                  )}
-                </motion.div>
-              ))}
+                      item.external ? (
+                        <a
+                          href={item.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-white hover:text-blue-400 font-medium text-base lg:text-lg transition-colors duration-200 border-b border-slate-600/30 py-2"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <ScrollLink
+                          to={item.path}
+                          className="block text-white hover:text-blue-400 font-medium text-base lg:text-lg transition-colors duration-200 border-b border-slate-600/30 py-2"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {item.name}
+                        </ScrollLink>
+                      )
+                    )}
+                  </motion.div>
+                ))}
+              </div>
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="pt-4"
+                className="pt-4 mt-4 border-t border-slate-600/30"
               >
                 <a
                   href="https://members.thevanguardnetwork.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block text-white px-6 py-3 rounded-lg font-medium text-lg lg:text-xl transition-colors duration-200"
+                  className="inline-block text-white px-6 py-3 rounded-lg font-medium text-base lg:text-lg transition-colors duration-200"
                   style={{ backgroundColor: '#00A8E1' }}
                   onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
                   onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
