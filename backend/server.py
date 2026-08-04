@@ -1327,9 +1327,41 @@ class CustomQuoteSubmit(BaseModel):
     message: str
     source: str
 
+# ---------- Anti-spam: email blocklist with Gmail-style normalization ----------
+# Add spammer emails here (any format). Gmail dot/plus variations are auto-normalized.
+BLOCKED_EMAILS_RAW = [
+    "axubi.xaro.8.7.6@gmail.com",
+]
+
+def _normalize_email(email: str) -> str:
+    """Normalize email for blocklist comparison.
+
+    - Lowercases.
+    - For gmail/googlemail: strips dots from the local part and drops '+alias' suffix
+      (Gmail treats these as the same address).
+    """
+    if not email or "@" not in email:
+        return (email or "").strip().lower()
+    local, _, domain = email.strip().lower().rpartition("@")
+    if domain in ("gmail.com", "googlemail.com"):
+        local = local.split("+", 1)[0].replace(".", "")
+        domain = "gmail.com"
+    return f"{local}@{domain}"
+
+BLOCKED_EMAILS = {_normalize_email(e) for e in BLOCKED_EMAILS_RAW}
+
+def is_email_blocked(email: str) -> bool:
+    return _normalize_email(email) in BLOCKED_EMAILS
+# ------------------------------------------------------------------------------
+
 @api_router.post("/contact/submit")
 async def submit_contact_form(form_data: ContactFormSubmit):
     """Send contact form submission via email using Resend"""
+    # Silently drop spam submissions from blocked emails (return generic success
+    # so bots can't tell they've been filtered).
+    if is_email_blocked(form_data.email):
+        logger.warning(f"Blocked spam submission from {form_data.email} (source={form_data.source})")
+        return {"status": "success", "message": "Contact form submitted successfully"}
     try:
         # Configure Resend API
         resend.api_key = os.environ.get('RESEND_API_KEY')
@@ -1395,6 +1427,9 @@ async def submit_contact_form(form_data: ContactFormSubmit):
 @api_router.post("/quote/submit")
 async def submit_custom_quote(form_data: CustomQuoteSubmit):
     """Send custom quote form submission via email using Resend"""
+    if is_email_blocked(form_data.email):
+        logger.warning(f"Blocked spam submission from {form_data.email} (source={form_data.source})")
+        return {"status": "success", "message": "Quote request submitted successfully"}
     try:
         # Configure Resend API
         resend.api_key = os.environ.get('RESEND_API_KEY')
