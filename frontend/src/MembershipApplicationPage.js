@@ -54,7 +54,8 @@ const MembershipApplicationPage = () => {
     network_interest: [], // Changed to array for multiple selections
     recommended_by: '',
     further_details: '',
-    source_of_inquiry: 'Main website' // Hidden field, pre-filled
+    source_of_inquiry: 'Main website', // Hidden field, pre-filled
+    website: '' // honeypot — must stay empty; hidden from real users
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -203,7 +204,8 @@ const MembershipApplicationPage = () => {
         network_interest: [],
         recommended_by: '',
         further_details: '',
-        source_of_inquiry: 'Main website'
+        source_of_inquiry: 'Main website',
+        website: ''
       });
       
       // Increment reset key to force re-render of phone and country components
@@ -331,6 +333,19 @@ const MembershipApplicationPage = () => {
           className="bg-white rounded-3xl p-4 md:p-8 md:p-6 md:p-12 shadow-xl"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Honeypot: hidden from real users, bots fill it and get silently rejected */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+              <label htmlFor="mem_website">Website (leave blank)</label>
+              <input
+                type="text"
+                id="mem_website"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex="-1"
+                autoComplete="off"
+              />
+            </div>
             {/* Full Name - Required */}
             <div>
               <label htmlFor="full_name" className="block text-sm font-bold text-slate-900 mb-2">

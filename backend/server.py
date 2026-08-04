@@ -1310,6 +1310,7 @@ class MembershipApplicationSubmit(BaseModel):
     recommended_by: Optional[str] = None
     further_details: Optional[str] = None
     source_of_inquiry: Optional[str] = "Main website"
+    website: Optional[str] = ""  # Honeypot: must be empty; bots typically fill all inputs
 
 class ContactFormSubmit(BaseModel):
     fullName: str
@@ -1318,6 +1319,7 @@ class ContactFormSubmit(BaseModel):
     interestArea: Optional[str] = None
     message: str
     source: str
+    website: Optional[str] = ""  # Honeypot: must be empty; bots typically fill all inputs
 
 # ---------- Anti-spam: email blocklist with Gmail-style normalization ----------
 # Add spammer emails here (any format). Gmail dot/plus variations are auto-normalized.
@@ -1349,6 +1351,10 @@ def is_email_blocked(email: str) -> bool:
 @api_router.post("/contact/submit")
 async def submit_contact_form(form_data: ContactFormSubmit):
     """Send contact form submission via email using Resend"""
+    # Honeypot: real users can't see or fill the 'website' field. If it's non-empty, it's a bot.
+    if form_data.website and form_data.website.strip():
+        logger.warning(f"Blocked honeypot submission from {form_data.email} (source={form_data.source})")
+        return {"status": "success", "message": "Contact form submitted successfully"}
     # Silently drop spam submissions from blocked emails (return generic success
     # so bots can't tell they've been filtered).
     if is_email_blocked(form_data.email):
@@ -1419,6 +1425,14 @@ async def submit_contact_form(form_data: ContactFormSubmit):
 @api_router.post("/membership/application")
 async def submit_membership_application(application: MembershipApplicationSubmit):
     """Submit a new membership application to Airtable"""
+    # Honeypot: real users can't see or fill the 'website' field. If it's non-empty, it's a bot.
+    if application.website and application.website.strip():
+        logger.warning(f"Blocked honeypot submission from {application.work_email} (membership)")
+        return {"status": "success", "message": "Application submitted successfully", "record_id": None}
+    # Silently drop spam submissions from blocked emails.
+    if is_email_blocked(application.work_email) or (application.personal_email and is_email_blocked(application.personal_email)):
+        logger.warning(f"Blocked spam submission from {application.work_email} (membership)")
+        return {"status": "success", "message": "Application submitted successfully", "record_id": None}
     try:
         membership_base_id = os.environ.get('MEMBERSHIP_BASE_ID', 'appqyKMZnFfgSuJKt')
         membership_table_name = "Membership Contact Inquiry Form (Softr)"

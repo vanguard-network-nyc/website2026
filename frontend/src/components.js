@@ -1852,7 +1852,8 @@ const ContactPage = () => {
     email: '',
     company: '',
     interestArea: '',
-    message: ''
+    message: '',
+    website: '' // honeypot — must stay empty; hidden from real users
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -1880,6 +1881,7 @@ const ContactPage = () => {
         company: formData.company,
         interestArea: formData.interestArea,
         message: formData.message,
+        website: formData.website, // honeypot
         source: 'The Vanguard Network Contact Form'
       };
 
@@ -1906,7 +1908,8 @@ const ContactPage = () => {
           email: '',
           company: '',
           interestArea: '',
-          message: ''
+          message: '',
+          website: ''
         });
       } else {
         const errorText = await response.text();
@@ -1984,6 +1987,19 @@ const ContactPage = () => {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot: hidden from real users, bots fill it and get silently rejected */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+                <label htmlFor="website">Website (leave blank)</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
+              </div>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
