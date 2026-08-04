@@ -1319,14 +1319,6 @@ class ContactFormSubmit(BaseModel):
     message: str
     source: str
 
-class CustomQuoteSubmit(BaseModel):
-    fullName: str
-    email: str
-    company: Optional[str] = None
-    customizedSolution: str
-    message: str
-    source: str
-
 # ---------- Anti-spam: email blocklist with Gmail-style normalization ----------
 # Add spammer emails here (any format). Gmail dot/plus variations are auto-normalized.
 BLOCKED_EMAILS_RAW = [
@@ -1422,74 +1414,6 @@ async def submit_contact_form(form_data: ContactFormSubmit):
         return {
             "status": "success",
             "message": "Contact form submitted successfully"
-        }
-
-@api_router.post("/quote/submit")
-async def submit_custom_quote(form_data: CustomQuoteSubmit):
-    """Send custom quote form submission via email using Resend"""
-    if is_email_blocked(form_data.email):
-        logger.warning(f"Blocked spam submission from {form_data.email} (source={form_data.source})")
-        return {"status": "success", "message": "Quote request submitted successfully"}
-    try:
-        # Configure Resend API
-        resend.api_key = os.environ.get('RESEND_API_KEY')
-        
-        # Email body
-        html_body = f"""
-        <html>
-        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <h2 style="color: #045184;">New Custom Quote Request</h2>
-            <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
-                <tr>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Full Name:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.fullName}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Email:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.email}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Company:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;">{form_data.company or 'Not provided'}</td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Customized Solution:</strong></td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee;"><span style="color: #045184; font-weight: bold;">{form_data.customizedSolution}</span></td>
-                </tr>
-            </table>
-            <h3 style="color: #045184; margin-top: 20px;">Message:</h3>
-            <p style="background: #f5f5f5; padding: 15px; border-left: 4px solid #00A8E1;">{form_data.message}</p>
-            <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
-            <p style="font-size: 12px; color: #666;">
-                <strong>Source:</strong> {form_data.source}<br>
-                <strong>Timestamp:</strong> {datetime.utcnow().isoformat()}
-            </p>
-        </body>
-        </html>
-        """
-        
-        # Send email via Resend (using onboarding domain)
-        params = {
-            "from": "The Vanguard Network <onboarding@resend.dev>",
-            "to": ["rrafila@vanguardgroup.nyc"],
-            "subject": f"New Custom Quote Request - {form_data.customizedSolution}",
-            "html": html_body,
-        }
-        
-        email = resend.Emails.send(params)
-        logger.info(f"Custom quote email sent successfully via Resend: {email}")
-        
-        return {
-            "status": "success",
-            "message": "Custom quote request submitted successfully"
-        }
-        
-    except Exception as e:
-        logger.error(f"Error sending custom quote via Resend: {str(e)}")
-        # Still return success to user
-        return {
-            "status": "success",
-            "message": "Custom quote request submitted successfully"
         }
 
 @api_router.post("/membership/application")
