@@ -6,6 +6,7 @@ import SEO from './SEO';
 import ProgramsV2 from './ProgramsV2';
 import NetworkingV2Page from './NetworkingV2Page';
 import UpcomingEventsPage from './UpcomingEventsPage';
+import EventDetailsPage from './EventDetailsPage';
 import NotFoundPage from './NotFoundPage';
 import PodcastsPage from './PodcastsPage';
 import PodcastDetailPage from './PodcastDetailPage';
@@ -104,6 +105,7 @@ function App() {
           <Route path="/networking" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
           <Route path="/programs" element={<PageWrapper><ProgramsV2 /></PageWrapper>} />
           <Route path="/upcoming-events" element={<PageWrapper><UpcomingEventsPage /></PageWrapper>} />
+          <Route path="/events/:recordId" element={<PageWrapper><EventDetailsPage /></PageWrapper>} />
           <Route path="/articles" element={<PageWrapper><ArticlesPage /></PageWrapper>} />
           <Route path="/article/:id" element={<PageWrapper><ArticleDetailPage /></PageWrapper>} />
           <Route path="/podcasts" element={<PageWrapper><PodcastsPage /></PageWrapper>} />

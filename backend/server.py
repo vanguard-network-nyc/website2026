@@ -119,6 +119,41 @@ class AirtableEvent(BaseModel):
     location: Optional[str] = None
     audience_network: Optional[str] = None
 
+class AirtableEventDetail(BaseModel):
+    """Full event record for the /events/:recordId detail page."""
+    id: str
+    event_title: str
+    short_description: Optional[str] = None
+    long_description: Optional[str] = None  # 'Event Details' in Airtable
+    date_time: Optional[str] = None  # Formatted 'Date & Time begin/end'
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
+    timezone: Optional[str] = None
+    duration_minutes: Optional[int] = None
+    location: Optional[str] = None
+    venue_address: Optional[str] = None
+    in_person_digital: Optional[str] = None
+    graphic: Optional[str] = None  # Hero image URL (falls back to Listing Picture)
+    listing_picture: Optional[str] = None
+    session_leader_name: Optional[str] = None
+    session_leader_position: Optional[str] = None
+    session_leader_company: Optional[str] = None
+    session_leader_headshot: Optional[str] = None
+    session_leader_linkedin: Optional[str] = None
+    lead_moderator_name: Optional[str] = None
+    type_of_event: Optional[str] = None
+    audience_network: Optional[str] = None
+    series: Optional[str] = None
+    registration_closed: Optional[bool] = False
+    fully_booked: Optional[bool] = False
+    registration_url: Optional[str] = None
+    default_signup_url_members: Optional[str] = None
+    default_signup_url_non_members: Optional[str] = None
+    more_details_url: Optional[str] = None
+    append_to_magic_link: Optional[str] = None
+
 class AirtableTeamMember(BaseModel):
     id: str
     name: str
@@ -1285,6 +1320,116 @@ async def get_upcoming_events():
     except Exception as e:
         logger.error(f"Error in get_upcoming_events: {str(e)}")
         return []
+
+def _first_attachment_url(field_value):
+    """Return the URL of the first Airtable attachment, else None."""
+    if isinstance(field_value, list) and field_value:
+        return field_value[0].get("url") or None
+    return None
+
+def _first_str(field_value):
+    """Return joined string for list-type Airtable fields, or the value itself as str."""
+    if field_value is None:
+        return None
+    # Airtable button/URL fields come back as {label, url}
+    if isinstance(field_value, dict):
+        return field_value.get("url") or field_value.get("label") or None
+    if isinstance(field_value, list):
+        return ", ".join(str(v) for v in field_value if v) or None
+    return str(field_value) or None
+
+def _long_text(field_value):
+    """Return plain text for a long-text/rich-text/url-with-label Airtable field."""
+    if field_value is None:
+        return None
+    if isinstance(field_value, dict):
+        # URL/button field: prefer the URL so the page can render it as a link
+        return field_value.get("url") or field_value.get("label") or None
+    return str(field_value) or None
+
+@api_router.get("/events/{record_id}", response_model=AirtableEventDetail)
+async def get_event_by_id(record_id: str):
+    """Get a single event's full details from Airtable by record ID."""
+    try:
+        headers = {
+            "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+            "Content-Type": "application/json",
+        }
+        url = f"https://api.airtable.com/v0/{EVENTS_BASE_ID}/{EVENTS_TABLE_ID}/{record_id}"
+        response = requests.get(url, headers=headers, timeout=15)
+        if response.status_code == 404:
+            raise HTTPException(status_code=404, detail="Event not found")
+        response.raise_for_status()
+        record = response.json()
+        fields = record.get("fields", {})
+
+        # Session leader / moderator names (can be list or string)
+        session_leader_name = _first_str(fields.get("Session Leader Name"))
+        lead_moderator_name = _first_str(fields.get("Lead Moderator Name"))
+
+        # Position and company can also be lookup lists
+        session_leader_position = _first_str(fields.get("Position (from Session Leader(s))"))
+        session_leader_company = _first_str(fields.get("Company (Session Leader)"))
+        session_leader_linkedin = _first_str(fields.get("Session Leader linked IN URL")) \
+            or _first_str(fields.get("Linked In Profile (session leader)"))
+
+        # Images
+        graphic_url = _first_attachment_url(fields.get("Graphic")) or _first_attachment_url(fields.get("Listing Picture"))
+        listing_picture_url = _first_attachment_url(fields.get("Listing Picture"))
+        session_leader_headshot = _first_attachment_url(fields.get("Headshot"))
+
+        # Registration URLs
+        default_signup_members = fields.get("Default Sign up URL (for members)") or None
+        default_signup_non_members = fields.get("Default Sign up URL (for NON-members)") or None
+        more_details_url = fields.get("More Details URL") or None
+        append_to_magic_link = fields.get("Append to magic link") or ""
+        fallback_url = (
+            f"https://members.thevanguardnetwork.com/events{append_to_magic_link}"
+            if append_to_magic_link
+            else "https://members.thevanguardnetwork.com/events"
+        )
+        final_registration_url = more_details_url or default_signup_non_members or default_signup_members or fallback_url
+
+        detail = AirtableEventDetail(
+            id=record.get("id", record_id),
+            event_title=fields.get("Event Title") or "",
+            short_description=_long_text(fields.get("Short Description")),
+            long_description=_long_text(fields.get("Event Details")),
+            date_time=fields.get("Date & Time begin/end") or None,
+            start_date=fields.get("Start Date") or None,
+            end_date=fields.get("End Date") or None,
+            start_time=fields.get("Start Time") or None,
+            end_time=fields.get("End Time") or fields.get("Ending Time") or None,
+            timezone=fields.get("Time Zone") or fields.get("Timezone") or None,
+            duration_minutes=fields.get("Duration in Minutes") or None,
+            location=fields.get("Location") or None,
+            venue_address=fields.get("Venue Address for automation") or None,
+            in_person_digital=fields.get("In Person/Digital") or None,
+            graphic=graphic_url,
+            listing_picture=listing_picture_url,
+            session_leader_name=session_leader_name,
+            session_leader_position=session_leader_position,
+            session_leader_company=session_leader_company,
+            session_leader_headshot=session_leader_headshot,
+            session_leader_linkedin=session_leader_linkedin,
+            lead_moderator_name=lead_moderator_name,
+            type_of_event=_first_str(fields.get("Type of Event")),
+            audience_network=_first_str(fields.get("Audience (Network)")),
+            series=_first_str(fields.get("Series")) or fields.get("Series Code Text") or None,
+            registration_closed=bool(fields.get("Registration Closed")),
+            fully_booked=bool(fields.get("Fully Booked")),
+            registration_url=final_registration_url,
+            default_signup_url_members=default_signup_members,
+            default_signup_url_non_members=default_signup_non_members,
+            more_details_url=more_details_url,
+            append_to_magic_link=append_to_magic_link or None,
+        )
+        return detail
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error fetching event {record_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to fetch event: {str(e)}")
 
 @api_router.get("/team", response_model=List[AirtableTeamMember])
 async def get_team_members():
