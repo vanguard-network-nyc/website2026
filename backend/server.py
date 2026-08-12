@@ -1392,9 +1392,9 @@ async def get_event_by_id(record_id: str):
 
         detail = AirtableEventDetail(
             id=record.get("id", record_id),
-            event_title=fields.get("Event Title") or "",
+            event_title=(fields.get("Event Title") or "").strip(),
             short_description=_long_text(fields.get("Short Description")),
-            long_description=_long_text(fields.get("Event Details")),
+            long_description=_long_text(fields.get("Long Description")),
             date_time=fields.get("Date & Time begin/end") or None,
             start_date=fields.get("Start Date") or None,
             end_date=fields.get("End Date") or None,

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { Calendar, Clock, MapPin, ArrowLeft, ExternalLink, Users, Linkedin, Tag } from 'lucide-react';
+import remarkBreaks from 'remark-breaks';
+import { Calendar, Clock, MapPin, ArrowLeft, ExternalLink, Linkedin } from 'lucide-react';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 
@@ -112,7 +113,7 @@ const EventDetailsPage = () => {
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumb />
+        <Breadcrumb customTitle={event.event_title} />
 
         <Link
           to="/upcoming-events"
@@ -130,35 +131,16 @@ const EventDetailsPage = () => {
           className="bg-white rounded-2xl overflow-hidden shadow-lg mb-8"
         >
           {heroImage && (
-            <div className="w-full aspect-[16/9] overflow-hidden bg-slate-100">
+            <div className="w-full aspect-[16/9] overflow-hidden bg-slate-100 flex items-center justify-center">
               <img
                 src={heroImage}
                 alt={event.event_title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 loading="eager"
               />
             </div>
           )}
           <div className="p-6 md:p-10">
-            {/* Category badges */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {event.type_of_event && (
-                <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full bg-[#00A8E1]/10 text-[#045184]">
-                  <Tag size={12} /> {event.type_of_event}
-                </span>
-              )}
-              {event.audience_network && (
-                <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full bg-slate-100 text-slate-700">
-                  <Users size={12} /> {event.audience_network}
-                </span>
-              )}
-              {event.series && (
-                <span className="inline-flex items-center text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full bg-slate-100 text-slate-700">
-                  {event.series}
-                </span>
-              )}
-            </div>
-
             <h1
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight"
               data-testid="event-detail-title"
@@ -217,11 +199,6 @@ const EventDetailsPage = () => {
                 I would like to attend
                 <ExternalLink size={16} />
               </a>
-              {event.fully_booked && (
-                <span className="text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
-                  Fully booked
-                </span>
-              )}
               {event.registration_closed && !event.fully_booked && (
                 <span className="text-sm font-semibold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full">
                   Registration closed
@@ -232,7 +209,7 @@ const EventDetailsPage = () => {
         </motion.div>
 
         {/* Body: description */}
-        {event.short_description && (
+        {(event.short_description || event.long_description) && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -242,10 +219,19 @@ const EventDetailsPage = () => {
           >
             <h2 className="text-2xl font-bold text-slate-900 mb-6" style={{ color: '#045184' }}>About this event</h2>
             <div
-              className="prose prose-slate max-w-none prose-headings:text-[#045184] prose-a:text-[#00A8E1] prose-strong:text-slate-900"
+              className="prose prose-slate max-w-none prose-headings:text-[#045184] prose-a:text-[#00A8E1] prose-strong:text-slate-900 prose-p:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1"
               data-testid="event-detail-description"
             >
-              <ReactMarkdown>{event.short_description}</ReactMarkdown>
+              {event.short_description && (
+                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                  {event.short_description}
+                </ReactMarkdown>
+              )}
+              {event.long_description && (
+                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                  {event.long_description}
+                </ReactMarkdown>
+              )}
             </div>
           </motion.div>
         )}

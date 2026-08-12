@@ -13,6 +13,7 @@ const Breadcrumb = ({ customTitle, lightMode = false }) => {
     'success-stories': 'Success Stories',
     'contact': 'Contact',
     'team': 'Team',
+    'events': 'Events',
     'upcoming-events': 'Events',
     'content': 'Content',
     'articles': 'Articles',
@@ -33,6 +34,7 @@ const Breadcrumb = ({ customTitle, lightMode = false }) => {
   // Map detail page segments to their correct parent URLs
   const breadcrumbLinkMap = {
     'article': '/articles',
+    'events': '/upcoming-events',
     'podcast': '/podcasts',
     'video': '/videos',
     'newsroom-item': '/newsroom'
