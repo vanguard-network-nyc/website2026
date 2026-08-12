@@ -136,6 +136,7 @@ class AirtableEventDetail(BaseModel):
     venue_address: Optional[str] = None
     in_person_digital: Optional[str] = None
     graphic: Optional[str] = None  # Hero image URL (falls back to Listing Picture)
+    co_chair_graphic: Optional[str] = None  # Preferred hero image for Forums
     listing_picture: Optional[str] = None
     session_leader_name: Optional[str] = None
     session_leader_position: Optional[str] = None
@@ -1374,8 +1375,8 @@ async def get_event_by_id(record_id: str):
             or _first_str(fields.get("Linked In Profile (session leader)"))
 
         # Images
-        graphic_url = _first_attachment_url(fields.get("Graphic")) or _first_attachment_url(fields.get("Listing Picture"))
         listing_picture_url = _first_attachment_url(fields.get("Listing Picture"))
+        co_chair_graphic_url = _first_attachment_url(fields.get("Co-chair Graphic"))
         session_leader_headshot = _first_attachment_url(fields.get("Headshot"))
 
         # Registration URLs
@@ -1405,7 +1406,8 @@ async def get_event_by_id(record_id: str):
             location=fields.get("Location") or None,
             venue_address=fields.get("Venue Address for automation") or None,
             in_person_digital=fields.get("In Person/Digital") or None,
-            graphic=graphic_url,
+            graphic=None,
+            co_chair_graphic=co_chair_graphic_url,
             listing_picture=listing_picture_url,
             session_leader_name=session_leader_name,
             session_leader_position=session_leader_position,

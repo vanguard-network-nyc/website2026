@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
-import { Calendar, Clock, MapPin, ArrowLeft, ExternalLink, Linkedin } from 'lucide-react';
+import rehypeRaw from 'rehype-raw';
+import { Calendar, MapPin, ArrowLeft, ExternalLink, Linkedin } from 'lucide-react';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 
@@ -19,6 +20,27 @@ const formatDate = (iso) => {
   } catch {
     return iso;
   }
+};
+
+// Explicit renderers for the description body (Tailwind typography plugin isn't installed).
+// This gives us reliable paragraph spacing, bullet points, and inline HTML tag support.
+const mdComponents = {
+  p: ({ node, ...props }) => <p className="mb-4 last:mb-0" {...props} />,
+  ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-1" {...props} />,
+  ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-1" {...props} />,
+  li: ({ node, ...props }) => <li className="leading-relaxed" {...props} />,
+  h1: ({ node, ...props }) => <h3 className="text-xl font-bold mt-6 mb-3 text-[#045184]" {...props} />,
+  h2: ({ node, ...props }) => <h3 className="text-xl font-bold mt-6 mb-3 text-[#045184]" {...props} />,
+  h3: ({ node, ...props }) => <h4 className="text-lg font-bold mt-4 mb-2 text-[#045184]" {...props} />,
+  a: ({ node, ...props }) => <a className="text-[#00A8E1] hover:text-[#0096C7] underline" target="_blank" rel="noopener noreferrer" {...props} />,
+  strong: ({ node, ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
+  em: ({ node, ...props }) => <em className="italic" {...props} />,
+  u: ({ node, ...props }) => <u className="underline" {...props} />,
+  br: () => <br />,
+  hr: () => <hr className="my-6 border-slate-200" />,
+  blockquote: ({ node, ...props }) => (
+    <blockquote className="border-l-4 border-[#00A8E1] pl-4 italic my-4 text-slate-600" {...props} />
+  ),
 };
 
 const EventDetailsPage = () => {
@@ -88,7 +110,7 @@ const EventDetailsPage = () => {
     );
   }
 
-  const heroImage = event.graphic || event.listing_picture;
+  const heroImage = event.co_chair_graphic || event.listing_picture;
   const dateLine = event.date_time
     || [formatDate(event.start_date), event.start_time && event.end_time ? `${event.start_time} – ${event.end_time}` : null, event.timezone]
         .filter(Boolean)
@@ -131,11 +153,11 @@ const EventDetailsPage = () => {
           className="bg-white rounded-2xl overflow-hidden shadow-lg mb-8"
         >
           {heroImage && (
-            <div className="w-full aspect-[16/9] overflow-hidden bg-slate-100 flex items-center justify-center">
+            <div className="w-full overflow-hidden bg-slate-100">
               <img
                 src={heroImage}
                 alt={event.event_title}
-                className="w-full h-full object-contain"
+                className="block w-full h-auto"
                 loading="eager"
               />
             </div>
@@ -170,15 +192,6 @@ const EventDetailsPage = () => {
                         <div className="text-slate-500 text-sm mt-0.5">{event.venue_address}</div>
                       )}
                     </div>
-                  </div>
-                </div>
-              )}
-              {event.duration_minutes && (
-                <div className="flex items-start gap-3 text-slate-700">
-                  <Clock size={20} className="text-[#00A8E1] mt-1 flex-shrink-0" />
-                  <div>
-                    <div className="text-xs font-semibold uppercase text-slate-500 mb-1">Duration</div>
-                    <div className="text-sm md:text-base">{event.duration_minutes} minutes</div>
                   </div>
                 </div>
               )}
@@ -217,18 +230,26 @@ const EventDetailsPage = () => {
             transition={{ duration: 0.5 }}
             className="bg-white rounded-2xl p-6 md:p-10 shadow-lg mb-8"
           >
-            <h2 className="text-2xl font-bold text-slate-900 mb-6" style={{ color: '#045184' }}>About this event</h2>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>About this event</h2>
             <div
-              className="prose prose-slate max-w-none prose-headings:text-[#045184] prose-a:text-[#00A8E1] prose-strong:text-slate-900 prose-p:mb-4 prose-ul:my-4 prose-ol:my-4 prose-li:my-1"
+              className="event-description text-slate-700 leading-relaxed"
               data-testid="event-detail-description"
             >
               {event.short_description && (
-                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                <ReactMarkdown
+                  remarkPlugins={[remarkBreaks]}
+                  rehypePlugins={[rehypeRaw]}
+                  components={mdComponents}
+                >
                   {event.short_description}
                 </ReactMarkdown>
               )}
               {event.long_description && (
-                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                <ReactMarkdown
+                  remarkPlugins={[remarkBreaks]}
+                  rehypePlugins={[rehypeRaw]}
+                  components={mdComponents}
+                >
                   {event.long_description}
                 </ReactMarkdown>
               )}

@@ -1,0 +1,37 @@
+{
+  "verdict": "fixed",
+  "user_reported_bug": "remove the duration info; the paragraphs breaks are not implemented. re-check and fix; for some events the description is bringing the formatting code from airtable. fix this and see example below: <u>CHAIR:</u> Tom Sabatino, Interim General Counsel, Tractor Supply; Chair, General Counsel Network and Forum <u>CO-CHAIR:</u> Michael Froy, Partner, Dentons <u>SESSION LEADERS:</u> TBA <u>AGENDA:</u> — the bullet points have not been implemented. recheck and fix; replace graphic mapping to pull the image from 'listing picture' field; i did not ask to make the image smaller. keep it in the same size image container, from edge to edge, but contain it so it doesn't get cropped. if needed, adjust the height of the image container",
+  "summary": "Focused verification passed on preview for the exact event details bug. Loaded the ai-testing-image-video skill for image output/dimension checks. Tested /events/rec5Vr1VneQNZQ75N and /events/recayFKrBhjV8bjNx through the real UI plus same-origin API fetches: duration is hidden, raw <u> markup renders as underlined text, bullets and paragraph spacing render, hero image uses listing_picture and preserves natural aspect ratio, and the Exchange event renders one description section.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/tests/event_details_bug_verification.py",
+    "/app/test_reports/bug_verification_4.json",
+    "/app/test_reports/iteration_4.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Inspected modified frontend/src/EventDetailsPage.js, backend/server.py event detail mapping, frontend/package.json, git status, and recent commits. Frontend now chooses event.listing_picture before event.graphic, removes the duration meta block, and uses ReactMarkdown with remarkBreaks + rehypeRaw + explicit markdown component classes. Backend /api/events/{record_id} returns listing_picture and graphic separately as expected."
+  ],
+  "updated_files": [
+    "/app/tests/event_details_bug_verification.py",
+    "/app/test_reports/bug_verification_4.json",
+    "/app/test_reports/iteration_4.json"
+  ],
+  "success_rate": {
+    "backend": "100%",
+    "frontend": "100%"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Use preview base https://form-debug-8.preview.emergentagent.com. Forum API returned listing_picture and graphic as different URLs; DOM hero src exactly matched listing_picture. Geometry measured natural 1366x840 image displayed at 960x590.33 with zero parent/card width delta and ratio delta ~0.00002. Description had 4 <u> elements, 8 ul lists/11 li items with disc style, and first paragraphs had 16px margin-bottom. Exchange event had long_description false and one About this event section.",
+  "rca_of_the_issue": "Previous symptoms were caused by UI rendering/mapping: duration meta was still shown, Airtable raw HTML was not parsed, markdown list/paragraph classes were not being applied, and hero precedence/display used the wrong image behavior. Current preview no longer reproduces those symptoms. Browser console only showed third-party analytics/cdn-cgi aborts and navigation-aborted requests from the test harness, not functional page errors."
+}
