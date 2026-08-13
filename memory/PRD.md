@@ -15,6 +15,9 @@ Maintain and extend the production marketing website for The Vanguard Network. T
   - `/app/backend/server.py`
 
 ## Implemented
+- **2026-02-13** Signup deep-link URLs made consistent — modal now auto-opens on `?signup=1`, `?signup=1&formOverride=<key>`, OR `?formOverride=<key>` alone. Closing the modal strips both params so a reload of the clean URL no longer re-opens the modal. Fixes inconsistent "first visit opens, second visit doesn't" bug.
+- **2026-02-13** Form keys renamed to hyphenated series-based ids: `csc-form`, `gcf-form`, `lsceof-form`, `gcx-form`, `rmx-form`, `lsceox-form`, `nggc-nomination-form`. Updated everywhere (`server.py` FORM_CONFIGS + SERIES_TO_FORM + phone validation list; all frontend form components; `EventDetailsPage.js` FORM_VARIANTS + SERIES_TO_FORM_KEY).
+- **2026-02-13** NGGC "More details" link updated to `https://members.thevanguardnetwork.com/next-gen-gc`.
 - **2026-02-13** NGGC nomination form — success view now says "Thank you! If you would like to nominate a second candidate please submit the form again." with a **Submit another nomination** button that resets the form to blank. Google Sheets write confirmed (append to `NOMINATIONS` tab).
 - **2026-02-13** Signup form dispatcher (NGGC series → Google Sheets) confirmed working end-to-end. `GOOGLE_SERVICE_ACCOUNT_JSON_B64` + `SIGNUP_SHEET_ID` present in `/app/backend/.env`.
 - **2026-02-13** NGGC events on `/upcoming-events` continue to link out externally via "More Details" (NGGC not in `INTERNAL_DETAILS_SERIES`). Pending future work: dedicated `/next-gen-gc-program` landing page that then links to the NGGC form.
@@ -28,6 +31,7 @@ Maintain and extend the production marketing website for The Vanguard Network. T
 ## Roadmap / Backlog
 
 ### P1
+- **[NEXT — tomorrow]** Build the dedicated Programs pages (starting with NGGC / Next Gen GC). Each program page will host program details and CTA into its associated signup form (e.g. NGGC → `nggc-nomination-form`). Requirements TBD from user.
 - Build a dedicated `/next-gen-gc-program` landing page for the NGGC program; from there, link into the NGGC nomination form. (Until then, NGGC events on `/upcoming-events` keep external "More Details" URLs.)
 - Add `/general-counsel-advisory` link to Advisory dropdown nav (waits for user go-live confirmation; currently hidden but routable).
 - Remove temporary `Clear-Site-Data` meta tag from `/app/frontend/public/index.html`.
