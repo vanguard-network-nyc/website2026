@@ -17,22 +17,22 @@ import NGGCNominationForm from './signup-forms/NGGCNominationForm';
 // Series Code -> form variant component. Series codes without an entry here
 // fall back to the existing external members-site link.
 const FORM_VARIANTS = {
-  csc_guest_trial:  { title: 'I would like to attend this event!',                     Component: CSCGuestTrialForm },
-  gcf_forum:        { title: 'I would like to attend this event!',                     Component: GCFForumForm },
-  lsceof_forum:     { title: 'I would like to attend this event!',                     Component: LSCEOFForumForm },
-  gcx_exchange:     { title: 'Member-only event for General Counsel Network',          Component: MemberNetworkForm },
-  rmx_exchange:     { title: 'Member-only event for Risk Management Network',          Component: MemberNetworkForm },
-  lsceox_exchange:  { title: 'Member-only event for Life Sciences CEO Network',        Component: MemberNetworkForm },
-  nggc_nomination:  { title: 'Next Gen GC Program: Nominate Your Candidate',           Component: NGGCNominationForm },
+  'csc-form':             { title: 'I would like to attend this event!',                     Component: CSCGuestTrialForm },
+  'gcf-form':             { title: 'I would like to attend this event!',                     Component: GCFForumForm },
+  'lsceof-form':          { title: 'I would like to attend this event!',                     Component: LSCEOFForumForm },
+  'gcx-form':             { title: 'Member-only event for General Counsel Network',          Component: MemberNetworkForm },
+  'rmx-form':             { title: 'Member-only event for Risk Management Network',          Component: MemberNetworkForm },
+  'lsceox-form':          { title: 'Member-only event for Life Sciences CEO Network',        Component: MemberNetworkForm },
+  'nggc-nomination-form': { title: 'Next Gen GC Program: Nominate Your Candidate',           Component: NGGCNominationForm },
 };
 const SERIES_TO_FORM_KEY = {
-  CSC: 'csc_guest_trial',
-  GCF: 'gcf_forum',
-  LSCEOF: 'lsceof_forum',
-  GCX: 'gcx_exchange',
-  RMX: 'rmx_exchange',
-  LSCEOX: 'lsceox_exchange',
-  NGGC: 'nggc_nomination',
+  CSC: 'csc-form',
+  GCF: 'gcf-form',
+  LSCEOF: 'lsceof-form',
+  GCX: 'gcx-form',
+  RMX: 'rmx-form',
+  LSCEOX: 'lsceox-form',
+  NGGC: 'nggc-nomination-form',
 };
 
 const formatDate = (iso) => {

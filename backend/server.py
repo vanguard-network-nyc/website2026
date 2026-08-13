@@ -179,19 +179,19 @@ EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
 # Series Code -> form key. Only mapped series' render the CTA modal; unmapped series
 # fall back to the external members-site link (existing behavior).
 SERIES_TO_FORM = {
-    "CSC": "csc_guest_trial",
-    "GCF": "gcf_forum",
-    "LSCEOF": "lsceof_forum",
-    "GCX": "gcx_exchange",
-    "RMX": "rmx_exchange",
-    "LSCEOX": "lsceox_exchange",
+    "CSC": "csc-form",
+    "GCF": "gcf-form",
+    "LSCEOF": "lsceof-form",
+    "GCX": "gcx-form",
+    "RMX": "rmx-form",
+    "LSCEOX": "lsceox-form",
     # Other series codes will be added as their forms are built.
 }
 
 # Form key -> destination config. Each config specifies where to write the submission
 # and how each incoming field maps to the destination.
 FORM_CONFIGS = {
-    "csc_guest_trial": {
+    "csc-form": {
         "adapter": "airtable",
         "base_id": "appm4C4MiNYVWwBaq",
         "table_id": "tblufk6pWG4ITwxRs",  # Event Inquiries
@@ -217,7 +217,7 @@ FORM_CONFIGS = {
         # If present, links to the event's Airtable record on this field.
         "event_link_field": "Event",
     },
-    "gcf_forum": {
+    "gcf-form": {
         # GCF (General Counsel Forum) — same target table as CSC, no eligibility question,
         # plus an optional Promo Code field.
         "adapter": "airtable",
@@ -242,7 +242,7 @@ FORM_CONFIGS = {
         },
         "event_link_field": "Event",
     },
-    "lsceof_forum": {
+    "lsceof-form": {
         # LSCEOF (Life Sciences CEO Forum) — same target table as GCF.
         # Uses "LSCEO Membership Type" (clinical stage) instead of Company Size,
         # plus a required "Number of Employees" field.
@@ -272,7 +272,7 @@ FORM_CONFIGS = {
     # --- Member-only network exchange forms (GCX, RMX, LSCEOX) ---
     # All three share the same target base/table and identical field mapping.
     # Only the modal title (set in EventDetailsPage FORM_VARIANTS) differs.
-    "gcx_exchange": {
+    "gcx-form": {
         "adapter": "airtable",
         "base_id": "appqyKMZnFfgSuJKt",
         "table_id": "tblk4T9C7zdRKlCKb",  # Membership Contact Inquiry Form (Softr)
@@ -296,10 +296,10 @@ FORM_CONFIGS = {
 }
 # RMX and LSCEOX exchanges are identical to GCX (same base/table/fields);
 # only the modal title differs, which is a frontend concern.
-FORM_CONFIGS["rmx_exchange"] = FORM_CONFIGS["gcx_exchange"]
-FORM_CONFIGS["lsceox_exchange"] = FORM_CONFIGS["gcx_exchange"]
+FORM_CONFIGS["rmx-form"] = FORM_CONFIGS["gcx-form"]
+FORM_CONFIGS["lsceox-form"] = FORM_CONFIGS["gcx-form"]
 
-FORM_CONFIGS["nggc_nomination"] = {
+FORM_CONFIGS["nggc-nomination-form"] = {
     "adapter": "google_sheets",
     "sheet_id": os.environ.get("SIGNUP_SHEET_ID"),
     "tab_name": "NOMINATIONS",
@@ -316,7 +316,7 @@ FORM_CONFIGS["nggc_nomination"] = {
         "additional_info": "Additional information to be considered",
     },
 }
-SERIES_TO_FORM["NGGC"] = "nggc_nomination"
+SERIES_TO_FORM["NGGC"] = "nggc-nomination-form"
 
 def _write_signup_to_google_sheet(config: dict, values_by_col: dict) -> str:
     """Append a row to the configured Google Sheet tab.
@@ -1669,8 +1669,8 @@ async def submit_event_signup(payload: EventSignupSubmit):
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
 
     # Per-form server-side validation (defense in depth; frontend also validates).
-    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum", "gcx_exchange", "rmx_exchange", "lsceox_exchange", "nggc_nomination"):
-        phone_field_key = "participant_phone" if payload.form_key == "nggc_nomination" else "phone"
+    if payload.form_key in ("csc-form", "gcf-form", "lsceof-form", "gcx-form", "rmx-form", "lsceox-form", "nggc-nomination-form"):
+        phone_field_key = "participant_phone" if payload.form_key == "nggc-nomination-form" else "phone"
         phone = str(payload.fields.get(phone_field_key) or "").strip()
         # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())

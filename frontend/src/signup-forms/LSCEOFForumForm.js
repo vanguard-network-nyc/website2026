@@ -98,7 +98,7 @@ const LSCEOFForumForm = ({ event, onSuccess }) => {
     try {
       const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
       const body = {
-        form_key: 'lsceof_forum',
+        form_key: 'lsceof-form',
         event_record_id: event.id,
         series_code: event.series_code || null,
         clean_event_code: event.clean_event_code || null,

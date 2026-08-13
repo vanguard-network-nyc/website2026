@@ -71,7 +71,7 @@ const NGGCNominationForm = ({ event, formKey, onSuccess }) => {
     try {
       const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
       const body = {
-        form_key: formKey || 'nggc_nomination',
+        form_key: formKey || 'nggc-nomination-form',
         event_record_id: event.id,
         series_code: event.series_code || null,
         clean_event_code: event.clean_event_code || null,
