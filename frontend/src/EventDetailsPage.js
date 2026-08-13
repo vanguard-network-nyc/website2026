@@ -98,7 +98,10 @@ const EventDetailsPage = () => {
     if (!event) return;
     const wantOpen = searchParams.get('signup') === '1';
     if (!wantOpen) return;
-    const key = event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null;
+    const override = searchParams.get('formOverride');
+    const key = (override && FORM_VARIANTS[override])
+      ? override
+      : (event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null);
     if (key && FORM_VARIANTS[key]) setSignupOpen(true);
   }, [event, searchParams]);
 
@@ -155,7 +158,11 @@ const EventDetailsPage = () => {
         .join(' • ');
 
   // Which sign-up form (if any) applies to this event's series code?
-  const formKey = event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null;
+  // Optional `?formOverride=<form_key>` lets you preview any form on any event.
+  const overrideKey = searchParams.get('formOverride');
+  const formKey = overrideKey && FORM_VARIANTS[overrideKey]
+    ? overrideKey
+    : (event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null);
   const formVariant = formKey ? FORM_VARIANTS[formKey] : null;
 
   // Deep link: /events/:recordId?signup=1 auto-opens the modal if a form is configured
