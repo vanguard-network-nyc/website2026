@@ -181,6 +181,7 @@ EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
 SERIES_TO_FORM = {
     "CSC": "csc_guest_trial",
     "GCF": "gcf_forum",
+    "LSCEOF": "lsceof_forum",
     # Other series codes will be added as their forms are built.
 }
 
@@ -227,6 +228,33 @@ FORM_CONFIGS = {
             "title": "Title",
             "phone": "Phone Number",
             "company_size": "Company Size",
+            "ea_email": "Executive Assistant Email",
+            "recommended_by": "Recommended By",
+            "message": "Message",
+            "promo_code": "Promo Code",
+            "ok_trial": "OK with trial membership",
+        },
+        "fixed_fields": {
+            "Type of Inquiry": "guest-trial",
+        },
+        "event_link_field": "Event",
+    },
+    "lsceof_forum": {
+        # LSCEOF (Life Sciences CEO Forum) — same target table as GCF.
+        # Uses "LSCEO Membership Type" (clinical stage) instead of Company Size,
+        # plus a required "Number of Employees" field.
+        "adapter": "airtable",
+        "base_id": "appm4C4MiNYVWwBaq",
+        "table_id": "tblufk6pWG4ITwxRs",  # Event Inquiries
+        "field_map": {
+            "full_name": "Name",
+            "work_email": "Email Work",
+            "personal_email": "Personal Email",
+            "company": "Company Name",
+            "title": "Title",
+            "phone": "Phone Number",
+            "company_status": "LSCEO Membership Type",
+            "number_of_employees": "Number of Employees",
             "ea_email": "Executive Assistant Email",
             "recommended_by": "Recommended By",
             "message": "Message",
@@ -1563,7 +1591,7 @@ async def submit_event_signup(payload: EventSignupSubmit):
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
 
     # Per-form server-side validation (defense in depth; frontend also validates).
-    if payload.form_key in ("csc_guest_trial", "gcf_forum"):
+    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum"):
         phone = str(payload.fields.get("phone") or "").strip()
         # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())

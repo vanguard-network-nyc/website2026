@@ -10,16 +10,19 @@ import Breadcrumb from './Breadcrumb';
 import SignupModal from './SignupModal';
 import CSCGuestTrialForm from './signup-forms/CSCGuestTrialForm';
 import GCFForumForm from './signup-forms/GCFForumForm';
+import LSCEOFForumForm from './signup-forms/LSCEOFForumForm';
 
 // Series Code -> form variant component. Series codes without an entry here
 // fall back to the existing external members-site link.
 const FORM_VARIANTS = {
   csc_guest_trial: { title: 'I would like to attend this event!', Component: CSCGuestTrialForm },
   gcf_forum: { title: 'I would like to attend this event!', Component: GCFForumForm },
+  lsceof_forum: { title: 'I would like to attend this event!', Component: LSCEOFForumForm },
 };
 const SERIES_TO_FORM_KEY = {
   CSC: 'csc_guest_trial',
   GCF: 'gcf_forum',
+  LSCEOF: 'lsceof_forum',
 };
 
 const formatDate = (iso) => {
