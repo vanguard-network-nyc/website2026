@@ -193,7 +193,7 @@ FORM_CONFIGS = {
         "field_map": {
             "self_qualification": "Self Qualification for membership",
             "full_name": "Name",
-            "work_email": "Email",
+            "work_email": "Email Work",
             "personal_email": "Personal Email",
             "company": "Company Name",
             "title": "Title",
@@ -1524,6 +1524,16 @@ async def submit_event_signup(payload: EventSignupSubmit):
     config = FORM_CONFIGS.get(payload.form_key)
     if not config:
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
+
+    # Per-form server-side validation (defense in depth; frontend also validates).
+    if payload.form_key == "csc_guest_trial":
+        phone = str(payload.fields.get("phone") or "").strip()
+        digits = "".join(ch for ch in phone if ch.isdigit())
+        if phone.startswith("+"):
+            if not (8 <= len(digits) <= 15):
+                raise HTTPException(status_code=400, detail="Invalid international phone number.")
+        elif len(digits) != 10:
+            raise HTTPException(status_code=400, detail="US phone must be 10 digits.")
 
     # Build Airtable field payload from the incoming generic fields
     field_map = config.get("field_map", {})

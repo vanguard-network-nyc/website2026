@@ -67,6 +67,18 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
     if (!data.company.trim()) return 'Please enter your company.';
     if (!data.title.trim()) return 'Please enter your title.';
     if (!data.phone.trim()) return 'Please enter your phone number.';
+    // Phone validation:
+    //   • US format: exactly 10 digits after stripping formatting (spaces, dashes, parens, dots).
+    //   • International: prefix with '+' followed by 8–15 digits (E.164).
+    const raw = data.phone.trim();
+    const digits = raw.replace(/\D/g, '');
+    if (raw.startsWith('+')) {
+      if (digits.length < 8 || digits.length > 15) {
+        return 'Please enter a valid international phone number (include country code, e.g. +44 20 7946 0958).';
+      }
+    } else if (digits.length !== 10) {
+      return 'Please enter a valid 10-digit US phone number (e.g. 555-123-4567). For international numbers, prefix with country code (e.g. +44…).';
+    }
     if (!data.company_size) return 'Please select your company revenue.';
     if (!data.ok_trial) return 'Please check the box to continue.';
     return null;
@@ -176,8 +188,8 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4">
-        <Field label="Phone" required>
-          <input type="tel" className={inputClass} value={data.phone} onChange={set('phone')} />
+        <Field label="Phone" required caption="10-digit US number or +country code for international">
+          <input type="tel" className={inputClass} value={data.phone} onChange={set('phone')} placeholder="555-123-4567" data-testid="signup-phone" />
         </Field>
         <Field label="Company Revenue" required caption="Select company size by revenue">
           <select className={inputClass} value={data.company_size} onChange={set('company_size')} data-testid="signup-company-size">
