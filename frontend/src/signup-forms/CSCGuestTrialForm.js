@@ -40,16 +40,12 @@ const initialState = {
   website: '', // honeypot
 };
 
-const Field = ({ label, required, caption, children }) => (
-  <div className="flex flex-col">
-    <label className="block text-[13px] font-semibold text-slate-800 mb-0.5">
+const Field = ({ label, required, children }) => (
+  <div>
+    <label className="block text-[13px] font-semibold text-slate-800 mb-1">
       {label}{required && <span className="text-red-500 ml-0.5">*</span>}
     </label>
-    {/* Reserved caption slot — always renders (invisible when no caption) so all inputs in a row align */}
-    <p className="text-[11px] text-slate-500 mb-1 min-h-[2rem] leading-tight">
-      {caption || '\u00A0'}
-    </p>
-    <div className="mt-auto">{children}</div>
+    {children}
   </div>
 );
 
@@ -153,7 +149,7 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </div>
 
       <Field label="Do you meet the Vanguard membership eligibility criteria? (See above)" required>
-        <div className="flex gap-4 mt-1">
+        <div className="flex gap-4">
           <label className="inline-flex items-center gap-2 text-sm">
             <input type="radio" name="self_qualification" value="yes" checked={data.self_qualification === 'yes'} onChange={set('self_qualification')} />
             Yes
@@ -166,25 +162,25 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </Field>
 
       <div className="grid md:grid-cols-3 gap-3">
-        <Field label="Full name" required caption="First and last name">
-          <input type="text" className={inputClass} value={data.full_name} onChange={set('full_name')} data-testid="signup-full-name" />
+        <Field label="Full name" required>
+          <input type="text" placeholder="Enter your full name" className={inputClass} value={data.full_name} onChange={set('full_name')} data-testid="signup-full-name" />
         </Field>
-        <Field label="Work email" required caption="For general communications">
-          <input type="email" className={inputClass} value={data.work_email} onChange={set('work_email')} data-testid="signup-work-email" />
+        <Field label="Work email" required>
+          <input type="email" placeholder="your.name@company.com" className={inputClass} value={data.work_email} onChange={set('work_email')} data-testid="signup-work-email" />
         </Field>
-        <Field label="Personal email" caption="Recommended for continuity and membership">
-          <input type="email" className={inputClass} value={data.personal_email} onChange={set('personal_email')} />
+        <Field label="Personal email (optional)">
+          <input type="email" placeholder="your.name@email.com" className={inputClass} value={data.personal_email} onChange={set('personal_email')} />
         </Field>
       </div>
 
       <div className="grid md:grid-cols-3 gap-3">
-        <Field label="Company" required caption="Your current employer">
-          <input type="text" className={inputClass} value={data.company} onChange={set('company')} />
+        <Field label="Company" required>
+          <input type="text" placeholder="Your company name" className={inputClass} value={data.company} onChange={set('company')} />
         </Field>
-        <Field label="Title" required caption="Your job title">
-          <input type="text" className={inputClass} value={data.title} onChange={set('title')} />
+        <Field label="Title" required>
+          <input type="text" placeholder="Your job title" className={inputClass} value={data.title} onChange={set('title')} />
         </Field>
-        <Field label="Phone" required caption="Select country, then enter number">
+        <Field label="Phone" required>
           <PhoneInput
             international
             defaultCountry="US"
@@ -197,24 +193,24 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-3">
-        <Field label="Company Revenue" required caption="Select company size by revenue">
+        <Field label="Company Revenue" required>
           <select className={inputClass} value={data.company_size} onChange={set('company_size')} data-testid="signup-company-size">
-            <option value="">— Select —</option>
+            <option value="">Select company size</option>
             {COMPANY_SIZE_OPTIONS.map(opt => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
           </select>
         </Field>
-        <Field label="Executive Assistant email" caption="Optional — for scheduling">
-          <input type="email" className={inputClass} value={data.ea_email} onChange={set('ea_email')} />
+        <Field label="Executive Assistant email (optional)">
+          <input type="email" placeholder="Your assistant's email" className={inputClass} value={data.ea_email} onChange={set('ea_email')} />
         </Field>
-        <Field label="Recommended by" caption="Optional — how you heard about us">
-          <input type="text" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
+        <Field label="Recommended by (optional)">
+          <input type="text" placeholder="How you heard about us" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
         </Field>
       </div>
 
-      <Field label="Message" caption="Optional — anything else we should know">
-        <textarea rows={2} className={inputClass} value={data.message} onChange={set('message')} />
+      <Field label="Message (optional)">
+        <textarea rows={2} placeholder="Anything else we should know" className={inputClass} value={data.message} onChange={set('message')} />
       </Field>
 
       <label className="flex items-start gap-2 text-[13px] text-slate-700 pt-1">
