@@ -182,6 +182,9 @@ SERIES_TO_FORM = {
     "CSC": "csc_guest_trial",
     "GCF": "gcf_forum",
     "LSCEOF": "lsceof_forum",
+    "GCX": "gcx_exchange",
+    "RMX": "rmx_exchange",
+    "LSCEOX": "lsceox_exchange",
     # Other series codes will be added as their forms are built.
 }
 
@@ -266,8 +269,35 @@ FORM_CONFIGS = {
         },
         "event_link_field": "Event",
     },
+    # --- Member-only network exchange forms (GCX, RMX, LSCEOX) ---
+    # All three share the same target base/table and identical field mapping.
+    # Only the modal title (set in EventDetailsPage FORM_VARIANTS) differs.
+    "gcx_exchange": {
+        "adapter": "airtable",
+        "base_id": "appqyKMZnFfgSuJKt",
+        "table_id": "tblk4T9C7zdRKlCKb",  # Membership Contact Inquiry Form (Softr)
+        "field_map": {
+            "full_name": "Name",
+            "work_email": "Email (Work)",
+            "personal_email": "Email (Personal)",
+            "phone": "Phone Number",
+            "company": "Company",
+            "title": "Job Title",
+            "networks": "Networks Interested In",  # multipleRecordLinks (typecast:true resolves names)
+            "recommended_by": "Recommended By",
+            "message": "Message",
+        },
+        "fixed_fields": {
+            "Source of Inquiry": "Main website",
+        },
+        # This table's schema doesn't link back to the Events base, so no event link.
+    },
     # Additional form variants will be added here.
 }
+# RMX and LSCEOX exchanges are identical to GCX (same base/table/fields);
+# only the modal title differs, which is a frontend concern.
+FORM_CONFIGS["rmx_exchange"] = FORM_CONFIGS["gcx_exchange"]
+FORM_CONFIGS["lsceox_exchange"] = FORM_CONFIGS["gcx_exchange"]
 # --------------------------------------
 
 # Podcasts table configuration (different base)
@@ -1591,7 +1621,7 @@ async def submit_event_signup(payload: EventSignupSubmit):
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
 
     # Per-form server-side validation (defense in depth; frontend also validates).
-    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum"):
+    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum", "gcx_exchange", "rmx_exchange", "lsceox_exchange"):
         phone = str(payload.fields.get("phone") or "").strip()
         # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())

@@ -11,18 +11,25 @@ import SignupModal from './SignupModal';
 import CSCGuestTrialForm from './signup-forms/CSCGuestTrialForm';
 import GCFForumForm from './signup-forms/GCFForumForm';
 import LSCEOFForumForm from './signup-forms/LSCEOFForumForm';
+import MemberNetworkForm from './signup-forms/MemberNetworkForm';
 
 // Series Code -> form variant component. Series codes without an entry here
 // fall back to the existing external members-site link.
 const FORM_VARIANTS = {
-  csc_guest_trial: { title: 'I would like to attend this event!', Component: CSCGuestTrialForm },
-  gcf_forum: { title: 'I would like to attend this event!', Component: GCFForumForm },
-  lsceof_forum: { title: 'I would like to attend this event!', Component: LSCEOFForumForm },
+  csc_guest_trial:  { title: 'I would like to attend this event!',                     Component: CSCGuestTrialForm },
+  gcf_forum:        { title: 'I would like to attend this event!',                     Component: GCFForumForm },
+  lsceof_forum:     { title: 'I would like to attend this event!',                     Component: LSCEOFForumForm },
+  gcx_exchange:     { title: 'Member-only event for General Counsel Network',          Component: MemberNetworkForm },
+  rmx_exchange:     { title: 'Member-only event for Risk Management Network',          Component: MemberNetworkForm },
+  lsceox_exchange:  { title: 'Member-only event for Life Sciences CEO Network',        Component: MemberNetworkForm },
 };
 const SERIES_TO_FORM_KEY = {
   CSC: 'csc_guest_trial',
   GCF: 'gcf_forum',
   LSCEOF: 'lsceof_forum',
+  GCX: 'gcx_exchange',
+  RMX: 'rmx_exchange',
+  LSCEOX: 'lsceox_exchange',
 };
 
 const formatDate = (iso) => {
@@ -378,7 +385,7 @@ const EventDetailsPage = () => {
           onClose={closeSignup}
           title={formVariant.title}
         >
-          <formVariant.Component event={event} onSuccess={() => { /* keep modal open on success view */ }} />
+          <formVariant.Component event={event} formKey={formKey} onSuccess={() => { /* keep modal open on success view */ }} />
         </SignupModal>
       )}
     </div>

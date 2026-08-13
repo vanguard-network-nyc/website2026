@@ -7,7 +7,7 @@ import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filte
 
 // Series codes that have a dedicated internal details page on this site.
 // For any other code, the "More Details" link still opens the external members-site URL.
-const INTERNAL_DETAILS_SERIES = new Set(['CSC', 'GCF', 'LSCEOF']);
+const INTERNAL_DETAILS_SERIES = new Set(['CSC', 'GCF', 'LSCEOF', 'GCX', 'RMX', 'LSCEOX']);
 
 // Returns the URL to use for an event's "More Details" link.
 // - CSC events -> internal /events/{id} details page
