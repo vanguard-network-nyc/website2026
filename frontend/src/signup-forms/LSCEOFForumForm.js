@@ -216,7 +216,7 @@ const LSCEOFForumForm = ({ event, onSuccess }) => {
         </Field>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-3">
+      <div className="grid md:grid-cols-2 gap-3">
         <Field label="Recommended by (optional)">
           <input type="text" placeholder="How you heard about us" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
         </Field>
