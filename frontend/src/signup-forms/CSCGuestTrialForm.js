@@ -39,15 +39,15 @@ const initialState = {
 
 const Field = ({ label, required, caption, children }) => (
   <div>
-    <label className="block text-sm font-semibold text-slate-800 mb-1">
+    <label className="block text-[13px] font-semibold text-slate-800 mb-0.5">
       {label}{required && <span className="text-red-500 ml-0.5">*</span>}
     </label>
-    {caption && <p className="text-xs text-slate-500 mb-1.5">{caption}</p>}
+    {caption && <p className="text-[11px] text-slate-500 mb-1">{caption}</p>}
     {children}
   </div>
 );
 
-const inputClass = "w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent transition-all";
+const inputClass = "w-full px-3 py-1.5 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#00A8E1] focus:border-transparent transition-all";
 
 const CSCGuestTrialForm = ({ event, onSuccess }) => {
   const [data, setData] = useState(initialState);
@@ -141,8 +141,8 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" data-testid="csc-guest-trial-form" noValidate>
-      <div className="prose prose-sm max-w-none text-slate-600 mb-4">
+    <form onSubmit={handleSubmit} className="space-y-3" data-testid="csc-guest-trial-form" noValidate>
+      <div className="prose prose-sm max-w-none text-slate-600 text-[13px] leading-snug">
         <ReactMarkdown>{INTRO_MARKDOWN}</ReactMarkdown>
       </div>
 
@@ -165,11 +165,10 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
         </div>
       </Field>
 
-      <Field label="Full name" required>
-        <input type="text" className={inputClass} value={data.full_name} onChange={set('full_name')} data-testid="signup-full-name" />
-      </Field>
-
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-3 gap-3">
+        <Field label="Full name" required>
+          <input type="text" className={inputClass} value={data.full_name} onChange={set('full_name')} data-testid="signup-full-name" />
+        </Field>
         <Field label="Work email" required caption="For general communications">
           <input type="email" className={inputClass} value={data.work_email} onChange={set('work_email')} data-testid="signup-work-email" />
         </Field>
@@ -178,19 +177,19 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
         </Field>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-3 gap-3">
         <Field label="Company" required>
           <input type="text" className={inputClass} value={data.company} onChange={set('company')} />
         </Field>
         <Field label="Title" required>
           <input type="text" className={inputClass} value={data.title} onChange={set('title')} />
         </Field>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-4">
         <Field label="Phone" required caption="10-digit US number or +country code for international">
           <input type="tel" className={inputClass} value={data.phone} onChange={set('phone')} placeholder="555-123-4567" data-testid="signup-phone" />
         </Field>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-3">
         <Field label="Company Revenue" required caption="Select company size by revenue">
           <select className={inputClass} value={data.company_size} onChange={set('company_size')} data-testid="signup-company-size">
             <option value="">— Select —</option>
@@ -199,21 +198,19 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
             ))}
           </select>
         </Field>
+        <Field label="Executive Assistant email">
+          <input type="email" className={inputClass} value={data.ea_email} onChange={set('ea_email')} />
+        </Field>
+        <Field label="Recommended by">
+          <input type="text" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
+        </Field>
       </div>
 
-      <Field label="Executive Assistant email">
-        <input type="email" className={inputClass} value={data.ea_email} onChange={set('ea_email')} />
-      </Field>
-
-      <Field label="Recommended by">
-        <input type="text" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
-      </Field>
-
       <Field label="Message">
-        <textarea rows={4} className={inputClass} value={data.message} onChange={set('message')} />
+        <textarea rows={2} className={inputClass} value={data.message} onChange={set('message')} />
       </Field>
 
-      <label className="flex items-start gap-2 text-sm text-slate-700 pt-2">
+      <label className="flex items-start gap-2 text-[13px] text-slate-700 pt-1">
         <input type="checkbox" className="mt-1 flex-shrink-0" checked={data.ok_trial} onChange={set('ok_trial')} data-testid="signup-ok-trial" />
         <span>{TRIAL_CHECKBOX_LABEL}<span className="text-red-500 ml-0.5">*</span></span>
       </label>

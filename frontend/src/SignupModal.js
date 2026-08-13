@@ -28,7 +28,7 @@ const SignupModal = ({ isOpen, onClose, title, children }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm flex items-start md:items-center justify-center overflow-y-auto p-4 md:p-8"
+          className="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6"
           onClick={onClose}
           data-testid="signup-modal-backdrop"
         >
@@ -37,30 +37,33 @@ const SignupModal = ({ isOpen, onClose, title, children }) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="bg-white rounded-2xl w-full max-w-2xl shadow-2xl relative my-8"
+            className="bg-white rounded-2xl w-full max-w-4xl shadow-2xl relative flex flex-col"
+            style={{ maxHeight: 'calc(100vh - 24px)' }}
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label={title || 'Sign up'}
             data-testid="signup-modal"
           >
-            <button
-              type="button"
-              onClick={onClose}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors z-10"
-              aria-label="Close"
-              data-testid="signup-modal-close"
-            >
-              <X size={22} />
-            </button>
-            {title && (
-              <div className="px-6 md:px-10 pt-8 pb-2">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900" style={{ color: '#045184' }}>
+            {/* Sticky header — always visible while form scrolls */}
+            <div className="flex items-start justify-between px-6 md:px-8 pt-5 pb-3 border-b border-slate-100 flex-shrink-0">
+              {title && (
+                <h2 className="text-xl md:text-2xl font-bold pr-8" style={{ color: '#045184' }}>
                   {title}
                 </h2>
-              </div>
-            )}
-            <div className="px-6 md:px-10 pb-8">
+              )}
+              <button
+                type="button"
+                onClick={onClose}
+                className="text-slate-400 hover:text-slate-700 transition-colors flex-shrink-0"
+                aria-label="Close"
+                data-testid="signup-modal-close"
+              >
+                <X size={22} />
+              </button>
+            </div>
+            {/* Scrollable body */}
+            <div className="px-6 md:px-8 py-4 overflow-y-auto flex-1">
               {children}
             </div>
           </motion.div>
