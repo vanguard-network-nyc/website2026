@@ -298,6 +298,54 @@ FORM_CONFIGS = {
 # only the modal title differs, which is a frontend concern.
 FORM_CONFIGS["rmx_exchange"] = FORM_CONFIGS["gcx_exchange"]
 FORM_CONFIGS["lsceox_exchange"] = FORM_CONFIGS["gcx_exchange"]
+
+FORM_CONFIGS["nggc_nomination"] = {
+    "adapter": "google_sheets",
+    "sheet_id": os.environ.get("SIGNUP_SHEET_ID"),
+    "tab_name": "NOMINATIONS",
+    # Payload key -> Sheet column header name
+    "field_map": {
+        "gc_full_name": "Full name of GC",
+        "gc_email": "Email of GC",
+        "participant_first_name": "First name of participant",
+        "participant_last_name": "Last name of participant",
+        "participant_email": "Email address of participant",
+        "participant_title": "Current title of participant",
+        "participant_company": "Current company of participant",
+        "participant_phone": "Participant's phone number (best number to reach the participant on)",
+        "additional_info": "Additional information to be considered",
+    },
+}
+SERIES_TO_FORM["NGGC"] = "nggc_nomination"
+
+def _write_signup_to_google_sheet(config: dict, values_by_col: dict) -> str:
+    """Append a row to the configured Google Sheet tab.
+    values_by_col: {header_name: value}. Missing columns are left blank.
+    Returns 'row-{n}' as a synthetic id."""
+    import base64 as _b64, json as _json
+    import gspread
+    from google.oauth2.service_account import Credentials
+    raw = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON_B64", "")
+    if not raw:
+        raise HTTPException(status_code=500, detail="Google service account not configured")
+    info = _json.loads(_b64.b64decode(raw).decode("utf-8"))
+    scopes = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    creds = Credentials.from_service_account_info(info, scopes=scopes)
+    gc = gspread.authorize(creds)
+    sh = gc.open_by_key(config["sheet_id"])
+    ws = sh.worksheet(config["tab_name"])
+    headers = ws.row_values(1)
+    # Build row aligned to sheet headers; auto-fill Timestamp if that column exists.
+    from datetime import datetime, timezone
+    now_iso = datetime.now(timezone.utc).isoformat()
+    row = []
+    for h in headers:
+        if h == "Timestamp":
+            row.append(now_iso)
+        else:
+            row.append(str(values_by_col.get(h, "")))
+    ws.append_row(row, value_input_option="USER_ENTERED")
+    return f"sheet-row-{len(ws.get_all_values())}"
 # --------------------------------------
 
 # Podcasts table configuration (different base)
@@ -1621,8 +1669,9 @@ async def submit_event_signup(payload: EventSignupSubmit):
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
 
     # Per-form server-side validation (defense in depth; frontend also validates).
-    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum", "gcx_exchange", "rmx_exchange", "lsceox_exchange"):
-        phone = str(payload.fields.get("phone") or "").strip()
+    if payload.form_key in ("csc_guest_trial", "gcf_forum", "lsceof_forum", "gcx_exchange", "rmx_exchange", "lsceox_exchange", "nggc_nomination"):
+        phone_field_key = "participant_phone" if payload.form_key == "nggc_nomination" else "phone"
+        phone = str(payload.fields.get(phone_field_key) or "").strip()
         # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())
         if not phone.startswith("+") or not (8 <= len(digits) <= 15):
@@ -1652,7 +1701,18 @@ async def submit_event_signup(payload: EventSignupSubmit):
         logger.info(f"Signup saved [{payload.form_key}] record={record_id} event={payload.event_record_id}")
         return {"status": "success", "message": "Signup received", "record_id": record_id}
 
-    # Future adapters (Google Sheets, second Airtable base) will be handled here.
+    if adapter == "google_sheets":
+        # For sheets we skip fixed_fields/event_link logic — build column-based map instead.
+        values_by_col = {}
+        for payload_key, col_name in config.get("field_map", {}).items():
+            v = payload.fields.get(payload_key)
+            if v is None or v == "":
+                continue
+            values_by_col[col_name] = v
+        row_id = _write_signup_to_google_sheet(config, values_by_col)
+        logger.info(f"Signup saved [{payload.form_key}] {row_id} event={payload.event_record_id}")
+        return {"status": "success", "message": "Signup received", "record_id": row_id}
+
     raise HTTPException(status_code=500, detail=f"Adapter '{adapter}' not implemented")
 
 @api_router.get("/events/signup/form-key/{series_code}")

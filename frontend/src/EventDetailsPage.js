@@ -12,6 +12,7 @@ import CSCGuestTrialForm from './signup-forms/CSCGuestTrialForm';
 import GCFForumForm from './signup-forms/GCFForumForm';
 import LSCEOFForumForm from './signup-forms/LSCEOFForumForm';
 import MemberNetworkForm from './signup-forms/MemberNetworkForm';
+import NGGCNominationForm from './signup-forms/NGGCNominationForm';
 
 // Series Code -> form variant component. Series codes without an entry here
 // fall back to the existing external members-site link.
@@ -22,6 +23,7 @@ const FORM_VARIANTS = {
   gcx_exchange:     { title: 'Member-only event for General Counsel Network',          Component: MemberNetworkForm },
   rmx_exchange:     { title: 'Member-only event for Risk Management Network',          Component: MemberNetworkForm },
   lsceox_exchange:  { title: 'Member-only event for Life Sciences CEO Network',        Component: MemberNetworkForm },
+  nggc_nomination:  { title: 'Next Gen GC Program: Nominate Your Candidate',           Component: NGGCNominationForm },
 };
 const SERIES_TO_FORM_KEY = {
   CSC: 'csc_guest_trial',
@@ -30,6 +32,7 @@ const SERIES_TO_FORM_KEY = {
   GCX: 'gcx_exchange',
   RMX: 'rmx_exchange',
   LSCEOX: 'lsceox_exchange',
+  NGGC: 'nggc_nomination',
 };
 
 const formatDate = (iso) => {
