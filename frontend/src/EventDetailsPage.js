@@ -103,12 +103,13 @@ const EventDetailsPage = () => {
     if (recordId) fetchEvent();
   }, [recordId]);
 
-  // Deep-link: auto-open sign-up modal when URL has ?signup=1 and a form variant exists.
+  // Deep-link: auto-open sign-up modal when URL has ?signup=1 (real users)
+  // OR ?formOverride=<key> (preview links). Either one is enough.
   useEffect(() => {
     if (!event) return;
-    const wantOpen = searchParams.get('signup') === '1';
-    if (!wantOpen) return;
     const override = searchParams.get('formOverride');
+    const wantOpen = searchParams.get('signup') === '1' || !!override;
+    if (!wantOpen) return;
     const key = (override && FORM_VARIANTS[override])
       ? override
       : (event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null);
@@ -117,12 +118,13 @@ const EventDetailsPage = () => {
 
   const closeSignup = () => {
     setSignupOpen(false);
-    // Clean the query param without adding a history entry
-    if (searchParams.get('signup')) {
-      const next = new URLSearchParams(searchParams);
-      next.delete('signup');
-      setSearchParams(next, { replace: true });
-    }
+    // Clean the query params without adding a history entry, so a reload
+    // of the (now bare) URL doesn't re-open the modal.
+    const next = new URLSearchParams(searchParams);
+    let changed = false;
+    if (next.has('signup')) { next.delete('signup'); changed = true; }
+    if (next.has('formOverride')) { next.delete('formOverride'); changed = true; }
+    if (changed) setSearchParams(next, { replace: true });
   };
 
   if (loading) {
