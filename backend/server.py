@@ -180,6 +180,7 @@ EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
 # fall back to the external members-site link (existing behavior).
 SERIES_TO_FORM = {
     "CSC": "csc_guest_trial",
+    "GCF": "gcf_forum",
     # Other series codes will be added as their forms are built.
 }
 
@@ -210,6 +211,31 @@ FORM_CONFIGS = {
             "Type of Inquiry": "guest-trial",
         },
         # If present, links to the event's Airtable record on this field.
+        "event_link_field": "Event",
+    },
+    "gcf_forum": {
+        # GCF (General Counsel Forum) — same target table as CSC, no eligibility question,
+        # plus an optional Promo Code field.
+        "adapter": "airtable",
+        "base_id": "appm4C4MiNYVWwBaq",
+        "table_id": "tblufk6pWG4ITwxRs",  # Event Inquiries
+        "field_map": {
+            "full_name": "Name",
+            "work_email": "Email Work",
+            "personal_email": "Personal Email",
+            "company": "Company Name",
+            "title": "Title",
+            "phone": "Phone Number",
+            "company_size": "Company Size",
+            "ea_email": "Executive Assistant Email",
+            "recommended_by": "Recommended By",
+            "message": "Message",
+            "promo_code": "Promo Code",
+            "ok_trial": "OK with trial membership",
+        },
+        "fixed_fields": {
+            "Type of Inquiry": "guest-trial",
+        },
         "event_link_field": "Event",
     },
     # Additional form variants will be added here.
@@ -1537,7 +1563,7 @@ async def submit_event_signup(payload: EventSignupSubmit):
         raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
 
     # Per-form server-side validation (defense in depth; frontend also validates).
-    if payload.form_key == "csc_guest_trial":
+    if payload.form_key in ("csc_guest_trial", "gcf_forum"):
         phone = str(payload.fields.get("phone") or "").strip()
         # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())
