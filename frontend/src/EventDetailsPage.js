@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
@@ -7,6 +7,17 @@ import rehypeRaw from 'rehype-raw';
 import { Calendar, MapPin, ArrowLeft, ExternalLink, Linkedin } from 'lucide-react';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
+import SignupModal from './SignupModal';
+import CSCGuestTrialForm from './signup-forms/CSCGuestTrialForm';
+
+// Series Code -> form variant component. Series codes without an entry here
+// fall back to the existing external members-site link.
+const FORM_VARIANTS = {
+  csc_guest_trial: { title: 'I would like to attend this event!', Component: CSCGuestTrialForm },
+};
+const SERIES_TO_FORM_KEY = {
+  CSC: 'csc_guest_trial',
+};
 
 const formatDate = (iso) => {
   if (!iso) return null;
@@ -45,9 +56,11 @@ const mdComponents = {
 
 const EventDetailsPage = () => {
   const { recordId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [signupOpen, setSignupOpen] = useState(false);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -73,6 +86,25 @@ const EventDetailsPage = () => {
     };
     if (recordId) fetchEvent();
   }, [recordId]);
+
+  // Deep-link: auto-open sign-up modal when URL has ?signup=1 and a form variant exists.
+  useEffect(() => {
+    if (!event) return;
+    const wantOpen = searchParams.get('signup') === '1';
+    if (!wantOpen) return;
+    const key = event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null;
+    if (key && FORM_VARIANTS[key]) setSignupOpen(true);
+  }, [event, searchParams]);
+
+  const closeSignup = () => {
+    setSignupOpen(false);
+    // Clean the query param without adding a history entry
+    if (searchParams.get('signup')) {
+      const next = new URLSearchParams(searchParams);
+      next.delete('signup');
+      setSearchParams(next, { replace: true });
+    }
+  };
 
   if (loading) {
     return (
@@ -115,6 +147,14 @@ const EventDetailsPage = () => {
     || [formatDate(event.start_date), event.start_time && event.end_time ? `${event.start_time} – ${event.end_time}` : null, event.timezone]
         .filter(Boolean)
         .join(' • ');
+
+  // Which sign-up form (if any) applies to this event's series code?
+  const formKey = event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null;
+  const formVariant = formKey ? FORM_VARIANTS[formKey] : null;
+
+  // Deep link: /events/:recordId?signup=1 auto-opens the modal if a form is configured
+  // We check this AFTER the event has loaded so we know whether a variant exists.
+  // Using useEffect below.
 
   return (
     <div className="pt-40 pb-24 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100" data-testid="event-detail-page">
@@ -199,19 +239,33 @@ const EventDetailsPage = () => {
 
             {/* CTA */}
             <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={event.registration_url || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
-                style={{ backgroundColor: '#00A8E1' }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
-                data-testid="event-detail-attend-btn"
-              >
-                I would like to attend
-                <ExternalLink size={16} />
-              </a>
+              {formVariant ? (
+                <button
+                  type="button"
+                  onClick={() => setSignupOpen(true)}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  data-testid="event-detail-attend-btn"
+                >
+                  I would like to attend
+                </button>
+              ) : (
+                <a
+                  href={event.registration_url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  data-testid="event-detail-attend-btn"
+                >
+                  I would like to attend
+                  <ExternalLink size={16} />
+                </a>
+              )}
               {event.registration_closed && !event.fully_booked && (
                 <span className="text-sm font-semibold text-slate-700 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full">
                   Registration closed
@@ -303,6 +357,17 @@ const EventDetailsPage = () => {
           </motion.div>
         )}
       </div>
+
+      {/* Sign-up modal (rendered only when a form variant is configured for this series) */}
+      {formVariant && (
+        <SignupModal
+          isOpen={signupOpen}
+          onClose={closeSignup}
+          title={formVariant.title}
+        >
+          <formVariant.Component event={event} onSuccess={() => { /* keep modal open on success view */ }} />
+        </SignupModal>
+      )}
     </div>
   );
 };

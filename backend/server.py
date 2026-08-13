@@ -147,6 +147,8 @@ class AirtableEventDetail(BaseModel):
     type_of_event: Optional[str] = None
     audience_network: Optional[str] = None
     series: Optional[str] = None
+    series_code: Optional[str] = None  # Short series code, e.g. 'CSC', 'GCF' — drives signup form routing
+    clean_event_code: Optional[str] = None  # Per-event code, e.g. 'CSC2026_0724'
     registration_closed: Optional[bool] = False
     fully_booked: Optional[bool] = False
     registration_url: Optional[str] = None
@@ -171,6 +173,47 @@ AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN')
 EVENTS_BASE_ID = "appm4C4MiNYVWwBaq"
 EVENTS_TABLE_ID = "tbljv81RwwFDCb0eU"
 EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
+
+# -------- Signup form routing --------
+# Series Code -> form key. Only mapped series' render the CTA modal; unmapped series
+# fall back to the external members-site link (existing behavior).
+SERIES_TO_FORM = {
+    "CSC": "csc_guest_trial",
+    # Other series codes will be added as their forms are built.
+}
+
+# Form key -> destination config. Each config specifies where to write the submission
+# and how each incoming field maps to the destination.
+FORM_CONFIGS = {
+    "csc_guest_trial": {
+        "adapter": "airtable",
+        "base_id": "appm4C4MiNYVWwBaq",
+        "table_id": "tblufk6pWG4ITwxRs",  # Event Inquiries
+        # Payload key -> Airtable field name
+        "field_map": {
+            "self_qualification": "Self Qualification for membership",
+            "full_name": "Name",
+            "work_email": "Email",
+            "personal_email": "Personal Email",
+            "company": "Company Name",
+            "title": "Title",
+            "phone": "Phone Number",
+            "company_size": "Company Size",
+            "ea_email": "Executive Assistant Email",
+            "recommended_by": "Recommended By",
+            "message": "Message",
+            "ok_trial": "OK with trial membership",
+        },
+        # Fixed field values always written for this form.
+        "fixed_fields": {
+            "Type of Inquiry": "guest-trial",
+        },
+        # If present, links to the event's Airtable record on this field.
+        "event_link_field": "Event",
+    },
+    # Additional form variants will be added here.
+}
+# --------------------------------------
 
 # Podcasts table configuration (different base)
 PODCASTS_BASE_ID = "appcKcpx0rQ37ChAo"
@@ -1418,6 +1461,8 @@ async def get_event_by_id(record_id: str):
             type_of_event=_first_str(fields.get("Type of Event")),
             audience_network=_first_str(fields.get("Audience (Network)")),
             series=_first_str(fields.get("Series")) or fields.get("Series Code Text") or None,
+            series_code=_first_str(fields.get("Series Code Text")) or _first_str(fields.get("Series Code")),
+            clean_event_code=_first_str(fields.get("Clean Event Code")) or _first_str(fields.get("New Event Code")),
             registration_closed=bool(fields.get("Registration Closed")),
             fully_booked=bool(fields.get("Fully Booked")),
             registration_url=final_registration_url,
@@ -1432,6 +1477,86 @@ async def get_event_by_id(record_id: str):
     except Exception as e:
         logger.error(f"Error fetching event {record_id}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch event: {str(e)}")
+
+# ---------- Event signup form submission ----------
+
+class EventSignupSubmit(BaseModel):
+    """Generic signup payload. `form_key` selects the destination config.
+
+    All specific field values live in `fields` as key -> value pairs.
+    The keys must match those defined in FORM_CONFIGS[form_key]['field_map'].
+    """
+    form_key: str
+    event_record_id: str
+    series_code: Optional[str] = None
+    clean_event_code: Optional[str] = None
+    fields: dict = {}
+    website: Optional[str] = ""  # Honeypot
+
+def _write_signup_to_airtable(config: dict, air_fields: dict) -> str:
+    """POST a record to Airtable. Returns the created record id."""
+    url = f"https://api.airtable.com/v0/{config['base_id']}/{config['table_id']}"
+    headers = {
+        "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
+        "Content-Type": "application/json",
+    }
+    body = {"fields": air_fields, "typecast": True}
+    resp = requests.post(url, headers=headers, json=body, timeout=20)
+    if resp.status_code >= 400:
+        logger.error(f"Airtable signup write failed [{resp.status_code}]: {resp.text}")
+        raise HTTPException(status_code=502, detail=f"Failed to save submission: {resp.text}")
+    return resp.json().get("id", "")
+
+@api_router.post("/events/signup")
+async def submit_event_signup(payload: EventSignupSubmit):
+    """Submit an event sign-up. Dispatches to the right destination based on form_key."""
+    # Honeypot — bots typically fill every field
+    if payload.website and payload.website.strip():
+        logger.warning(f"Blocked honeypot signup for form_key={payload.form_key}")
+        return {"status": "success", "message": "Signup received"}
+
+    # Optional email blocklist reuse (checks any field that looks like an email)
+    for v in payload.fields.values():
+        if isinstance(v, str) and "@" in v and is_email_blocked(v):
+            logger.warning(f"Blocked spam signup email={v} form_key={payload.form_key}")
+            return {"status": "success", "message": "Signup received"}
+
+    config = FORM_CONFIGS.get(payload.form_key)
+    if not config:
+        raise HTTPException(status_code=400, detail=f"Unknown form_key: {payload.form_key}")
+
+    # Build Airtable field payload from the incoming generic fields
+    field_map = config.get("field_map", {})
+    air_fields: dict = {}
+    for payload_key, air_field_name in field_map.items():
+        val = payload.fields.get(payload_key)
+        if val is None or val == "":
+            continue
+        air_fields[air_field_name] = val
+
+    # Fixed fields (constants written on every submission)
+    for k, v in (config.get("fixed_fields") or {}).items():
+        air_fields[k] = v
+
+    # Link to the event's Airtable record via a linked-record field
+    link_field = config.get("event_link_field")
+    if link_field and payload.event_record_id:
+        air_fields[link_field] = [payload.event_record_id]
+
+    adapter = config.get("adapter")
+    if adapter == "airtable":
+        record_id = _write_signup_to_airtable(config, air_fields)
+        logger.info(f"Signup saved [{payload.form_key}] record={record_id} event={payload.event_record_id}")
+        return {"status": "success", "message": "Signup received", "record_id": record_id}
+
+    # Future adapters (Google Sheets, second Airtable base) will be handled here.
+    raise HTTPException(status_code=500, detail=f"Adapter '{adapter}' not implemented")
+
+@api_router.get("/events/signup/form-key/{series_code}")
+async def get_signup_form_key(series_code: str):
+    """Return the form_key mapped to a given series_code, or null if unmapped."""
+    return {"form_key": SERIES_TO_FORM.get(series_code)}
+# ---------------------------------------------------
 
 @api_router.get("/team", response_model=List[AirtableTeamMember])
 async def get_team_members():
