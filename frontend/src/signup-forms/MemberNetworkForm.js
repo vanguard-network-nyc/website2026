@@ -53,6 +53,9 @@ const selectStyles = {
   placeholder: (base) => ({ ...base, color: '#94a3b8' }),
   multiValue: (base) => ({ ...base, backgroundColor: '#e0f2fe' }),
   multiValueLabel: (base) => ({ ...base, color: '#045184' }),
+  // Portal-rendered menu must sit above the modal (z-100). Give it z-index 200.
+  menuPortal: (base) => ({ ...base, zIndex: 200 }),
+  menu: (base) => ({ ...base, zIndex: 200 }),
 };
 
 /**
@@ -185,6 +188,8 @@ const MemberNetworkForm = ({ event, formKey, onSuccess }) => {
           placeholder="Select one or more network(s) you are interested in"
           styles={selectStyles}
           classNamePrefix="signup-networks"
+          menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+          menuPosition="fixed"
           data-testid="signup-networks"
         />
       </Field>
