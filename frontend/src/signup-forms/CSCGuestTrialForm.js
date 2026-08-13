@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 // Exact Airtable singleSelect option labels for "Self Qualification for membership"
 const SELF_QUAL_YES = 'Yes - I am a Board Member/CEO/C-Suite/Direct report to C-suite';
@@ -15,6 +17,7 @@ const COMPANY_SIZE_OPTIONS = [
 const INTRO_MARKDOWN = `Please complete the form below, and we'll follow up with event details.
 
 **New to the Vanguard Network?**
+
 You're welcome to attend up to three of our "Unlocking Leadership" webinars to get to know our community. After that, membership is required to participate in additional events or programs. We kindly ask that all guests sign up for our mailing list by checking the box below — it helps us keep you informed and ensure a smooth experience.
 
 The Vanguard Network welcomes executives in leadership roles at companies with more than five employees, including: Board Members, CEOs, C-suite executives and direct reports to the C-suite.`;
@@ -38,12 +41,15 @@ const initialState = {
 };
 
 const Field = ({ label, required, caption, children }) => (
-  <div>
+  <div className="flex flex-col">
     <label className="block text-[13px] font-semibold text-slate-800 mb-0.5">
       {label}{required && <span className="text-red-500 ml-0.5">*</span>}
     </label>
-    {caption && <p className="text-[11px] text-slate-500 mb-1">{caption}</p>}
-    {children}
+    {/* Reserved caption slot — always renders (invisible when no caption) so all inputs in a row align */}
+    <p className="text-[11px] text-slate-500 mb-1 min-h-[2rem] leading-tight">
+      {caption || '\u00A0'}
+    </p>
+    <div className="mt-auto">{children}</div>
   </div>
 );
 
@@ -66,19 +72,10 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
     if (!data.work_email.trim()) return 'Please enter your work email.';
     if (!data.company.trim()) return 'Please enter your company.';
     if (!data.title.trim()) return 'Please enter your title.';
-    if (!data.phone.trim()) return 'Please enter your phone number.';
-    // Phone validation:
-    //   • US format: exactly 10 digits after stripping formatting (spaces, dashes, parens, dots).
-    //   • International: prefix with '+' followed by 8–15 digits (E.164).
-    const raw = data.phone.trim();
-    const digits = raw.replace(/\D/g, '');
-    if (raw.startsWith('+')) {
-      if (digits.length < 8 || digits.length > 15) {
-        return 'Please enter a valid international phone number (include country code, e.g. +44 20 7946 0958).';
-      }
-    } else if (digits.length !== 10) {
-      return 'Please enter a valid 10-digit US phone number (e.g. 555-123-4567). For international numbers, prefix with country code (e.g. +44…).';
-    }
+    if (!data.phone) return 'Please enter your phone number.';
+    // react-phone-number-input returns an E.164 string like '+15551234567' when valid.
+    // Use its bundled validator so any supported country works out of the box.
+    if (!isValidPhoneNumber(data.phone)) return 'Please enter a valid phone number.';
     if (!data.company_size) return 'Please select your company revenue.';
     if (!data.ok_trial) return 'Please check the box to continue.';
     return null;
@@ -106,7 +103,7 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
           personal_email: data.personal_email.trim(),
           company: data.company.trim(),
           title: data.title.trim(),
-          phone: data.phone.trim(),
+          phone: data.phone,
           company_size: data.company_size,
           ea_email: data.ea_email.trim(),
           recommended_by: data.recommended_by.trim(),
@@ -142,8 +139,11 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3" data-testid="csc-guest-trial-form" noValidate>
-      <div className="prose prose-sm max-w-none text-slate-600 text-[13px] leading-snug">
-        <ReactMarkdown>{INTRO_MARKDOWN}</ReactMarkdown>
+      <div className="text-slate-600 text-[13px] leading-snug">
+        <ReactMarkdown components={{
+          p: ({ node, ...props }) => <p className="mb-2" {...props} />,
+          strong: ({ node, ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
+        }}>{INTRO_MARKDOWN}</ReactMarkdown>
       </div>
 
       {/* Honeypot */}
@@ -166,7 +166,7 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </Field>
 
       <div className="grid md:grid-cols-3 gap-3">
-        <Field label="Full name" required>
+        <Field label="Full name" required caption="First and last name">
           <input type="text" className={inputClass} value={data.full_name} onChange={set('full_name')} data-testid="signup-full-name" />
         </Field>
         <Field label="Work email" required caption="For general communications">
@@ -178,14 +178,21 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-3">
-        <Field label="Company" required>
+        <Field label="Company" required caption="Your current employer">
           <input type="text" className={inputClass} value={data.company} onChange={set('company')} />
         </Field>
-        <Field label="Title" required>
+        <Field label="Title" required caption="Your job title">
           <input type="text" className={inputClass} value={data.title} onChange={set('title')} />
         </Field>
-        <Field label="Phone" required caption="10-digit US number or +country code for international">
-          <input type="tel" className={inputClass} value={data.phone} onChange={set('phone')} placeholder="555-123-4567" data-testid="signup-phone" />
+        <Field label="Phone" required caption="Select country, then enter number">
+          <PhoneInput
+            international
+            defaultCountry="US"
+            value={data.phone}
+            onChange={(value) => setData(prev => ({ ...prev, phone: value || '' }))}
+            className="signup-phone-input"
+            data-testid="signup-phone"
+          />
         </Field>
       </div>
 
@@ -198,15 +205,15 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
             ))}
           </select>
         </Field>
-        <Field label="Executive Assistant email">
+        <Field label="Executive Assistant email" caption="Optional — for scheduling">
           <input type="email" className={inputClass} value={data.ea_email} onChange={set('ea_email')} />
         </Field>
-        <Field label="Recommended by">
+        <Field label="Recommended by" caption="Optional — how you heard about us">
           <input type="text" className={inputClass} value={data.recommended_by} onChange={set('recommended_by')} />
         </Field>
       </div>
 
-      <Field label="Message">
+      <Field label="Message" caption="Optional — anything else we should know">
         <textarea rows={2} className={inputClass} value={data.message} onChange={set('message')} />
       </Field>
 
@@ -228,6 +235,35 @@ const CSCGuestTrialForm = ({ event, onSuccess }) => {
       >
         {submitting ? 'Submitting…' : 'Submit'}
       </button>
+
+      {/* Phone input styling to match other fields */}
+      <style>{`
+        .signup-phone-input {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+          padding: 6px 12px;
+          border: 1px solid rgb(203 213 225);
+          border-radius: 6px;
+          background: #fff;
+        }
+        .signup-phone-input:focus-within {
+          outline: none;
+          border-color: transparent;
+          box-shadow: 0 0 0 2px #00A8E1;
+        }
+        .signup-phone-input .PhoneInputCountry {
+          margin-right: 4px;
+        }
+        .signup-phone-input .PhoneInputInput {
+          border: none;
+          outline: none;
+          background: transparent;
+          font-size: 14px;
+          width: 100%;
+          padding: 2px 0;
+        }
+      `}</style>
     </form>
   );
 };

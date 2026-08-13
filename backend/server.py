@@ -1528,12 +1528,10 @@ async def submit_event_signup(payload: EventSignupSubmit):
     # Per-form server-side validation (defense in depth; frontend also validates).
     if payload.form_key == "csc_guest_trial":
         phone = str(payload.fields.get("phone") or "").strip()
+        # Frontend sends E.164 (e.g. '+15551234567'). Require '+' + 8-15 digits.
         digits = "".join(ch for ch in phone if ch.isdigit())
-        if phone.startswith("+"):
-            if not (8 <= len(digits) <= 15):
-                raise HTTPException(status_code=400, detail="Invalid international phone number.")
-        elif len(digits) != 10:
-            raise HTTPException(status_code=400, detail="US phone must be 10 digits.")
+        if not phone.startswith("+") or not (8 <= len(digits) <= 15):
+            raise HTTPException(status_code=400, detail="Invalid phone number.")
 
     # Build Airtable field payload from the incoming generic fields
     field_map = config.get("field_map", {})
