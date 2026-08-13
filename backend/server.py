@@ -118,6 +118,7 @@ class AirtableEvent(BaseModel):
     lead_moderator_name: Optional[str] = None
     location: Optional[str] = None
     audience_network: Optional[str] = None
+    series_code: Optional[str] = None  # e.g., 'CSC', 'GCF' — used by frontend to decide internal vs external link
 
 class AirtableEventDetail(BaseModel):
     """Full event record for the /events/:recordId detail page."""
@@ -927,6 +928,15 @@ async def fetch_airtable_events():
             # Priority order: More Details URL -> Default Signup URL -> Fallback concatenated URL
             final_registration_url = more_details_url or default_signup_url or fallback_registration_url
             
+            # Series code (e.g. 'CSC', 'GCF') — used by frontend to decide link routing
+            series_code_raw = fields.get("Series Code Text") or fields.get("Series Code")
+            if isinstance(series_code_raw, list):
+                series_code_val = ", ".join(str(x) for x in series_code_raw if x) or None
+            elif series_code_raw:
+                series_code_val = str(series_code_raw).strip() or None
+            else:
+                series_code_val = None
+
             event = AirtableEvent(
                 id=record.get("id", ""),
                 event_title=event_title,
@@ -942,7 +952,8 @@ async def fetch_airtable_events():
                 session_leader_name=final_leader_name,  # Use the combined logic
                 lead_moderator_name=lead_moderator_name,
                 location=location,
-                audience_network=audience_network
+                audience_network=audience_network,
+                series_code=series_code_val,
             )
             events.append(event)
         

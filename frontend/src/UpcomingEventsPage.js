@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
 import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown, Mail } from 'lucide-react';
 
+// Series codes that have a dedicated internal details page on this site.
+// For any other code, the "More Details" link still opens the external members-site URL.
+const INTERNAL_DETAILS_SERIES = new Set(['CSC']);
+
+// Returns the URL to use for an event's "More Details" link.
+// - CSC events -> internal /events/{id} details page
+// - everything else -> whatever registration_url the backend computed (external)
+const eventDetailsUrl = (event) => {
+  if (event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)) {
+    return `/events/${event.id}`;
+  }
+  return event.registration_url;
+};
+
 const UpcomingEventsPage = () => {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -509,7 +525,13 @@ const UpcomingEventsPage = () => {
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.1 }}
                         className="flex items-center gap-6 p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors duration-200 cursor-pointer"
-                        onClick={() => window.open(event.registration_url, '_blank')}
+                        onClick={() => {
+                          if (event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)) {
+                            navigate(`/events/${event.id}`);
+                          } else if (event.registration_url) {
+                            window.open(event.registration_url, '_blank');
+                          }
+                        }}
                       >
                         <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-xl flex items-center justify-center">
                           <span className="text-white font-bold text-sm">
@@ -642,9 +664,10 @@ const UpcomingEventsPage = () => {
                       {/* Button Area - always at bottom */}
                       <div className="mt-auto pt-4">
                         <a
-                          href={event.registration_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={eventDetailsUrl(event)}
+                          {...(event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)
+                            ? {}
+                            : { target: '_blank', rel: 'noopener noreferrer' })}
                           className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
                         >
                           More Details
