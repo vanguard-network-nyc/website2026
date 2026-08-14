@@ -10,8 +10,6 @@ const INTRO_PARAGRAPHS = [
   "You may also contact Tony Powe directly to discuss further, at tony@vanguardgroup.nyc or simply send Tony your nominee's email address and we can take care of the rest.",
 ];
 
-const MORE_DETAILS_URL = "/programs/next-generation-general-counsel";
-
 const initialState = {
   gc_full_name: '',
   gc_email: '',
@@ -137,7 +135,18 @@ const NGGCNominationForm = ({ event, formKey, onSuccess }) => {
     <form onSubmit={handleSubmit} className="space-y-3" data-testid="nggc-nomination-form" noValidate>
       <div className="text-slate-600 text-[13px] leading-snug space-y-2">
         {INTRO_PARAGRAPHS.map((p, i) => <p key={i}>{p}</p>)}
-        <p><a href={MORE_DETAILS_URL} target="_blank" rel="noopener noreferrer" className="text-[#00A8E1] hover:text-[#0096C7] underline">More details here</a>.</p>
+        {event?.id && (
+          <p>
+            <a
+              href="/programs/next-generation-general-counsel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00A8E1] hover:text-[#0096C7] underline"
+            >
+              More details here
+            </a>.
+          </p>
+        )}
       </div>
 
       {/* Honeypot */}
