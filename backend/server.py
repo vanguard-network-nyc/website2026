@@ -1622,7 +1622,7 @@ def _map_section(record, people_by_id, companies_by_id, feature_items_by_id):
         "body": _pick(f, "body", "Body") or "",
         "image": _first_attachment_url(_pick(f, "image", "Image")),
         "image_side": _pick(f, "image_side", "Image Side") or "right",
-        "video_url": _pick(f, "video_url", "Video URL", "Video Url") or "",
+        "video_url": _pick(f, "video_url", "Video URL", "Video Url", "Video url") or "",
         "cta_label": _pick(f, "cta_label", "CTA Label") or "",
         "cta_url": _pick(f, "cta_url", "CTA URL", "CTA Url", "CTA url") or "",
         "background": _pick(f, "background", "Background") or "white",
