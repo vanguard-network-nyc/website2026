@@ -39,8 +39,8 @@ const cardWrapClass = (background) => {
   if (background === 'plain') return '';
   if (background === 'dark-box') return `${CARD_BASE} bg-gradient-to-br from-[#032a48] to-[#045184] border-white/10 text-white`;
   if (background === 'light-blue-box') return `${CARD_BASE} bg-gradient-to-br from-blue-50 to-slate-50 border-slate-200`;
-  if (background === 'white-light-blue-outline') return `${CARD_BASE_NO_BORDER} bg-white border-2 border-[#00A8E1]`;
-  if (background === 'white-dark-outline') return `${CARD_BASE_NO_BORDER} bg-white border-2 border-[#045184]`;
+  if (background === 'white-light-blue-outline') return `${CARD_BASE_NO_BORDER.replace('shadow-lg','')} bg-white shadow-[10px_10px_28px_-8px_rgba(0,168,225,0.35)]`;
+  if (background === 'white-dark-outline') return `${CARD_BASE_NO_BORDER.replace('shadow-lg','')} bg-white shadow-[10px_10px_28px_-8px_rgba(4,81,132,0.35)]`;
   return `${CARD_BASE} bg-white border-slate-200`;
 };
 
