@@ -455,11 +455,11 @@ export const LogoGallery = ({ section, first }) => {
           </h2>
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-10 items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 items-center justify-items-center">
           {companies.map((c) => (
-            <div key={c.id} className="flex items-center justify-center transition-transform duration-300 hover:scale-105">
+            <div key={c.id} className="flex items-center justify-center w-full transition-transform duration-300 hover:scale-105">
               {c.logo ? (
-                <img src={c.logo} alt={c.name} title={c.name} className="max-h-24 md:max-h-28 max-w-full object-contain" />
+                <img src={c.logo} alt={c.name} title={c.name} className="max-h-28 md:max-h-36 max-w-full object-contain" />
               ) : (
                 <span className={`text-sm text-center ${dark ? 'text-white' : 'text-slate-700'}`}>{c.name}</span>
               )}
