@@ -71,7 +71,27 @@ const Markdown = ({ children, dark = false }) => {
     : 'prose max-w-none prose-p:my-3 prose-li:my-1 prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 prose-li:marker:text-slate-700 prose-ul:text-slate-700 prose-strong:text-slate-900';
   return (
     <div className={proseClass}>
-      <ReactMarkdown remarkPlugins={[remarkBreaks]} rehypePlugins={[rehypeRaw]}>
+      <ReactMarkdown
+        remarkPlugins={[remarkBreaks]}
+        rehypePlugins={[rehypeRaw]}
+        components={{
+          // External links open in a new tab; internal (relative) links stay in-tab.
+          a: ({ node, href, children, ...props }) => {
+            const isExternal = /^https?:\/\//i.test(href || '');
+            return (
+              <a
+                href={href}
+                {...(isExternal
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+                {...props}
+              >
+                {children}
+              </a>
+            );
+          },
+        }}
+      >
         {children}
       </ReactMarkdown>
     </div>
