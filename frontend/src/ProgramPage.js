@@ -110,7 +110,7 @@ const ProgramPage = () => {
 
   const { program, sections } = data;
   const seoTitle = program.seo_title || program.name;
-  const seoDescription = program.seo_description || program.tagline || program.summary;
+  const seoDescription = program.seo_description || program.tagline || program.summary || `Learn more about ${program.name} at The Vanguard Network.`;
 
   const hasExplicitHero = sections.length > 0 && sections[0].type === 'Hero';
   const formVariant = formModalKey ? FORM_VARIANTS[formModalKey] : null;
@@ -128,7 +128,13 @@ const ProgramPage = () => {
       <SEO
         title={seoTitle}
         description={seoDescription}
-        canonical={`https://thevanguardnetwork.com/programs/${program.slug}`}
+        image={program.hero_image || undefined}
+        type="website"
+        breadcrumbs={[
+          { name: 'Home', url: 'https://thevanguardnetwork.com/' },
+          { name: 'Programs', url: 'https://thevanguardnetwork.com/programs' },
+          { name: program.name, url: `https://thevanguardnetwork.com/programs/${program.slug}` },
+        ]}
       />
 
       {!hasExplicitHero && <HeroBlock program={program} section={{}} onOpenForm={openForm} />}
@@ -153,6 +159,9 @@ const ProgramPage = () => {
           />
         );
       })}
+
+      {/* Breathing room before the footer */}
+      <div className="pb-16 md:pb-24" />
 
       {formVariant && (
         <SignupModal

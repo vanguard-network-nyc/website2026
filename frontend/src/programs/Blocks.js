@@ -433,14 +433,15 @@ export const PeopleGallery = ({ section, first }) => {
     <Section background={background} first={first} dataTestId="program-people-gallery">
       <div className={boxed}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 text-center ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {!subheading && heading && <div className="mb-8" />}
+        <div className="flex flex-wrap justify-center gap-6">
           {people.map((p) => (
-            <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
+            <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] max-w-xs ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
               {p.headshot ? (
                 <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
               ) : (

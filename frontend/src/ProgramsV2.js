@@ -442,83 +442,33 @@ const ProgramsV2 = () => {
                         ))}
                       </div>
                       
-                      {/* Action Button */}
-                      {program.name === "GENERAL COUNSEL EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/gc-exchange" target="_blank" rel="noopener noreferrer">
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                      {/* Action Button — links to internal program page */}
+                      {(() => {
+                        const slugMap = {
+                          "GENERAL COUNSEL EXCHANGE": "general-counsel-exchange",
+                          "RISK MANAGEMENT EXCHANGE": "risk-management-exchange",
+                          "NEXT GENERATION GENERAL COUNSEL": "next-generation-general-counsel",
+                          "LIFE SCIENCES CEO EXCHANGE": "life-sciences-ceo-exchange",
+                          "LAW ASSOCIATES ACCELERATOR": "law-associates-accelerator",
+                        };
+                        const slug = slugMap[program.name];
+                        return (
+                          <Link
+                            to={slug ? `/programs/${slug}` : "/programs"}
+                            onClick={() => window.scrollTo(0, 0)}
+                            data-testid={`programs-learn-more-${slug || 'unknown'}`}
                           >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </a>
-                      ) : program.name === "LIFE SCIENCES CEO EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw" target="_blank" rel="noopener noreferrer">
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </a>
-                      ) : program.name === "NEXT GENERATION GENERAL COUNSEL" ? (
-                        <a href="https://members.thevanguardnetwork.com/next-gen-gc" target="_blank" rel="noopener noreferrer">
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </a>
-                      ) : program.name === "NEW LEADERS PROGRAM" ? (
-                        <Link to="/new-leaders" onClick={() => window.scrollTo(0, 0)}>
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </Link>
-                      ) : program.name === "LAW ASSOCIATES ACCELERATOR" ? (
-                        <Link to="/law-associates" onClick={() => window.scrollTo(0, 0)}>
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </Link>
-                      ) : program.name === "RISK MANAGEMENT EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/risk-management-exchange" target="_blank" rel="noopener noreferrer">
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </a>
-                      ) : (
-                        <motion.button 
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                        >
-                          Learn More
-                          <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                        </motion.button>
-                      )}
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                            >
+                              Learn More
+                              <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                            </motion.button>
+                          </Link>
+                        );
+                      })()}
                     </div>
                   </motion.div>
                 ))}
