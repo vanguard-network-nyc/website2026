@@ -338,31 +338,34 @@ export const VideoBlock = ({ section, first }) => {
   if (!video_url) return null;
   const embedUrl = toEmbedUrl(video_url);
   const dark = isDarkContrast(background);
-  const boxed = cardWrapClass(background);
   return (
     <Section background={background} first={first} dataTestId="program-video">
-      <div className={boxed}>
-        {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
-            {heading}
-          </h2>
-        )}
-        {subheading && <p className={`text-lg mb-8 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-        <div className="max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black ring-1 ring-slate-200/60">
-          {embedUrl ? (
-            <iframe
-              src={embedUrl}
-              title={heading || 'Video'}
-              className="w-full h-full"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            <a href={video_url} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center text-white gap-2">
-              <Play size={24} /> Watch Video
-            </a>
+      <div className="bg-white rounded-3xl p-6 md:p-12 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 relative overflow-hidden">
+        {/* Subtle decorative accent */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20 pointer-events-none"></div>
+        <div className="relative z-10">
+          {heading && (
+            <h2 className="text-2xl md:text-4xl font-bold mb-3 text-center leading-tight bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+              {heading}
+            </h2>
           )}
+          {subheading && <p className="text-lg mb-8 text-center text-slate-600">{subheading}</p>}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
+            {embedUrl ? (
+              <iframe
+                src={embedUrl}
+                title={heading || 'Video'}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <a href={video_url} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center text-white gap-2">
+                <Play size={24} /> Watch Video
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </Section>
