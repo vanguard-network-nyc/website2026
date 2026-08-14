@@ -124,7 +124,7 @@ const ProgramPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white" data-testid="program-page">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" data-testid="program-page">
       <SEO
         title={seoTitle}
         description={seoDescription}

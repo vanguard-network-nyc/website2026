@@ -17,7 +17,7 @@ const bgToClass = (bg) => {
   switch (bg) {
     case 'light-blue': return 'bg-gradient-to-br from-blue-50 to-slate-50';
     case 'dark':      return 'bg-gradient-to-br from-[#032a48] to-[#045184] text-white';
-    default:          return 'bg-white';
+    default:          return 'bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100';
   }
 };
 
@@ -136,10 +136,16 @@ export const TextBlock = ({ section, first, onOpenForm }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-text-block">
-      {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
-      {subheading && <p className={`text-lg md:text-xl mb-6 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <Markdown dark={dark}>{body}</Markdown>
-      {cta_label && cta_url && <div className="mt-8"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
+      <div className={`max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
+        {subheading && <p className={`text-lg md:text-xl mb-6 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
+        <Markdown dark={dark}>{body}</Markdown>
+        {cta_label && cta_url && <div className="mt-8"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
+      </div>
     </Section>
   );
 };
@@ -158,7 +164,11 @@ export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
         </div>
       )}
       <div className={image ? (imgFirst ? 'order-2' : 'order-1') : 'md:col-span-2'}>
-        {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
         {subheading && <p className={`text-lg mb-4 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         <Markdown dark={dark}>{body}</Markdown>
         {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
@@ -167,7 +177,9 @@ export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
   );
   return (
     <Section background={background} first={first} dataTestId="program-two-column">
-      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">{columns}</div>
+      <div className={`max-w-6xl mx-auto rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">{columns}</div>
+      </div>
     </Section>
   );
 };
@@ -205,35 +217,38 @@ export const TestimonialBlock = ({ section, first }) => {
     : (subheading ? [subheading] : []);
   return (
     <Section background={background} first={first} dataTestId="program-testimonial">
-      <div className="max-w-5xl mx-auto">
+      <div className={`max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-xl border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
         <div className="grid md:grid-cols-[minmax(180px,220px)_1fr] gap-8 md:gap-12 items-center">
-          {/* Headshot */}
-          <div className="text-center md:text-left">
+          {/* Headshot — vertically centered alongside quote + attribution */}
+          <div className="flex items-center justify-center md:justify-start">
             {headshot ? (
               <img
                 src={headshot}
                 alt={person?.name || ''}
-                className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg mx-auto md:mx-0"
+                className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg ring-4 ring-slate-50"
               />
             ) : (
-              <div className={`w-40 h-40 md:w-52 md:h-52 rounded-full mx-auto md:mx-0 flex items-center justify-center ${dark ? 'bg-white/10' : 'bg-slate-200'}`}>
+              <div className={`w-40 h-40 md:w-52 md:h-52 rounded-full flex items-center justify-center ${dark ? 'bg-white/10' : 'bg-slate-200'}`}>
                 <Users size={48} className={dark ? 'text-white/50' : 'text-slate-400'} />
               </div>
             )}
           </div>
 
-          {/* Quote */}
-          <blockquote className={`text-lg md:text-2xl italic leading-relaxed ${dark ? 'text-white' : 'text-slate-800'}`}>
-            "{body}"
-          </blockquote>
+          {/* Right column: quote + attribution stacked tightly */}
+          <div>
+            <div className="relative">
+              <span className={`absolute -top-4 -left-2 text-6xl leading-none font-serif ${dark ? 'text-white/20' : 'text-slate-200'}`}>&ldquo;</span>
+              <blockquote className={`relative text-lg md:text-2xl italic leading-relaxed ${dark ? 'text-white' : 'text-slate-800'}`}>
+                {body}
+              </blockquote>
+            </div>
+            {attributionParts.length > 0 && (
+              <p className={`mt-3 text-sm md:text-base font-semibold text-right ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
+                — {attributionParts.join(' | ')}
+              </p>
+            )}
+          </div>
         </div>
-
-        {/* Attribution — below everything, single line */}
-        {attributionParts.length > 0 && (
-          <p className={`mt-6 md:mt-8 text-center md:text-right text-sm md:text-base font-semibold ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
-            — {attributionParts.join(' | ')}
-          </p>
-        )}
       </div>
     </Section>
   );
@@ -249,14 +264,18 @@ export const FeatureCardsBlock = ({ section, first }) => {
              : 'md:grid-cols-2 lg:grid-cols-4';
   return (
     <Section background={background} first={first} dataTestId="program-feature-cards">
-      {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
+      {heading && (
+        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          {heading}
+        </h2>
+      )}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className={`grid gap-6 ${cols}`}>
         {feature_items.map((item) => {
           const Icon = ICONS[item.icon] || Zap;
           return (
-            <div key={item.id} className={`p-6 rounded-2xl border ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm hover:shadow-lg transition-shadow'}`}>
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${dark ? 'bg-white/20' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1]'}`}>
+            <div key={item.id} className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm'}`}>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1]">
                 <Icon size={24} className="text-white" />
               </div>
               <h3 className={`text-lg font-bold mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
@@ -281,9 +300,13 @@ export const VideoBlock = ({ section, first }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-video">
-      {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
+      {heading && (
+        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          {heading}
+        </h2>
+      )}
       {subheading && <p className={`text-lg mb-8 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className="max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
+      <div className="max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black ring-1 ring-slate-200/60">
         {embedUrl ? (
           <iframe
             src={embedUrl}
@@ -319,9 +342,13 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-investment">
-      <div className="max-w-3xl mx-auto text-center">
-        {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
-        {subheading && <p className={`text-xl md:text-2xl font-semibold mb-4 ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>{subheading}</p>}
+      <div className={`max-w-3xl mx-auto text-center rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
+        {subheading && <p className={`text-xl md:text-3xl font-extrabold mb-6 ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>{subheading}</p>}
         <Markdown dark={dark}>{body}</Markdown>
         {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
       </div>
@@ -336,16 +363,20 @@ export const PeopleGallery = ({ section, first }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-people-gallery">
-      {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
+      {heading && (
+        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          {heading}
+        </h2>
+      )}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {people.map((p) => (
-          <div key={p.id} className="text-center">
+          <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
             {p.headshot ? (
-              <img src={p.headshot} alt={p.name} className="w-32 h-32 rounded-full mx-auto object-cover shadow-md mb-3" />
+              <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
             ) : (
-              <div className="w-32 h-32 rounded-full mx-auto bg-slate-200 flex items-center justify-center mb-3">
-                <Users className="text-slate-400" size={40} />
+              <div className="w-28 h-28 rounded-full mx-auto bg-slate-200 flex items-center justify-center mb-3">
+                <Users className="text-slate-400" size={36} />
               </div>
             )}
             <p className={`font-bold text-sm md:text-base ${dark ? 'text-white' : 'text-slate-900'}`}>{p.name}</p>
@@ -370,11 +401,15 @@ export const LogoGallery = ({ section, first }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-logo-gallery">
-      {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
+      {heading && (
+        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          {heading}
+        </h2>
+      )}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 items-center">
         {companies.map((c) => (
-          <div key={c.id} className={`p-4 rounded-xl flex items-center justify-center h-24 ${dark ? 'bg-white/10' : 'bg-white border border-slate-200'}`}>
+          <div key={c.id} className={`p-4 rounded-2xl flex items-center justify-center h-24 md:h-28 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-white/10 border border-white/10' : 'bg-white border border-slate-200 shadow-sm'}`}>
             {c.logo ? (
               <img src={c.logo} alt={c.name} title={c.name} className="max-h-16 max-w-full object-contain" />
             ) : (
@@ -415,7 +450,7 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
   const heading = section.heading || 'Upcoming Events';
   return (
     <Section background={section.background} first={first} dataTestId="program-related-events">
-      <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>
+      <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => (
           <a
