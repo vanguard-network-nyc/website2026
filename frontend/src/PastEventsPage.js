@@ -507,7 +507,21 @@ const PastEventsPage = () => {
                     className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-slate-200 flex flex-col"
                     data-testid={`past-event-card-${event.id}`}
                   >
-                    {/* NO listing image on past events */}
+                    {/* Event Image */}
+                    <div className="relative w-full overflow-hidden" style={{ height: '280px', minHeight: '280px', maxHeight: '280px' }}>
+                      {event.listing_picture ? (
+                        <img
+                          src={event.listing_picture}
+                          alt={formatEventTitle(event.event_title)}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          style={{ objectFit: 'cover' }}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                          <Calendar size={64} className="text-white opacity-50" />
+                        </div>
+                      )}
+                    </div>
 
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="flex-grow">
