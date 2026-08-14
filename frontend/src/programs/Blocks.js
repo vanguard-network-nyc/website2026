@@ -33,11 +33,14 @@ const bgToClass = (bg) => {
 };
 
 // Card wrapper style. Returns '' when no box should be drawn.
-const CARD_BASE = 'rounded-3xl p-8 md:p-12 shadow-lg border';
+const CARD_BASE_NO_BORDER = 'rounded-3xl p-8 md:p-12 shadow-lg';
+const CARD_BASE = `${CARD_BASE_NO_BORDER} border`;
 const cardWrapClass = (background) => {
   if (background === 'plain') return '';
   if (background === 'dark-box') return `${CARD_BASE} bg-gradient-to-br from-[#032a48] to-[#045184] border-white/10 text-white`;
   if (background === 'light-blue-box') return `${CARD_BASE} bg-gradient-to-br from-blue-50 to-slate-50 border-slate-200`;
+  if (background === 'white-light-blue-outline') return `${CARD_BASE_NO_BORDER} bg-white border-2 border-[#00A8E1]`;
+  if (background === 'white-dark-outline') return `${CARD_BASE_NO_BORDER} bg-white border-2 border-[#045184]`;
   return `${CARD_BASE} bg-white border-slate-200`;
 };
 
