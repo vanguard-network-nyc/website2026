@@ -4,6 +4,7 @@ import './App.css';
 import Components from './components';
 import SEO from './SEO';
 import ProgramsV2 from './ProgramsV2';
+import ProgramPage from './ProgramPage';
 import NetworkingV2Page from './NetworkingV2Page';
 import UpcomingEventsPage from './UpcomingEventsPage';
 import PastEventsPage from './PastEventsPage';
@@ -105,6 +106,7 @@ function App() {
           <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/networking" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
           <Route path="/programs" element={<PageWrapper><ProgramsV2 /></PageWrapper>} />
+          <Route path="/programs/:slug" element={<PageWrapper><ProgramPage /></PageWrapper>} />
           <Route path="/upcoming-events" element={<PageWrapper><UpcomingEventsPage /></PageWrapper>} />
           <Route path="/past-events" element={<PageWrapper><PastEventsPage /></PageWrapper>} />
           <Route path="/events/:recordId" element={<PageWrapper><EventDetailsPage /></PageWrapper>} />

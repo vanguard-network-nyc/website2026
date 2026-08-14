@@ -1520,6 +1520,188 @@ async def get_past_events():
         logger.error(f"Error in get_past_events: {str(e)}")
         return []
 
+
+# =====================================================================
+# PROGRAMS (CMS-driven program pages in base appqyKMZnFfgSuJKt)
+# =====================================================================
+import asyncio  # noqa: E402
+
+PROGRAMS_BASE_ID = "appqyKMZnFfgSuJKt"
+PROGRAMS_TABLE_ID = "tblWast1uLPpqyQKr"
+PROGRAMS_VIEW_ID = "viwJOg5PFfyhVOyDN"
+PROGRAM_SECTIONS_TABLE_ID = "tblnw1njqiNMOEXV4"
+PROGRAM_SECTIONS_VIEW_ID = "viwaaPZ7BMwEjUFOq"
+PROGRAMS_PEOPLE_TABLE_ID = "tblLZC1ebQd9FfnCF"
+PROGRAMS_PEOPLE_VIEW_ID = "viwOV8LK4EWLCOQRo"
+PROGRAMS_COMPANIES_TABLE_ID = "tblDB1mGkJI1VtEfB"
+PROGRAMS_COMPANIES_VIEW_ID = "viwM2C2Yok6tIxkW9"
+PROGRAMS_FEATURE_ITEMS_TABLE_ID = "tbl8V8nJEoY8eqv84"
+PROGRAMS_FEATURE_ITEMS_VIEW_ID = "viwS3VnFPYaikjxWh"
+
+
+async def _airtable_get(base_id: str, table_id: str, params: dict = None):
+    headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
+    url = f"https://api.airtable.com/v0/{base_id}/{table_id}"
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        r = await client.get(url, headers=headers, params=params or {})
+        r.raise_for_status()
+        return r.json().get("records", [])
+
+
+def _map_person(record):
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "name": f.get("WholeName") or "",
+        "title": f.get("Position") or "",
+        "company": f.get("Company") or "",
+        "headshot": _first_attachment_url(f.get("Headshot")),
+        "linkedin_url": f.get("LinkedIn Profle") or "",
+    }
+
+
+def _map_company(record):
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "name": f.get("Company Name") or "",
+        "logo": _first_attachment_url(f.get("Logo")),
+    }
+
+
+def _map_feature_item(record):
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "title": f.get("title") or "",
+        "body": f.get("body") or "",
+        "icon": f.get("icon") or "",
+        "display_order": f.get("display_order") or 0,
+    }
+
+
+def _map_program(record):
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "slug": f.get("slug") or "",
+        "name": f.get("name") or "",
+        "tagline": f.get("tagline") or "",
+        "summary": f.get("summary") or "",
+        "hero_image": _first_attachment_url(f.get("hero_image")),
+        "hero_cta_label": f.get("hero_cta_label") or "",
+        "hero_cta_url": f.get("hero_cta_url") or "",
+        "series_code": f.get("series_code") or "",
+        "status": f.get("status") or "",
+        "display_order": f.get("display_order") or 0,
+        "seo_title": f.get("seo_title") or "",
+        "seo_description": f.get("seo_description") or "",
+    }
+
+
+def _map_section(record, people_by_id, companies_by_id, feature_items_by_id):
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "order": f.get("order") or 0,
+        "type": f.get("type") or "Text Block",
+        "heading": f.get("heading") or "",
+        "subheading": f.get("subheading") or "",
+        "body": f.get("body") or "",
+        "image": _first_attachment_url(f.get("image")),
+        "image_side": f.get("image_side") or "right",
+        "video_url": f.get("video_url") or "",
+        "cta_label": f.get("cta_label") or "",
+        "cta_url": f.get("cta_url") or "",
+        "background": f.get("background") or "white",
+        "series_code_override": f.get("series_code_override") or "",
+        "max_items": f.get("max_items") or 0,
+        "people": [people_by_id[rid] for rid in (f.get("People") or []) if rid in people_by_id],
+        "companies": [companies_by_id[rid] for rid in (f.get("Company Logos") or []) if rid in companies_by_id],
+        "feature_items": sorted(
+            [feature_items_by_id[rid] for rid in (f.get("feature_items") or []) if rid in feature_items_by_id],
+            key=lambda x: x.get("display_order") or 0
+        ),
+    }
+
+
+@api_router.get("/programs")
+async def list_programs():
+    try:
+        records = await _airtable_get(
+            PROGRAMS_BASE_ID, PROGRAMS_TABLE_ID,
+            {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
+        )
+        programs = [_map_program(r) for r in records]
+        programs = [p for p in programs if p["slug"] and p["status"] == "Published"]
+        programs.sort(key=lambda p: p["display_order"] or 999)
+        return programs
+    except Exception as e:
+        logger.error(f"Error listing programs: {e}")
+        return []
+
+
+@api_router.get("/programs/{slug}")
+async def get_program(slug: str):
+    try:
+        program_records = await _airtable_get(
+            PROGRAMS_BASE_ID, PROGRAMS_TABLE_ID,
+            {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
+        )
+        program_record = next(
+            (r for r in program_records if (r.get("fields", {}).get("slug") == slug)),
+            None
+        )
+        if not program_record:
+            raise HTTPException(status_code=404, detail=f"Program '{slug}' not found")
+        program = _map_program(program_record)
+
+        section_records = await _airtable_get(
+            PROGRAMS_BASE_ID, PROGRAM_SECTIONS_TABLE_ID,
+            {
+                "view": PROGRAM_SECTIONS_VIEW_ID,
+                "filterByFormula": f"AND({{published}} = TRUE(), FIND('{program['id']}', ARRAYJOIN({{program}})) > 0)",
+                "maxRecords": 200,
+            }
+        )
+
+        # Collect linked ids
+        people_ids, company_ids, feature_ids = set(), set(), set()
+        for r in section_records:
+            f = r.get("fields", {})
+            for rid in (f.get("People") or []): people_ids.add(rid)
+            for rid in (f.get("Company Logos") or []): company_ids.add(rid)
+            for rid in (f.get("feature_items") or []): feature_ids.add(rid)
+
+        async def fetch_linked(table_id, view_id, ids, mapper):
+            if not ids:
+                return {}
+            records = await _airtable_get(
+                PROGRAMS_BASE_ID, table_id,
+                {"view": view_id, "maxRecords": 500}
+            )
+            return {r["id"]: mapper(r) for r in records if r.get("id") in ids}
+
+        people_by_id, companies_by_id, feature_items_by_id = await asyncio.gather(
+            fetch_linked(PROGRAMS_PEOPLE_TABLE_ID, PROGRAMS_PEOPLE_VIEW_ID, people_ids, _map_person),
+            fetch_linked(PROGRAMS_COMPANIES_TABLE_ID, PROGRAMS_COMPANIES_VIEW_ID, company_ids, _map_company),
+            fetch_linked(PROGRAMS_FEATURE_ITEMS_TABLE_ID, PROGRAMS_FEATURE_ITEMS_VIEW_ID, feature_ids, _map_feature_item),
+        )
+
+        sections = [
+            _map_section(r, people_by_id, companies_by_id, feature_items_by_id)
+            for r in section_records
+        ]
+        sections.sort(key=lambda s: s["order"] or 999)
+
+        return {"program": program, "sections": sections}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error fetching program '{slug}': {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def _first_attachment_url(field_value):
     """Return the URL of the first Airtable attachment, else None."""
     if isinstance(field_value, list) and field_value:
