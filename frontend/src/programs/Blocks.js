@@ -286,10 +286,15 @@ export const TestimonialBlock = ({ section, first }) => {
 
 // ---------- 6. Feature Cards ----------
 export const FeatureCardsBlock = ({ section, first }) => {
-  const { heading, subheading, feature_items, background } = section;
+  const { heading, subheading, feature_items, background, columns } = section;
   if (!feature_items || feature_items.length === 0) return null;
   const dark = isDarkInside(background);
-  const cols = feature_items.length === 2 ? 'md:grid-cols-2'
+  // Explicit column override, else auto-fit by count
+  const explicit = String(columns || '').trim();
+  const cols = explicit === '2' ? 'md:grid-cols-2'
+             : explicit === '3' ? 'md:grid-cols-3'
+             : explicit === '4' ? 'md:grid-cols-2 lg:grid-cols-4'
+             : feature_items.length === 2 ? 'md:grid-cols-2'
              : feature_items.length === 3 ? 'md:grid-cols-3'
              : 'md:grid-cols-2 lg:grid-cols-4';
   return (

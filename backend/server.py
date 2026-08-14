@@ -1628,6 +1628,7 @@ def _map_section(record, people_by_id, companies_by_id, feature_items_by_id):
         "background": _pick(f, "background", "Background") or "white",
         "series_code_override": _pick(f, "series_code_override", "Series Code Override") or "",
         "max_items": _pick(f, "max_items", "Max Items") or 0,
+        "columns": _pick(f, "columns", "Columns", "grid_columns", "Grid Columns") or "",
         "people": [people_by_id[rid] for rid in people_ids if rid in people_by_id],
         "companies": [companies_by_id[rid] for rid in company_ids if rid in companies_by_id],
         "feature_items": sorted(
