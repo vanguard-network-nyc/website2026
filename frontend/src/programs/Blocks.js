@@ -23,7 +23,7 @@ const bgToClass = (bg) => {
 
 const Section = ({ background, children, dataTestId }) => (
   <section className={`${bgToClass(background)}`} data-testid={dataTestId}>
-    <div className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20">
+    <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-14">
       {children}
     </div>
   </section>
@@ -32,8 +32,8 @@ const Section = ({ background, children, dataTestId }) => (
 const Markdown = ({ children, dark = false }) => {
   if (!children) return null;
   const proseClass = dark
-    ? 'prose prose-invert max-w-none prose-p:my-3 prose-li:my-1'
-    : 'prose max-w-none prose-p:my-3 prose-li:my-1 prose-headings:text-slate-900 prose-p:text-slate-700 prose-strong:text-slate-900';
+    ? 'prose prose-invert max-w-none prose-p:my-3 prose-li:my-1 prose-li:text-inherit prose-li:marker:text-current prose-ul:text-inherit'
+    : 'prose max-w-none prose-p:my-3 prose-li:my-1 prose-headings:text-slate-900 prose-p:text-slate-700 prose-li:text-slate-700 prose-li:marker:text-slate-700 prose-ul:text-slate-700 prose-strong:text-slate-900';
   return (
     <div className={proseClass}>
       <ReactMarkdown remarkPlugins={[remarkBreaks]} rehypePlugins={[rehypeRaw]}>

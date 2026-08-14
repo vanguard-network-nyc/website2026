@@ -84,8 +84,8 @@ const ProgramPage = () => {
 
       {!hasExplicitHero && <HeroBlock program={program} section={{}} />}
 
-      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6">
-        <Breadcrumb />
+      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 pb-2">
+        <Breadcrumb customTitle={program.name} />
       </div>
 
       {sections.map((section) => {
