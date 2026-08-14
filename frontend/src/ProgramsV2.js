@@ -75,21 +75,6 @@ const ProgramsV2 = () => {
       icon: <Shield size={28} />
     },
     {
-      name: "SENIOR IN-HOUSE COUNSEL EXCHANGE",
-      description: "An exchange for GCs' immediate reports to compare notes and solve problems together. Monthly, in virtual format.",
-      format: "Monthly Virtual",
-      audience: "Senior In-House Counsel",
-      category: "Legal",
-      level: "Senior",
-      status: "Active",
-      image: "/senior-counsel-exchange-program.jpg",
-      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/m8lgl096_2.png",
-      duration: "Ongoing",
-      participants: "10-12",
-      features: ["Monthly Virtual Sessions", "Problem-Solving Focus", "Peer Collaboration", "GC Reports Network"],
-      icon: <BookOpen size={28} />
-    },
-    {
       name: "LIFE SCIENCES CEO EXCHANGE",
       description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
       format: "Quarterly Virtual + Bi-annual In-Person",
@@ -460,17 +445,6 @@ const ProgramsV2 = () => {
                       {/* Action Button */}
                       {program.name === "GENERAL COUNSEL EXCHANGE" ? (
                         <a href="https://members.thevanguardnetwork.com/gc-exchange" target="_blank" rel="noopener noreferrer">
-                          <motion.button 
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                          >
-                            Learn More
-                            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </motion.button>
-                        </a>
-                      ) : program.name === "SENIOR IN-HOUSE COUNSEL EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/senior-counsel-exchange" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
