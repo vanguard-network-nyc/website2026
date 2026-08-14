@@ -1548,15 +1548,24 @@ async def _airtable_get(base_id: str, table_id: str, params: dict = None):
         return r.json().get("records", [])
 
 
+def _pick(fields: dict, *keys):
+    """Return the first non-empty value from a list of possible field names."""
+    for k in keys:
+        v = fields.get(k)
+        if v not in (None, "", [], {}):
+            return v
+    return None
+
+
 def _map_person(record):
     f = record.get("fields", {})
     return {
         "id": record.get("id"),
-        "name": f.get("WholeName") or "",
-        "title": f.get("Position") or "",
-        "company": f.get("Company") or "",
-        "headshot": _first_attachment_url(f.get("Headshot")),
-        "linkedin_url": f.get("LinkedIn Profle") or "",
+        "name": _pick(f, "WholeName", "Name") or "",
+        "title": _pick(f, "Position", "Title") or "",
+        "company": _pick(f, "Company") or "",
+        "headshot": _first_attachment_url(_pick(f, "Headshot", "Photo")),
+        "linkedin_url": _pick(f, "LinkedIn Profle", "LinkedIn Profile", "LinkedIn") or "",
     }
 
 
@@ -1564,8 +1573,8 @@ def _map_company(record):
     f = record.get("fields", {})
     return {
         "id": record.get("id"),
-        "name": f.get("Company Name") or "",
-        "logo": _first_attachment_url(f.get("Logo")),
+        "name": _pick(f, "Company Name", "Name") or "",
+        "logo": _first_attachment_url(_pick(f, "Logo")),
     }
 
 
@@ -1573,10 +1582,10 @@ def _map_feature_item(record):
     f = record.get("fields", {})
     return {
         "id": record.get("id"),
-        "title": f.get("title") or "",
-        "body": f.get("body") or "",
-        "icon": f.get("icon") or "",
-        "display_order": f.get("display_order") or 0,
+        "title": _pick(f, "title", "Title") or "",
+        "body": _pick(f, "body", "Body") or "",
+        "icon": _pick(f, "icon", "Icon") or "",
+        "display_order": _pick(f, "display_order", "Display Order") or 0,
     }
 
 
@@ -1584,42 +1593,45 @@ def _map_program(record):
     f = record.get("fields", {})
     return {
         "id": record.get("id"),
-        "slug": f.get("slug") or "",
-        "name": f.get("name") or "",
-        "tagline": f.get("tagline") or "",
-        "summary": f.get("summary") or "",
-        "hero_image": _first_attachment_url(f.get("hero_image")),
-        "hero_cta_label": f.get("hero_cta_label") or "",
-        "hero_cta_url": f.get("hero_cta_url") or "",
-        "series_code": f.get("series_code") or "",
-        "status": f.get("status") or "",
-        "display_order": f.get("display_order") or 0,
-        "seo_title": f.get("seo_title") or "",
-        "seo_description": f.get("seo_description") or "",
+        "slug": _pick(f, "Slug", "slug") or "",
+        "name": _pick(f, "Program Name", "name", "Name") or "",
+        "tagline": _pick(f, "Tag Line", "tagline", "Tagline") or "",
+        "summary": _pick(f, "Summary", "summary") or "",
+        "hero_image": _first_attachment_url(_pick(f, "Hero Image", "hero_image")),
+        "hero_cta_label": _pick(f, "Hero CTA Label", "hero_cta_label") or "",
+        "hero_cta_url": _pick(f, "Hero CTA url", "Hero CTA URL", "Hero CTA Url", "hero_cta_url") or "",
+        "series_code": _pick(f, "Series Code", "series_code") or "",
+        "status": _pick(f, "Status", "status") or "",
+        "display_order": _pick(f, "Display Order", "display_order") or 0,
+        "seo_title": _pick(f, "SEO Title", "seo_title") or "",
+        "seo_description": _pick(f, "SEO Description", "seo_description") or "",
     }
 
 
 def _map_section(record, people_by_id, companies_by_id, feature_items_by_id):
     f = record.get("fields", {})
+    people_ids = _pick(f, "People", "people") or []
+    company_ids = _pick(f, "Company Logos", "companies", "logo_attachments") or []
+    feature_ids = _pick(f, "Feature Items", "feature_items") or []
     return {
         "id": record.get("id"),
-        "order": f.get("order") or 0,
-        "type": f.get("type") or "Text Block",
-        "heading": f.get("heading") or "",
-        "subheading": f.get("subheading") or "",
-        "body": f.get("body") or "",
-        "image": _first_attachment_url(f.get("image")),
-        "image_side": f.get("image_side") or "right",
-        "video_url": f.get("video_url") or "",
-        "cta_label": f.get("cta_label") or "",
-        "cta_url": f.get("cta_url") or "",
-        "background": f.get("background") or "white",
-        "series_code_override": f.get("series_code_override") or "",
-        "max_items": f.get("max_items") or 0,
-        "people": [people_by_id[rid] for rid in (f.get("People") or []) if rid in people_by_id],
-        "companies": [companies_by_id[rid] for rid in (f.get("Company Logos") or []) if rid in companies_by_id],
+        "order": _pick(f, "order", "Order") or 0,
+        "type": _pick(f, "type", "Type") or "Text Block",
+        "heading": _pick(f, "heading", "Heading") or "",
+        "subheading": _pick(f, "subheading", "Subheading") or "",
+        "body": _pick(f, "body", "Body") or "",
+        "image": _first_attachment_url(_pick(f, "image", "Image")),
+        "image_side": _pick(f, "image_side", "Image Side") or "right",
+        "video_url": _pick(f, "video_url", "Video URL", "Video Url") or "",
+        "cta_label": _pick(f, "cta_label", "CTA Label") or "",
+        "cta_url": _pick(f, "cta_url", "CTA URL", "CTA Url") or "",
+        "background": _pick(f, "background", "Background") or "white",
+        "series_code_override": _pick(f, "series_code_override", "Series Code Override") or "",
+        "max_items": _pick(f, "max_items", "Max Items") or 0,
+        "people": [people_by_id[rid] for rid in people_ids if rid in people_by_id],
+        "companies": [companies_by_id[rid] for rid in company_ids if rid in companies_by_id],
         "feature_items": sorted(
-            [feature_items_by_id[rid] for rid in (f.get("feature_items") or []) if rid in feature_items_by_id],
+            [feature_items_by_id[rid] for rid in feature_ids if rid in feature_items_by_id],
             key=lambda x: x.get("display_order") or 0
         ),
     }
@@ -1649,29 +1661,41 @@ async def get_program(slug: str):
             {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
         )
         program_record = next(
-            (r for r in program_records if (r.get("fields", {}).get("slug") == slug)),
+            (r for r in program_records
+             if _pick(r.get("fields", {}), "Slug", "slug") == slug),
             None
         )
         if not program_record:
             raise HTTPException(status_code=404, detail=f"Program '{slug}' not found")
         program = _map_program(program_record)
 
-        section_records = await _airtable_get(
+        section_records_all = await _airtable_get(
             PROGRAMS_BASE_ID, PROGRAM_SECTIONS_TABLE_ID,
-            {
-                "view": PROGRAM_SECTIONS_VIEW_ID,
-                "filterByFormula": f"AND({{published}} = TRUE(), FIND('{program['id']}', ARRAYJOIN({{program}})) > 0)",
-                "maxRecords": 200,
-            }
+            {"view": PROGRAM_SECTIONS_VIEW_ID, "maxRecords": 500}
         )
+        # Filter in Python: keep sections linked to this program and marked published
+        def _linked_to(f, pid):
+            for k in ("program", "Program"):
+                v = f.get(k)
+                if isinstance(v, list) and pid in v:
+                    return True
+            return False
+        def _is_published(f):
+            v = _pick(f, "published", "Published")
+            # In Airtable, unchecked checkboxes return None/absent; only True counts as published.
+            # If the field doesn't exist at all, default to True (show it).
+            if "published" not in f and "Published" not in f:
+                return True
+            return bool(v)
+        section_records = [r for r in section_records_all if _linked_to(r.get("fields", {}), program["id"]) and _is_published(r.get("fields", {}))]
 
-        # Collect linked ids
+        # Collect linked ids from sections (tolerant of naming)
         people_ids, company_ids, feature_ids = set(), set(), set()
         for r in section_records:
             f = r.get("fields", {})
-            for rid in (f.get("People") or []): people_ids.add(rid)
-            for rid in (f.get("Company Logos") or []): company_ids.add(rid)
-            for rid in (f.get("feature_items") or []): feature_ids.add(rid)
+            for rid in (_pick(f, "People", "people") or []): people_ids.add(rid)
+            for rid in (_pick(f, "Company Logos", "companies", "logo_attachments") or []): company_ids.add(rid)
+            for rid in (_pick(f, "Feature Items", "feature_items") or []): feature_ids.add(rid)
 
         async def fetch_linked(table_id, view_id, ids, mapper):
             if not ids:
