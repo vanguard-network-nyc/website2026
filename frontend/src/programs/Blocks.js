@@ -201,22 +201,42 @@ export const TestimonialBlock = ({ section, first }) => {
   // Prefer a linked Person record; fall back to subheading/image fields
   const person = people && people.length > 0 ? people[0] : null;
   const headshot = person?.headshot || image;
-  const attributionParts = person
-    ? [person.name, person.title, person.company].filter(Boolean)
-    : (subheading ? [subheading] : []);
-  const attribution = attributionParts.join(' · ');
+  const nameText = person?.name || subheading || '';
+  const titleText = person?.title || '';
+  const companyText = person?.company || '';
   return (
     <Section background={background} first={first} dataTestId="program-testimonial">
-      <div className="max-w-3xl mx-auto text-center">
-        {headshot && <img src={headshot} alt={person?.name || ''} className="w-20 h-20 rounded-full mx-auto mb-4 object-cover shadow" />}
-        <blockquote className={`text-lg md:text-2xl italic leading-relaxed mb-4 ${dark ? 'text-white' : 'text-slate-800'}`}>
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[minmax(180px,220px)_1fr] gap-8 md:gap-12 items-start">
+        {/* Left column: headshot + attribution */}
+        <div className="text-center md:text-left flex-shrink-0">
+          {headshot ? (
+            <img
+              src={headshot}
+              alt={nameText}
+              className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg mx-auto md:mx-0"
+            />
+          ) : (
+            <div className={`w-40 h-40 md:w-52 md:h-52 rounded-full mx-auto md:mx-0 flex items-center justify-center ${dark ? 'bg-white/10' : 'bg-slate-200'}`}>
+              <Users size={48} className={dark ? 'text-white/50' : 'text-slate-400'} />
+            </div>
+          )}
+          <div className="mt-5">
+            {nameText && (
+              <p className={`font-bold text-base md:text-lg ${dark ? 'text-white' : 'text-slate-900'}`}>{nameText}</p>
+            )}
+            {titleText && (
+              <p className={`text-sm md:text-base mt-1 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{titleText}</p>
+            )}
+            {companyText && (
+              <p className={`text-sm md:text-base mt-0.5 ${dark ? 'text-blue-200' : 'text-slate-500'}`}>{companyText}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Right column: quote */}
+        <blockquote className={`text-lg md:text-2xl italic leading-relaxed ${dark ? 'text-white' : 'text-slate-800'}`}>
           "{body}"
         </blockquote>
-        {attribution && (
-          <p className={`text-sm md:text-base font-semibold ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
-            — {attribution}
-          </p>
-        )}
       </div>
     </Section>
   );
