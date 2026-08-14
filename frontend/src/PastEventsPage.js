@@ -297,15 +297,7 @@ const PastEventsPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium"
           >
-            A look back at the peer-to-peer leadership conversations that have shaped The Vanguard Network.
-          </motion.p>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium mt-4"
-          >
-            Browse recaps of previous forums, exchanges, and executive gatherings. Each session was grounded in the challenges leaders were facing at the time.
+            A look back at the peer-to-peer leadership conversations that have shaped The Vanguard Network. Each session was grounded in the challenges leaders were facing at the time.
           </motion.p>
         </div>
 

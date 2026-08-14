@@ -76,6 +76,7 @@ const EventDetailsPage = () => {
   const location = useLocation();
   const isPast = location.pathname.startsWith('/past-events/');
   const listingPath = isPast ? '/past-events' : '/upcoming-events';
+  const backLabel = isPast ? 'Back to Past Events' : 'Back to Upcoming Events';
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -146,7 +147,7 @@ const EventDetailsPage = () => {
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Event not found</h1>
           <p className="text-slate-600 mb-8">This event may have been removed or the link is incorrect.</p>
           <Link to={listingPath} className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
-            <ArrowLeft size={18} /> Back to Events
+            <ArrowLeft size={18} /> {backLabel}
           </Link>
         </div>
       </div>
@@ -160,7 +161,7 @@ const EventDetailsPage = () => {
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Something went wrong</h1>
           <p className="text-slate-600 mb-8">We couldn't load this event right now. Please try again shortly.</p>
           <Link to={listingPath} className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
-            <ArrowLeft size={18} /> Back to Events
+            <ArrowLeft size={18} /> {backLabel}
           </Link>
         </div>
       </div>
@@ -211,7 +212,7 @@ const EventDetailsPage = () => {
           className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-medium mb-6 transition-colors"
           data-testid="event-detail-back"
         >
-          <ArrowLeft size={18} /> Back to Events
+          <ArrowLeft size={18} /> {backLabel}
         </Link>
 
         {/* Header block */}
