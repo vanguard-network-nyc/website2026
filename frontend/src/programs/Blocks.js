@@ -43,14 +43,31 @@ const Markdown = ({ children, dark = false }) => {
   );
 };
 
-const CtaButton = ({ href, children, variant = 'primary' }) => {
+const CtaButton = ({ href, children, variant = 'primary', onOpenForm }) => {
   if (!href || !children) return null;
-  const isExternal = /^https?:\/\//.test(href);
-  const base = 'inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors';
+  const base = 'inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors cursor-pointer';
   const styles = variant === 'primary'
     ? 'bg-[#00A8E1] text-white hover:bg-[#0096C7]'
     : 'bg-white text-[#045184] hover:bg-slate-100';
-  const link = (
+
+  // Special href: #form:<form-key> opens a modal on the current page instead of navigating.
+  const formMatch = /^#form:([\w-]+)$/i.exec(href.trim());
+  if (formMatch) {
+    const key = formMatch[1];
+    return (
+      <button
+        type="button"
+        onClick={() => onOpenForm && onOpenForm(key)}
+        className={`${base} ${styles}`}
+      >
+        {children}
+        <ArrowRight size={16} />
+      </button>
+    );
+  }
+
+  const isExternal = /^https?:\/\//.test(href);
+  return (
     <a
       href={href}
       target={isExternal ? '_blank' : undefined}
@@ -61,11 +78,10 @@ const CtaButton = ({ href, children, variant = 'primary' }) => {
       {isExternal ? <ExternalLink size={16} /> : <ArrowRight size={16} />}
     </a>
   );
-  return link;
 };
 
 // ---------- 1. Hero ----------
-export const HeroBlock = ({ program, section }) => {
+export const HeroBlock = ({ program, section, onOpenForm }) => {
   const heading = section?.heading || program?.name || '';
   const subheading = section?.subheading || program?.tagline || '';
   const body = section?.body || program?.summary || '';
@@ -105,7 +121,7 @@ export const HeroBlock = ({ program, section }) => {
         )}
         {ctaLabel && ctaUrl && (
           <div className="mt-8">
-            <CtaButton href={ctaUrl} variant="light">{ctaLabel}</CtaButton>
+            <CtaButton href={ctaUrl} variant="light" onOpenForm={onOpenForm}>{ctaLabel}</CtaButton>
           </div>
         )}
       </div>
@@ -114,7 +130,7 @@ export const HeroBlock = ({ program, section }) => {
 };
 
 // ---------- 2. Text Block ----------
-export const TextBlock = ({ section, first }) => {
+export const TextBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !subheading && !body && !cta_label) return null;
   const dark = background === 'dark';
@@ -123,13 +139,13 @@ export const TextBlock = ({ section, first }) => {
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg md:text-xl mb-6 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <Markdown dark={dark}>{body}</Markdown>
-      {cta_label && cta_url && <div className="mt-8"><CtaButton href={cta_url}>{cta_label}</CtaButton></div>}
+      {cta_label && cta_url && <div className="mt-8"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
     </Section>
   );
 };
 
 // ---------- 3. Two-Column ----------
-export const TwoColumnBlock = ({ section, first }) => {
+export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, image, image_side, cta_label, cta_url, background } = section;
   if (!body && !heading && !image) return null;
   const dark = background === 'dark';
@@ -145,7 +161,7 @@ export const TwoColumnBlock = ({ section, first }) => {
         {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
         {subheading && <p className={`text-lg mb-4 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         <Markdown dark={dark}>{body}</Markdown>
-        {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url}>{cta_label}</CtaButton></div>}
+        {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
       </div>
     </>
   );
@@ -157,7 +173,7 @@ export const TwoColumnBlock = ({ section, first }) => {
 };
 
 // ---------- 4. CTA Banner ----------
-export const CtaBanner = ({ section }) => {
+export const CtaBanner = ({ section, onOpenForm }) => {
   const { heading, body, cta_label, cta_url } = section;
   if (!cta_label && !heading && !body) return null;
   return (
@@ -170,7 +186,7 @@ export const CtaBanner = ({ section }) => {
               <Markdown dark>{body}</Markdown>
             </div>
           )}
-          {cta_label && cta_url && <CtaButton href={cta_url} variant="light">{cta_label}</CtaButton>}
+          {cta_label && cta_url && <CtaButton href={cta_url} variant="light" onOpenForm={onOpenForm}>{cta_label}</CtaButton>}
         </div>
       </div>
     </section>
@@ -273,7 +289,7 @@ const toEmbedUrl = (url) => {
 };
 
 // ---------- 8. Investment / Pricing ----------
-export const InvestmentBlock = ({ section, first }) => {
+export const InvestmentBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !body) return null;
   const dark = background === 'dark';
@@ -283,7 +299,7 @@ export const InvestmentBlock = ({ section, first }) => {
         {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
         {subheading && <p className={`text-xl md:text-2xl font-semibold mb-4 ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>{subheading}</p>}
         <Markdown dark={dark}>{body}</Markdown>
-        {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url}>{cta_label}</CtaButton></div>}
+        {cta_label && cta_url && <div className="mt-6"><CtaButton href={cta_url} onOpenForm={onOpenForm}>{cta_label}</CtaButton></div>}
       </div>
     </Section>
   );

@@ -1848,7 +1848,7 @@ class EventSignupSubmit(BaseModel):
     The keys must match those defined in FORM_CONFIGS[form_key]['field_map'].
     """
     form_key: str
-    event_record_id: str
+    event_record_id: Optional[str] = None
     series_code: Optional[str] = None
     clean_event_code: Optional[str] = None
     fields: dict = {}
