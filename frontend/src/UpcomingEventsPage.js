@@ -9,12 +9,21 @@ import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filte
 // For any other code, the "More Details" link still opens the external members-site URL.
 const INTERNAL_DETAILS_SERIES = new Set(['CSC', 'GCF', 'LSCEOF', 'GCX', 'RMX', 'LSCEOX']);
 
+// Series codes that should route to a dedicated internal PROGRAM page instead of an event details page.
+const SERIES_TO_PROGRAM_PATH = {
+  NGGC: '/programs/next-generation-general-counsel',
+};
+
 // Returns the URL to use for an event's "More Details" link.
-// - CSC events -> internal /events/{id} details page
+// - Series in INTERNAL_DETAILS_SERIES -> internal /events/{id} details page
+// - Series in SERIES_TO_PROGRAM_PATH -> the program landing page (e.g. NGGC -> /programs/next-generation-general-counsel)
 // - everything else -> whatever registration_url the backend computed (external)
 const eventDetailsUrl = (event) => {
   if (event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)) {
     return `/events/${event.id}`;
+  }
+  if (event.series_code && SERIES_TO_PROGRAM_PATH[event.series_code]) {
+    return SERIES_TO_PROGRAM_PATH[event.series_code];
   }
   return event.registration_url;
 };
@@ -528,6 +537,8 @@ const UpcomingEventsPage = () => {
                         onClick={() => {
                           if (event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)) {
                             navigate(`/events/${event.id}`);
+                          } else if (event.series_code && SERIES_TO_PROGRAM_PATH[event.series_code]) {
+                            navigate(SERIES_TO_PROGRAM_PATH[event.series_code]);
                           } else if (event.registration_url) {
                             window.open(event.registration_url, '_blank');
                           }
@@ -665,7 +676,8 @@ const UpcomingEventsPage = () => {
                       <div className="mt-auto pt-4">
                         <a
                           href={eventDetailsUrl(event)}
-                          {...(event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)
+                          {...((event.series_code && INTERNAL_DETAILS_SERIES.has(event.series_code)) ||
+                               (event.series_code && SERIES_TO_PROGRAM_PATH[event.series_code])
                             ? {}
                             : { target: '_blank', rel: 'noopener noreferrer' })}
                           className="w-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white py-3 px-6 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group"
