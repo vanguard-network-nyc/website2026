@@ -333,11 +333,13 @@ export const FeatureCardsBlock = ({ section, first }) => {
 };
 
 // ---------- 7. Video ----------
+const isDirectVideoFile = (url) => /\.(mp4|webm|mov|m4v|ogv)(\?.*)?$/i.test(url || '');
+
 export const VideoBlock = ({ section, first }) => {
   const { heading, subheading, video_url, background } = section;
   if (!video_url) return null;
-  const embedUrl = toEmbedUrl(video_url);
-  const dark = isDarkContrast(background);
+  const isNative = isDirectVideoFile(video_url);
+  const embedUrl = isNative ? null : toEmbedUrl(video_url);
   return (
     <Section background={background} first={first} dataTestId="program-video">
       <div className="bg-white rounded-3xl p-6 md:p-12 shadow-xl border-2 border-transparent hover:border-[#045184]/10 transition-all duration-500 relative overflow-hidden">
@@ -351,7 +353,18 @@ export const VideoBlock = ({ section, first }) => {
           )}
           {subheading && <p className="text-lg mb-8 text-center text-slate-600">{subheading}</p>}
           <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-slate-900">
-            {embedUrl ? (
+            {isNative ? (
+              <video
+                className="w-full h-full object-cover"
+                controls
+                controlsList="nodownload nofullscreen noremoteplayback"
+                disablePictureInPicture
+                playsInline
+              >
+                <source src={video_url} />
+                Your browser does not support the video tag.
+              </video>
+            ) : embedUrl ? (
               <iframe
                 src={embedUrl}
                 title={heading || 'Video'}
@@ -375,9 +388,17 @@ export const VideoBlock = ({ section, first }) => {
 const toEmbedUrl = (url) => {
   if (!url) return null;
   const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/);
-  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  if (yt) {
+    // Minimal chrome: hide title bar, "related videos" popup, keyboard closed captions info.
+    return `https://www.youtube.com/embed/${yt[1]}?modestbranding=1&rel=0&iv_load_policy=3&playsinline=1`;
+  }
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`;
+  if (vimeo) {
+    // Clean Vimeo player — hide top overlay (title/byline/portrait), disable Picture-in-Picture,
+    // respect DNT, keep controls + playsinline. Matches the stripped-down look of the native
+    // <video controlsList="nodownload nofullscreen noremoteplayback"> used elsewhere on the site.
+    return `https://player.vimeo.com/video/${vimeo[1]}?title=0&byline=0&portrait=0&pip=0&dnt=1&playsinline=1`;
+  }
   return url;
 };
 
