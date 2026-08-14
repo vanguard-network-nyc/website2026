@@ -133,7 +133,7 @@ const ProgramPage = () => {
 
       {!hasExplicitHero && <HeroBlock program={program} section={{}} onOpenForm={openForm} />}
 
-      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-4 -mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-4 -mb-4">
         <Breadcrumb customTitle={program.name} />
       </div>
 
