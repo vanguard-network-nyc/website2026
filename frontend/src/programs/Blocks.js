@@ -220,23 +220,21 @@ export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
 };
 
 // ---------- 4. CTA Banner ----------
-export const CtaBanner = ({ section, onOpenForm }) => {
+export const CtaBanner = ({ section, first, onOpenForm }) => {
   const { heading, body, cta_label, cta_url } = section;
   if (!cta_label && !heading && !body) return null;
   return (
-    <section className="py-16 md:py-20" data-testid="program-cta-banner">
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-8 md:p-16 text-white text-center">
-          {heading && <h2 className="text-2xl md:text-4xl font-bold mb-4">{heading}</h2>}
-          {body && (
-            <div className="text-base md:text-xl mb-8 max-w-3xl mx-auto opacity-95">
-              <Markdown dark>{body}</Markdown>
-            </div>
-          )}
-          {cta_label && cta_url && <CtaButton href={cta_url} variant="light" onOpenForm={onOpenForm}>{cta_label}</CtaButton>}
-        </div>
+    <Section background="plain" first={first} dataTestId="program-cta-banner">
+      <div className="bg-gradient-to-r from-[#045184] to-[#00A8E1] rounded-3xl p-8 md:p-16 text-white text-center shadow-lg">
+        {heading && <h2 className="text-2xl md:text-4xl font-bold mb-4">{heading}</h2>}
+        {body && (
+          <div className="text-base md:text-xl mb-8 max-w-3xl mx-auto opacity-95">
+            <Markdown dark>{body}</Markdown>
+          </div>
+        )}
+        {cta_label && cta_url && <CtaButton href={cta_url} variant="light" onOpenForm={onOpenForm}>{cta_label}</CtaButton>}
       </div>
-    </section>
+    </Section>
   );
 };
 
