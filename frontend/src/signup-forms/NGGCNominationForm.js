@@ -10,7 +10,7 @@ const INTRO_PARAGRAPHS = [
   "You may also contact Tony Powe directly to discuss further, at tony@vanguardgroup.nyc or simply send Tony your nominee's email address and we can take care of the rest.",
 ];
 
-const MORE_DETAILS_URL = "/programs/next-gen-gc-modules";
+const MORE_DETAILS_URL = "/programs/next-generation-general-counsel";
 
 const initialState = {
   gc_full_name: '',
