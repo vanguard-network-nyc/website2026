@@ -195,19 +195,26 @@ export const CtaBanner = ({ section, onOpenForm }) => {
 
 // ---------- 5. Testimonial ----------
 export const TestimonialBlock = ({ section, first }) => {
-  const { body, subheading, image, background } = section;
+  const { body, subheading, image, people, background } = section;
   if (!body) return null;
   const dark = background === 'dark';
+  // Prefer a linked Person record; fall back to subheading/image fields
+  const person = people && people.length > 0 ? people[0] : null;
+  const headshot = person?.headshot || image;
+  const attributionParts = person
+    ? [person.name, person.title, person.company].filter(Boolean)
+    : (subheading ? [subheading] : []);
+  const attribution = attributionParts.join(' · ');
   return (
     <Section background={background} first={first} dataTestId="program-testimonial">
       <div className="max-w-3xl mx-auto text-center">
-        {image && <img src={image} alt="" className="w-20 h-20 rounded-full mx-auto mb-4 object-cover shadow" />}
+        {headshot && <img src={headshot} alt={person?.name || ''} className="w-20 h-20 rounded-full mx-auto mb-4 object-cover shadow" />}
         <blockquote className={`text-lg md:text-2xl italic leading-relaxed mb-4 ${dark ? 'text-white' : 'text-slate-800'}`}>
           "{body}"
         </blockquote>
-        {subheading && (
+        {attribution && (
           <p className={`text-sm md:text-base font-semibold ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
-            — {subheading}
+            — {attribution}
           </p>
         )}
       </div>
