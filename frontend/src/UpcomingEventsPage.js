@@ -374,7 +374,7 @@ const UpcomingEventsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-8 py-2 leading-tight"
           >
-            Events Calendar
+            Upcoming Events
           </motion.h1>
           
           <motion.p 
