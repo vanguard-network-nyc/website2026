@@ -13,13 +13,36 @@ const ICONS = {
 };
 
 // ---------- shared helpers ----------
+// Airtable "background" field values (single-select):
+//   white          → white box on ambient strip (default)
+//   light-blue-box → light-blue-tinted box on ambient strip
+//   light-blue-strip → white box on a light-blue strip
+//   dark-box       → dark-navy box on ambient strip (dark text mode inside)
+//   dark-strip     → white box on a dark-navy strip
+//   plain          → no box at all, content sits directly on ambient strip
+//   (legacy) light-blue → alias of light-blue-strip
+//   (legacy) dark → alias of dark-strip
 const bgToClass = (bg) => {
-  switch (bg) {
-    case 'light-blue': return 'bg-gradient-to-br from-blue-50 to-slate-50';
-    case 'dark':      return 'bg-gradient-to-br from-[#032a48] to-[#045184] text-white';
-    default:          return 'bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100';
+  if (bg === 'light-blue-strip' || bg === 'light-blue') {
+    return 'bg-gradient-to-br from-blue-50 to-slate-50';
   }
+  if (bg === 'dark-strip' || bg === 'dark') {
+    return 'bg-gradient-to-br from-[#032a48] to-[#045184]';
+  }
+  return 'bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100';
 };
+
+// Card wrapper style. Returns '' when no box should be drawn.
+const CARD_BASE = 'rounded-3xl p-8 md:p-12 shadow-lg border';
+const cardWrapClass = (background) => {
+  if (background === 'plain') return '';
+  if (background === 'dark-box') return `${CARD_BASE} bg-gradient-to-br from-[#032a48] to-[#045184] border-white/10 text-white`;
+  if (background === 'light-blue-box') return `${CARD_BASE} bg-gradient-to-br from-blue-50 to-slate-50 border-slate-200`;
+  return `${CARD_BASE} bg-white border-slate-200`;
+};
+
+// Inside a dark box, text/headings switch to light mode.
+const isDarkInside = (bg) => bg === 'dark-box';
 
 const Section = ({ background, children, dataTestId, first = false }) => (
   <section className={`${bgToClass(background)}`} data-testid={dataTestId}>
@@ -32,12 +55,6 @@ const Section = ({ background, children, dataTestId, first = false }) => (
 // A section is rendered inside a white card by default. Setting `background = "plain"`
 // on the Airtable row skips the card wrapper — the block renders bare on the page's
 // ambient background. Use "plain" for short bridging paragraphs between boxed sections.
-const CARD_BASE = 'rounded-3xl p-8 md:p-12 shadow-lg border';
-const cardWrapClass = (background) => {
-  if (background === 'plain') return '';
-  if (background === 'dark')  return `${CARD_BASE} bg-white/5 border-white/10`;
-  return `${CARD_BASE} bg-white border-slate-200`;
-};
 
 const Markdown = ({ children, dark = false }) => {
   if (!children) return null;
@@ -143,7 +160,7 @@ export const HeroBlock = ({ program, section, onOpenForm }) => {
 export const TextBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !subheading && !body && !cta_label) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-text-block">
       <div className={`mx-auto ${cardWrapClass(background)}`}>
@@ -164,7 +181,7 @@ export const TextBlock = ({ section, first, onOpenForm }) => {
 export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, image, image_side, cta_label, cta_url, background } = section;
   if (!body && !heading && !image) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   const imgFirst = image_side === 'left';
   const columns = (
     <>
@@ -219,7 +236,7 @@ export const CtaBanner = ({ section, onOpenForm }) => {
 export const TestimonialBlock = ({ section, first }) => {
   const { body, subheading, image, people, background } = section;
   if (!body) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   const person = people && people.length > 0 ? people[0] : null;
   const headshot = person?.headshot || image;
   const attributionParts = person
@@ -268,7 +285,7 @@ export const TestimonialBlock = ({ section, first }) => {
 export const FeatureCardsBlock = ({ section, first }) => {
   const { heading, subheading, feature_items, background } = section;
   if (!feature_items || feature_items.length === 0) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   const cols = feature_items.length === 2 ? 'md:grid-cols-2'
              : feature_items.length === 3 ? 'md:grid-cols-3'
              : 'md:grid-cols-2 lg:grid-cols-4';
@@ -307,7 +324,7 @@ export const VideoBlock = ({ section, first }) => {
   const { heading, subheading, video_url, background } = section;
   if (!video_url) return null;
   const embedUrl = toEmbedUrl(video_url);
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-video">
       {heading && (
@@ -349,7 +366,7 @@ const toEmbedUrl = (url) => {
 export const InvestmentBlock = ({ section, first, onOpenForm }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !body) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-investment">
       <div className={`mx-auto text-center ${cardWrapClass(background)}`}>
@@ -370,7 +387,7 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
 export const PeopleGallery = ({ section, first }) => {
   const { heading, subheading, people, background } = section;
   if (!people || people.length === 0) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-people-gallery">
       {heading && (
@@ -408,7 +425,7 @@ export const PeopleGallery = ({ section, first }) => {
 export const LogoGallery = ({ section, first }) => {
   const { heading, subheading, companies, background } = section;
   if (!companies || companies.length === 0) return null;
-  const dark = background === 'dark';
+  const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-logo-gallery">
       {heading && (
@@ -437,7 +454,7 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
   const seriesCode = section.series_code_override || program?.series_code;
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
-  const dark = section.background === 'dark';
+  const dark = isDarkInside(section.background);
   const maxItems = section.max_items || 3;
 
   useEffect(() => {
