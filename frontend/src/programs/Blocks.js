@@ -21,9 +21,9 @@ const bgToClass = (bg) => {
   }
 };
 
-const Section = ({ background, children, dataTestId }) => (
+const Section = ({ background, children, dataTestId, first = false }) => (
   <section className={`${bgToClass(background)}`} data-testid={dataTestId}>
-    <div className="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-14">
+    <div className={`max-w-6xl mx-auto px-4 md:px-8 ${first ? 'pt-2 md:pt-4 pb-10 md:pb-14' : 'py-10 md:py-14'}`}>
       {children}
     </div>
   </section>
@@ -114,12 +114,12 @@ export const HeroBlock = ({ program, section }) => {
 };
 
 // ---------- 2. Text Block ----------
-export const TextBlock = ({ section }) => {
+export const TextBlock = ({ section, first }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !subheading && !body && !cta_label) return null;
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-text-block">
+    <Section background={background} first={first} dataTestId="program-text-block">
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg md:text-xl mb-6 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <Markdown dark={dark}>{body}</Markdown>
@@ -129,7 +129,7 @@ export const TextBlock = ({ section }) => {
 };
 
 // ---------- 3. Two-Column ----------
-export const TwoColumnBlock = ({ section }) => {
+export const TwoColumnBlock = ({ section, first }) => {
   const { heading, subheading, body, image, image_side, cta_label, cta_url, background } = section;
   if (!body && !heading && !image) return null;
   const dark = background === 'dark';
@@ -150,7 +150,7 @@ export const TwoColumnBlock = ({ section }) => {
     </>
   );
   return (
-    <Section background={background} dataTestId="program-two-column">
+    <Section background={background} first={first} dataTestId="program-two-column">
       <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">{columns}</div>
     </Section>
   );
@@ -178,12 +178,12 @@ export const CtaBanner = ({ section }) => {
 };
 
 // ---------- 5. Testimonial ----------
-export const TestimonialBlock = ({ section }) => {
+export const TestimonialBlock = ({ section, first }) => {
   const { body, subheading, image, background } = section;
   if (!body) return null;
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-testimonial">
+    <Section background={background} first={first} dataTestId="program-testimonial">
       <div className="max-w-3xl mx-auto text-center">
         {image && <img src={image} alt="" className="w-20 h-20 rounded-full mx-auto mb-4 object-cover shadow" />}
         <blockquote className={`text-lg md:text-2xl italic leading-relaxed mb-4 ${dark ? 'text-white' : 'text-slate-800'}`}>
@@ -200,7 +200,7 @@ export const TestimonialBlock = ({ section }) => {
 };
 
 // ---------- 6. Feature Cards ----------
-export const FeatureCardsBlock = ({ section }) => {
+export const FeatureCardsBlock = ({ section, first }) => {
   const { heading, subheading, feature_items, background } = section;
   if (!feature_items || feature_items.length === 0) return null;
   const dark = background === 'dark';
@@ -208,7 +208,7 @@ export const FeatureCardsBlock = ({ section }) => {
              : feature_items.length === 3 ? 'md:grid-cols-3'
              : 'md:grid-cols-2 lg:grid-cols-4';
   return (
-    <Section background={background} dataTestId="program-feature-cards">
+    <Section background={background} first={first} dataTestId="program-feature-cards">
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className={`grid gap-6 ${cols}`}>
@@ -234,13 +234,13 @@ export const FeatureCardsBlock = ({ section }) => {
 };
 
 // ---------- 7. Video ----------
-export const VideoBlock = ({ section }) => {
+export const VideoBlock = ({ section, first }) => {
   const { heading, subheading, video_url, background } = section;
   if (!video_url) return null;
   const embedUrl = toEmbedUrl(video_url);
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-video">
+    <Section background={background} first={first} dataTestId="program-video">
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg mb-8 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className="max-w-4xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
@@ -273,12 +273,12 @@ const toEmbedUrl = (url) => {
 };
 
 // ---------- 8. Investment / Pricing ----------
-export const InvestmentBlock = ({ section }) => {
+export const InvestmentBlock = ({ section, first }) => {
   const { heading, subheading, body, cta_label, cta_url, background } = section;
   if (!heading && !body) return null;
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-investment">
+    <Section background={background} first={first} dataTestId="program-investment">
       <div className="max-w-3xl mx-auto text-center">
         {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
         {subheading && <p className={`text-xl md:text-2xl font-semibold mb-4 ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>{subheading}</p>}
@@ -290,12 +290,12 @@ export const InvestmentBlock = ({ section }) => {
 };
 
 // ---------- 9. People Gallery ----------
-export const PeopleGallery = ({ section }) => {
+export const PeopleGallery = ({ section, first }) => {
   const { heading, subheading, people, background } = section;
   if (!people || people.length === 0) return null;
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-people-gallery">
+    <Section background={background} first={first} dataTestId="program-people-gallery">
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -324,12 +324,12 @@ export const PeopleGallery = ({ section }) => {
 };
 
 // ---------- 10. Logo Gallery ----------
-export const LogoGallery = ({ section }) => {
+export const LogoGallery = ({ section, first }) => {
   const { heading, subheading, companies, background } = section;
   if (!companies || companies.length === 0) return null;
   const dark = background === 'dark';
   return (
-    <Section background={background} dataTestId="program-logo-gallery">
+    <Section background={background} first={first} dataTestId="program-logo-gallery">
       {heading && <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>}
       {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 items-center">
@@ -348,7 +348,7 @@ export const LogoGallery = ({ section }) => {
 };
 
 // ---------- 11. Related Events ----------
-export const RelatedEventsBlock = ({ section, program }) => {
+export const RelatedEventsBlock = ({ section, program, first }) => {
   const seriesCode = section.series_code_override || program?.series_code;
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -374,7 +374,7 @@ export const RelatedEventsBlock = ({ section, program }) => {
 
   const heading = section.heading || 'Upcoming Events';
   return (
-    <Section background={section.background} dataTestId="program-related-events">
+    <Section background={section.background} first={first} dataTestId="program-related-events">
       <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center ${dark ? 'text-white' : 'text-slate-900'}`}>{heading}</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => (

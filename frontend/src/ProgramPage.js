@@ -84,17 +84,17 @@ const ProgramPage = () => {
 
       {!hasExplicitHero && <HeroBlock program={program} section={{}} />}
 
-      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-6 pb-2">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 pt-4 -mb-4">
         <Breadcrumb customTitle={program.name} />
       </div>
 
-      {sections.map((section) => {
+      {sections.map((section, idx) => {
         const Block = BLOCK_REGISTRY[section.type];
         if (!Block) {
           console.warn(`Unknown program block type: ${section.type}`);
           return null;
         }
-        return <Block key={section.id} section={section} program={program} />;
+        return <Block key={section.id} section={section} program={program} first={idx === 0} />;
       })}
     </div>
   );
