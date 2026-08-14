@@ -47,6 +47,11 @@ const cardWrapClass = (background) => {
 // Inside a dark box, text/headings switch to light mode.
 const isDarkInside = (bg) => bg === 'dark-box';
 
+// True whenever text sits on a dark surface (dark box OR dark strip).
+// Used by blocks whose heading/subheading render directly on the strip
+// (Feature Cards, People Gallery, Logo Gallery, Video, Related Events).
+const isDarkContrast = (bg) => bg === 'dark-box' || bg === 'dark-strip' || bg === 'dark';
+
 const Section = ({ background, children, dataTestId, first = false }) => (
   <section className={`${bgToClass(background)}`} data-testid={dataTestId}>
     <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 ${first ? 'pt-2 md:pt-4 pb-6 md:pb-10' : 'py-6 md:py-10'}`}>
@@ -288,8 +293,8 @@ export const TestimonialBlock = ({ section, first }) => {
 export const FeatureCardsBlock = ({ section, first }) => {
   const { heading, subheading, feature_items, background, columns } = section;
   if (!feature_items || feature_items.length === 0) return null;
-  const dark = isDarkInside(background);
-  // Explicit column override, else auto-fit by count
+  const dark = isDarkContrast(background);
+  const boxed = cardWrapClass(background);
   const explicit = String(columns || '').trim();
   const cols = explicit === '2' ? 'md:grid-cols-2'
              : explicit === '3' ? 'md:grid-cols-3'
@@ -299,29 +304,31 @@ export const FeatureCardsBlock = ({ section, first }) => {
              : 'md:grid-cols-2 lg:grid-cols-4';
   return (
     <Section background={background} first={first} dataTestId="program-feature-cards">
-      {heading && (
-        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
-          {heading}
-        </h2>
-      )}
-      {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className={`grid gap-6 ${cols}`}>
-        {feature_items.map((item) => {
-          const Icon = ICONS[item.icon] || Zap;
-          return (
-            <div key={item.id} className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm'}`}>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1]">
-                <Icon size={24} className="text-white" />
-              </div>
-              <h3 className={`text-lg font-bold mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
-              {item.body && (
-                <div className={`text-sm ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
-                  <Markdown dark={dark}>{item.body}</Markdown>
+      <div className={boxed}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
+        {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
+        <div className={`grid gap-6 ${cols}`}>
+          {feature_items.map((item) => {
+            const Icon = ICONS[item.icon] || Zap;
+            return (
+              <div key={item.id} className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm'}`}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1]">
+                  <Icon size={24} className="text-white" />
                 </div>
-              )}
-            </div>
-          );
-        })}
+                <h3 className={`text-lg font-bold mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
+                {item.body && (
+                  <div className={`text-sm ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
+                    <Markdown dark={dark}>{item.body}</Markdown>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Section>
   );
@@ -332,30 +339,33 @@ export const VideoBlock = ({ section, first }) => {
   const { heading, subheading, video_url, background } = section;
   if (!video_url) return null;
   const embedUrl = toEmbedUrl(video_url);
-  const dark = isDarkInside(background);
+  const dark = isDarkContrast(background);
+  const boxed = cardWrapClass(background);
   return (
     <Section background={background} first={first} dataTestId="program-video">
-      {heading && (
-        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
-          {heading}
-        </h2>
-      )}
-      {subheading && <p className={`text-lg mb-8 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className="max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black ring-1 ring-slate-200/60">
-        {embedUrl ? (
-          <iframe
-            src={embedUrl}
-            title={heading || 'Video'}
-            className="w-full h-full"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <a href={video_url} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center text-white gap-2">
-            <Play size={24} /> Watch Video
-          </a>
+      <div className={boxed}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
         )}
+        {subheading && <p className={`text-lg mb-8 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
+        <div className="max-w-4xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-2xl bg-black ring-1 ring-slate-200/60">
+          {embedUrl ? (
+            <iframe
+              src={embedUrl}
+              title={heading || 'Video'}
+              className="w-full h-full"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <a href={video_url} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center text-white gap-2">
+              <Play size={24} /> Watch Video
+            </a>
+          )}
+        </div>
       </div>
     </Section>
   );
@@ -395,35 +405,38 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
 export const PeopleGallery = ({ section, first }) => {
   const { heading, subheading, people, background } = section;
   if (!people || people.length === 0) return null;
-  const dark = isDarkInside(background);
+  const dark = isDarkContrast(background);
+  const boxed = cardWrapClass(background);
   return (
     <Section background={background} first={first} dataTestId="program-people-gallery">
-      {heading && (
-        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
-          {heading}
-        </h2>
-      )}
-      {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {people.map((p) => (
-          <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
-            {p.headshot ? (
-              <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
-            ) : (
-              <div className="w-28 h-28 rounded-full mx-auto bg-slate-200 flex items-center justify-center mb-3">
-                <Users className="text-slate-400" size={36} />
-              </div>
-            )}
-            <p className={`font-bold text-sm md:text-base ${dark ? 'text-white' : 'text-slate-900'}`}>{p.name}</p>
-            {p.title && <p className={`text-xs md:text-sm mt-1 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{p.title}</p>}
-            {p.company && <p className={`text-xs mt-0.5 ${dark ? 'text-blue-200' : 'text-slate-500'}`}>{p.company}</p>}
-            {p.linkedin_url && (
-              <a href={p.linkedin_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-[#0077B5] hover:opacity-80">
-                <Linkedin size={16} />
-              </a>
-            )}
-          </div>
-        ))}
+      <div className={boxed}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
+        {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {people.map((p) => (
+            <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
+              {p.headshot ? (
+                <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
+              ) : (
+                <div className="w-28 h-28 rounded-full mx-auto bg-slate-200 flex items-center justify-center mb-3">
+                  <Users className="text-slate-400" size={36} />
+                </div>
+              )}
+              <p className={`font-bold text-sm md:text-base ${dark ? 'text-white' : 'text-slate-900'}`}>{p.name}</p>
+              {p.title && <p className={`text-xs md:text-sm mt-1 ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{p.title}</p>}
+              {p.company && <p className={`text-xs mt-0.5 ${dark ? 'text-blue-200' : 'text-slate-500'}`}>{p.company}</p>}
+              {p.linkedin_url && (
+                <a href={p.linkedin_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-2 text-[#0077B5] hover:opacity-80">
+                  <Linkedin size={16} />
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );
@@ -433,25 +446,28 @@ export const PeopleGallery = ({ section, first }) => {
 export const LogoGallery = ({ section, first }) => {
   const { heading, subheading, companies, background } = section;
   if (!companies || companies.length === 0) return null;
-  const dark = isDarkInside(background);
+  const dark = isDarkContrast(background);
+  const boxed = cardWrapClass(background);
   return (
     <Section background={background} first={first} dataTestId="program-logo-gallery">
-      {heading && (
-        <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
-          {heading}
-        </h2>
-      )}
-      {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 items-center">
-        {companies.map((c) => (
-          <div key={c.id} className={`p-4 rounded-2xl flex items-center justify-center h-24 md:h-28 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-white/10 border border-white/10' : 'bg-white border border-slate-200 shadow-sm'}`}>
-            {c.logo ? (
-              <img src={c.logo} alt={c.name} title={c.name} className="max-h-16 max-w-full object-contain" />
-            ) : (
-              <span className={`text-sm text-center ${dark ? 'text-white' : 'text-slate-700'}`}>{c.name}</span>
-            )}
-          </div>
-        ))}
+      <div className={boxed}>
+        {heading && (
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+            {heading}
+          </h2>
+        )}
+        {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 items-center">
+          {companies.map((c) => (
+            <div key={c.id} className={`p-4 rounded-2xl flex items-center justify-center h-24 md:h-28 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${dark ? 'bg-white/10 border border-white/10' : 'bg-white border border-slate-200 shadow-sm'}`}>
+              {c.logo ? (
+                <img src={c.logo} alt={c.name} title={c.name} className="max-h-16 max-w-full object-contain" />
+              ) : (
+                <span className={`text-sm text-center ${dark ? 'text-white' : 'text-slate-700'}`}>{c.name}</span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );
@@ -462,7 +478,8 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
   const seriesCode = section.series_code_override || program?.series_code;
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
-  const dark = isDarkInside(section.background);
+  const dark = isDarkContrast(section.background);
+  const boxed = cardWrapClass(section.background);
   const maxItems = section.max_items || 3;
 
   useEffect(() => {
@@ -485,34 +502,36 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
   const heading = section.heading || 'Upcoming Events';
   return (
     <Section background={section.background} first={first} dataTestId="program-related-events">
-      <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {events.map((event) => (
-          <a
-            key={event.id}
-            href={`/events/${event.id}`}
-            className={`block rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow ${dark ? 'bg-white/10 border border-white/20' : 'bg-white border border-slate-200'}`}
-          >
-            {event.listing_picture ? (
-              <img src={event.listing_picture} alt={event.event_title} className="w-full h-40 object-cover" />
-            ) : (
-              <div className="w-full h-40 bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
-                <Calendar size={48} className="text-white opacity-70" />
-              </div>
-            )}
-            <div className="p-5">
-              <h3 className={`font-bold mb-2 leading-tight ${dark ? 'text-white' : 'text-slate-900'}`}>{event.event_title}</h3>
-              {event.start_date && (
-                <p className={`text-sm ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
-                  {new Date(event.start_date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
-                </p>
+      <div className={boxed}>
+        <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event) => (
+            <a
+              key={event.id}
+              href={`/events/${event.id}`}
+              className={`block rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow ${dark ? 'bg-white/10 border border-white/20' : 'bg-white border border-slate-200'}`}
+            >
+              {event.listing_picture ? (
+                <img src={event.listing_picture} alt={event.event_title} className="w-full h-40 object-cover" />
+              ) : (
+                <div className="w-full h-40 bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                  <Calendar size={48} className="text-white opacity-70" />
+                </div>
               )}
-              <span className={`inline-flex items-center gap-1 mt-3 text-sm font-semibold ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>
-                View Details <ArrowRight size={14} />
-              </span>
-            </div>
-          </a>
-        ))}
+              <div className="p-5">
+                <h3 className={`font-bold mb-2 leading-tight ${dark ? 'text-white' : 'text-slate-900'}`}>{event.event_title}</h3>
+                {event.start_date && (
+                  <p className={`text-sm ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
+                    {new Date(event.start_date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
+                  </p>
+                )}
+                <span className={`inline-flex items-center gap-1 mt-3 text-sm font-semibold ${dark ? 'text-blue-100' : 'text-[#00A8E1]'}`}>
+                  View Details <ArrowRight size={14} />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </Section>
   );
