@@ -555,9 +555,9 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
               className={`block rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow ${dark ? 'bg-white/10 border border-white/20' : 'bg-white border border-slate-200'}`}
             >
               {event.listing_picture ? (
-                <img src={event.listing_picture} alt={event.event_title} className="w-full h-40 object-cover" />
+                <img src={event.listing_picture} alt={event.event_title} className="w-full h-64 object-cover" />
               ) : (
-                <div className="w-full h-40 bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
+                <div className="w-full h-64 bg-gradient-to-r from-[#045184] to-[#00A8E1] flex items-center justify-center">
                   <Calendar size={48} className="text-white opacity-70" />
                 </div>
               )}
