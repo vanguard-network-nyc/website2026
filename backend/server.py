@@ -1624,7 +1624,7 @@ def _map_section(record, people_by_id, companies_by_id, feature_items_by_id):
         "image_side": _pick(f, "image_side", "Image Side") or "right",
         "video_url": _pick(f, "video_url", "Video URL", "Video Url") or "",
         "cta_label": _pick(f, "cta_label", "CTA Label") or "",
-        "cta_url": _pick(f, "cta_url", "CTA URL", "CTA Url") or "",
+        "cta_url": _pick(f, "cta_url", "CTA URL", "CTA Url", "CTA url") or "",
         "background": _pick(f, "background", "Background") or "white",
         "series_code_override": _pick(f, "series_code_override", "Series Code Override") or "",
         "max_items": _pick(f, "max_items", "Max Items") or 0,
