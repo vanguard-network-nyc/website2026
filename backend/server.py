@@ -1700,11 +1700,16 @@ async def get_program(slug: str):
         async def fetch_linked(table_id, view_id, ids, mapper):
             if not ids:
                 return {}
+            # Fetch records by explicit id list, ignoring view filters (views may
+            # be filtered to a subset — we need whichever records the section links to).
+            ids_list = list(ids)
+            formula_parts = [f"RECORD_ID()='{rid}'" for rid in ids_list]
+            formula = "OR(" + ",".join(formula_parts) + ")" if len(formula_parts) > 1 else formula_parts[0]
             records = await _airtable_get(
                 PROGRAMS_BASE_ID, table_id,
-                {"view": view_id, "maxRecords": 500}
+                {"filterByFormula": formula, "maxRecords": len(ids_list)}
             )
-            return {r["id"]: mapper(r) for r in records if r.get("id") in ids}
+            return {r["id"]: mapper(r) for r in records}
 
         people_by_id, companies_by_id, feature_items_by_id = await asyncio.gather(
             fetch_linked(PROGRAMS_PEOPLE_TABLE_ID, PROGRAMS_PEOPLE_VIEW_ID, people_ids, _map_person),
