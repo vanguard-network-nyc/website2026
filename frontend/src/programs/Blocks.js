@@ -23,11 +23,21 @@ const bgToClass = (bg) => {
 
 const Section = ({ background, children, dataTestId, first = false }) => (
   <section className={`${bgToClass(background)}`} data-testid={dataTestId}>
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 ${first ? 'pt-2 md:pt-4 pb-10 md:pb-14' : 'py-10 md:py-14'}`}>
+    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 ${first ? 'pt-2 md:pt-4 pb-6 md:pb-10' : 'py-6 md:py-10'}`}>
       {children}
     </div>
   </section>
 );
+
+// A section is rendered inside a white card by default. Setting `background = "plain"`
+// on the Airtable row skips the card wrapper — the block renders bare on the page's
+// ambient background. Use "plain" for short bridging paragraphs between boxed sections.
+const CARD_BASE = 'rounded-3xl p-8 md:p-12 shadow-lg border';
+const cardWrapClass = (background) => {
+  if (background === 'plain') return '';
+  if (background === 'dark')  return `${CARD_BASE} bg-white/5 border-white/10`;
+  return `${CARD_BASE} bg-white border-slate-200`;
+};
 
 const Markdown = ({ children, dark = false }) => {
   if (!children) return null;
@@ -136,7 +146,7 @@ export const TextBlock = ({ section, first, onOpenForm }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-text-block">
-      <div className={`max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+      <div className={`mx-auto ${cardWrapClass(background)}`}>
         {heading && (
           <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
@@ -177,7 +187,7 @@ export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
   );
   return (
     <Section background={background} first={first} dataTestId="program-two-column">
-      <div className={`max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+      <div className={`mx-auto ${cardWrapClass(background)}`}>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">{columns}</div>
       </div>
     </Section>
@@ -217,7 +227,7 @@ export const TestimonialBlock = ({ section, first }) => {
     : (subheading ? [subheading] : []);
   return (
     <Section background={background} first={first} dataTestId="program-testimonial">
-      <div className={`max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-xl border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+      <div className={`mx-auto ${cardWrapClass(background)}`}>
         <div className="grid md:grid-cols-[minmax(180px,220px)_1fr] gap-8 md:gap-12 items-center">
           {/* Headshot — vertically centered alongside quote + attribution */}
           <div className="flex items-center justify-center md:justify-start">
@@ -342,7 +352,7 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
   const dark = background === 'dark';
   return (
     <Section background={background} first={first} dataTestId="program-investment">
-      <div className={`max-w-5xl mx-auto text-center rounded-3xl p-8 md:p-12 shadow-lg border ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200'}`}>
+      <div className={`mx-auto text-center ${cardWrapClass(background)}`}>
         {heading && (
           <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
