@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
 
-const Breadcrumb = ({ customTitle, lightMode = false }) => {
+const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -68,8 +68,23 @@ const Breadcrumb = ({ customTitle, lightMode = false }) => {
           displayName = customTitle;
         }
 
+        // Insert any extraCrumbs BEFORE the last URL-derived crumb
+        const shouldInsertExtras = last && extraCrumbs.length > 0;
+
         return (
           <React.Fragment key={to}>
+            {shouldInsertExtras && extraCrumbs.map((c, i) => (
+              <React.Fragment key={`extra-${i}`}>
+                <ChevronRight size={16} className={chevronColor} />
+                {c.to ? (
+                  <Link to={c.to} className={`${textColor} ${hoverColor} transition-colors duration-200`}>
+                    {c.name}
+                  </Link>
+                ) : (
+                  <span className={textColor}>{c.name}</span>
+                )}
+              </React.Fragment>
+            ))}
             <ChevronRight size={16} className={chevronColor} />
             {last ? (
               <span className={`${activeColor} font-semibold`}>{displayName}</span>
