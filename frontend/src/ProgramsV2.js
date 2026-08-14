@@ -75,19 +75,19 @@ const ProgramsV2 = () => {
       icon: <Shield size={28} />
     },
     {
-      name: "LIFE SCIENCES CEO EXCHANGE",
-      description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
-      format: "Quarterly Virtual + Bi-annual In-Person",
-      audience: "Life Sciences CEOs",
-      category: "Life Sciences",
+      name: "RISK MANAGEMENT EXCHANGE",
+      description: "A peer network for senior executives with strategic accountability for risk across law, compliance, finance, cybersecurity, and operations.",
+      format: "Monthly Virtual Exchanges",
+      audience: "Risk Management Leaders",
+      category: "Risk Management",
       level: "Executive",
-      status: "Active",
-      image: "/life-sciences-ceo-program.jpg",
-      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/ktdnet3n_3.jpg",
-      duration: "Ongoing",
-      participants: "8-10",
-      features: ["Quarterly CEO Sessions", "AI Focus", "Leadership Development", "Industry-Specific"],
-      icon: <Award size={28} />
+      status: "Enrollment Open",
+      image: "/risk-management-program.jpg",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/oue0cjec_7.jpg",
+      duration: "Annual Membership",
+      participants: "Senior Risk Leaders",
+      features: ["Monthly Virtual Exchanges", "Guest Expert Insights", "Confidential Peer Discussions", "Actionable Playbooks"],
+      icon: <Shield size={28} />
     },
     {
       name: "NEXT GENERATION GC",
@@ -105,6 +105,21 @@ const ProgramsV2 = () => {
       icon: <Target size={28} />
     },
     {
+      name: "LIFE SCIENCES CEO EXCHANGE",
+      description: "For Life Sciences CEOs, focusing on leadership aspects rather than day-to-day tasks. Discussions include AI in development and commercialization. Quarterly, in virtual format, with face-to-face sessions bi-annually.",
+      format: "Quarterly Virtual + Bi-annual In-Person",
+      audience: "Life Sciences CEOs",
+      category: "Life Sciences",
+      level: "Executive",
+      status: "Active",
+      image: "/life-sciences-ceo-program.jpg",
+      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/ktdnet3n_3.jpg",
+      duration: "Ongoing",
+      participants: "8-10",
+      features: ["Quarterly CEO Sessions", "AI Focus", "Leadership Development", "Industry-Specific"],
+      icon: <Award size={28} />
+    },
+    {
       name: "LAW ASSOCIATES ACCELERATOR",
       description: "A comprehensive program designed to accelerate the success of law firm associates through EQ development and business understanding, led by GCs and business leaders.",
       format: "Modular Program",
@@ -117,21 +132,6 @@ const ProgramsV2 = () => {
       duration: "Flexible",
       participants: "Up to 20 per cohort",
       features: ["Interactive Faculty Sessions", "Peer Development", "Business Partnership Focus", "EQ & Leadership Skills"],
-      icon: <Shield size={28} />
-    },
-    {
-      name: "RISK MANAGEMENT EXCHANGE",
-      description: "A peer network for senior executives with strategic accountability for risk across law, compliance, finance, cybersecurity, and operations.",
-      format: "Monthly Virtual Exchanges",
-      audience: "Risk Management Leaders",
-      category: "Risk Management",
-      level: "Executive",
-      status: "Enrollment Open",
-      image: "/risk-management-program.jpg",
-      backgroundImage: "https://customer-assets.emergentagent.com/job_tab-interface-ui/artifacts/oue0cjec_7.jpg",
-      duration: "Annual Membership",
-      participants: "Senior Risk Leaders",
-      features: ["Monthly Virtual Exchanges", "Guest Expert Insights", "Confidential Peer Discussions", "Actionable Playbooks"],
       icon: <Shield size={28} />
     }
   ];
