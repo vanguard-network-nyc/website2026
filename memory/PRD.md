@@ -15,6 +15,11 @@ Maintain and extend the production marketing website for The Vanguard Network. T
   - `/app/backend/server.py`
 
 ## Implemented
+- **2026-02-13** Past events feature end-to-end.
+  - Backend: added `EVENTS_PAST_VIEW_ID = "viwMo84nEgaR0Z3BD"` (same base/table as upcoming); new endpoint `GET /api/past-events`. Existing `GET /api/events/{record_id}` is reused for both upcoming and past event detail lookups since the record ids live in the same table.
+  - Frontend: new `/past-events` page (`PastEventsPage.js`), a copy of upcoming with (a) fetch from `/api/past-events`, (b) DESC-sorted by date, (c) cards render **without the listing graphic**, (d) copy tweaked to "Past Events". New route `/past-events/:recordId` mounts `EventDetailsPage` in past mode — the "I would like to attend" CTA is hidden, the sign-up modal auto-open is disabled, and the "Back to Events" link routes to `/past-events`.
+  - Nav: EVENTS is now a dropdown with two children — Upcoming (`/upcoming-events`) and Past (`/past-events`).
+  - SEO: added `/past-events` to `sitemap.xml` with weekly changefreq and 0.6 priority. `PastEventsPage` sets its own `SEO` title/description.
 - **2026-02-13** Signup deep-link URLs made consistent — modal now auto-opens on `?signup=1`, `?signup=1&formOverride=<key>`, OR `?formOverride=<key>` alone. Closing the modal strips both params so a reload of the clean URL no longer re-opens the modal. Fixes inconsistent "first visit opens, second visit doesn't" bug.
 - **2026-02-13** Form keys renamed to hyphenated series-based ids: `csc-form`, `gcf-form`, `lsceof-form`, `gcx-form`, `rmx-form`, `lsceox-form`, `nggc-nomination-form`. Updated everywhere (`server.py` FORM_CONFIGS + SERIES_TO_FORM + phone validation list; all frontend form components; `EventDetailsPage.js` FORM_VARIANTS + SERIES_TO_FORM_KEY).
 - **2026-02-13** NGGC "More details" link updated to `https://members.thevanguardnetwork.com/next-gen-gc`.

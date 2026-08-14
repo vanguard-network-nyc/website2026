@@ -216,7 +216,14 @@ const Header = () => {
       path: '/networking'
     },
     { name: 'PROGRAMS', path: '/programs' },
-    { name: 'EVENTS', path: '/upcoming-events' },
+    {
+      name: 'EVENTS',
+      path: '/upcoming-events',
+      dropdown: [
+        { name: 'Upcoming', path: '/upcoming-events' },
+        { name: 'Past', path: '/past-events' }
+      ]
+    },
     { 
       name: 'CONTENT', 
       dropdown: [

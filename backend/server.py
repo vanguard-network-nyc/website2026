@@ -174,6 +174,7 @@ AIRTABLE_ACCESS_TOKEN = os.environ.get('AIRTABLE_ACCESS_TOKEN')
 EVENTS_BASE_ID = "appm4C4MiNYVWwBaq"
 EVENTS_TABLE_ID = "tbljv81RwwFDCb0eU"
 EVENTS_VIEW_ID = "viwmMNmGslj40hP3q"
+EVENTS_PAST_VIEW_ID = "viwMo84nEgaR0Z3BD"
 
 # -------- Signup form routing --------
 # Series Code -> form key. Only mapped series' render the CTA modal; unmapped series
@@ -980,8 +981,8 @@ async def fetch_airtable_podcasts():
         logger.error(f"Error fetching Airtable podcasts: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to fetch podcasts: {str(e)}")
 
-async def fetch_airtable_events():
-    """Fetch events from Airtable"""
+async def fetch_airtable_events(view_id: str = None):
+    """Fetch events from Airtable. Defaults to the upcoming-events view."""
     try:
         headers = {
             "Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}",
@@ -990,7 +991,7 @@ async def fetch_airtable_events():
         
         url = f"https://api.airtable.com/v0/{EVENTS_BASE_ID}/{EVENTS_TABLE_ID}"
         params = {
-            "view": EVENTS_VIEW_ID,
+            "view": view_id or EVENTS_VIEW_ID,
             "maxRecords": 100
         }
         
@@ -1506,6 +1507,17 @@ async def get_upcoming_events():
         return events
     except Exception as e:
         logger.error(f"Error in get_upcoming_events: {str(e)}")
+        return []
+
+@api_router.get("/past-events", response_model=List[AirtableEvent])
+async def get_past_events():
+    """Get past events from Airtable (dedicated view)."""
+    try:
+        events = await fetch_airtable_events(view_id=EVENTS_PAST_VIEW_ID)
+        logger.info(f"Successfully fetched {len(events)} past events from Airtable")
+        return events
+    except Exception as e:
+        logger.error(f"Error in get_past_events: {str(e)}")
         return []
 
 def _first_attachment_url(field_value):

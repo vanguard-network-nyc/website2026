@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useParams, Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
@@ -73,6 +73,9 @@ const mdComponents = {
 const EventDetailsPage = () => {
   const { recordId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const isPast = location.pathname.startsWith('/past-events/');
+  const listingPath = isPast ? '/past-events' : '/upcoming-events';
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -105,8 +108,9 @@ const EventDetailsPage = () => {
 
   // Deep-link: auto-open sign-up modal when URL has ?signup=1 (real users)
   // OR ?formOverride=<key> (preview links). Either one is enough.
+  // Never opens on past-event routes.
   useEffect(() => {
-    if (!event) return;
+    if (!event || isPast) return;
     const override = searchParams.get('formOverride');
     const wantOpen = searchParams.get('signup') === '1' || !!override;
     if (!wantOpen) return;
@@ -114,7 +118,7 @@ const EventDetailsPage = () => {
       ? override
       : (event.series_code ? SERIES_TO_FORM_KEY[event.series_code] : null);
     if (key && FORM_VARIANTS[key]) setSignupOpen(true);
-  }, [event, searchParams]);
+  }, [event, searchParams, isPast]);
 
   const closeSignup = () => {
     setSignupOpen(false);
@@ -141,7 +145,7 @@ const EventDetailsPage = () => {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Event not found</h1>
           <p className="text-slate-600 mb-8">This event may have been removed or the link is incorrect.</p>
-          <Link to="/upcoming-events" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
+          <Link to={listingPath} className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
             <ArrowLeft size={18} /> Back to Events
           </Link>
         </div>
@@ -155,7 +159,7 @@ const EventDetailsPage = () => {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Something went wrong</h1>
           <p className="text-slate-600 mb-8">We couldn't load this event right now. Please try again shortly.</p>
-          <Link to="/upcoming-events" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
+          <Link to={listingPath} className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
             <ArrowLeft size={18} /> Back to Events
           </Link>
         </div>
@@ -203,7 +207,7 @@ const EventDetailsPage = () => {
         <Breadcrumb customTitle={event.event_title} />
 
         <Link
-          to="/upcoming-events"
+          to={listingPath}
           className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-medium mb-6 transition-colors"
           data-testid="event-detail-back"
         >
@@ -262,7 +266,8 @@ const EventDetailsPage = () => {
               )}
             </div>
 
-            {/* CTA */}
+            {/* CTA — hidden for past events */}
+            {!isPast && (
             <div className="flex flex-wrap items-center gap-3">
               {formVariant ? (
                 <button
@@ -297,6 +302,7 @@ const EventDetailsPage = () => {
                 </span>
               )}
             </div>
+            )}
           </div>
         </motion.div>
 
