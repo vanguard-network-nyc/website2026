@@ -90,7 +90,7 @@ const ProgramsV2 = () => {
       icon: <Shield size={28} />
     },
     {
-      name: "NEXT GENERATION GC",
+      name: "NEXT GENERATION GENERAL COUNSEL",
       description: "A six-month program to accelerate the trajectory of potential GCs, uniquely developed and led by Vanguard General Counsel Members.",
       format: "6-Month Program",
       audience: "Future General Counsel",
@@ -465,7 +465,7 @@ const ProgramsV2 = () => {
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
                         </a>
-                      ) : program.name === "NEXT GENERATION GC" ? (
+                      ) : program.name === "NEXT GENERATION GENERAL COUNSEL" ? (
                         <a href="https://members.thevanguardnetwork.com/next-gen-gc" target="_blank" rel="noopener noreferrer">
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
