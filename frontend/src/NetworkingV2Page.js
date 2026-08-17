@@ -18,7 +18,8 @@ import {
   Star,
   CheckCircle2,
   Globe,
-  Award
+  Award,
+  Briefcase
 } from 'lucide-react';
 
 const NetworkingV2Page = () => {
@@ -77,10 +78,10 @@ const NetworkingV2Page = () => {
       name: "Senior Leaders Network",
       description: "A community for senior leaders from diverse industries, bringing together a wide range of experience and skills.",
       target: "All Other Senior Leaders & Board Members",
-      icon: <Users size={32} />,
+      icon: <Briefcase size={32} />,
       gradient: 'from-[#14B8A6] to-[#0F766E]',
       features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
-      image: "/gc-forum-2026-6.jpg",
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
       slug: "senior-leaders-network",
     }
   ];
