@@ -193,7 +193,7 @@ export const TextBlock = ({ section, first, onOpenForm }) => {
     <Section background={background} first={first} dataTestId="program-text-block">
       <div className={`mx-auto ${cardWrapClass(background)}`}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
@@ -220,7 +220,7 @@ export const TwoColumnBlock = ({ section, first, onOpenForm }) => {
       )}
       <div className={image ? (imgFirst ? 'order-2' : 'order-1') : 'md:col-span-2'}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
@@ -324,7 +324,7 @@ export const FeatureCardsBlock = ({ section, first }) => {
     <Section background={background} first={first} dataTestId="program-feature-cards">
       <div className={boxed}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
@@ -367,7 +367,7 @@ export const VideoBlock = ({ section, first }) => {
         <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#045184]/5 to-[#00A8E1]/5 rounded-full transform translate-x-20 -translate-y-20 pointer-events-none"></div>
         <div className="relative z-10">
           {heading && (
-            <h2 className="text-2xl md:text-4xl font-bold mb-3 text-center leading-tight bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-bold mb-3 pb-1 text-center leading-tight bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent">
               {heading}
             </h2>
           )}
@@ -431,7 +431,7 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
     <Section background={background} first={first} dataTestId="program-investment">
       <div className={`mx-auto text-center ${cardWrapClass(background)}`}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
@@ -495,7 +495,7 @@ export const LogoGallery = ({ section, first }) => {
     <Section background={background} first={first} dataTestId="program-logo-gallery">
       <div className={boxed}>
         {heading && (
-          <h2 className={`text-2xl md:text-4xl font-bold mb-3 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
+          <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
           </h2>
         )}
@@ -546,7 +546,7 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
   return (
     <Section background={section.background} first={first} dataTestId="program-related-events">
       <div className={boxed}>
-        <h2 className={`text-2xl md:text-4xl font-bold mb-8 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
+        <h2 className={`text-2xl md:text-4xl font-bold mb-8 pb-1 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event) => (
             <a
