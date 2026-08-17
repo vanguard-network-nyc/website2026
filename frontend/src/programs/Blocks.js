@@ -552,8 +552,8 @@ export const LogoGallery = ({ section, first }) => {
     itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105";
     imgCls = "w-full h-auto max-h-[520px] object-contain";
   } else if (variant === 'dense') {
-    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-0 md:gap-x-1 gap-y-2";
-    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-20 md:h-24";
+    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-0 gap-y-1";
+    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-16 md:h-20";
     imgCls = "max-h-16 md:max-h-20 max-w-full object-contain";
   }
 

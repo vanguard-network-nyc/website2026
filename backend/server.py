@@ -2023,7 +2023,7 @@ async def get_network(slug: str):
             virtual_sections.append(_base_section(30, "chair", "People Gallery", heading, "plain", people=chairs))
 
         if advisors:
-            sec = _base_section(40, "advisors", "People Gallery", "Network Advisors", "light-blue-strip", people=advisors)
+            sec = _base_section(40, "advisors", "People Gallery", "Network Advisors", "light-blue-box", people=advisors)
             sec["columns"] = "all"
             virtual_sections.append(sec)
 
