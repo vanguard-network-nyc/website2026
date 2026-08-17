@@ -530,11 +530,31 @@ export const PeopleGallery = ({ section, first }) => {
 };
 
 // ---------- 10. Logo Gallery ----------
+// Supports layout variants via section.columns:
+//   ""       — default (medium logos, spread apart)
+//   "large"  — big graphic cards, tight gap (used for "Membership Provides Access To")
+//   "dense"  — 5 per row, small tight logos (used for network members)
 export const LogoGallery = ({ section, first }) => {
-  const { heading, subheading, companies, background } = section;
+  const { heading, subheading, companies, background, columns } = section;
   if (!companies || companies.length === 0) return null;
   const dark = isDarkContrast(background);
   const boxed = cardWrapClass(background);
+  const variant = (columns || '').toLowerCase();
+
+  let gridCls = "flex flex-wrap justify-center items-center gap-10 md:gap-16";
+  let itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 w-40 md:w-56 h-24 md:h-32";
+  let imgCls = "max-h-24 md:max-h-32 max-w-full object-contain";
+
+  if (variant === 'large') {
+    gridCls = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4";
+    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105";
+    imgCls = "w-full h-auto max-h-[420px] object-contain";
+  } else if (variant === 'dense') {
+    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3";
+    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-16 md:h-20";
+    imgCls = "max-h-14 md:max-h-16 max-w-full object-contain";
+  }
+
   return (
     <Section background={background} first={first} dataTestId="program-logo-gallery">
       <div className={boxed}>
@@ -544,18 +564,18 @@ export const LogoGallery = ({ section, first }) => {
           </h2>
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+        <div className={gridCls}>
           {companies.map((c, idx) => (
             <motion.div
               key={c.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: Math.min(idx * 0.05, 0.4) }}
-              className="flex items-center justify-center transition-transform duration-300 hover:scale-105 w-40 md:w-56 h-24 md:h-32"
+              transition={{ duration: 0.5, delay: Math.min(idx * 0.03, 0.4) }}
+              className={itemCls}
             >
               {c.logo ? (
-                <img src={c.logo} alt={c.name} title={c.name} className="max-h-24 md:max-h-32 max-w-full object-contain" />
+                <img src={c.logo} alt={c.name} title={c.name} className={imgCls} />
               ) : (
                 <span className={`text-sm text-center ${dark ? 'text-white' : 'text-slate-700'}`}>{c.name}</span>
               )}

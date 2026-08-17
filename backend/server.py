@@ -1999,21 +1999,25 @@ async def get_network(slug: str):
                 "feature_items": [],
             }
 
-        if chairs:
-            heading = "Network Chair" if len(chairs) == 1 else "Network Chairs"
-            virtual_sections.append(_base_section(10, "chair", "People Gallery", heading, "light-blue-strip", people=chairs))
-
-        if advisors:
-            virtual_sections.append(_base_section(20, "advisors", "People Gallery", "Network Advisors", "white", people=advisors))
-
         if access_items:
-            virtual_sections.append(_base_section(30, "access", "Logo Gallery", "Membership Provides Access To", "light-blue-strip", companies=access_items))
+            sec = _base_section(10, "access", "Logo Gallery", "Membership Provides Access To", "light-blue-strip", companies=access_items)
+            sec["columns"] = "large"
+            virtual_sections.append(sec)
 
         if partner_logos:
-            virtual_sections.append(_base_section(40, "partners", "Logo Gallery", "Thanks To Our Network Partners", "white", companies=partner_logos))
+            virtual_sections.append(_base_section(20, "partners", "Logo Gallery", "Thanks To Our Network Partners", "white", companies=partner_logos))
+
+        if chairs:
+            heading = "Network Chair" if len(chairs) == 1 else "Network Chairs"
+            virtual_sections.append(_base_section(30, "chair", "People Gallery", heading, "light-blue-strip", people=chairs))
+
+        if advisors:
+            virtual_sections.append(_base_section(40, "advisors", "People Gallery", "Network Advisors", "white", people=advisors))
 
         if member_companies:
-            virtual_sections.append(_base_section(50, "members", "Logo Gallery", "Our Network Has Included Leaders From These Organizations", "light-blue-strip", companies=member_companies))
+            sec = _base_section(50, "members", "Logo Gallery", "Our Network Has Included Leaders From These Organizations", "light-blue-strip", companies=member_companies)
+            sec["columns"] = "dense"
+            virtual_sections.append(sec)
 
         # Bottom CTA Banner — same button as the hero, dark background
         virtual_sections.append({
