@@ -118,13 +118,20 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
     }
   };
 
-  const inputCls = "w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none";
+  const inputCls = compact
+    ? "w-full px-3 py-2 text-sm border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none"
+    : "w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-[#00A8E1] focus:ring-2 focus:ring-[#00A8E1]/20 transition-all duration-200 outline-none";
+  const labelCls = compact
+    ? "block text-xs font-semibold text-slate-900 mb-1"
+    : "block text-sm font-bold text-slate-900 mb-2";
+  const inputHeight = compact ? 40 : 48;
   const selectStyles = {
     control: (base, state) => ({
-      ...base, minHeight: '48px',
+      ...base, minHeight: `${inputHeight}px`,
       border: state.isFocused ? '2px solid #00A8E1' : '2px solid #e2e8f0',
       borderRadius: '8px',
       boxShadow: state.isFocused ? '0 0 0 3px rgba(0, 168, 225, 0.1)' : 'none',
+      fontSize: compact ? '14px' : '16px',
       '&:hover': { border: '2px solid #00A8E1' },
     }),
     option: (base, state) => ({
@@ -132,6 +139,7 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
       backgroundColor: state.isSelected ? '#00A8E1' : state.isFocused ? '#e0f2f7' : 'white',
       color: state.isSelected ? 'white' : '#1e293b',
       cursor: 'pointer',
+      fontSize: compact ? '14px' : '16px',
     }),
     menu: (base) => ({ ...base, borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }),
     multiValue: (base) => ({ ...base, backgroundColor: '#e0f2f7' }),
@@ -172,7 +180,7 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
         transition={{ duration: 0.6, delay: 0.2 }}
         className={panelCls}
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className={compact ? "space-y-3" : "space-y-6"}>
           {/* Honeypot */}
           <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
             <label htmlFor="mem_website">Website (leave blank)</label>
@@ -180,59 +188,63 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
           </div>
 
           <div>
-            <label htmlFor="full_name" className="block text-sm font-bold text-slate-900 mb-2">Full Name <span className="text-red-500">*</span></label>
+            <label htmlFor="full_name" className={labelCls}>Full Name <span className="text-red-500">*</span></label>
             <input type="text" id="full_name" name="full_name" value={formData.full_name} onChange={handleChange} required className={inputCls} placeholder="Enter your full name" />
           </div>
 
-          <div>
-            <label htmlFor="work_email" className="block text-sm font-bold text-slate-900 mb-2">Work Email Address <span className="text-red-500">*</span></label>
-            <input type="email" id="work_email" name="work_email" value={formData.work_email} onChange={handleChange} required className={inputCls} placeholder="your.name@company.com" />
+          <div className={compact ? "grid grid-cols-1 md:grid-cols-2 gap-3" : ""}>
+            <div>
+              <label htmlFor="work_email" className={labelCls}>Work Email <span className="text-red-500">*</span></label>
+              <input type="email" id="work_email" name="work_email" value={formData.work_email} onChange={handleChange} required className={inputCls} placeholder="your.name@company.com" />
+            </div>
+            {!compact && <div className="mt-0" />}
+            <div className={compact ? "" : "mt-6"}>
+              <label htmlFor="personal_email" className={labelCls}>Personal Email <span className="text-slate-400 font-normal">(Optional)</span></label>
+              <input type="email" id="personal_email" name="personal_email" value={formData.personal_email} onChange={handleChange} className={inputCls} placeholder="your.name@email.com" />
+            </div>
+          </div>
+
+          <div className={compact ? "grid grid-cols-1 md:grid-cols-2 gap-3" : ""}>
+            <div>
+              <label htmlFor="phone_number" className={labelCls}>Phone Number <span className="text-red-500">*</span></label>
+              <PhoneInput
+                key={`phone-${resetKey}`}
+                country={'us'} value={formData.phone_number} onChange={handlePhoneChange}
+                inputProps={{ name: 'phone_number', required: true }}
+                containerClass="phone-input-container" enableSearch searchPlaceholder="Search country"
+                containerStyle={{ width: '100%' }}
+                inputStyle={{ width: '100%', height: `${inputHeight}px`, fontSize: compact ? '14px' : '16px', border: '2px solid #e2e8f0', borderRadius: '8px', paddingLeft: '48px' }}
+                buttonStyle={{ border: '2px solid #e2e8f0', borderRadius: '8px 0 0 8px', backgroundColor: 'white' }}
+                dropdownStyle={{ borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+              />
+            </div>
+            <div className={compact ? "" : "mt-6"}>
+              <label htmlFor="country" className={labelCls}>Country <span className="text-red-500">*</span></label>
+              <Select
+                key={`country-${resetKey}`}
+                options={countryOptions}
+                value={countryOptions.find((o) => o.value === formData.country) || null}
+                onChange={handleCountryChange}
+                placeholder="Select or search for your country..." isClearable isSearchable required
+                styles={selectStyles}
+              />
+            </div>
+          </div>
+
+          <div className={compact ? "grid grid-cols-1 md:grid-cols-2 gap-3" : ""}>
+            <div>
+              <label htmlFor="company_name" className={labelCls}>Company Name <span className="text-red-500">*</span></label>
+              <input type="text" id="company_name" name="company_name" value={formData.company_name} onChange={handleChange} required className={inputCls} placeholder="Your company name" />
+            </div>
+            <div className={compact ? "" : "mt-6"}>
+              <label htmlFor="job_title" className={labelCls}>Job Title <span className="text-red-500">*</span></label>
+              <input type="text" id="job_title" name="job_title" value={formData.job_title} onChange={handleChange} required className={inputCls} placeholder="Your job title" />
+            </div>
           </div>
 
           <div>
-            <label htmlFor="personal_email" className="block text-sm font-bold text-slate-900 mb-2">Personal Email Address <span className="text-slate-400 font-normal">(Optional)</span></label>
-            <input type="email" id="personal_email" name="personal_email" value={formData.personal_email} onChange={handleChange} className={inputCls} placeholder="your.name@email.com" />
-          </div>
-
-          <div>
-            <label htmlFor="phone_number" className="block text-sm font-bold text-slate-900 mb-2">Phone Number <span className="text-red-500">*</span></label>
-            <PhoneInput
-              key={`phone-${resetKey}`}
-              country={'us'} value={formData.phone_number} onChange={handlePhoneChange}
-              inputProps={{ name: 'phone_number', required: true }}
-              containerClass="phone-input-container" enableSearch searchPlaceholder="Search country"
-              containerStyle={{ width: '100%' }}
-              inputStyle={{ width: '100%', height: '48px', fontSize: '16px', border: '2px solid #e2e8f0', borderRadius: '8px', paddingLeft: '48px' }}
-              buttonStyle={{ border: '2px solid #e2e8f0', borderRadius: '8px 0 0 8px', backgroundColor: 'white' }}
-              dropdownStyle={{ borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="company_name" className="block text-sm font-bold text-slate-900 mb-2">Company Name <span className="text-red-500">*</span></label>
-            <input type="text" id="company_name" name="company_name" value={formData.company_name} onChange={handleChange} required className={inputCls} placeholder="Your company name" />
-          </div>
-
-          <div>
-            <label htmlFor="job_title" className="block text-sm font-bold text-slate-900 mb-2">Job Title <span className="text-red-500">*</span></label>
-            <input type="text" id="job_title" name="job_title" value={formData.job_title} onChange={handleChange} required className={inputCls} placeholder="Your job title" />
-          </div>
-
-          <div>
-            <label htmlFor="country" className="block text-sm font-bold text-slate-900 mb-2">Country <span className="text-red-500">*</span></label>
-            <Select
-              key={`country-${resetKey}`}
-              options={countryOptions}
-              value={countryOptions.find((o) => o.value === formData.country) || null}
-              onChange={handleCountryChange}
-              placeholder="Select or search for your country..." isClearable isSearchable required
-              styles={selectStyles}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="network_interest" className="block text-sm font-bold text-slate-900 mb-2">
-              Which network are you interested in? <span className="text-red-500">*</span> <span className="text-slate-400 font-normal text-sm">(Select one or more)</span>
+            <label htmlFor="network_interest" className={labelCls}>
+              Which network are you interested in? <span className="text-red-500">*</span> <span className="text-slate-400 font-normal text-xs">(Select one or more)</span>
             </label>
             <Select
               key={`network-${resetKey}`} isMulti options={networkOptions}
@@ -244,19 +256,19 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
           </div>
 
           <div>
-            <label htmlFor="recommended_by" className="block text-sm font-bold text-slate-900 mb-2">Recommended By <span className="text-slate-400 font-normal">(Optional)</span></label>
+            <label htmlFor="recommended_by" className={labelCls}>Recommended By <span className="text-slate-400 font-normal">(Optional)</span></label>
             <input type="text" id="recommended_by" name="recommended_by" value={formData.recommended_by} onChange={handleChange} className={inputCls} placeholder="Who recommended you to apply?" />
           </div>
 
           <div>
-            <label htmlFor="further_details" className="block text-sm font-bold text-slate-900 mb-2">Further Details <span className="text-slate-400 font-normal">(Optional)</span></label>
-            <textarea id="further_details" name="further_details" value={formData.further_details} onChange={handleChange} rows={4} className={`${inputCls} resize-none`} placeholder="Add any additional details you'd like to share with us" />
+            <label htmlFor="further_details" className={labelCls}>Further Details <span className="text-slate-400 font-normal">(Optional)</span></label>
+            <textarea id="further_details" name="further_details" value={formData.further_details} onChange={handleChange} rows={compact ? 2 : 4} className={`${inputCls} resize-none`} placeholder="Add any additional details you'd like to share with us" />
           </div>
 
           <motion.button
             type="submit" disabled={isSubmitting}
             whileHover={{ scale: isSubmitting ? 1 : 1.02 }} whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-            className={`w-full text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed ${isSubmitting ? '' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1]'}`}
+            className={`w-full text-white ${compact ? 'px-6 py-3 text-base' : 'px-8 py-4 text-lg'} rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed ${isSubmitting ? '' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1]'}`}
             style={{ background: isSubmitting ? '#9ca3af' : undefined }}
           >
             {isSubmitting ? (<><Loader size={20} className="animate-spin" /> Submitting...</>) : 'Submit Application'}
