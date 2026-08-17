@@ -31,6 +31,7 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#045184] to-[#00A8E1]',
       features: ["Monthly Virtual Exchanges", "Bi-annual Forums", "Strategic Sounding Board", "Leadership Advisory"],
       image: "/vanguard-boston-1.jpg",
+      slug: "general-counsel-network",
       link: "https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC"
     },
     {
@@ -41,6 +42,7 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#913D88] to-[#6B2D66]',
       features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
       image: "/vanguard-boston-4.jpg",
+      slug: "senior-in-house-counsel-network",
       link: "https://members.thevanguardnetwork.com/network-details-senior-counsel/senior-in-house-counsel-network/r/rec4wMsveeZoUvTOa"
     },
     {
@@ -51,6 +53,7 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#01C219] to-[#047857]',
       features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
       image: "/vanguard-boston-3.jpg",
+      slug: "life-sciences-ceo-network",
       link: "https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw"
     },
     {
@@ -61,6 +64,7 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#FF6D00] to-[#d97706]',
       features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
       image: "/vanguard-boston-5.jpg",
+      slug: "risk-management-network",
       link: "https://members.thevanguardnetwork.com/network-details-risk-management/risk-management-network/r/recv0BDur4fZPVSp7"
     },
     {
@@ -71,6 +75,7 @@ const NetworkingV2Page = () => {
       gradient: 'from-[#14B8A6] to-[#0F766E]',
       features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
       image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
+      slug: "senior-leaders-network",
       link: "https://members.thevanguardnetwork.com/network-details-board/senior-leaders-network/r/recmEciU5mwqEPJt5"
     }
   ];
@@ -280,15 +285,14 @@ const NetworkingV2Page = () => {
                     </div>
                   </div>
                   
-                  <a
-                    href={network.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={`/networks/${network.slug}`}
+                    onClick={() => window.scrollTo(0, 0)}
                     className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] mt-auto`}
                   >
                     Learn More
                     <ArrowRight size={16} />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}

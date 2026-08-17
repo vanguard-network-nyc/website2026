@@ -1605,6 +1605,8 @@ def _map_program(record):
         "display_order": _pick(f, "Display Order", "display_order") or 0,
         "seo_title": _pick(f, "SEO Title", "seo_title") or "",
         "seo_description": _pick(f, "SEO Description", "seo_description") or "",
+        # Which detail page this row drives: "program" (default) or "network"
+        "page_type": (_pick(f, "Page Type", "page_type") or "program").strip().lower(),
     }
 
 
@@ -1646,7 +1648,7 @@ async def list_programs():
             {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
         )
         programs = [_map_program(r) for r in records]
-        programs = [p for p in programs if p["slug"] and p["status"] == "Published"]
+        programs = [p for p in programs if p["slug"] and p["status"] == "Published" and p["page_type"] == "program"]
         programs.sort(key=lambda p: p["display_order"] or 999)
         return programs
     except Exception as e:
@@ -1654,81 +1656,110 @@ async def list_programs():
         return []
 
 
-@api_router.get("/programs/{slug}")
-async def get_program(slug: str):
+@api_router.get("/networks")
+async def list_networks():
     try:
-        program_records = await _airtable_get(
+        records = await _airtable_get(
             PROGRAMS_BASE_ID, PROGRAMS_TABLE_ID,
             {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
         )
-        program_record = next(
-            (r for r in program_records
-             if _pick(r.get("fields", {}), "Slug", "slug") == slug),
-            None
-        )
-        if not program_record:
-            raise HTTPException(status_code=404, detail=f"Program '{slug}' not found")
-        program = _map_program(program_record)
+        networks = [_map_program(r) for r in records]
+        networks = [n for n in networks if n["slug"] and n["status"] == "Published" and n["page_type"] == "network"]
+        networks.sort(key=lambda n: n["display_order"] or 999)
+        return networks
+    except Exception as e:
+        logger.error(f"Error listing networks: {e}")
+        return []
 
-        section_records_all = await _airtable_get(
-            PROGRAMS_BASE_ID, PROGRAM_SECTIONS_TABLE_ID,
-            {"view": PROGRAM_SECTIONS_VIEW_ID, "maxRecords": 500}
-        )
-        # Filter in Python: keep sections linked to this program and marked published
-        def _linked_to(f, pid):
-            for k in ("program", "Program"):
-                v = f.get(k)
-                if isinstance(v, list) and pid in v:
-                    return True
-            return False
-        def _is_published(f):
-            v = _pick(f, "published", "Published")
-            # In Airtable, unchecked checkboxes return None/absent; only True counts as published.
-            # If the field doesn't exist at all, default to True (show it).
-            if "published" not in f and "Published" not in f:
+
+async def _fetch_page_with_sections(slug: str, expected_type: str):
+    """Shared loader for a Programs-table row (program or network) + its sections + linked records."""
+    program_records = await _airtable_get(
+        PROGRAMS_BASE_ID, PROGRAMS_TABLE_ID,
+        {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
+    )
+    program_record = next(
+        (r for r in program_records
+         if _pick(r.get("fields", {}), "Slug", "slug") == slug),
+        None
+    )
+    if not program_record:
+        raise HTTPException(status_code=404, detail=f"'{slug}' not found")
+    program = _map_program(program_record)
+    if program["page_type"] != expected_type:
+        raise HTTPException(status_code=404, detail=f"'{slug}' not found")
+
+    section_records_all = await _airtable_get(
+        PROGRAMS_BASE_ID, PROGRAM_SECTIONS_TABLE_ID,
+        {"view": PROGRAM_SECTIONS_VIEW_ID, "maxRecords": 500}
+    )
+    def _linked_to(f, pid):
+        for k in ("program", "Program"):
+            v = f.get(k)
+            if isinstance(v, list) and pid in v:
                 return True
-            return bool(v)
-        section_records = [r for r in section_records_all if _linked_to(r.get("fields", {}), program["id"]) and _is_published(r.get("fields", {}))]
+        return False
+    def _is_published(f):
+        v = _pick(f, "published", "Published")
+        if "published" not in f and "Published" not in f:
+            return True
+        return bool(v)
+    section_records = [r for r in section_records_all if _linked_to(r.get("fields", {}), program["id"]) and _is_published(r.get("fields", {}))]
 
-        # Collect linked ids from sections (tolerant of naming)
-        people_ids, company_ids, feature_ids = set(), set(), set()
-        for r in section_records:
-            f = r.get("fields", {})
-            for rid in (_pick(f, "People", "people") or []): people_ids.add(rid)
-            for rid in (_pick(f, "Company Logos", "companies", "logo_attachments") or []): company_ids.add(rid)
-            for rid in (_pick(f, "Feature Items", "feature_items") or []): feature_ids.add(rid)
+    people_ids, company_ids, feature_ids = set(), set(), set()
+    for r in section_records:
+        f = r.get("fields", {})
+        for rid in (_pick(f, "People", "people") or []): people_ids.add(rid)
+        for rid in (_pick(f, "Company Logos", "companies", "logo_attachments") or []): company_ids.add(rid)
+        for rid in (_pick(f, "Feature Items", "feature_items") or []): feature_ids.add(rid)
 
-        async def fetch_linked(table_id, view_id, ids, mapper):
-            if not ids:
-                return {}
-            # Fetch records by explicit id list, ignoring view filters (views may
-            # be filtered to a subset — we need whichever records the section links to).
-            ids_list = list(ids)
-            formula_parts = [f"RECORD_ID()='{rid}'" for rid in ids_list]
-            formula = "OR(" + ",".join(formula_parts) + ")" if len(formula_parts) > 1 else formula_parts[0]
-            records = await _airtable_get(
-                PROGRAMS_BASE_ID, table_id,
-                {"filterByFormula": formula, "maxRecords": len(ids_list)}
-            )
-            return {r["id"]: mapper(r) for r in records}
-
-        people_by_id, companies_by_id, feature_items_by_id = await asyncio.gather(
-            fetch_linked(PROGRAMS_PEOPLE_TABLE_ID, PROGRAMS_PEOPLE_VIEW_ID, people_ids, _map_person),
-            fetch_linked(PROGRAMS_COMPANIES_TABLE_ID, PROGRAMS_COMPANIES_VIEW_ID, company_ids, _map_company),
-            fetch_linked(PROGRAMS_FEATURE_ITEMS_TABLE_ID, PROGRAMS_FEATURE_ITEMS_VIEW_ID, feature_ids, _map_feature_item),
+    async def fetch_linked(table_id, view_id, ids, mapper):
+        if not ids:
+            return {}
+        ids_list = list(ids)
+        formula_parts = [f"RECORD_ID()='{rid}'" for rid in ids_list]
+        formula = "OR(" + ",".join(formula_parts) + ")" if len(formula_parts) > 1 else formula_parts[0]
+        records = await _airtable_get(
+            PROGRAMS_BASE_ID, table_id,
+            {"filterByFormula": formula, "maxRecords": len(ids_list)}
         )
+        return {r["id"]: mapper(r) for r in records}
 
-        sections = [
-            _map_section(r, people_by_id, companies_by_id, feature_items_by_id)
-            for r in section_records
-        ]
-        sections.sort(key=lambda s: s["order"] or 999)
+    people_by_id, companies_by_id, feature_items_by_id = await asyncio.gather(
+        fetch_linked(PROGRAMS_PEOPLE_TABLE_ID, PROGRAMS_PEOPLE_VIEW_ID, people_ids, _map_person),
+        fetch_linked(PROGRAMS_COMPANIES_TABLE_ID, PROGRAMS_COMPANIES_VIEW_ID, company_ids, _map_company),
+        fetch_linked(PROGRAMS_FEATURE_ITEMS_TABLE_ID, PROGRAMS_FEATURE_ITEMS_VIEW_ID, feature_ids, _map_feature_item),
+    )
 
-        return {"program": program, "sections": sections}
+    sections = [
+        _map_section(r, people_by_id, companies_by_id, feature_items_by_id)
+        for r in section_records
+    ]
+    sections.sort(key=lambda s: s["order"] or 999)
+    return {"program": program, "sections": sections}
+
+
+@api_router.get("/programs/{slug}")
+async def get_program(slug: str):
+    try:
+        return await _fetch_page_with_sections(slug, expected_type="program")
     except HTTPException:
         raise
     except Exception as e:
         logger.error(f"Error fetching program '{slug}': {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@api_router.get("/networks/{slug}")
+async def get_network(slug: str):
+    try:
+        data = await _fetch_page_with_sections(slug, expected_type="network")
+        # Frontend expects a "network" key; keep "program" too for shared block components.
+        return {"network": data["program"], "program": data["program"], "sections": data["sections"]}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error fetching network '{slug}': {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

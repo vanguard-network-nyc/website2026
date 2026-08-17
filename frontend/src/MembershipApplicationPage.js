@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
 import { CheckCircle2, AlertCircle, Loader } from 'lucide-react';
 import SEO from './SEO';
 import PhoneInput from 'react-phone-input-2';
@@ -71,6 +72,28 @@ const MembershipApplicationPage = () => {
     { value: 'Senior Leaders Network', label: 'Senior Leaders Network' },
     { value: 'Not sure', label: 'Not sure' }
   ];
+
+  // Pre-select a network when arriving with ?network=<slug>
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    const slug = searchParams.get('network');
+    if (!slug) return;
+    const slugToLabel = {
+      'general-counsel-network': 'General Counsel Network',
+      'senior-in-house-counsel-network': 'Senior In-House Counsel Network',
+      'life-sciences-ceo-network': 'Life Sciences CEO Network',
+      'risk-management-network': 'Risk Management Network',
+      'senior-leaders-network': 'Senior Leaders Network',
+    };
+    const label = slugToLabel[slug];
+    if (label) {
+      setFormData((prev) =>
+        prev.network_interest.includes(label)
+          ? prev
+          : { ...prev, network_interest: [label] }
+      );
+    }
+  }, []);
 
   // Comprehensive list of countries
   const countryOptions = [
