@@ -87,7 +87,7 @@ const NetworkingV2Page = () => {
       features: ["Peer Learning Cohorts", "Executive Mentorship", "Career Development", "Leadership Readiness"],
       image: "/vanguard-boston-1.jpg",
       slug: "next-gen-gc-network",
-      link: "/networks/next-gen-gc-network"
+      link: "/application?network=next-gen-gc-network"
     }
   ];
 
@@ -296,14 +296,15 @@ const NetworkingV2Page = () => {
                     </div>
                   </div>
                   
-                  <Link
-                    to={`/networks/${network.slug}`}
-                    onClick={() => window.scrollTo(0, 0)}
+                  <a
+                    href={network.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] mt-auto`}
                   >
                     Learn More
                     <ArrowRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}

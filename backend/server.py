@@ -1968,7 +1968,7 @@ async def get_network(slug: str):
         all_sections = virtual_sections + [
             {**s, "order": (s.get("order") or 0) + 100} for s in data["sections"]
         ]
-        all_sections.sort(key=lambda s: s.get("order") or 999)
+        all_sections.sort(key=lambda s: s["order"] if s.get("order") is not None else 999)
 
         return {
             "network": {**program, **network_info, "slug": program["slug"], "id": program["id"]},
