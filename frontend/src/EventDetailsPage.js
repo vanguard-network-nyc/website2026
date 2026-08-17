@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
 import rehypeRaw from 'rehype-raw';
-import { Calendar, MapPin, ArrowLeft, ExternalLink, Linkedin } from 'lucide-react';
+import { Calendar, MapPin, ArrowLeft, ExternalLink, Linkedin, ArrowRight } from 'lucide-react';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 import SignupModal from './SignupModal';
@@ -33,6 +33,15 @@ const SERIES_TO_FORM_KEY = {
   RMX: 'rmx-form',
   LSCEOX: 'lsceox-form',
   NGGC: 'nggc-nomination-form',
+};
+
+// Series codes with an internal /events/:id details page (mirrors UpcomingEventsPage rules)
+const INTERNAL_DETAILS_SERIES = new Set(['CSC', 'GCF', 'LSCEOF', 'GCX', 'RMX', 'LSCEOX']);
+const SERIES_TO_PROGRAM_PATH = { NGGC: '/programs/next-generation-general-counsel' };
+const nearbyEventUrl = (ev) => {
+  if (ev.series_code && INTERNAL_DETAILS_SERIES.has(ev.series_code)) return `/events/${ev.id}`;
+  if (ev.series_code && SERIES_TO_PROGRAM_PATH[ev.series_code]) return SERIES_TO_PROGRAM_PATH[ev.series_code];
+  return ev.registration_url || '#';
 };
 
 const formatDate = (iso) => {
@@ -81,6 +90,7 @@ const EventDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [signupOpen, setSignupOpen] = useState(false);
+  const [nearbyEvents, setNearbyEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -106,6 +116,28 @@ const EventDetailsPage = () => {
     };
     if (recordId) fetchEvent();
   }, [recordId]);
+
+  // Fetch upcoming events to power the "You might also like" strip.
+  // Skip on past-event routes.
+  useEffect(() => {
+    if (isPast) { setNearbyEvents([]); return; }
+    let cancelled = false;
+    const fetchNearby = async () => {
+      try {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+        const res = await fetch(`${backendUrl}/api/events`);
+        if (!res.ok) return;
+        const list = await res.json();
+        if (cancelled || !Array.isArray(list)) return;
+        const filtered = list.filter((e) => e && e.id && e.id !== recordId).slice(0, 3);
+        setNearbyEvents(filtered);
+      } catch (e) {
+        // silently ignore — strip just won't render
+      }
+    };
+    fetchNearby();
+    return () => { cancelled = true; };
+  }, [recordId, isPast]);
 
   // Deep-link: auto-open sign-up modal when URL has ?signup=1 (real users)
   // OR ?formOverride=<key> (preview links). Either one is enough.
@@ -433,6 +465,89 @@ const EventDetailsPage = () => {
                   <ExternalLink size={16} />
                 </a>
               )}
+            </div>
+          </motion.div>
+        )}
+
+        {/* You might also like — 2-3 other upcoming events */}
+        {!isPast && nearbyEvents.length > 0 && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-12"
+            data-testid="event-detail-nearby-events"
+          >
+            <div className="flex items-end justify-between mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#045184' }}>
+                You might also like
+              </h2>
+              <Link
+                to="/upcoming-events"
+                className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-[#00A8E1] hover:text-[#0096C7]"
+                data-testid="event-detail-nearby-see-all"
+              >
+                See all events <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {nearbyEvents.map((ne, i) => {
+                const href = nearbyEventUrl(ne);
+                const isInternal = href.startsWith('/');
+                const dateText = ne.date_time || (ne.start_date ? new Date(ne.start_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '');
+                const cardInner = (
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow h-full flex flex-col">
+                    {ne.listing_picture && (
+                      <div className="w-full aspect-[16/9] overflow-hidden bg-slate-100">
+                        <img
+                          src={ne.listing_picture}
+                          alt={ne.event_title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5 flex-1 flex flex-col">
+                      {ne.series && (
+                        <div className="text-xs font-semibold uppercase tracking-wider text-[#00A8E1] mb-2">
+                          {ne.series}
+                        </div>
+                      )}
+                      <h3 className="text-lg font-bold text-slate-900 leading-snug mb-3 line-clamp-3">
+                        {ne.event_title}
+                      </h3>
+                      {dateText && (
+                        <div className="mt-auto flex items-center gap-2 text-sm text-slate-600">
+                          <Calendar size={14} className="text-[#00A8E1]" />
+                          <span>{dateText}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+                return isInternal ? (
+                  <Link
+                    key={ne.id || i}
+                    to={href}
+                    className="block group"
+                    data-testid={`event-detail-nearby-card-${i}`}
+                  >
+                    {cardInner}
+                  </Link>
+                ) : (
+                  <a
+                    key={ne.id || i}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block group"
+                    data-testid={`event-detail-nearby-card-${i}`}
+                  >
+                    {cardInner}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         )}
