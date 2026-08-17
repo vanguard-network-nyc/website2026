@@ -444,7 +444,7 @@ const ProgramsV2 = () => {
                       
                       {/* Action Button */}
                       {program.name === "GENERAL COUNSEL EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/gc-exchange" target="_blank" rel="noopener noreferrer">
+                        <Link to="/programs/general-counsel-exchange" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -453,7 +453,7 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </a>
+                        </Link>
                       ) : program.name === "LIFE SCIENCES CEO EXCHANGE" ? (
                         <a href="https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw" target="_blank" rel="noopener noreferrer">
                           <motion.button 
