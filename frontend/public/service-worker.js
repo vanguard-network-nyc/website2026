@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vanguard-network-v6';
+const CACHE_NAME = 'vanguard-network-v7';
 
 // Static assets to pre-cache (cache-first strategy)
 const STATIC_ASSETS = [
