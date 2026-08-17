@@ -176,7 +176,7 @@ const NetworkPage = () => {
           title={modalTitle}
         >
           {formModalKey === 'membership-application' ? (
-            <MembershipApplicationForm initialNetwork={network.name} compact />
+            <MembershipApplicationForm compact />
           ) : (
             <formVariant.Component
               event={networkAsEvent}
