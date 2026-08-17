@@ -1535,6 +1535,15 @@ PROGRAMS_PEOPLE_TABLE_ID = "tblLZC1ebQd9FfnCF"
 PROGRAMS_PEOPLE_VIEW_ID = "viwOV8LK4EWLCOQRo"
 PROGRAMS_COMPANIES_TABLE_ID = "tblDB1mGkJI1VtEfB"
 PROGRAMS_COMPANIES_VIEW_ID = "viwM2C2Yok6tIxkW9"
+
+# --- GC Exchange participants override -------------------------------------
+# For /programs/general-counsel-exchange, the "People Gallery" section is
+# replaced with deduped company logos of active participants pulled from the
+# CRM base (not the Programs base).
+GCX_PARTICIPANTS_BASE_ID = "appcKcpx0rQ37ChAo"
+GCX_PARTICIPANTS_TABLE_ID = "tbliGbJTIk94Fpzhf"
+GCX_PARTICIPANTS_VIEW_ID = "viwvkf5gbM1J529St"
+GCX_PARTICIPANTS_HEADING = "Participants Have Included Leaders From These Organizations"
 PROGRAMS_FEATURE_ITEMS_TABLE_ID = "tbl8V8nJEoY8eqv84"
 PROGRAMS_FEATURE_ITEMS_VIEW_ID = "viwS3VnFPYaikjxWh"
 
@@ -1577,6 +1586,52 @@ async def _airtable_get(base_id: str, table_id: str, params: dict = None):
         r = await client.get(url, headers=headers, params=params or {})
         r.raise_for_status()
         return r.json().get("records", [])
+
+
+async def _airtable_get_all(base_id: str, table_id: str, params: dict = None):
+    """Same as _airtable_get but follows Airtable's `offset` pagination."""
+    headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
+    url = f"https://api.airtable.com/v0/{base_id}/{table_id}"
+    records = []
+    offset = None
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        while True:
+            p = dict(params or {})
+            if offset:
+                p["offset"] = offset
+            r = await client.get(url, headers=headers, params=p)
+            r.raise_for_status()
+            data = r.json()
+            records.extend(data.get("records", []))
+            offset = data.get("offset")
+            if not offset:
+                break
+    return records
+
+
+async def _fetch_gcx_participant_company_logos():
+    """Pull participants for the GC Exchange program, dedupe by company name,
+    and return a list of {id, name, logo} suitable for the Logo Gallery block."""
+    records = await _airtable_get_all(
+        GCX_PARTICIPANTS_BASE_ID, GCX_PARTICIPANTS_TABLE_ID,
+        {"view": GCX_PARTICIPANTS_VIEW_ID, "pageSize": 100,
+         "fields[]": ["Company", "Company Logo"]}
+    )
+    seen = set()
+    logos = []
+    for rec in records:
+        f = rec.get("fields", {})
+        name = (f.get("Company") or "").strip()
+        logo = _first_attachment_url(f.get("Company Logo"))
+        if not name or not logo:
+            continue
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        logos.append({"id": rec["id"], "name": name, "logo": logo})
+    logos.sort(key=lambda c: c["name"].lower())
+    return logos
 
 
 def _pick(fields: dict, *keys):
@@ -1815,6 +1870,25 @@ async def _fetch_page_with_sections(slug: str, expected_type: str):
         for r in section_records
     ]
     sections.sort(key=lambda s: s["order"] or 999)
+
+    # --- Override: GC Exchange participants section --------------------------
+    # Replace the People Gallery with a deduped company-logo grid drawn from
+    # the CRM base (not the Programs base).
+    if program["slug"] == "general-counsel-exchange":
+        try:
+            gcx_logos = await _fetch_gcx_participant_company_logos()
+            if gcx_logos:
+                for s in sections:
+                    if (s.get("type") or "").strip().lower() == "people gallery":
+                        s["type"] = "Logo Gallery"
+                        s["heading"] = GCX_PARTICIPANTS_HEADING
+                        s["companies"] = gcx_logos
+                        s["people"] = []
+                        s["columns"] = "dense"
+                        break
+        except Exception as gcx_err:
+            logger.error(f"GC Exchange logo override failed: {gcx_err}")
+
     return {"program": program, "sections": sections}
 
 
