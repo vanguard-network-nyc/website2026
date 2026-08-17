@@ -114,7 +114,14 @@ const NetworkPage = () => {
   const network = data.network || data.program;
   const sections = data.sections || [];
   const seoTitle = network.seo_title || network.name;
-  const seoDescription = network.seo_description || network.tagline || network.summary || `Learn more about ${network.name} at The Vanguard Network.`;
+  const seoDescription = (
+    network.seo_description
+    || network.description_short
+    || network.description_long
+    || network.tagline
+    || network.summary
+    || `Learn more about the ${network.name}, a peer leadership community at The Vanguard Network.`
+  ).toString().trim().slice(0, 300);
 
   const hasExplicitHero = sections.length > 0 && sections[0].type === 'Hero';
   const formVariant = formModalKey ? FORM_VARIANTS[formModalKey] : null;
@@ -143,13 +150,6 @@ const NetworkPage = () => {
 
       {!hasExplicitHero && <HeroBlock program={network} section={{}} onOpenForm={openForm} />}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-4 -mb-4">
-        <Breadcrumb
-          customTitle={network.name}
-          extraCrumbs={[{ name: 'Networks', to: '/networks' }]}
-        />
-      </div>
-
       {sections.map((section, idx) => {
         const Block = BLOCK_REGISTRY[section.type];
         if (!Block) {
@@ -157,13 +157,20 @@ const NetworkPage = () => {
           return null;
         }
         return (
-          <Block
-            key={section.id}
-            section={section}
-            program={network}
-            first={idx === 0}
-            onOpenForm={openForm}
-          />
+          <React.Fragment key={section.id}>
+            <Block
+              section={section}
+              program={network}
+              first={idx === 0}
+              onOpenForm={openForm}
+            />
+            {/* Breadcrumb sits directly under the Hero so it isn't hidden by the fixed nav */}
+            {section.type === 'Hero' && (
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-6 -mb-4">
+                <Breadcrumb customTitle={network.name} />
+              </div>
+            )}
+          </React.Fragment>
         );
       })}
 
