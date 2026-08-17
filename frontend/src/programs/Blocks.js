@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
 import rehypeRaw from 'rehype-raw';
 import {
-  ArrowRight, ExternalLink, Linkedin, Play, Shield, Target, Award,
+  ArrowRight, ChevronRight, ExternalLink, Linkedin, Play, Shield, Target, Award,
   BookOpen, Users, Zap, Compass, Lightbulb, Rocket, Briefcase, Calendar
 } from 'lucide-react';
 
@@ -518,10 +518,11 @@ export const PeopleGallery = ({ section, first }) => {
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors ${dark ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20' : 'bg-white text-[#045184] hover:bg-slate-100 border border-slate-200 shadow-sm'}`}
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
               data-testid="people-gallery-toggle"
             >
               {expanded ? 'Show less' : `See more (${sorted.length - INITIAL})`}
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
         )}
@@ -593,10 +594,11 @@ export const LogoGallery = ({ section, first }) => {
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors ${dark ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20' : 'bg-white text-[#045184] hover:bg-slate-100 border border-slate-200 shadow-sm'}`}
+              className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
               data-testid="logo-gallery-toggle"
             >
               {expanded ? 'Show less' : `See more (${companies.length - INITIAL})`}
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
         )}

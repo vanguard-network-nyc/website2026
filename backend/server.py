@@ -1885,7 +1885,7 @@ async def _fetch_page_with_sections(slug: str, expected_type: str):
                         s["companies"] = gcx_logos
                         s["people"] = []
                         s["columns"] = "dense"
-                        s["background"] = "white"
+                        s["background"] = "plain"
                         break
         except Exception as gcx_err:
             logger.error(f"GC Exchange logo override failed: {gcx_err}")
