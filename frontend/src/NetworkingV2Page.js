@@ -32,51 +32,6 @@ const NetworkingV2Page = () => {
       features: ["Monthly Virtual Exchanges", "Bi-annual Forums", "Strategic Sounding Board", "Leadership Advisory"],
       image: "/vanguard-boston-1.jpg",
       slug: "general-counsel-network",
-      link: "https://members.thevanguardnetwork.com/network-details-general-counsel/general-counsel-network/r/recGzsDNANlxLtqIC"
-    },
-    {
-      name: "Senior In-House Counsel Network", 
-      description: "For Deputy General Counsel and Associate General Counsel looking to advance their leadership skills.",
-      target: "Deputy GC & Associate GC",
-      icon: <Users size={32} />,
-      gradient: 'from-[#913D88] to-[#6B2D66]',
-      features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
-      image: "/vanguard-boston-4.jpg",
-      slug: "senior-in-house-counsel-network",
-      link: "https://members.thevanguardnetwork.com/network-details-senior-counsel/senior-in-house-counsel-network/r/rec4wMsveeZoUvTOa"
-    },
-    {
-      name: "Life Sciences CEO Network",
-      description: "For CEOs in the life sciences community addressing industry-specific leadership challenges.",
-      target: "Life Sciences CEOs",
-      icon: <Target size={32} />,
-      gradient: 'from-[#01C219] to-[#047857]',
-      features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
-      image: "/vanguard-boston-3.jpg",
-      slug: "life-sciences-ceo-network",
-      link: "https://members.thevanguardnetwork.com/network-details-life-sciences/life-sciences-ceo-network/r/recPIzI9n0K7LkMaw"
-    },
-    {
-      name: "Risk Management Network",
-      description: "A peer network for senior executives who lead risk-related functions and navigate enterprise risk across various industries.",
-      target: "Risk Management Leaders",
-      icon: <Shield size={32} />,
-      gradient: 'from-[#FF6D00] to-[#d97706]',
-      features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
-      image: "/vanguard-boston-5.jpg",
-      slug: "risk-management-network",
-      link: "https://members.thevanguardnetwork.com/network-details-risk-management/risk-management-network/r/recv0BDur4fZPVSp7"
-    },
-    {
-      name: "Senior Leaders Network",
-      description: "A community for senior leaders from diverse industries, bringing together a wide range of experience and skills.",
-      target: "All Other Senior Leaders & Board Members",
-      icon: <Users size={32} />,
-      gradient: 'from-[#14B8A6] to-[#0F766E]',
-      features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
-      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
-      slug: "senior-leaders-network",
-      link: "https://members.thevanguardnetwork.com/network-details-board/senior-leaders-network/r/recmEciU5mwqEPJt5"
     },
     {
       name: "Next Gen GC Network",
@@ -87,7 +42,46 @@ const NetworkingV2Page = () => {
       features: ["Peer Learning Cohorts", "Executive Mentorship", "Career Development", "Leadership Readiness"],
       image: "/vanguard-boston-1.jpg",
       slug: "next-gen-gc-network",
-      link: "/application?network=next-gen-gc-network"
+    },
+    {
+      name: "Risk Management Network",
+      description: "A peer network for senior executives who lead risk-related functions and navigate enterprise risk across various industries.",
+      target: "Risk Management Leaders",
+      icon: <Shield size={32} />,
+      gradient: 'from-[#FF6D00] to-[#d97706]',
+      features: ["Risk Assessment Tools", "Compliance Updates", "Crisis Management", "Best Practice Sharing"],
+      image: "/vanguard-boston-5.jpg",
+      slug: "risk-management-network",
+    },
+    {
+      name: "Life Sciences CEO Network",
+      description: "For CEOs in the life sciences community addressing industry-specific leadership challenges.",
+      target: "Life Sciences CEOs",
+      icon: <Target size={32} />,
+      gradient: 'from-[#01C219] to-[#047857]',
+      features: ["Industry-Specific Content", "Regulatory Insights", "Innovation Discussions", "Strategic Partnerships"],
+      image: "/vanguard-boston-3.jpg",
+      slug: "life-sciences-ceo-network",
+    },
+    {
+      name: "Senior In-House Counsel Network",
+      description: "For Deputy General Counsel and Associate General Counsel looking to advance their leadership skills.",
+      target: "Deputy GC & Associate GC",
+      icon: <Users size={32} />,
+      gradient: 'from-[#913D88] to-[#6B2D66]',
+      features: ["Problem-Solving Sessions", "Career Development", "Peer Networking", "Leadership Coaching"],
+      image: "/vanguard-boston-4.jpg",
+      slug: "senior-in-house-counsel-network",
+    },
+    {
+      name: "Senior Leaders Network",
+      description: "A community for senior leaders from diverse industries, bringing together a wide range of experience and skills.",
+      target: "All Other Senior Leaders & Board Members",
+      icon: <Users size={32} />,
+      gradient: 'from-[#14B8A6] to-[#0F766E]',
+      features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
+      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
+      slug: "senior-leaders-network",
     }
   ];
 
@@ -296,15 +290,14 @@ const NetworkingV2Page = () => {
                     </div>
                   </div>
                   
-                  <a
-                    href={network.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={`/networks/${network.slug}`}
+                    onClick={() => window.scrollTo(0, 0)}
                     className={`w-full text-white px-6 py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r ${network.gradient} hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] mt-auto`}
                   >
                     Learn More
                     <ArrowRight size={16} />
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}
