@@ -533,9 +533,10 @@ export const PeopleGallery = ({ section, first }) => {
 // Supports layout variants via section.columns:
 //   ""       — default (medium logos, spread apart)
 //   "large"  — big graphic cards, tight gap (used for "Membership Provides Access To")
-//   "dense"  — 5 per row, small tight logos (used for network members)
+//   "dense"  — 5 per row, small tight logos with "See more" after 15 (used for network members)
 export const LogoGallery = ({ section, first }) => {
   const { heading, subheading, companies, background, columns } = section;
+  const [expanded, setExpanded] = useState(false);
   if (!companies || companies.length === 0) return null;
   const dark = isDarkContrast(background);
   const boxed = cardWrapClass(background);
@@ -546,14 +547,18 @@ export const LogoGallery = ({ section, first }) => {
   let imgCls = "max-h-24 md:max-h-32 max-w-full object-contain";
 
   if (variant === 'large') {
-    gridCls = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4";
+    gridCls = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-3";
     itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105";
-    imgCls = "w-full h-auto max-h-[420px] object-contain";
+    imgCls = "w-full h-auto max-h-[520px] object-contain";
   } else if (variant === 'dense') {
-    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3";
+    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-4";
     itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-16 md:h-20";
     imgCls = "max-h-14 md:max-h-16 max-w-full object-contain";
   }
+
+  const INITIAL = 15;
+  const hasMore = variant === 'dense' && companies.length > INITIAL;
+  const visible = hasMore && !expanded ? companies.slice(0, INITIAL) : companies;
 
   return (
     <Section background={background} first={first} dataTestId="program-logo-gallery">
@@ -565,7 +570,7 @@ export const LogoGallery = ({ section, first }) => {
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         <div className={gridCls}>
-          {companies.map((c, idx) => (
+          {visible.map((c, idx) => (
             <motion.div
               key={c.id}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -582,6 +587,18 @@ export const LogoGallery = ({ section, first }) => {
             </motion.div>
           ))}
         </div>
+        {hasMore && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors ${dark ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20' : 'bg-white text-[#045184] hover:bg-slate-100 border border-slate-200 shadow-sm'}`}
+              data-testid="logo-gallery-toggle"
+            >
+              {expanded ? 'Show less' : `See more (${companies.length - INITIAL})`}
+            </button>
+          </div>
+        )}
       </div>
     </Section>
   );

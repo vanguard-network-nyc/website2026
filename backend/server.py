@@ -1555,6 +1555,12 @@ NETWORK_BOARD_TAGS = {
     "risk-management-network": "risk management advisory board",
 }
 
+# Per-network name exclusions for the Advisors gallery (case-insensitive).
+# Use to hide specific people without removing them from the underlying board list.
+NETWORK_ADVISOR_EXCLUDE = {
+    "general-counsel-network": {"michael sevi"},
+}
+
 
 async def _airtable_get(base_id: str, table_id: str, params: dict = None):
     headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
@@ -1888,6 +1894,11 @@ async def get_network(slug: str):
                 mapped = _map_person(cr)
                 (chairs if is_chair else advisors).append(mapped)
 
+        # Per-network advisor exclusions (hide specific people by name, case-insensitive).
+        exclude_names = NETWORK_ADVISOR_EXCLUDE.get(slug, set())
+        if exclude_names:
+            advisors = [a for a in advisors if a.get("name", "").strip().lower() not in exclude_names]
+
         # 4) Fetch partners linked to this Networks row, then split into two sections:
         #    - "Thanks To Our Network Partners" (individual company logos from lookup)
         #    - "Membership Provides Access To" (row-level graphics)
@@ -2009,7 +2020,7 @@ async def get_network(slug: str):
 
         if chairs:
             heading = "Network Chair" if len(chairs) == 1 else "Network Chairs"
-            virtual_sections.append(_base_section(30, "chair", "People Gallery", heading, "light-blue-strip", people=chairs))
+            virtual_sections.append(_base_section(30, "chair", "People Gallery", heading, "plain", people=chairs))
 
         if advisors:
             virtual_sections.append(_base_section(40, "advisors", "People Gallery", "Network Advisors", "white", people=advisors))
