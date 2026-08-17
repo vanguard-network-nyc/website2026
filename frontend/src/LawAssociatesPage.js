@@ -189,6 +189,21 @@ const LawAssociatesPage = () => {
               Enrollment Open
             </span>
           </motion.div>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold bg-white text-[#045184] hover:bg-slate-100 transition-colors"
+            >
+              <Mail size={18} />
+              Contact Us
+            </Link>
+          </motion.div>
         </div>
       </section>
 
