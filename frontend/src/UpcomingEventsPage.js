@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
 import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown, Mail } from 'lucide-react';
@@ -30,12 +30,13 @@ const eventDetailsUrl = (event) => {
 
 const UpcomingEventsPage = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedAudience, setSelectedAudience] = useState('All');
+  const [selectedAudience, setSelectedAudience] = useState(searchParams.get('audience') || 'All');
   const [selectedLocation, setSelectedLocation] = useState('All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'calendar'
   const [selectedDate, setSelectedDate] = useState(null);
@@ -49,6 +50,26 @@ const UpcomingEventsPage = () => {
       filterEvents();
     }
   }, [events, searchTerm, selectedAudience, selectedLocation, selectedDate]);
+
+  // Keep the URL in sync with the audience filter so links like
+  // /upcoming-events?audience=General%20Counsel land pre-filtered.
+  useEffect(() => {
+    const current = searchParams.get('audience') || 'All';
+    if (selectedAudience === current) return;
+    const next = new URLSearchParams(searchParams);
+    if (selectedAudience && selectedAudience !== 'All') {
+      next.set('audience', selectedAudience);
+    } else {
+      next.delete('audience');
+    }
+    setSearchParams(next, { replace: true });
+  }, [selectedAudience]);
+
+  // React to browser back/forward changing the ?audience= param.
+  useEffect(() => {
+    const urlAudience = searchParams.get('audience') || 'All';
+    if (urlAudience !== selectedAudience) setSelectedAudience(urlAudience);
+  }, [searchParams]);
 
   // Helper to parse date and convert from UTC to local timezone
   const parseDateToLocal = (dateString, timezone = 'EST') => {
