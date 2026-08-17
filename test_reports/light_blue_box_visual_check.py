@@ -3,7 +3,7 @@ Focused visual verification script for Program Sections light-blue-box bug.
 
 This is the exact Playwright logic used via the browser automation harness for
 the 1280x900 preview check on:
-https://form-debug-8.preview.emergentagent.com/programs/next-generation-general-counsel
+https://program-network.preview.emergentagent.com/programs/next-generation-general-counsel
 """
 
 async def run(page):
@@ -12,7 +12,7 @@ async def run(page):
 
     await page.set_viewport_size({"width": 1280, "height": 900})
     await page.goto(
-        "https://form-debug-8.preview.emergentagent.com/programs/next-generation-general-counsel",
+        "https://program-network.preview.emergentagent.com/programs/next-generation-general-counsel",
         wait_until="networkidle",
         timeout=60000,
     )

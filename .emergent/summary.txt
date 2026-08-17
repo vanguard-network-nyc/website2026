@@ -1,209 +1,29 @@
-<analysis>**original_problem_statement:**
-The user's primary goal was to fix a critical bug where all pages/sections using airtable data do not properly load or display airtable data on the live production domain (). This was a major regression that made most of the website content appear blank.
-
-This was followed by a series of feature requests and fixes:
-- Implement a  check endpoint to diagnose future production issues.
-- Add a new image block to the  page with specific styling, spacing, and caption text.
-- Scrub a secret (Airtable API key) from the git history to resolve a GitHub push protection error.
-- Remove the Global Counsel Leaders banner from the website header.
-- Overhaul the membership application form on the  page:
-    - Change the submission target to a new Airtable table: .
-    - Add a new Further Details textarea.
-    - Update all field mappings in the backend to match the new table's schema.
-    - Change a pre-filled value for the Source of Inquiry field.
-
-The session ended while debugging a new Failed to fetch error on the live  form after the changes were deployed.
-
-**User's preferred language**: English
-
-**what currently exists?**
-This is a full-stack corporate website for The Vanguard Network using a React frontend and a FastAPI (Python) backend. Airtable serves as a headless CMS for all dynamic content.
-
-- **Data Loading:** The critical bug where live site pages were blank has been **fixed**. The root cause was a missing  in the production environment, which occurred after a redeployment. The fix involved re-committing the  file to the git repository. All content pages (, , etc.) are now loading data correctly on the live domain.
-- **Application Form:** The form at  was heavily modified. The backend in  now hardcodes the Airtable table name and base ID to prevent environment mismatches. It includes logic for new fields and corrected mappings. However, this form is currently **broken on production**.
-- **UI:** The Global Counsel Leaders banner has been removed from the header, and a new image block has been added and styled on the  page.
-- **Git:** The git history was rewritten using WARNING: git-filter-branch has a glut of gotchas generating mangled history
-	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
-	 alternative filtering tool such as 'git filter-repo'
-	 (https://github.com/newren/git-filter-repo/) instead.  See the
-	 filter-branch manual page for more details; to squelch this warning,
-	 set FILTER_BRANCH_SQUELCH_WARNING=1.
-Proceeding with filter-branch... to remove a secret. The repository is now clean and can be pushed to GitHub.
-- **Health Check:** A new  endpoint exists in the code () but is not yet live on the production server (returns 404).
-
-**Last working item**:
--   **Last item agent was working:** Debugging a Failed to fetch TypeError that occurs when submitting the membership application form on the live domain ().
--   **Status:** IN PROGRESS
--   **Agent Testing Done:** N
--   **Which testing method agent to use?** Manual testing by . The agent needs to diagnose the response from the live server.
--   **User Testing Done:** Y
-
-**All Pending/In progress Issue list**:
--   **Issue 1:** Membership application form submission fails with Failed to fetch on the live domain (P0).
--   **Issue 2:** The new  endpoint returns a 404 Not Found error on the live domain (P1).
-
-#### Issues Detail:
--   **Issue 1: Membership application form fails with Failed to fetch on live site**
-    -   **Attempted fixes:** The agent confirmed the backend endpoint works correctly on the preview URL via . It also confirmed the CORS preflight () request succeeds on the live domain. However, a  command to test the live backend API itself () failed with a JSON decoding error, indicating the live server is returning an invalid response (likely HTML or an unhandled error page) instead of JSON.
-    -   **Next debug checklist:**
-        1.  Run <html>
-<head><title>405 Not Allowed</title></head>
-<body>
-<center><h1>405 Not Allowed</h1></center>
-<hr><center>nginx/1.29.4</center>
-</body>
-</html>. The  (verbose) and  (follow redirects) flags are crucial to see the full headers and response body from the live server to understand why it's not returning valid JSON.
-        2.  Inspect production logs using the  for any errors that occur when the  endpoint is hit on the live server.
-        3.  Confirm that the latest version of  (with the hardcoded table name and correct field mappings) is actually running on production. The error could be due to a stale deployment.
-    -   **Why fix this issue and what will be achieved with the fix?** The membership application is a primary call-to-action on the website and must be functional for users on the live domain.
-    -   **Status:** IN PROGRESS
-    -   **Is recurring issue?** Y
-    -   **Should Test frontend/backend/both after fix?** Both. Backend with  first, then a full end-to-end form submission test on the live frontend.
-    -   **Blocked on other issue:** None
-
--   **Issue 2:  endpoint is 404 on live domain**
-    -   **Attempted fixes:** The agent added the endpoint code and verified it was in the latest git commit. The agent waited and re-checked multiple times, assuming a slow deployment. The issue persists.
-    -   **Next debug checklist:**
-        1.  Trigger a fresh deployment. The simplest way is to make a trivial, non-breaking change (e.g., add a comment to ), and ask the user to Save to GitHub.
-        2.  After the deployment pipeline completes (wait 5-10 minutes), re-check  using .
-        3.  If it still fails, use the  to check the production logs for any startup errors in the backend container that might prevent the new route from being registered.
-    -   **Why fix this issue and what will be achieved with the fix?** The user requested this feature to make future production debugging easier.
-    -   **Status:** NOT STARTED
-    -   **Is recurring issue?** N
-    -   **Should Test frontend/backend/both after fix?** Backend
-    -   **Blocked on other issue:** None
-
-**In progress Task List**:
-There are no other in-progress tasks.
-
-**Upcoming and Future Tasks**
-- **Upcoming Tasks:**
-  - **Task 1 (P1):** Remove the temporary  meta tag from . This was added for aggressive cache-busting and should be removed now that the main caching issues are resolved.
-- **Future Tasks:**
-  - **Task 2 (P2):** Confirm Google Analytics is tracking correctly on the production domain.
-  - **Task 3 (P2):** Refactor the monolithic  file into individual, organized component files for better maintainability.
-
-**Completed work in this session**
-- **Live Site Data Restoration:**
-  - **Root Cause Analysis:** Diagnosed that a recent redeployment had lost the platform-cached  because  was not tracked in git.
-  - **Fix Implemented:** Re-added  and  to git tracking, ensuring the token is present on all future deployments.
-  - **Result:** All content pages on the live domain (, , , etc.) are now correctly fetching and displaying data from Airtable.
-- **Git History Scrubbing:**
-  - Successfully resolved a GitHub secret push protection error by using WARNING: git-filter-branch has a glut of gotchas generating mangled history
-	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
-	 alternative filtering tool such as 'git filter-repo'
-	 (https://github.com/newren/git-filter-repo/) instead.  See the
-	 filter-branch manual page for more details; to squelch this warning,
-	 set FILTER_BRANCH_SQUELCH_WARNING=1.
-Proceeding with filter-branch... to completely remove a previously committed Airtable token from the project's git history.
-- **Membership Application Form Overhaul:**
-  - Modified the backend () to hardcode the  and  () to ensure stability across deployments.
-  - Updated the frontend () and backend () to include a new Further Details field.
-  - Corrected all field mappings in the backend to match the new Airtable table schema (, , , etc.).
-  - Changed the default Source of Inquiry to Main website.
-- **UI/Content Changes:**
-  - **Book Page ():** Added a new, full-width image block with a caption and correct spacing.
-  - **Header ():** Removed the Global Counsel Leaders banner and adjusted the header's CSS positioning accordingly.
-- **Code Health & Cleanup:**
-  - Fixed an incorrect  pattern in 9 frontend files.
-  - Removed leftover  statements.
-  - Implemented  in  hooks in  to prevent errors on unmount.
-
-**Earlier issues found/mentioned but not fixed**
-None.
-
-**Known issue recurrence from previous fork**
--   **Issue recurrence in previous fork:** Airtable data not displaying on the frontend. This was the primary issue in the handoff summary and it recurred, but this time it was specific to the live production domain.
--   **Recurrence count:** 1
--   **Status:** RESOLVED
-
-**Code Architecture**
-
-
-**Key Technical Concepts**
--   **Frontend**: React, Tailwind CSS, Framer Motion
--   **Backend**: FastAPI (Python)
--   **Data Source**: Airtable (Headless CMS)
--   **Caching**: Client-side Service Worker (Network-First strategy), server-sent  headers.
--   **Deployment**: Emergent Platform with platform-managed environment variables.
--   **Version Control**: Git, including history rewriting (WARNING: git-filter-branch has a glut of gotchas generating mangled history
-	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
-	 alternative filtering tool such as 'git filter-repo'
-	 (https://github.com/newren/git-filter-repo/) instead.  See the
-	 filter-branch manual page for more details; to squelch this warning,
-	 set FILTER_BRANCH_SQUELCH_WARNING=1.
-Proceeding with filter-branch...) to remove secrets.
-
-**key DB schema**
-The primary data source is Airtable. The key table modified in this session was:
--   ****: 
-
-**changes in tech stack**
-None.
-
-**All files of reference**
--   **/app/backend/server.py**: Heavily modified for the application form logic, new field mappings, a new  endpoint, and hardcoded Airtable configuration.
--   **/app/frontend/src/MembershipApplicationPage.js**: Heavily modified to add a new form field (Further Details) and update form state management.
--   **/app/frontend/src/components.js**: Modified to remove the GCL banner, adjust header CSS, and add a new image block to the  component.
--   **/app/.gitignore**: Modified to add exceptions (, ) to ensure  files are tracked by git again.
--   **/app/backend/.env**: The  was updated.
--   **/app/memory/PRD.md**: Updated several times to reflect project progress and diagnosis.
-
-**Areas that need refactoring**
--   The file  is a critical monolith containing definitions for many distinct pages and components (, , , , etc.). It should be broken down into individual, self-contained component files for maintainability.
-
-**key api endpoints**
--   ****: The primary endpoint for the membership form. It was heavily modified and is currently the source of the main bug.
--   ****: A newly created endpoint to provide a status check of the backend services. It is not yet live on production.
--   ****, , , etc.: These were confirmed to be working correctly on the live domain.
-
-**Critical Info for New Agent**
--   **Priority #1 is the Live Site Bug:** The Failed to fetch error on the  form is the most critical issue. Your investigation must focus on the live production environment, not the preview URL. Start by using  to inspect the raw response from the live server.
--   **Deployment & Environment Variables:** Be aware that the live environment can be out of sync with the preview environment. The previous agent hardcoded the Airtable table name and base ID in  to prevent mismatches. A change might require a Save to GitHub from the user, and deployments can take several minutes to fully roll out.
--   **Git History:** The git history was rewritten with WARNING: git-filter-branch has a glut of gotchas generating mangled history
-	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
-	 alternative filtering tool such as 'git filter-repo'
-	 (https://github.com/newren/git-filter-repo/) instead.  See the
-	 filter-branch manual page for more details; to squelch this warning,
-	 set FILTER_BRANCH_SQUELCH_WARNING=1.
-Proceeding with filter-branch.... You can ignore any warnings or logs related to old, unreachable commits that might contain secrets. The current  branch is clean.
--   **Monolithic Component:** Be very careful when editing . It contains logic for many different parts of the site, and changes can have unintended side effects.
-
-**documents and test reports created in this job**
--   
--   
--   
-
-**Last 10 User Messages and any pending HUMAN messages**
-1.  ****: User asked for clarification on platform features. (Resolved by support agent).
-2.  ****: User reported the current highest-priority bug on the live application form. (IN PROGRESS).
-3.  ****: User provided feedback to the agent to be more precise and not invent issues. (Acknowledged).
-4.  ****: User corrected the agent's assumption about a linked record field in Airtable. (Resolved).
-5.  ****: User gave firm instructions to fix the application form mapping. (Resolved).
-6.  ****: User reported the initial bug with the form submission after the first fix attempt. (Resolved).
-7.  ****: User corrected the agent's logic for combining form fields. (Resolved).
-8.  ****: User initiated the major overhaul of the application form. (Completed, but resulted in a new bug).
-9.  ****: User requested a UI change to the header. (Completed).
-10. ****: User reported the GitHub push protection error. (Resolved).
-
-**Project Health Check:**
--   **Broken**: The membership application form, a key conversion point, is non-functional on the live production website.
--   **Mocked**: None.
-
-**3rd Party Integrations**
--   **Airtable**: The primary headless CMS for all content. Requires .
--   **Google Analytics**: Implemented for website tracking ().
--   **Resend**: API key is present but was not used or modified in this session.
--   **GitHub**: The repository has secret push protection enabled.
-
-**Testing status**
--   **Testing agent used after significant changes**: YES. It was used twice and was instrumental in finding and fixing a backend field mapping bug.
--   **Troubleshoot agent used after agent stuck in loop**: NO.
--   **Test files created**: None.
--   **Known regressions**: The  form is broken on the live site with a Failed to fetch error, which is a regression from its previous state.
-
-**Credentials to test flow:**
-Not applicable. The agent should use test data for form submissions.
-
-**What agent forgot to execute**
-- The agent was unable to successfully deploy and verify the new  endpoint on the live production server. Despite the code being committed, the endpoint continued to return a 404, and the agent did not successfully diagnose why the deployment was not updating.</analysis>
+<analysis>/programs/:slug/networks/:slug/law-associates/networking/networks/networks/:slug/application/programs/:slugBlocks.js/networks/:slugFORM_VARIANTSNetworkPage.jsProgramPage.js#form:membership-application/networks/:slug/app/frontend/src/components.js/app/frontend/src/components.jsProgramPage.jsBlocks.jspb-1lastNameOf/law-associates/networking/networks/api/networks/:slugserver.pyMembershipApplicationPage.jsMembershipApplicationForm.jscompactserver.py/networks/networks/:slugBreadcrumbSEO/networks/:slug
+/app/
+├── backend/
+│   ├── server.py             # FastAPI backend handling Airtable/Google Sheets and CMS endpoints
+│   └── tests/
+├── frontend/
+│   ├── src/
+│   │   ├── components.js     # MONOLITHIC shared components (needs refactor)
+│   │   ├── ProgramPage.js    # Dynamic template for all Programs
+│   │   ├── NetworkPage.js    # Dynamic template for all Networks (reuses Blocks.js)
+│   │   ├── programs/
+│   │   │   └── Blocks.js     # 11 dynamic UI block components (Hero, Text, Galleries, etc.)
+│   │   ├── signup-forms/     # Reusable forms (MembershipApplicationForm, etc.)
+│   │   ├── App.js            # Router configs
+httpxappqyKMZnFfgSuJKtProgramsslugpage_typeHero CTA urlNetworkNetworksDescription shortDescription longMembers VanguardVG ContactsWholeNamePositionCompanyHeadshotNetwork PartnersGraphicLogoMembers Vanguard/app/backend/server.py_map_network()/app/frontend/src/NetworkPage.js/app/frontend/src/programs/Blocks.js/app/frontend/src/signup-forms/MembershipApplicationForm.js/app/frontend/src/NetworkingV2Page.js/app/frontend/src/components.jsserver.pyGET /api/networks/:slug/api/programs/:slugserver.pyNETWORK_CHAIR_EXCLUDEnext-gen-gc-networkNETWORK_ADVISOR_EXCLUDEgeneral-counsel-networkNETWORK_HIDE_BOTTOM_CTAsenior-in-house-counsel-networkhrefcta_url#form:<form_key>#form:membership-applicationDescription shortdescription short/app/memory/PRD.md/networks/next-gen-gc-network/networks/senior-in-house-counsel-network/networks/networksREACT_APP_BACKEND_URL?form=membership-application/programs/:slug/networks/:slug/networks/:slugcomponents.js/app/frontend/src/components.jspb-1/law-associates/networks/:slugNetworkPage.jsserver.py/api/networks/:slugMembershipApplicationPage.jsMembershipApplicationForm.js#form:membership-applicationserver.py/networks/networks/:slug
+/app/
+├── backend/
+│   ├── server.py             # FastAPI backend. Contains complex _map_network() Airtable hydration logic.
+│   └── tests/
+├── frontend/
+│   ├── src/
+│   │   ├── components.js     # MONOLITHIC shared components (needs refactor)
+│   │   ├── ProgramPage.js    # Dynamic template for all Programs
+│   │   ├── NetworkPage.js    # Dynamic template for all Networks
+│   │   ├── programs/
+│   │   │   └── Blocks.js     # 11 dynamic UI block components (Hero, Text, Galleries, Video, etc.)
+│   │   ├── signup-forms/     # Reusable forms (MembershipApplicationForm, etc.)
+│   │   └── App.js            # Router configs
+httpxappqyKMZnFfgSuJKtProgramsslugpage_typeNetworkNetworksMembers VanguardVG Contactsboard advisor/guestNetwork PartnersGraphicLogoMembers VanguardCompany/app/backend/server.py_map_network()NETWORK_CHAIR_EXCLUDE/app/frontend/src/programs/Blocks.js/app/frontend/src/signup-forms/MembershipApplicationForm.js/app/frontend/src/NetworkPage.jsBlocks.js/app/frontend/src/components.jsserver.pyGET /api/networks/:slugNetworkPage.jsProgramPage.js#form:<form_key>#form:membership-applicationserver.pyNETWORK_CHAIR_EXCLUDENETWORK_ADVISOR_EXCLUDENETWORK_HIDE_BOTTOM_CTAtesting_agent_v3_fork/app/memory/PRD.md/networks/next-gen-gc-network/networks/senior-in-house-counsel-network/networks/networksHero CTA url#form:membership-applicationREACT_APP_BACKEND_URL</analysis>

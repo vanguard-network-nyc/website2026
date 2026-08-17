@@ -1,7 +1,7 @@
 """Focused Playwright verification for Logo Gallery centering and desktop logo size.
 
 This script is intended to be run by the browser automation harness against:
-https://form-debug-8.preview.emergentagent.com/programs/next-generation-general-counsel
+https://program-network.preview.emergentagent.com/programs/next-generation-general-counsel
 """
 
 try:

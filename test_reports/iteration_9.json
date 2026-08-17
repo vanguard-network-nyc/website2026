@@ -1,0 +1,14 @@
+{
+  "summary": "Verified bold event title styling in bottom CTA on upcoming event detail page. <strong> wraps exact event_title 'Responding to a Ransomware Attack' with computed font-weight 600. Attend button still functional. Bottom CTA correctly hidden on past-event detail page.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Bottom CTA on /events/:id contains <strong> with event title (font-weight 600). Hidden on /past-events/:id. Attend button opens modal for series-mapped events."
+}

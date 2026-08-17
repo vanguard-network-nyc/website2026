@@ -1,60 +1,33 @@
 # The Vanguard Network — PRD
 
-## Original Problem Statement
-Maintain and extend the production marketing website for The Vanguard Network. The site is a React + FastAPI + Airtable-backed app serving advisory services, executive networks, programs, events, content, and newsroom content.
+## Product
+The Vanguard Network is an executive leadership organization site. The web app is a React SPA + FastAPI backend acting as a headless CMS driven by Airtable. Public visitors browse Programs, Networks, Events, and Content; qualified users apply via forms that route to Airtable/HubSpot.
 
-## Architecture
-- **Frontend:** React, Tailwind, Framer Motion, react-helmet-async, react-slick (used in newsroom slider)
-- **Backend:** FastAPI, httpx → Airtable CMS
-- **Routing:** All API routes prefixed `/api`
-- **Key files:**
-  - `/app/frontend/src/components.js` (monolithic >3800 lines — HomePage, Header, BookPage, ImageSliderSection, etc.)
-  - `/app/frontend/src/GeneralCounselAdvisoryPage.js`
-  - `/app/frontend/src/SEO.js`
-  - `/app/frontend/public/sitemap.xml`
-  - `/app/backend/server.py`
+## Core Architecture
+- **Frontend**: React + Tailwind + Framer Motion. Route templates: `ProgramPage`, `NetworkPage`, `EventDetailsPage`. Shared UI blocks in `programs/Blocks.js`. Reusable modal forms in `signup-forms/`.
+- **Backend**: FastAPI (`/api/*`) fetches Airtable (base `appqyKMZnFfgSuJKt`) and synthesizes structured payloads (11-block sections) for program/network pages, plus events endpoints.
+- **CMS discipline**: Airtable is source of truth. Backend safely handles inconsistent field casing across tables.
 
-## Implemented
-- **2026-02-13** Past events feature end-to-end.
-  - Backend: added `EVENTS_PAST_VIEW_ID = "viwMo84nEgaR0Z3BD"` (same base/table as upcoming); new endpoint `GET /api/past-events`. Existing `GET /api/events/{record_id}` is reused for both upcoming and past event detail lookups since the record ids live in the same table.
-  - Frontend: new `/past-events` page (`PastEventsPage.js`), a copy of upcoming with (a) fetch from `/api/past-events`, (b) DESC-sorted by date, (c) cards render **without the listing graphic**, (d) copy tweaked to "Past Events". New route `/past-events/:recordId` mounts `EventDetailsPage` in past mode — the "I would like to attend" CTA is hidden, the sign-up modal auto-open is disabled, and the "Back to Events" link routes to `/past-events`.
-  - Nav: EVENTS is now a dropdown with two children — Upcoming (`/upcoming-events`) and Past (`/past-events`).
-  - SEO: added `/past-events` to `sitemap.xml` with weekly changefreq and 0.6 priority. `PastEventsPage` sets its own `SEO` title/description.
-- **2026-02-13** Signup deep-link URLs made consistent — modal now auto-opens on `?signup=1`, `?signup=1&formOverride=<key>`, OR `?formOverride=<key>` alone. Closing the modal strips both params so a reload of the clean URL no longer re-opens the modal. Fixes inconsistent "first visit opens, second visit doesn't" bug.
-- **2026-02-13** Form keys renamed to hyphenated series-based ids: `csc-form`, `gcf-form`, `lsceof-form`, `gcx-form`, `rmx-form`, `lsceox-form`, `nggc-nomination-form`. Updated everywhere (`server.py` FORM_CONFIGS + SERIES_TO_FORM + phone validation list; all frontend form components; `EventDetailsPage.js` FORM_VARIANTS + SERIES_TO_FORM_KEY).
-- **2026-02-13** NGGC "More details" link updated to `https://members.thevanguardnetwork.com/next-gen-gc`.
-- **2026-02-13** NGGC nomination form — success view now says "Thank you! If you would like to nominate a second candidate please submit the form again." with a **Submit another nomination** button that resets the form to blank. Google Sheets write confirmed (append to `NOMINATIONS` tab).
-- **2026-02-13** Signup form dispatcher (NGGC series → Google Sheets) confirmed working end-to-end. `GOOGLE_SERVICE_ACCOUNT_JSON_B64` + `SIGNUP_SHEET_ID` present in `/app/backend/.env`.
-- **2026-02-13** NGGC events on `/upcoming-events` continue to link out externally via "More Details" (NGGC not in `INTERNAL_DETAILS_SERIES`). Pending future work: dedicated `/next-gen-gc-program` landing page that then links to the NGGC form.
-- **2026-02-19** Homepage image-slider custom controls (prev / play-pause / next) — JS-driven RAF animation; supports manual shift and pause without losing position. Subtle pill-style buttons, fully accessible (aria-labels, data-testids).
-- **Prior** Membership form CORS fix (`allow_credentials=False`).
-- **Prior** `/api/newsroom` pagination (removed `maxRecords: 100`) + `httpx` timeout 5s→30s.
-- **Prior** `/general-counsel-advisory` page built with full SEO (OG tags, VideoObject + Service schema, sitemap entry).
-- **Prior** Homepage slider populated with 7 GC Forum 2026 images + SEO alt tags.
-- **Prior** Tom Sabatino, Ken Banta, Tony Powe, Dick Mosher content updates.
+## Key routes
+- `/`, `/advisory`, `/networks`, `/networks/:slug`, `/programs`, `/programs/:slug`, `/upcoming-events`, `/past-events`, `/events/:recordId`, `/past-events/:recordId`, `/articles`, `/podcasts`, `/videos`, `/newsroom`, `/application`, `/team`, `/contact`, `/privacy`, `/terms`.
 
-## Roadmap / Backlog
+## Recent changes
+### 2026-02 (current)
+- **Event Detail bottom CTA**: Added a second "I would like to attend" CTA block at the bottom of `/events/:recordId` (mirrors the top CTA behavior — modal for series-mapped events, otherwise link to registration_url). Hidden on `/past-events/:recordId`. Event title is bolded inside the copy.
+- **Favicon**: Added `<link rel="icon">` (192 + 512 + shortcut icon) to `public/index.html` so every SPA route shows the favicon. Bumped service worker cache to `v4` to bust stale caches.
 
-### P1
-- **[NEXT — tomorrow]** Build the dedicated Programs pages (starting with NGGC / Next Gen GC). Each program page will host program details and CTA into its associated signup form (e.g. NGGC → `nggc-nomination-form`). Requirements TBD from user.
-- Build a dedicated `/next-gen-gc-program` landing page for the NGGC program; from there, link into the NGGC nomination form. (Until then, NGGC events on `/upcoming-events` keep external "More Details" URLs.)
-- Add `/general-counsel-advisory` link to Advisory dropdown nav (waits for user go-live confirmation; currently hidden but routable).
-- Remove temporary `Clear-Site-Data` meta tag from `/app/frontend/public/index.html`.
+### 2026-02 (earlier this session)
+- Dynamic `/networks/:slug` pages auto-synthesizing 7 sections (Hero, Access, Partners, Chair, Advisors, Members, Bottom CTA) from Airtable (Programs, Networks, VG Contacts, Network Partners, Members Vanguard).
+- Extracted `MembershipApplicationForm` with `compact` prop for modal-in-page usage.
+- Breadcrumbs + dynamic SEO/Event/Breadcrumb schema JSON-LD across pages.
+- Per-network overrides: hide Sabatino on Next Gen GC, hide Sevi on GC advisors, hide bottom CTA on Senior In-House.
 
-### Not needed / cancelled
-- Additional form variants for DKL, NLP, NLX, SIHCX, SUSX — user confirmed these are outdated and not in use (2026-02-13).
+## Backlog (P0 → P2)
+- **P2** Refactor `/app/frontend/src/components.js` (3900+ lines) into per-component files.
+- **P2** Move hardcoded network exclusions (`NETWORK_CHAIR_EXCLUDE`, `NETWORK_ADVISOR_EXCLUDE`, `NETWORK_HIDE_BOTTOM_CTA`) from `server.py` to Airtable fields for scalability.
 
-### P2
-- Verify `/api/health` endpoint resolves on live production domain (thevanguardnetwork.com).
-- Confirm Google Analytics tracking on production.
+## 3rd-party integrations
+- Airtable (PAT), Google Analytics (G-KN752VTWEN), PostHog.
 
-### Refactor (P2)
-- Break `/app/frontend/src/components.js` (>3800 lines) into per-component files.
-
-## 3rd-Party Integrations
-- Airtable (CMS) — keys in `/app/backend/.env`
-
-## Notes
-- Production uses non-www domain with strict CORS (no `allow_credentials`).
-- Nginx caches aggressively — allow propagation time for live deploys.
-- `react-slick` used only by NewsroomSliderSection; the homepage image marquee is custom CSS+RAF (not react-slick).
+## Testing
+- Latest test reports: `/app/test_reports/iteration_9.json` (bottom CTA bold event title verified). `iteration_8.json` (bottom CTA + favicon verified across 19 routes).

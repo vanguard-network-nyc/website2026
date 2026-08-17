@@ -6,7 +6,7 @@ the local test runner. This mirrors the browser-automation checks performed on t
 preview environment at 1280x900.
 """
 
-BASE_URL = "https://form-debug-8.preview.emergentagent.com"
+BASE_URL = "https://program-network.preview.emergentagent.com"
 
 async def run(page):
     await page.set_viewport_size({"width": 1280, "height": 900})

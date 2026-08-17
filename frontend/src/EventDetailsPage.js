@@ -388,6 +388,54 @@ const EventDetailsPage = () => {
             )}
           </motion.div>
         )}
+
+        {/* Bottom CTA — hidden for past events */}
+        {!isPast && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg text-center"
+            data-testid="event-detail-bottom-cta"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#045184' }}>
+              Interested in joining us?
+            </h2>
+            <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
+              Reserve your seat at <strong className="font-semibold text-slate-900">{event.event_title}</strong> and connect with peers driving executive leadership forward.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {formVariant ? (
+                <button
+                  type="button"
+                  onClick={() => setSignupOpen(true)}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  data-testid="event-detail-attend-btn-bottom"
+                >
+                  I would like to attend
+                </button>
+              ) : (
+                <a
+                  href={event.registration_url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white transition-colors"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  data-testid="event-detail-attend-btn-bottom"
+                >
+                  I would like to attend
+                  <ExternalLink size={16} />
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
 
       {/* Sign-up modal (rendered only when a form variant is configured for this series) */}

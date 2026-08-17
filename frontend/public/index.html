@@ -10,6 +10,11 @@
         
         <meta name="description" content="Join 2,000+ senior executives in peer-to-peer leadership networks. Expert advisory services for C-suite leaders focused on the human factor in leadership." />
         
+        <!-- Favicon (applies to every SPA route) -->
+        <link rel="icon" type="image/png" sizes="192x192" href="/logo192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/logo512.png" />
+        <link rel="shortcut icon" type="image/png" href="/logo192.png" />
+
         <!-- PWA Support -->
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,7 +230,7 @@
         <script>
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js?v=3')
+                    navigator.serviceWorker.register('/service-worker.js?v=4')
                         .then((registration) => {
                             console.log('ServiceWorker registered:', registration.scope);
                         })

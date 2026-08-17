@@ -19,7 +19,7 @@ import requests
 from playwright.async_api import async_playwright
 
 
-BASE_URL = os.environ.get("PREVIEW_URL", "https://form-debug-8.preview.emergentagent.com").rstrip("/")
+BASE_URL = os.environ.get("PREVIEW_URL", "https://program-network.preview.emergentagent.com").rstrip("/")
 FORUM_ID = "rec5Vr1VneQNZQ75N"
 EXCHANGE_ID = "recayFKrBhjV8bjNx"
 

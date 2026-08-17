@@ -11,7 +11,7 @@ from datetime import datetime
 import uuid
 
 # Get backend URL from environment
-BACKEND_URL = "https://form-debug-8.preview.emergentagent.com/api"
+BACKEND_URL = "https://program-network.preview.emergentagent.com/api"
 
 class BackendTester:
     def __init__(self):
@@ -781,7 +781,7 @@ class BackendTester:
                 json=test_contact_data,
                 headers={
                     "Content-Type": "application/json",
-                    "Origin": "https://form-debug-8.preview.emergentagent.com"
+                    "Origin": "https://program-network.preview.emergentagent.com"
                 },
                 timeout=15
             )
@@ -842,7 +842,7 @@ class BackendTester:
             response = self.session.options(
                 zapier_webhook_url,
                 headers={
-                    "Origin": "https://form-debug-8.preview.emergentagent.com",
+                    "Origin": "https://program-network.preview.emergentagent.com",
                     "Access-Control-Request-Method": "POST",
                     "Access-Control-Request-Headers": "Content-Type"
                 },
