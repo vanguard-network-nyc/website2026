@@ -1561,6 +1561,11 @@ NETWORK_ADVISOR_EXCLUDE = {
     "general-counsel-network": {"michael sevi"},
 }
 
+# Per-network name exclusions for the Chair gallery (case-insensitive).
+NETWORK_CHAIR_EXCLUDE = {
+    "next-gen-gc-network": {"tom sabatino"},
+}
+
 
 async def _airtable_get(base_id: str, table_id: str, params: dict = None):
     headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
@@ -1895,9 +1900,12 @@ async def get_network(slug: str):
                 (chairs if is_chair else advisors).append(mapped)
 
         # Per-network advisor exclusions (hide specific people by name, case-insensitive).
-        exclude_names = NETWORK_ADVISOR_EXCLUDE.get(slug, set())
-        if exclude_names:
-            advisors = [a for a in advisors if a.get("name", "").strip().lower() not in exclude_names]
+        exclude_advisors = NETWORK_ADVISOR_EXCLUDE.get(slug, set())
+        if exclude_advisors:
+            advisors = [a for a in advisors if a.get("name", "").strip().lower() not in exclude_advisors]
+        exclude_chairs = NETWORK_CHAIR_EXCLUDE.get(slug, set())
+        if exclude_chairs:
+            chairs = [c for c in chairs if c.get("name", "").strip().lower() not in exclude_chairs]
 
         # 4) Fetch partners linked to this Networks row, then split into two sections:
         #    - "Thanks To Our Network Partners" (individual company logos from lookup)
