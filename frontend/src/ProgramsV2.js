@@ -499,7 +499,7 @@ const ProgramsV2 = () => {
                           </motion.button>
                         </Link>
                       ) : program.name === "RISK MANAGEMENT EXCHANGE" ? (
-                        <a href="https://members.thevanguardnetwork.com/risk-management-exchange" target="_blank" rel="noopener noreferrer">
+                        <Link to="/programs/risk-management-exchange" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -508,7 +508,7 @@ const ProgramsV2 = () => {
                             Learn More
                             <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </motion.button>
-                        </a>
+                        </Link>
                       ) : (
                         <motion.button 
                           whileHover={{ scale: 1.02 }}
