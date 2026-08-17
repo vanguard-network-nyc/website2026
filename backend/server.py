@@ -1538,6 +1538,21 @@ PROGRAMS_COMPANIES_VIEW_ID = "viwM2C2Yok6tIxkW9"
 PROGRAMS_FEATURE_ITEMS_TABLE_ID = "tbl8V8nJEoY8eqv84"
 PROGRAMS_FEATURE_ITEMS_VIEW_ID = "viwS3VnFPYaikjxWh"
 
+# Networks (linked from a Programs row where Page Type = 'network')
+NETWORKS_TABLE_ID = "tbl0fz3lDtO8hUo5Z"
+NETWORKS_VIEW_ID = "viw7ZprMk32iLYkcO"
+# Network Partners: rows link to Networks; each row has a company logo attachment/lookup
+NETWORK_PARTNERS_TABLE_ID = "tbldlzSYoU3PGtJyn"
+
+# Fallback map: slug -> board tag stored on VG Contacts "board advisor/guest" field.
+# Used when the Networks row does not have an explicit `advisor_board_tag` field set.
+NETWORK_BOARD_TAGS = {
+    "general-counsel-network": "gc advisory board",
+    "next-gen-gc-network": "nggc 2025 advisory board",
+    "life-sciences-ceo-network": "lsceo advisory board",
+    "risk-management-network": "risk management advisory board",
+}
+
 
 async def _airtable_get(base_id: str, table_id: str, params: dict = None):
     headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
@@ -1575,6 +1590,32 @@ def _map_company(record):
         "id": record.get("id"),
         "name": _pick(f, "Company Name", "Name") or "",
         "logo": _first_attachment_url(_pick(f, "Logo")),
+    }
+
+
+def _map_network(record):
+    """Map a row from the Networks table."""
+    f = record.get("fields", {})
+    return {
+        "id": record.get("id"),
+        "name": _pick(f, "network name", "Network Name", "Name") or "",
+        "description_short": _pick(f, "description short", "Description Short", "Short Description") or "",
+        "description_long": _pick(f, "description long", "Description Long", "Long Description") or "",
+        # Optional override — text that appears in VG Contacts "board advisor/guest" field.
+        "advisor_board_tag": _pick(f, "advisor_board_tag", "Advisor Board Tag", "Board Tag") or "",
+    }
+
+
+def _map_network_partner(record):
+    """Map a row from the Network Partners table -> company-like shape used by Logo Gallery block."""
+    f = record.get("fields", {})
+    # Prefer explicit `graphic` attachment; fall back to `logo (from network partners)` lookup.
+    logo = _first_attachment_url(_pick(f, "graphic", "Graphic")) \
+        or _first_attachment_url(_pick(f, "logo (from network partners)", "Logo (from network partners)", "Logo"))
+    return {
+        "id": record.get("id"),
+        "name": _pick(f, "partner name", "Partner Name", "Company Name", "Name") or "",
+        "logo": logo,
     }
 
 
@@ -1754,8 +1795,186 @@ async def get_program(slug: str):
 async def get_network(slug: str):
     try:
         data = await _fetch_page_with_sections(slug, expected_type="network")
-        # Frontend expects a "network" key; keep "program" too for shared block components.
-        return {"network": data["program"], "program": data["program"], "sections": data["sections"]}
+        program = data["program"]
+
+        # 1) Find the linked Networks row from the Programs row's linked field.
+        program_records = await _airtable_get(
+            PROGRAMS_BASE_ID, PROGRAMS_TABLE_ID,
+            {"view": PROGRAMS_VIEW_ID, "maxRecords": 100}
+        )
+        program_record = next((r for r in program_records if r.get("id") == program["id"]), None)
+        network_ids = []
+        if program_record:
+            pf = program_record.get("fields", {})
+            network_ids = _pick(pf, "Network", "network", "Networks") or []
+
+        network_row = None
+        if network_ids:
+            nid = network_ids[0]
+            nrecs = await _airtable_get(
+                PROGRAMS_BASE_ID, NETWORKS_TABLE_ID,
+                {"filterByFormula": f"RECORD_ID()='{nid}'", "maxRecords": 1}
+            )
+            if nrecs:
+                network_row = _map_network(nrecs[0])
+
+        # Fall back gracefully if the Programs row doesn't have Network linked yet
+        # (page will still render with just the hero from Programs fields).
+        network_info = network_row or {
+            "id": None,
+            "name": program.get("name") or "",
+            "description_short": program.get("tagline") or "",
+            "description_long": program.get("summary") or "",
+            "advisor_board_tag": "",
+        }
+
+        # 2) Determine the board tag used to filter VG Contacts.
+        board_tag = (network_info.get("advisor_board_tag") or NETWORK_BOARD_TAGS.get(slug, "")).strip()
+
+        # 3) Fetch chair(s) and advisors from VG Contacts filtered by board tag.
+        chairs, advisors = [], []
+        if board_tag:
+            # Airtable formula: FIND is case-sensitive; wrap both sides in LOWER() for safety.
+            # "board advisor/guest" is typically a multi-select or comma-joined text; FIND on ARRAYJOIN works.
+            safe_tag = board_tag.replace("'", "\\'")
+            formula = (
+                f"AND("
+                f"FIND(LOWER('{safe_tag}'), LOWER(ARRAYJOIN({{board advisor/guest}}, ',')))>0"
+                f")"
+            )
+            try:
+                contact_records = await _airtable_get(
+                    PROGRAMS_BASE_ID, PROGRAMS_PEOPLE_TABLE_ID,
+                    {"filterByFormula": formula, "maxRecords": 200}
+                )
+            except Exception as ce:
+                logger.warning(f"Contact filter failed for '{board_tag}': {ce}")
+                contact_records = []
+
+            for cr in contact_records:
+                cf = cr.get("fields", {})
+                chair_flag = _pick(cf, "network chair", "Network Chair")
+                is_chair = False
+                if isinstance(chair_flag, bool):
+                    is_chair = chair_flag
+                elif isinstance(chair_flag, str):
+                    is_chair = chair_flag.strip().lower() in ("yes", "true", "1", "y")
+                elif isinstance(chair_flag, list):
+                    is_chair = any(str(v).strip().lower() in ("yes", "true", "1", "y") for v in chair_flag)
+                mapped = _map_person(cr)
+                (chairs if is_chair else advisors).append(mapped)
+
+        # 4) Fetch partners linked to this Networks row.
+        partners = []
+        if network_info.get("id"):
+            nid_safe = network_info["id"]
+            try:
+                partner_records = await _airtable_get(
+                    PROGRAMS_BASE_ID, NETWORK_PARTNERS_TABLE_ID,
+                    {
+                        "filterByFormula": (
+                            f"OR("
+                            f"FIND('{nid_safe}', ARRAYJOIN({{network name}}, ','))>0,"
+                            f"FIND('{nid_safe}', ARRAYJOIN({{Network Name}}, ','))>0"
+                            f")"
+                        ),
+                        "maxRecords": 200,
+                    }
+                )
+            except Exception as pe:
+                logger.warning(f"Partner fetch failed for network '{slug}': {pe}")
+                partner_records = []
+            partners = [_map_network_partner(pr) for pr in partner_records]
+            partners = [p for p in partners if p.get("logo")]
+
+        # 5) Synthesize virtual sections at the start of the page (auto-render).
+        virtual_sections = []
+        # Hero — always synthesised; uses Programs.hero_image + hero_cta_* if set,
+        # falls back to Networks name + description_short subheading + description_long body.
+        virtual_sections.append({
+            "id": f"vsec-hero-{program['id']}",
+            "order": 0,
+            "type": "Hero",
+            "heading": network_info["name"] or program["name"],
+            "subheading": network_info["description_short"] or program.get("tagline") or "",
+            "body": network_info["description_long"] or program.get("summary") or "",
+            "image": program.get("hero_image") or "",
+            "image_side": "right",
+            "video_url": "",
+            "cta_label": program.get("hero_cta_label") or "",
+            "cta_url": program.get("hero_cta_url") or "",
+            "background": "dark-box",
+            "series_code_override": "",
+            "max_items": 0,
+            "columns": "",
+            "people": [],
+            "companies": [],
+            "feature_items": [],
+        })
+
+        def _people_section(order, kind, heading, subheading, people, background):
+            return {
+                "id": f"vsec-{kind}-{program['id']}",
+                "order": order,
+                "type": "People Gallery",
+                "heading": heading,
+                "subheading": subheading,
+                "body": "",
+                "image": "",
+                "image_side": "right",
+                "video_url": "",
+                "cta_label": "",
+                "cta_url": "",
+                "background": background,
+                "series_code_override": "",
+                "max_items": 0,
+                "columns": "",
+                "people": people,
+                "companies": [],
+                "feature_items": [],
+            }
+
+        if chairs:
+            heading = "Network Chair" if len(chairs) == 1 else "Network Chairs"
+            virtual_sections.append(_people_section(10, "chair", heading, "", chairs, "light-blue-strip"))
+
+        if advisors:
+            virtual_sections.append(_people_section(20, "advisors", "Network Advisors", "", advisors, "white"))
+
+        if partners:
+            virtual_sections.append({
+                "id": f"vsec-partners-{program['id']}",
+                "order": 30,
+                "type": "Logo Gallery",
+                "heading": "Network Partners",
+                "subheading": "",
+                "body": "",
+                "image": "",
+                "image_side": "right",
+                "video_url": "",
+                "cta_label": "",
+                "cta_url": "",
+                "background": "light-blue-strip",
+                "series_code_override": "",
+                "max_items": 0,
+                "columns": "",
+                "people": [],
+                "companies": partners,
+                "feature_items": [],
+            })
+
+        # Append any manually authored Program Sections rows *after* the virtual ones.
+        # (Their `order` field is preserved; they'll appear below the auto-rendered blocks.)
+        all_sections = virtual_sections + [
+            {**s, "order": (s.get("order") or 0) + 100} for s in data["sections"]
+        ]
+        all_sections.sort(key=lambda s: s.get("order") or 999)
+
+        return {
+            "network": {**program, **network_info, "slug": program["slug"], "id": program["id"]},
+            "program": program,
+            "sections": all_sections,
+        }
     except HTTPException:
         raise
     except Exception as e:

@@ -629,7 +629,7 @@ const ProgramsV2 = () => {
       >
         <h3 className="text-xl font-bold text-slate-900 mb-6">Explore Related Resources</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link to="/networking" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+          <Link to="/networks" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
             <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Peer-to-Peer Networks</h4>
             <p className="text-sm text-slate-600 mt-1">Connect with senior executives through our membership networks</p>
           </Link>

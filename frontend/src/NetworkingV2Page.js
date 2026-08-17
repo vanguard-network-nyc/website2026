@@ -77,6 +77,17 @@ const NetworkingV2Page = () => {
       image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
       slug: "senior-leaders-network",
       link: "https://members.thevanguardnetwork.com/network-details-board/senior-leaders-network/r/recmEciU5mwqEPJt5"
+    },
+    {
+      name: "Next Gen GC Network",
+      description: "A community for the next generation of General Counsel — high-potential legal leaders preparing for the top in-house role.",
+      target: "Rising GC Talent",
+      icon: <Award size={32} />,
+      gradient: 'from-[#DC2626] to-[#991B1B]',
+      features: ["Peer Learning Cohorts", "Executive Mentorship", "Career Development", "Leadership Readiness"],
+      image: "/vanguard-boston-1.jpg",
+      slug: "next-gen-gc-network",
+      link: "/networks/next-gen-gc-network"
     }
   ];
 

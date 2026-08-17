@@ -9,7 +9,8 @@ const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
   const breadcrumbNameMap = {
     'advisory': 'Advisory',
     'programs': 'Programs',
-    'networking': 'Networking',
+    'networks': 'Networks',
+    'networking': 'Networks',
     'success-stories': 'Success Stories',
     'contact': 'Contact',
     'team': 'Team',

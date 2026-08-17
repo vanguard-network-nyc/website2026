@@ -85,8 +85,8 @@ const NetworkPage = () => {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Network not found</h1>
           <p className="text-slate-600 mb-8">We couldn't find a network at this URL.</p>
-          <Link to="/networking" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
-            <ArrowLeft size={18} /> Back to Networking
+          <Link to="/networks" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
+            <ArrowLeft size={18} /> Back to Networks
           </Link>
         </div>
       </div>
@@ -99,8 +99,8 @@ const NetworkPage = () => {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">Something went wrong</h1>
           <p className="text-slate-600 mb-8">We couldn't load this network right now. Please try again shortly.</p>
-          <Link to="/networking" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
-            <ArrowLeft size={18} /> Back to Networking
+          <Link to="/networks" className="inline-flex items-center gap-2 text-[#045184] hover:text-[#00A8E1] font-semibold">
+            <ArrowLeft size={18} /> Back to Networks
           </Link>
         </div>
       </div>
@@ -132,7 +132,7 @@ const NetworkPage = () => {
         type="website"
         breadcrumbs={[
           { name: 'Home', url: 'https://thevanguardnetwork.com/' },
-          { name: 'Networking', url: 'https://thevanguardnetwork.com/networking' },
+          { name: 'Networks', url: 'https://thevanguardnetwork.com/networks' },
           { name: network.name, url: `https://thevanguardnetwork.com/networks/${network.slug}` },
         ]}
       />
@@ -142,7 +142,7 @@ const NetworkPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-4 -mb-4">
         <Breadcrumb
           customTitle={network.name}
-          extraCrumbs={[{ name: 'Networking', to: '/networking' }]}
+          extraCrumbs={[{ name: 'Networks', to: '/networks' }]}
         />
       </div>
 

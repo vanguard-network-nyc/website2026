@@ -213,7 +213,7 @@ const Header = () => {
     },
     { 
       name: 'NETWORKS', 
-      path: '/networking'
+      path: '/networks'
     },
     { name: 'PROGRAMS', path: '/programs' },
     {
@@ -590,7 +590,7 @@ const Footer = () => {
     { name: 'LinkedIn', path: 'https://www.linkedin.com/company/thevanguardnetwork/' },
     { name: 'Privacy Policy', path: '/privacy' },
     { name: 'Terms of Use', path: '/terms' },
-    { name: 'Become a Member', path: '/networking' }
+    { name: 'Become a Member', path: '/networks' }
   ];
 
   return (
@@ -2567,7 +2567,7 @@ const NewHero = () => {
               Leadership Advisory
             </Link>
             <Link
-              to="/networking"
+              to="/networks"
               className="bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
             >
               Peer-to-Peer Networks
@@ -2653,7 +2653,7 @@ const NewWhatWeDoSection = () => {
         "No presentations"
       ],
       image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/drlsgrja_Vanguard%20GC%20may%206th-152.jpg",
-      link: "/networking"
+      link: "/networks"
     },
     {
       title: "Custom Programs",

@@ -389,7 +389,7 @@ const CaseStudiesPage = () => {
               <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Our Team</h4>
               <p className="text-sm text-slate-600 mt-1">Meet the experienced advisors behind our success stories</p>
             </Link>
-            <Link to="/networking" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
+            <Link to="/networks" className="group p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-slate-100">
               <h4 className="font-semibold text-slate-900 group-hover:text-[#045184] transition-colors">Peer Networks</h4>
               <p className="text-sm text-slate-600 mt-1">Join a community of senior executives</p>
             </Link>

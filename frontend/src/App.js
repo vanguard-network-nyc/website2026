@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Components from './components';
 import SEO from './SEO';
@@ -105,7 +105,8 @@ function App() {
           <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
           <Route path="/advisory" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
           <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
-          <Route path="/networking" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
+          <Route path="/networks" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
+          <Route path="/networking" element={<Navigate to="/networks" replace />} />
           <Route path="/networks/:slug" element={<PageWrapper><NetworkPage /></PageWrapper>} />
           <Route path="/programs" element={<PageWrapper><ProgramsV2 /></PageWrapper>} />
           <Route path="/programs/:slug" element={<PageWrapper><ProgramPage /></PageWrapper>} />

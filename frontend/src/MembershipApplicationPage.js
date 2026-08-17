@@ -70,6 +70,7 @@ const MembershipApplicationPage = () => {
     { value: 'Life Sciences CEO Network', label: 'Life Sciences CEO Network' },
     { value: 'Risk Management Network', label: 'Risk Management Network' },
     { value: 'Senior Leaders Network', label: 'Senior Leaders Network' },
+    { value: 'Next Gen GC Network', label: 'Next Gen GC Network' },
     { value: 'Not sure', label: 'Not sure' }
   ];
 
@@ -84,6 +85,7 @@ const MembershipApplicationPage = () => {
       'life-sciences-ceo-network': 'Life Sciences CEO Network',
       'risk-management-network': 'Risk Management Network',
       'senior-leaders-network': 'Senior Leaders Network',
+      'next-gen-gc-network': 'Next Gen GC Network',
     };
     const label = slugToLabel[slug];
     if (label) {

@@ -91,7 +91,7 @@ const NotFoundPage = () => {
                 Programs
               </Link>
               <Link
-                to="/networking"
+                to="/networks"
                 className="p-4 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#045184] font-medium transition-all duration-200"
               >
                 Networking
