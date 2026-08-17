@@ -429,7 +429,7 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
   const dark = isDarkInside(background);
   return (
     <Section background={background} first={first} dataTestId="program-investment">
-      <div className={`mx-auto text-center ${cardWrapClass(background)}`}>
+      <div className={`mx-auto ${cardWrapClass(background)}`}>
         {heading && (
           <h2 className={`text-2xl md:text-4xl font-bold mb-3 pb-1 leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>
             {heading}
