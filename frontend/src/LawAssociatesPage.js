@@ -148,16 +148,53 @@ const LawAssociatesPage = () => {
   ];
 
   return (
-    <div
-      className="pt-40 pb-16 min-h-screen bg-gradient-to-br from-slate-50 to-blue-50"
-    >
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <SEO 
         title="Law Associates Leadership Program"
         description="Transform law firm associates into valued business partners. Interactive leadership sessions with GCs and top executives on real-world challenges."
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
-        {/* Breadcrumb */}
-        <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mb-6">
+
+      {/* Hero — dark gradient banner (matches /programs/:slug hero) */}
+      <section className="relative pt-40 pb-16 md:pb-20 bg-gradient-to-br from-[#032a48] via-[#045184] to-[#00A8E1] text-white overflow-hidden">
+        <div className="relative max-w-6xl mx-auto px-4 md:px-8">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
+          >
+            Law Associates Accelerator
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-2xl text-blue-100 mb-6 max-w-3xl"
+          >
+            Associates are the future of every law firm–whether they become partners, or go in-house to corporate law departments–and thus swiftly become potential clients of the firm.
+          </motion.p>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-wrap gap-3"
+          >
+            <span className="bg-white/15 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">
+              Legal Professional Development
+            </span>
+            <span className="bg-white/15 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">
+              Up to 20 per cohort
+            </span>
+            <span className="bg-white/15 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">
+              Enrollment Open
+            </span>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-6 pb-16">
+        {/* Breadcrumb (moved below hero to match /programs/:slug pattern) */}
+        <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mb-8">
           <Link to="/" className="flex items-center text-slate-600 hover:text-[#045184] transition-colors duration-200">
             <Home size={16} />
           </Link>
@@ -172,34 +209,6 @@ const LawAssociatesPage = () => {
           <ChevronRight size={16} className="text-slate-400" />
           <span className="text-[#045184] font-semibold">Law Associates</span>
         </nav>
-
-        {/* Hero Section */}
-        <div className="relative mb-16">
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-2xl md:text-4xl md:text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent mb-6 pb-2">
-              Law Associates Accelerator
-            </h1>
-            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8">
-              Associates are the future of every law firm–whether they become partners, or go in-house to corporate law departments–and thus swiftly become potential clients of the firm.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <span className="bg-[#045184] text-white px-4 py-2 rounded-full text-sm font-medium">
-                Legal Professional Development
-              </span>
-              <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-                Up to 20 per cohort
-              </span>
-              <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
-                Enrollment Open
-              </span>
-            </div>
-          </motion.div>
-        </div>
 
         {/* Context Section */}
         <motion.div
