@@ -1598,25 +1598,40 @@ def _map_network(record):
     f = record.get("fields", {})
     return {
         "id": record.get("id"),
-        "name": _pick(f, "network name", "Network Name", "Name") or "",
-        "description_short": _pick(f, "description short", "Description Short", "Short Description") or "",
-        "description_long": _pick(f, "description long", "Description Long", "Long Description") or "",
+        "name": _pick(f, "Network Name", "network name", "Name") or "",
+        "description_short": _pick(f, "Description short", "description short", "Description Short", "Short Description") or "",
+        "description_long": _pick(f, "Description long", "description long", "Description Long", "Long Description") or "",
         # Optional override — text that appears in VG Contacts "board advisor/guest" field.
         "advisor_board_tag": _pick(f, "advisor_board_tag", "Advisor Board Tag", "Board Tag") or "",
     }
 
 
-def _map_network_partner(record):
-    """Map a row from the Network Partners table -> company-like shape used by Logo Gallery block."""
+def _explode_network_partner_row(record):
+    """A single Partners row can carry MULTIPLE company logos via a lookup field.
+    Explode each row into a list of {id, name, logo} entries, one per company."""
     f = record.get("fields", {})
-    # Prefer explicit `graphic` attachment; fall back to `logo (from network partners)` lookup.
-    logo = _first_attachment_url(_pick(f, "graphic", "Graphic")) \
-        or _first_attachment_url(_pick(f, "logo (from network partners)", "Logo (from network partners)", "Logo"))
-    return {
-        "id": record.get("id"),
-        "name": _pick(f, "partner name", "Partner Name", "Company Name", "Name") or "",
-        "logo": logo,
-    }
+    logos = _pick(f, "Logo (from Network Partners)", "logo (from network partners)") or []
+    names = _pick(f, "Company Name (from Network Partners)", "company name (from network partners)") or []
+    company_ids = _pick(f, "Network Partners", "network partners") or []
+    results = []
+    if isinstance(logos, list) and logos:
+        for i, logo in enumerate(logos):
+            if isinstance(logo, dict) and logo.get("url"):
+                results.append({
+                    "id": company_ids[i] if isinstance(company_ids, list) and i < len(company_ids) else f"{record.get('id')}-{i}",
+                    "name": names[i] if isinstance(names, list) and i < len(names) else "",
+                    "logo": logo["url"],
+                })
+    if not results:
+        # Fallback: use the row-level Graphic attachment (some rows may only carry a group graphic).
+        graphic = _first_attachment_url(_pick(f, "Graphic", "graphic"))
+        if graphic:
+            results.append({
+                "id": record.get("id"),
+                "name": _pick(f, "Description", "description") or "",
+                "logo": graphic,
+            })
+    return results
 
 
 def _map_feature_item(record):
@@ -1865,26 +1880,24 @@ async def get_network(slug: str):
                 (chairs if is_chair else advisors).append(mapped)
 
         # 4) Fetch partners linked to this Networks row.
+        # Note: Airtable formulas on linked fields return display names, not record IDs,
+        # so we fetch all partner rows and filter in Python by the linked record ID.
         partners = []
         if network_info.get("id"):
-            nid_safe = network_info["id"]
+            nid = network_info["id"]
             try:
                 partner_records = await _airtable_get(
                     PROGRAMS_BASE_ID, NETWORK_PARTNERS_TABLE_ID,
-                    {
-                        "filterByFormula": (
-                            f"OR("
-                            f"FIND('{nid_safe}', ARRAYJOIN({{network name}}, ','))>0,"
-                            f"FIND('{nid_safe}', ARRAYJOIN({{Network Name}}, ','))>0"
-                            f")"
-                        ),
-                        "maxRecords": 200,
-                    }
+                    {"maxRecords": 500}
                 )
             except Exception as pe:
                 logger.warning(f"Partner fetch failed for network '{slug}': {pe}")
                 partner_records = []
-            partners = [_map_network_partner(pr) for pr in partner_records]
+            for pr in partner_records:
+                pf = pr.get("fields", {})
+                links = _pick(pf, "Networks", "networks") or []
+                if isinstance(links, list) and nid in links:
+                    partners.extend(_explode_network_partner_row(pr))
             partners = [p for p in partners if p.get("logo")]
 
         # 5) Synthesize virtual sections at the start of the page (auto-render).
