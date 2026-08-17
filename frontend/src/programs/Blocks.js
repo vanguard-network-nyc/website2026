@@ -465,14 +465,15 @@ const lastNameOf = (name) => {
 };
 
 export const PeopleGallery = ({ section, first }) => {
-  const { heading, subheading, people, background } = section;
+  const { heading, subheading, people, background, columns } = section;
   const [expanded, setExpanded] = useState(false);
   if (!people || people.length === 0) return null;
   const dark = isDarkContrast(background);
   const boxed = cardWrapClass(background);
   const sorted = [...people].sort((a, b) => lastNameOf(a.name).localeCompare(lastNameOf(b.name)));
+  const showAll = (columns || '').toLowerCase() === 'all';
   const INITIAL = 12;
-  const hasMore = sorted.length > INITIAL;
+  const hasMore = !showAll && sorted.length > INITIAL;
   const visible = expanded || !hasMore ? sorted : sorted.slice(0, INITIAL);
   return (
     <Section background={background} first={first} dataTestId="program-people-gallery">
@@ -551,12 +552,12 @@ export const LogoGallery = ({ section, first }) => {
     itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105";
     imgCls = "w-full h-auto max-h-[520px] object-contain";
   } else if (variant === 'dense') {
-    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-2 md:gap-x-3 gap-y-4";
-    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-16 md:h-20";
-    imgCls = "max-h-14 md:max-h-16 max-w-full object-contain";
+    gridCls = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-x-1 md:gap-x-2 gap-y-3";
+    itemCls = "flex items-center justify-center transition-transform duration-300 hover:scale-105 h-20 md:h-24";
+    imgCls = "max-h-16 md:max-h-20 max-w-full object-contain";
   }
 
-  const INITIAL = 15;
+  const INITIAL = 18;
   const hasMore = variant === 'dense' && companies.length > INITIAL;
   const visible = hasMore && !expanded ? companies.slice(0, INITIAL) : companies;
 
