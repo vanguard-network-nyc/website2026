@@ -330,20 +330,34 @@ export const FeatureCardsBlock = ({ section, first }) => {
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         <div className={`grid gap-6 ${cols}`}>
-          {feature_items.map((item) => {
-            const Icon = ICONS[item.icon] || Zap;
+          {feature_items.map((item, idx) => {
+            const hasIcon = !!item.icon && !!ICONS[item.icon];
+            const Icon = ICONS[item.icon];
             return (
-              <div key={item.id} className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm'}`}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1]">
-                  <Icon size={24} className="text-white" />
-                </div>
+              <motion.div
+                key={item.id}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: Math.min(idx * 0.08, 0.4) }}
+                className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border-white/20' : 'bg-white border-slate-200 shadow-sm'}`}
+              >
+                {hasIcon ? (
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1] shadow-md">
+                    <Icon size={24} className="text-white" />
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white font-bold shadow-md">
+                    {idx + 1}
+                  </div>
+                )}
                 <h3 className={`text-lg font-bold mb-2 ${dark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
                 {item.body && (
                   <div className={`text-sm ${dark ? 'text-blue-100' : 'text-slate-600'}`}>
                     <Markdown dark={dark}>{item.body}</Markdown>
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -471,8 +485,15 @@ export const PeopleGallery = ({ section, first }) => {
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         {!subheading && heading && <div className="mb-8" />}
         <div className="flex flex-wrap justify-center gap-6">
-          {visible.map((p) => (
-            <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] max-w-xs ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
+          {visible.map((p, idx) => (
+            <motion.div
+              key={p.id}
+              initial={{ y: 24, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: Math.min(idx * 0.05, 0.4) }}
+              className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] max-w-xs ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}
+            >
               {p.headshot ? (
                 <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
               ) : (
@@ -488,7 +509,7 @@ export const PeopleGallery = ({ section, first }) => {
                   <Linkedin size={16} />
                 </a>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
         {hasMore && (
@@ -524,14 +545,21 @@ export const LogoGallery = ({ section, first }) => {
         )}
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-          {companies.map((c) => (
-            <div key={c.id} className="flex items-center justify-center transition-transform duration-300 hover:scale-105 w-40 md:w-56 h-24 md:h-32">
+          {companies.map((c, idx) => (
+            <motion.div
+              key={c.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: Math.min(idx * 0.05, 0.4) }}
+              className="flex items-center justify-center transition-transform duration-300 hover:scale-105 w-40 md:w-56 h-24 md:h-32"
+            >
               {c.logo ? (
                 <img src={c.logo} alt={c.name} title={c.name} className="max-h-24 md:max-h-32 max-w-full object-contain" />
               ) : (
                 <span className={`text-sm text-center ${dark ? 'text-white' : 'text-slate-700'}`}>{c.name}</span>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -571,11 +599,15 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
       <div className={boxed}>
         <h2 className={`text-2xl md:text-4xl font-bold mb-8 pb-1 text-center leading-tight ${dark ? 'text-white' : 'bg-gradient-to-r from-[#045184] to-[#00A8E1] bg-clip-text text-transparent'}`}>{heading}</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event) => (
-            <a
+          {events.map((event, idx) => (
+            <motion.a
               key={event.id}
               href={`/events/${event.id}`}
-              className={`block rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow ${dark ? 'bg-white/10 border border-white/20' : 'bg-white border border-slate-200'}`}
+              initial={{ y: 24, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: Math.min(idx * 0.08, 0.4) }}
+              className={`block rounded-2xl overflow-hidden shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${dark ? 'bg-white/10 border border-white/20' : 'bg-white border border-slate-200'}`}
             >
               {event.listing_picture ? (
                 <img src={event.listing_picture} alt={event.event_title} className="w-full h-64 object-cover" />
@@ -595,7 +627,7 @@ export const RelatedEventsBlock = ({ section, program, first }) => {
                   View Details <ArrowRight size={14} />
                 </span>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
