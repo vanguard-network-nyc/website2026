@@ -1543,6 +1543,8 @@ NETWORKS_TABLE_ID = "tbl0fz3lDtO8hUo5Z"
 NETWORKS_VIEW_ID = "viw7ZprMk32iLYkcO"
 # Network Partners: rows link to Networks; each row has a company logo attachment/lookup
 NETWORK_PARTNERS_TABLE_ID = "tbldlzSYoU3PGtJyn"
+# Membership records (one row per member) linked from Networks.Members Vanguard
+NETWORK_MEMBERS_TABLE_ID = "tblzhqX81e1myqL8B"
 
 # Fallback map: slug -> board tag stored on VG Contacts "board advisor/guest" field.
 # Used when the Networks row does not have an explicit `advisor_board_tag` field set.
@@ -1603,18 +1605,20 @@ def _map_network(record):
         "description_long": _pick(f, "Description long", "description long", "Description Long", "Long Description") or "",
         # Optional override — text that appears in VG Contacts "board advisor/guest" field.
         "advisor_board_tag": _pick(f, "advisor_board_tag", "Advisor Board Tag", "Board Tag") or "",
+        # Linked VG Contacts that are members of this network.
+        "member_contact_ids": _pick(f, "Members Vanguard", "members vanguard", "Members") or [],
     }
 
 
-def _explode_network_partner_row(record):
-    """A single Partners row can carry MULTIPLE company logos via a lookup field.
-    Explode each row into a list of {id, name, logo} entries, one per company."""
+def _extract_partner_company_logos(record):
+    """From one Partners row, return the individual company logos (for the
+    "Thanks To Our Network Partners" gallery). Does NOT include the row-level Graphic."""
     f = record.get("fields", {})
     logos = _pick(f, "Logo (from Network Partners)", "logo (from network partners)") or []
     names = _pick(f, "Company Name (from Network Partners)", "company name (from network partners)") or []
     company_ids = _pick(f, "Network Partners", "network partners") or []
     results = []
-    if isinstance(logos, list) and logos:
+    if isinstance(logos, list):
         for i, logo in enumerate(logos):
             if isinstance(logo, dict) and logo.get("url"):
                 results.append({
@@ -1622,16 +1626,21 @@ def _explode_network_partner_row(record):
                     "name": names[i] if isinstance(names, list) and i < len(names) else "",
                     "logo": logo["url"],
                 })
-    if not results:
-        # Fallback: use the row-level Graphic attachment (some rows may only carry a group graphic).
-        graphic = _first_attachment_url(_pick(f, "Graphic", "graphic"))
-        if graphic:
-            results.append({
-                "id": record.get("id"),
-                "name": _pick(f, "Description", "description") or "",
-                "logo": graphic,
-            })
     return results
+
+
+def _extract_partner_access_item(record):
+    """From one Partners row, return the row-level graphic (for the
+    "Membership Provides Access To" gallery). One item per row max."""
+    f = record.get("fields", {})
+    graphic = _first_attachment_url(_pick(f, "Graphic", "graphic"))
+    if not graphic:
+        return None
+    return {
+        "id": record.get("id"),
+        "name": _pick(f, "Description", "description") or "",
+        "logo": graphic,
+    }
 
 
 def _map_feature_item(record):
@@ -1879,10 +1888,13 @@ async def get_network(slug: str):
                 mapped = _map_person(cr)
                 (chairs if is_chair else advisors).append(mapped)
 
-        # 4) Fetch partners linked to this Networks row.
+        # 4) Fetch partners linked to this Networks row, then split into two sections:
+        #    - "Thanks To Our Network Partners" (individual company logos from lookup)
+        #    - "Membership Provides Access To" (row-level graphics)
         # Note: Airtable formulas on linked fields return display names, not record IDs,
         # so we fetch all partner rows and filter in Python by the linked record ID.
-        partners = []
+        partner_logos = []
+        access_items = []
         if network_info.get("id"):
             nid = network_info["id"]
             try:
@@ -1896,14 +1908,54 @@ async def get_network(slug: str):
             for pr in partner_records:
                 pf = pr.get("fields", {})
                 links = _pick(pf, "Networks", "networks") or []
-                if isinstance(links, list) and nid in links:
-                    partners.extend(_explode_network_partner_row(pr))
-            partners = [p for p in partners if p.get("logo")]
+                if not (isinstance(links, list) and nid in links):
+                    continue
+                partner_logos.extend(_extract_partner_company_logos(pr))
+                access_item = _extract_partner_access_item(pr)
+                if access_item:
+                    access_items.append(access_item)
+            partner_logos = [p for p in partner_logos if p.get("logo")]
+
+        # 4b) Fetch network members from the Members Vanguard table.
+        # Each row already carries Company name + Logo attachment; dedupe by company name.
+        member_companies = []
+        member_ids = network_info.get("member_contact_ids") or []
+        if member_ids:
+            id_chunks = [member_ids[i:i+50] for i in range(0, len(member_ids), 50)]
+            seen_companies = {}  # lowercased name -> {id, name, logo}
+            for chunk in id_chunks:
+                formula = "OR(" + ",".join([f"RECORD_ID()='{mid}'" for mid in chunk]) + ")"
+                try:
+                    member_recs = await _airtable_get(
+                        PROGRAMS_BASE_ID, NETWORK_MEMBERS_TABLE_ID,
+                        {"filterByFormula": formula, "maxRecords": len(chunk)}
+                    )
+                except Exception as me:
+                    logger.warning(f"Member fetch batch failed for '{slug}': {me}")
+                    member_recs = []
+                for mr in member_recs:
+                    mf = mr.get("fields", {})
+                    cname = (_pick(mf, "Company", "Company (from VG Contacts)") or "").strip()
+                    logo = _first_attachment_url(
+                        _pick(mf, "Logo (from Company copy)", "Logo", "Company Logo")
+                    )
+                    if not cname or not logo:
+                        continue
+                    key = cname.lower()
+                    if key in seen_companies:
+                        continue
+                    seen_companies[key] = {
+                        "id": mr.get("id"),
+                        "name": cname,
+                        "logo": logo,
+                    }
+            member_companies = list(seen_companies.values())
+            member_companies.sort(key=lambda c: c["name"].lower())
 
         # 5) Synthesize virtual sections at the start of the page (auto-render).
         virtual_sections = []
-        # Hero — always synthesised; uses Programs.hero_image + hero_cta_* if set,
-        # falls back to Networks name + description_short subheading + description_long body.
+        # Hero CTA -> opens modal (uniform per network); frontend registers 'network-membership-form'.
+        hero_cta_label = program.get("hero_cta_label") or f"Join The {network_info['name'] or program['name']}"
         virtual_sections.append({
             "id": f"vsec-hero-{program['id']}",
             "order": 0,
@@ -1914,8 +1966,8 @@ async def get_network(slug: str):
             "image": program.get("hero_image") or "",
             "image_side": "right",
             "video_url": "",
-            "cta_label": program.get("hero_cta_label") or "",
-            "cta_url": program.get("hero_cta_url") or "",
+            "cta_label": hero_cta_label,
+            "cta_url": "#form:network-membership-form",
             "background": "dark-box",
             "series_code_override": "",
             "max_items": 0,
@@ -1925,11 +1977,11 @@ async def get_network(slug: str):
             "feature_items": [],
         })
 
-        def _people_section(order, kind, heading, subheading, people, background):
+        def _base_section(order, kind, block_type, heading, background, people=None, companies=None, subheading=""):
             return {
                 "id": f"vsec-{kind}-{program['id']}",
                 "order": order,
-                "type": "People Gallery",
+                "type": block_type,
                 "heading": heading,
                 "subheading": subheading,
                 "body": "",
@@ -1942,39 +1994,48 @@ async def get_network(slug: str):
                 "series_code_override": "",
                 "max_items": 0,
                 "columns": "",
-                "people": people,
-                "companies": [],
+                "people": people or [],
+                "companies": companies or [],
                 "feature_items": [],
             }
 
         if chairs:
             heading = "Network Chair" if len(chairs) == 1 else "Network Chairs"
-            virtual_sections.append(_people_section(10, "chair", heading, "", chairs, "light-blue-strip"))
+            virtual_sections.append(_base_section(10, "chair", "People Gallery", heading, "light-blue-strip", people=chairs))
 
         if advisors:
-            virtual_sections.append(_people_section(20, "advisors", "Network Advisors", "", advisors, "white"))
+            virtual_sections.append(_base_section(20, "advisors", "People Gallery", "Network Advisors", "white", people=advisors))
 
-        if partners:
-            virtual_sections.append({
-                "id": f"vsec-partners-{program['id']}",
-                "order": 30,
-                "type": "Logo Gallery",
-                "heading": "Network Partners",
-                "subheading": "",
-                "body": "",
-                "image": "",
-                "image_side": "right",
-                "video_url": "",
-                "cta_label": "",
-                "cta_url": "",
-                "background": "light-blue-strip",
-                "series_code_override": "",
-                "max_items": 0,
-                "columns": "",
-                "people": [],
-                "companies": partners,
-                "feature_items": [],
-            })
+        if access_items:
+            virtual_sections.append(_base_section(30, "access", "Logo Gallery", "Membership Provides Access To", "light-blue-strip", companies=access_items))
+
+        if partner_logos:
+            virtual_sections.append(_base_section(40, "partners", "Logo Gallery", "Thanks To Our Network Partners", "white", companies=partner_logos))
+
+        if member_companies:
+            virtual_sections.append(_base_section(50, "members", "Logo Gallery", "Our Network Has Included Leaders From These Organizations", "light-blue-strip", companies=member_companies))
+
+        # Bottom CTA Banner — same button as the hero, dark background
+        virtual_sections.append({
+            "id": f"vsec-cta-{program['id']}",
+            "order": 90,
+            "type": "CTA Banner",
+            "heading": f"Ready to Join the {network_info['name'] or program['name']}?",
+            "subheading": "",
+            "body": network_info["description_short"] or "",
+            "image": "",
+            "image_side": "right",
+            "video_url": "",
+            "cta_label": hero_cta_label,
+            "cta_url": "#form:network-membership-form",
+            "background": "dark-box",
+            "series_code_override": "",
+            "max_items": 0,
+            "columns": "",
+            "people": [],
+            "companies": [],
+            "feature_items": [],
+        })
 
         # Append any manually authored Program Sections rows *after* the virtual ones.
         # (Their `order` field is preserved; they'll appear below the auto-rendered blocks.)
