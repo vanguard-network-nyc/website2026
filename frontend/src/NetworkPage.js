@@ -5,6 +5,7 @@ import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 import { BLOCK_REGISTRY, HeroBlock } from './programs/Blocks';
 import SignupModal from './SignupModal';
+import MembershipApplicationForm from './signup-forms/MembershipApplicationForm';
 import CSCGuestTrialForm from './signup-forms/CSCGuestTrialForm';
 import GCFForumForm from './signup-forms/GCFForumForm';
 import LSCEOFForumForm from './signup-forms/LSCEOFForumForm';
@@ -21,8 +22,8 @@ const FORM_VARIANTS = {
   'rmx-form':              { title: 'Contact us to join the Risk Management Network',   Component: MemberNetworkForm },
   'lsceox-form':           { title: 'Contact us to join the Life Sciences CEO Network', Component: MemberNetworkForm },
   'nggc-nomination-form':  { title: 'Next Generation GC Program: Nominate Your Candidate', Component: NGGCNominationForm },
-  // Generic form used by every network page — the title is overridden with the network's name at open time.
-  'network-membership-form': { title: 'Contact us to join', Component: MemberNetworkForm },
+  // Membership application form (same as /application) — used on every network page in a modal.
+  'membership-application': { title: 'Vanguard Network Membership', Component: MembershipApplicationForm },
 };
 
 const NetworkPage = () => {
@@ -117,9 +118,7 @@ const NetworkPage = () => {
 
   const hasExplicitHero = sections.length > 0 && sections[0].type === 'Hero';
   const formVariant = formModalKey ? FORM_VARIANTS[formModalKey] : null;
-  const modalTitle = formModalKey === 'network-membership-form'
-    ? `Contact us to join the ${network.name}`
-    : formVariant?.title;
+  const modalTitle = formVariant?.title;
 
   const networkAsEvent = {
     id: null,
@@ -176,11 +175,15 @@ const NetworkPage = () => {
           onClose={closeForm}
           title={modalTitle}
         >
-          <formVariant.Component
-            event={networkAsEvent}
-            formKey={formModalKey}
-            onSuccess={() => { /* keep modal open on success view */ }}
-          />
+          {formModalKey === 'membership-application' ? (
+            <MembershipApplicationForm initialNetwork={network.name} compact />
+          ) : (
+            <formVariant.Component
+              event={networkAsEvent}
+              formKey={formModalKey}
+              onSuccess={() => { /* keep modal open on success view */ }}
+            />
+          )}
         </SignupModal>
       )}
     </div>
