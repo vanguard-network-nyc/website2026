@@ -201,7 +201,7 @@ const LawAssociatesPage = () => {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold bg-white text-[#045184] hover:bg-slate-100 transition-colors"
             >
               <Mail size={18} />
-              Contact Us for More Details
+              Contact Us For More Details
             </Link>
           </motion.div>
         </div>
@@ -465,7 +465,7 @@ const LawAssociatesPage = () => {
                     className="bg-white text-[#045184] w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-base hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Mail size={20} />
-                    Contact Us for More Details
+                    Contact Us For More Details
                   </motion.button>
                 </Link>
               </div>
