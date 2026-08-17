@@ -16,9 +16,9 @@ const FORM_VARIANTS = {
   'csc-form':              { title: 'I would like to attend this event!',              Component: CSCGuestTrialForm },
   'gcf-form':              { title: 'I would like to attend this event!',              Component: GCFForumForm },
   'lsceof-form':           { title: 'I would like to attend this event!',              Component: LSCEOFForumForm },
-  'gcx-form':              { title: 'Member-only event for General Counsel Network',   Component: MemberNetworkForm },
-  'rmx-form':              { title: 'Member-only event for Risk Management Network',   Component: MemberNetworkForm },
-  'lsceox-form':           { title: 'Member-only event for Life Sciences CEO Network', Component: MemberNetworkForm },
+  'gcx-form':              { title: 'Contact us to join the General Counsel Network',   Component: MemberNetworkForm },
+  'rmx-form':              { title: 'Contact us to join the Risk Management Network',   Component: MemberNetworkForm },
+  'lsceox-form':           { title: 'Contact us to join the Life Sciences CEO Network', Component: MemberNetworkForm },
   'nggc-nomination-form':  { title: 'Next Generation GC Program: Nominate Your Candidate', Component: NGGCNominationForm },
 };
 
