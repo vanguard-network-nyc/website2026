@@ -444,11 +444,22 @@ export const InvestmentBlock = ({ section, first, onOpenForm }) => {
 };
 
 // ---------- 9. People Gallery ----------
+const lastNameOf = (name) => {
+  if (!name) return '';
+  const parts = String(name).trim().split(/\s+/);
+  return (parts[parts.length - 1] || '').toLowerCase();
+};
+
 export const PeopleGallery = ({ section, first }) => {
   const { heading, subheading, people, background } = section;
+  const [expanded, setExpanded] = useState(false);
   if (!people || people.length === 0) return null;
   const dark = isDarkContrast(background);
   const boxed = cardWrapClass(background);
+  const sorted = [...people].sort((a, b) => lastNameOf(a.name).localeCompare(lastNameOf(b.name)));
+  const INITIAL = 12;
+  const hasMore = sorted.length > INITIAL;
+  const visible = expanded || !hasMore ? sorted : sorted.slice(0, INITIAL);
   return (
     <Section background={background} first={first} dataTestId="program-people-gallery">
       <div className={boxed}>
@@ -460,7 +471,7 @@ export const PeopleGallery = ({ section, first }) => {
         {subheading && <p className={`text-lg mb-10 text-center ${dark ? 'text-blue-100' : 'text-slate-600'}`}>{subheading}</p>}
         {!subheading && heading && <div className="mb-8" />}
         <div className="flex flex-wrap justify-center gap-6">
-          {people.map((p) => (
+          {visible.map((p) => (
             <div key={p.id} className={`text-center p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] max-w-xs ${dark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
               {p.headshot ? (
                 <img src={p.headshot} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover shadow-md ring-2 ring-white mb-3" />
@@ -480,6 +491,18 @@ export const PeopleGallery = ({ section, first }) => {
             </div>
           ))}
         </div>
+        {hasMore && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors ${dark ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20' : 'bg-white text-[#045184] hover:bg-slate-100 border border-slate-200 shadow-sm'}`}
+              data-testid="people-gallery-toggle"
+            >
+              {expanded ? 'Show less' : `See more (${sorted.length - INITIAL})`}
+            </button>
+          </div>
+        )}
       </div>
     </Section>
   );
