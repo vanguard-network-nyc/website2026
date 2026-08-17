@@ -1566,6 +1566,9 @@ NETWORK_CHAIR_EXCLUDE = {
     "next-gen-gc-network": {"tom sabatino"},
 }
 
+# Networks that should NOT render the bottom CTA banner.
+NETWORK_HIDE_BOTTOM_CTA = {"senior-in-house-counsel-network"}
+
 
 async def _airtable_get(base_id: str, table_id: str, params: dict = None):
     headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
@@ -2041,26 +2044,27 @@ async def get_network(slug: str):
             virtual_sections.append(sec)
 
         # Bottom CTA Banner — same button as the hero, dark background
-        virtual_sections.append({
-            "id": f"vsec-cta-{program['id']}",
-            "order": 90,
-            "type": "CTA Banner",
-            "heading": f"Ready to Join the {network_info['name'] or program['name']}?",
-            "subheading": "",
-            "body": network_info["description_short"] or "",
-            "image": "",
-            "image_side": "right",
-            "video_url": "",
-            "cta_label": hero_cta_label,
-            "cta_url": "#form:membership-application",
-            "background": "dark-box",
-            "series_code_override": "",
-            "max_items": 0,
-            "columns": "",
-            "people": [],
-            "companies": [],
-            "feature_items": [],
-        })
+        if slug not in NETWORK_HIDE_BOTTOM_CTA:
+            virtual_sections.append({
+                "id": f"vsec-cta-{program['id']}",
+                "order": 90,
+                "type": "CTA Banner",
+                "heading": f"Ready to Join the {network_info['name'] or program['name']}?",
+                "subheading": "",
+                "body": network_info["description_short"] or "",
+                "image": "",
+                "image_side": "right",
+                "video_url": "",
+                "cta_label": hero_cta_label,
+                "cta_url": "#form:membership-application",
+                "background": "dark-box",
+                "series_code_override": "",
+                "max_items": 0,
+                "columns": "",
+                "people": [],
+                "companies": [],
+                "feature_items": [],
+            })
 
         # Append any manually authored Program Sections rows *after* the virtual ones.
         # (Their `order` field is preserved; they'll appear below the auto-rendered blocks.)
