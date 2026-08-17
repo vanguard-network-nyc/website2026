@@ -40,7 +40,7 @@ const NetworkingV2Page = () => {
       icon: <Award size={32} />,
       gradient: 'from-[#DC2626] to-[#991B1B]',
       features: ["Peer Learning Cohorts", "Executive Mentorship", "Career Development", "Leadership Readiness"],
-      image: "/vanguard-boston-1.jpg",
+      image: "/gc-forum-2026-3.jpg",
       slug: "next-gen-gc-network",
     },
     {
@@ -80,7 +80,7 @@ const NetworkingV2Page = () => {
       icon: <Users size={32} />,
       gradient: 'from-[#14B8A6] to-[#0F766E]',
       features: ["Foundational Community Access", "Cross-Industry Networking", "Leadership Discussions & Peer Support", "Board Member Connections"],
-      image: "https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/sgxk7zcq_1.jpeg",
+      image: "/gc-forum-2026-6.jpg",
       slug: "senior-leaders-network",
     }
   ];
