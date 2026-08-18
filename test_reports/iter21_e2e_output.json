@@ -1,0 +1,25 @@
+{
+  "http_status": 200,
+  "matches_found": 1,
+  "matching_rows": [
+    {
+      "record": {
+        "Event Code (For admin)": "NGGC2027_0201",
+        "Recommendations/further info:": "requirements.txt cleanup verify",
+        "Timestamp": "2026-08-18T11:55:58.067814+00:00",
+        "Your Work Email ": "e2e-iter21-20260818115556@test.local"
+      },
+      "row_number": 31
+    }
+  ],
+  "request_payload": {
+    "comments": "requirements.txt cleanup verify",
+    "email": "e2e-iter21-20260818115556@test.local",
+    "eventCode": "NGGC2027_0201"
+  },
+  "response_json": {
+    "ok": true,
+    "row_id": "sheet-row-31"
+  },
+  "response_text": "{\"ok\":true,\"row_id\":\"sheet-row-31\"}"
+}
