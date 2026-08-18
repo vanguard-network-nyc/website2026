@@ -18,9 +18,9 @@ const SUBMIT_URL = `${process.env.REACT_APP_BACKEND_URL || ''}/api/lsceo-grant/s
 const GRANT_PAGE_URL = '/life-sciences-ceo/grant';
 const NETWORK_PAGE_URL = '/networks/life-sciences-ceo-network';
 
-const labelCls = 'block text-sm font-semibold text-slate-700 mb-2';
+const labelCls = 'block text-sm font-semibold text-slate-700 mb-1';
 const inputCls =
-  'w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-[#00A8E1] transition-colors text-slate-900 placeholder-slate-400';
+  'w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-[#00A8E1] transition-colors text-slate-900 placeholder-slate-400';
 const helpCls = 'text-xs text-slate-500 mt-1';
 
 const phoneInputStyles = `
@@ -41,17 +41,17 @@ const phoneInputStyles = `
 `;
 
 const YesNo = ({ id, label, value, onChange, testId }) => (
-  <div>
-    <div id={id} className={labelCls}>
+  <div className="flex items-center gap-4">
+    <div id={id} className="flex-1 text-sm font-semibold text-slate-700">
       {label} <span className="text-red-500">*</span>
     </div>
-    <div className="flex gap-3">
+    <div className="flex gap-2 flex-shrink-0">
       {['Yes', 'No'].map((opt) => {
         const selected = value === opt;
         return (
           <label
             key={opt}
-            className={`flex-1 cursor-pointer border-2 rounded-lg px-4 py-3 text-center font-semibold transition-colors ${
+            className={`cursor-pointer border-2 rounded-lg px-5 py-1.5 text-center text-sm font-semibold transition-colors ${
               selected
                 ? 'border-[#00A8E1] bg-[#00A8E1] text-white'
                 : 'border-slate-200 text-slate-700 hover:border-[#00A8E1] hover:text-[#00A8E1]'
@@ -111,15 +111,15 @@ const normalizeUrl = (raw) => {
 };
 
 const Header = () => (
-  <div className="mb-6 pb-6 border-b border-slate-200" data-testid="grant-form-header">
+  <div className="mb-4 pb-4 border-b border-slate-200" data-testid="grant-form-header">
     <div className="text-center">
-      <p className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-2">
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
         Thanks to our sponsor
       </p>
       <img
         src={BERKLEY_LOGO_URL}
         alt="Berkley Lifesciences"
-        className="h-14 md:h-16 mx-auto object-contain"
+        className="h-10 md:h-12 mx-auto object-contain"
       />
     </div>
   </div>
@@ -234,10 +234,10 @@ const LSCEOGrantForm = ({ onClose }) => {
   // --- Section 1: eligibility ------------------------------------------------
   if (step === 'section1') {
     return (
-      <form onSubmit={handleSection1Continue} data-testid="grant-form-section1" className="space-y-6">
+      <form onSubmit={handleSection1Continue} data-testid="grant-form-section1" className="space-y-4">
         <style>{phoneInputStyles}</style>
         <Header />
-        <div className="space-y-3 text-slate-700 leading-relaxed">
+        <div className="space-y-2 text-slate-700 text-sm leading-relaxed">
           <p>We invite you to apply for a Life Sciences CEO Network Membership grant.</p>
           <p>
             Grants are for pre-revenue companies and cover <strong>100% of membership fees for a year</strong>.
@@ -246,7 +246,7 @@ const LSCEOGrantForm = ({ onClose }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
           <div>
             <label htmlFor="fullName" className={labelCls}>Full name <span className="text-red-500">*</span></label>
             <input id="fullName" type="text" required value={data.fullName} onChange={setEvt('fullName')} className={inputCls} data-testid="grant-fullName" />
@@ -265,7 +265,7 @@ const LSCEOGrantForm = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-2 pt-1">
           <YesNo id="incorporated" testId="grant-incorporated"
             label="Is your company legally incorporated?"
             value={data.incorporated} onChange={set('incorporated')} />
