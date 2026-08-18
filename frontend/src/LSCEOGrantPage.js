@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 import SignupModal from './SignupModal';
+import LSCEOGrantForm from './signup-forms/LSCEOGrantForm';
 import { TextBlock, LogoGallery } from './programs/Blocks';
 
 const BERKLEY_LOGO_URL =
@@ -82,16 +83,29 @@ const GrantCtaBanner = ({ onApply }) => (
 );
 
 // Placeholder body while TVN finalizes the application form fields.
-const GrantApplicationPlaceholder = () => (
-  <div className="p-8 text-center" data-testid="grant-application-placeholder">
-    <h3 className="text-xl font-bold text-[#045184] mb-3">Application form coming soon</h3>
-    <p className="text-slate-600 leading-relaxed">
-      We&apos;re finalizing the intake form for the 2027 cohort. Applications open by
-      <strong> March 31, 2027</strong>. In the meantime, please reach out to
-      {' '}<a href="mailto:hello@thevanguardnetwork.com" className="text-[#00A8E1] font-semibold hover:underline">hello@thevanguardnetwork.com</a>
-      {' '}if you&apos;d like to be notified as soon as the form goes live.
-    </p>
-  </div>
+const GrantHero = () => (
+  <section className="relative pt-40 pb-16 md:pb-20 bg-gradient-to-br from-[#032a48] via-[#045184] to-[#00A8E1] text-white overflow-hidden" data-testid="grant-hero">
+    <div className="relative max-w-6xl mx-auto px-4 md:px-8">
+      <motion.h1
+        initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
+        className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3"
+      >
+        Life Sciences CEO Network
+      </motion.h1>
+      <motion.h2
+        initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-100 leading-tight mb-6"
+      >
+        One-Year Membership Grants
+      </motion.h2>
+      <motion.p
+        initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-lg md:text-2xl text-blue-100 max-w-3xl leading-snug"
+      >
+        Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.
+      </motion.p>
+    </div>
+  </section>
 );
 
 const LSCEOGrantPage = () => {
@@ -112,36 +126,6 @@ const LSCEOGrantPage = () => {
       setSearchParams(next, { replace: true });
     }
   }, [searchParams, setSearchParams]);
-
-  // Fake `program` object so the shared Blocks components render happily.
-  const program = {
-    name: 'Life Sciences CEO Network',
-  };
-
-  const GrantHero = () => (
-    <section className="relative pt-40 pb-16 md:pb-20 bg-gradient-to-br from-[#032a48] via-[#045184] to-[#00A8E1] text-white overflow-hidden" data-testid="grant-hero">
-      <div className="relative max-w-6xl mx-auto px-4 md:px-8">
-        <motion.h1
-          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3"
-        >
-          {program.name}
-        </motion.h1>
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-100 leading-tight mb-6"
-        >
-          One-Year Membership Grants
-        </motion.h2>
-        <motion.p
-          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-2xl text-blue-100 max-w-3xl leading-snug"
-        >
-          Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.
-        </motion.p>
-      </div>
-    </section>
-  );
 
   const sponsorSection = {
     id: 'sponsor',
@@ -191,9 +175,9 @@ const LSCEOGrantPage = () => {
       <SignupModal
         isOpen={modalOpen}
         onClose={closeModal}
-        title="Life Sciences CEO Network Grant Application"
+        title="Grant application for an annual membership in the Vanguard Life Sciences CEO Network"
       >
-        <GrantApplicationPlaceholder />
+        <LSCEOGrantForm onClose={closeModal} />
       </SignupModal>
     </div>
   );
