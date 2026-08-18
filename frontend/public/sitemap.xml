@@ -84,18 +84,6 @@
   
   <!-- Program Pages -->
   <url>
-    <loc>https://thevanguardnetwork.com/gc-exchange</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thevanguardnetwork.com/senior-counsel-exchange</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thevanguardnetwork.com/life-sciences-ceo/grant</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -114,19 +102,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thevanguardnetwork.com/risk-management</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thevanguardnetwork.com/global-counsel-leaders</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thevanguardnetwork.com/new-leaders</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
