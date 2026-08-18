@@ -1,0 +1,30 @@
+{
+  "summary": "Iteration 22 preview backend verification. Confirmed all four required env vars present in /app/backend/.env (GOOGLE_SERVICE_ACCOUNT_JSON_B64, SIGNUP_SHEET_ID, LSCEO_GRANT_SHEET_ID, AIRTABLE_ACCESS_TOKEN). E2E test hit both share-a-service-account endpoints on preview URL and both returned HTTP 200 {ok:true, row_id:...}. This confirms the code path (including the _write_signup_to_google_sheet helper that raises 'Google service account not configured' when the env var is missing) is production-ready. The user's production error is therefore a deploy-platform env var configuration gap, not a code bug.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/lsceo-grant/submit", "issue": "First attempt returned {ok:false, error:'Could not write the application to Google Sheets.'} due to a transient Google Sheets APIError 503 (service unavailable). Retry 5s later succeeded with row-17. Endpoint correctly surfaces the transient error without crashing but does not auto-retry Google 5xx responses. Consider adding a small retry-with-backoff around the gspread append_row call."}
+    ]
+  },
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/test_reports/iter22_e2e.py",
+    "/app/test_reports/iteration_22.json"
+  ],
+  "action_items": [
+    "USER ACTION (production only): Configure GOOGLE_SERVICE_ACCOUNT_JSON_B64, SIGNUP_SHEET_ID, LSCEO_GRANT_SHEET_ID (and AIRTABLE_ACCESS_TOKEN) on the production deploy platform. Preview code path is verified working; no code changes needed.",
+    "Optional enhancement: add 1-2 retry attempts with backoff in _write_signup_to_google_sheet on gspread APIError 5xx to smooth over transient Google 503s."
+  ],
+  "critical_code_review_comments": [
+    "server.py L329-331 correctly surfaces missing GOOGLE_SERVICE_ACCOUNT_JSON_B64 as HTTPException(500) — this is the exact message the user reported on production, so the diagnostic is accurate.",
+    "Both /api/nominate-decline/submit and /api/lsceo-grant/submit share _write_signup_to_google_sheet; single point-of-fix on production env vars will resolve both endpoints simultaneously.",
+    "No retry logic around gspread append_row — a transient Google 503 during testing returned ok:false to the caller. Not blocking, but worth a small retry loop."
+  ],
+  "updated_files": ["/app/test_reports/iter22_e2e.py", "/app/test_reports/iteration_22.json"],
+  "success_rate": {"backend": "100% (after retry on transient Google 503)", "frontend": "N/A"},
+  "seed_data_creation": "DECLINES sheet 1AuA3nIfWuHdm8TpwiS-J4py8zQ3DsBBXI332VRPm2-4 row-31 (email e2e-envcheck-<ts>@test.local). LSCEO Grant sheet 1Ah_lT77AbuLxAorAUf4-AGMUXncK9OgXLDe_X4OI54Y tab 2026 row-17 (email e2e-grant-iter22-<ts>@test.local).",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Preview backend for /api/nominate-decline/submit and /api/lsceo-grant/submit is fully working with real Google Sheets writes. All four required backend env vars are present in /app/backend/.env. Production-side issue is a deploy-platform env var config gap and not reproducible in preview. Backend supervisor logs show no runtime errors; only a single transient 'APIError: [503]' from Google Sheets during first grant attempt, resolved on retry.",
+  "rca_of_the_issue": "User's production error 'HTTPException: 500: Google service account not configured' is raised by server.py L329-331 when os.environ.get('GOOGLE_SERVICE_ACCOUNT_JSON_B64') is empty/missing. Preview has the var set and the same code path returned {ok:true} on both endpoints, proving the code is correct. Mitigation: set GOOGLE_SERVICE_ACCOUNT_JSON_B64, SIGNUP_SHEET_ID, LSCEO_GRANT_SHEET_ID on the production deployment platform's env config and redeploy."
+}
