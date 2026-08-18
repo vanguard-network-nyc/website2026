@@ -100,6 +100,16 @@ const initialData = {
 
 const wordCount = (s) => (s || '').trim().split(/\s+/).filter(Boolean).length;
 
+// Normalize whatever the applicant typed into a submittable URL string.
+// Accepts: "ibm.com", "www.ibm.com", "http://ibm.com", "https://www.ibm.com/careers".
+// Leaves empty string as empty.
+const normalizeUrl = (raw) => {
+  const trimmed = (raw || '').trim();
+  if (!trimmed) return '';
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://${trimmed.replace(/^\/+/, '')}`;
+};
+
 const Header = () => (
   <div className="mb-6 pb-6 border-b border-slate-200" data-testid="grant-form-header">
     <div className="text-center">
@@ -127,20 +137,35 @@ const LSCEOGrantForm = ({ onClose }) => {
 
   const yesNoAnswers = [data.incorporated, data.pipeline, data.preRevenue, data.employees4Plus];
 
-  const handleSection1Continue = (e) => {
+  const handleSection1Continue = async (e) => {
     e.preventDefault();
     setErrorMsg('');
     if (yesNoAnswers.includes('')) {
       setErrorMsg('Please answer all eligibility questions.');
       return;
     }
-    if (yesNoAnswers.some((a) => a === 'No')) {
-      setStep('ineligible');
-    } else {
+    const ineligible = yesNoAnswers.some((a) => a === 'No');
+    const scrollTop = () =>
+      document.querySelector('[data-testid="signup-modal"] > div:last-child')?.scrollTo({ top: 0 });
+
+    if (!ineligible) {
+      // Eligible applicants will submit once after Section 2 — no double write.
       setStep('section2');
+      scrollTop();
+      return;
     }
-    // scroll modal body to top
-    document.querySelector('[data-testid="signup-modal"] > div:last-child')?.scrollTo({ top: 0 });
+
+    // Ineligible — record the partial submission before showing the ending.
+    setSubmitting(true);
+    try {
+      await submitToSheets();
+      setStep('ineligible');
+      scrollTop();
+    } catch (err) {
+      setErrorMsg(err?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const submitToSheets = async () => {
@@ -149,7 +174,7 @@ const LSCEOGrantForm = ({ onClose }) => {
       fullName: data.fullName.trim(),
       jobTitle: data.jobTitle.trim(),
       companyName: data.companyName.trim(),
-      companyWebsite: data.companyWebsite.trim(),
+      companyWebsite: normalizeUrl(data.companyWebsite),
       companyAddress: data.companyAddress.trim(),
       email: data.email.trim(),
       phoneNumber: data.phoneNumber ? `+${String(data.phoneNumber).replace(/^\+/, '')}` : '',
@@ -262,11 +287,10 @@ const LSCEOGrantForm = ({ onClose }) => {
         )}
 
         <div className="flex justify-end pt-2">
-          <button type="submit"
-            className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+          <button type="submit" disabled={submitting}
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
             data-testid="grant-continue-btn">
-            Continue
-            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+            {submitting ? (<><Loader2 size={20} className="animate-spin" /> Saving…</>) : (<>Continue <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" /></>)}
           </button>
         </div>
       </form>
@@ -329,7 +353,16 @@ const LSCEOGrantForm = ({ onClose }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="companyWebsite" className={labelCls}>Company website <span className="text-red-500">*</span></label>
-          <input id="companyWebsite" type="url" required value={data.companyWebsite} onChange={setEvt('companyWebsite')} className={inputCls} placeholder="https://" data-testid="grant-companyWebsite" />
+          <input
+            id="companyWebsite"
+            type="text"
+            required
+            value={data.companyWebsite}
+            onChange={setEvt('companyWebsite')}
+            className={inputCls}
+            placeholder="e.g. www.example.com"
+            data-testid="grant-companyWebsite"
+          />
         </div>
         <div>
           <label htmlFor="companyAddress" className={labelCls}>Company address <span className="text-red-500">*</span></label>

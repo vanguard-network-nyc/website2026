@@ -1,0 +1,21 @@
+{
+  "summary": "Iteration 13 fix verified: ineligible submissions now write to Google Sheets. E2E-tested both branches via Playwright with network interception + gspread read-back on tab '2026' of sheet 1Ah_lT77AbuLxAorAUf4-AGMUXncK9OgXLDe_X4OI54Y. (1) Ineligible flow (Section 1 with preRevenue=No, others Yes): clicking Continue triggers EXACTLY ONE POST to /api/lsceo-grant/submit, ineligible screen appears, sheet row appended with Section 1 fields populated (fullName='Test Ineligible User', email='test-inelig-1787031808@example.com', incorporated=Yes, pipeline=Yes, preRevenue=No, employees4Plus=Yes) and Section 2 columns all empty strings (companyWebsite, companyAddress, phoneNumber, mission, productPipeline, teamRoles, networkContribution, signature, commitToParticipate='No', accurateApplication='No'). (2) Eligible flow (all Yes): Continue on Section 1 does NOT fire any backend POST (verified via network interception, delta=0), Section 2 appears, submitting Section 2 fires EXACTLY ONE POST — sheet has exactly one row for that email with all fields populated including normalized companyWebsite='https://www.ibm.com' (regression from iteration 12 still holds). (3) Loading state: Continue button switches to 'Saving…' with Loader2 spinner while awaiting the ineligible submit. No double-writes on either path.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/backend/tests/test_lsceo_grant.py"],
+  "action_items": ["Optional cleanup: 2 test rows in '2026' tab with emails test-inelig-1787031808@example.com and test-elig-1787031808@example.com."],
+  "critical_code_review_comments": [
+    "handleSection1Continue correctly gates the backend call behind the ineligible branch; eligible path defers to Section 2 submit — no duplicate writes possible.",
+    "Error handling in ineligible branch is correct: on throw it sets errorMsg but does NOT flip step to 'ineligible', so applicants can retry without losing data (per spec). Verified by code inspection.",
+    "submitToSheets builds the payload from current data snapshot — Section 2 fields default to '' via initialData, so ineligible payload naturally has blank Section 2 columns without special-casing. Clean implementation.",
+    "Minor nit: the `todayDate` field is populated with a full ISO timestamp (e.g. '2026-08-18T05:43:28.681Z') even though the sheet column is titled \"Today's date\". Not a regression from iteration 12 — existing behavior — but consider `new Date().toISOString().split('T')[0]` for a date-only value if that column is meant to be a date."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only requested)", "frontend": "100%"},
+  "test_credentials": "N/A - public form",
+  "seed_data_creation": "2 rows appended to '2026' tab: test-inelig-1787031808@example.com (ineligible; Section 2 blank), test-elig-1787031808@example.com (eligible; fully filled).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 13 fix confirmed working. Both ineligible and eligible branches write exactly 1 row each to Google Sheet tab '2026' via /api/lsceo-grant/submit. Network interception in Playwright verified no duplicate POSTs. URL normalization regression from iteration 12 still holds (www.ibm.com -> https://www.ibm.com).",
+  "rca of the issue": "N/A - fix verified working."
+}
