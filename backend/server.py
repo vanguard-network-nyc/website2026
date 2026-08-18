@@ -1212,6 +1212,47 @@ async def get_status_checks():
     status_checks = await db.status_checks.find({}, {"_id": 0}).limit(100).to_list(100)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+
+@api_router.post("/lsceo-grant/submit")
+async def submit_lsceo_grant(payload: dict):
+    """Proxy LSCEO Grant application submissions to the Google Apps Script Web
+    App. Kept server-side so we can (1) hide the endpoint URL, (2) detect the
+    "Access Denied" response Google returns when the Web App is deployed with
+    the wrong permissions, and (3) surface a real error to the frontend.
+
+    Always returns HTTP 200 with an {ok, error} body so that Cloudflare doesn't
+    intercept the response with its generic 5xx page — the frontend keys off
+    the body.
+    """
+    sheets_url = os.environ.get("LSCEO_GRANT_SHEETS_URL")
+    if not sheets_url:
+        return {"ok": False, "error": "LSCEO_GRANT_SHEETS_URL not configured on the server."}
+    try:
+        async with httpx.AsyncClient(timeout=25.0, follow_redirects=True) as client:
+            r = await client.post(
+                sheets_url,
+                content=json.dumps(payload),
+                headers={"Content-Type": "text/plain;charset=utf-8"},
+            )
+    except httpx.HTTPError as e:
+        logger.error(f"LSCEO grant submit network error: {e}")
+        return {"ok": False, "error": "Could not reach the Google Apps Script submission endpoint."}
+
+    body_snippet = (r.text or "")[:500]
+    if r.status_code >= 400 or "Access Denied" in body_snippet or "You need access" in body_snippet:
+        logger.error(
+            f"LSCEO grant submit rejected by Apps Script: status={r.status_code} snippet={body_snippet!r}"
+        )
+        return {
+            "ok": False,
+            "error": (
+                "Google Apps Script returned Access Denied. Re-deploy the Web App "
+                "with 'Who has access: Anyone' and try again."
+            ),
+        }
+    return {"ok": True}
+
+
 @api_router.get("/podcasts/similar/{podcast_id}")
 async def get_similar_podcasts(podcast_id: str):
     """Get similar podcasts based on keywords"""

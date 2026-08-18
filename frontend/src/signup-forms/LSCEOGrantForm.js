@@ -14,7 +14,7 @@ import { ArrowRight, ChevronRight, CheckCircle2, AlertTriangle, Loader2 } from '
 const BERKLEY_LOGO_URL =
   'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/i9ihq5w3_berkley.jpeg';
 
-const SHEETS_URL = process.env.REACT_APP_LSCEO_GRANT_SHEETS_URL;
+const SUBMIT_URL = `${process.env.REACT_APP_BACKEND_URL || ''}/api/lsceo-grant/submit`;
 const GRANT_PAGE_URL = '/life-sciences-ceo/grant';
 const NETWORK_PAGE_URL = '/networks/life-sciences-ceo-network';
 
@@ -168,15 +168,19 @@ const LSCEOGrantForm = ({ onClose }) => {
       softrRecordId: '',
     };
 
-    if (!SHEETS_URL) throw new Error('Sheets URL not configured.');
+    if (!SUBMIT_URL) throw new Error('Submit URL not configured.');
 
-    // text/plain avoids CORS preflight; Apps Script still reads e.postData.contents as raw body.
-    await fetch(SHEETS_URL, {
+    const res = await fetch(SUBMIT_URL, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
+    let body = null;
+    try { body = await res.json(); } catch (_) { /* non-json response */ }
+    if (!res.ok || !body || body.ok !== true) {
+      const detail = (body && body.error) || 'Something went wrong submitting your application.';
+      throw new Error(detail);
+    }
   };
 
   const handleSection2Submit = async (e) => {
@@ -196,7 +200,7 @@ const LSCEOGrantForm = ({ onClose }) => {
       setStep('success');
       document.querySelector('[data-testid="signup-modal"] > div:last-child')?.scrollTo({ top: 0 });
     } catch (err) {
-      setErrorMsg('Something went wrong submitting your application. Please try again.');
+      setErrorMsg(err?.message || 'Something went wrong submitting your application. Please try again.');
     } finally {
       setSubmitting(false);
     }
