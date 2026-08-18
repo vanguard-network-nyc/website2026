@@ -10,6 +10,7 @@ import GCFForumForm from './signup-forms/GCFForumForm';
 import LSCEOFForumForm from './signup-forms/LSCEOFForumForm';
 import MemberNetworkForm from './signup-forms/MemberNetworkForm';
 import NGGCNominationForm from './signup-forms/NGGCNominationForm';
+import NGGCDeclineForm from './signup-forms/NGGCDeclineForm';
 
 // Same form registry as EventDetailsPage — allows the same modal to open on program pages.
 const FORM_VARIANTS = {
@@ -20,6 +21,7 @@ const FORM_VARIANTS = {
   'rmx-form':              { title: 'Contact us to join the Risk Management Network',   Component: MemberNetworkForm },
   'lsceox-form':           { title: 'Contact us to join the Life Sciences CEO Network', Component: MemberNetworkForm },
   'nggc-nomination-form':  { title: 'Next Generation GC Program: Nominate Your Candidate', Component: NGGCNominationForm },
+  'nggc-decline-form':     { title: "No nominee. I don't have a nomination for the Vanguard Next Gen GC 2027 program.", Component: NGGCDeclineForm },
 };
 
 const ProgramPage = () => {

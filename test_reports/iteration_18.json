@@ -1,0 +1,21 @@
+{
+  "summary": "Iteration 18 verification of /nominate/decline refactor. All 14 frontend checks passed: /nominate/decline?email=…&code=… redirects to /programs/next-generation-general-counsel?form=nggc-decline-form&email=…&code=…, the ProgramPage renders fully underneath ([data-testid='program-hero'] visible) with the decline modal opened on top titled \"No nominee. I don't have a nomination for the Vanguard Next Gen GC 2027 program.\" Modal body contains [data-testid='decline-form'] with the 'Thank you for letting us know' intro and a 'here' link to /programs/next-generation-general-counsel. [data-testid='decline-email'] is prefilled with jane@acme.com; [data-testid='decline-eventCode'] hidden value = NGGC2027_0201. Frontend form submit produced {ok:true} and swapped to [data-testid='decline-success'] with heading 'Thank you for letting us know.'. Closing the modal via the X button removed only the ?form= param (email/code retained) and the program page remained fully rendered — no blank state, no reload. Regression: /nominate/decline (no params) redirects to ?form=nggc-decline-form, email empty, code defaults to NGGC2027_0201. Backend POST /api/nominate-decline/submit verified via a fresh curl round-trip: row appended to DECLINES tab of sheet 1AuA3nIfWuHdm8TpwiS-J4py8zQ3DsBBXI332VRPm2-4 with correct columns (Timestamp, Your Work Email, Recommendations/further info, Event Code = NGGC2027_0201) via gspread with GOOGLE_SERVICE_ACCOUNT_JSON_B64.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/verify_decline_sheet.py"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "NominateDeclinePage.js redirect is clean (2-line Navigate). Consider preserving all incoming query params generically (currently only email + code are forwarded) — future-proof for tracking params (utm_*) if Mailchimp adds them.",
+    "ProgramPage.js: closeForm intentionally leaves email/code in the URL after modal close. Non-blocking but could be considered noise; harmless.",
+    "NGGCDeclineForm handles its own success screen in-place — good separation from generic SignupModal shell."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "Two test rows appended to DECLINES sheet during verification: e2e-decline-1787051968@testing.local (via UI submission) and e2e-decline-1787052079@testing.local (via curl verification, confirmed as row 31).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Preview URL https://program-network.preview.emergentagent.com. /nominate/decline route redirects to ProgramPage with ?form=nggc-decline-form. Data-testids: decline-form, decline-email, decline-eventCode, decline-comments, decline-submit-btn, decline-success. Backend endpoint POST /api/nominate-decline/submit writes to sheet 1AuA3nIfWuHdm8TpwiS-J4py8zQ3DsBBXI332VRPm2-4 tab DECLINES. Verification script: /app/backend/tests/verify_decline_sheet.py. Note: page.wait_for_load_state('networkidle') times out due to Vimeo/Cloudflare-Turnstile embeds on the program page; use 'domcontentloaded' + explicit wait_for_selector on [data-testid='decline-form'] instead."
+}
