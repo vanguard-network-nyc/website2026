@@ -1526,6 +1526,20 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
+            {/* Tom Hartman */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/09gop2gq_Tom%20Hartman.jpeg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  As a coach, he supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider</p>
+              </div>
+            </div>
+
             {/* Richard Hulme */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
@@ -1551,20 +1565,6 @@ const AdvisoryPage = () => {
                   Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
                 </p>
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
-              </div>
-            </div>
-
-            {/* Tom Hartman */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/09gop2gq_Tom%20Hartman.jpeg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  As a coach, he supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider</p>
               </div>
             </div>
           </div>
