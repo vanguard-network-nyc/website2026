@@ -1338,7 +1338,7 @@ async def get_event_registrants(record_id: str):
         raise HTTPException(status_code=502, detail="Could not load event.")
 
     series_code = _first_str(ev.get("Series Code")) or _first_str(ev.get("series_code"))
-    event_code = _first_str(ev.get("Clean Event Code")) or _first_str(ev.get("New Event Code"))
+    event_code = _first_str(ev.get("New Event Code"))
     if not series_code or series_code.upper() not in FORUM_REGISTRANTS_SERIES or not event_code:
         return []
 
