@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
 import SignupModal from './SignupModal';
-import { HeroBlock, TextBlock, LogoGallery } from './programs/Blocks';
+import { TextBlock, LogoGallery } from './programs/Blocks';
 
 const BERKLEY_LOGO_URL =
   'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/i9ihq5w3_berkley.jpeg';
@@ -115,10 +116,32 @@ const LSCEOGrantPage = () => {
   // Fake `program` object so the shared Blocks components render happily.
   const program = {
     name: 'Life Sciences CEO Network',
-    tagline: 'One-Year Membership Grants',
-    summary: 'Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.',
-    hero_image: null,
   };
+
+  const GrantHero = () => (
+    <section className="relative pt-40 pb-16 md:pb-20 bg-gradient-to-br from-[#032a48] via-[#045184] to-[#00A8E1] text-white overflow-hidden" data-testid="grant-hero">
+      <div className="relative max-w-6xl mx-auto px-4 md:px-8">
+        <motion.h1
+          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3"
+        >
+          {program.name}
+        </motion.h1>
+        <motion.h2
+          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-100 leading-tight mb-6"
+        >
+          One-Year Membership Grants
+        </motion.h2>
+        <motion.p
+          initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-3xl text-blue-50 text-base md:text-lg"
+        >
+          Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.
+        </motion.p>
+      </div>
+    </section>
+  );
 
   const sponsorSection = {
     id: 'sponsor',
@@ -153,7 +176,7 @@ const LSCEOGrantPage = () => {
         ]}
       />
 
-      <HeroBlock program={program} section={{}} />
+      <GrantHero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 pt-6 -mb-4">
         <Breadcrumb customTitle="Grant" />
