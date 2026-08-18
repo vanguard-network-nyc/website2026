@@ -1,0 +1,26 @@
+{
+  "summary": "LSCEO Grant submission integration switched from Apps Script Web App to direct Google Sheets API via service account. Verified end-to-end: (1) POST /api/lsceo-grant/submit returns 200 {ok:true, row_id:'sheet-row-N'} and appends a correctly-mapped row to sheet 1Ah_lT77AbuLxAorAUf4-AGMUXncK9OgXLDe_X4OI54Y tab '2026'; (2) Frontend flow from /life-sciences-ceo/grant?apply=1 with all four Yes answers -> Section 2 -> Submit shows [data-testid='grant-form-success'] and lands a row (row 19) in the sheet with phone '+16175557788' preserved; (3) Ineligible branch (any Section 1 'No') routes to [data-testid='grant-form-ineligible'] and issues 0 backend POSTs. Read-back via service account confirmed every field maps to the correct column, Timestamp auto-fills, and the 'Softr Record ID' column stays blank.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_lsceo_grant.py",
+    "/app/test_reports/pytest/lsceo_grant.xml"
+  ],
+  "action_items": [
+    "Optional: clean up TEST_ rows (17, 18, 19) from the '2026' tab after review. Row 19 is the frontend E2E row (email test-fe-1787031422@example.com); rows 17-18 are backend pytest rows."
+  ],
+  "critical_code_review_comments": [
+    "server.py _write_signup_to_google_sheet: good separation of concerns; Timestamp auto-fill by header name is robust.",
+    "Phone-number apostrophe prefix ('+16175557788') is correctly stripped by Sheets for display while preserving the + as text — verified via gspread read-back.",
+    "Endpoint intentionally returns HTTP 200 even on failure (with ok:false) for Cloudflare compatibility — well-documented in the docstring.",
+    "Consider adding server-side payload validation with a Pydantic model (currently accepts raw dict). Not blocking."
+  ],
+  "updated_files": ["/app/backend/tests/test_lsceo_grant.py"],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "N/A - form is public",
+  "seed_data_creation": "Two backend test rows (17,18) + one frontend E2E test row (19) appended to '2026' tab.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Integration now uses direct Sheets API via GOOGLE_SERVICE_ACCOUNT_JSON_B64 + LSCEO_GRANT_SHEET_ID. The Apps Script URL is gone. Regression test lives at /app/backend/tests/test_lsceo_grant.py and can be re-run any time; it locates its inserted row by unique TEST_<ts> email so it is self-contained. Ineligible branch does not hit the backend, so no cleanup on that path.",
+  "rca of the issue": "Prior submission failures were caused by the Google Apps Script Web App URL returning HTTP 403 'Access Denied' (Workspace-level policy silently overrode the 'Anyone' access setting on the deployment). Fix bypassed Apps Script entirely and writes directly to the Google Sheet via the pre-existing service account writer (vanguard-forms-writer@vanguard-forms-for-emergent.iam.gserviceaccount.com), which the sheet owner explicitly shared as Editor. Verified in prod preview: backend POST -> row appended -> read-back matches payload exactly."
+}
