@@ -102,6 +102,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://thevanguardnetwork.com/life-sciences-ceo/grant</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thevanguardnetwork.com/life-sciences-ceo/grant/recipients</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thevanguardnetwork.com/law-associates</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>

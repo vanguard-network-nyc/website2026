@@ -162,12 +162,28 @@ const LSCEOGrantPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" data-testid="lsceo-grant-page">
       <SEO
-        title="Life Sciences CEO Network Grants"
-        description="Berkley/Vanguard Life Sciences CEO Network Grant — one-year complimentary memberships for pre-revenue life sciences CEOs. Apply by March 31, 2027."
+        title="Life Sciences CEO Network Grants — Berkley / Vanguard"
+        description="Apply for a one-year complimentary membership to the Vanguard Life Sciences CEO Network, sponsored by Berkley Lifesciences. Grants support pre-revenue CEOs of therapeutic, diagnostic, and medical-device companies. Applications for the 2027 cohort close March 31, 2027."
+        image={BERKLEY_LOGO_URL}
+        type="website"
         breadcrumbs={[
           { name: 'Home', url: 'https://thevanguardnetwork.com/' },
           { name: 'Life Sciences CEO', url: 'https://thevanguardnetwork.com/life-sciences-ceo' },
           { name: 'Grant', url: 'https://thevanguardnetwork.com/life-sciences-ceo/grant' },
+        ]}
+        faq={[
+          {
+            question: 'Who is eligible for the Life Sciences CEO Network Grant?',
+            answer: 'CEOs or co-founders of legally incorporated, pre-revenue life sciences companies with a pipeline of therapeutic, diagnostic, or medical-device candidates (or an initiated clinical trial) and at least five employees.',
+          },
+          {
+            question: 'What does the grant cover?',
+            answer: 'A one-year complimentary membership in the Vanguard Life Sciences CEO Network. Grants are valued at $1,500 for pre-clinical companies and $3,000 for companies with an active clinical trial.',
+          },
+          {
+            question: 'When is the deadline to apply?',
+            answer: 'Applications for the 2027 cohort must reach The Vanguard Network by March 31, 2027.',
+          },
         ]}
       />
 

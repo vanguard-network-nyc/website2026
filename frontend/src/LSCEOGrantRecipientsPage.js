@@ -71,8 +71,10 @@ const LSCEOGrantRecipientsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" data-testid="lsceo-recipients-page">
       <SEO
-        title="Berkley Circle of Fellows — Life Sciences CEO Network Grant Recipients"
-        description="Meet the recipients of the Life Sciences CEO Network grants, sponsored by Berkley Lifesciences."
+        title="Berkley Circle of Fellows — Life Sciences CEO Grant Recipients"
+        description="Meet the Berkley Circle of Fellows: past recipients of the Life Sciences CEO Network membership grants sponsored by Berkley Lifesciences. A curated cohort of pre-revenue therapeutic, diagnostic, and medical-device CEOs advancing patient outcomes."
+        image={BERKLEY_LOGO_URL}
+        type="website"
         breadcrumbs={[
           { name: 'Home', url: 'https://thevanguardnetwork.com/' },
           { name: 'Life Sciences CEO', url: 'https://thevanguardnetwork.com/life-sciences-ceo' },
