@@ -17,15 +17,10 @@ import VideosPage from './VideosPage';
 import VideoDetailPage from './VideoDetailPage';
 import ArticlesPage from './ArticlesPage';
 import ArticleDetailPage from './ArticleDetailPage';
-import GCExchangePage from './GCExchangePage';
 import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
-import NewLeadersPage from './NewLeadersPage';
-import SeniorCounselExchangePage from './SeniorCounselExchangePage';
-import NextGenGCPage from './NextGenGCPage';
 import LSCEOGrantPage from './LSCEOGrantPage';
 import LSCEOGrantRecipientsPage from './LSCEOGrantRecipientsPage';
 import LawAssociatesPage from './LawAssociatesPage';
-import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
 import NewsroomDetailPage from './NewsroomDetailPage';
@@ -121,18 +116,18 @@ function App() {
           <Route path="/podcast/:id" element={<PageWrapper><PodcastDetailPage /></PageWrapper>} />
           <Route path="/videos" element={<PageWrapper><VideosPage /></PageWrapper>} />
           <Route path="/video/:id" element={<PageWrapper><VideoDetailPage /></PageWrapper>} />
-          <Route path="/gc-exchange" element={<PageWrapper><GCExchangePage /></PageWrapper>} />
-          <Route path="/senior-counsel-exchange" element={<PageWrapper><SeniorCounselExchangePage /></PageWrapper>} />
-          <Route path="/next-gen-gc-template" element={<PageWrapper><NextGenGCPage /></PageWrapper>} />
+          <Route path="/gc-exchange" element={<Navigate to="/programs/general-counsel-exchange" replace />} />
+          <Route path="/senior-counsel-exchange" element={<Navigate to="/programs" replace />} />
+          <Route path="/next-gen-gc-template" element={<Navigate to="/programs/next-generation-general-counsel" replace />} />
           {/* /life-sciences-ceo is now the dynamic network page — redirect the legacy static route. */}
           <Route path="/life-sciences-ceo" element={<Navigate to="/networks/life-sciences-ceo-network" replace />} />
           <Route path="/life-sciences-ceo/grant" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/apply" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/recipients" element={<PageWrapper><LSCEOGrantRecipientsPage /></PageWrapper>} />
           <Route path="/law-associates" element={<PageWrapper><LawAssociatesPage /></PageWrapper>} />
-          <Route path="/risk-management" element={<PageWrapper><RiskManagementPage /></PageWrapper>} />
+          <Route path="/risk-management" element={<Navigate to="/programs/risk-management-exchange" replace />} />
           <Route path="/global-counsel-leaders" element={<PageWrapper><GlobalCounselLeadersPage /></PageWrapper>} />
-          <Route path="/new-leaders" element={<PageWrapper><NewLeadersPage /></PageWrapper>} />
+          <Route path="/new-leaders" element={<Navigate to="/programs" replace />} />
           <Route path="/success-stories" element={<PageWrapper><CaseStudiesPage /></PageWrapper>} />
           <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />

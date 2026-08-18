@@ -477,7 +477,7 @@ const ProgramsV2 = () => {
                           </motion.button>
                         </Link>
                       ) : program.name === "NEW LEADERS PROGRAM" ? (
-                        <Link to="/new-leaders" onClick={() => window.scrollTo(0, 0)}>
+                        <Link to="/programs" onClick={() => window.scrollTo(0, 0)}>
                           <motion.button 
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
