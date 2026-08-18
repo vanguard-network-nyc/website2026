@@ -450,7 +450,7 @@ const EventDetailsPage = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mt-6"
+            className="mt-6 mb-10"
             data-testid="event-detail-registrants"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: '#045184' }}>
