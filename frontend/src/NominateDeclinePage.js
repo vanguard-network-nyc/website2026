@@ -53,22 +53,17 @@ const DeclineForm = ({ initialEmail, eventCode, onSuccess }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" data-testid="decline-form">
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold text-[#045184]">
-          I don&apos;t have a nomination for the Vanguard Next Gen GC 2027 program
-        </h3>
-        <p className="text-slate-700 leading-relaxed mt-3">
-          Thank you for letting us know. We will keep checking in with you again next year to see if
-          you have someone to nominate for the 2028 program. You can view full program details{' '}
-          <a
-            href={RETURN_TO}
-            className="text-[#00A8E1] font-semibold hover:underline"
-          >
-            here
-          </a>
-          .
-        </p>
-      </div>
+      <p className="text-slate-700 leading-relaxed">
+        Thank you for letting us know. We will keep checking in with you again next year to see if
+        you have someone to nominate for the 2028 program. You can view full program details{' '}
+        <a
+          href={RETURN_TO}
+          className="text-[#00A8E1] font-semibold hover:underline"
+        >
+          here
+        </a>
+        .
+      </p>
 
       <div>
         <label htmlFor="decline-email" className={labelCls}>
@@ -175,7 +170,7 @@ const NominateDeclinePage = () => {
         description="Let us know you can't nominate a candidate for the Vanguard Next Gen General Counsel 2027 program. We'll follow up next year."
         noindex
       />
-      <SignupModal isOpen onClose={handleClose} title="No nominee">
+      <SignupModal isOpen onClose={handleClose} title="No nominee. I don't have a nomination for the Vanguard Next Gen GC 2027 program.">
         {step === 'form' ? (
           <DeclineForm
             initialEmail={initialEmail}

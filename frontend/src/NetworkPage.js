@@ -60,7 +60,12 @@ const NetworkPage = () => {
   const openForm = useCallback((key) => {
     if (!key || !FORM_VARIANTS[key]) return;
     setFormModalKey(key);
-  }, []);
+    if (searchParams.get('form') !== key) {
+      const next = new URLSearchParams(searchParams);
+      next.set('form', key);
+      setSearchParams(next, { replace: false });
+    }
+  }, [searchParams, setSearchParams]);
 
   const closeForm = useCallback(() => {
     setFormModalKey(null);
