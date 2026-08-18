@@ -20,6 +20,7 @@ import ArticleDetailPage from './ArticleDetailPage';
 import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import LSCEOGrantPage from './LSCEOGrantPage';
 import LSCEOGrantRecipientsPage from './LSCEOGrantRecipientsPage';
+import NominateDeclinePage from './NominateDeclinePage';
 import LawAssociatesPage from './LawAssociatesPage';
 import CaseStudiesPage from './CaseStudiesPage';
 import NewsroomPage from './NewsroomPage';
@@ -124,6 +125,7 @@ function App() {
           <Route path="/life-sciences-ceo/grant" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/apply" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/recipients" element={<PageWrapper><LSCEOGrantRecipientsPage /></PageWrapper>} />
+          <Route path="/nominate/decline" element={<PageWrapper><NominateDeclinePage /></PageWrapper>} />
           <Route path="/law-associates" element={<PageWrapper><LawAssociatesPage /></PageWrapper>} />
           <Route path="/risk-management" element={<Navigate to="/programs/risk-management-exchange" replace />} />
           <Route path="/global-counsel-leaders" element={<PageWrapper><GlobalCounselLeadersPage /></PageWrapper>} />

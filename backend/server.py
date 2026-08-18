@@ -1304,7 +1304,37 @@ async def get_lsceo_grant_recipients():
     return people
 
 
-# --- Event Registered Participants (GCF / LSCEOF forums) ---
+# --- Nominate Decline form (Mailchimp deep-link) ---
+NOMINATE_DECLINE_SHEET_ID = "1AuA3nIfWuHdm8TpwiS-J4py8zQ3DsBBXI332VRPm2-4"
+NOMINATE_DECLINE_TAB = "DECLINES"
+
+
+@api_router.post("/nominate-decline/submit")
+async def submit_nominate_decline(payload: dict):
+    """Write a Next Gen GC nomination-decline into the DECLINES tab of the
+    2027 NGGC responses sheet via the shared service-account writer."""
+    email = (payload.get("email") or "").strip()
+    comments = (payload.get("comments") or "").strip()
+    event_code = (payload.get("eventCode") or "").strip()
+    if not email or not event_code:
+        return {"ok": False, "error": "Email and event code are required."}
+
+    # Match exact header names on row 1 (note the trailing space on 'Your Work Email ').
+    values_by_col = {
+        "Your Work Email ": email,
+        "Recommendations/further info:": comments,
+        "Event Code (For admin)": event_code,
+    }
+    try:
+        row_id = _write_signup_to_google_sheet(
+            {"sheet_id": NOMINATE_DECLINE_SHEET_ID, "tab_name": NOMINATE_DECLINE_TAB},
+            values_by_col,
+        )
+    except Exception as e:
+        logger.error(f"Nominate-decline submit failed: {e}")
+        return {"ok": False, "error": "Could not save your response. Please try again."}
+    return {"ok": True, "row_id": row_id}
+
 FORUM_REGISTRANTS_MIN = 10
 FORUM_REGISTRANTS_SERIES = {"GCF", "LSCEOF"}
 FORUM_REGISTRANTS_ROLE_EXCLUDES = [
