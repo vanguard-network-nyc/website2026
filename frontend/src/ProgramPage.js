@@ -70,11 +70,15 @@ const ProgramPage = () => {
 
   const closeForm = useCallback(() => {
     setFormModalKey(null);
-    if (searchParams.has('form')) {
-      const next = new URLSearchParams(searchParams);
-      next.delete('form');
-      setSearchParams(next, { replace: true });
-    }
+    // Clean form-related params from the URL so the program page URL stays tidy
+    // (email/code get injected by the /nominate/decline redirect and shouldn't
+    // linger after the modal closes).
+    const next = new URLSearchParams(searchParams);
+    let changed = false;
+    ['form', 'email', 'code'].forEach((k) => {
+      if (next.has(k)) { next.delete(k); changed = true; }
+    });
+    if (changed) setSearchParams(next, { replace: true });
   }, [searchParams, setSearchParams]);
 
   if (loading) {
