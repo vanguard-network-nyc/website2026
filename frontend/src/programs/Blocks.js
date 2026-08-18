@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
@@ -64,6 +65,36 @@ const Section = ({ background, children, dataTestId, first = false }) => (
 // on the Airtable row skips the card wrapper — the block renders bare on the page's
 // ambient background. Use "plain" for short bridging paragraphs between boxed sections.
 
+// Anchor renderer used by <Markdown>. Same-domain URLs go through React Router
+// so we stay in the SPA; cross-origin URLs open in a new tab.
+const MarkdownAnchor = ({ node, href, children, ...props }) => {
+  if (!href) return <a {...props}>{children}</a>;
+  const trimmed = String(href).trim();
+  if (trimmed.startsWith('mailto:') || trimmed.startsWith('tel:') || trimmed.startsWith('#')) {
+    return <a href={trimmed} {...props}>{children}</a>;
+  }
+  const internalHosts = new Set([
+    'thevanguardnetwork.com',
+    'www.thevanguardnetwork.com',
+    typeof window !== 'undefined' ? window.location.hostname : '',
+  ]);
+  let internalPath = null;
+  if (trimmed.startsWith('/')) {
+    internalPath = trimmed;
+  } else {
+    try {
+      const u = new URL(trimmed);
+      if (internalHosts.has(u.hostname)) internalPath = `${u.pathname}${u.search}${u.hash}`;
+    } catch (_) { /* not a URL */ }
+  }
+  if (internalPath) return <Link to={internalPath} {...props}>{children}</Link>;
+  return (
+    <a href={trimmed} target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  );
+};
+
 const Markdown = ({ children, dark = false }) => {
   if (!children) return null;
   const proseClass = dark
@@ -74,23 +105,7 @@ const Markdown = ({ children, dark = false }) => {
       <ReactMarkdown
         remarkPlugins={[remarkBreaks]}
         rehypePlugins={[rehypeRaw]}
-        components={{
-          // External links open in a new tab; internal (relative) links stay in-tab.
-          a: ({ node, href, children, ...props }) => {
-            const isExternal = /^https?:\/\//i.test(href || '');
-            return (
-              <a
-                href={href}
-                {...(isExternal
-                  ? { target: '_blank', rel: 'noopener noreferrer' }
-                  : {})}
-                {...props}
-              >
-                {children}
-              </a>
-            );
-          },
-        }}
+        components={{ a: MarkdownAnchor }}
       >
         {children}
       </ReactMarkdown>
