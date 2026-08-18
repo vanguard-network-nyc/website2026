@@ -91,6 +91,7 @@ const EventDetailsPage = () => {
   const [error, setError] = useState(null);
   const [signupOpen, setSignupOpen] = useState(false);
   const [nearbyEvents, setNearbyEvents] = useState([]);
+  const [registrants, setRegistrants] = useState([]);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -116,6 +117,27 @@ const EventDetailsPage = () => {
     };
     if (recordId) fetchEvent();
   }, [recordId]);
+
+  // Fetch registered participants for GCF / LSCEOF events (backend enforces
+  // the >=10 minimum and returns [] otherwise, so we just render what we get).
+  useEffect(() => {
+    if (!event || !['GCF', 'LSCEOF'].includes(event.series_code)) {
+      setRegistrants([]);
+      return;
+    }
+    let cancelled = false;
+    const fetchRegistrants = async () => {
+      try {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+        const res = await fetch(`${backendUrl}/api/events/${recordId}/registrants`);
+        if (!res.ok) return;
+        const list = await res.json();
+        if (!cancelled && Array.isArray(list)) setRegistrants(list);
+      } catch (e) { /* silently ignore */ }
+    };
+    fetchRegistrants();
+    return () => { cancelled = true; };
+  }, [recordId, event]);
 
   // Fetch upcoming events to power the "You might also like" strip.
   // Skip on past-event routes.
@@ -419,6 +441,61 @@ const EventDetailsPage = () => {
               </p>
             )}
           </motion.div>
+        )}
+
+        {/* Registered Participants — GCF/LSCEOF forums with 10+ registrants */}
+        {registrants.length > 0 && (
+          <motion.section
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-6"
+            data-testid="event-detail-registrants"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: '#045184' }}>
+              Registered Participants
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5">
+              {registrants.map((p, i) => (
+                <div
+                  key={p.id || i}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  data-testid={`event-detail-registrant-${i}`}
+                >
+                  <div className="aspect-square w-full overflow-hidden bg-slate-100">
+                    {p.headshot ? (
+                      <img src={p.headshot} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-400 text-3xl font-bold">
+                        {(p.name || '?').charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-bold text-slate-900 leading-tight line-clamp-2">{p.name}</h3>
+                    {p.title && (
+                      <p className="text-xs text-slate-600 leading-snug mt-1 line-clamp-2">{p.title}</p>
+                    )}
+                    {p.company && (
+                      <p className="text-xs text-[#00A8E1] font-semibold mt-1 line-clamp-1">{p.company}</p>
+                    )}
+                    {p.linkedin && (
+                      <a
+                        href={p.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-[#0077b5] mt-2"
+                        aria-label={`${p.name} on LinkedIn`}
+                      >
+                        <Linkedin size={12} /> LinkedIn
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
         )}
 
         {/* Bottom CTA — hidden for past events */}

@@ -1304,6 +1304,77 @@ async def get_lsceo_grant_recipients():
     return people
 
 
+# --- Event Registered Participants (GCF / LSCEOF forums) ---
+FORUM_REGISTRANTS_MIN = 10
+FORUM_REGISTRANTS_SERIES = {"GCF", "LSCEOF"}
+FORUM_REGISTRANTS_ROLE_EXCLUDES = [
+    "Vanguard Team",
+    "Cancelled",
+    "Declined",
+    "Reception",
+    "Session Leader (guest)",
+]
+
+
+@api_router.get("/events/{record_id}/registrants")
+async def get_event_registrants(record_id: str):
+    """Return the Registered Participants people gallery for GCF / LSCEOF
+    forum events, but ONLY when there are >= FORUM_REGISTRANTS_MIN qualifying
+    people. Otherwise returns an empty list (frontend hides the section)."""
+    # 1) Load the event to grab its series_code + clean_event_code
+    try:
+        headers = {"Authorization": f"Bearer {AIRTABLE_ACCESS_TOKEN}"}
+        url = f"https://api.airtable.com/v0/{EVENTS_BASE_ID}/{EVENTS_TABLE_ID}/{record_id}"
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            r = await client.get(url, headers=headers)
+            if r.status_code == 404:
+                raise HTTPException(status_code=404, detail="Event not found")
+            r.raise_for_status()
+            ev = r.json().get("fields", {})
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Event registrants — event fetch failed: {e}")
+        raise HTTPException(status_code=502, detail="Could not load event.")
+
+    series_code = _first_str(ev.get("Series Code")) or _first_str(ev.get("series_code"))
+    event_code = _first_str(ev.get("Clean Event Code")) or _first_str(ev.get("New Event Code"))
+    if not series_code or series_code.upper() not in FORUM_REGISTRANTS_SERIES or not event_code:
+        return []
+
+    # 2) Query the contacts table with the multi-select filter formula
+    conds = [f'FIND("{event_code}", ARRAYJOIN({{Forum/Event - signed up}}, ","))>0']
+    for role in FORUM_REGISTRANTS_ROLE_EXCLUDES:
+        conds.append(f'NOT(FIND("{role}", ARRAYJOIN({{Role - upcoming event}}, ","))>0)')
+    formula = "AND(" + ",".join(conds) + ")"
+
+    try:
+        records = await _airtable_get_all(
+            LSCEO_RECIPIENTS_BASE_ID, LSCEO_RECIPIENTS_TABLE_ID,
+            {"filterByFormula": formula, "pageSize": 100,
+             "fields[]": ["WholeName", "Name", "Position", "Company", "Headshot",
+                          "LinkedIn Profile"]},
+        )
+    except Exception as e:
+        logger.error(f"Event registrants fetch failed: {e}")
+        raise HTTPException(status_code=502, detail="Could not load registrants.")
+
+    people = []
+    seen = set()
+    for r in records:
+        person = _map_person(r)
+        if not person["name"] or person["id"] in seen:
+            continue
+        seen.add(person["id"])
+        people.append(person)
+
+    if len(people) < FORUM_REGISTRANTS_MIN:
+        return []
+
+    people.sort(key=lambda p: (p["name"].split()[-1] if p["name"] else "").lower())
+    return people
+
+
 @api_router.get("/podcasts/similar/{podcast_id}")
 async def get_similar_podcasts(podcast_id: str):
     """Get similar podcasts based on keywords"""
