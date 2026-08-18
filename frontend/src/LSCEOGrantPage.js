@@ -135,7 +135,7 @@ const LSCEOGrantPage = () => {
         </motion.h2>
         <motion.p
           initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl text-blue-50 text-base md:text-lg"
+          className="text-lg md:text-2xl text-blue-100 max-w-3xl leading-snug"
         >
           Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.
         </motion.p>
