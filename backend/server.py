@@ -1331,8 +1331,11 @@ async def submit_nominate_decline(payload: dict):
             values_by_col,
         )
     except Exception as e:
-        logger.error(f"Nominate-decline submit failed: {e}")
-        return {"ok": False, "error": "Could not save your response. Please try again."}
+        logger.exception(f"Nominate-decline submit failed: {e}")
+        # Surface the exception class + message so production issues are debuggable
+        # from the browser/network tab instead of only from server logs.
+        detail = f"{type(e).__name__}: {str(e)[:200]}"
+        return {"ok": False, "error": f"Could not save your response ({detail})."}
     return {"ok": True, "row_id": row_id}
 
 FORUM_REGISTRANTS_MIN = 10
