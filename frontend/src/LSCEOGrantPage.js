@@ -10,7 +10,7 @@ const BERKLEY_LOGO_URL =
 
 // Prefilled "Recommend a colleague" mailto — body copy provided by TVN.
 const RECOMMEND_MAILTO =
-  "mailto:?subject=Thought you might find this valuable&body=Hi,%0D%0A%0D%0AI came across this through The Vanguard Network and thought of you.%0D%0A%0D%0AHere%E2%80%99s the link:%0D%0Ahttps://members.thevanguardnetwork.com/ls-ceo-grant%0D%0A%0D%0AThis is an offer for a one year complimentary membership of the Vanguard Life Sciences CEO Network. A peer community focused on candid, small-group dialogue under Chatham House Rule.%0D%0A%0D%0AMembers gain access to confidential forums, leadership exchanges, and practical playbooks drawn directly from real-world executive challenges.%0D%0A%0D%0AThought it could be highly valuable given the environment leaders are navigating right now.%0D%0A%0D%0ABest,";
+  "mailto:?subject=Thought you might find this valuable&body=Hi,%0D%0A%0D%0AI came across this through The Vanguard Network and thought of you.%0D%0A%0D%0AHere%E2%80%99s the link:%0D%0Ahttps://www.thevanguardnetwork.com/networks/life-sciences-ceo/grant%0D%0A%0D%0AThis is an offer for a one-year complimentary membership of the Vanguard Life Sciences CEO Network. A peer community focused on candid, small-group dialogue under Chatham House rules.%0D%0A%0D%0AMembers gain access to confidential forums, leadership exchanges, and practical playbooks drawn directly from real-world executive challenges.%0D%0A%0D%0AThought it could be highly valuable given the environment leaders are navigating right now.%0D%0A%0D%0ABest,";
 
 const ELIGIBILITY_BODY = `## 1. Eligibility Criteria
 
@@ -114,8 +114,9 @@ const LSCEOGrantPage = () => {
 
   // Fake `program` object so the shared Blocks components render happily.
   const program = {
-    name: 'Life Sciences CEO Network One-Year Membership Grants',
-    tagline: 'Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.',
+    name: 'Life Sciences CEO Network',
+    tagline: 'One-Year Membership Grants',
+    summary: 'Grants are available for CEOs of pre-revenue companies. Read below to see if you qualify and how to apply.',
     hero_image: null,
   };
 
