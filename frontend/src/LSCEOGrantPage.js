@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from './SEO';
 import Breadcrumb from './Breadcrumb';
@@ -110,22 +110,33 @@ const GrantHero = () => (
 
 const LSCEOGrantPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isApplyRoute = location.pathname.endsWith('/apply');
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Deep-link support: /life-sciences-ceo/grant?apply=1 auto-opens the modal.
+  // Deep-link support:
+  //  - /life-sciences-ceo/grant/apply  (canonical shareable URL)
+  //  - /life-sciences-ceo/grant?apply=1 (legacy query variant)
   useEffect(() => {
-    if (searchParams.get('apply') === '1') setModalOpen(true);
-  }, [searchParams]);
+    if (isApplyRoute || searchParams.get('apply') === '1') setModalOpen(true);
+  }, [isApplyRoute, searchParams]);
 
-  const openModal = useCallback(() => setModalOpen(true), []);
+  const openModal = useCallback(() => {
+    // Update the URL so the modal state is shareable/bookmarkable.
+    if (!isApplyRoute) navigate('/life-sciences-ceo/grant/apply');
+    setModalOpen(true);
+  }, [isApplyRoute, navigate]);
+
   const closeModal = useCallback(() => {
     setModalOpen(false);
+    if (isApplyRoute) navigate('/life-sciences-ceo/grant', { replace: true });
     if (searchParams.has('apply')) {
       const next = new URLSearchParams(searchParams);
       next.delete('apply');
       setSearchParams(next, { replace: true });
     }
-  }, [searchParams, setSearchParams]);
+  }, [isApplyRoute, navigate, searchParams, setSearchParams]);
 
   const sponsorSection = {
     id: 'sponsor',
