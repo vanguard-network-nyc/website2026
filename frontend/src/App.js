@@ -24,6 +24,7 @@ import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 import NextGenGCPage from './NextGenGCPage';
 import LifeSciencesCEOPage from './LifeSciencesCEOPage';
 import LSCEOGrantPage from './LSCEOGrantPage';
+import LSCEOGrantRecipientsPage from './LSCEOGrantRecipientsPage';
 import LawAssociatesPage from './LawAssociatesPage';
 import RiskManagementPage from './RiskManagementPage';
 import CaseStudiesPage from './CaseStudiesPage';
@@ -127,6 +128,7 @@ function App() {
           <Route path="/life-sciences-ceo" element={<PageWrapper><LifeSciencesCEOPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/apply" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
+          <Route path="/life-sciences-ceo/grant/recipients" element={<PageWrapper><LSCEOGrantRecipientsPage /></PageWrapper>} />
           <Route path="/law-associates" element={<PageWrapper><LawAssociatesPage /></PageWrapper>} />
           <Route path="/risk-management" element={<PageWrapper><RiskManagementPage /></PageWrapper>} />
           <Route path="/global-counsel-leaders" element={<PageWrapper><GlobalCounselLeadersPage /></PageWrapper>} />

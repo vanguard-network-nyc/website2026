@@ -1259,6 +1259,51 @@ async def submit_lsceo_grant(payload: dict):
     return {"ok": True, "row_id": row_id}
 
 
+# --- LSCEO Grant Recipients (Berkley Circle of Fellows) ---
+LSCEO_RECIPIENTS_BASE_ID = "appcKcpx0rQ37ChAo"
+LSCEO_RECIPIENTS_TABLE_ID = "tbliGbJTIk94Fpzhf"
+LSCEO_RECIPIENTS_COHORTS = [
+    "Berkley Pre Clinical 2025",
+    "Berkley In Clinical 2025",
+    "Berkley Pre Clinical 2026",
+    "Berkley In Clinical 2026",
+]
+
+
+@api_router.get("/lsceo-grant/recipients")
+async def get_lsceo_grant_recipients():
+    """Return past Life Sciences CEO Network grant recipients — anyone whose
+    `Grant Candidate` field contains one of the LSCEO_RECIPIENTS_COHORTS values."""
+    # Multi-select filter: OR over FIND(<cohort>, ARRAYJOIN({Grant Candidate}, ',')) > 0
+    conds = ",".join(
+        f'FIND("{c}", ARRAYJOIN({{Grant Candidate}}, ","))>0'
+        for c in LSCEO_RECIPIENTS_COHORTS
+    )
+    formula = f"OR({conds})"
+    try:
+        records = await _airtable_get_all(
+            LSCEO_RECIPIENTS_BASE_ID, LSCEO_RECIPIENTS_TABLE_ID,
+            {"filterByFormula": formula, "pageSize": 100,
+             "fields[]": ["WholeName", "Name", "Position", "Company", "Headshot",
+                          "LinkedIn Profile", "Grant Candidate"]},
+        )
+    except Exception as e:
+        logger.error(f"LSCEO recipients fetch failed: {e}")
+        raise HTTPException(status_code=502, detail="Could not load recipients.")
+
+    people = []
+    seen = set()
+    for r in records:
+        person = _map_person(r)
+        # Skip anyone without a headshot or name (looks broken in gallery)
+        if not person["name"] or person["id"] in seen:
+            continue
+        seen.add(person["id"])
+        people.append(person)
+    people.sort(key=lambda p: (p["name"].split()[-1] if p["name"] else "").lower())
+    return people
+
+
 @api_router.get("/podcasts/similar/{podcast_id}")
 async def get_similar_podcasts(podcast_id: str):
     """Get similar podcasts based on keywords"""
