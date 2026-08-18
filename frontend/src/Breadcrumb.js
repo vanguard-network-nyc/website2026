@@ -15,7 +15,8 @@ const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
     'contact': 'Contact',
     'team': 'Team',
     'events': 'Events',
-    'upcoming-events': 'Events',
+    'upcoming-events': 'Upcoming Events',
+    'past-events': 'Past Events',
     'content': 'Content',
     'articles': 'Articles',
     'article': 'Articles',
@@ -39,6 +40,7 @@ const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
   const breadcrumbLinkMap = {
     'article': '/articles',
     'events': '/upcoming-events',
+    'past-events': '/past-events',
     'podcast': '/podcasts',
     'video': '/videos',
     'newsroom-item': '/newsroom',
