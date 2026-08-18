@@ -77,7 +77,7 @@ const LSCEOGrantRecipientsPage = () => {
         type="website"
         breadcrumbs={[
           { name: 'Home', url: 'https://thevanguardnetwork.com/' },
-          { name: 'Life Sciences CEO', url: 'https://thevanguardnetwork.com/life-sciences-ceo' },
+          { name: 'Life Sciences CEO Network', url: 'https://thevanguardnetwork.com/networks/life-sciences-ceo-network' },
           { name: 'Grant', url: 'https://thevanguardnetwork.com/life-sciences-ceo/grant' },
           { name: 'Recipients', url: 'https://thevanguardnetwork.com/life-sciences-ceo/grant/recipients' },
         ]}

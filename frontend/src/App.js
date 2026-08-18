@@ -22,7 +22,6 @@ import GlobalCounselLeadersPage from './GlobalCounselLeadersPage';
 import NewLeadersPage from './NewLeadersPage';
 import SeniorCounselExchangePage from './SeniorCounselExchangePage';
 import NextGenGCPage from './NextGenGCPage';
-import LifeSciencesCEOPage from './LifeSciencesCEOPage';
 import LSCEOGrantPage from './LSCEOGrantPage';
 import LSCEOGrantRecipientsPage from './LSCEOGrantRecipientsPage';
 import LawAssociatesPage from './LawAssociatesPage';
@@ -125,7 +124,8 @@ function App() {
           <Route path="/gc-exchange" element={<PageWrapper><GCExchangePage /></PageWrapper>} />
           <Route path="/senior-counsel-exchange" element={<PageWrapper><SeniorCounselExchangePage /></PageWrapper>} />
           <Route path="/next-gen-gc-template" element={<PageWrapper><NextGenGCPage /></PageWrapper>} />
-          <Route path="/life-sciences-ceo" element={<PageWrapper><LifeSciencesCEOPage /></PageWrapper>} />
+          {/* /life-sciences-ceo is now the dynamic network page — redirect the legacy static route. */}
+          <Route path="/life-sciences-ceo" element={<Navigate to="/networks/life-sciences-ceo-network" replace />} />
           <Route path="/life-sciences-ceo/grant" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/apply" element={<PageWrapper><LSCEOGrantPage /></PageWrapper>} />
           <Route path="/life-sciences-ceo/grant/recipients" element={<PageWrapper><LSCEOGrantRecipientsPage /></PageWrapper>} />

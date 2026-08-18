@@ -29,7 +29,10 @@ const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
     'privacy': 'Privacy Policy',
     'terms': 'Terms of Use',
     'about': 'About',
-    'book': 'Book'
+    'book': 'Book',
+    'life-sciences-ceo': 'Life Sciences CEO Network',
+    'grant': 'Grant',
+    'recipients': 'Recipients'
   };
 
   // Map detail page segments to their correct parent URLs
@@ -38,7 +41,8 @@ const Breadcrumb = ({ customTitle, lightMode = false, extraCrumbs = [] }) => {
     'events': '/upcoming-events',
     'podcast': '/podcasts',
     'video': '/videos',
-    'newsroom-item': '/newsroom'
+    'newsroom-item': '/newsroom',
+    'life-sciences-ceo': '/networks/life-sciences-ceo-network'
   };
 
   // Color classes based on light mode
