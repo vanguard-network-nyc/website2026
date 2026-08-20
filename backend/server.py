@@ -345,7 +345,7 @@ def _write_signup_to_google_sheet(config: dict, values_by_col: dict) -> str:
             row.append(now_iso)
         else:
             row.append(str(values_by_col.get(h, "")))
-    ws.append_row(row, value_input_option="USER_ENTERED")
+    ws.append_row(row, value_input_option="USER_ENTERED", insert_data_option="INSERT_ROWS")
     return f"sheet-row-{len(ws.get_all_values())}"
 # --------------------------------------
 
