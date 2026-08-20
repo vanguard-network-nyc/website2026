@@ -1529,7 +1529,7 @@ const AdvisoryPage = () => {
             {/* Tom Hartman */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/09gop2gq_Tom%20Hartman.jpeg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" />
+                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/npgccx3r_Tom%20Hartman.png" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
