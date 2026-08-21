@@ -1540,6 +1540,20 @@ const AdvisoryPage = () => {
               </div>
             </div>
 
+            {/* Mohamed Ladha */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg" alt="Mohamed Ladha - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">MOHAMED LADHA</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">MBA, Kellogg School of Management, Northwestern University | MPA, Harvard Kennedy School, Harvard University | 25+ Years Biopharmaceutical Leadership | Commercial Strategy & General Management | Full P&L Leadership | Market Access & Medical Affairs | Business Development & Portfolio Strategy | Supply Chain & Enterprise Transformation</p>
+              </div>
+            </div>
+
             {/* Richard Hulme */}
             <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
