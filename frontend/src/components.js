@@ -3129,17 +3129,34 @@ const InTheMediaSection = () => {
               href="https://audioboom.com/channels/5120049-pharmaceutical-executive?list=0&search=leading+edge"
               target="_blank"
               rel="noopener noreferrer"
-              className="block group"
+              className="block group relative rounded-3xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.02]"
+              style={{ background: 'linear-gradient(135deg, #e5e5db 0%, #d8e3ee 55%, #cbd9e8 100%)' }}
               data-testid="in-the-media-cover-link"
               aria-label="Listen to Leading Edge with Ken Banta on Pharmaceutical Executive"
             >
               <img
                 src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x0xo8epa_leading.jpg"
                 alt="Leading Edge with Ken Banta — a Pharmaceutical Executive podcast"
-                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-auto block"
                 style={{ mixBlendMode: 'multiply' }}
                 loading="lazy"
               />
+              {/* Colored tagline overlay — top-right */}
+              <div className="absolute top-5 md:top-8 right-5 md:right-10 max-w-[45%] text-right pointer-events-none">
+                <div className="text-[10px] md:text-xs uppercase tracking-[0.35em] font-bold mb-2" style={{ color: '#00A8E1' }}>
+                  Podcast Series
+                </div>
+                <div className="text-lg md:text-2xl lg:text-3xl italic font-bold leading-tight" style={{ color: '#045184', fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                  The human side of leadership.
+                </div>
+              </div>
+              {/* Decorative accent bar — bottom-left */}
+              <div className="absolute bottom-5 md:bottom-8 left-5 md:left-10 pointer-events-none">
+                <div className="flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-widest font-semibold" style={{ color: '#045184' }}>
+                  <div className="w-8 h-0.5" style={{ backgroundColor: '#00A8E1' }}></div>
+                  Listen now
+                </div>
+              </div>
             </a>
           </div>
 
@@ -3183,7 +3200,7 @@ const InTheMediaSection = () => {
                 <img
                   src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/smjej5fm_Untitled_design.webp"
                   alt="Pharmaceutical Executive Podcast"
-                  className="h-24 md:h-28 w-auto -my-4"
+                  className="h-36 md:h-44 w-auto -my-10"
                   style={{ mixBlendMode: 'multiply' }}
                   loading="lazy"
                 />
