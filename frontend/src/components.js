@@ -3139,7 +3139,6 @@ const InTheMediaSection = () => {
                 alt="Leading Edge with Ken Banta — a Pharmaceutical Executive podcast"
                 className="w-full h-auto block"
                 style={{ mixBlendMode: 'multiply' }}
-                loading="lazy"
               />
               {/* Colored tagline overlay — top-right */}
               <div className="absolute top-5 md:top-8 right-5 md:right-10 max-w-[45%] text-right pointer-events-none">
@@ -3181,10 +3180,7 @@ const InTheMediaSection = () => {
                   href="https://audioboom.com/channels/5120049-pharmaceutical-executive?list=0&search=leading+edge"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all shadow-lg hover:shadow-xl"
-                  style={{ backgroundColor: '#00A8E1' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-6 md:px-8 py-3.5 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                   data-testid="in-the-media-listen-btn"
                 >
                   <Play size={18} fill="currentColor" />
