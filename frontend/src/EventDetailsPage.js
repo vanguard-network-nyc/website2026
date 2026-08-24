@@ -546,6 +546,43 @@ const EventDetailsPage = () => {
           </motion.div>
         )}
 
+        {/* Thanks To Our Partners — sponsor logos, hidden if no sponsors */}
+        {event.sponsors && event.sponsors.length > 0 && (
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mt-8"
+            data-testid="event-detail-partners"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>
+              Thanks To Our Partners
+            </h2>
+            <div className={`grid gap-6 md:gap-8 items-center justify-items-center ${
+              event.sponsors.length === 1 ? 'grid-cols-1 max-w-xs mx-auto' :
+              event.sponsors.length === 2 ? 'grid-cols-2 max-w-2xl mx-auto' :
+              event.sponsors.length === 3 ? 'grid-cols-2 sm:grid-cols-3 max-w-3xl mx-auto' :
+              'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'
+            }`}>
+              {event.sponsors.map((sponsor, idx) => (
+                <div
+                  key={idx}
+                  className="w-full flex items-center justify-center p-4"
+                  data-testid={`event-detail-partner-logo-${idx}`}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name ? `${sponsor.name} — event partner` : 'Event partner logo'}
+                    className="max-h-20 md:max-h-24 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* You might also like — 2-3 other upcoming events */}
         {!isPast && nearbyEvents.length > 0 && (
           <motion.div

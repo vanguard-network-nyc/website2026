@@ -157,6 +157,8 @@ class AirtableEventDetail(BaseModel):
     default_signup_url_non_members: Optional[str] = None
     more_details_url: Optional[str] = None
     append_to_magic_link: Optional[str] = None
+    sponsors: Optional[List[dict]] = None  # [{logo: url, name: str}, ...] for "Thanks To Our Partners" block
+    sponsored_text: Optional[str] = None
 
 class AirtableTeamMember(BaseModel):
     id: str
@@ -2425,6 +2427,17 @@ async def get_event_by_id(record_id: str):
         )
         final_registration_url = more_details_url or default_signup_non_members or default_signup_members or fallback_url
 
+        # Sponsors (for "Thanks To Our Partners" block)
+        sponsor_attachments = fields.get("Attachments (from sponsor)") or []
+        sponsored_text = fields.get("Sponsored text") or None
+        sponsors_list = []
+        for att in sponsor_attachments:
+            if isinstance(att, dict) and att.get("url"):
+                sponsors_list.append({
+                    "logo": att.get("url"),
+                    "name": sponsored_text or att.get("filename") or "",
+                })
+
         detail = AirtableEventDetail(
             id=record.get("id", record_id),
             event_title=(fields.get("Event Title") or "").strip(),
@@ -2461,6 +2474,8 @@ async def get_event_by_id(record_id: str):
             default_signup_url_non_members=default_signup_non_members,
             more_details_url=more_details_url,
             append_to_magic_link=append_to_magic_link or None,
+            sponsors=sponsors_list or None,
+            sponsored_text=sponsored_text,
         )
         return detail
     except HTTPException:
