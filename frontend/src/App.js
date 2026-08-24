@@ -80,6 +80,7 @@ const {
   NewStatsSection,
   NewWhatWeDoSection,
   NewAboutSection,
+  InTheMediaSection,
   NewContentLibrarySection,
   VideoQuoteSection,
   NewsroomSliderSection,
@@ -159,6 +160,7 @@ function HomePage() {
       <NewStatsSection />
       <NewWhatWeDoSection />
       <NewAboutSection />
+      <InTheMediaSection />
       <NewContentLibrarySection />
       <VideoQuoteSection />
       <NewsroomSliderSection />

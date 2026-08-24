@@ -42,6 +42,7 @@ import {
   Calendar,
   ExternalLink,
   Headphones,
+  Mic,
   FileText,
   Pause
 } from 'lucide-react';
@@ -3095,6 +3096,108 @@ const NewAboutSection = () => {
   );
 };
 
+// In The Media Section — highlights the Pharmaceutical Executive podcast partnership
+const InTheMediaSection = () => {
+  return (
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+            In The Media
+          </h2>
+          <p className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            The Vanguard Network partners with <strong>Pharmaceutical Executive</strong> to bring you <em>Leading Edge with Ken Banta</em> — a podcast series featuring candid conversations with the leaders shaping the future of life sciences.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+        >
+          {/* Left — visual card */}
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <a
+              href="https://audioboom.com/channels/5120049-pharmaceutical-executive?list=0&search=leading+edge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative rounded-2xl overflow-hidden shadow-2xl group aspect-square"
+              style={{ background: 'linear-gradient(135deg, #045184 0%, #033e69 60%, #022a48 100%)' }}
+              data-testid="in-the-media-cover-link"
+            >
+              {/* Decorative waveform */}
+              <div className="absolute inset-0 flex items-end justify-center pb-16 opacity-20 pointer-events-none">
+                <div className="flex items-end gap-1.5">
+                  {[24, 40, 56, 32, 72, 48, 88, 64, 40, 56, 32, 24, 48, 72, 40, 56, 32, 64, 48, 24].map((h, i) => (
+                    <div key={i} className="w-1.5 bg-white rounded-full" style={{ height: `${h}px` }} />
+                  ))}
+                </div>
+              </div>
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-8">
+                <div className="text-xs uppercase tracking-widest text-cyan-300 mb-3 font-semibold">Podcast Series</div>
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg transition-transform group-hover:scale-110" style={{ backgroundColor: '#00A8E1' }}>
+                  <Headphones size={40} className="text-white" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">Leading Edge<br />with Ken Banta</h3>
+                <div className="w-16 h-px bg-cyan-300 my-4"></div>
+                <div className="text-sm text-white/80 leading-snug">
+                  A <strong className="text-white">Pharmaceutical Executive</strong> podcast<br />in partnership with The Vanguard Network
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Right — pitch + CTA */}
+          <div className="lg:col-span-7 order-1 lg:order-2">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider" style={{ backgroundColor: '#e0f2fe', color: '#045184' }}>
+                <Mic size={14} />
+                New Series
+              </div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+                Candid conversations with the leaders shaping life sciences
+              </h3>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Hosted by <strong>Ken Banta</strong>, Founder & CEO of The Vanguard Network, <em>Leading Edge</em> brings together CEOs, general counsels, and senior executives across biopharma to explore the human side of leadership — the decisions, the trade-offs, and the moments that define a career.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                A partnership with <strong>Pharmaceutical Executive</strong>, one of the most trusted voices in the life sciences industry.
+              </p>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href="https://audioboom.com/channels/5120049-pharmaceutical-executive?list=0&search=leading+edge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all shadow-lg hover:shadow-xl"
+                  style={{ backgroundColor: '#00A8E1' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#0096C7')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#00A8E1')}
+                  data-testid="in-the-media-listen-btn"
+                >
+                  <Play size={18} fill="currentColor" />
+                  Listen on Pharmaceutical Executive
+                </a>
+                <span className="text-sm text-slate-500">
+                  All episodes • Free to stream
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Substack Posts Section
 const NewContentLibrarySection = () => {
   const [featuredInsights, setFeaturedInsights] = useState([]);
@@ -4028,6 +4131,7 @@ const Components = {
   NewStatsSection,
   NewWhatWeDoSection,
   NewAboutSection,
+  InTheMediaSection,
   NewContentLibrarySection,
   GCLBanner,
   VideoQuoteSection,
