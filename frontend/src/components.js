@@ -3121,43 +3121,30 @@ const InTheMediaSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
         >
-          {/* Left — visual card */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          {/* Left — Leading Edge cover art */}
+          <div className="lg:col-span-6 order-2 lg:order-1">
             <a
               href="https://audioboom.com/channels/5120049-pharmaceutical-executive?list=0&search=leading+edge"
               target="_blank"
               rel="noopener noreferrer"
-              className="block relative rounded-2xl overflow-hidden shadow-2xl group aspect-square"
-              style={{ background: 'linear-gradient(135deg, #045184 0%, #033e69 60%, #022a48 100%)' }}
+              className="block group"
               data-testid="in-the-media-cover-link"
+              aria-label="Listen to Leading Edge with Ken Banta on Pharmaceutical Executive"
             >
-              {/* Decorative waveform */}
-              <div className="absolute inset-0 flex items-end justify-center pb-16 opacity-20 pointer-events-none">
-                <div className="flex items-end gap-1.5">
-                  {[24, 40, 56, 32, 72, 48, 88, 64, 40, 56, 32, 24, 48, 72, 40, 56, 32, 64, 48, 24].map((h, i) => (
-                    <div key={i} className="w-1.5 bg-white rounded-full" style={{ height: `${h}px` }} />
-                  ))}
-                </div>
-              </div>
-              {/* Content */}
-              <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-8">
-                <div className="text-xs uppercase tracking-widest text-cyan-300 mb-3 font-semibold">Podcast Series</div>
-                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg transition-transform group-hover:scale-110" style={{ backgroundColor: '#00A8E1' }}>
-                  <Headphones size={40} className="text-white" />
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">Leading Edge<br />with Ken Banta</h3>
-                <div className="w-16 h-px bg-cyan-300 my-4"></div>
-                <div className="text-sm text-white/80 leading-snug">
-                  A <strong className="text-white">Pharmaceutical Executive</strong> podcast<br />in partnership with The Vanguard Network
-                </div>
-              </div>
+              <img
+                src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x0xo8epa_leading.jpg"
+                alt="Leading Edge with Ken Banta — a Pharmaceutical Executive podcast"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                style={{ mixBlendMode: 'multiply' }}
+                loading="lazy"
+              />
             </a>
           </div>
 
           {/* Right — pitch + CTA */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
+          <div className="lg:col-span-6 order-1 lg:order-2">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider" style={{ backgroundColor: '#e0f2fe', color: '#045184' }}>
                 <Mic size={14} />
@@ -3189,6 +3176,17 @@ const InTheMediaSection = () => {
                 <span className="text-sm text-slate-500">
                   All episodes • Free to stream
                 </span>
+              </div>
+              {/* Pharmaceutical Executive Podcast partner mark */}
+              <div className="flex items-center gap-5 pt-6 border-t border-slate-200 mt-4">
+                <span className="text-xs uppercase tracking-widest font-semibold text-slate-500 flex-shrink-0">In partnership with</span>
+                <img
+                  src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/smjej5fm_Untitled_design.webp"
+                  alt="Pharmaceutical Executive Podcast"
+                  className="h-24 md:h-28 w-auto -my-4"
+                  style={{ mixBlendMode: 'multiply' }}
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
