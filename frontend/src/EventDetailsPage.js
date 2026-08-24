@@ -575,6 +575,7 @@ const EventDetailsPage = () => {
                     src={sponsor.logo}
                     alt={sponsor.name ? `${sponsor.name} — event partner` : 'Event partner logo'}
                     className="max-h-32 md:max-h-40 w-auto object-contain"
+                    style={{ mixBlendMode: 'multiply' }}
                     loading="lazy"
                   />
                 </div>
