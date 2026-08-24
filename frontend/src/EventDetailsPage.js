@@ -509,7 +509,7 @@ const EventDetailsPage = () => {
             data-testid="event-detail-bottom-cta"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#045184' }}>
-              Interested in joining us?
+              INTERESTED IN JOINING US?
             </h2>
             <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
               Reserve your seat at <strong className="font-semibold text-slate-900">{event.event_title}</strong> and connect with peers driving executive leadership forward.
