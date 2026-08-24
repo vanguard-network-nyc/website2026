@@ -553,7 +553,7 @@ const EventDetailsPage = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg mt-8"
+            className="mt-12"
             data-testid="event-detail-partners"
           >
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ color: '#045184' }}>
@@ -568,13 +568,13 @@ const EventDetailsPage = () => {
               {event.sponsors.map((sponsor, idx) => (
                 <div
                   key={idx}
-                  className="w-full flex items-center justify-center p-4"
+                  className="w-full flex items-center justify-center"
                   data-testid={`event-detail-partner-logo-${idx}`}
                 >
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name ? `${sponsor.name} — event partner` : 'Event partner logo'}
-                    className="max-h-20 md:max-h-24 w-auto object-contain"
+                    className="max-h-32 md:max-h-40 w-auto object-contain"
                     loading="lazy"
                   />
                 </div>
