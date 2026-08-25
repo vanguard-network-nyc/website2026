@@ -407,7 +407,12 @@ const EventDetailsPage = () => {
             className="bg-white rounded-2xl p-6 md:p-10 shadow-lg mb-8"
             data-testid="event-detail-session-leaders"
           >
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Session Leader(s)</h2>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>
+              {(() => {
+                const count = (event.session_leaders && event.session_leaders.length) || (event.session_leader_name ? 1 : 0);
+                return count > 1 ? 'Session Leaders' : 'Session Leader';
+              })()}
+            </h2>
             {(() => {
               // Normalize into an array of leaders
               const leaders = (event.session_leaders && event.session_leaders.length > 0)
