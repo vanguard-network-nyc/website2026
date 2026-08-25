@@ -397,44 +397,110 @@ const EventDetailsPage = () => {
           </motion.div>
         )}
 
-        {/* Session leader */}
-        {event.session_leader_name && (
+        {/* Session leader(s) */}
+        {((event.session_leaders && event.session_leaders.length > 0) || event.session_leader_name) && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="bg-white rounded-2xl p-6 md:p-10 shadow-lg mb-8"
+            data-testid="event-detail-session-leaders"
           >
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Session Leader</h2>
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              {event.session_leader_headshot && (
-                <img
-                  src={event.session_leader_headshot}
-                  alt={event.session_leader_name}
-                  className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shadow-md flex-shrink-0"
-                />
-              )}
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-xl font-bold text-slate-900">{event.session_leader_name}</h3>
-                {event.session_leader_position && (
-                  <p className="text-slate-600 mt-1">{event.session_leader_position}</p>
-                )}
-                {event.session_leader_company && (
-                  <p className="text-[#00A8E1] font-medium mt-0.5">{event.session_leader_company}</p>
-                )}
-                {event.session_leader_linkedin && (
-                  <a
-                    href={event.session_leader_linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 mt-3 text-sm text-[#0077b5] hover:text-[#005582] font-medium"
-                  >
-                    <Linkedin size={16} /> LinkedIn
-                  </a>
-                )}
-              </div>
-            </div>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#045184' }}>Session Leader(s)</h2>
+            {(() => {
+              // Normalize into an array of leaders
+              const leaders = (event.session_leaders && event.session_leaders.length > 0)
+                ? event.session_leaders
+                : [{
+                    name: event.session_leader_name,
+                    position: event.session_leader_position,
+                    company: event.session_leader_company,
+                    headshot: event.session_leader_headshot,
+                    linkedin: event.session_leader_linkedin,
+                  }];
+
+              if (leaders.length === 1) {
+                // Single leader — keep the original horizontal layout
+                const l = leaders[0];
+                return (
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                    {l.headshot && (
+                      <img
+                        src={l.headshot}
+                        alt={l.name}
+                        className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shadow-md flex-shrink-0"
+                      />
+                    )}
+                    <div className="flex-1 text-center sm:text-left">
+                      <h3 className="text-xl font-bold text-slate-900">{l.name}</h3>
+                      {l.position && (
+                        <p className="text-slate-600 mt-1">{l.position}</p>
+                      )}
+                      {l.company && (
+                        <p className="text-[#00A8E1] font-medium mt-0.5">{l.company}</p>
+                      )}
+                      {l.linkedin && (
+                        <a
+                          href={l.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 mt-3 text-sm text-[#0077b5] hover:text-[#005582] font-medium"
+                        >
+                          <Linkedin size={16} /> LinkedIn
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
+              // Multiple leaders — responsive grid
+              return (
+                <div className={`grid gap-6 md:gap-8 ${
+                  leaders.length === 2 ? 'grid-cols-1 sm:grid-cols-2' :
+                  leaders.length === 3 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' :
+                  'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                }`}>
+                  {leaders.map((l, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center text-center"
+                      data-testid={`event-detail-session-leader-${i}`}
+                    >
+                      {l.headshot ? (
+                        <img
+                          src={l.headshot}
+                          alt={l.name}
+                          className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shadow-md flex-shrink-0 mb-4"
+                        />
+                      ) : (
+                        <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-2xl font-bold shadow-md mb-4">
+                          {(l.name || '?').split(' ').map(n => n[0]).slice(0, 2).join('')}
+                        </div>
+                      )}
+                      <h3 className="text-lg md:text-xl font-bold text-slate-900">{l.name}</h3>
+                      {l.position && (
+                        <p className="text-slate-600 mt-1 text-sm">{l.position}</p>
+                      )}
+                      {l.company && (
+                        <p className="text-[#00A8E1] font-medium mt-0.5 text-sm">{l.company}</p>
+                      )}
+                      {l.linkedin && (
+                        <a
+                          href={l.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 mt-3 text-sm text-[#0077b5] hover:text-[#005582] font-medium"
+                        >
+                          <Linkedin size={16} /> LinkedIn
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
             {event.lead_moderator_name && event.lead_moderator_name !== event.session_leader_name && (
               <p className="text-sm text-slate-500 mt-6 pt-4 border-t border-slate-200">
                 <strong className="text-slate-700">Moderator:</strong> {event.lead_moderator_name}

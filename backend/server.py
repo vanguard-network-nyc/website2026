@@ -144,6 +144,7 @@ class AirtableEventDetail(BaseModel):
     session_leader_company: Optional[str] = None
     session_leader_headshot: Optional[str] = None
     session_leader_linkedin: Optional[str] = None
+    session_leaders: Optional[List[dict]] = None  # [{name, position, company, headshot, linkedin}] for multi-leader events
     lead_moderator_name: Optional[str] = None
     type_of_event: Optional[str] = None
     audience_network: Optional[str] = None
@@ -2415,6 +2416,32 @@ async def get_event_by_id(record_id: str):
         co_chair_graphic_url = _first_attachment_url(fields.get("Co-chair Graphic"))
         session_leader_headshot = _first_attachment_url(fields.get("Headshot"))
 
+        # Multi-session-leader support — build an array where each entry has {name, position, company, headshot, linkedin}
+        def _as_list(v):
+            if v is None:
+                return []
+            return v if isinstance(v, list) else [v]
+
+        raw_names = _as_list(fields.get("Session Leader Name"))
+        raw_positions = _as_list(fields.get("Position (from Session Leader(s))"))
+        raw_companies = _as_list(fields.get("Company (Session Leader)"))
+        raw_linkedins = _as_list(
+            fields.get("Session Leader linked IN URL") or fields.get("Linked In Profile (session leader)")
+        )
+        raw_headshots = _as_list(fields.get("Headshot"))
+
+        session_leaders_list = []
+        for i in range(len(raw_names)):
+            headshot_att = raw_headshots[i] if i < len(raw_headshots) else None
+            headshot_url = headshot_att.get("url") if isinstance(headshot_att, dict) else None
+            session_leaders_list.append({
+                "name": str(raw_names[i]) if raw_names[i] else None,
+                "position": str(raw_positions[i]) if i < len(raw_positions) and raw_positions[i] else None,
+                "company": str(raw_companies[i]) if i < len(raw_companies) and raw_companies[i] else None,
+                "headshot": headshot_url,
+                "linkedin": str(raw_linkedins[i]) if i < len(raw_linkedins) and raw_linkedins[i] else None,
+            })
+
         # Registration URLs
         default_signup_members = fields.get("Default Sign up URL (for members)") or None
         default_signup_non_members = fields.get("Default Sign up URL (for NON-members)") or None
@@ -2461,6 +2488,7 @@ async def get_event_by_id(record_id: str):
             session_leader_company=session_leader_company,
             session_leader_headshot=session_leader_headshot,
             session_leader_linkedin=session_leader_linkedin,
+            session_leaders=session_leaders_list or None,
             lead_moderator_name=lead_moderator_name,
             type_of_event=_first_str(fields.get("Type of Event")),
             audience_network=_first_str(fields.get("Audience (Network)")),
