@@ -503,7 +503,9 @@ const EventDetailsPage = () => {
             })()}
             {event.lead_moderator_name && event.lead_moderator_name !== event.session_leader_name && (
               <p className="text-sm text-slate-500 mt-6 pt-4 border-t border-slate-200">
-                <strong className="text-slate-700">Moderator:</strong> {event.lead_moderator_name}
+                <strong className="text-slate-700">
+                  {(event.lead_moderators && event.lead_moderators.length > 1) ? 'Moderators:' : 'Moderator:'}
+                </strong> {event.lead_moderator_name}
               </p>
             )}
           </motion.div>

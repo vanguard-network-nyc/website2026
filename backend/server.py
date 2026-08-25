@@ -146,6 +146,7 @@ class AirtableEventDetail(BaseModel):
     session_leader_linkedin: Optional[str] = None
     session_leaders: Optional[List[dict]] = None  # [{name, position, company, headshot, linkedin}] for multi-leader events
     lead_moderator_name: Optional[str] = None
+    lead_moderators: Optional[List[str]] = None  # Full list of moderator names
     type_of_event: Optional[str] = None
     audience_network: Optional[str] = None
     series: Optional[str] = None
@@ -2404,6 +2405,13 @@ async def get_event_by_id(record_id: str):
         # Session leader / moderator names (can be list or string)
         session_leader_name = _first_str(fields.get("Session Leader Name"))
         lead_moderator_name = _first_str(fields.get("Lead Moderator Name"))
+        raw_moderators = fields.get("Lead Moderator Name")
+        if isinstance(raw_moderators, list):
+            moderators_list = [str(m).strip() for m in raw_moderators if m]
+        elif raw_moderators:
+            moderators_list = [str(raw_moderators).strip()]
+        else:
+            moderators_list = []
 
         # Position and company can also be lookup lists
         session_leader_position = _first_str(fields.get("Position (from Session Leader(s))"))
@@ -2490,6 +2498,7 @@ async def get_event_by_id(record_id: str):
             session_leader_linkedin=session_leader_linkedin,
             session_leaders=session_leaders_list or None,
             lead_moderator_name=lead_moderator_name,
+            lead_moderators=moderators_list or None,
             type_of_event=_first_str(fields.get("Type of Event")),
             audience_network=_first_str(fields.get("Audience (Network)")),
             series=_first_str(fields.get("Series")) or fields.get("Series Code Text") or None,
