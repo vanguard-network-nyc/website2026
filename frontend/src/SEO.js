@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 const SEO = ({ 
   title, 
   description, 
-  image = 'https://customer-assets.emergentagent.com/job_4fab1a4c-02f5-469e-a1ed-d1849b158ebf/artifacts/h5eblom2_hero.png',
+  image = 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/6tri0ffi_TVN%20sharing%20image%20%28Emergent%29%20%282%29.png',
   type = 'website',
   noindex = false,
   article = null, // For article pages: { author, datePublished, dateModified }
