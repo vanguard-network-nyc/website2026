@@ -209,6 +209,7 @@ const Header = () => {
       dropdown: [
         { name: 'Advisory Services', path: '/advisory' },
         { name: 'General Counsel Advisory', path: '/general-counsel-advisory' },
+        { name: 'CEO Advisory', path: '/ceo-advisory' },
         { name: 'Success Stories', path: '/success-stories' }
       ]
     },
