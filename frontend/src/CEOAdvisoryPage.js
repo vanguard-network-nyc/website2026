@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, Users, Lightbulb, Building2, GitMerge, Target, Plus, Linkedin, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Lightbulb, GitMerge, Target, Plus, CheckCircle2, Users } from 'lucide-react';
 import SEO from './SEO';
 
 const Breadcrumb = () => (
@@ -225,7 +225,7 @@ const CEOAdvisoryPage = () => {
         </motion.div>
       </div>
 
-      {/* The Team Section — Ken Banta featured */}
+      {/* The Team Section — Advisor Gallery */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -241,40 +241,91 @@ const CEOAdvisoryPage = () => {
             Vanguard brings together senior executives and advisors with decades of experience leading major organizations, navigating transformations, working with boards, building leadership teams, and advising CEOs through moments of significant change.
           </p>
 
-          {/* Ken Banta feature card */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl overflow-hidden shadow-md" data-testid="ceo-advisor-ken">
-                <div className="w-full aspect-square bg-slate-200 overflow-hidden">
-                  <img src="/ken-banta.jpg?v=2" alt="Ken Banta - Founder & CEO, The Vanguard Network" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-5 text-center">
-                  <h3 className="text-xl font-bold text-slate-900 mb-1">Ken Banta</h3>
-                  <p className="text-xs font-semibold text-[#00A8E1] uppercase tracking-wide mb-4">Founder & CEO, The Vanguard Network</p>
-                  <a
-                    href="https://www.linkedin.com/in/ken-banta-1651946/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                  >
-                    <Linkedin className="text-white" size={20} />
-                  </a>
-                </div>
+          {/* Horizontal Cards Layout - matches /advisory */}
+          <div className="space-y-6" data-testid="ceo-advisory-team-gallery">
+            {/* Ken Banta */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/ken-banta.jpg?v=2" alt="Ken Banta - Founder and Managing Director of The Vanguard Network" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">KEN BANTA</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
               </div>
             </div>
-            <div className="lg:col-span-2 space-y-4 text-slate-600 leading-relaxed text-base md:text-lg">
-              <p>Ken has spent more than three decades leading and advising senior executives. His operating career includes 18 years leading eleven major transformations, mergers, and turnarounds in global biopharma companies, generating more than $83 billion in accretive value.</p>
-              <p>Over the past decade, he has advised hundreds of CEOs and other senior leaders on leadership, strategy, organizational performance, talent, and transformation.</p>
-              <p>Through The Vanguard Network, Ken has also built communities bringing together thousands of senior executives for candid, peer-to-peer conversations about the realities of leadership.</p>
-            </div>
-          </div>
 
-          {/* Broader Team panel */}
-          <div className="mt-12 pt-8 border-t border-slate-200">
-            <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">A Broader Senior Advisory Team</h3>
-            <p className="text-slate-600 leading-relaxed text-base md:text-lg max-w-3xl">
-              Depending on the challenge, Vanguard can draw on a carefully selected group of senior executives and advisors with deep experience across leadership, strategy, transformation, governance, organizational effectiveness, communications, and other critical CEO priorities.
-            </p>
+            {/* Judy Gawlik Brown */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">JUDY GAWLIK BROWN</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
+              </div>
+            </div>
+
+            {/* Aileen Gonsalves */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Leadership Engagement Coach" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">AILEEN GONSALVES</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
+              </div>
+            </div>
+
+            {/* Tom Hartman */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x6slyocl_Tom%20Hartman.jpg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" style={{ objectPosition: '50% 15%' }} />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  As a coach, Tom supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider</p>
+              </div>
+            </div>
+
+            {/* Mohamed Ladha */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg" alt="Mohamed Ladha - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">MOHAMED LADHA</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">MBA, Kellogg School of Management, Northwestern University | MPA, Harvard Kennedy School, Harvard University | 25+ Years Biopharmaceutical Leadership | Commercial Strategy & General Management | Full P&L Leadership | Market Access & Medical Affairs | Business Development & Portfolio Strategy | Supply Chain & Enterprise Transformation</p>
+              </div>
+            </div>
+
+            {/* Richard Hulme */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
+              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
+                <img src="/richard-hulme.jpg" alt="Richard Hulme - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">RICHARD HULME</h3>
+                <p className="text-slate-600 leading-relaxed text-sm mb-3">
+                  Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
+                </p>
+                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
