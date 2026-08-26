@@ -732,11 +732,11 @@ const AdvisoryPage = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16" data-testid="advisory-service-links">
             <Link
               to="/general-counsel-advisory"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-5 md:px-6 py-3 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-4 md:px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
               data-testid="advisory-link-gc"
             >
               General Counsel Advisory
-              <ChevronRight size={18} />
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
         </div>
