@@ -724,9 +724,21 @@ const AdvisoryPage = () => {
           Leadership Advisory & Development
         </h1>
         <div className="max-w-5xl mx-auto">
-          <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-16">
+          <p className="text-2xl text-slate-600 leading-relaxed font-medium mb-8">
             Leadership is the catalyst for change and transformation–powered by the human factor.
           </p>
+
+          {/* Sub-service links */}
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16" data-testid="advisory-service-links">
+            <Link
+              to="/general-counsel-advisory"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white px-5 md:px-6 py-3 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              data-testid="advisory-link-gc"
+            >
+              General Counsel Advisory
+              <ChevronRight size={18} />
+            </Link>
+          </div>
         </div>
       </motion.div>
     </div>
