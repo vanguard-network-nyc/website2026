@@ -81,7 +81,7 @@ const MemberNetworkForm = ({ event, formKey, onSuccess }) => {
     if (!isValidPhoneNumber(data.phone)) return 'Please enter a valid phone number.';
     if (!data.company.trim()) return 'Please enter your company.';
     if (!data.title.trim()) return 'Please enter your title.';
-    if (!data.networks || data.networks.length === 0) return 'Please select at least one network.';
+    if (!data.networks || data.networks.length === 0) return 'Please select a network.';
     return null;
   };
 
@@ -181,11 +181,11 @@ const MemberNetworkForm = ({ event, formKey, onSuccess }) => {
 
       <Field label="Which network are you interested in?" required>
         <Select
-          isMulti
           options={NETWORK_OPTIONS}
-          value={data.networks}
-          onChange={(vals) => setData(prev => ({ ...prev, networks: vals || [] }))}
-          placeholder="Select one or more network(s) you are interested in"
+          value={data.networks[0] || null}
+          onChange={(val) => setData(prev => ({ ...prev, networks: val ? [val] : [] }))}
+          placeholder="Select the network you are interested in"
+          isClearable
           styles={selectStyles}
           classNamePrefix="signup-networks"
           menuPortalTarget={typeof document !== 'undefined' ? document.body : null}

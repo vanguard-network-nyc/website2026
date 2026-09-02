@@ -81,8 +81,8 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
   };
   const handlePhoneChange = (value) => setFormData((prev) => ({ ...prev, phone_number: '+' + value }));
   const handleCountryChange = (opt) => setFormData((prev) => ({ ...prev, country: opt ? opt.value : '' }));
-  const handleNetworkChange = (opts) =>
-    setFormData((prev) => ({ ...prev, network_interest: opts ? opts.map((o) => o.value) : [] }));
+  const handleNetworkChange = (opt) =>
+    setFormData((prev) => ({ ...prev, network_interest: opt ? [opt.value] : [] }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -244,13 +244,13 @@ const MembershipApplicationForm = ({ initialNetwork = '', compact = false }) => 
 
           <div>
             <label htmlFor="network_interest" className={labelCls}>
-              Which network are you interested in? <span className="text-red-500">*</span> <span className="text-slate-400 font-normal text-xs">(Select one or more)</span>
+              Which network are you interested in? <span className="text-red-500">*</span>
             </label>
             <Select
-              key={`network-${resetKey}`} isMulti options={networkOptions}
-              value={networkOptions.filter((o) => formData.network_interest.includes(o.value))}
+              key={`network-${resetKey}`} options={networkOptions}
+              value={networkOptions.find((o) => formData.network_interest.includes(o.value)) || null}
               onChange={handleNetworkChange}
-              placeholder="Select one or more networks..." isClearable isSearchable required
+              placeholder="Select a network..." isClearable isSearchable required
               styles={selectStyles}
             />
           </div>
