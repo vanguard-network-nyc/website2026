@@ -2147,14 +2147,13 @@ async def get_network(slug: str):
         # 3) Fetch chair(s) and advisors from VG Contacts filtered by board tag.
         chairs, advisors = [], []
         if board_tag:
-            # Airtable formula: use comma-wrapped FIND so "GC Advisory Board" does NOT
-            # match "Past GC Advisory Board (Pre 2026)". Both sides lowered for case safety.
+            # Airtable formula: substring pre-filter for efficiency. We do an EXACT
+            # multi-select membership check in Python below so tags like
+            # "Past GC Advisory Board (Pre 2026)" do NOT match "GC Advisory Board".
             safe_tag = board_tag.replace("'", "\\'")
             formula = (
-                f"AND("
-                f"FIND(',' & LOWER('{safe_tag}') & ',', "
-                f"',' & LOWER(ARRAYJOIN({{board advisor/guest}}, ',')) & ',')>0"
-                f")"
+                f"FIND(LOWER('{safe_tag}'), "
+                f"LOWER(ARRAYJOIN({{board advisor/guest}}, ',')))>0"
             )
             try:
                 contact_records = await _airtable_get(
@@ -2164,6 +2163,28 @@ async def get_network(slug: str):
             except Exception as ce:
                 logger.warning(f"Contact filter failed for '{board_tag}': {ce}")
                 contact_records = []
+
+            # Python-side exact membership: keep only records whose tag list
+            # contains the exact board_tag (case-insensitive, trimmed).
+            target_tag = board_tag.strip().lower()
+            filtered_records = []
+            for cr in contact_records:
+                cf = cr.get("fields", {})
+                # Field name is "Board Advisor/Guest" in Airtable (case may vary).
+                tags = (
+                    cf.get("Board Advisor/Guest")
+                    or cf.get("board advisor/guest")
+                    or cf.get("Board advisor/guest")
+                    or []
+                )
+                if isinstance(tags, str):
+                    tags = [tags]
+                if not isinstance(tags, list):
+                    continue
+                normalized = [str(t).strip().lower() for t in tags]
+                if target_tag in normalized:
+                    filtered_records.append(cr)
+            contact_records = filtered_records
 
             for cr in contact_records:
                 cf = cr.get("fields", {})
