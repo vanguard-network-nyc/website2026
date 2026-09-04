@@ -2147,12 +2147,13 @@ async def get_network(slug: str):
         # 3) Fetch chair(s) and advisors from VG Contacts filtered by board tag.
         chairs, advisors = [], []
         if board_tag:
-            # Airtable formula: FIND is case-sensitive; wrap both sides in LOWER() for safety.
-            # "board advisor/guest" is typically a multi-select or comma-joined text; FIND on ARRAYJOIN works.
+            # Airtable formula: use comma-wrapped FIND so "GC Advisory Board" does NOT
+            # match "Past GC Advisory Board (Pre 2026)". Both sides lowered for case safety.
             safe_tag = board_tag.replace("'", "\\'")
             formula = (
                 f"AND("
-                f"FIND(LOWER('{safe_tag}'), LOWER(ARRAYJOIN({{board advisor/guest}}, ',')))>0"
+                f"FIND(',' & LOWER('{safe_tag}') & ',', "
+                f"',' & LOWER(ARRAYJOIN({{board advisor/guest}}, ',')) & ',')>0"
                 f")"
             )
             try:
