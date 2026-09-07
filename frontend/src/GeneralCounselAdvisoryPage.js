@@ -375,7 +375,7 @@ const GeneralCounselAdvisoryPage = () => {
             Every advisor on our team has held, or closely supported, the GC role at major corporations. We know your world, and we speak your language.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {advisors.map((advisor, index) => (
               <motion.div
                 key={advisor.name}
