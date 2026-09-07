@@ -46,6 +46,13 @@ const advisors = [
     photo: "/stephen-gauster-gc.jpg"
   },
   {
+    name: "Christian Desrosiers",
+    title: "Co-founder, Flashpoint.AI",
+    creds: "Expert on the strategic opportunities, risks, and governance challenges presented by AI, helping General Counsel and senior leaders navigate its implications for business and decision-making. Co-founder of Flashpoint.AI, with experience spanning technology and international development, including roles at the United Nations and as a U.S. Fulbright Scholar.",
+    linkedin: "https://www.linkedin.com/in/cadesrosiers/",
+    photo: "https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg"
+  },
+  {
     name: "Jos\u00e9 Ram\u00f3n Gonz\u00e1lez",
     title: "Former Chief Legal Officer, Equitable Holdings",
     creds: "25+ years of senior legal leadership at major publicly held corporations. Former CLO & Corporate Secretary at Equitable Holdings.",
