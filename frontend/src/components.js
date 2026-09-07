@@ -1525,13 +1525,7 @@ const AdvisoryPage = () => {
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">CHRISTIAN DESROSIERS</h3>
                 <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Christian is an expert on strategic opportunities and challenges involving AI across sectors.
-                </p>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference.
-                </p>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.
+                  Christian is an expert on strategic opportunities and challenges involving AI across sectors. Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference. Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.
                 </p>
                 <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Co-Founder, Flashpoint.AI | Co-Founder, Monument | Fulbright Scholar, U.S. Department of State | Master in City Planning, Massachusetts Institute of Technology | BA, Amherst College</p>
               </div>
