@@ -219,7 +219,7 @@ const UpcomingEventsPage = () => {
     return `${shortMonths[parsed.month - 1]} ${parsed.day}`;
   };
 
-  const formatEventDate = (dateString, timezone) => {
+  const formatEventDate = (dateString, timezone, explicitStartTime = null) => {
     if (!dateString) return 'Date TBA';
     try {
       // Parse the ISO date string (UTC) and convert to event's local timezone
@@ -258,10 +258,17 @@ const UpcomingEventsPage = () => {
       const minutes = localDate.getUTCMinutes();
       const dayOfWeek = dayNames[localDate.getUTCDay()];
       
-      // Format time
-      const hour12 = hours % 12 || 12;
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      // Format time — prefer the human-entered "Start Time" text field when
+      // available (Airtable UTC datetime can be off by 1h if the entering user
+      // was in a different tz), otherwise compute from the ISO datetime.
+      let timeStr;
+      if (explicitStartTime && typeof explicitStartTime === 'string' && explicitStartTime.trim()) {
+        timeStr = explicitStartTime.trim();
+      } else {
+        const hour12 = hours % 12 || 12;
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      }
       
       // Add timezone if available
       const tzStr = timezone ? ` ${timezone}` : '';
@@ -674,7 +681,7 @@ const UpcomingEventsPage = () => {
                         {event.start_date && (
                           <div className="flex items-center gap-2 text-slate-600 mb-4">
                             <Clock size={16} className="text-[#00A8E1]" />
-                            <span className="text-sm">{formatEventDate(event.start_date, event.timezone)}</span>
+                            <span className="text-sm">{formatEventDate(event.start_date, event.timezone, event.start_time)}</span>
                           </div>
                         )}
                         

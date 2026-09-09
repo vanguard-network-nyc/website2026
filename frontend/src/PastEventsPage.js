@@ -145,7 +145,7 @@ const PastEventsPage = () => {
 
   const formatEventTitle = (title) => (title || '').replace(/\n+/g, ' ').trim();
 
-  const formatEventDate = (dateString, timezone) => {
+  const formatEventDate = (dateString, timezone, explicitStartTime = null) => {
     if (!dateString) return 'Date TBA';
     try {
       const date = new Date(dateString);
@@ -168,9 +168,15 @@ const PastEventsPage = () => {
       const minutes = localDate.getUTCMinutes();
       const dayOfWeek = dayNames[localDate.getUTCDay()];
 
-      const hour12 = hours % 12 || 12;
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      // Prefer human-entered "Start Time" text (Airtable UTC datetime may be off by 1h)
+      let timeStr;
+      if (explicitStartTime && typeof explicitStartTime === 'string' && explicitStartTime.trim()) {
+        timeStr = explicitStartTime.trim();
+      } else {
+        const hour12 = hours % 12 || 12;
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        timeStr = `${hour12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+      }
 
       const tzStr = timezone ? ` ${timezone}` : '';
 
@@ -205,7 +211,11 @@ const PastEventsPage = () => {
     );
   };
 
-  const formatEventTime = (dateString, timezone) => {
+  const formatEventTime = (dateString, timezone, explicitStartTime = null) => {
+    if (explicitStartTime && typeof explicitStartTime === 'string' && explicitStartTime.trim()) {
+      const cleaned = explicitStartTime.trim();
+      return timezone ? `${cleaned} ${timezone}` : cleaned;
+    }
     if (!dateString) return '';
     try {
       const date = new Date(dateString);
@@ -445,7 +455,7 @@ const PastEventsPage = () => {
                             <div className="flex items-center gap-4">
                               <span className="flex items-center gap-1">
                                 <Clock size={14} />
-                                {formatEventTime(event.start_date, event.timezone)}
+                                {formatEventTime(event.start_date, event.timezone, event.start_time)}
                               </span>
                               {event.session_leader_name && (
                                 <span className="flex items-center gap-1">
@@ -524,7 +534,7 @@ const PastEventsPage = () => {
                         {event.start_date && (
                           <div className="flex items-center gap-2 text-slate-600 mb-4">
                             <Clock size={16} className="text-[#00A8E1]" />
-                            <span className="text-sm">{formatEventDate(event.start_date, event.timezone)}</span>
+                            <span className="text-sm">{formatEventDate(event.start_date, event.timezone, event.start_time)}</span>
                           </div>
                         )}
 
