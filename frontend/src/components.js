@@ -371,28 +371,25 @@ const Header = () => {
                 <ChevronDown size={16} className="transition-transform duration-200 group-hover:rotate-180" />
               </button>
               <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="flex flex-col gap-2 min-w-[190px]">
+                <div className="bg-white rounded-lg shadow-xl overflow-hidden min-w-[220px] border border-slate-100">
                   <a
                     href="https://members.thevanguardnetwork.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
-                    style={{ backgroundColor: '#00A8E1' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    className="flex items-center justify-between gap-3 px-4 py-3 text-slate-800 hover:bg-slate-50 hover:text-[#00A8E1] font-medium text-sm transition-colors duration-200 group/item"
                     data-testid="nav-membership-member-site"
                   >
-                    MEMBER SITE
+                    <span>MEMBER SITE</span>
+                    <ChevronRight size={16} className="text-slate-400 group-hover/item:text-[#00A8E1] group-hover/item:translate-x-0.5 transition-all duration-200" />
                   </a>
+                  <div className="border-t border-slate-100"></div>
                   <Link
                     to="/application"
-                    className="text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
-                    style={{ backgroundColor: '#00A8E1' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    className="flex items-center justify-between gap-3 px-4 py-3 text-slate-800 hover:bg-slate-50 hover:text-[#00A8E1] font-medium text-sm transition-colors duration-200 group/item"
                     data-testid="nav-membership-apply-now"
                   >
-                    APPLY NOW
+                    <span>APPLY NOW</span>
+                    <ChevronRight size={16} className="text-slate-400 group-hover/item:text-[#00A8E1] group-hover/item:translate-x-0.5 transition-all duration-200" />
                   </Link>
                 </div>
               </div>
