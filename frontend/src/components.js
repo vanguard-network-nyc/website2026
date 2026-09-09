@@ -359,17 +359,18 @@ const Header = () => {
               transition={{ delay: 0.6 }}
               data-testid="nav-membership-dropdown"
             >
-              {/* Segmented pill: ghost MEMBER SITE + solid APPLY NOW */}
-              <div className="inline-flex items-stretch rounded-lg overflow-hidden whitespace-nowrap border border-white/25 shadow-sm">
+              {/* Segmented pill: gradient MEMBER SITE (strong outline) + solid APPLY NOW */}
+              <div className="inline-flex items-stretch rounded-lg overflow-hidden whitespace-nowrap shadow-md ring-2 ring-white/70">
                 <a
                   href="https://members.thevanguardnetwork.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/90 hover:text-white bg-transparent hover:bg-white/10 px-3.5 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
+                  className="text-white px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-all duration-200 bg-gradient-to-r from-[#0c2340] to-[#045184] hover:brightness-110"
                   data-testid="nav-membership-member-site"
                 >
                   MEMBER SITE
                 </a>
+                <div className="w-px bg-white/70 self-stretch" aria-hidden="true"></div>
                 <Link
                   to="/application"
                   className="text-white px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-colors duration-200"
