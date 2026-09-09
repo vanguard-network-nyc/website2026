@@ -108,6 +108,8 @@ class AirtableEvent(BaseModel):
     date_time: Optional[str] = None
     start_date: Optional[str] = None
     end_date: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
     timezone: Optional[str] = None
     listing_picture: Optional[str] = None
     registration_url: Optional[str] = None
@@ -1010,9 +1012,11 @@ async def fetch_airtable_events(view_id: str = None):
             
             # Extract fields
             event_title = fields.get("Event Title", "")
-            date_time = fields.get("Date & Time being/end", "")
+            date_time = fields.get("Date & Time being/end", "") or fields.get("Date & Time begin/end", "")
             start_date = fields.get("Start Date", "")
             end_date = fields.get("End Date", "")
+            start_time_text = fields.get("Start Time", "") or None
+            end_time_text = fields.get("End Time", "") or fields.get("Ending Time", "") or None
             timezone = fields.get("Timezone", "") or fields.get("Time Zone", "") or fields.get("TZ", "") or "ET"
             listing_picture = fields.get("Listing Picture", [])
             append_to_magic_link = fields.get("Append to magic link", "")
@@ -1080,6 +1084,8 @@ async def fetch_airtable_events(view_id: str = None):
                 date_time=date_time,
                 start_date=start_date,
                 end_date=end_date,
+                start_time=start_time_text,
+                end_time=end_time_text,
                 timezone=timezone,
                 listing_picture=picture_url,
                 registration_url=final_registration_url,

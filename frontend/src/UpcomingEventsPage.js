@@ -272,7 +272,15 @@ const UpcomingEventsPage = () => {
     }
   };
 
-  const formatEventTime = (dateString, timezone) => {
+  const formatEventTime = (dateString, timezone, explicitStartTime = null) => {
+    // Prefer the human-entered "Start Time" text field from Airtable when
+    // available. Airtable's UTC datetime can be off by 1h if the entering user
+    // was in a different timezone (e.g. entered "2 PM" in ET for a CDT event),
+    // so the display text is the source of truth.
+    if (explicitStartTime && typeof explicitStartTime === 'string' && explicitStartTime.trim()) {
+      const cleaned = explicitStartTime.trim();
+      return timezone ? `${cleaned} ${timezone}` : cleaned;
+    }
     if (!dateString) return '';
     try {
       // Parse the ISO date string (UTC) and convert to event's local timezone
@@ -579,7 +587,7 @@ const UpcomingEventsPage = () => {
                             <div className="flex items-center gap-4">
                               <span className="flex items-center gap-1">
                                 <Clock size={14} />
-                                {formatEventTime(event.start_date, event.timezone)}
+                                {formatEventTime(event.start_date, event.timezone, event.start_time)}
                               </span>
                               {event.session_leader_name && (
                                 <span className="flex items-center gap-1">
