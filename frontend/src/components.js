@@ -262,10 +262,10 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-6 md:px-8">
+        <div className="flex justify-between items-center gap-6 py-4">
           {/* Logo */}
-          <ScrollLink to="/" className="flex items-center space-x-2">
+          <ScrollLink to="/" className="flex items-center space-x-2 shrink-0">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
@@ -273,7 +273,7 @@ const Header = () => {
               <img
                 src="/logo.png"
                 alt="The Vanguard Network Logo"
-                className="h-10 md:h-16 w-auto object-contain max-w-[140px] md:max-w-xs"
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain max-w-[140px] md:max-w-[180px] lg:max-w-[220px]"
                 onError={(e) => {
                   console.error('Logo failed to load:', e);
                   e.target.style.display = 'none';
@@ -284,7 +284,7 @@ const Header = () => {
           </ScrollLink>
 
           {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center space-x-8">
+          <nav className="hidden xl:flex items-center gap-6 2xl:gap-8 shrink-0">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.name}
