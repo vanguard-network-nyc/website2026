@@ -357,46 +357,31 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="relative group"
               data-testid="nav-membership-dropdown"
             >
-              {/* Split-button: [MEMBER SITE | ▾] */}
-              <div className="inline-flex rounded-lg overflow-hidden shadow-sm" style={{ backgroundColor: '#00A8E1' }}>
+              {/* Segmented pill: [ MEMBER SITE | APPLY NOW ] */}
+              <div className="inline-flex items-stretch rounded-lg overflow-hidden shadow-sm whitespace-nowrap" style={{ backgroundColor: '#00A8E1' }}>
                 <a
                   href="https://members.thevanguardnetwork.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white pl-4 pr-3 py-2 font-medium transition-colors duration-200"
+                  className="text-white px-3 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                   data-testid="nav-membership-member-site"
                 >
                   MEMBER SITE
                 </a>
-                <div className="w-px bg-white/25"></div>
-                <button
-                  type="button"
-                  className="text-white px-2.5 py-2 transition-colors duration-200 flex items-center"
+                <div className="w-px bg-white/30 self-stretch my-1.5" aria-hidden="true"></div>
+                <Link
+                  to="/application"
+                  className="text-white px-3 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                  aria-label="More membership options"
-                  data-testid="nav-membership-btn"
+                  data-testid="nav-membership-apply-now"
                 >
-                  <ChevronDown size={16} className="transition-transform duration-200 group-hover:rotate-180" />
-                </button>
-              </div>
-              {/* Dropdown reveals APPLY NOW */}
-              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="bg-white rounded-lg shadow-xl overflow-hidden min-w-[190px] border border-slate-100">
-                  <Link
-                    to="/application"
-                    className="flex items-center justify-between gap-3 px-4 py-3 text-slate-800 hover:bg-slate-50 hover:text-[#00A8E1] font-medium text-sm transition-colors duration-200 group/item"
-                    data-testid="nav-membership-apply-now"
-                  >
-                    <span>APPLY NOW</span>
-                    <ChevronRight size={16} className="text-slate-400 group-hover/item:text-[#00A8E1] group-hover/item:translate-x-0.5 transition-all duration-200" />
-                  </Link>
-                </div>
+                  APPLY NOW
+                </Link>
               </div>
             </motion.div>
           </nav>
