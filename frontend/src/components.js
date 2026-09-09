@@ -357,18 +357,45 @@ const Header = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
+              className="relative group"
+              data-testid="nav-membership-dropdown"
             >
-              <a
-                href="https://members.thevanguardnetwork.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              <button
+                className="text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 inline-flex items-center gap-1.5"
                 style={{ backgroundColor: '#00A8E1' }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                data-testid="nav-membership-btn"
               >
-                MEMBER SITE
-              </a>
+                MEMBERSHIP
+                <ChevronDown size={16} className="transition-transform duration-200 group-hover:rotate-180" />
+              </button>
+              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="flex flex-col gap-2 min-w-[190px]">
+                  <a
+                    href="https://members.thevanguardnetwork.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
+                    style={{ backgroundColor: '#00A8E1' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    data-testid="nav-membership-member-site"
+                  >
+                    MEMBER SITE
+                  </a>
+                  <Link
+                    to="/application"
+                    className="text-white text-center px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
+                    style={{ backgroundColor: '#00A8E1' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    data-testid="nav-membership-apply-now"
+                  >
+                    APPLY NOW
+                  </Link>
+                </div>
+              </div>
             </motion.div>
           </nav>
 
@@ -458,18 +485,32 @@ const Header = () => {
                 transition={{ delay: 0.3 }}
                 className="pt-4"
               >
-                <a
-                  href="https://members.thevanguardnetwork.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 text-center"
-                  style={{ backgroundColor: '#00A8E1' }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  MEMBER SITE
-                </a>
+                <div className="flex gap-2 w-full" data-testid="mobile-nav-membership">
+                  <a
+                    href="https://members.thevanguardnetwork.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-white px-3 py-2 rounded-lg font-medium text-center transition-colors duration-200"
+                    style={{ backgroundColor: '#00A8E1' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    onClick={() => setIsMenuOpen(false)}
+                    data-testid="mobile-nav-member-site"
+                  >
+                    MEMBER SITE
+                  </a>
+                  <Link
+                    to="/application"
+                    className="flex-1 text-white px-3 py-2 rounded-lg font-medium text-center transition-colors duration-200"
+                    style={{ backgroundColor: '#00A8E1' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                    onClick={() => setIsMenuOpen(false)}
+                    data-testid="mobile-nav-apply-now"
+                  >
+                    APPLY NOW
+                  </Link>
+                </div>
               </motion.div>
             </div>
           </motion.nav>
@@ -562,18 +603,32 @@ const Header = () => {
                   transition={{ delay: 0.4 }}
                   className="pt-4"
                 >
-                  <a
-                    href="https://members.thevanguardnetwork.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-white px-6 py-3 rounded-lg font-medium text-base lg:text-lg transition-colors duration-200"
-                    style={{ backgroundColor: '#00A8E1' }}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = '#0096C7'}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = '#00A8E1'}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    MEMBER SITE
-                  </a>
+                  <div className="flex gap-3 w-full" data-testid="tablet-nav-membership">
+                    <a
+                      href="https://members.thevanguardnetwork.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-white px-4 py-3 rounded-lg font-medium text-base lg:text-lg text-center transition-colors duration-200"
+                      style={{ backgroundColor: '#00A8E1' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                      onClick={() => setIsMenuOpen(false)}
+                      data-testid="tablet-nav-member-site"
+                    >
+                      MEMBER SITE
+                    </a>
+                    <Link
+                      to="/application"
+                      className="flex-1 text-white px-4 py-3 rounded-lg font-medium text-base lg:text-lg text-center transition-colors duration-200"
+                      style={{ backgroundColor: '#00A8E1' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
+                      onClick={() => setIsMenuOpen(false)}
+                      data-testid="tablet-nav-apply-now"
+                    >
+                      APPLY NOW
+                    </Link>
+                  </div>
                 </motion.div>
               </div>
             </div>
