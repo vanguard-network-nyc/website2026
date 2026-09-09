@@ -359,17 +359,8 @@ const Header = () => {
               transition={{ delay: 0.6 }}
               data-testid="nav-membership-dropdown"
             >
-              {/* Segmented pill: white MEMBER SITE + solid APPLY NOW */}
+              {/* Segmented pill: solid APPLY NOW + white MEMBER SITE */}
               <div className="inline-flex items-stretch rounded-lg overflow-hidden whitespace-nowrap shadow-md">
-                <a
-                  href="https://members.thevanguardnetwork.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white text-[#0c2340] hover:bg-slate-100 px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-colors duration-200"
-                  data-testid="nav-membership-member-site"
-                >
-                  MEMBER SITE
-                </a>
                 <Link
                   to="/application"
                   className="text-white px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-colors duration-200"
@@ -380,6 +371,15 @@ const Header = () => {
                 >
                   APPLY NOW
                 </Link>
+                <a
+                  href="https://members.thevanguardnetwork.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-[#0c2340] hover:bg-slate-100 px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-colors duration-200"
+                  data-testid="nav-membership-member-site"
+                >
+                  MEMBER SITE
+                </a>
               </div>
             </motion.div>
           </nav>
