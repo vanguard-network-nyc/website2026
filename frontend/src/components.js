@@ -359,25 +359,23 @@ const Header = () => {
               transition={{ delay: 0.6 }}
               data-testid="nav-membership-dropdown"
             >
-              {/* Segmented pill: [ MEMBER SITE | APPLY NOW ] */}
-              <div className="inline-flex items-stretch rounded-lg overflow-hidden shadow-sm whitespace-nowrap" style={{ backgroundColor: '#00A8E1' }}>
+              {/* Segmented pill: ghost MEMBER SITE + solid APPLY NOW */}
+              <div className="inline-flex items-stretch rounded-lg overflow-hidden whitespace-nowrap border border-white/25 shadow-sm">
                 <a
                   href="https://members.thevanguardnetwork.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white px-3 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  className="text-white/90 hover:text-white bg-transparent hover:bg-white/10 px-3.5 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
                   data-testid="nav-membership-member-site"
                 >
                   MEMBER SITE
                 </a>
-                <div className="w-px bg-white/30 self-stretch my-1.5" aria-hidden="true"></div>
                 <Link
                   to="/application"
-                  className="text-white px-3 py-2 text-sm font-medium leading-none whitespace-nowrap transition-colors duration-200"
+                  className="text-white px-3.5 py-2 text-sm font-semibold leading-none whitespace-nowrap transition-colors duration-200"
+                  style={{ backgroundColor: '#00A8E1' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0096C7'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#00A8E1'}
                   data-testid="nav-membership-apply-now"
                 >
                   APPLY NOW
