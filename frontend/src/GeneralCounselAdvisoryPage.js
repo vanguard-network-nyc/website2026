@@ -68,7 +68,7 @@ const advisors = [
   },
   {
     name: "Terry Szmagala",
-    title: "Former EVP & CLO, Eaton Corporation",
+    title: "Former EVP & CLO, Eaton Corporation; Adjunct, University of Virginia School of Law",
     creds: "Led legal and government affairs functions at Eaton ($130B market cap multinational). Trusted counsel to boards and executive management teams.",
     linkedin: "https://www.linkedin.com/in/taras-szmagala/",
     photo: "/terry-szmagala-gc.jpg"
