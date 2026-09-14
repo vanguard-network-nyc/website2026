@@ -121,6 +121,7 @@ class AirtableEvent(BaseModel):
     location: Optional[str] = None
     audience_network: Optional[str] = None
     series_code: Optional[str] = None  # e.g., 'CSC', 'GCF' — used by frontend to decide internal vs external link
+    schedule_outline: Optional[str] = None  # GCF-only: high-level schedule shown on cards + detail page
 
 class AirtableEventDetail(BaseModel):
     """Full event record for the /events/:recordId detail page."""
@@ -163,6 +164,7 @@ class AirtableEventDetail(BaseModel):
     append_to_magic_link: Optional[str] = None
     sponsors: Optional[List[dict]] = None  # [{logo: url, name: str}, ...] for "Thanks To Our Partners" block
     sponsored_text: Optional[str] = None
+    schedule_outline: Optional[str] = None  # GCF-only: high-level schedule shown below the date on the top card
 
 class AirtableTeamMember(BaseModel):
     id: str
@@ -1097,6 +1099,7 @@ async def fetch_airtable_events(view_id: str = None):
                 location=location,
                 audience_network=audience_network,
                 series_code=series_code_val,
+                schedule_outline=(fields.get("Schedule Outline") or fields.get("schedule outline") or None),
             )
             events.append(event)
         
@@ -2541,6 +2544,7 @@ async def get_event_by_id(record_id: str):
             append_to_magic_link=append_to_magic_link or None,
             sponsors=sponsors_list or None,
             sponsored_text=sponsored_text,
+            schedule_outline=(fields.get("Schedule Outline") or fields.get("schedule outline") or None),
         )
         return detail
     except HTTPException:

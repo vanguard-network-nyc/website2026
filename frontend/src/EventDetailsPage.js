@@ -302,6 +302,17 @@ const EventDetailsPage = () => {
                   <div>
                     <div className="text-xs font-semibold uppercase text-slate-500 mb-1">Date & Time</div>
                     <div className="text-sm md:text-base" data-testid="event-detail-date">{dateLine}</div>
+                    {event.series_code === 'GCF' && event.schedule_outline && (
+                      <div
+                        className="text-sm md:text-base text-slate-600 mt-2 event-schedule-outline"
+                        data-testid="event-detail-schedule-outline"
+                      >
+                        <div className="font-semibold text-slate-700 mb-1">Schedule Outline:</div>
+                        <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                          {event.schedule_outline}
+                        </ReactMarkdown>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}

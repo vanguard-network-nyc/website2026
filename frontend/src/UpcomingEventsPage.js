@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkBreaks from 'remark-breaks';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
 import { Calendar, Clock, ArrowRight, ExternalLink, Users, MapPin, Search, Filter, CalendarDays, ChevronDown, Mail } from 'lucide-react';
@@ -682,6 +684,17 @@ const UpcomingEventsPage = () => {
                           <div className="flex items-center gap-2 text-slate-600 mb-4">
                             <Clock size={16} className="text-[#00A8E1]" />
                             <span className="text-sm">{formatEventDate(event.start_date, event.timezone, event.start_time)}</span>
+                          </div>
+                        )}
+
+                        {event.series_code === 'GCF' && event.schedule_outline && (
+                          <div className="flex items-start gap-2 text-slate-600 mb-4" data-testid="event-card-schedule-outline">
+                            <Calendar size={16} className="text-[#00A8E1] flex-shrink-0 mt-0.5" />
+                            <div className="text-sm event-schedule-outline">
+                              <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                                {event.schedule_outline}
+                              </ReactMarkdown>
+                            </div>
                           </div>
                         )}
                         
