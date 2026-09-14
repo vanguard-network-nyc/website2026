@@ -307,8 +307,14 @@ const EventDetailsPage = () => {
                         className="text-sm md:text-base text-slate-600 mt-2 event-schedule-outline"
                         data-testid="event-detail-schedule-outline"
                       >
-                        <div className="font-semibold text-slate-700 mb-1">Schedule Outline:</div>
-                        <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                        <ReactMarkdown
+                          remarkPlugins={[remarkBreaks]}
+                          components={{
+                            ul: ({node, ...props}) => <ul className="list-disc pl-5 space-y-1" {...props} />,
+                            li: ({node, ...props}) => <li {...props} />,
+                            p: ({node, ...props}) => <p className="mb-1" {...props} />,
+                          }}
+                        >
                           {event.schedule_outline}
                         </ReactMarkdown>
                       </div>

@@ -688,10 +688,16 @@ const UpcomingEventsPage = () => {
                         )}
 
                         {event.series_code === 'GCF' && event.schedule_outline && (
-                          <div className="flex items-start gap-2 text-slate-600 mb-4" data-testid="event-card-schedule-outline">
-                            <Calendar size={16} className="text-[#00A8E1] flex-shrink-0 mt-0.5" />
+                          <div className="text-slate-600 mb-4" data-testid="event-card-schedule-outline">
                             <div className="text-sm event-schedule-outline">
-                              <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                              <ReactMarkdown
+                                remarkPlugins={[remarkBreaks]}
+                                components={{
+                                  ul: ({node, ...props}) => <ul className="list-disc pl-5 space-y-1" {...props} />,
+                                  li: ({node, ...props}) => <li className="text-sm" {...props} />,
+                                  p: ({node, ...props}) => <p className="mb-1" {...props} />,
+                                }}
+                              >
                                 {event.schedule_outline}
                               </ReactMarkdown>
                             </div>
