@@ -1798,7 +1798,7 @@ const TeamPage = () => {
                         )}
                       </div>
                       {member.bio && (
-                        <p className="text-slate-600 text-sm xl:text-xs leading-relaxed whitespace-pre-line xl:hidden">
+                        <p className="text-slate-600 text-sm xl:text-[13px] leading-relaxed whitespace-pre-line">
                           {member.bio}
                         </p>
                       )}
