@@ -1761,14 +1761,14 @@ const TeamPage = () => {
             {/* Combined Team - Sorted alphabetically by last name */}
             {combinedTeam.length > 0 && (
               <div className="mb-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
                   {combinedTeam.map((member, index) => (
                     <motion.div
                       key={member.id}
                       initial={{ y: 50, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.8 + (index * 0.05), duration: 0.6 }}
-                      className="bg-white rounded-xl p-5 xl:p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
+                      className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
                       whileHover={{ scale: 1.02 }}
                     >
                       <div className="text-center mb-4">
@@ -1776,7 +1776,7 @@ const TeamPage = () => {
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ delay: 1.0 + index * 0.05, duration: 0.5 }}
-                          className="w-28 h-28 xl:w-24 xl:h-24 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
+                          className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
                         >
                           <img
                             src={member.image}
@@ -1784,8 +1784,8 @@ const TeamPage = () => {
                             className="w-full h-full object-cover"
                           />
                         </motion.div>
-                        <h3 className="text-lg xl:text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
-                        <p className="text-sm xl:text-xs font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
+                        <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
+                        <p className="text-sm font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
                         {member.linkedin && (
                           <a
                             href={member.linkedin}
@@ -1798,7 +1798,7 @@ const TeamPage = () => {
                         )}
                       </div>
                       {member.bio && (
-                        <p className="text-slate-600 text-sm xl:text-[13px] leading-relaxed whitespace-pre-line">
+                        <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
                           {member.bio}
                         </p>
                       )}
