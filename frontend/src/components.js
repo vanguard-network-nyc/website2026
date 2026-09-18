@@ -1623,6 +1623,63 @@ const AdvisoryPage = () => {
   );
 };
 
+const TeamMemberCard = ({ member, index, animDelay = 0.8 }) => {
+  const [expanded, setExpanded] = useState(false);
+  const bio = member.bio || '';
+  const CLAMP_CHARS = 180;
+  const isLong = bio.length > CLAMP_CHARS;
+  const shown = expanded || !isLong ? bio : bio.slice(0, CLAMP_CHARS).replace(/\s+\S*$/, '') + '…';
+
+  return (
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: animDelay + (index * 0.05), duration: 0.6 }}
+      className="bg-white rounded-xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
+      whileHover={{ scale: 1.02 }}
+      layout
+    >
+      <div className="text-center mb-4">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: animDelay + 0.2 + index * 0.05, duration: 0.5 }}
+          className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
+        >
+          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+        </motion.div>
+        <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
+        <p className="text-xs font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
+        {member.linkedin && (
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+          >
+            <Linkedin className="text-white" size={18} />
+          </a>
+        )}
+      </div>
+      {bio && (
+        <div className="text-slate-600 text-[13px] leading-relaxed">
+          <p className="whitespace-pre-line">{shown}</p>
+          {isLong && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className="mt-2 text-[#00A8E1] hover:text-[#045184] text-xs font-semibold transition-colors"
+              data-testid={`team-bio-toggle-${member.id}`}
+            >
+              {expanded ? 'Show less' : 'Read more'}
+            </button>
+          )}
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
 const TeamPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -1761,48 +1818,9 @@ const TeamPage = () => {
             {/* Combined Team - Sorted alphabetically by last name */}
             {combinedTeam.length > 0 && (
               <div className="mb-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12 items-start">
                   {combinedTeam.map((member, index) => (
-                    <motion.div
-                      key={member.id}
-                      initial={{ y: 50, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.8 + (index * 0.05), duration: 0.6 }}
-                      className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-center mb-4">
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 1.0 + index * 0.05, duration: 0.5 }}
-                          className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
-                        >
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
-                        <p className="text-sm font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
-                        {member.linkedin && (
-                          <a
-                            href={member.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                          >
-                            <Linkedin className="text-white" size={18} />
-                          </a>
-                        )}
-                      </div>
-                      {member.bio && (
-                        <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
-                          {member.bio}
-                        </p>
-                      )}
-                    </motion.div>
+                    <TeamMemberCard key={member.id} member={member} index={index} />
                   ))}
                 </div>
               </div>
