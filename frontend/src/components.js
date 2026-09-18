@@ -1652,14 +1652,14 @@ const DesktopTeamCard = ({ member, index, animDelay = 0.4, onOpen }) => (
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <div className="p-4 flex items-start justify-between gap-3">
+    <div className="p-5 flex items-start justify-between gap-3">
       <div className="min-w-0 flex-1">
-        <h3 className="text-[15px] font-bold text-slate-900 leading-tight truncate">{member.name}</h3>
-        <p className="text-xs font-medium text-slate-500 mt-0.5 leading-snug line-clamp-2">{member.role}</p>
+        <h3 className="text-base font-bold text-slate-900 leading-tight">{member.name}</h3>
+        <p className="text-sm font-medium text-slate-500 mt-1 leading-snug">{member.role}</p>
       </div>
       {member.bio && (
-        <span className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors whitespace-nowrap pt-0.5">
-          Read bio <ArrowRight size={12} />
+        <span className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors whitespace-nowrap pt-0.5">
+          Read bio <ArrowRight size={16} />
         </span>
       )}
     </div>
@@ -1853,7 +1853,7 @@ const TeamPage = () => {
             {allTeam.length > 0 && (
               <div className="mb-16">
                 {/* Desktop (xl+): 4×3 grid with "Read bio" → right-side drawer */}
-                <div className="hidden xl:grid grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+                <div className="hidden xl:grid grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
                   {allTeam.map((member, index) => (
                     <DesktopTeamCard
                       key={member.id}
