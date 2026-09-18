@@ -135,6 +135,7 @@ function App() {
           <Route path="/new-leaders" element={<Navigate to="/programs" replace />} />
           <Route path="/success-stories" element={<PageWrapper><CaseStudiesPage /></PageWrapper>} />
           <Route path="/team" element={<PageWrapper><TeamPage /></PageWrapper>} />
+          <Route path="/team/:memberSlug" element={<PageWrapper><TeamPage /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><ContactPage /></PageWrapper>} />
           <Route path="/book" element={<PageWrapper><BookPage /></PageWrapper>} />
           <Route path="/newsroom" element={<PageWrapper><NewsroomPage /></PageWrapper>} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import SEO from './SEO';
 import Slider from 'react-slick';
@@ -1623,93 +1623,150 @@ const AdvisoryPage = () => {
   );
 };
 
-const TeamMemberCard = ({ member, index, animDelay = 0.8 }) => {
-  const [tapped, setTapped] = useState(false);
-  const hasBio = Boolean(member.bio);
+const slugifyName = (name) =>
+  (name || '')
+    .toString()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
-  return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: animDelay + (index * 0.05), duration: 0.6 }}
-      className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-      whileHover={{ scale: 1.02 }}
-      data-testid={`team-card-${member.id}`}
-    >
-      {/* Base card */}
-      <div className="p-5 text-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: animDelay + 0.2 + index * 0.05, duration: 0.5 }}
-          className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
+// Compact desktop card (farmlands-style): photo, name/title on left, "Read bio →" link.
+const DesktopTeamCard = ({ member, index, animDelay = 0.8, onOpen }) => (
+  <motion.button
+    type="button"
+    onClick={() => member.bio && onOpen(member)}
+    initial={{ y: 30, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: animDelay + index * 0.05, duration: 0.5 }}
+    whileHover={{ y: -4 }}
+    className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left"
+    data-testid={`team-card-desktop-${member.id}`}
+  >
+    <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+    <div className="p-4 flex-1 flex flex-col">
+      <h3 className="text-base font-bold text-slate-900 leading-tight">{member.name}</h3>
+      <p className="text-xs font-medium text-slate-500 mt-0.5 mb-2 leading-snug">{member.role}</p>
+      {member.bio && (
+        <span
+          className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors"
         >
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-        </motion.div>
-        <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
-        <p className="text-xs font-semibold mb-3 leading-snug min-h-[2rem]" style={{ color: '#00A8E1' }}>{member.role}</p>
-        <div className="flex items-center justify-center gap-2">
-          {member.linkedin && (
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300 relative z-20"
-            >
-              <Linkedin className="text-white" size={18} />
-            </a>
-          )}
-          {hasBio && (
-            <button
-              type="button"
-              onClick={() => setTapped((v) => !v)}
-              className="xl:hidden inline-flex items-center gap-1 text-xs font-semibold text-[#00A8E1] hover:text-[#045184] relative z-20"
-              aria-expanded={tapped}
-              data-testid={`team-bio-toggle-${member.id}`}
-            >
-              {tapped ? 'Hide bio' : 'View bio'}
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Hover / tap-revealed bio overlay */}
-      {hasBio && (
-        <div
-          className={`absolute inset-0 bg-gradient-to-br from-[#045184] to-[#0c2340] text-white p-5 flex flex-col transition-all duration-300 ease-out
-            opacity-0 translate-y-4 pointer-events-none
-            group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
-            ${tapped ? '!opacity-100 !translate-y-0 pointer-events-auto' : ''}`}
-        >
-          <div className="mb-3">
-            <h3 className="text-base font-bold leading-tight">{member.name}</h3>
-            <p className="text-xs font-semibold text-[#7fd3f0] leading-snug">{member.role}</p>
-          </div>
-          <div className="text-[12.5px] leading-relaxed whitespace-pre-line overflow-y-auto flex-1 pr-1 team-bio-scroll">
-            {member.bio}
-          </div>
-          {member.linkedin && (
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-[#7fd3f0] hover:text-white transition-colors self-start"
-            >
-              <Linkedin size={14} /> LinkedIn
-            </a>
-          )}
-        </div>
+          Read bio <ArrowRight size={12} />
+        </span>
       )}
-    </motion.div>
-  );
-};
+    </div>
+  </motion.button>
+);
+
+// Full tablet/mobile card (original layout with bio + linkedin visible).
+const MobileTeamCard = ({ member, index, animDelay = 0.8 }) => (
+  <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: animDelay + (index * 0.1), duration: 0.8 }}
+    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-[calc(50%-1rem)]"
+    whileHover={{ scale: 1.02 }}
+    data-testid={`team-card-mobile-${member.id}`}
+  >
+    <div className="text-center mb-6">
+      <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg">
+        <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+      </div>
+      <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
+      <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+      {member.linkedin && (
+        <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+        >
+          <Linkedin className="text-white" size={20} />
+        </a>
+      )}
+    </div>
+    {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
+  </motion.div>
+);
+
+// URL-driven bio modal. Reads memberSlug from route params.
+const TeamBioModal = ({ member, onClose }) => (
+  <AnimatePresence>
+    {member && (
+      <motion.div
+        key="backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+        data-testid={`team-bio-modal-${member.id}`}
+      >
+        <motion.div
+          key="modal"
+          initial={{ y: 20, opacity: 0, scale: 0.98 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 20, opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl relative"
+        >
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close bio"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors z-10"
+            data-testid={`team-bio-modal-close`}
+          >
+            <X size={18} />
+          </button>
+          <div className="p-6 md:p-10">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-6">
+              <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 mx-auto md:mx-0">
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+              </div>
+              <div className="text-center md:text-left flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{member.name}</h3>
+                <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{member.role}</p>
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all self-center md:self-start"
+                    aria-label={`${member.name} on LinkedIn`}
+                    data-testid="team-bio-modal-linkedin"
+                  >
+                    <Linkedin className="text-white" size={18} />
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="text-slate-700 text-[15px] leading-relaxed whitespace-pre-line border-t border-slate-100 pt-6">
+              {member.bio}
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
 
 const TeamPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sections, setSections] = useState({});
+  const navigate = useNavigate();
+  const { memberSlug } = useParams();
+  const activeMember = memberSlug ? teamMembers.find((m) => slugifyName(m.name) === memberSlug) : null;
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -1844,9 +1901,22 @@ const TeamPage = () => {
             {/* Combined Team - Sorted alphabetically by last name */}
             {combinedTeam.length > 0 && (
               <div className="mb-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12 items-start">
+                {/* Desktop (xl+): compact grid with "Read bio" → modal */}
+                <div className="hidden xl:grid grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
                   {combinedTeam.map((member, index) => (
-                    <TeamMemberCard key={member.id} member={member} index={index} />
+                    <DesktopTeamCard
+                      key={member.id}
+                      member={member}
+                      index={index}
+                      onOpen={(m) => navigate(`/team/${slugifyName(m.name)}`)}
+                    />
+                  ))}
+                </div>
+
+                {/* Tablet + Mobile: original layout with full bio + LinkedIn visible */}
+                <div className="xl:hidden flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12">
+                  {combinedTeam.map((member, index) => (
+                    <MobileTeamCard key={member.id} member={member} index={index} />
                   ))}
                 </div>
               </div>
@@ -1936,6 +2006,8 @@ const TeamPage = () => {
         </motion.div>
       </motion.div>
     </div>
+
+    <TeamBioModal member={activeMember} onClose={() => navigate('/team')} />
   </div>
   );
 };
