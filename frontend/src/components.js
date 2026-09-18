@@ -1624,59 +1624,112 @@ const AdvisoryPage = () => {
 };
 
 const TeamMemberCard = ({ member, index, animDelay = 0.8 }) => {
-  const [expanded, setExpanded] = useState(false);
-  const bio = member.bio || '';
-  const CLAMP_CHARS = 180;
-  const isLong = bio.length > CLAMP_CHARS;
-  const shown = expanded || !isLong ? bio : bio.slice(0, CLAMP_CHARS).replace(/\s+\S*$/, '') + '…';
+  const [open, setOpen] = useState(false);
+  const hasBio = Boolean(member.bio);
 
   return (
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: animDelay + (index * 0.05), duration: 0.6 }}
-      className="bg-white rounded-xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
-      whileHover={{ scale: 1.02 }}
-      layout
-    >
-      <div className="text-center mb-4">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: animDelay + 0.2 + index * 0.05, duration: 0.5 }}
-          className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
-        >
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-        </motion.div>
-        <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
-        <p className="text-xs font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
-        {member.linkedin && (
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+    <>
+      <motion.button
+        type="button"
+        onClick={() => hasBio && setOpen(true)}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: animDelay + (index * 0.05), duration: 0.6 }}
+        whileHover={{ scale: 1.03 }}
+        className={`bg-white rounded-xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col text-left w-full ${hasBio ? 'cursor-pointer' : 'cursor-default'}`}
+        aria-label={hasBio ? `View bio for ${member.name}` : member.name}
+        data-testid={`team-card-${member.id}`}
+      >
+        <div className="text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: animDelay + 0.2 + index * 0.05, duration: 0.5 }}
+            className="w-28 h-28 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
           >
-            <Linkedin className="text-white" size={18} />
-          </a>
-        )}
-      </div>
-      {bio && (
-        <div className="text-slate-600 text-[13px] leading-relaxed">
-          <p className="whitespace-pre-line">{shown}</p>
-          {isLong && (
-            <button
-              type="button"
-              onClick={() => setExpanded((v) => !v)}
-              className="mt-2 text-[#00A8E1] hover:text-[#045184] text-xs font-semibold transition-colors"
-              data-testid={`team-bio-toggle-${member.id}`}
-            >
-              {expanded ? 'Show less' : 'Read more'}
-            </button>
-          )}
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+          </motion.div>
+          <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
+          <p className="text-xs font-semibold mb-3 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
+          <div className="flex items-center justify-center gap-2">
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+              >
+                <Linkedin className="text-white" size={18} />
+              </a>
+            )}
+            {hasBio && (
+              <span className="text-xs font-semibold text-[#00A8E1] hover:text-[#045184] transition-colors">
+                View bio →
+              </span>
+            )}
+          </div>
         </div>
-      )}
-    </motion.div>
+      </motion.button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+            data-testid={`team-bio-modal-${member.id}`}
+          >
+            <motion.div
+              key="modal"
+              initial={{ y: 20, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 20, opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl relative"
+            >
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close bio"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
+                data-testid={`team-bio-modal-close-${member.id}`}
+              >
+                <X size={18} />
+              </button>
+              <div className="p-8 md:p-10">
+                <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
+                  <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg flex-shrink-0 mx-auto md:mx-0">
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="text-center md:text-left">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-1">{member.name}</h3>
+                    <p className="text-sm font-semibold mb-3" style={{ color: '#00A8E1' }}>{member.role}</p>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] text-white text-sm font-medium hover:shadow-lg transition-all"
+                      >
+                        <Linkedin size={16} /> LinkedIn
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="text-slate-700 text-[15px] leading-relaxed whitespace-pre-line">
+                  {member.bio}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
