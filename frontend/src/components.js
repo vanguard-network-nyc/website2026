@@ -1658,8 +1658,8 @@ const DesktopTeamCard = ({ member, index, animDelay = 0.4, onOpen }) => (
         <p className="text-sm font-medium text-slate-500 mt-1 leading-snug">{member.role}</p>
       </div>
       {member.bio && (
-        <span className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors whitespace-nowrap pt-0.5">
-          Read bio <ArrowRight size={16} />
+        <span className="shrink-0 inline-flex items-center gap-1.5 text-base font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors whitespace-nowrap pt-0.5">
+          Read bio <ArrowRight size={18} />
         </span>
       )}
     </div>
