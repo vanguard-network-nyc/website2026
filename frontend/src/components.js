@@ -1761,22 +1761,22 @@ const TeamPage = () => {
             {/* Combined Team - Sorted alphabetically by last name */}
             {combinedTeam.length > 0 && (
               <div className="mb-16">
-                <div className="flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
                   {combinedTeam.map((member, index) => (
                     <motion.div
                       key={member.id}
                       initial={{ y: 50, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.8 + (index * 0.1), duration: 0.8 }}
-                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-[calc(50%-1rem)] xl:w-[calc(33.333%-1.334rem)]"
+                      transition={{ delay: 0.8 + (index * 0.05), duration: 0.6 }}
+                      className="bg-white rounded-xl p-5 xl:p-4 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col"
                       whileHover={{ scale: 1.02 }}
                     >
-                      <div className="text-center mb-6">
+                      <div className="text-center mb-4">
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          transition={{ delay: 1.0 + index * 0.1, duration: 0.5 }}
-                          className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
+                          transition={{ delay: 1.0 + index * 0.05, duration: 0.5 }}
+                          className="w-28 h-28 xl:w-24 xl:h-24 rounded-full overflow-hidden mx-auto mb-3 shadow-lg"
                         >
                           <img
                             src={member.image}
@@ -1784,20 +1784,24 @@ const TeamPage = () => {
                             className="w-full h-full object-cover"
                           />
                         </motion.div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                        <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
+                        <h3 className="text-lg xl:text-base font-bold text-slate-900 mb-1 leading-tight">{member.name}</h3>
+                        <p className="text-sm xl:text-xs font-semibold mb-2 leading-snug" style={{ color: '#00A8E1' }}>{member.role}</p>
                         {member.linkedin && (
                           <a
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
+                            className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
                           >
-                            <Linkedin className="text-white" size={20} />
+                            <Linkedin className="text-white" size={18} />
                           </a>
                         )}
                       </div>
-                      {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
+                      {member.bio && (
+                        <p className="text-slate-600 text-sm xl:text-xs leading-relaxed whitespace-pre-line xl:hidden">
+                          {member.bio}
+                        </p>
+                      )}
                     </motion.div>
                   ))}
                 </div>
