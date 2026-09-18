@@ -687,7 +687,7 @@ const UpcomingEventsPage = () => {
                           </div>
                         )}
 
-                        {event.series_code === 'GCF' && event.schedule_outline && (
+                        {(event.series_code === 'GCF' || event.series_code === 'LSCEOF') && event.schedule_outline && (
                           <div className="text-slate-600 mb-4" data-testid="event-card-schedule-outline">
                             <div className="text-sm event-schedule-outline">
                               <ReactMarkdown

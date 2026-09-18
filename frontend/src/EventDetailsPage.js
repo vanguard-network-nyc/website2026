@@ -302,7 +302,7 @@ const EventDetailsPage = () => {
                   <div>
                     <div className="text-xs font-semibold uppercase text-slate-500 mb-1">Date & Time</div>
                     <div className="text-sm md:text-base" data-testid="event-detail-date">{dateLine}</div>
-                    {event.series_code === 'GCF' && event.schedule_outline && (
+                    {(event.series_code === 'GCF' || event.series_code === 'LSCEOF') && event.schedule_outline && (
                       <div
                         className="text-sm md:text-base text-slate-600 mt-2 event-schedule-outline"
                         data-testid="event-detail-schedule-outline"
