@@ -1633,16 +1633,16 @@ const slugifyName = (name) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-// Compact desktop card (farmlands-style): photo, name/title on left, "Read bio →" link.
-const DesktopTeamCard = ({ member, index, animDelay = 0.8, onOpen }) => (
+// Compact desktop card (farmlands-style): photo, name/title left, "Read bio →" right.
+const DesktopTeamCard = ({ member, index, animDelay = 0.4, onOpen }) => (
   <motion.button
     type="button"
     onClick={() => member.bio && onOpen(member)}
     initial={{ y: 30, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
-    transition={{ delay: animDelay + index * 0.05, duration: 0.5 }}
+    transition={{ delay: animDelay + index * 0.04, duration: 0.5 }}
     whileHover={{ y: -4 }}
-    className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left"
+    className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left"
     data-testid={`team-card-desktop-${member.id}`}
   >
     <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
@@ -1652,13 +1652,13 @@ const DesktopTeamCard = ({ member, index, animDelay = 0.8, onOpen }) => (
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <div className="p-4 flex-1 flex flex-col">
-      <h3 className="text-base font-bold text-slate-900 leading-tight">{member.name}</h3>
-      <p className="text-xs font-medium text-slate-500 mt-0.5 mb-2 leading-snug">{member.role}</p>
+    <div className="p-4 flex items-start justify-between gap-3">
+      <div className="min-w-0 flex-1">
+        <h3 className="text-[15px] font-bold text-slate-900 leading-tight truncate">{member.name}</h3>
+        <p className="text-xs font-medium text-slate-500 mt-0.5 leading-snug line-clamp-2">{member.role}</p>
+      </div>
       {member.bio && (
-        <span
-          className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors"
-        >
+        <span className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-[#00A8E1] group-hover:text-[#045184] transition-colors whitespace-nowrap pt-0.5">
           Read bio <ArrowRight size={12} />
         </span>
       )}
@@ -1697,7 +1697,7 @@ const MobileTeamCard = ({ member, index, animDelay = 0.8 }) => (
   </motion.div>
 );
 
-// URL-driven bio modal. Reads memberSlug from route params.
+// URL-driven bio drawer — slides in from the right.
 const TeamBioModal = ({ member, onClose }) => (
   <AnimatePresence>
     {member && (
@@ -1707,54 +1707,52 @@ const TeamBioModal = ({ member, onClose }) => (
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+        className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
         data-testid={`team-bio-modal-${member.id}`}
       >
-        <motion.div
-          key="modal"
-          initial={{ y: 20, opacity: 0, scale: 0.98 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          exit={{ y: 20, opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
+        <motion.aside
+          key="drawer"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl relative"
+          className="absolute right-0 top-0 bottom-0 w-full sm:max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl overflow-y-auto"
+          role="dialog"
+          aria-label={`${member.name} bio`}
         >
           <button
             type="button"
             onClick={onClose}
             aria-label="Close bio"
             className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors z-10"
-            data-testid={`team-bio-modal-close`}
+            data-testid="team-bio-modal-close"
           >
             <X size={18} />
           </button>
-          <div className="p-6 md:p-10">
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-6">
-              <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 mx-auto md:mx-0">
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-              </div>
-              <div className="text-center md:text-left flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{member.name}</h3>
-                <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{member.role}</p>
-                {member.linkedin && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all self-center md:self-start"
-                    aria-label={`${member.name} on LinkedIn`}
-                    data-testid="team-bio-modal-linkedin"
-                  >
-                    <Linkedin className="text-white" size={18} />
-                  </a>
-                )}
-              </div>
+          <div className="p-6 md:p-8 pt-8">
+            <div className="aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl shadow-lg mb-6">
+              <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
             </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{member.name}</h3>
+            <p className="text-sm font-semibold mb-4" style={{ color: '#00A8E1' }}>{member.role}</p>
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all mb-6"
+                aria-label={`${member.name} on LinkedIn`}
+                data-testid="team-bio-modal-linkedin"
+              >
+                <Linkedin className="text-white" size={18} />
+              </a>
+            )}
             <div className="text-slate-700 text-[15px] leading-relaxed whitespace-pre-line border-t border-slate-100 pt-6">
               {member.bio}
             </div>
           </div>
-        </motion.div>
+        </motion.aside>
       </motion.div>
     )}
   </AnimatePresence>
@@ -1842,68 +1840,21 @@ const TeamPage = () => {
         const seniorLeadership = sections['Senior Leadership Team'] || [];
         const contentMedia = sections['Content & Media Team'] || [];
         
-        // Combine Senior Leadership and Content & Media teams
-        const combinedTeam = [...seniorLeadership, ...contentMedia].sort((a, b) => {
-          // Sort by last name
+        // Combine ALL team members into one flat list (Leadership first, then rest alphabetical).
+        const restSorted = [...seniorLeadership, ...contentMedia].sort((a, b) => {
           const lastNameA = a.name.split(' ').slice(-1)[0].toLowerCase();
           const lastNameB = b.name.split(' ').slice(-1)[0].toLowerCase();
           return lastNameA.localeCompare(lastNameB);
         });
-        
+        const allTeam = [...leadershipTeam, ...restSorted];
+
         return (
           <>
-            {/* Leadership Team - Ken Banta and Tony Powe */}
-            {leadershipTeam.length > 0 && (
+            {allTeam.length > 0 && (
               <div className="mb-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-7xl xl:max-w-4xl mx-auto">
-                  {leadershipTeam.map((member, index) => (
-                    <motion.div
-                      key={member.id}
-                      initial={{ y: 50, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.5 + (index * 0.1), duration: 0.8 }}
-                      className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="text-center mb-6">
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
-                          className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 shadow-lg"
-                        >
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </motion.div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2">{member.name}</h3>
-                        <p className="text-sm font-semibold mb-2" style={{ color: '#00A8E1' }}>{member.role}</p>
-                        {member.linkedin && (
-                          <a
-                            href={member.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                          >
-                            <Linkedin className="text-white" size={20} />
-                          </a>
-                        )}
-                      </div>
-                      {member.bio && <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{member.bio}</p>}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            {/* Combined Team - Sorted alphabetically by last name */}
-            {combinedTeam.length > 0 && (
-              <div className="mb-16">
-                {/* Desktop (xl+): compact grid with "Read bio" → modal */}
-                <div className="hidden xl:grid grid-cols-5 gap-6 max-w-7xl mx-auto mb-12">
-                  {combinedTeam.map((member, index) => (
+                {/* Desktop (xl+): 4×3 grid with "Read bio" → right-side drawer */}
+                <div className="hidden xl:grid grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
+                  {allTeam.map((member, index) => (
                     <DesktopTeamCard
                       key={member.id}
                       member={member}
@@ -1915,7 +1866,7 @@ const TeamPage = () => {
 
                 {/* Tablet + Mobile: original layout with full bio + LinkedIn visible */}
                 <div className="xl:hidden flex flex-wrap gap-8 justify-center max-w-7xl mx-auto mb-12">
-                  {combinedTeam.map((member, index) => (
+                  {allTeam.map((member, index) => (
                     <MobileTeamCard key={member.id} member={member} index={index} />
                   ))}
                 </div>
