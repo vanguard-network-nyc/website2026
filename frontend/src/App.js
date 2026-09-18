@@ -36,12 +36,22 @@ import BackToTopButton from './ScrollToTop';
 // This is the key fix for the page transition scroll bug
 function PageWrapper({ children }) {
   const location = useLocation();
-  
+  const prevPathRef = React.useRef(location.pathname);
+
+  // Route pairs that share a page and manage their own state (e.g. team drawer).
+  // For these, we skip the scroll-reset so opening a card doesn't jump to top.
+  const isTeamRoute = (p) => p === '/team' || p.startsWith('/team/');
+  const staysOnSamePage = (a, b) => isTeamRoute(a) && isTeamRoute(b);
+
   // useLayoutEffect runs synchronously BEFORE the browser paints
   // This ensures scroll happens before the user sees anything
   useLayoutEffect(() => {
-    // Only scroll to top if there's no hash (anchor link)
-    if (!location.hash) {
+    const from = prevPathRef.current;
+    const to = location.pathname;
+    prevPathRef.current = to;
+    // Only scroll to top if there's no hash (anchor link) AND we're not navigating
+    // within the same conceptual page (e.g. /team <-> /team/:slug).
+    if (!location.hash && !staysOnSamePage(from, to)) {
       // Immediately reset scroll position using all methods
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
