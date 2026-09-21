@@ -3731,13 +3731,9 @@ const AdvisoryBoardSection = () => {
                 )}
               </div>
               <div className="p-5 flex-1 flex flex-col">
-                <h3 className="text-base font-bold text-slate-900 leading-tight">{m.name}</h3>
-                {m.title && (
-                  <p className="text-sm text-slate-600 leading-snug mt-1">{m.title}</p>
-                )}
-                {m.company && (
-                  <p className="text-sm font-semibold mt-1" style={{ color: '#00A8E1' }}>{m.company}</p>
-                )}
+                <h3 className="text-base font-bold text-slate-900 leading-tight line-clamp-1 min-h-[1.5rem]">{m.name}</h3>
+                <p className="text-sm text-slate-600 leading-snug mt-1 line-clamp-2 min-h-[2.5rem]">{m.title || ''}</p>
+                <p className="text-sm font-semibold mt-1 line-clamp-2 min-h-[2.5rem]" style={{ color: '#00A8E1' }}>{m.company || ''}</p>
                 {m.linkedin_url && (
                   <a
                     href={m.linkedin_url}
