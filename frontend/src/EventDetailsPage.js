@@ -565,7 +565,7 @@ const EventDetailsPage = () => {
                   <div className="p-3">
                     <h3 className="text-sm font-bold text-slate-900 leading-tight line-clamp-2">{p.name}</h3>
                     {p.title && (
-                      <p className="text-xs text-slate-600 leading-snug mt-1 line-clamp-2">{p.title}</p>
+                      <p className="text-xs text-slate-600 leading-snug mt-1 break-words">{p.title}</p>
                     )}
                     {p.company && (
                       <p className="text-xs text-[#00A8E1] font-semibold mt-1 line-clamp-1">{p.company}</p>
