@@ -95,6 +95,7 @@ const {
   NewContentLibrarySection,
   VideoQuoteSection,
   NewsroomSliderSection,
+  AdvisoryBoardSection,
   ImageSliderSection
 } = Components;
 
@@ -177,6 +178,7 @@ function HomePage() {
       <NewContentLibrarySection />
       <VideoQuoteSection />
       <NewsroomSliderSection />
+      <AdvisoryBoardSection />
       <ImageSliderSection />
     </div>
   );

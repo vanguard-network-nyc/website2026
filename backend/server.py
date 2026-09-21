@@ -1730,6 +1730,45 @@ async def get_past_events():
         return []
 
 
+@api_router.get("/advisory-board")
+async def get_tvn_advisory_board():
+    """Return VG Contacts whose 'Board Advisor/Guest' includes 'TVN Advisory Board'.
+    Used by the homepage 'Vanguard Network Advisory Board' gallery."""
+    target_tag = "tvn advisory board"
+    try:
+        safe_tag = "TVN Advisory Board".replace("'", "\\'")
+        formula = (
+            f"FIND(LOWER('{safe_tag}'), "
+            f"LOWER(ARRAYJOIN({{board advisor/guest}}, ',')))>0"
+        )
+        records = await _airtable_get(
+            PROGRAMS_BASE_ID, PROGRAMS_PEOPLE_TABLE_ID,
+            {"filterByFormula": formula, "maxRecords": 100}
+        )
+        # Python-side exact membership check (case-insensitive, trimmed).
+        results = []
+        for cr in records:
+            cf = cr.get("fields", {})
+            tags = (
+                cf.get("Board Advisor/Guest")
+                or cf.get("board advisor/guest")
+                or cf.get("Board advisor/guest")
+                or []
+            )
+            if isinstance(tags, str):
+                tags = [tags]
+            if not isinstance(tags, list):
+                continue
+            normalized = [str(t).strip().lower() for t in tags]
+            if target_tag in normalized:
+                results.append(_map_person(cr))
+        results.sort(key=lambda p: (p.get("name") or "").split(" ")[-1].lower())
+        return results
+    except Exception as e:
+        logger.error(f"Error fetching TVN Advisory Board: {e}")
+        return []
+
+
 # =====================================================================
 # PROGRAMS (CMS-driven program pages in base appqyKMZnFfgSuJKt)
 # =====================================================================

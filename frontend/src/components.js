@@ -3666,6 +3666,99 @@ const NewContentLibrarySection = () => {
 };
 
 // Executive Networks Section
+const AdvisoryBoardSection = () => {
+  const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    (async () => {
+      try {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/advisory-board`, { signal: controller.signal });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setMembers(Array.isArray(data) ? data : []);
+      } catch (err) {
+        if (err.name !== 'AbortError') console.error('Error fetching advisory board:', err);
+      } finally {
+        setLoading(false);
+      }
+    })();
+    return () => controller.abort();
+  }, []);
+
+  if (loading || members.length === 0) return null;
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50" data-testid="tvn-advisory-board-section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-900">
+            Vanguard Network Advisory Board
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+          {members.map((m, index) => (
+            <motion.div
+              key={m.id}
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, duration: 0.5 }}
+              whileHover={{ y: -4 }}
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+              data-testid={`advisory-board-card-${m.id}`}
+            >
+              <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                {m.headshot ? (
+                  <img
+                    src={m.headshot}
+                    alt={m.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-slate-400 text-4xl font-bold">
+                    {(m.name || '?').charAt(0)}
+                  </div>
+                )}
+              </div>
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="text-base font-bold text-slate-900 leading-tight">{m.name}</h3>
+                {m.title && (
+                  <p className="text-sm text-slate-600 leading-snug mt-1">{m.title}</p>
+                )}
+                {m.company && (
+                  <p className="text-sm font-semibold mt-1" style={{ color: '#00A8E1' }}>{m.company}</p>
+                )}
+                {m.linkedin_url && (
+                  <a
+                    href={m.linkedin_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all self-start"
+                    aria-label={`${m.name} on LinkedIn`}
+                    data-testid={`advisory-board-linkedin-${m.id}`}
+                  >
+                    <Linkedin className="text-white" size={16} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const NewsroomSliderSection = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -4228,6 +4321,7 @@ const Components = {
   GCLBanner,
   VideoQuoteSection,
   NewsroomSliderSection,
+  AdvisoryBoardSection,
   ImageSliderSection
 };
 
