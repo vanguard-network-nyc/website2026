@@ -802,8 +802,8 @@ const AdvisoryCard = ({ advisor, index, onOpen }) => (
       />
     </div>
     <div className="p-4 flex flex-col flex-1">
-      <h3 className="text-base font-bold text-slate-900 leading-tight min-h-[3rem]">{advisor.name}</h3>
-      <span className="mt-auto self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
+      <h3 className="text-sm font-bold text-slate-900 leading-tight text-center whitespace-nowrap">{advisor.name}</h3>
+      <span className="mt-3 self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
         Read bio <ArrowRight size={17} />
       </span>
     </div>
