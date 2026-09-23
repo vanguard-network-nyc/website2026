@@ -26,71 +26,6 @@ const Breadcrumb = () => (
   </nav>
 );
 
-const advisors = [
-  {
-    name: "Tom Sabatino",
-    title: "10x General Counsel / CLO (Currently Interim GC, Tractor Supply)",
-    creds: "Held ten GC /CLO roles  including Rite Aid, Walgreens, United Airlines, Aetna, Hertz, and Schering-Plough. Deep expertise in mergers, transformations, complex regulated environments.",
-    linkedin: "https://www.linkedin.com/in/thomas-sabatino-aa297b16/",
-    photo: "/tom-sabatino-gc.jpg"
-  },
-  {
-    name: "David Robinson",
-    title: "Former EVP & General Counsel",
-    creds: "Former Executive Vice President & General Counsel at The Hartford, one of the nation's leading insurance and financial services companies.",
-    linkedin: "https://www.linkedin.com/in/david-c-robinson-b6523a14/",
-    photo: "/david-robinson-gc.jpg"
-  },
-  {
-    name: "Ken Banta",
-    title: "Founder & CEO, The Vanguard Network",
-    creds: "Decades of experience in in-house and advisory leadership. Founder of Vanguard's GC, Life Sciences CEO, and Chief of Staff Networks \u2014 2,000+ senior executives.",
-    linkedin: "https://www.linkedin.com/in/ken-banta-1651946/",
-    photo: "/ken-banta.jpg?v=2"
-  },
-  {
-    name: "Stephen Gauster",
-    title: "CEO, Beekman Estates; Former EVP & General Counsel, MetLife",
-    creds: "Former EVP & GC at MetLife. Prior roles at Assurant, Prudential, and Cleary Gottlieb. Deep experience leading legal function through enterprise transformation.",
-    linkedin: "https://www.linkedin.com/in/stephengauster/",
-    photo: "/stephen-gauster-gc.jpg"
-  },
-  {
-    name: "Christian Desrosiers",
-    title: "Co-founder, Flashpoint.AI",
-    creds: "Expert on the strategic opportunities, risks, and governance challenges presented by AI, helping General Counsel and senior leaders navigate its implications for business and decision-making. Co-founder of Flashpoint.AI, with deep experience in real-world AI applications, risks and opportunities.",
-    linkedin: "https://www.linkedin.com/in/cadesrosiers/",
-    photo: "https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg"
-  },
-  {
-    name: "Jos\u00e9 Ram\u00f3n Gonz\u00e1lez",
-    title: "Former Chief Legal Officer, Equitable Holdings",
-    creds: "25+ years of senior legal leadership at major publicly held corporations. Former CLO & Corporate Secretary at Equitable Holdings.",
-    linkedin: "https://www.linkedin.com/in/joseramongonzalez/",
-    photo: "/jose-gonzalez-gc.jpg"
-  },
-  {
-    name: "Dick Mosher",
-    title: "Senior Advisor, The Vanguard Network",
-    creds: "Worked as a CLO, GC, or AGC for public and private corporations; as a senior counsel for prominent US law firms; and led business teams at Ball, Maytag, and Hoover. Now a senior arbitrator and mediator for business disputes.",
-    linkedin: "https://www.linkedin.com/company/thevanguardnetwork",
-    photo: "/dick-mosher-gc.jpg"
-  },
-  {
-    name: "Terry Szmagala",
-    title: "Former EVP & CLO, Eaton Corporation; Adjunct, University of Virginia School of Law",
-    creds: "Led legal and government affairs functions at Eaton ($130B market cap multinational). Trusted counsel to boards and executive management teams.",
-    linkedin: "https://www.linkedin.com/in/taras-szmagala/",
-    photo: "/terry-szmagala-gc.jpg"
-  },
-  {
-    name: "Michael Watras",
-    title: "Founder & CEO, Straightline",
-    creds: "Trusted advisor to C-suite executives worldwide for 25+ years. Founder of leading global strategic brand consultancy Straightline. Expert in leadership positioning and organizational narrative. Clients have included Walgreens, Bausch and Lomb, ABB, Hitachi, and TMobile, to mention a few.",
-    linkedin: "https://www.linkedin.com/in/michael-watras-a8b83627/",
-    photo: "/michael-watras-gc.jpg"
-  }
-];
 
 const useCases = [
   {
@@ -137,11 +72,24 @@ const steps = [
 ];
 
 const GeneralCounselAdvisoryPage = () => {
+  const [advisors, setAdvisors] = useState([]);
   const navigate = useNavigate();
   const { advisorSlug } = useParams();
   const activeAdvisor = advisorSlug
     ? advisors.find((a) => slugifyName(a.name) === advisorSlug)
     : null;
+
+  React.useEffect(() => {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/advisors?page=general-counsel-advisory`)
+      .then((r) => r.json())
+      .then((data) => setAdvisors(Array.isArray(data) ? data.map((a) => ({
+        ...a,
+        photo: a.headshot,
+        title: a.gc_title,
+        creds: a.gc_bio,
+      })) : []))
+      .catch((err) => console.error('gc advisors fetch error', err));
+  }, []);
   const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef(null);
 

@@ -43,10 +43,12 @@ function PageWrapper({ children }) {
   const isTeamRoute = (p) => p === '/team' || p.startsWith('/team/');
   const isAdvisoryRoute = (p) => p === '/advisory' || p.startsWith('/advisory/');
   const isGCAdvisoryRoute = (p) => p === '/general-counsel-advisory' || p.startsWith('/general-counsel-advisory/');
+  const isCEOAdvisoryRoute = (p) => p === '/ceo-advisory' || p.startsWith('/ceo-advisory/');
   const staysOnSamePage = (a, b) =>
     (isTeamRoute(a) && isTeamRoute(b)) ||
     (isAdvisoryRoute(a) && isAdvisoryRoute(b)) ||
-    (isGCAdvisoryRoute(a) && isGCAdvisoryRoute(b));
+    (isGCAdvisoryRoute(a) && isGCAdvisoryRoute(b)) ||
+    (isCEOAdvisoryRoute(a) && isCEOAdvisoryRoute(b));
 
   // useLayoutEffect runs synchronously BEFORE the browser paints
   // This ensures scroll happens before the user sees anything
@@ -123,6 +125,7 @@ function App() {
           <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/general-counsel-advisory/:advisorSlug" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/ceo-advisory" element={<PageWrapper><CEOAdvisoryPage /></PageWrapper>} />
+          <Route path="/ceo-advisory/:advisorSlug" element={<PageWrapper><CEOAdvisoryPage /></PageWrapper>} />
           <Route path="/networks" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
           <Route path="/networking" element={<Navigate to="/networks" replace />} />
           <Route path="/networks/:slug" element={<PageWrapper><NetworkPage /></PageWrapper>} />

@@ -1769,6 +1769,77 @@ async def get_tvn_advisory_board():
         return []
 
 
+# ---------- TVN Advisory (Emergent) table — 3 advisory pages ----------
+ADVISORS_TABLE_ID = "tblasg5UWVqZdlSam"
+ADVISORS_VIEW_ID = "viwdoMPqPJ9BaUlp5"
+
+_ADVISOR_PAGE_MAP = {
+    "advisory-services": ("Advisory Services", "Advisory Services Order"),
+    "ceo-advisory": ("CEO Advisory", "CEO Services Order"),
+    "general-counsel-advisory": ("General Counsel Advisory", "GC Services Order"),
+}
+
+
+def _slugify_name(name: str) -> str:
+    import re, unicodedata
+    if not name:
+        return ""
+    n = unicodedata.normalize("NFKD", name)
+    n = "".join(c for c in n if not unicodedata.combining(c))
+    n = re.sub(r"[^a-z0-9]+", "-", n.lower().strip())
+    return n.strip("-")
+
+
+@api_router.get("/advisors")
+async def get_advisors(page: str):
+    """Return advisors for a given advisory page, ordered by the page-specific order field.
+    page must be one of: advisory-services, ceo-advisory, general-counsel-advisory."""
+    if page not in _ADVISOR_PAGE_MAP:
+        return []
+    page_value, order_field = _ADVISOR_PAGE_MAP[page]
+    try:
+        records = await _airtable_get(
+            PROGRAMS_BASE_ID, ADVISORS_TABLE_ID,
+            {"view": ADVISORS_VIEW_ID, "maxRecords": 100}
+        )
+        results = []
+        for r in records:
+            f = r.get("fields", {}) or {}
+            pages = f.get("Advisory Page") or []
+            if not isinstance(pages, list) or page_value not in pages:
+                continue
+
+            headshots = f.get("Headshot") or []
+            headshot_url = None
+            if isinstance(headshots, list) and headshots:
+                first = headshots[0] or {}
+                headshot_url = (
+                    (first.get("thumbnails") or {}).get("large", {}).get("url")
+                    or first.get("url")
+                )
+
+            name = f.get("WholeName") or ""
+            results.append({
+                "id": r.get("id"),
+                "slug": _slugify_name(name),
+                "name": name,
+                "position": (f.get("Position") or "").strip(),
+                "company": (f.get("Company") or "").strip(),
+                "headshot": headshot_url,
+                "linkedin": (f.get("LinkedIn Profle") or f.get("LinkedIn Profile") or "").strip(),
+                "bio": (f.get("Advisor Bio") or "").strip(),
+                "extras": (f.get("Advisor Extra Details") or "").strip(),
+                "gc_title": (f.get("GC Advisor Title/Company") or "").strip(),
+                "gc_bio": (f.get("GC Advisor Bio") or "").strip(),
+                "order": f.get(order_field) if isinstance(f.get(order_field), (int, float)) else 9999,
+            })
+        results.sort(key=lambda x: (x.get("order") or 9999, x.get("name") or ""))
+        return results
+    except Exception as e:
+        logger.error(f"Error fetching advisors for page={page}: {e}")
+        return []
+
+
 # =====================================================================
 # PROGRAMS (CMS-driven program pages in base appqyKMZnFfgSuJKt)
 # =====================================================================

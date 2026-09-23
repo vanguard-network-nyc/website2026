@@ -1,8 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ChevronRight, Lightbulb, GitMerge, Target, Plus, CheckCircle2, Users } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronRight, Lightbulb, GitMerge, Target, Plus, CheckCircle2, Users, Linkedin, ArrowRight, X } from 'lucide-react';
 import SEO from './SEO';
+
+const slugifyName = (name) =>
+  (name || '')
+    .toString()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
 const Breadcrumb = () => (
   <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
@@ -68,6 +78,19 @@ const differentiators = [
 ];
 
 const CEOAdvisoryPage = () => {
+  const [advisors, setAdvisors] = useState([]);
+  const navigate = useNavigate();
+  const { advisorSlug } = useParams();
+  const activeAdvisor = advisorSlug
+    ? advisors.find((a) => a.slug === advisorSlug)
+    : null;
+
+  React.useEffect(() => {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/advisors?page=ceo-advisory`)
+      .then((r) => r.json())
+      .then((data) => setAdvisors(Array.isArray(data) ? data.map((a) => ({ ...a, photo: a.headshot })) : []))
+      .catch((err) => console.error('ceo advisors fetch error', err));
+  }, []);
   // Inject Service structured data
   React.useEffect(() => {
     const serviceSchema = {
@@ -241,105 +264,42 @@ const CEOAdvisoryPage = () => {
             Vanguard brings together senior executives and advisors with decades of experience leading major organizations, navigating transformations, working with boards, building leadership teams, and advising CEOs through moments of significant change.
           </p>
 
-          {/* Horizontal Cards Layout - matches /advisory */}
-          <div className="space-y-6" data-testid="ceo-advisory-team-gallery">
-            {/* Ken Banta */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/ken-banta.jpg?v=2" alt="Ken Banta - Founder and Managing Director of The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">KEN BANTA</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
-              </div>
-            </div>
-
-            {/* Judy Gawlik Brown */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">JUDY GAWLIK BROWN</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
-              </div>
-            </div>
-
-            {/* Aileen Gonsalves */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Leadership Engagement Coach" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">AILEEN GONSALVES</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
-              </div>
-            </div>
-
-            {/* Tom Hartman */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x6slyocl_Tom%20Hartman.jpg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" style={{ objectPosition: '50% 15%' }} />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  As a coach, Tom supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider</p>
-              </div>
-            </div>
-
-            {/* Mohamed Ladha */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg" alt="Mohamed Ladha - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">MOHAMED LADHA</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">MBA, Kellogg School of Management, Northwestern University | MPA, Harvard Kennedy School, Harvard University | 25+ Years Biopharmaceutical Leadership | Commercial Strategy & General Management | Full P&L Leadership | Market Access & Medical Affairs | Business Development & Portfolio Strategy | Supply Chain & Enterprise Transformation</p>
-              </div>
-            </div>
-
-            {/* Christian Desrosiers */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg" alt="Christian Desrosiers - Co-founder, Flashpoint.AI" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">CHRISTIAN DESROSIERS</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Christian is an expert on strategic opportunities and challenges involving AI across sectors. Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference. Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Co-Founder, Flashpoint.AI | Co-Founder, Monument | Fulbright Scholar, U.S. Department of State | Master in City Planning, Massachusetts Institute of Technology | BA, Amherst College</p>
-              </div>
-            </div>
-
-            {/* Richard Hulme */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/richard-hulme.jpg" alt="Richard Hulme - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">RICHARD HULME</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
-              </div>
-            </div>
+          {/* Advisor grid (matches /advisory — Read bio → right-side drawer) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6" data-testid="ceo-advisory-team-gallery">
+            {advisors.map((advisor, index) => (
+              <motion.button
+                key={advisor.slug}
+                type="button"
+                onClick={() => navigate(`/ceo-advisory/${advisor.slug}`)}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 + index * 0.04, duration: 0.5 }}
+                whileHover={{ y: -4 }}
+                className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left h-full"
+                data-testid={`ceo-advisor-card-${advisor.slug}`}
+              >
+                <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                  {advisor.headshot ? (
+                    <img
+                      src={advisor.headshot}
+                      alt={advisor.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Users size={32} className="text-slate-400" />
+                    </div>
+                  )}
+                </div>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="text-sm font-bold text-slate-900 leading-tight text-center whitespace-nowrap">{advisor.name}</h3>
+                  <span className="mt-3 self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
+                    Read bio <ArrowRight size={17} />
+                  </span>
+                </div>
+              </motion.button>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -478,6 +438,67 @@ const CEOAdvisoryPage = () => {
           </p>
         </div>
       </div>
+
+      {/* Advisor bio drawer (right-side sheet) */}
+      <AnimatePresence>
+        {activeAdvisor && (
+          <motion.div
+            key="ceo-adv-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => navigate('/ceo-advisory')}
+            className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+            data-testid={`ceo-advisor-drawer-${activeAdvisor.slug}`}
+          >
+            <motion.aside
+              key="ceo-adv-drawer"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
+              onClick={(e) => e.stopPropagation()}
+              className="absolute right-0 top-0 bottom-0 w-full sm:max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl overflow-y-auto"
+              role="dialog"
+              aria-label={`${activeAdvisor.name} bio`}
+            >
+              <button
+                type="button"
+                onClick={() => navigate('/ceo-advisory')}
+                aria-label="Close bio"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors z-10"
+                data-testid="ceo-advisor-drawer-close"
+              >
+                <X size={18} />
+              </button>
+              <div className="p-6 md:p-8 pt-8">
+                {activeAdvisor.headshot && (
+                  <div className="aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl shadow-lg mb-6">
+                    <img src={activeAdvisor.headshot} alt={activeAdvisor.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">{activeAdvisor.name}</h3>
+                {activeAdvisor.linkedin && (
+                  <a
+                    href={activeAdvisor.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all mb-6"
+                    aria-label={`${activeAdvisor.name} on LinkedIn`}
+                    data-testid="ceo-advisor-drawer-linkedin"
+                  >
+                    <Linkedin className="text-white" size={18} />
+                  </a>
+                )}
+                <p className="text-slate-600 leading-relaxed text-sm mb-3 whitespace-pre-line">{activeAdvisor.bio}</p>
+                {activeAdvisor.extras && (
+                  <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">{activeAdvisor.extras}</p>
+                )}
+              </div>
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
