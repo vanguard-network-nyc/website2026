@@ -698,7 +698,7 @@ const Footer = () => {
 const ADVISORY_TEAM = [
   {
     slug: 'ken-banta',
-    name: 'KEN BANTA',
+    name: 'Ken Banta',
     photo: '/ken-banta.jpg?v=2',
     linkedin: 'https://www.linkedin.com/in/ken-banta-6a99b64/',
     bio: 'Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.',
@@ -706,7 +706,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'judy-gawlik-brown',
-    name: 'JUDY GAWLIK BROWN',
+    name: 'Judy Gawlik Brown',
     photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg',
     linkedin: 'https://www.linkedin.com/in/judygawlikbrown/',
     bio: "Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.",
@@ -714,7 +714,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'tom-sabatino',
-    name: 'TOM SABATINO',
+    name: 'Tom Sabatino',
     photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg',
     linkedin: 'https://www.linkedin.com/in/thomas-sabatino-aa297b16/',
     bio: 'Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He currently serves as Interim General Counsel at Tractor Supply Company.',
@@ -722,7 +722,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'david-robinson',
-    name: 'DAVID ROBINSON',
+    name: 'David Robinson',
     photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg',
     linkedin: 'https://www.linkedin.com/in/david-c-robinson-b6523a14/',
     bio: 'David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.',
@@ -730,7 +730,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'aileen-gonsalves',
-    name: 'AILEEN GONSALVES',
+    name: 'Aileen Gonsalves',
     photo: '/aileen-gonsalves.jpg',
     photoObjectPosition: 'calc(50% - 20px) 20%',
     linkedin: 'https://www.linkedin.com/in/aileen-gonsalves-93266a10b/',
@@ -739,7 +739,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'tom-hartman',
-    name: 'TOM HARTMAN',
+    name: 'Tom Hartman',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x6slyocl_Tom%20Hartman.jpg',
     photoObjectPosition: '50% 15%',
     linkedin: 'https://www.linkedin.com/in/tom-hartman/',
@@ -748,7 +748,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'mohamed-ladha',
-    name: 'MOHAMED LADHA',
+    name: 'Mohamed Ladha',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg',
     linkedin: 'https://www.linkedin.com/in/mohamed-h-ladha-9a18924/',
     bio: "Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.",
@@ -756,7 +756,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'christian-desrosiers',
-    name: 'CHRISTIAN DESROSIERS',
+    name: 'Christian Desrosiers',
     photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg',
     linkedin: 'https://www.linkedin.com/in/cndesrosiers/',
     bio: 'Christian is an expert on strategic opportunities and challenges involving AI across sectors. Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference. Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.',
@@ -764,7 +764,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'richard-hulme',
-    name: 'RICHARD HULME',
+    name: 'Richard Hulme',
     photo: '/richard-hulme.jpg',
     linkedin: 'https://www.linkedin.com/in/hulme/',
     bio: 'Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.',
@@ -772,7 +772,7 @@ const ADVISORY_TEAM = [
   },
   {
     slug: 'garrick-isert',
-    name: 'GARRICK ISERT',
+    name: 'Garrick Isert',
     photo: '/garrick-isert.jpg',
     linkedin: 'https://www.linkedin.com/in/garrick-isert-ba54724/',
     bio: 'Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.',
