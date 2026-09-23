@@ -265,7 +265,7 @@ const CEOAdvisoryPage = () => {
           </p>
 
           {/* Advisor grid (matches /advisory — Read bio → right-side drawer) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6" data-testid="ceo-advisory-team-gallery">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" data-testid="ceo-advisory-team-gallery">
             {advisors.map((advisor, index) => (
               <motion.button
                 key={advisor.slug}
@@ -292,9 +292,9 @@ const CEOAdvisoryPage = () => {
                     </div>
                   )}
                 </div>
-                <div className="p-4 flex flex-col flex-1">
-                  <h3 className="text-base font-bold text-slate-900 leading-tight">{advisor.name}</h3>
-                  <span className="mt-3 self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
+                <div className="p-4 flex items-center justify-between gap-3">
+                  <h3 className="text-base font-bold text-slate-900 leading-tight min-w-0 flex-1">{advisor.name}</h3>
+                  <span className="shrink-0 inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
                     Read bio <ArrowRight size={17} />
                   </span>
                 </div>
