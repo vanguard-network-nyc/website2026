@@ -694,9 +694,10 @@ const Footer = () => {
 };
 
 // Additional Pages
-// ---------- Executive Advisory Team (uses the /team page card + right-side drawer) ----------
+// ---------- Executive Advisory Team ----------
+// Fetched from Airtable via /api/advisors?page=advisory-services.
 
-// Card matches DesktopTeamCard layout: 4:5 photo, name below, "Read bio →" right-aligned on next line.
+// Card: 4:5 photo, name left, "Read bio →" right on the same row.
 const AdvisoryCard = ({ advisor, index, onOpen }) => (
   <motion.button
     type="button"
@@ -713,7 +714,6 @@ const AdvisoryCard = ({ advisor, index, onOpen }) => (
         src={advisor.photo}
         alt={advisor.name}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        style={advisor.photoObjectPosition ? { objectPosition: advisor.photoObjectPosition } : undefined}
         loading="lazy"
       />
     </div>
@@ -765,7 +765,6 @@ const AdvisoryBioDrawer = ({ advisor, onClose }) => (
                 src={advisor.photo}
                 alt={advisor.name}
                 className="w-full h-full object-cover"
-                style={advisor.photoObjectPosition ? { objectPosition: advisor.photoObjectPosition } : undefined}
               />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">{advisor.name}</h3>

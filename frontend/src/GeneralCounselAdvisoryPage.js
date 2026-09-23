@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus, Linkedin, ArrowRight, X } from 'lucide-react';
+import { ChevronRight, Users, Lightbulb, Building2, GitMerge, Scale, Plus, Linkedin, ArrowRight, X } from 'lucide-react';
 import SEO from './SEO';
 
 const slugifyName = (name) =>
