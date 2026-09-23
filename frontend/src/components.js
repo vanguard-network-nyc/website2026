@@ -780,7 +780,7 @@ const ADVISORY_TEAM = [
   },
 ];
 
-// Card matches DesktopTeamCard: 4:5 photo, name, "Read bio →" right-aligned.
+// Card matches DesktopTeamCard layout: 4:5 photo, name below, "Read bio →" right-aligned on next line.
 const AdvisoryCard = ({ advisor, index, onOpen }) => (
   <motion.button
     type="button"
@@ -789,7 +789,7 @@ const AdvisoryCard = ({ advisor, index, onOpen }) => (
     animate={{ y: 0, opacity: 1 }}
     transition={{ delay: 0.4 + index * 0.04, duration: 0.5 }}
     whileHover={{ y: -4 }}
-    className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left"
+    className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left h-full"
     data-testid={`advisory-card-${advisor.slug}`}
   >
     <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
@@ -801,11 +801,9 @@ const AdvisoryCard = ({ advisor, index, onOpen }) => (
         loading="lazy"
       />
     </div>
-    <div className="p-4 flex items-start justify-between gap-3">
-      <div className="min-w-0 flex-1">
-        <h3 className="text-base font-bold text-slate-900 leading-tight">{advisor.name}</h3>
-      </div>
-      <span className="shrink-0 inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap pt-0.5">
+    <div className="p-4 flex flex-col flex-1">
+      <h3 className="text-base font-bold text-slate-900 leading-tight min-h-[3rem]">{advisor.name}</h3>
+      <span className="mt-auto self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
         Read bio <ArrowRight size={17} />
       </span>
     </div>
