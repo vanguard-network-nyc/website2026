@@ -42,9 +42,11 @@ function PageWrapper({ children }) {
   // For these, we skip the scroll-reset so opening a card doesn't jump to top.
   const isTeamRoute = (p) => p === '/team' || p.startsWith('/team/');
   const isAdvisoryRoute = (p) => p === '/advisory' || p.startsWith('/advisory/');
+  const isGCAdvisoryRoute = (p) => p === '/general-counsel-advisory' || p.startsWith('/general-counsel-advisory/');
   const staysOnSamePage = (a, b) =>
     (isTeamRoute(a) && isTeamRoute(b)) ||
-    (isAdvisoryRoute(a) && isAdvisoryRoute(b));
+    (isAdvisoryRoute(a) && isAdvisoryRoute(b)) ||
+    (isGCAdvisoryRoute(a) && isGCAdvisoryRoute(b));
 
   // useLayoutEffect runs synchronously BEFORE the browser paints
   // This ensures scroll happens before the user sees anything
@@ -119,6 +121,7 @@ function App() {
           <Route path="/advisory" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
           <Route path="/advisory/:advisorSlug" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
           <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
+          <Route path="/general-counsel-advisory/:advisorSlug" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/ceo-advisory" element={<PageWrapper><CEOAdvisoryPage /></PageWrapper>} />
           <Route path="/networks" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
           <Route path="/networking" element={<Navigate to="/networks" replace />} />

@@ -1,8 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus, Linkedin } from 'lucide-react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronRight, Users, Shield, Target, Lightbulb, Building2, GitMerge, Scale, Play, Plus, Linkedin, ArrowRight, X } from 'lucide-react';
 import SEO from './SEO';
+
+const slugifyName = (name) =>
+  (name || '')
+    .toString()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
 const Breadcrumb = () => (
   <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
@@ -127,6 +137,11 @@ const steps = [
 ];
 
 const GeneralCounselAdvisoryPage = () => {
+  const navigate = useNavigate();
+  const { advisorSlug } = useParams();
+  const activeAdvisor = advisorSlug
+    ? advisors.find((a) => slugifyName(a.name) === advisorSlug)
+    : null;
   const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef(null);
 
@@ -375,44 +390,44 @@ const GeneralCounselAdvisoryPage = () => {
             Every advisor on our team has held, or closely supported, the GC role at major corporations. We know your world, and we speak your language.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {advisors.map((advisor, index) => (
-              <motion.div
-                key={advisor.name}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                data-testid={`advisor-card-${index}`}
-              >
-                {/* Photo placeholder */}
-                <div className="w-full aspect-square bg-slate-200 flex items-center justify-center overflow-hidden">
-                  {advisor.photo ? (
-                    <img src={advisor.photo} alt={advisor.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="text-center">
-                      <Users size={32} className="text-slate-400 mx-auto mb-2" />
-                      <span className="text-xs text-slate-400 uppercase tracking-wider">Photo</span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{advisor.name}</h3>
-                  <p className="text-xs font-semibold text-[#00A8E1] uppercase tracking-wide mb-3">{advisor.title}</p>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">{advisor.creds}</p>
-                  {advisor.linkedin && (
-                    <a
-                      href={advisor.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all duration-300"
-                    >
-                      <Linkedin className="text-white" size={20} />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {advisors.map((advisor, index) => {
+              const slug = slugifyName(advisor.name);
+              return (
+                <motion.button
+                  key={advisor.name}
+                  type="button"
+                  onClick={() => navigate(`/general-counsel-advisory/${slug}`)}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4 + index * 0.04, duration: 0.5 }}
+                  whileHover={{ y: -4 }}
+                  className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left h-full"
+                  data-testid={`gc-advisor-card-${slug}`}
+                >
+                  <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                    {advisor.photo ? (
+                      <img
+                        src={advisor.photo}
+                        alt={advisor.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Users size={32} className="text-slate-400" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4 flex flex-col flex-1">
+                    <h3 className="text-sm font-bold text-slate-900 leading-tight text-center whitespace-nowrap">{advisor.name}</h3>
+                    <span className="mt-3 self-end inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap">
+                      Read bio <ArrowRight size={17} />
+                    </span>
+                  </div>
+                </motion.button>
+              );
+            })}
           </div>
         </motion.div>
       </div>
@@ -510,6 +525,67 @@ const GeneralCounselAdvisoryPage = () => {
           </p>
         </div>
       </div>
+
+      {/* Advisor bio drawer (right-side sheet) */}
+      <AnimatePresence>
+        {activeAdvisor && (
+          <motion.div
+            key="gc-adv-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => navigate('/general-counsel-advisory')}
+            className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+            data-testid={`gc-advisor-drawer-${slugifyName(activeAdvisor.name)}`}
+          >
+            <motion.aside
+              key="gc-adv-drawer"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
+              onClick={(e) => e.stopPropagation()}
+              className="absolute right-0 top-0 bottom-0 w-full sm:max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl overflow-y-auto"
+              role="dialog"
+              aria-label={`${activeAdvisor.name} bio`}
+            >
+              <button
+                type="button"
+                onClick={() => navigate('/general-counsel-advisory')}
+                aria-label="Close bio"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors z-10"
+                data-testid="gc-advisor-drawer-close"
+              >
+                <X size={18} />
+              </button>
+              <div className="p-6 md:p-8 pt-8">
+                {activeAdvisor.photo && (
+                  <div className="aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl shadow-lg mb-6">
+                    <img src={activeAdvisor.photo} alt={activeAdvisor.name} className="w-full h-full object-cover" />
+                  </div>
+                )}
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{activeAdvisor.name}</h3>
+                <p className="text-xs font-semibold text-[#00A8E1] uppercase tracking-wide mb-4">{activeAdvisor.title}</p>
+                {activeAdvisor.linkedin && (
+                  <a
+                    href={activeAdvisor.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all mb-6"
+                    aria-label={`${activeAdvisor.name} on LinkedIn`}
+                    data-testid="gc-advisor-drawer-linkedin"
+                  >
+                    <Linkedin className="text-white" size={18} />
+                  </a>
+                )}
+                <p className="text-slate-700 text-[15px] leading-relaxed whitespace-pre-line border-t border-slate-100 pt-6">
+                  {activeAdvisor.creds}
+                </p>
+              </div>
+            </motion.aside>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
