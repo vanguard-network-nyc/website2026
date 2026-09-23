@@ -694,8 +694,197 @@ const Footer = () => {
 };
 
 // Additional Pages
+// ---------- Executive Advisory Team (uses the /team page card + right-side drawer) ----------
+const ADVISORY_TEAM = [
+  {
+    slug: 'ken-banta',
+    name: 'KEN BANTA',
+    photo: '/ken-banta.jpg?v=2',
+    linkedin: 'https://www.linkedin.com/in/ken-banta-6a99b64/',
+    bio: 'Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.',
+    extras: 'Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"',
+  },
+  {
+    slug: 'judy-gawlik-brown',
+    name: 'JUDY GAWLIK BROWN',
+    photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg',
+    linkedin: '',
+    bio: "Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.",
+    extras: 'CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners',
+  },
+  {
+    slug: 'tom-sabatino',
+    name: 'TOM SABATINO',
+    photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg',
+    linkedin: '',
+    bio: 'Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He currently serves as Interim General Counsel at Tractor Supply Company.',
+    extras: 'University of Pennsylvania Law School | Wesleyan University graduate | Frequent speaker and mentor to senior legal executives',
+  },
+  {
+    slug: 'david-robinson',
+    name: 'DAVID ROBINSON',
+    photo: 'https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg',
+    linkedin: '',
+    bio: 'David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.',
+    extras: 'Faculty, University of Connecticut School of Law (Insurance Law & Policy) | Board Chair, Capital Region Development Authority | Board member, The iQuilt Partnership | Former Chair, MetroHartford Alliance',
+  },
+  {
+    slug: 'aileen-gonsalves',
+    name: 'AILEEN GONSALVES',
+    photo: '/aileen-gonsalves.jpg',
+    photoObjectPosition: 'calc(50% - 20px) 20%',
+    linkedin: '',
+    bio: 'Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.',
+    extras: 'Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"',
+  },
+  {
+    slug: 'tom-hartman',
+    name: 'TOM HARTMAN',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x6slyocl_Tom%20Hartman.jpg',
+    photoObjectPosition: '50% 15%',
+    linkedin: '',
+    bio: "As a coach, Tom supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.",
+    extras: 'ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider',
+  },
+  {
+    slug: 'mohamed-ladha',
+    name: 'MOHAMED LADHA',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg',
+    linkedin: '',
+    bio: "Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.",
+    extras: 'MBA, Kellogg School of Management, Northwestern University | MPA, Harvard Kennedy School, Harvard University | 25+ Years Biopharmaceutical Leadership | Commercial Strategy & General Management | Full P&L Leadership | Market Access & Medical Affairs | Business Development & Portfolio Strategy | Supply Chain & Enterprise Transformation',
+  },
+  {
+    slug: 'christian-desrosiers',
+    name: 'CHRISTIAN DESROSIERS',
+    photo: 'https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg',
+    linkedin: '',
+    bio: 'Christian is an expert on strategic opportunities and challenges involving AI across sectors. Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference. Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.',
+    extras: 'Co-Founder, Flashpoint.AI | Co-Founder, Monument | Fulbright Scholar, U.S. Department of State | Master in City Planning, Massachusetts Institute of Technology | BA, Amherst College',
+  },
+  {
+    slug: 'richard-hulme',
+    name: 'RICHARD HULME',
+    photo: '/richard-hulme.jpg',
+    linkedin: '',
+    bio: 'Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.',
+    extras: 'Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon',
+  },
+  {
+    slug: 'garrick-isert',
+    name: 'GARRICK ISERT',
+    photo: '/garrick-isert.jpg',
+    linkedin: '',
+    bio: 'Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.',
+    extras: 'Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg',
+  },
+];
+
+// Card matches DesktopTeamCard: 4:5 photo, name, "Read bio →" right-aligned.
+const AdvisoryCard = ({ advisor, index, onOpen }) => (
+  <motion.button
+    type="button"
+    onClick={() => onOpen(advisor)}
+    initial={{ y: 30, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.4 + index * 0.04, duration: 0.5 }}
+    whileHover={{ y: -4 }}
+    className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col text-left"
+    data-testid={`advisory-card-${advisor.slug}`}
+  >
+    <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+      <img
+        src={advisor.photo}
+        alt={advisor.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        style={advisor.photoObjectPosition ? { objectPosition: advisor.photoObjectPosition } : undefined}
+        loading="lazy"
+      />
+    </div>
+    <div className="p-4 flex items-start justify-between gap-3">
+      <div className="min-w-0 flex-1">
+        <h3 className="text-base font-bold text-slate-900 leading-tight">{advisor.name}</h3>
+      </div>
+      <span className="shrink-0 inline-flex items-center gap-1.5 text-[15px] font-bold text-[#F97316] group-hover:text-[#C2410C] underline underline-offset-4 decoration-2 transition-colors whitespace-nowrap pt-0.5">
+        Read bio <ArrowRight size={17} />
+      </span>
+    </div>
+  </motion.button>
+);
+
+// Right-side drawer that preserves the original bio + extras format.
+const AdvisoryBioDrawer = ({ advisor, onClose }) => (
+  <AnimatePresence>
+    {advisor && (
+      <motion.div
+        key="backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm"
+        data-testid={`advisory-drawer-${advisor.slug}`}
+      >
+        <motion.aside
+          key="drawer"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ type: 'tween', ease: [0.22, 1, 0.36, 1], duration: 0.4 }}
+          onClick={(e) => e.stopPropagation()}
+          className="absolute right-0 top-0 bottom-0 w-full sm:max-w-md md:max-w-lg lg:max-w-xl bg-white shadow-2xl overflow-y-auto"
+          role="dialog"
+          aria-label={`${advisor.name} bio`}
+        >
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close bio"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors z-10"
+            data-testid="advisory-drawer-close"
+          >
+            <X size={18} />
+          </button>
+          <div className="p-6 md:p-8 pt-8">
+            <div className="aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl shadow-lg mb-6">
+              <img
+                src={advisor.photo}
+                alt={advisor.name}
+                className="w-full h-full object-cover"
+                style={advisor.photoObjectPosition ? { objectPosition: advisor.photoObjectPosition } : undefined}
+              />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">{advisor.name}</h3>
+            {advisor.linkedin && (
+              <a
+                href={advisor.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#045184] to-[#00A8E1] hover:shadow-lg transition-all mb-6"
+                aria-label={`${advisor.name} on LinkedIn`}
+                data-testid="advisory-drawer-linkedin"
+              >
+                <Linkedin className="text-white" size={18} />
+              </a>
+            )}
+            <p className="text-slate-600 leading-relaxed text-sm mb-3 whitespace-pre-line">{advisor.bio}</p>
+            {advisor.extras && (
+              <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">{advisor.extras}</p>
+            )}
+          </div>
+        </motion.aside>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
 const AdvisoryPage = () => {
   const [activeTab, setActiveTab] = useState('strategic'); // 'strategic', 'organizational', 'client'
+  const navigate = useNavigate();
+  const { advisorSlug } = useParams();
+  const activeAdvisor = advisorSlug
+    ? ADVISORY_TEAM.find((a) => a.slug === advisorSlug)
+    : null;
 
   // Map tab keys to their corresponding hash IDs
   const tabToHash = {
@@ -1450,151 +1639,21 @@ const AdvisoryPage = () => {
           className="bg-white rounded-2xl p-4 md:p-8 md:p-6 md:p-12 shadow-lg"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-slate-900 mb-12">EXECUTIVE ADVISORY TEAM</h2>
-          
-          {/* Horizontal Cards Layout - All Screen Sizes */}
-          <div className="space-y-6">
-            {/* Ken Banta */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/ken-banta.jpg?v=2" alt="Ken Banta - Founder and Managing Director of The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">KEN BANTA</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Ken helped lead eleven global turnarounds, mergers, and transformations, generating more than $83 billion in accretion. He has advised on many initiatives of varying scale and global reach, with playbooks that build high-performance cultures as a hallmark of his expertise.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Rhodes Scholar | Harvard Business Review Contributor | Co-author of "Ten Must Reads for CEOs"</p>
-              </div>
-            </div>
 
-            {/* Judy Gawlik Brown */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/vtkscabk_Judy%20Gawlik%20Brown.jpg" alt="Judy Gawlik Brown - Executive Advisor" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">JUDY GAWLIK BROWN</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Judy is a seasoned executive leader and board director with more than 25 years of experience driving strategic transformation, financial performance, and enterprise value across global healthcare, biotechnology, and manufacturing sectors. As Senior Vice President of Corporate Affairs at Amgen and former EVP and CFO at Perrigo, she has led enterprise transformation, ESG strategy, and global finance organizations with a steady focus on performance and purpose.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">CPA | MBA, University of Chicago Booth School of Business | BS Accountancy, University of Illinois | Independent Director at Agilent Technologies and Belden Inc. | Advisor to MannaTree Partners</p>
-              </div>
-            </div>
-
-            {/* Tom Sabatino */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/klpkfiz2_Tom%20Sabatino.jpeg" alt="Tom Sabatino - Executive Advisor" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM SABATINO</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Tom brings over four decades of executive legal leadership at major global corporations, guiding complex mergers, restructurings, compliance programs, and transformation initiatives that shape enterprise strategy and risk-managed growth. He currently serves as Interim General Counsel at Tractor Supply Company.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">University of Pennsylvania Law School | Wesleyan University graduate | Frequent speaker and mentor to senior legal executives</p>
-              </div>
-            </div>
-
-            {/* David Robinson */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets.emergentagent.com/job_9392fb78-3fab-49ff-87cb-83766cde3627/artifacts/4jay3ewj_David%20Robinson.jpeg" alt="David Robinson - Executive Advisor" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">DAVID ROBINSON</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  David is an accomplished lawyer and business executive with more than 30 years of experience advising C-suites and boards on M&A, governance, litigation, regulatory strategy, and public policy. As Executive Vice President and General Counsel of The Hartford, he led legal, compliance, government relations, and sustainability functions, playing a key role in transforming the company into a top-quartile property and casualty and group benefits enterprise during his 18-year tenure.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Faculty, University of Connecticut School of Law (Insurance Law & Policy) | Board Chair, Capital Region Development Authority | Board member, The iQuilt Partnership | Former Chair, MetroHartford Alliance</p>
-              </div>
-            </div>
-
-            {/* Aileen Gonsalves */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/aileen-gonsalves.jpg" alt="Aileen Gonsalves - Leadership Engagement Coach" className="w-full h-full object-cover" style={{ objectPosition: 'calc(50% - 20px) 20%' }} />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">AILEEN GONSALVES</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Aileen brings her unique leadership communication approach, the Gonsalves Method, rooted in her career as an actor and director with the Royal Shakespeare Company. She has worked with Dame Judi Dench, Sir Simon Russell Beale, and other leading performers, now applying these skills to business leadership.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Royal Shakespeare Company | RADA Professor | Author, "Shakespeare and Meisner"</p>
-              </div>
-            </div>
-
-            {/* Tom Hartman */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/x6slyocl_Tom%20Hartman.jpg" alt="Tom Hartman - Executive Coach at The Vanguard Network" className="w-full h-full object-cover" style={{ objectPosition: '50% 15%' }} />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">TOM HARTMAN</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  As a coach, Tom supports CXO member-clients in identifying and achieving their professional goals through the power of asking bold questions that expand what's possible for them. Tom brings to his coaching practice three decades in sales leadership working with clients in virtually every industry. He has managed teams responsible for up to $1 billion in annual revenue at global media companies including The Walt Disney Company and Conde Nast, and at technology companies such as DoubleClick (now Google), Innovid, and VideoAmp.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">ICF Professional Coach Certification | MBA, The Wharton School, University of Pennsylvania | BA with Honors, University of Texas at Austin | DISC Assessment Practitioner | Hogan Leadership Provider</p>
-              </div>
-            </div>
-
-            {/* Mohamed Ladha */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/s0wsneqa_1585009745531.jpeg" alt="Mohamed Ladha - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">MOHAMED LADHA</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Mohamed brings more than 25 years of global and U.S. biopharmaceutical leadership experience to his advisory practice, helping life sciences organizations strengthen commercial performance, accelerate growth, and turn strategy into execution. He has held senior leadership roles spanning commercial strategy, general management, market access, medical affairs, business development, supply chain, and enterprise transformation across emerging and established biopharmaceutical companies. Most recently, he served as President & General Manager, North America for Recordati Rare Diseases, where he led the company's largest fully integrated affiliate across the U.S. and Canada, with full P&L accountability for a nine-product portfolio expected to exceed $750 million in annual revenue. Today, Mohamed partners with life sciences organizations as a fractional enterprise and commercial executive, helping leadership teams accelerate transformation, optimize portfolio value, strengthen cross-functional alignment, and build high-performing organizations across oncology, hematology, rare disease, and specialty care markets.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">MBA, Kellogg School of Management, Northwestern University | MPA, Harvard Kennedy School, Harvard University | 25+ Years Biopharmaceutical Leadership | Commercial Strategy & General Management | Full P&L Leadership | Market Access & Medical Affairs | Business Development & Portfolio Strategy | Supply Chain & Enterprise Transformation</p>
-              </div>
-            </div>
-
-            {/* Christian Desrosiers */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="https://customer-assets-rejwkqb3.emergentagent.net/job_95c11ed2-04fc-4e03-90f5-5a9265b65d8d/artifacts/ot1nxp22_Christian%20Desrosiers.jpeg" alt="Christian Desrosiers - Co-founder, Flashpoint.AI" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">CHRISTIAN DESROSIERS</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Christian is an expert on strategic opportunities and challenges involving AI across sectors. Christian is the co-founder of Flashpoint.AI, an AI-native market research platform that combines traditional approaches and new, proprietary approaches that measure real consumer behavior rather than stated preference. Before Flashpoint.AI, he co-founded a machine learning platform and spent several years in international development, including roles at the United Nations and as a U.S. Fulbright Scholar. He brings a cross-disciplinary lens, from public-sector strategy to venture-backed product-building, to how he advises founders and executives on growth and market insight.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Co-Founder, Flashpoint.AI | Co-Founder, Monument | Fulbright Scholar, U.S. Department of State | Master in City Planning, Massachusetts Institute of Technology | BA, Amherst College</p>
-              </div>
-            </div>
-
-            {/* Richard Hulme */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/richard-hulme.jpg" alt="Richard Hulme - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">RICHARD HULME</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Richard has over 25 years of experience in strategy consulting, global operations, and organizational excellence. During his 15 years at PricewaterhouseCoopers, he served as chief of staff to the PwC Global Board Chairman and delivered special projects for the PwC Global CEO.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Certified OKR Coach | BS William & Mary | MBA Carnegie Mellon</p>
-              </div>
-            </div>
-
-            {/* Garrick Isert */}
-            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6">
-              <div className="w-24 h-24 md:w-32 md:h-32 rounded-full flex-shrink-0 overflow-hidden shadow-md">
-                <img src="/garrick-isert.jpg" alt="Garrick Isert - Senior Advisor at The Vanguard Network" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3">GARRICK ISERT</h3>
-                <p className="text-slate-600 leading-relaxed text-sm mb-3">
-                  Garrick brings over 20 years of corporate and management consulting experience. He has worked with global senior leaders across diverse industries including hospitality, law, e-commerce, financial services, and energy, with experience at World 50, IHG, Boston Consulting Group, and General Electric.
-                </p>
-                <p className="text-xs text-slate-500 pt-3 border-t border-slate-200">Six Sigma Black Belt | J.D. Northwestern | MBA Kellogg</p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+            {ADVISORY_TEAM.map((advisor, index) => (
+              <AdvisoryCard
+                key={advisor.slug}
+                advisor={advisor}
+                index={index}
+                onOpen={(a) => navigate(`/advisory/${a.slug}`)}
+              />
+            ))}
           </div>
         </motion.div>
     </div>
+
+    <AdvisoryBioDrawer advisor={activeAdvisor} onClose={() => navigate('/advisory')} />
 
     {/* Call to Action */}
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 md:px-8 mb-16">

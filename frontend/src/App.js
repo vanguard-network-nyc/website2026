@@ -41,7 +41,10 @@ function PageWrapper({ children }) {
   // Route pairs that share a page and manage their own state (e.g. team drawer).
   // For these, we skip the scroll-reset so opening a card doesn't jump to top.
   const isTeamRoute = (p) => p === '/team' || p.startsWith('/team/');
-  const staysOnSamePage = (a, b) => isTeamRoute(a) && isTeamRoute(b);
+  const isAdvisoryRoute = (p) => p === '/advisory' || p.startsWith('/advisory/');
+  const staysOnSamePage = (a, b) =>
+    (isTeamRoute(a) && isTeamRoute(b)) ||
+    (isAdvisoryRoute(a) && isAdvisoryRoute(b));
 
   // useLayoutEffect runs synchronously BEFORE the browser paints
   // This ensures scroll happens before the user sees anything
@@ -114,6 +117,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
           <Route path="/advisory" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
+          <Route path="/advisory/:advisorSlug" element={<PageWrapper><AdvisoryPage /></PageWrapper>} />
           <Route path="/general-counsel-advisory" element={<PageWrapper><GeneralCounselAdvisoryPage /></PageWrapper>} />
           <Route path="/ceo-advisory" element={<PageWrapper><CEOAdvisoryPage /></PageWrapper>} />
           <Route path="/networks" element={<PageWrapper><NetworkingV2Page /></PageWrapper>} />
