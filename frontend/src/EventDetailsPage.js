@@ -338,8 +338,8 @@ const EventDetailsPage = () => {
               )}
             </div>
 
-            {/* CTA — hidden for past events */}
-            {!isPast && (
+            {/* CTA — hidden for past events and for explicit event opt-outs */}
+            {!isPast && !HIDE_ATTEND_BTN_EVENT_IDS.has(event.id) && (
             <div className="flex flex-wrap items-center gap-3">
               {formVariant ? (
                 <button
@@ -588,8 +588,8 @@ const EventDetailsPage = () => {
           </motion.section>
         )}
 
-        {/* Bottom CTA — hidden for past events */}
-        {!isPast && (
+        {/* Bottom CTA — hidden for past events and for explicit event opt-outs */}
+        {!isPast && !HIDE_ATTEND_BTN_EVENT_IDS.has(event.id) && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
