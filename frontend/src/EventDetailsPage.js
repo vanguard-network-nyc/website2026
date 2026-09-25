@@ -38,9 +38,6 @@ const SERIES_TO_FORM_KEY = {
 // Series codes with an internal /events/:id details page (mirrors UpcomingEventsPage rules)
 const INTERNAL_DETAILS_SERIES = new Set(['CSC', 'GCF', 'LSCEOF', 'GCX', 'RMX', 'LSCEOX']);
 const SERIES_TO_PROGRAM_PATH = { NGGC: '/programs/next-generation-general-counsel' };
-
-// Event record IDs where the "I would like to attend" CTA should be hidden
-const HIDE_ATTEND_BTN_EVENT_IDS = new Set(['recfm3pS46OxmbvTa']);
 const nearbyEventUrl = (ev) => {
   if (ev.series_code && INTERNAL_DETAILS_SERIES.has(ev.series_code)) return `/events/${ev.id}`;
   if (ev.series_code && SERIES_TO_PROGRAM_PATH[ev.series_code]) return SERIES_TO_PROGRAM_PATH[ev.series_code];
@@ -342,7 +339,7 @@ const EventDetailsPage = () => {
             </div>
 
             {/* CTA — hidden for past events and for explicit event opt-outs */}
-            {!isPast && !HIDE_ATTEND_BTN_EVENT_IDS.has(event.id) && (
+            {!isPast && (
             <div className="flex flex-wrap items-center gap-3">
               {formVariant ? (
                 <button
@@ -592,7 +589,7 @@ const EventDetailsPage = () => {
         )}
 
         {/* Bottom CTA — hidden for past events and for explicit event opt-outs */}
-        {!isPast && !HIDE_ATTEND_BTN_EVENT_IDS.has(event.id) && (
+        {!isPast && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
