@@ -338,7 +338,7 @@ const EventDetailsPage = () => {
               )}
             </div>
 
-            {/* CTA — hidden for past events and for explicit event opt-outs */}
+            {/* CTA — hidden for past events */}
             {!isPast && (
             <div className="flex flex-wrap items-center gap-3">
               {formVariant ? (
@@ -588,7 +588,7 @@ const EventDetailsPage = () => {
           </motion.section>
         )}
 
-        {/* Bottom CTA — hidden for past events and for explicit event opt-outs */}
+        {/* Bottom CTA — hidden for past events */}
         {!isPast && (
           <motion.div
             initial={{ y: 20, opacity: 0 }}
